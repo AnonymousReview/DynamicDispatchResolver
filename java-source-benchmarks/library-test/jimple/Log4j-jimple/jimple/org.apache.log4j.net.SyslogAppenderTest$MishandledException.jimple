@@ -1,0 +1,44 @@
+class org.apache.log4j.net.SyslogAppenderTest$MishandledException extends java.lang.Exception
+{
+    private static final long serialVersionUID;
+
+    public void <init>()
+    {
+        org.apache.log4j.net.SyslogAppenderTest$MishandledException r0;
+
+        r0 := @this: org.apache.log4j.net.SyslogAppenderTest$MishandledException;
+
+        specialinvoke r0.<java.lang.Exception: void <init>()>();
+
+        return;
+    }
+
+    public void printStackTrace(java.io.PrintWriter)
+    {
+        org.apache.log4j.net.SyslogAppenderTest$MishandledException r0;
+        java.io.PrintWriter r1;
+
+        r0 := @this: org.apache.log4j.net.SyslogAppenderTest$MishandledException;
+
+        r1 := @parameter0: java.io.PrintWriter;
+
+        virtualinvoke r1.<java.io.PrintWriter: void println(java.lang.String)>("Mishandled stack trace follows:");
+
+        virtualinvoke r1.<java.io.PrintWriter: void println(java.lang.String)>("");
+
+        virtualinvoke r1.<java.io.PrintWriter: void println(java.lang.String)>("No tab here");
+
+        virtualinvoke r1.<java.io.PrintWriter: void println(java.lang.String)>("\ttab here");
+
+        virtualinvoke r1.<java.io.PrintWriter: void println(java.lang.String)>("\t");
+
+        return;
+    }
+
+    public static void <clinit>()
+    {
+        <org.apache.log4j.net.SyslogAppenderTest$MishandledException: long serialVersionUID> = 1L;
+
+        return;
+    }
+}

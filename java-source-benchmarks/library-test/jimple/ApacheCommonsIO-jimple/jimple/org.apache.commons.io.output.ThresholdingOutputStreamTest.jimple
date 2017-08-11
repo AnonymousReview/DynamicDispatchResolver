@@ -1,0 +1,48 @@
+public class org.apache.commons.io.output.ThresholdingOutputStreamTest extends java.lang.Object
+{
+
+    public void <init>()
+    {
+        org.apache.commons.io.output.ThresholdingOutputStreamTest r0;
+
+        r0 := @this: org.apache.commons.io.output.ThresholdingOutputStreamTest;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void testSetByteCount() throws java.lang.Exception
+    {
+        org.apache.commons.io.output.ThresholdingOutputStreamTest r0;
+        java.util.concurrent.atomic.AtomicBoolean $r3;
+        org.apache.commons.io.output.ThresholdingOutputStreamTest$1 $r4;
+        boolean $z0, $z1;
+
+        r0 := @this: org.apache.commons.io.output.ThresholdingOutputStreamTest;
+
+        $r3 = new java.util.concurrent.atomic.AtomicBoolean;
+
+        specialinvoke $r3.<java.util.concurrent.atomic.AtomicBoolean: void <init>(boolean)>(0);
+
+        $r4 = new org.apache.commons.io.output.ThresholdingOutputStreamTest$1;
+
+        specialinvoke $r4.<org.apache.commons.io.output.ThresholdingOutputStreamTest$1: void <init>(org.apache.commons.io.output.ThresholdingOutputStreamTest,int,java.util.concurrent.atomic.AtomicBoolean)>(r0, 3, $r3);
+
+        virtualinvoke $r4.<org.apache.commons.io.output.ThresholdingOutputStream: void write(int)>(12);
+
+        $z0 = virtualinvoke $r3.<java.util.concurrent.atomic.AtomicBoolean: boolean get()>();
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z0);
+
+        virtualinvoke $r4.<org.apache.commons.io.output.ThresholdingOutputStream: void write(int)>(12);
+
+        $z1 = virtualinvoke $r3.<java.util.concurrent.atomic.AtomicBoolean: boolean get()>();
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z1);
+
+        virtualinvoke $r4.<org.apache.commons.io.output.ThresholdingOutputStream: void close()>();
+
+        return;
+    }
+}

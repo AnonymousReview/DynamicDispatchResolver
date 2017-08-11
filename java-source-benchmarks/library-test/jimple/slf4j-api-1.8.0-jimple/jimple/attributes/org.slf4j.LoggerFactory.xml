@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<attributes>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="3" eline="3" spos="0" epos="0"/>
+<text info="ConstantValue: http://www.slf4j.org/codes.html" aType="StringConstantValueTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="4" eline="4" spos="0" epos="0"/>
+<text info="ConstantValue: http://www.slf4j.org/codes.html#noProviders" aType="StringConstantValueTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="5" eline="5" spos="0" epos="0"/>
+<text info="ConstantValue: http://www.slf4j.org/codes.html#ignoredBindings" aType="StringConstantValueTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="6" eline="6" spos="0" epos="0"/>
+<text info="ConstantValue: http://www.slf4j.org/codes.html#StaticLoggerBinder" aType="StringConstantValueTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="7" eline="7" spos="0" epos="0"/>
+<text info="ConstantValue: http://www.slf4j.org/codes.html#multiple_bindings" aType="StringConstantValueTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="8" eline="8" spos="0" epos="0"/>
+<text info="ConstantValue: http://www.slf4j.org/codes.html#null_LF" aType="StringConstantValueTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="9" eline="9" spos="0" epos="0"/>
+<text info="ConstantValue: http://www.slf4j.org/codes.html#version_mismatch" aType="StringConstantValueTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="10" eline="10" spos="0" epos="0"/>
+<text info="ConstantValue: http://www.slf4j.org/codes.html#substituteLogger" aType="StringConstantValueTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="11" eline="11" spos="0" epos="0"/>
+<text info="ConstantValue: http://www.slf4j.org/codes.html#loggerNameMismatch" aType="StringConstantValueTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="12" eline="12" spos="0" epos="0"/>
+<text info="ConstantValue: http://www.slf4j.org/codes.html#replay" aType="StringConstantValueTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="13" eline="13" spos="0" epos="0"/>
+<text info="ConstantValue: http://www.slf4j.org/codes.html#unsuccessfulInit" aType="StringConstantValueTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="14" eline="14" spos="0" epos="0"/>
+<text info="ConstantValue: org.slf4j.LoggerFactory in failed state. Original exception was thrown EARLIER. See also http://www.slf4j.org/codes.html#unsuccessfulInit" aType="StringConstantValueTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="15" eline="15" spos="0" epos="0"/>
+<text info="ConstantValue: 0" aType="IntegerConstantValueTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="16" eline="16" spos="0" epos="0"/>
+<text info="ConstantValue: 1" aType="IntegerConstantValueTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="17" eline="17" spos="0" epos="0"/>
+<text info="ConstantValue: 2" aType="IntegerConstantValueTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="18" eline="18" spos="0" epos="0"/>
+<text info="ConstantValue: 3" aType="IntegerConstantValueTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="19" eline="19" spos="0" epos="0"/>
+<text info="ConstantValue: 4" aType="IntegerConstantValueTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="23" eline="23" spos="0" epos="0"/>
+<text info="ConstantValue: slf4j.detectLoggerNameMismatch" aType="StringConstantValueTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="24" eline="24" spos="0" epos="0"/>
+<text info="ConstantValue: java.vendor.url" aType="StringConstantValueTag"/>
+</attribute>
+<attribute>
+<srcPos sline="103" eline="103" spos="0" epos="0"/>
+<jmpPos sline="106" eline="106" spos="0" epos="0"/>
+<text info="Signature: ()Ljava/util/List&lt;Lorg/slf4j/spi/SLF4JServiceProvider;&gt;;" aType="SignatureTag"/>
+</attribute>
+<attribute>
+<srcPos sline="175" eline="175" spos="0" epos="0"/>
+<jmpPos sline="256" eline="256" spos="0" epos="0"/>
+<text info="Signature: (Ljava/util/Set&lt;Ljava/net/URL;&gt;;)V" aType="SignatureTag"/>
+</attribute>
+<attribute>
+<srcPos sline="195" eline="195" spos="0" epos="0"/>
+<jmpPos sline="308" eline="308" spos="0" epos="0"/>
+<text info="Signature: ()Ljava/util/Set&lt;Ljava/net/URL;&gt;;" aType="SignatureTag"/>
+</attribute>
+<attribute>
+<srcPos sline="319" eline="319" spos="0" epos="0"/>
+<jmpPos sline="730" eline="730" spos="0" epos="0"/>
+<text info="Signature: (Ljava/util/List&lt;Lorg/slf4j/spi/SLF4JServiceProvider;&gt;;)Z" aType="SignatureTag"/>
+</attribute>
+<attribute>
+<srcPos sline="328" eline="328" spos="0" epos="0"/>
+<jmpPos sline="747" eline="747" spos="0" epos="0"/>
+<text info="Signature: (Ljava/util/List&lt;Lorg/slf4j/spi/SLF4JServiceProvider;&gt;;)V" aType="SignatureTag"/>
+</attribute>
+<attribute>
+<srcPos sline="339" eline="339" spos="0" epos="0"/>
+<jmpPos sline="797" eline="797" spos="0" epos="0"/>
+<text info="Signature: (Ljava/util/List&lt;Lorg/slf4j/spi/SLF4JServiceProvider;&gt;;)V" aType="SignatureTag"/>
+</attribute>
+<attribute>
+<srcPos sline="379" eline="379" spos="0" epos="0"/>
+<jmpPos sline="848" eline="848" spos="0" epos="0"/>
+<text info="Signature: (Ljava/lang/Class&lt;*&gt;;)Lorg/slf4j/Logger;" aType="SignatureTag"/>
+</attribute>
+<attribute>
+<srcPos sline="392" eline="392" spos="0" epos="0"/>
+<jmpPos sline="894" eline="894" spos="0" epos="0"/>
+<text info="Signature: (Ljava/lang/Class&lt;*&gt;;Ljava/lang/Class&lt;*&gt;;)Z" aType="SignatureTag"/>
+</attribute>
+</attributes>

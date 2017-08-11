@@ -1,0 +1,586 @@
+public class org.apache.commons.io.input.NullReaderTest extends java.lang.Object
+{
+
+    public void <init>()
+    {
+        org.apache.commons.io.input.NullReaderTest r0;
+
+        r0 := @this: org.apache.commons.io.input.NullReaderTest;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void testRead() throws java.lang.Exception
+    {
+        org.apache.commons.io.input.NullReaderTest r0;
+        org.apache.commons.io.input.NullReaderTest$TestNullReader $r2;
+        java.lang.StringBuilder $r3, $r4, $r5, $r7, $r8, $r9;
+        java.lang.String $r6, $r10, $r12;
+        long $l1, $l3, $l5, $l6;
+        int $i2, $i4, i7, i8;
+        java.io.IOException $r11;
+
+        r0 := @this: org.apache.commons.io.input.NullReaderTest;
+
+        $r2 = new org.apache.commons.io.input.NullReaderTest$TestNullReader;
+
+        specialinvoke $r2.<org.apache.commons.io.input.NullReaderTest$TestNullReader: void <init>(int)>(5);
+
+        i7 = 0;
+
+        goto label2;
+
+     label1:
+        $r3 = new java.lang.StringBuilder;
+
+        specialinvoke $r3.<java.lang.StringBuilder: void <init>(java.lang.String)>("Check Value [");
+
+        $r4 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i7);
+
+        $r5 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("]");
+
+        $r6 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $l1 = (long) i7;
+
+        $i2 = virtualinvoke $r2.<org.apache.commons.io.input.NullReaderTest$TestNullReader: int read()>();
+
+        $l3 = (long) $i2;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>($r6, $l1, $l3);
+
+        i7 = i7 + 1;
+
+     label2:
+        if i7 < 5 goto label1;
+
+        $i4 = virtualinvoke $r2.<org.apache.commons.io.input.NullReaderTest$TestNullReader: int read()>();
+
+        $l5 = (long) $i4;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("End of File", -1L, $l5);
+
+     label3:
+        i8 = virtualinvoke $r2.<org.apache.commons.io.input.NullReaderTest$TestNullReader: int read()>();
+
+        $r7 = new java.lang.StringBuilder;
+
+        specialinvoke $r7.<java.lang.StringBuilder: void <init>(java.lang.String)>("Should have thrown an IOException, value=[");
+
+        $r8 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i8);
+
+        $r9 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("]");
+
+        $r10 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>($r10);
+
+     label4:
+        goto label6;
+
+     label5:
+        $r11 := @caughtexception;
+
+        $r12 = virtualinvoke $r11.<java.io.IOException: java.lang.String getMessage()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("Read after end of file", $r12);
+
+     label6:
+        virtualinvoke $r2.<org.apache.commons.io.input.NullReaderTest$TestNullReader: void close()>();
+
+        $l6 = virtualinvoke $r2.<org.apache.commons.io.input.NullReaderTest$TestNullReader: long getPosition()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("Available after close", 0L, $l6);
+
+        return;
+
+        catch java.io.IOException from label3 to label4 with label5;
+    }
+
+    public void testReadCharArray() throws java.lang.Exception
+    {
+        org.apache.commons.io.input.NullReaderTest r0;
+        char[] r1;
+        int i0, i2, $i3, $i10, i19, i20, i21, i22, i23, i25;
+        org.apache.commons.io.input.NullReaderTest$TestNullReader $r3;
+        long $l4, $l5, $l7, $l8, $l9, $l12, $l13, $l14, $l15, $l17, $l18;
+        char $c6, $c11, $c16;
+        java.lang.StringBuilder $r4, $r5, $r6;
+        java.lang.String $r7, $r9;
+        java.io.IOException $r8;
+
+        r0 := @this: org.apache.commons.io.input.NullReaderTest;
+
+        r1 = newarray (char)[10];
+
+        $r3 = new org.apache.commons.io.input.NullReaderTest$TestNullReader;
+
+        specialinvoke $r3.<org.apache.commons.io.input.NullReaderTest$TestNullReader: void <init>(int)>(15);
+
+        i0 = virtualinvoke $r3.<java.io.Reader: int read(char[])>(r1);
+
+        $i3 = lengthof r1;
+
+        $l5 = (long) $i3;
+
+        $l4 = (long) i0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("Read 1", $l5, $l4);
+
+        i19 = 0;
+
+        goto label02;
+
+     label01:
+        $l8 = (long) i19;
+
+        $c6 = r1[i19];
+
+        $l7 = (long) $c6;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("Check Chars 1", $l8, $l7);
+
+        i19 = i19 + 1;
+
+     label02:
+        if i19 < i0 goto label01;
+
+        i20 = virtualinvoke $r3.<java.io.Reader: int read(char[])>(r1);
+
+        $l9 = (long) i20;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("Read 2", 5L, $l9);
+
+        i21 = 0;
+
+        goto label04;
+
+     label03:
+        $i10 = i0 + i21;
+
+        $l13 = (long) $i10;
+
+        $c11 = r1[i21];
+
+        $l12 = (long) $c11;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("Check Chars 2", $l13, $l12);
+
+        i21 = i21 + 1;
+
+     label04:
+        if i21 < i20 goto label03;
+
+        i22 = virtualinvoke $r3.<java.io.Reader: int read(char[])>(r1);
+
+        $l14 = (long) i22;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("Read 3 (EOF)", -1L, $l14);
+
+     label05:
+        i23 = virtualinvoke $r3.<java.io.Reader: int read(char[])>(r1);
+
+        $r4 = new java.lang.StringBuilder;
+
+        specialinvoke $r4.<java.lang.StringBuilder: void <init>(java.lang.String)>("Should have thrown an IOException, value=[");
+
+        $r5 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i23);
+
+        $r6 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("]");
+
+        $r7 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>($r7);
+
+     label06:
+        goto label08;
+
+     label07:
+        $r8 := @caughtexception;
+
+        $r9 = virtualinvoke $r8.<java.io.IOException: java.lang.String getMessage()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("Read after end of file", $r9);
+
+     label08:
+        virtualinvoke $r3.<java.io.Reader: void close()>();
+
+        i2 = virtualinvoke $r3.<java.io.Reader: int read(char[],int,int)>(r1, 2, 4);
+
+        $l15 = (long) i2;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("Read 5", 4L, $l15);
+
+        i25 = 2;
+
+        goto label10;
+
+     label09:
+        $l18 = (long) i25;
+
+        $c16 = r1[i25];
+
+        $l17 = (long) $c16;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("Check Chars 3", $l18, $l17);
+
+        i25 = i25 + 1;
+
+     label10:
+        if i25 < 4 goto label09;
+
+        return;
+
+        catch java.io.IOException from label05 to label06 with label07;
+    }
+
+    public void testEOFException() throws java.lang.Exception
+    {
+        org.apache.commons.io.input.NullReaderTest r0;
+        org.apache.commons.io.input.NullReaderTest$TestNullReader $r2;
+        int $i0, $i2, i4;
+        long $l1, $l3;
+        java.lang.StringBuilder $r3, $r4, $r5;
+        java.lang.String $r6;
+        java.io.EOFException $r7;
+
+        r0 := @this: org.apache.commons.io.input.NullReaderTest;
+
+        $r2 = new org.apache.commons.io.input.NullReaderTest$TestNullReader;
+
+        specialinvoke $r2.<org.apache.commons.io.input.NullReaderTest$TestNullReader: void <init>(int,boolean,boolean)>(2, 0, 1);
+
+        $i0 = virtualinvoke $r2.<java.io.Reader: int read()>();
+
+        $l1 = (long) $i0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("Read 1", 0L, $l1);
+
+        $i2 = virtualinvoke $r2.<java.io.Reader: int read()>();
+
+        $l3 = (long) $i2;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("Read 2", 1L, $l3);
+
+     label1:
+        i4 = virtualinvoke $r2.<java.io.Reader: int read()>();
+
+        $r3 = new java.lang.StringBuilder;
+
+        specialinvoke $r3.<java.lang.StringBuilder: void <init>(java.lang.String)>("Should have thrown an EOFException, value=[");
+
+        $r4 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i4);
+
+        $r5 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("]");
+
+        $r6 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>($r6);
+
+     label2:
+        goto label4;
+
+     label3:
+        $r7 := @caughtexception;
+
+     label4:
+        virtualinvoke $r2.<java.io.Reader: void close()>();
+
+        return;
+
+        catch java.io.EOFException from label1 to label2 with label3;
+    }
+
+    public void testMarkAndReset() throws java.lang.Exception
+    {
+        org.apache.commons.io.input.NullReaderTest r0;
+        org.apache.commons.io.input.NullReaderTest$TestNullReader $r2;
+        boolean $z0;
+        java.lang.StringBuilder $r3, $r4, $r5, $r7, $r8, $r9, $r11, $r12, $r13, $r16, $r17, $r18, $r19, $r20;
+        java.lang.String $r6, $r10, $r14, $r21, $r22, $r24;
+        long $l1, $l3, $l5, $l7, $l9, $l11;
+        int $i2, $i4, $i6, $i8, $i10, i12, i13, i14;
+        java.io.IOException $r15, $r23;
+
+        r0 := @this: org.apache.commons.io.input.NullReaderTest;
+
+        i12 = 0;
+
+        $r2 = new org.apache.commons.io.input.NullReaderTest$TestNullReader;
+
+        specialinvoke $r2.<org.apache.commons.io.input.NullReaderTest$TestNullReader: void <init>(int,boolean,boolean)>(100, 1, 0);
+
+        $z0 = virtualinvoke $r2.<java.io.Reader: boolean markSupported()>();
+
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>("Mark Should be Supported", $z0);
+
+     label01:
+        virtualinvoke $r2.<java.io.Reader: void reset()>();
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("Read limit exceeded, expected IOException ");
+
+     label02:
+        goto label05;
+
+     label03:
+        $r23 := @caughtexception;
+
+        $r24 = virtualinvoke $r23.<java.io.IOException: java.lang.String getMessage()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,java.lang.Object,java.lang.Object)>("No Mark IOException message", "No position has been marked", $r24);
+
+        goto label05;
+
+     label04:
+        $r3 = new java.lang.StringBuilder;
+
+        specialinvoke $r3.<java.lang.StringBuilder: void <init>(java.lang.String)>("Read Before Mark [");
+
+        $r4 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i12);
+
+        $r5 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("]");
+
+        $r6 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $l1 = (long) i12;
+
+        $i2 = virtualinvoke $r2.<java.io.Reader: int read()>();
+
+        $l3 = (long) $i2;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>($r6, $l1, $l3);
+
+        i12 = i12 + 1;
+
+     label05:
+        if i12 < 3 goto label04;
+
+        virtualinvoke $r2.<java.io.Reader: void mark(int)>(10);
+
+        i13 = 0;
+
+        goto label07;
+
+     label06:
+        $r7 = new java.lang.StringBuilder;
+
+        specialinvoke $r7.<java.lang.StringBuilder: void <init>(java.lang.String)>("Read After Mark [");
+
+        $r8 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i13);
+
+        $r9 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("]");
+
+        $r10 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $i4 = i12 + i13;
+
+        $l5 = (long) $i4;
+
+        $i6 = virtualinvoke $r2.<java.io.Reader: int read()>();
+
+        $l7 = (long) $i6;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>($r10, $l5, $l7);
+
+        i13 = i13 + 1;
+
+     label07:
+        if i13 < 3 goto label06;
+
+        virtualinvoke $r2.<java.io.Reader: void reset()>();
+
+        i14 = 0;
+
+        goto label09;
+
+     label08:
+        $r11 = new java.lang.StringBuilder;
+
+        specialinvoke $r11.<java.lang.StringBuilder: void <init>(java.lang.String)>("Read After Reset [");
+
+        $r12 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i14);
+
+        $r13 = virtualinvoke $r12.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("]");
+
+        $r14 = virtualinvoke $r13.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $i8 = i12 + i14;
+
+        $l9 = (long) $i8;
+
+        $i10 = virtualinvoke $r2.<java.io.Reader: int read()>();
+
+        $l11 = (long) $i10;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>($r14, $l9, $l11);
+
+        i14 = i14 + 1;
+
+     label09:
+        if i14 < 11 goto label08;
+
+     label10:
+        virtualinvoke $r2.<java.io.Reader: void reset()>();
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("Read limit exceeded, expected IOException ");
+
+     label11:
+        goto label13;
+
+     label12:
+        $r15 := @caughtexception;
+
+        $r16 = new java.lang.StringBuilder;
+
+        specialinvoke $r16.<java.lang.StringBuilder: void <init>(java.lang.String)>("Marked position [");
+
+        $r17 = virtualinvoke $r16.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i12);
+
+        $r18 = virtualinvoke $r17.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("] is no longer valid - passed the read limit [");
+
+        $r19 = virtualinvoke $r18.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(10);
+
+        $r20 = virtualinvoke $r19.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("]");
+
+        $r21 = virtualinvoke $r20.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r22 = virtualinvoke $r15.<java.io.IOException: java.lang.String getMessage()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,java.lang.Object,java.lang.Object)>("Read limit IOException message", $r21, $r22);
+
+     label13:
+        virtualinvoke $r2.<java.io.Reader: void close()>();
+
+        return;
+
+        catch java.io.IOException from label01 to label02 with label03;
+        catch java.io.IOException from label10 to label11 with label12;
+    }
+
+    public void testMarkNotSupported() throws java.lang.Exception
+    {
+        org.apache.commons.io.input.NullReaderTest r0;
+        org.apache.commons.io.input.NullReaderTest$TestNullReader $r2;
+        boolean $z0;
+        java.lang.UnsupportedOperationException $r3, $r5;
+        java.lang.String $r4, $r6;
+
+        r0 := @this: org.apache.commons.io.input.NullReaderTest;
+
+        $r2 = new org.apache.commons.io.input.NullReaderTest$TestNullReader;
+
+        specialinvoke $r2.<org.apache.commons.io.input.NullReaderTest$TestNullReader: void <init>(int,boolean,boolean)>(100, 0, 1);
+
+        $z0 = virtualinvoke $r2.<java.io.Reader: boolean markSupported()>();
+
+        staticinvoke <org.junit.Assert: void assertFalse(java.lang.String,boolean)>("Mark Should NOT be Supported", $z0);
+
+     label1:
+        virtualinvoke $r2.<java.io.Reader: void mark(int)>(5);
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("mark() should throw UnsupportedOperationException");
+
+     label2:
+        goto label4;
+
+     label3:
+        $r5 := @caughtexception;
+
+        $r6 = virtualinvoke $r5.<java.lang.UnsupportedOperationException: java.lang.String getMessage()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,java.lang.Object,java.lang.Object)>("mark() error message", "Mark not supported", $r6);
+
+     label4:
+        virtualinvoke $r2.<java.io.Reader: void reset()>();
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("reset() should throw UnsupportedOperationException");
+
+     label5:
+        goto label7;
+
+     label6:
+        $r3 := @caughtexception;
+
+        $r4 = virtualinvoke $r3.<java.lang.UnsupportedOperationException: java.lang.String getMessage()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,java.lang.Object,java.lang.Object)>("reset() error message", "Mark not supported", $r4);
+
+     label7:
+        virtualinvoke $r2.<java.io.Reader: void close()>();
+
+        return;
+
+        catch java.lang.UnsupportedOperationException from label1 to label2 with label3;
+        catch java.lang.UnsupportedOperationException from label4 to label5 with label6;
+    }
+
+    public void testSkip() throws java.lang.Exception
+    {
+        org.apache.commons.io.input.NullReaderTest r0;
+        org.apache.commons.io.input.NullReaderTest$TestNullReader $r3;
+        int $i0, $i2, $i5;
+        long $l1, $l3, $l4, $l6, $l7, $l8;
+        java.io.IOException $r4;
+        java.lang.String $r5;
+
+        r0 := @this: org.apache.commons.io.input.NullReaderTest;
+
+        $r3 = new org.apache.commons.io.input.NullReaderTest$TestNullReader;
+
+        specialinvoke $r3.<org.apache.commons.io.input.NullReaderTest$TestNullReader: void <init>(int,boolean,boolean)>(10, 1, 0);
+
+        $i0 = virtualinvoke $r3.<java.io.Reader: int read()>();
+
+        $l1 = (long) $i0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("Read 1", 0L, $l1);
+
+        $i2 = virtualinvoke $r3.<java.io.Reader: int read()>();
+
+        $l3 = (long) $i2;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("Read 2", 1L, $l3);
+
+        $l4 = virtualinvoke $r3.<java.io.Reader: long skip(long)>(5L);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("Skip 1", 5L, $l4);
+
+        $i5 = virtualinvoke $r3.<java.io.Reader: int read()>();
+
+        $l6 = (long) $i5;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("Read 3", 7L, $l6);
+
+        $l7 = virtualinvoke $r3.<java.io.Reader: long skip(long)>(5L);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("Skip 2", 2L, $l7);
+
+        $l8 = virtualinvoke $r3.<java.io.Reader: long skip(long)>(5L);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("Skip 3 (EOF)", -1L, $l8);
+
+     label1:
+        virtualinvoke $r3.<java.io.Reader: long skip(long)>(5L);
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("Expected IOException for skipping after end of file");
+
+     label2:
+        goto label4;
+
+     label3:
+        $r4 := @caughtexception;
+
+        $r5 = virtualinvoke $r4.<java.io.IOException: java.lang.String getMessage()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,java.lang.Object,java.lang.Object)>("Skip after EOF IOException message", "Skip after end of file", $r5);
+
+     label4:
+        virtualinvoke $r3.<java.io.Reader: void close()>();
+
+        return;
+
+        catch java.io.IOException from label1 to label2 with label3;
+    }
+}

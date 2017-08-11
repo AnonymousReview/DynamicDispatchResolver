@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<attributes>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="0" eline="0" spos="0" epos="0"/>
+<text info="[inner=org/apache/commons/io/output/ProxyOutputStreamTest$1, outer=null, name=null,flags=0]" aType="InnerClassTag"/>
+<text info="soot.tagkit.InnerClassAttribute@2e668471" aType="InnerClassAttribute"/>
+</attribute>
+<attribute>
+<srcPos sline="37" eline="37" spos="0" epos="0"/>
+<jmpPos sline="17" eline="17" spos="0" epos="0"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation type: Lorg/junit/Before; without elements
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+<attribute>
+<srcPos sline="50" eline="50" spos="0" epos="0"/>
+<jmpPos sline="43" eline="43" spos="0" epos="0"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation type: Lorg/junit/Test; without elements
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+<attribute>
+<srcPos sline="58" eline="58" spos="0" epos="0"/>
+<jmpPos sline="80" eline="80" spos="0" epos="0"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation type: Lorg/junit/Test; without elements
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+</attributes>

@@ -1,0 +1,383 @@
+public final class org.apache.commons.io.monitor.FileAlterationMonitor extends java.lang.Object implements java.lang.Runnable
+{
+    private final long interval;
+    private final java.util.List observers;
+    private java.lang.Thread thread;
+    private java.util.concurrent.ThreadFactory threadFactory;
+    private volatile boolean running;
+
+    public void <init>()
+    {
+        org.apache.commons.io.monitor.FileAlterationMonitor r0;
+
+        r0 := @this: org.apache.commons.io.monitor.FileAlterationMonitor;
+
+        specialinvoke r0.<org.apache.commons.io.monitor.FileAlterationMonitor: void <init>(long)>(10000L);
+
+        return;
+    }
+
+    public void <init>(long)
+    {
+        org.apache.commons.io.monitor.FileAlterationMonitor r0;
+        long l0;
+        java.util.concurrent.CopyOnWriteArrayList $r1;
+
+        r0 := @this: org.apache.commons.io.monitor.FileAlterationMonitor;
+
+        l0 := @parameter0: long;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r1 = new java.util.concurrent.CopyOnWriteArrayList;
+
+        specialinvoke $r1.<java.util.concurrent.CopyOnWriteArrayList: void <init>()>();
+
+        r0.<org.apache.commons.io.monitor.FileAlterationMonitor: java.util.List observers> = $r1;
+
+        r0.<org.apache.commons.io.monitor.FileAlterationMonitor: java.lang.Thread thread> = null;
+
+        r0.<org.apache.commons.io.monitor.FileAlterationMonitor: boolean running> = 0;
+
+        r0.<org.apache.commons.io.monitor.FileAlterationMonitor: long interval> = l0;
+
+        return;
+    }
+
+    public transient void <init>(long, org.apache.commons.io.monitor.FileAlterationObserver[])
+    {
+        org.apache.commons.io.monitor.FileAlterationMonitor r0;
+        long l0;
+        org.apache.commons.io.monitor.FileAlterationObserver[] r1;
+        org.apache.commons.io.monitor.FileAlterationObserver r2;
+        int i1, i2;
+
+        r0 := @this: org.apache.commons.io.monitor.FileAlterationMonitor;
+
+        l0 := @parameter0: long;
+
+        r1 := @parameter1: org.apache.commons.io.monitor.FileAlterationObserver[];
+
+        specialinvoke r0.<org.apache.commons.io.monitor.FileAlterationMonitor: void <init>(long)>(l0);
+
+        if r1 == null goto label3;
+
+        i1 = lengthof r1;
+
+        i2 = 0;
+
+        goto label2;
+
+     label1:
+        r2 = r1[i2];
+
+        virtualinvoke r0.<org.apache.commons.io.monitor.FileAlterationMonitor: void addObserver(org.apache.commons.io.monitor.FileAlterationObserver)>(r2);
+
+        i2 = i2 + 1;
+
+     label2:
+        if i2 < i1 goto label1;
+
+     label3:
+        return;
+    }
+
+    public long getInterval()
+    {
+        org.apache.commons.io.monitor.FileAlterationMonitor r0;
+        long $l0;
+
+        r0 := @this: org.apache.commons.io.monitor.FileAlterationMonitor;
+
+        $l0 = r0.<org.apache.commons.io.monitor.FileAlterationMonitor: long interval>;
+
+        return $l0;
+    }
+
+    public synchronized void setThreadFactory(java.util.concurrent.ThreadFactory)
+    {
+        org.apache.commons.io.monitor.FileAlterationMonitor r0;
+        java.util.concurrent.ThreadFactory r1;
+
+        r0 := @this: org.apache.commons.io.monitor.FileAlterationMonitor;
+
+        r1 := @parameter0: java.util.concurrent.ThreadFactory;
+
+        r0.<org.apache.commons.io.monitor.FileAlterationMonitor: java.util.concurrent.ThreadFactory threadFactory> = r1;
+
+        return;
+    }
+
+    public void addObserver(org.apache.commons.io.monitor.FileAlterationObserver)
+    {
+        org.apache.commons.io.monitor.FileAlterationMonitor r0;
+        org.apache.commons.io.monitor.FileAlterationObserver r1;
+        java.util.List $r2;
+
+        r0 := @this: org.apache.commons.io.monitor.FileAlterationMonitor;
+
+        r1 := @parameter0: org.apache.commons.io.monitor.FileAlterationObserver;
+
+        if r1 == null goto label1;
+
+        $r2 = r0.<org.apache.commons.io.monitor.FileAlterationMonitor: java.util.List observers>;
+
+        interfaceinvoke $r2.<java.util.List: boolean add(java.lang.Object)>(r1);
+
+     label1:
+        return;
+    }
+
+    public void removeObserver(org.apache.commons.io.monitor.FileAlterationObserver)
+    {
+        org.apache.commons.io.monitor.FileAlterationMonitor r0;
+        org.apache.commons.io.monitor.FileAlterationObserver r1;
+        java.util.List $r2;
+        boolean $z0;
+
+        r0 := @this: org.apache.commons.io.monitor.FileAlterationMonitor;
+
+        r1 := @parameter0: org.apache.commons.io.monitor.FileAlterationObserver;
+
+        if r1 == null goto label2;
+
+     label1:
+        $r2 = r0.<org.apache.commons.io.monitor.FileAlterationMonitor: java.util.List observers>;
+
+        $z0 = interfaceinvoke $r2.<java.util.List: boolean remove(java.lang.Object)>(r1);
+
+        if $z0 != 0 goto label1;
+
+     label2:
+        return;
+    }
+
+    public java.lang.Iterable getObservers()
+    {
+        org.apache.commons.io.monitor.FileAlterationMonitor r0;
+        java.util.List $r1;
+
+        r0 := @this: org.apache.commons.io.monitor.FileAlterationMonitor;
+
+        $r1 = r0.<org.apache.commons.io.monitor.FileAlterationMonitor: java.util.List observers>;
+
+        return $r1;
+    }
+
+    public synchronized void start() throws java.lang.Exception
+    {
+        org.apache.commons.io.monitor.FileAlterationMonitor r0;
+        org.apache.commons.io.monitor.FileAlterationObserver r1;
+        java.util.Iterator r2;
+        boolean $z0, $z1;
+        java.util.List $r3;
+        java.lang.Object $r4;
+        java.util.concurrent.ThreadFactory $r5, $r8;
+        java.lang.Thread $r6, $r7, $r9;
+        java.lang.IllegalStateException $r10;
+
+        r0 := @this: org.apache.commons.io.monitor.FileAlterationMonitor;
+
+        $z0 = r0.<org.apache.commons.io.monitor.FileAlterationMonitor: boolean running>;
+
+        if $z0 == 0 goto label1;
+
+        $r10 = new java.lang.IllegalStateException;
+
+        specialinvoke $r10.<java.lang.IllegalStateException: void <init>(java.lang.String)>("Monitor is already running");
+
+        throw $r10;
+
+     label1:
+        $r3 = r0.<org.apache.commons.io.monitor.FileAlterationMonitor: java.util.List observers>;
+
+        r2 = interfaceinvoke $r3.<java.util.List: java.util.Iterator iterator()>();
+
+        goto label3;
+
+     label2:
+        $r4 = interfaceinvoke r2.<java.util.Iterator: java.lang.Object next()>();
+
+        r1 = (org.apache.commons.io.monitor.FileAlterationObserver) $r4;
+
+        virtualinvoke r1.<org.apache.commons.io.monitor.FileAlterationObserver: void initialize()>();
+
+     label3:
+        $z1 = interfaceinvoke r2.<java.util.Iterator: boolean hasNext()>();
+
+        if $z1 != 0 goto label2;
+
+        r0.<org.apache.commons.io.monitor.FileAlterationMonitor: boolean running> = 1;
+
+        $r5 = r0.<org.apache.commons.io.monitor.FileAlterationMonitor: java.util.concurrent.ThreadFactory threadFactory>;
+
+        if $r5 == null goto label4;
+
+        $r8 = r0.<org.apache.commons.io.monitor.FileAlterationMonitor: java.util.concurrent.ThreadFactory threadFactory>;
+
+        $r9 = interfaceinvoke $r8.<java.util.concurrent.ThreadFactory: java.lang.Thread newThread(java.lang.Runnable)>(r0);
+
+        r0.<org.apache.commons.io.monitor.FileAlterationMonitor: java.lang.Thread thread> = $r9;
+
+        goto label5;
+
+     label4:
+        $r6 = new java.lang.Thread;
+
+        specialinvoke $r6.<java.lang.Thread: void <init>(java.lang.Runnable)>(r0);
+
+        r0.<org.apache.commons.io.monitor.FileAlterationMonitor: java.lang.Thread thread> = $r6;
+
+     label5:
+        $r7 = r0.<org.apache.commons.io.monitor.FileAlterationMonitor: java.lang.Thread thread>;
+
+        virtualinvoke $r7.<java.lang.Thread: void start()>();
+
+        return;
+    }
+
+    public synchronized void stop() throws java.lang.Exception
+    {
+        org.apache.commons.io.monitor.FileAlterationMonitor r0;
+        long $l0;
+
+        r0 := @this: org.apache.commons.io.monitor.FileAlterationMonitor;
+
+        $l0 = r0.<org.apache.commons.io.monitor.FileAlterationMonitor: long interval>;
+
+        virtualinvoke r0.<org.apache.commons.io.monitor.FileAlterationMonitor: void stop(long)>($l0);
+
+        return;
+    }
+
+    public synchronized void stop(long) throws java.lang.Exception
+    {
+        org.apache.commons.io.monitor.FileAlterationMonitor r0;
+        long l0;
+        java.util.Iterator r1;
+        boolean $z0, $z1;
+        java.lang.Thread $r2, $r7;
+        java.util.List $r3;
+        java.lang.Object $r4;
+        java.lang.IllegalStateException $r5;
+        java.lang.InterruptedException $r6;
+        org.apache.commons.io.monitor.FileAlterationObserver r9;
+
+        r0 := @this: org.apache.commons.io.monitor.FileAlterationMonitor;
+
+        l0 := @parameter0: long;
+
+        $z0 = r0.<org.apache.commons.io.monitor.FileAlterationMonitor: boolean running>;
+
+        if $z0 != 0 goto label1;
+
+        $r5 = new java.lang.IllegalStateException;
+
+        specialinvoke $r5.<java.lang.IllegalStateException: void <init>(java.lang.String)>("Monitor is not running");
+
+        throw $r5;
+
+     label1:
+        r0.<org.apache.commons.io.monitor.FileAlterationMonitor: boolean running> = 0;
+
+     label2:
+        $r2 = r0.<org.apache.commons.io.monitor.FileAlterationMonitor: java.lang.Thread thread>;
+
+        virtualinvoke $r2.<java.lang.Thread: void join(long)>(l0);
+
+     label3:
+        goto label5;
+
+     label4:
+        $r6 := @caughtexception;
+
+        $r7 = staticinvoke <java.lang.Thread: java.lang.Thread currentThread()>();
+
+        virtualinvoke $r7.<java.lang.Thread: void interrupt()>();
+
+     label5:
+        $r3 = r0.<org.apache.commons.io.monitor.FileAlterationMonitor: java.util.List observers>;
+
+        r1 = interfaceinvoke $r3.<java.util.List: java.util.Iterator iterator()>();
+
+        goto label7;
+
+     label6:
+        $r4 = interfaceinvoke r1.<java.util.Iterator: java.lang.Object next()>();
+
+        r9 = (org.apache.commons.io.monitor.FileAlterationObserver) $r4;
+
+        virtualinvoke r9.<org.apache.commons.io.monitor.FileAlterationObserver: void destroy()>();
+
+     label7:
+        $z1 = interfaceinvoke r1.<java.util.Iterator: boolean hasNext()>();
+
+        if $z1 != 0 goto label6;
+
+        return;
+
+        catch java.lang.InterruptedException from label2 to label3 with label4;
+    }
+
+    public void run()
+    {
+        org.apache.commons.io.monitor.FileAlterationMonitor r0;
+        java.util.Iterator r1;
+        java.util.List $r2;
+        boolean $z0, $z1, $z2;
+        java.lang.Object $r3;
+        long $l0;
+        java.lang.InterruptedException $r4;
+        org.apache.commons.io.monitor.FileAlterationObserver r5;
+
+        r0 := @this: org.apache.commons.io.monitor.FileAlterationMonitor;
+
+        goto label7;
+
+     label1:
+        $r2 = r0.<org.apache.commons.io.monitor.FileAlterationMonitor: java.util.List observers>;
+
+        r1 = interfaceinvoke $r2.<java.util.List: java.util.Iterator iterator()>();
+
+        goto label3;
+
+     label2:
+        $r3 = interfaceinvoke r1.<java.util.Iterator: java.lang.Object next()>();
+
+        r5 = (org.apache.commons.io.monitor.FileAlterationObserver) $r3;
+
+        virtualinvoke r5.<org.apache.commons.io.monitor.FileAlterationObserver: void checkAndNotify()>();
+
+     label3:
+        $z0 = interfaceinvoke r1.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 != 0 goto label2;
+
+        $z1 = r0.<org.apache.commons.io.monitor.FileAlterationMonitor: boolean running>;
+
+        if $z1 != 0 goto label4;
+
+        goto label8;
+
+     label4:
+        $l0 = r0.<org.apache.commons.io.monitor.FileAlterationMonitor: long interval>;
+
+        staticinvoke <java.lang.Thread: void sleep(long)>($l0);
+
+     label5:
+        goto label7;
+
+     label6:
+        $r4 := @caughtexception;
+
+     label7:
+        $z2 = r0.<org.apache.commons.io.monitor.FileAlterationMonitor: boolean running>;
+
+        if $z2 != 0 goto label1;
+
+     label8:
+        return;
+
+        catch java.lang.InterruptedException from label4 to label5 with label6;
+    }
+}

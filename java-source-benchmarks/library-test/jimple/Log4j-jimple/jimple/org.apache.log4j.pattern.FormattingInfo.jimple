@@ -1,0 +1,259 @@
+public final class org.apache.log4j.pattern.FormattingInfo extends java.lang.Object
+{
+    private static final char[] SPACES;
+    private static final org.apache.log4j.pattern.FormattingInfo DEFAULT;
+    private final int minLength;
+    private final int maxLength;
+    private final boolean leftAlign;
+    private final boolean rightTruncate;
+
+    static void <clinit>()
+    {
+        char[] $r0;
+        org.apache.log4j.pattern.FormattingInfo $r1;
+
+        $r0 = newarray (char)[8];
+
+        $r0[0] = 32;
+
+        $r0[1] = 32;
+
+        $r0[2] = 32;
+
+        $r0[3] = 32;
+
+        $r0[4] = 32;
+
+        $r0[5] = 32;
+
+        $r0[6] = 32;
+
+        $r0[7] = 32;
+
+        <org.apache.log4j.pattern.FormattingInfo: char[] SPACES> = $r0;
+
+        $r1 = new org.apache.log4j.pattern.FormattingInfo;
+
+        specialinvoke $r1.<org.apache.log4j.pattern.FormattingInfo: void <init>(boolean,int,int)>(0, 0, 2147483647);
+
+        <org.apache.log4j.pattern.FormattingInfo: org.apache.log4j.pattern.FormattingInfo DEFAULT> = $r1;
+
+        return;
+    }
+
+    public void <init>(boolean, int, int)
+    {
+        org.apache.log4j.pattern.FormattingInfo r0;
+        boolean z0;
+        int i0, i1;
+
+        r0 := @this: org.apache.log4j.pattern.FormattingInfo;
+
+        z0 := @parameter0: boolean;
+
+        i0 := @parameter1: int;
+
+        i1 := @parameter2: int;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<org.apache.log4j.pattern.FormattingInfo: boolean leftAlign> = z0;
+
+        r0.<org.apache.log4j.pattern.FormattingInfo: int minLength> = i0;
+
+        r0.<org.apache.log4j.pattern.FormattingInfo: int maxLength> = i1;
+
+        r0.<org.apache.log4j.pattern.FormattingInfo: boolean rightTruncate> = 0;
+
+        return;
+    }
+
+    public void <init>(boolean, boolean, int, int)
+    {
+        org.apache.log4j.pattern.FormattingInfo r0;
+        boolean z0, z1;
+        int i0, i1;
+
+        r0 := @this: org.apache.log4j.pattern.FormattingInfo;
+
+        z0 := @parameter0: boolean;
+
+        z1 := @parameter1: boolean;
+
+        i0 := @parameter2: int;
+
+        i1 := @parameter3: int;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<org.apache.log4j.pattern.FormattingInfo: boolean leftAlign> = z0;
+
+        r0.<org.apache.log4j.pattern.FormattingInfo: int minLength> = i0;
+
+        r0.<org.apache.log4j.pattern.FormattingInfo: int maxLength> = i1;
+
+        r0.<org.apache.log4j.pattern.FormattingInfo: boolean rightTruncate> = z1;
+
+        return;
+    }
+
+    public static org.apache.log4j.pattern.FormattingInfo getDefault()
+    {
+        org.apache.log4j.pattern.FormattingInfo $r0;
+
+        $r0 = <org.apache.log4j.pattern.FormattingInfo: org.apache.log4j.pattern.FormattingInfo DEFAULT>;
+
+        return $r0;
+    }
+
+    public boolean isLeftAligned()
+    {
+        org.apache.log4j.pattern.FormattingInfo r0;
+        boolean $z0;
+
+        r0 := @this: org.apache.log4j.pattern.FormattingInfo;
+
+        $z0 = r0.<org.apache.log4j.pattern.FormattingInfo: boolean leftAlign>;
+
+        return $z0;
+    }
+
+    public boolean isRightTruncated()
+    {
+        org.apache.log4j.pattern.FormattingInfo r0;
+        boolean $z0;
+
+        r0 := @this: org.apache.log4j.pattern.FormattingInfo;
+
+        $z0 = r0.<org.apache.log4j.pattern.FormattingInfo: boolean rightTruncate>;
+
+        return $z0;
+    }
+
+    public int getMinLength()
+    {
+        org.apache.log4j.pattern.FormattingInfo r0;
+        int $i0;
+
+        r0 := @this: org.apache.log4j.pattern.FormattingInfo;
+
+        $i0 = r0.<org.apache.log4j.pattern.FormattingInfo: int minLength>;
+
+        return $i0;
+    }
+
+    public int getMaxLength()
+    {
+        org.apache.log4j.pattern.FormattingInfo r0;
+        int $i0;
+
+        r0 := @this: org.apache.log4j.pattern.FormattingInfo;
+
+        $i0 = r0.<org.apache.log4j.pattern.FormattingInfo: int maxLength>;
+
+        return $i0;
+    }
+
+    public void format(int, java.lang.StringBuffer)
+    {
+        org.apache.log4j.pattern.FormattingInfo r0;
+        int i0, i1, $i2, $i3, $i4, $i5, $i6, $i7, $i8, $i9, $i10, $i11, $i12, $i13, i14, i15, i16;
+        java.lang.StringBuffer r1;
+        boolean $z0, $z1;
+        char[] $r2, $r4;
+
+        r0 := @this: org.apache.log4j.pattern.FormattingInfo;
+
+        i0 := @parameter0: int;
+
+        r1 := @parameter1: java.lang.StringBuffer;
+
+        $i2 = virtualinvoke r1.<java.lang.StringBuffer: int length()>();
+
+        i1 = $i2 - i0;
+
+        $i3 = r0.<org.apache.log4j.pattern.FormattingInfo: int maxLength>;
+
+        if i1 <= $i3 goto label2;
+
+        $z1 = r0.<org.apache.log4j.pattern.FormattingInfo: boolean rightTruncate>;
+
+        if $z1 == 0 goto label1;
+
+        $i12 = r0.<org.apache.log4j.pattern.FormattingInfo: int maxLength>;
+
+        $i13 = i0 + $i12;
+
+        virtualinvoke r1.<java.lang.StringBuffer: void setLength(int)>($i13);
+
+        goto label8;
+
+     label1:
+        $i9 = virtualinvoke r1.<java.lang.StringBuffer: int length()>();
+
+        $i10 = r0.<org.apache.log4j.pattern.FormattingInfo: int maxLength>;
+
+        $i11 = $i9 - $i10;
+
+        virtualinvoke r1.<java.lang.StringBuffer: java.lang.StringBuffer delete(int,int)>(i0, $i11);
+
+        goto label8;
+
+     label2:
+        $i4 = r0.<org.apache.log4j.pattern.FormattingInfo: int minLength>;
+
+        if i1 >= $i4 goto label8;
+
+        $z0 = r0.<org.apache.log4j.pattern.FormattingInfo: boolean leftAlign>;
+
+        if $z0 == 0 goto label5;
+
+        i14 = virtualinvoke r1.<java.lang.StringBuffer: int length()>();
+
+        $i6 = r0.<org.apache.log4j.pattern.FormattingInfo: int minLength>;
+
+        $i7 = i0 + $i6;
+
+        virtualinvoke r1.<java.lang.StringBuffer: void setLength(int)>($i7);
+
+        i15 = i14;
+
+        goto label4;
+
+     label3:
+        virtualinvoke r1.<java.lang.StringBuffer: void setCharAt(int,char)>(i15, 32);
+
+        i15 = i15 + 1;
+
+     label4:
+        $i8 = virtualinvoke r1.<java.lang.StringBuffer: int length()>();
+
+        if i15 < $i8 goto label3;
+
+        goto label8;
+
+     label5:
+        $i5 = r0.<org.apache.log4j.pattern.FormattingInfo: int minLength>;
+
+        i16 = $i5 - i1;
+
+        goto label7;
+
+     label6:
+        $r2 = <org.apache.log4j.pattern.FormattingInfo: char[] SPACES>;
+
+        virtualinvoke r1.<java.lang.StringBuffer: java.lang.StringBuffer insert(int,char[])>(i0, $r2);
+
+        i16 = i16 + -8;
+
+     label7:
+        if i16 > 8 goto label6;
+
+        $r4 = <org.apache.log4j.pattern.FormattingInfo: char[] SPACES>;
+
+        virtualinvoke r1.<java.lang.StringBuffer: java.lang.StringBuffer insert(int,char[],int,int)>(i0, $r4, 0, i16);
+
+     label8:
+        return;
+    }
+}

@@ -1,0 +1,264 @@
+public class org.apache.log4j.varia.ERFATestCase extends junit.framework.TestCase
+{
+
+    public void <init>(java.lang.String)
+    {
+        org.apache.log4j.varia.ERFATestCase r0;
+        java.lang.String r1;
+
+        r0 := @this: org.apache.log4j.varia.ERFATestCase;
+
+        r1 := @parameter0: java.lang.String;
+
+        specialinvoke r0.<junit.framework.TestCase: void <init>(java.lang.String)>(r1);
+
+        return;
+    }
+
+    public void tearDown()
+    {
+        org.apache.log4j.varia.ERFATestCase r0;
+
+        r0 := @this: org.apache.log4j.varia.ERFATestCase;
+
+        staticinvoke <org.apache.log4j.LogManager: void resetConfiguration()>();
+
+        return;
+    }
+
+    public void testConstructor()
+    {
+        org.apache.log4j.varia.ERFATestCase r0;
+        org.apache.log4j.varia.ExternallyRolledFileAppender $r2;
+        int $i0;
+
+        r0 := @this: org.apache.log4j.varia.ERFATestCase;
+
+        $r2 = new org.apache.log4j.varia.ExternallyRolledFileAppender;
+
+        specialinvoke $r2.<org.apache.log4j.varia.ExternallyRolledFileAppender: void <init>()>();
+
+        $i0 = virtualinvoke $r2.<org.apache.log4j.varia.ExternallyRolledFileAppender: int getPort()>();
+
+        staticinvoke <org.apache.log4j.varia.ERFATestCase: void assertEquals(int,int)>(0, $i0);
+
+        return;
+    }
+
+    void sendMessage(int, java.lang.String, java.lang.String) throws java.io.IOException
+    {
+        org.apache.log4j.varia.ERFATestCase r0;
+        int i0;
+        java.lang.String r1, r2, r6;
+        java.net.Socket $r7;
+        java.io.DataInputStream $r8;
+        java.io.InputStream $r9;
+        java.io.DataOutputStream $r10;
+        java.io.OutputStream $r11;
+
+        r0 := @this: org.apache.log4j.varia.ERFATestCase;
+
+        i0 := @parameter0: int;
+
+        r1 := @parameter1: java.lang.String;
+
+        r2 := @parameter2: java.lang.String;
+
+        $r7 = new java.net.Socket;
+
+        specialinvoke $r7.<java.net.Socket: void <init>(java.lang.String,int)>(null, i0);
+
+        $r8 = new java.io.DataInputStream;
+
+        $r9 = virtualinvoke $r7.<java.net.Socket: java.io.InputStream getInputStream()>();
+
+        specialinvoke $r8.<java.io.DataInputStream: void <init>(java.io.InputStream)>($r9);
+
+        $r10 = new java.io.DataOutputStream;
+
+        $r11 = virtualinvoke $r7.<java.net.Socket: java.io.OutputStream getOutputStream()>();
+
+        specialinvoke $r10.<java.io.DataOutputStream: void <init>(java.io.OutputStream)>($r11);
+
+        virtualinvoke $r10.<java.io.DataOutputStream: void writeUTF(java.lang.String)>(r1);
+
+        r6 = virtualinvoke $r8.<java.io.DataInputStream: java.lang.String readUTF()>();
+
+        staticinvoke <org.apache.log4j.varia.ERFATestCase: void assertEquals(java.lang.String,java.lang.String)>(r2, r6);
+
+        virtualinvoke $r8.<java.io.DataInputStream: void close()>();
+
+        virtualinvoke $r10.<java.io.DataOutputStream: void close()>();
+
+        virtualinvoke $r7.<java.net.Socket: void close()>();
+
+        return;
+    }
+
+    public void testRollover() throws java.io.IOException
+    {
+        org.apache.log4j.varia.ERFATestCase r0;
+        org.apache.log4j.Logger r2, r3;
+        org.apache.log4j.varia.ExternallyRolledFileAppender $r6;
+        org.apache.log4j.PatternLayout $r7;
+        java.lang.StringBuilder $r8, $r9, $r11, $r12;
+        java.lang.String $r10, $r13;
+        java.io.File $r14, $r15, $r16, $r17;
+        boolean $z0, $z1, $z2, $z3;
+        java.lang.SecurityException $r18, $r19, $r20;
+        java.lang.InterruptedException $r21;
+        int i1, $i2;
+
+        r0 := @this: org.apache.log4j.varia.ERFATestCase;
+
+        $r6 = new org.apache.log4j.varia.ExternallyRolledFileAppender;
+
+        specialinvoke $r6.<org.apache.log4j.varia.ExternallyRolledFileAppender: void <init>()>();
+
+        r2 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getLogger(java.lang.Class)>(class "org/apache/log4j/RFATestCase");
+
+        r3 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getRootLogger()>();
+
+        $r7 = new org.apache.log4j.PatternLayout;
+
+        specialinvoke $r7.<org.apache.log4j.PatternLayout: void <init>(java.lang.String)>("%m\n");
+
+        virtualinvoke $r6.<org.apache.log4j.varia.ExternallyRolledFileAppender: void setLayout(org.apache.log4j.Layout)>($r7);
+
+        virtualinvoke $r6.<org.apache.log4j.varia.ExternallyRolledFileAppender: void setAppend(boolean)>(0);
+
+        virtualinvoke $r6.<org.apache.log4j.varia.ExternallyRolledFileAppender: void setMaxBackupIndex(int)>(2);
+
+        virtualinvoke $r6.<org.apache.log4j.varia.ExternallyRolledFileAppender: void setPort(int)>(5500);
+
+        virtualinvoke $r6.<org.apache.log4j.varia.ExternallyRolledFileAppender: void setFile(java.lang.String)>("output/ERFA-test2.log");
+
+     label01:
+        virtualinvoke $r6.<org.apache.log4j.varia.ExternallyRolledFileAppender: void activateOptions()>();
+
+     label02:
+        goto label04;
+
+     label03:
+        $r19 := @caughtexception;
+
+        return;
+
+     label04:
+        staticinvoke <java.lang.Thread: void sleep(long)>(100L);
+
+     label05:
+        goto label07;
+
+     label06:
+        $r21 := @caughtexception;
+
+     label07:
+        virtualinvoke r3.<org.apache.log4j.Logger: void addAppender(org.apache.log4j.Appender)>($r6);
+
+        i1 = 0;
+
+        goto label15;
+
+     label08:
+        if i1 >= 10 goto label09;
+
+        $r11 = new java.lang.StringBuilder;
+
+        specialinvoke $r11.<java.lang.StringBuilder: void <init>(java.lang.String)>("Hello---");
+
+        $r12 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i1);
+
+        $r13 = virtualinvoke $r12.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke r2.<org.apache.log4j.Logger: void debug(java.lang.Object)>($r13);
+
+        goto label10;
+
+     label09:
+        if i1 >= 100 goto label10;
+
+        $r8 = new java.lang.StringBuilder;
+
+        specialinvoke $r8.<java.lang.StringBuilder: void <init>(java.lang.String)>("Hello--");
+
+        $r9 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i1);
+
+        $r10 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke r2.<org.apache.log4j.Logger: void debug(java.lang.Object)>($r10);
+
+     label10:
+        $i2 = i1 % 10;
+
+        if $i2 != 9 goto label14;
+
+     label11:
+        virtualinvoke r0.<org.apache.log4j.varia.ERFATestCase: void sendMessage(int,java.lang.String,java.lang.String)>(5500, "RollOver", "OK");
+
+     label12:
+        goto label14;
+
+     label13:
+        $r20 := @caughtexception;
+
+        return;
+
+     label14:
+        i1 = i1 + 1;
+
+     label15:
+        if i1 < 55 goto label08;
+
+     label16:
+        virtualinvoke r0.<org.apache.log4j.varia.ERFATestCase: void sendMessage(int,java.lang.String,java.lang.String)>(5500, "That\'s all folks.", "Expecting [RollOver] string.");
+
+     label17:
+        goto label19;
+
+     label18:
+        $r18 := @caughtexception;
+
+        return;
+
+     label19:
+        $r14 = new java.io.File;
+
+        specialinvoke $r14.<java.io.File: void <init>(java.lang.String)>("output/ERFA-test2.log");
+
+        $z0 = virtualinvoke $r14.<java.io.File: boolean exists()>();
+
+        staticinvoke <org.apache.log4j.varia.ERFATestCase: void assertTrue(boolean)>($z0);
+
+        $r15 = new java.io.File;
+
+        specialinvoke $r15.<java.io.File: void <init>(java.lang.String)>("output/ERFA-test2.log.1");
+
+        $z1 = virtualinvoke $r15.<java.io.File: boolean exists()>();
+
+        staticinvoke <org.apache.log4j.varia.ERFATestCase: void assertTrue(boolean)>($z1);
+
+        $r16 = new java.io.File;
+
+        specialinvoke $r16.<java.io.File: void <init>(java.lang.String)>("output/ERFA-test2.log.2");
+
+        $z2 = virtualinvoke $r16.<java.io.File: boolean exists()>();
+
+        staticinvoke <org.apache.log4j.varia.ERFATestCase: void assertTrue(boolean)>($z2);
+
+        $r17 = new java.io.File;
+
+        specialinvoke $r17.<java.io.File: void <init>(java.lang.String)>("output/ERFA-test2.log.3");
+
+        $z3 = virtualinvoke $r17.<java.io.File: boolean exists()>();
+
+        staticinvoke <org.apache.log4j.varia.ERFATestCase: void assertFalse(boolean)>($z3);
+
+        return;
+
+        catch java.lang.SecurityException from label01 to label02 with label03;
+        catch java.lang.InterruptedException from label04 to label05 with label06;
+        catch java.lang.SecurityException from label11 to label12 with label13;
+        catch java.lang.SecurityException from label16 to label17 with label18;
+    }
+}

@@ -1,0 +1,605 @@
+public class org.apache.log4j.net.SocketNode extends java.lang.Object implements java.lang.Runnable
+{
+    java.net.Socket socket;
+    org.apache.log4j.spi.LoggerRepository hierarchy;
+    java.io.ObjectInputStream ois;
+    static org.apache.log4j.Logger logger;
+
+    static void <clinit>()
+    {
+        org.apache.log4j.Logger $r0;
+
+        $r0 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getLogger(java.lang.Class)>(class "org/apache/log4j/net/SocketNode");
+
+        <org.apache.log4j.net.SocketNode: org.apache.log4j.Logger logger> = $r0;
+
+        return;
+    }
+
+    public void <init>(java.net.Socket, org.apache.log4j.spi.LoggerRepository)
+    {
+        org.apache.log4j.net.SocketNode r0;
+        java.net.Socket r1;
+        org.apache.log4j.spi.LoggerRepository r2;
+        java.io.ObjectInputStream $r3;
+        java.io.BufferedInputStream $r4;
+        java.io.InputStream $r5;
+        java.lang.RuntimeException $r6;
+        java.lang.StringBuilder $r7, $r9, $r12, $r14, $r18, $r20;
+        org.apache.log4j.Logger $r8, $r13, $r19;
+        java.lang.String $r10, $r15, $r21;
+        java.io.IOException $r11;
+        java.io.InterruptedIOException $r16;
+        java.lang.Thread $r17;
+
+        r0 := @this: org.apache.log4j.net.SocketNode;
+
+        r1 := @parameter0: java.net.Socket;
+
+        r2 := @parameter1: org.apache.log4j.spi.LoggerRepository;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<org.apache.log4j.net.SocketNode: java.net.Socket socket> = r1;
+
+        r0.<org.apache.log4j.net.SocketNode: org.apache.log4j.spi.LoggerRepository hierarchy> = r2;
+
+     label1:
+        $r3 = new java.io.ObjectInputStream;
+
+        $r4 = new java.io.BufferedInputStream;
+
+        $r5 = virtualinvoke r1.<java.net.Socket: java.io.InputStream getInputStream()>();
+
+        specialinvoke $r4.<java.io.BufferedInputStream: void <init>(java.io.InputStream)>($r5);
+
+        specialinvoke $r3.<java.io.ObjectInputStream: void <init>(java.io.InputStream)>($r4);
+
+        r0.<org.apache.log4j.net.SocketNode: java.io.ObjectInputStream ois> = $r3;
+
+     label2:
+        goto label6;
+
+     label3:
+        $r16 := @caughtexception;
+
+        $r17 = staticinvoke <java.lang.Thread: java.lang.Thread currentThread()>();
+
+        virtualinvoke $r17.<java.lang.Thread: void interrupt()>();
+
+        $r19 = <org.apache.log4j.net.SocketNode: org.apache.log4j.Logger logger>;
+
+        $r18 = new java.lang.StringBuilder;
+
+        specialinvoke $r18.<java.lang.StringBuilder: void <init>(java.lang.String)>("Could not open ObjectInputStream to ");
+
+        $r20 = virtualinvoke $r18.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(r1);
+
+        $r21 = virtualinvoke $r20.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r19.<org.apache.log4j.Logger: void error(java.lang.Object,java.lang.Throwable)>($r21, $r16);
+
+        goto label6;
+
+     label4:
+        $r11 := @caughtexception;
+
+        $r13 = <org.apache.log4j.net.SocketNode: org.apache.log4j.Logger logger>;
+
+        $r12 = new java.lang.StringBuilder;
+
+        specialinvoke $r12.<java.lang.StringBuilder: void <init>(java.lang.String)>("Could not open ObjectInputStream to ");
+
+        $r14 = virtualinvoke $r12.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(r1);
+
+        $r15 = virtualinvoke $r14.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r13.<org.apache.log4j.Logger: void error(java.lang.Object,java.lang.Throwable)>($r15, $r11);
+
+        goto label6;
+
+     label5:
+        $r6 := @caughtexception;
+
+        $r8 = <org.apache.log4j.net.SocketNode: org.apache.log4j.Logger logger>;
+
+        $r7 = new java.lang.StringBuilder;
+
+        specialinvoke $r7.<java.lang.StringBuilder: void <init>(java.lang.String)>("Could not open ObjectInputStream to ");
+
+        $r9 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(r1);
+
+        $r10 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r8.<org.apache.log4j.Logger: void error(java.lang.Object,java.lang.Throwable)>($r10, $r6);
+
+     label6:
+        return;
+
+        catch java.io.InterruptedIOException from label1 to label2 with label3;
+        catch java.io.IOException from label1 to label2 with label4;
+        catch java.lang.RuntimeException from label1 to label2 with label5;
+    }
+
+    public void run()
+    {
+        org.apache.log4j.net.SocketNode r0;
+        org.apache.log4j.spi.LoggingEvent r1;
+        org.apache.log4j.Logger r2, $r12, $r15, $r18, $r21, $r28, $r36, $r44, $r47, $r51, $r55, $r61, $r67, $r70, $r78;
+        java.io.ObjectInputStream $r4, $r5, $r7, $r29, $r30, $r32, $r34, $r37, $r39, $r48, $r49, $r56, $r57, $r71, $r72, $r81;
+        java.net.Socket $r6, $r13, $r16, $r19, $r22, $r33, $r38, $r89, $r94, $r99, $r104, $r109, $r113, $r117;
+        java.io.IOException $r8, $r40, $r41, $r42, $r58, $r59, $r62, $r63;
+        java.io.InterruptedIOException $r9, $r23, $r25, $r52, $r64, $r73, $r75, $r79;
+        java.lang.Thread $r10, $r24, $r26, $r53, $r65, $r74, $r76, $r80;
+        java.lang.Exception $r11, $r14, $r17, $r20, $r35, $r50, $r60, $r77;
+        java.io.EOFException $r27;
+        java.lang.Throwable $r31;
+        java.lang.StringBuilder $r43, $r45, $r66, $r68;
+        java.lang.String $r46, $r69, $r84;
+        java.net.SocketException $r54;
+        java.lang.Object $r82;
+        org.apache.log4j.spi.LoggerRepository $r83;
+        org.apache.log4j.Level $r85, $r86;
+        boolean $z0;
+
+        r0 := @this: org.apache.log4j.net.SocketNode;
+
+     label01:
+        $r4 = r0.<org.apache.log4j.net.SocketNode: java.io.ObjectInputStream ois>;
+
+        if $r4 == null goto label63;
+
+     label02:
+        $r81 = r0.<org.apache.log4j.net.SocketNode: java.io.ObjectInputStream ois>;
+
+        $r82 = virtualinvoke $r81.<java.io.ObjectInputStream: java.lang.Object readObject()>();
+
+        r1 = (org.apache.log4j.spi.LoggingEvent) $r82;
+
+        $r83 = r0.<org.apache.log4j.net.SocketNode: org.apache.log4j.spi.LoggerRepository hierarchy>;
+
+        $r84 = virtualinvoke r1.<org.apache.log4j.spi.LoggingEvent: java.lang.String getLoggerName()>();
+
+        r2 = interfaceinvoke $r83.<org.apache.log4j.spi.LoggerRepository: org.apache.log4j.Logger getLogger(java.lang.String)>($r84);
+
+        $r85 = virtualinvoke r1.<org.apache.log4j.spi.LoggingEvent: org.apache.log4j.Level getLevel()>();
+
+        $r86 = virtualinvoke r2.<org.apache.log4j.Logger: org.apache.log4j.Level getEffectiveLevel()>();
+
+        $z0 = virtualinvoke $r85.<org.apache.log4j.Level: boolean isGreaterOrEqual(org.apache.log4j.Priority)>($r86);
+
+        if $z0 == 0 goto label02;
+
+        virtualinvoke r2.<org.apache.log4j.Logger: void callAppenders(org.apache.log4j.spi.LoggingEvent)>(r1);
+
+        goto label02;
+
+     label03:
+        $r27 := @caughtexception;
+
+        $r28 = <org.apache.log4j.net.SocketNode: org.apache.log4j.Logger logger>;
+
+        virtualinvoke $r28.<org.apache.log4j.Logger: void info(java.lang.Object)>("Caught java.io.EOFException closing conneciton.");
+
+     label04:
+        $r29 = r0.<org.apache.log4j.net.SocketNode: java.io.ObjectInputStream ois>;
+
+        if $r29 == null goto label08;
+
+     label05:
+        $r30 = r0.<org.apache.log4j.net.SocketNode: java.io.ObjectInputStream ois>;
+
+        virtualinvoke $r30.<java.io.ObjectInputStream: void close()>();
+
+     label06:
+        goto label08;
+
+     label07:
+        $r14 := @caughtexception;
+
+        $r15 = <org.apache.log4j.net.SocketNode: org.apache.log4j.Logger logger>;
+
+        virtualinvoke $r15.<org.apache.log4j.Logger: void info(java.lang.Object,java.lang.Throwable)>("Could not close connection.", $r14);
+
+     label08:
+        $r89 = r0.<org.apache.log4j.net.SocketNode: java.net.Socket socket>;
+
+        if $r89 == null goto label72;
+
+     label09:
+        $r16 = r0.<org.apache.log4j.net.SocketNode: java.net.Socket socket>;
+
+        virtualinvoke $r16.<java.net.Socket: void close()>();
+
+     label10:
+        goto label72;
+
+     label11:
+        $r73 := @caughtexception;
+
+        $r74 = staticinvoke <java.lang.Thread: java.lang.Thread currentThread()>();
+
+        virtualinvoke $r74.<java.lang.Thread: void interrupt()>();
+
+        goto label72;
+
+     label12:
+        $r58 := @caughtexception;
+
+        goto label72;
+
+     label13:
+        $r54 := @caughtexception;
+
+        $r55 = <org.apache.log4j.net.SocketNode: org.apache.log4j.Logger logger>;
+
+        virtualinvoke $r55.<org.apache.log4j.Logger: void info(java.lang.Object)>("Caught java.net.SocketException closing conneciton.");
+
+     label14:
+        $r56 = r0.<org.apache.log4j.net.SocketNode: java.io.ObjectInputStream ois>;
+
+        if $r56 == null goto label18;
+
+     label15:
+        $r57 = r0.<org.apache.log4j.net.SocketNode: java.io.ObjectInputStream ois>;
+
+        virtualinvoke $r57.<java.io.ObjectInputStream: void close()>();
+
+     label16:
+        goto label18;
+
+     label17:
+        $r11 := @caughtexception;
+
+        $r12 = <org.apache.log4j.net.SocketNode: org.apache.log4j.Logger logger>;
+
+        virtualinvoke $r12.<org.apache.log4j.Logger: void info(java.lang.Object,java.lang.Throwable)>("Could not close connection.", $r11);
+
+     label18:
+        $r94 = r0.<org.apache.log4j.net.SocketNode: java.net.Socket socket>;
+
+        if $r94 == null goto label72;
+
+     label19:
+        $r13 = r0.<org.apache.log4j.net.SocketNode: java.net.Socket socket>;
+
+        virtualinvoke $r13.<java.net.Socket: void close()>();
+
+     label20:
+        goto label72;
+
+     label21:
+        $r9 := @caughtexception;
+
+        $r10 = staticinvoke <java.lang.Thread: java.lang.Thread currentThread()>();
+
+        virtualinvoke $r10.<java.lang.Thread: void interrupt()>();
+
+        goto label72;
+
+     label22:
+        $r40 := @caughtexception;
+
+        goto label72;
+
+     label23:
+        $r64 := @caughtexception;
+
+        $r65 = staticinvoke <java.lang.Thread: java.lang.Thread currentThread()>();
+
+        virtualinvoke $r65.<java.lang.Thread: void interrupt()>();
+
+        $r67 = <org.apache.log4j.net.SocketNode: org.apache.log4j.Logger logger>;
+
+        $r66 = new java.lang.StringBuilder;
+
+        specialinvoke $r66.<java.lang.StringBuilder: void <init>(java.lang.String)>("Caught java.io.InterruptedIOException: ");
+
+        $r68 = virtualinvoke $r66.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r64);
+
+        $r69 = virtualinvoke $r68.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r67.<org.apache.log4j.Logger: void info(java.lang.Object)>($r69);
+
+        $r70 = <org.apache.log4j.net.SocketNode: org.apache.log4j.Logger logger>;
+
+        virtualinvoke $r70.<org.apache.log4j.Logger: void info(java.lang.Object)>("Closing connection.");
+
+     label24:
+        $r71 = r0.<org.apache.log4j.net.SocketNode: java.io.ObjectInputStream ois>;
+
+        if $r71 == null goto label28;
+
+     label25:
+        $r72 = r0.<org.apache.log4j.net.SocketNode: java.io.ObjectInputStream ois>;
+
+        virtualinvoke $r72.<java.io.ObjectInputStream: void close()>();
+
+     label26:
+        goto label28;
+
+     label27:
+        $r17 := @caughtexception;
+
+        $r18 = <org.apache.log4j.net.SocketNode: org.apache.log4j.Logger logger>;
+
+        virtualinvoke $r18.<org.apache.log4j.Logger: void info(java.lang.Object,java.lang.Throwable)>("Could not close connection.", $r17);
+
+     label28:
+        $r99 = r0.<org.apache.log4j.net.SocketNode: java.net.Socket socket>;
+
+        if $r99 == null goto label72;
+
+     label29:
+        $r19 = r0.<org.apache.log4j.net.SocketNode: java.net.Socket socket>;
+
+        virtualinvoke $r19.<java.net.Socket: void close()>();
+
+     label30:
+        goto label72;
+
+     label31:
+        $r25 := @caughtexception;
+
+        $r26 = staticinvoke <java.lang.Thread: java.lang.Thread currentThread()>();
+
+        virtualinvoke $r26.<java.lang.Thread: void interrupt()>();
+
+        goto label72;
+
+     label32:
+        $r63 := @caughtexception;
+
+        goto label72;
+
+     label33:
+        $r42 := @caughtexception;
+
+        $r44 = <org.apache.log4j.net.SocketNode: org.apache.log4j.Logger logger>;
+
+        $r43 = new java.lang.StringBuilder;
+
+        specialinvoke $r43.<java.lang.StringBuilder: void <init>(java.lang.String)>("Caught java.io.IOException: ");
+
+        $r45 = virtualinvoke $r43.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r42);
+
+        $r46 = virtualinvoke $r45.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r44.<org.apache.log4j.Logger: void info(java.lang.Object)>($r46);
+
+        $r47 = <org.apache.log4j.net.SocketNode: org.apache.log4j.Logger logger>;
+
+        virtualinvoke $r47.<org.apache.log4j.Logger: void info(java.lang.Object)>("Closing connection.");
+
+     label34:
+        $r48 = r0.<org.apache.log4j.net.SocketNode: java.io.ObjectInputStream ois>;
+
+        if $r48 == null goto label38;
+
+     label35:
+        $r49 = r0.<org.apache.log4j.net.SocketNode: java.io.ObjectInputStream ois>;
+
+        virtualinvoke $r49.<java.io.ObjectInputStream: void close()>();
+
+     label36:
+        goto label38;
+
+     label37:
+        $r20 := @caughtexception;
+
+        $r21 = <org.apache.log4j.net.SocketNode: org.apache.log4j.Logger logger>;
+
+        virtualinvoke $r21.<org.apache.log4j.Logger: void info(java.lang.Object,java.lang.Throwable)>("Could not close connection.", $r20);
+
+     label38:
+        $r104 = r0.<org.apache.log4j.net.SocketNode: java.net.Socket socket>;
+
+        if $r104 == null goto label72;
+
+     label39:
+        $r22 = r0.<org.apache.log4j.net.SocketNode: java.net.Socket socket>;
+
+        virtualinvoke $r22.<java.net.Socket: void close()>();
+
+     label40:
+        goto label72;
+
+     label41:
+        $r79 := @caughtexception;
+
+        $r80 = staticinvoke <java.lang.Thread: java.lang.Thread currentThread()>();
+
+        virtualinvoke $r80.<java.lang.Thread: void interrupt()>();
+
+        goto label72;
+
+     label42:
+        $r8 := @caughtexception;
+
+        goto label72;
+
+     label43:
+        $r35 := @caughtexception;
+
+        $r36 = <org.apache.log4j.net.SocketNode: org.apache.log4j.Logger logger>;
+
+        virtualinvoke $r36.<org.apache.log4j.Logger: void error(java.lang.Object,java.lang.Throwable)>("Unexpected exception. Closing conneciton.", $r35);
+
+     label44:
+        $r37 = r0.<org.apache.log4j.net.SocketNode: java.io.ObjectInputStream ois>;
+
+        if $r37 == null goto label48;
+
+     label45:
+        $r39 = r0.<org.apache.log4j.net.SocketNode: java.io.ObjectInputStream ois>;
+
+        virtualinvoke $r39.<java.io.ObjectInputStream: void close()>();
+
+     label46:
+        goto label48;
+
+     label47:
+        $r50 := @caughtexception;
+
+        $r51 = <org.apache.log4j.net.SocketNode: org.apache.log4j.Logger logger>;
+
+        virtualinvoke $r51.<org.apache.log4j.Logger: void info(java.lang.Object,java.lang.Throwable)>("Could not close connection.", $r50);
+
+     label48:
+        $r109 = r0.<org.apache.log4j.net.SocketNode: java.net.Socket socket>;
+
+        if $r109 == null goto label72;
+
+     label49:
+        $r38 = r0.<org.apache.log4j.net.SocketNode: java.net.Socket socket>;
+
+        virtualinvoke $r38.<java.net.Socket: void close()>();
+
+     label50:
+        goto label72;
+
+     label51:
+        $r23 := @caughtexception;
+
+        $r24 = staticinvoke <java.lang.Thread: java.lang.Thread currentThread()>();
+
+        virtualinvoke $r24.<java.lang.Thread: void interrupt()>();
+
+        goto label72;
+
+     label52:
+        $r59 := @caughtexception;
+
+        goto label72;
+
+     label53:
+        $r31 := @caughtexception;
+
+        $r32 = r0.<org.apache.log4j.net.SocketNode: java.io.ObjectInputStream ois>;
+
+        if $r32 == null goto label57;
+
+     label54:
+        $r34 = r0.<org.apache.log4j.net.SocketNode: java.io.ObjectInputStream ois>;
+
+        virtualinvoke $r34.<java.io.ObjectInputStream: void close()>();
+
+     label55:
+        goto label57;
+
+     label56:
+        $r60 := @caughtexception;
+
+        $r61 = <org.apache.log4j.net.SocketNode: org.apache.log4j.Logger logger>;
+
+        virtualinvoke $r61.<org.apache.log4j.Logger: void info(java.lang.Object,java.lang.Throwable)>("Could not close connection.", $r60);
+
+     label57:
+        $r113 = r0.<org.apache.log4j.net.SocketNode: java.net.Socket socket>;
+
+        if $r113 == null goto label62;
+
+     label58:
+        $r33 = r0.<org.apache.log4j.net.SocketNode: java.net.Socket socket>;
+
+        virtualinvoke $r33.<java.net.Socket: void close()>();
+
+     label59:
+        goto label62;
+
+     label60:
+        $r75 := @caughtexception;
+
+        $r76 = staticinvoke <java.lang.Thread: java.lang.Thread currentThread()>();
+
+        virtualinvoke $r76.<java.lang.Thread: void interrupt()>();
+
+        goto label62;
+
+     label61:
+        $r41 := @caughtexception;
+
+     label62:
+        throw $r31;
+
+     label63:
+        $r5 = r0.<org.apache.log4j.net.SocketNode: java.io.ObjectInputStream ois>;
+
+        if $r5 == null goto label67;
+
+     label64:
+        $r7 = r0.<org.apache.log4j.net.SocketNode: java.io.ObjectInputStream ois>;
+
+        virtualinvoke $r7.<java.io.ObjectInputStream: void close()>();
+
+     label65:
+        goto label67;
+
+     label66:
+        $r77 := @caughtexception;
+
+        $r78 = <org.apache.log4j.net.SocketNode: org.apache.log4j.Logger logger>;
+
+        virtualinvoke $r78.<org.apache.log4j.Logger: void info(java.lang.Object,java.lang.Throwable)>("Could not close connection.", $r77);
+
+     label67:
+        $r117 = r0.<org.apache.log4j.net.SocketNode: java.net.Socket socket>;
+
+        if $r117 == null goto label72;
+
+     label68:
+        $r6 = r0.<org.apache.log4j.net.SocketNode: java.net.Socket socket>;
+
+        virtualinvoke $r6.<java.net.Socket: void close()>();
+
+     label69:
+        goto label72;
+
+     label70:
+        $r52 := @caughtexception;
+
+        $r53 = staticinvoke <java.lang.Thread: java.lang.Thread currentThread()>();
+
+        virtualinvoke $r53.<java.lang.Thread: void interrupt()>();
+
+        goto label72;
+
+     label71:
+        $r62 := @caughtexception;
+
+     label72:
+        return;
+
+        catch java.io.EOFException from label01 to label03 with label03;
+        catch java.lang.Exception from label05 to label06 with label07;
+        catch java.io.InterruptedIOException from label09 to label10 with label11;
+        catch java.io.IOException from label09 to label10 with label12;
+        catch java.net.SocketException from label01 to label03 with label13;
+        catch java.lang.Exception from label15 to label16 with label17;
+        catch java.io.InterruptedIOException from label19 to label20 with label21;
+        catch java.io.IOException from label19 to label20 with label22;
+        catch java.io.InterruptedIOException from label01 to label03 with label23;
+        catch java.lang.Exception from label25 to label26 with label27;
+        catch java.io.InterruptedIOException from label29 to label30 with label31;
+        catch java.io.IOException from label29 to label30 with label32;
+        catch java.io.IOException from label01 to label03 with label33;
+        catch java.lang.Exception from label35 to label36 with label37;
+        catch java.io.InterruptedIOException from label39 to label40 with label41;
+        catch java.io.IOException from label39 to label40 with label42;
+        catch java.lang.Exception from label01 to label03 with label43;
+        catch java.lang.Exception from label45 to label46 with label47;
+        catch java.io.InterruptedIOException from label49 to label50 with label51;
+        catch java.io.IOException from label49 to label50 with label52;
+        catch java.lang.Throwable from label01 to label04 with label53;
+        catch java.lang.Throwable from label13 to label14 with label53;
+        catch java.lang.Throwable from label23 to label24 with label53;
+        catch java.lang.Throwable from label33 to label34 with label53;
+        catch java.lang.Throwable from label43 to label44 with label53;
+        catch java.lang.Exception from label54 to label55 with label56;
+        catch java.io.InterruptedIOException from label58 to label59 with label60;
+        catch java.io.IOException from label58 to label59 with label61;
+        catch java.lang.Exception from label64 to label65 with label66;
+        catch java.io.InterruptedIOException from label68 to label69 with label70;
+        catch java.io.IOException from label68 to label69 with label71;
+    }
+}

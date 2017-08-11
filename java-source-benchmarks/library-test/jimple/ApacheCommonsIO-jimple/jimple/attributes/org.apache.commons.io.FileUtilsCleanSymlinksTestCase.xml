@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<attributes>
+<attribute>
+<srcPos sline="41" eline="41" spos="0" epos="0"/>
+<jmpPos sline="21" eline="21" spos="0" epos="0"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation type: Lorg/junit/Before; without elements
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+<attribute>
+<srcPos sline="46" eline="46" spos="0" epos="0"/>
+<jmpPos sline="35" eline="35" spos="0" epos="0"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation type: Lorg/junit/After; without elements
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+<attribute>
+<srcPos sline="51" eline="51" spos="0" epos="0"/>
+<jmpPos sline="49" eline="49" spos="0" epos="0"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation type: Lorg/junit/Test; without elements
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+<attribute>
+<srcPos sline="86" eline="86" spos="0" epos="0"/>
+<jmpPos sline="145" eline="145" spos="0" epos="0"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation type: Lorg/junit/Test; without elements
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+<attribute>
+<srcPos sline="121" eline="121" spos="0" epos="0"/>
+<jmpPos sline="257" eline="257" spos="0" epos="0"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation type: Lorg/junit/Test; without elements
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+<attribute>
+<srcPos sline="160" eline="160" spos="0" epos="0"/>
+<jmpPos sline="385" eline="385" spos="0" epos="0"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation type: Lorg/junit/Test; without elements
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+<attribute>
+<srcPos sline="182" eline="182" spos="0" epos="0"/>
+<jmpPos sline="459" eline="459" spos="0" epos="0"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation type: Lorg/junit/Test; without elements
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+<attribute>
+<srcPos sline="199" eline="199" spos="0" epos="0"/>
+<jmpPos sline="506" eline="506" spos="0" epos="0"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation type: Lorg/junit/Test; without elements
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+<attribute>
+<srcPos sline="216" eline="216" spos="0" epos="0"/>
+<jmpPos sline="551" eline="551" spos="0" epos="0"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation type: Lorg/junit/Test; without elements
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+<attribute>
+<srcPos sline="236" eline="236" spos="0" epos="0"/>
+<jmpPos sline="610" eline="610" spos="0" epos="0"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation type: Lorg/junit/Test; without elements
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+</attributes>

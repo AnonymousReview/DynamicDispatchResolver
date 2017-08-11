@@ -1,0 +1,97 @@
+public class org.apache.log4j.util.ControlFilter extends java.lang.Object implements org.apache.log4j.util.Filter
+{
+    org.apache.oro.text.perl.Perl5Util util;
+    java.lang.String[] allowedPatterns;
+
+    public void <init>(java.lang.String[])
+    {
+        org.apache.log4j.util.ControlFilter r0;
+        java.lang.String[] r1;
+        org.apache.oro.text.perl.Perl5Util $r2;
+
+        r0 := @this: org.apache.log4j.util.ControlFilter;
+
+        r1 := @parameter0: java.lang.String[];
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r2 = new org.apache.oro.text.perl.Perl5Util;
+
+        specialinvoke $r2.<org.apache.oro.text.perl.Perl5Util: void <init>()>();
+
+        r0.<org.apache.log4j.util.ControlFilter: org.apache.oro.text.perl.Perl5Util util> = $r2;
+
+        r0.<org.apache.log4j.util.ControlFilter: java.lang.String[] allowedPatterns> = r1;
+
+        return;
+    }
+
+    public java.lang.String filter(java.lang.String) throws org.apache.log4j.util.UnexpectedFormatException
+    {
+        org.apache.log4j.util.ControlFilter r0;
+        java.lang.String r1, $r6, $r9, $r14;
+        int i0, i1;
+        java.lang.String[] $r2, $r5;
+        java.lang.StringBuilder $r3, $r7, $r8, $r11, $r12, $r13;
+        org.apache.oro.text.perl.Perl5Util $r4;
+        boolean $z0;
+        org.apache.log4j.util.UnexpectedFormatException $r10;
+
+        r0 := @this: org.apache.log4j.util.ControlFilter;
+
+        r1 := @parameter0: java.lang.String;
+
+        $r2 = r0.<org.apache.log4j.util.ControlFilter: java.lang.String[] allowedPatterns>;
+
+        i0 = lengthof $r2;
+
+        i1 = 0;
+
+        goto label3;
+
+     label1:
+        $r4 = r0.<org.apache.log4j.util.ControlFilter: org.apache.oro.text.perl.Perl5Util util>;
+
+        $r3 = new java.lang.StringBuilder;
+
+        specialinvoke $r3.<java.lang.StringBuilder: void <init>(java.lang.String)>("/");
+
+        $r5 = r0.<org.apache.log4j.util.ControlFilter: java.lang.String[] allowedPatterns>;
+
+        $r6 = $r5[i1];
+
+        $r7 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r6);
+
+        $r8 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("/");
+
+        $r9 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $z0 = virtualinvoke $r4.<org.apache.oro.text.perl.Perl5Util: boolean match(java.lang.String,java.lang.String)>($r9, r1);
+
+        if $z0 == 0 goto label2;
+
+        return r1;
+
+     label2:
+        i1 = i1 + 1;
+
+     label3:
+        if i1 < i0 goto label1;
+
+        $r10 = new org.apache.log4j.util.UnexpectedFormatException;
+
+        $r11 = new java.lang.StringBuilder;
+
+        specialinvoke $r11.<java.lang.StringBuilder: void <init>(java.lang.String)>("[");
+
+        $r12 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r1);
+
+        $r13 = virtualinvoke $r12.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("]");
+
+        $r14 = virtualinvoke $r13.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r10.<org.apache.log4j.util.UnexpectedFormatException: void <init>(java.lang.String)>($r14);
+
+        throw $r10;
+    }
+}

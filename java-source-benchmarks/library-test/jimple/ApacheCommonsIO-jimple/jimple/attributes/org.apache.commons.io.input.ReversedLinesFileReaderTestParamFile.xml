@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<attributes>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="0" eline="0" spos="0" epos="0"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation: type: Lorg/junit/runner/RunWith; num elems: 1 elems: 
+Annotation Element: kind: c name: value decription: Lorg/junit/runners/Parameterized;
+
+" aType="VisibilityAnnotationTag"/>
+<text info="[inner=org/junit/runners/Parameterized$Parameters, outer=org/junit/runners/Parameterized, name=Parameters,flags=9737]" aType="InnerClassTag"/>
+<text info="soot.tagkit.InnerClassAttribute@2f92dcb6" aType="InnerClassAttribute"/>
+</attribute>
+<attribute>
+<srcPos sline="45" eline="45" spos="0" epos="0"/>
+<jmpPos sline="9" eline="9" spos="0" epos="0"/>
+<text info="Signature: ()Ljava/util/Collection&lt;[Ljava/lang/Object;&gt;;" aType="SignatureTag"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation: type: Lorg/junit/runners/Parameterized$Parameters; num elems: 1 elems: 
+Annotation Element: kind: s name: name value: {0}, charset={1}
+
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+<attribute>
+<srcPos sline="81" eline="81" spos="0" epos="0"/>
+<jmpPos sline="211" eline="211" spos="0" epos="0"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation type: Lorg/junit/Test; without elements
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+<attribute>
+<srcPos sline="105" eline="105" spos="0" epos="0"/>
+<jmpPos sline="302" eline="302" spos="0" epos="0"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation type: Lorg/junit/After; without elements
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+</attributes>

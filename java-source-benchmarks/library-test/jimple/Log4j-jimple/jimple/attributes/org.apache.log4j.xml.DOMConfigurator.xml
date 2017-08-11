@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<attributes>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="0" eline="0" spos="0" epos="0"/>
+<text info="[inner=org/apache/log4j/xml/DOMConfigurator$1, outer=null, name=null,flags=0]" aType="InnerClassTag"/>
+<text info="[inner=org/apache/log4j/xml/DOMConfigurator$2, outer=null, name=null,flags=0]" aType="InnerClassTag"/>
+<text info="[inner=org/apache/log4j/xml/DOMConfigurator$3, outer=null, name=null,flags=0]" aType="InnerClassTag"/>
+<text info="[inner=org/apache/log4j/xml/DOMConfigurator$4, outer=null, name=null,flags=0]" aType="InnerClassTag"/>
+<text info="[inner=org/apache/log4j/xml/DOMConfigurator$5, outer=null, name=null,flags=0]" aType="InnerClassTag"/>
+<text info="[inner=org/apache/log4j/xml/DOMConfigurator$ParseAction, outer=org/apache/log4j/xml/DOMConfigurator, name=ParseAction,flags=1546]" aType="InnerClassTag"/>
+<text info="soot.tagkit.InnerClassAttribute@74a54a5e" aType="InnerClassAttribute"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="3" eline="3" spos="0" epos="0"/>
+<text info="ConstantValue: log4j:configuration" aType="StringConstantValueTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="4" eline="4" spos="0" epos="0"/>
+<text info="ConstantValue: configuration" aType="StringConstantValueTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="5" eline="5" spos="0" epos="0"/>
+<text info="ConstantValue: renderer" aType="StringConstantValueTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="6" eline="6" spos="0" epos="0"/>
+<text info="ConstantValue: throwableRenderer" aType="StringConstantValueTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="7" eline="7" spos="0" epos="0"/>
+<text info="ConstantValue: appender" aType="StringConstantValueTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="8" eline="8" spos="0" epos="0"/>
+<text info="ConstantValue: appender-ref" aType="StringConstantValueTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="9" eline="9" spos="0" epos="0"/>
+<text info="ConstantValue: param" aType="StringConstantValueTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="10" eline="10" spos="0" epos="0"/>
+<text info="ConstantValue: layout" aType="StringConstantValueTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="11" eline="11" spos="0" epos="0"/>
+<text info="ConstantValue: category" aType="StringConstantValueTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="12" eline="12" spos="0" epos="0"/>
+<text info="ConstantValue: logger" aType="StringConstantValueTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="13" eline="13" spos="0" epos="0"/>
+<text info="ConstantValue: logger-ref" aType="StringConstantValueTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="14" eline="14" spos="0" epos="0"/>
+<text info="ConstantValue: categoryFactory" aType="StringConstantValueTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="15" eline="15" spos="0" epos="0"/>
+<text info="ConstantValue: loggerFactory" aType="StringConstantValueTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="16" eline="16" spos="0" epos="0"/>
+<text info="ConstantValue: name" aType="StringConstantValueTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="17" eline="17" spos="0" epos="0"/>
+<text info="ConstantValue: class" aType="StringConstantValueTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="18" eline="18" spos="0" epos="0"/>
+<text info="ConstantValue: value" aType="StringConstantValueTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="19" eline="19" spos="0" epos="0"/>
+<text info="ConstantValue: root" aType="StringConstantValueTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="20" eline="20" spos="0" epos="0"/>
+<text info="ConstantValue: root-ref" aType="StringConstantValueTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="21" eline="21" spos="0" epos="0"/>
+<text info="ConstantValue: level" aType="StringConstantValueTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="22" eline="22" spos="0" epos="0"/>
+<text info="ConstantValue: priority" aType="StringConstantValueTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="23" eline="23" spos="0" epos="0"/>
+<text info="ConstantValue: filter" aType="StringConstantValueTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="24" eline="24" spos="0" epos="0"/>
+<text info="ConstantValue: errorHandler" aType="StringConstantValueTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="25" eline="25" spos="0" epos="0"/>
+<text info="ConstantValue: ref" aType="StringConstantValueTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="26" eline="26" spos="0" epos="0"/>
+<text info="ConstantValue: additivity" aType="StringConstantValueTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="27" eline="27" spos="0" epos="0"/>
+<text info="ConstantValue: threshold" aType="StringConstantValueTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="28" eline="28" spos="0" epos="0"/>
+<text info="ConstantValue: configDebug" aType="StringConstantValueTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="29" eline="29" spos="0" epos="0"/>
+<text info="ConstantValue: debug" aType="StringConstantValueTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="30" eline="30" spos="0" epos="0"/>
+<text info="ConstantValue: reset" aType="StringConstantValueTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="31" eline="31" spos="0" epos="0"/>
+<text info="ConstantValue: renderingClass" aType="StringConstantValueTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="32" eline="32" spos="0" epos="0"/>
+<text info="ConstantValue: renderedClass" aType="StringConstantValueTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="33" eline="33" spos="0" epos="0"/>
+<text info="ConstantValue: " aType="StringConstantValueTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="35" eline="35" spos="0" epos="0"/>
+<text info="ConstantValue: javax.xml.parsers.DocumentBuilderFactory" aType="StringConstantValueTag"/>
+</attribute>
+</attributes>

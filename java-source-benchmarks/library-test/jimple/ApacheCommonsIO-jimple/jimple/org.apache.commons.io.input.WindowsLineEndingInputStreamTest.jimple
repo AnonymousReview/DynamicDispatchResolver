@@ -1,0 +1,169 @@
+public class org.apache.commons.io.input.WindowsLineEndingInputStreamTest extends java.lang.Object
+{
+
+    public void <init>()
+    {
+        org.apache.commons.io.input.WindowsLineEndingInputStreamTest r0;
+
+        r0 := @this: org.apache.commons.io.input.WindowsLineEndingInputStreamTest;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void simpleString() throws java.lang.Exception
+    {
+        org.apache.commons.io.input.WindowsLineEndingInputStreamTest r0;
+        java.lang.String $r1;
+
+        r0 := @this: org.apache.commons.io.input.WindowsLineEndingInputStreamTest;
+
+        $r1 = specialinvoke r0.<org.apache.commons.io.input.WindowsLineEndingInputStreamTest: java.lang.String roundtrip(java.lang.String)>("abc");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("abc\r\n", $r1);
+
+        return;
+    }
+
+    public void inTheMiddleOfTheLine() throws java.lang.Exception
+    {
+        org.apache.commons.io.input.WindowsLineEndingInputStreamTest r0;
+        java.lang.String $r1;
+
+        r0 := @this: org.apache.commons.io.input.WindowsLineEndingInputStreamTest;
+
+        $r1 = specialinvoke r0.<org.apache.commons.io.input.WindowsLineEndingInputStreamTest: java.lang.String roundtrip(java.lang.String)>("a\r\nbc");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("a\r\nbc\r\n", $r1);
+
+        return;
+    }
+
+    public void multipleBlankLines() throws java.lang.Exception
+    {
+        org.apache.commons.io.input.WindowsLineEndingInputStreamTest r0;
+        java.lang.String $r1;
+
+        r0 := @this: org.apache.commons.io.input.WindowsLineEndingInputStreamTest;
+
+        $r1 = specialinvoke r0.<org.apache.commons.io.input.WindowsLineEndingInputStreamTest: java.lang.String roundtrip(java.lang.String)>("a\r\n\r\nbc");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("a\r\n\r\nbc\r\n", $r1);
+
+        return;
+    }
+
+    public void twoLinesAtEnd() throws java.lang.Exception
+    {
+        org.apache.commons.io.input.WindowsLineEndingInputStreamTest r0;
+        java.lang.String $r1;
+
+        r0 := @this: org.apache.commons.io.input.WindowsLineEndingInputStreamTest;
+
+        $r1 = specialinvoke r0.<org.apache.commons.io.input.WindowsLineEndingInputStreamTest: java.lang.String roundtrip(java.lang.String)>("a\r\n\r\n");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("a\r\n\r\n", $r1);
+
+        return;
+    }
+
+    public void linuxLinefeeds() throws java.lang.Exception
+    {
+        org.apache.commons.io.input.WindowsLineEndingInputStreamTest r0;
+        java.lang.String r1;
+
+        r0 := @this: org.apache.commons.io.input.WindowsLineEndingInputStreamTest;
+
+        r1 = specialinvoke r0.<org.apache.commons.io.input.WindowsLineEndingInputStreamTest: java.lang.String roundtrip(java.lang.String,boolean)>("ab\nc", 0);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("ab\r\nc", r1);
+
+        return;
+    }
+
+    public void malformed() throws java.lang.Exception
+    {
+        org.apache.commons.io.input.WindowsLineEndingInputStreamTest r0;
+        java.lang.String $r1;
+
+        r0 := @this: org.apache.commons.io.input.WindowsLineEndingInputStreamTest;
+
+        $r1 = specialinvoke r0.<org.apache.commons.io.input.WindowsLineEndingInputStreamTest: java.lang.String roundtrip(java.lang.String,boolean)>("a\rbc", 0);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("a\rbc", $r1);
+
+        return;
+    }
+
+    public void retainLineFeed() throws java.lang.Exception
+    {
+        org.apache.commons.io.input.WindowsLineEndingInputStreamTest r0;
+        java.lang.String $r1, $r2;
+
+        r0 := @this: org.apache.commons.io.input.WindowsLineEndingInputStreamTest;
+
+        $r1 = specialinvoke r0.<org.apache.commons.io.input.WindowsLineEndingInputStreamTest: java.lang.String roundtrip(java.lang.String,boolean)>("a\r\n\r\n", 0);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("a\r\n\r\n", $r1);
+
+        $r2 = specialinvoke r0.<org.apache.commons.io.input.WindowsLineEndingInputStreamTest: java.lang.String roundtrip(java.lang.String,boolean)>("a", 0);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("a", $r2);
+
+        return;
+    }
+
+    private java.lang.String roundtrip(java.lang.String) throws java.io.IOException
+    {
+        org.apache.commons.io.input.WindowsLineEndingInputStreamTest r0;
+        java.lang.String r1, $r2;
+
+        r0 := @this: org.apache.commons.io.input.WindowsLineEndingInputStreamTest;
+
+        r1 := @parameter0: java.lang.String;
+
+        $r2 = specialinvoke r0.<org.apache.commons.io.input.WindowsLineEndingInputStreamTest: java.lang.String roundtrip(java.lang.String,boolean)>(r1, 1);
+
+        return $r2;
+    }
+
+    private java.lang.String roundtrip(java.lang.String, boolean) throws java.io.IOException
+    {
+        org.apache.commons.io.input.WindowsLineEndingInputStreamTest r0;
+        java.lang.String r1, $r8;
+        boolean z0;
+        byte[] r4, $r6;
+        int i0;
+        java.io.ByteArrayInputStream $r5;
+        org.apache.commons.io.input.WindowsLineEndingInputStream $r7;
+
+        r0 := @this: org.apache.commons.io.input.WindowsLineEndingInputStreamTest;
+
+        r1 := @parameter0: java.lang.String;
+
+        z0 := @parameter1: boolean;
+
+        $r5 = new java.io.ByteArrayInputStream;
+
+        $r6 = virtualinvoke r1.<java.lang.String: byte[] getBytes(java.lang.String)>("UTF-8");
+
+        specialinvoke $r5.<java.io.ByteArrayInputStream: void <init>(byte[])>($r6);
+
+        $r7 = new org.apache.commons.io.input.WindowsLineEndingInputStream;
+
+        specialinvoke $r7.<org.apache.commons.io.input.WindowsLineEndingInputStream: void <init>(java.io.InputStream,boolean)>($r5, z0);
+
+        r4 = newarray (byte)[100];
+
+        i0 = virtualinvoke $r7.<org.apache.commons.io.input.WindowsLineEndingInputStream: int read(byte[])>(r4);
+
+        virtualinvoke $r7.<org.apache.commons.io.input.WindowsLineEndingInputStream: void close()>();
+
+        $r8 = new java.lang.String;
+
+        specialinvoke $r8.<java.lang.String: void <init>(byte[],int,int,java.lang.String)>(r4, 0, i0, "UTF-8");
+
+        return $r8;
+    }
+}

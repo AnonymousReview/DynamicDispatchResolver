@@ -1,0 +1,84 @@
+public class org.apache.commons.logging.PathableTestSuite extends junit.framework.TestSuite
+{
+    private final java.lang.ClassLoader contextLoader;
+
+    public void <init>(java.lang.Class, java.lang.ClassLoader)
+    {
+        org.apache.commons.logging.PathableTestSuite r0;
+        java.lang.Class r1;
+        java.lang.ClassLoader r2;
+
+        r0 := @this: org.apache.commons.logging.PathableTestSuite;
+
+        r1 := @parameter0: java.lang.Class;
+
+        r2 := @parameter1: java.lang.ClassLoader;
+
+        specialinvoke r0.<junit.framework.TestSuite: void <init>(java.lang.Class)>(r1);
+
+        r0.<org.apache.commons.logging.PathableTestSuite: java.lang.ClassLoader contextLoader> = r2;
+
+        return;
+    }
+
+    public void runTest(junit.framework.Test, junit.framework.TestResult)
+    {
+        org.apache.commons.logging.PathableTestSuite r0;
+        junit.framework.Test r1;
+        junit.framework.TestResult r2;
+        java.lang.ClassLoader r3, $r10;
+        java.util.Properties r4, $r7;
+        java.lang.Thread $r6, $r9, $r11, $r13;
+        java.lang.Object $r8;
+        java.lang.Throwable $r12;
+
+        r0 := @this: org.apache.commons.logging.PathableTestSuite;
+
+        r1 := @parameter0: junit.framework.Test;
+
+        r2 := @parameter1: junit.framework.TestResult;
+
+        $r6 = staticinvoke <java.lang.Thread: java.lang.Thread currentThread()>();
+
+        r3 = virtualinvoke $r6.<java.lang.Thread: java.lang.ClassLoader getContextClassLoader()>();
+
+        $r7 = staticinvoke <java.lang.System: java.util.Properties getProperties()>();
+
+        $r8 = virtualinvoke $r7.<java.util.Properties: java.lang.Object clone()>();
+
+        r4 = (java.util.Properties) $r8;
+
+     label1:
+        $r9 = staticinvoke <java.lang.Thread: java.lang.Thread currentThread()>();
+
+        $r10 = r0.<org.apache.commons.logging.PathableTestSuite: java.lang.ClassLoader contextLoader>;
+
+        virtualinvoke $r9.<java.lang.Thread: void setContextClassLoader(java.lang.ClassLoader)>($r10);
+
+        interfaceinvoke r1.<junit.framework.Test: void run(junit.framework.TestResult)>(r2);
+
+        goto label3;
+
+     label2:
+        $r12 := @caughtexception;
+
+        staticinvoke <java.lang.System: void setProperties(java.util.Properties)>(r4);
+
+        $r13 = staticinvoke <java.lang.Thread: java.lang.Thread currentThread()>();
+
+        virtualinvoke $r13.<java.lang.Thread: void setContextClassLoader(java.lang.ClassLoader)>(r3);
+
+        throw $r12;
+
+     label3:
+        staticinvoke <java.lang.System: void setProperties(java.util.Properties)>(r4);
+
+        $r11 = staticinvoke <java.lang.Thread: java.lang.Thread currentThread()>();
+
+        virtualinvoke $r11.<java.lang.Thread: void setContextClassLoader(java.lang.ClassLoader)>(r3);
+
+        return;
+
+        catch java.lang.Throwable from label1 to label2 with label2;
+    }
+}

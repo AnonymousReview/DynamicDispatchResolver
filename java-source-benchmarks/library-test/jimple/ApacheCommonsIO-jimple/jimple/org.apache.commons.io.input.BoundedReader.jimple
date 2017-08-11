@@ -1,0 +1,189 @@
+public class org.apache.commons.io.input.BoundedReader extends java.io.Reader
+{
+    private static final int INVALID;
+    private final java.io.Reader target;
+    private int charsRead;
+    private int markedAt;
+    private int readAheadLimit;
+    private final int maxCharsFromTargetReader;
+
+    public void <init>(java.io.Reader, int) throws java.io.IOException
+    {
+        org.apache.commons.io.input.BoundedReader r0;
+        java.io.Reader r1;
+        int i0;
+
+        r0 := @this: org.apache.commons.io.input.BoundedReader;
+
+        r1 := @parameter0: java.io.Reader;
+
+        i0 := @parameter1: int;
+
+        specialinvoke r0.<java.io.Reader: void <init>()>();
+
+        r0.<org.apache.commons.io.input.BoundedReader: int charsRead> = 0;
+
+        r0.<org.apache.commons.io.input.BoundedReader: int markedAt> = -1;
+
+        r0.<org.apache.commons.io.input.BoundedReader: java.io.Reader target> = r1;
+
+        r0.<org.apache.commons.io.input.BoundedReader: int maxCharsFromTargetReader> = i0;
+
+        return;
+    }
+
+    public void close() throws java.io.IOException
+    {
+        org.apache.commons.io.input.BoundedReader r0;
+        java.io.Reader $r1;
+
+        r0 := @this: org.apache.commons.io.input.BoundedReader;
+
+        $r1 = r0.<org.apache.commons.io.input.BoundedReader: java.io.Reader target>;
+
+        virtualinvoke $r1.<java.io.Reader: void close()>();
+
+        return;
+    }
+
+    public void reset() throws java.io.IOException
+    {
+        org.apache.commons.io.input.BoundedReader r0;
+        int $i0;
+        java.io.Reader $r1;
+
+        r0 := @this: org.apache.commons.io.input.BoundedReader;
+
+        $i0 = r0.<org.apache.commons.io.input.BoundedReader: int markedAt>;
+
+        r0.<org.apache.commons.io.input.BoundedReader: int charsRead> = $i0;
+
+        $r1 = r0.<org.apache.commons.io.input.BoundedReader: java.io.Reader target>;
+
+        virtualinvoke $r1.<java.io.Reader: void reset()>();
+
+        return;
+    }
+
+    public void mark(int) throws java.io.IOException
+    {
+        org.apache.commons.io.input.BoundedReader r0;
+        int i0, $i1, $i2, $i3;
+        java.io.Reader $r1;
+
+        r0 := @this: org.apache.commons.io.input.BoundedReader;
+
+        i0 := @parameter0: int;
+
+        $i1 = r0.<org.apache.commons.io.input.BoundedReader: int charsRead>;
+
+        $i2 = i0 - $i1;
+
+        r0.<org.apache.commons.io.input.BoundedReader: int readAheadLimit> = $i2;
+
+        $i3 = r0.<org.apache.commons.io.input.BoundedReader: int charsRead>;
+
+        r0.<org.apache.commons.io.input.BoundedReader: int markedAt> = $i3;
+
+        $r1 = r0.<org.apache.commons.io.input.BoundedReader: java.io.Reader target>;
+
+        virtualinvoke $r1.<java.io.Reader: void mark(int)>(i0);
+
+        return;
+    }
+
+    public int read() throws java.io.IOException
+    {
+        org.apache.commons.io.input.BoundedReader r0;
+        int $i0, $i1, $i2, $i3, $i4, $i5, $i6, $i7, $i8, $i9;
+        java.io.Reader $r1;
+
+        r0 := @this: org.apache.commons.io.input.BoundedReader;
+
+        $i1 = r0.<org.apache.commons.io.input.BoundedReader: int charsRead>;
+
+        $i0 = r0.<org.apache.commons.io.input.BoundedReader: int maxCharsFromTargetReader>;
+
+        if $i1 < $i0 goto label1;
+
+        return -1;
+
+     label1:
+        $i2 = r0.<org.apache.commons.io.input.BoundedReader: int markedAt>;
+
+        if $i2 < 0 goto label2;
+
+        $i7 = r0.<org.apache.commons.io.input.BoundedReader: int charsRead>;
+
+        $i6 = r0.<org.apache.commons.io.input.BoundedReader: int markedAt>;
+
+        $i9 = $i7 - $i6;
+
+        $i8 = r0.<org.apache.commons.io.input.BoundedReader: int readAheadLimit>;
+
+        if $i9 < $i8 goto label2;
+
+        return -1;
+
+     label2:
+        $i3 = r0.<org.apache.commons.io.input.BoundedReader: int charsRead>;
+
+        $i4 = $i3 + 1;
+
+        r0.<org.apache.commons.io.input.BoundedReader: int charsRead> = $i4;
+
+        $r1 = r0.<org.apache.commons.io.input.BoundedReader: java.io.Reader target>;
+
+        $i5 = virtualinvoke $r1.<java.io.Reader: int read()>();
+
+        return $i5;
+    }
+
+    public int read(char[], int, int) throws java.io.IOException
+    {
+        org.apache.commons.io.input.BoundedReader r0;
+        char[] r1;
+        int i0, i1, i2, $i4, i5;
+        char $c3;
+
+        r0 := @this: org.apache.commons.io.input.BoundedReader;
+
+        r1 := @parameter0: char[];
+
+        i0 := @parameter1: int;
+
+        i1 := @parameter2: int;
+
+        i5 = 0;
+
+        goto label3;
+
+     label1:
+        i2 = virtualinvoke r0.<org.apache.commons.io.input.BoundedReader: int read()>();
+
+        if i2 != -1 goto label2;
+
+        return i5;
+
+     label2:
+        $i4 = i0 + i5;
+
+        $c3 = (char) i2;
+
+        r1[$i4] = $c3;
+
+        i5 = i5 + 1;
+
+     label3:
+        if i5 < i1 goto label1;
+
+        return i1;
+    }
+
+    public static void <clinit>()
+    {
+        <org.apache.commons.io.input.BoundedReader: int INVALID> = -1;
+
+        return;
+    }
+}

@@ -1,0 +1,23 @@
+public class org.apache.commons.logging.NullClassLoaderTestCase extends junit.framework.TestCase
+{
+
+    public void <init>()
+    {
+        org.apache.commons.logging.NullClassLoaderTestCase r0;
+
+        r0 := @this: org.apache.commons.logging.NullClassLoaderTestCase;
+
+        specialinvoke r0.<junit.framework.TestCase: void <init>()>();
+
+        return;
+    }
+
+    public void testSameLogObject() throws java.lang.Exception
+    {
+        org.apache.commons.logging.NullClassLoaderTestCase r0;
+
+        r0 := @this: org.apache.commons.logging.NullClassLoaderTestCase;
+
+        return;
+    }
+}

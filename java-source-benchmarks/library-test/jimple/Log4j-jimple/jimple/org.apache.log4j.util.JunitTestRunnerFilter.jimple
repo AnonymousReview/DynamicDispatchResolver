@@ -1,0 +1,121 @@
+public class org.apache.log4j.util.JunitTestRunnerFilter extends java.lang.Object implements org.apache.log4j.util.Filter
+{
+    org.apache.oro.text.perl.Perl5Util util;
+
+    public void <init>()
+    {
+        org.apache.log4j.util.JunitTestRunnerFilter r0;
+        org.apache.oro.text.perl.Perl5Util $r1;
+
+        r0 := @this: org.apache.log4j.util.JunitTestRunnerFilter;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r1 = new org.apache.oro.text.perl.Perl5Util;
+
+        specialinvoke $r1.<org.apache.oro.text.perl.Perl5Util: void <init>()>();
+
+        r0.<org.apache.log4j.util.JunitTestRunnerFilter: org.apache.oro.text.perl.Perl5Util util> = $r1;
+
+        return;
+    }
+
+    public java.lang.String filter(java.lang.String)
+    {
+        org.apache.log4j.util.JunitTestRunnerFilter r0;
+        java.lang.String r1, $r7, $r9;
+        org.apache.oro.text.perl.Perl5Util $r2, $r3, $r4, $r5;
+        boolean $z0, $z1, $z2, $z3;
+        int $i0, $i1, $i2, $i3, $i4;
+        java.lang.StringBuilder $r6, $r8;
+
+        r0 := @this: org.apache.log4j.util.JunitTestRunnerFilter;
+
+        r1 := @parameter0: java.lang.String;
+
+        if r1 != null goto label1;
+
+        return null;
+
+     label1:
+        $r2 = r0.<org.apache.log4j.util.JunitTestRunnerFilter: org.apache.oro.text.perl.Perl5Util util>;
+
+        $z0 = virtualinvoke $r2.<org.apache.oro.text.perl.Perl5Util: boolean match(java.lang.String,java.lang.String)>("/at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner/", r1);
+
+        if $z0 == 0 goto label2;
+
+        return null;
+
+     label2:
+        $r3 = r0.<org.apache.log4j.util.JunitTestRunnerFilter: org.apache.oro.text.perl.Perl5Util util>;
+
+        $z1 = virtualinvoke $r3.<org.apache.oro.text.perl.Perl5Util: boolean match(java.lang.String,java.lang.String)>("/at org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner/", r1);
+
+        if $z1 == 0 goto label3;
+
+        return null;
+
+     label3:
+        $r4 = r0.<org.apache.log4j.util.JunitTestRunnerFilter: org.apache.oro.text.perl.Perl5Util util>;
+
+        $z2 = virtualinvoke $r4.<org.apache.oro.text.perl.Perl5Util: boolean match(java.lang.String,java.lang.String)>("/at com.intellij/", r1);
+
+        if $z2 == 0 goto label4;
+
+        return null;
+
+     label4:
+        $i0 = virtualinvoke r1.<java.lang.String: int indexOf(java.lang.String)>("at junit.");
+
+        if $i0 < 0 goto label5;
+
+        $i4 = virtualinvoke r1.<java.lang.String: int indexOf(java.lang.String)>("ui.TestRunner");
+
+        if $i4 < 0 goto label5;
+
+        return null;
+
+     label5:
+        $i1 = virtualinvoke r1.<java.lang.String: int indexOf(java.lang.String)>("org.apache.maven");
+
+        if $i1 < 0 goto label6;
+
+        return null;
+
+     label6:
+        $i2 = virtualinvoke r1.<java.lang.String: int indexOf(java.lang.String)>("junit.internal");
+
+        if $i2 < 0 goto label7;
+
+        return null;
+
+     label7:
+        $i3 = virtualinvoke r1.<java.lang.String: int indexOf(java.lang.String)>("JUnit4TestAdapter");
+
+        if $i3 < 0 goto label8;
+
+        return null;
+
+     label8:
+        $r5 = r0.<org.apache.log4j.util.JunitTestRunnerFilter: org.apache.oro.text.perl.Perl5Util util>;
+
+        $z3 = virtualinvoke $r5.<org.apache.oro.text.perl.Perl5Util: boolean match(java.lang.String,java.lang.String)>("/\\sat /", r1);
+
+        if $z3 == 0 goto label9;
+
+        $r6 = new java.lang.StringBuilder;
+
+        specialinvoke $r6.<java.lang.StringBuilder: void <init>(java.lang.String)>("\t");
+
+        $r7 = virtualinvoke r1.<java.lang.String: java.lang.String trim()>();
+
+        $r8 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r7);
+
+        $r9 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $r9;
+
+     label9:
+        return r1;
+    }
+}

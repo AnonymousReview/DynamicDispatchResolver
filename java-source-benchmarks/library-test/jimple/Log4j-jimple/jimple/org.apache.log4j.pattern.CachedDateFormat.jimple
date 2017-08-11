@@ -1,0 +1,533 @@
+public final class org.apache.log4j.pattern.CachedDateFormat extends java.text.DateFormat
+{
+    private static final long serialVersionUID;
+    public static final int NO_MILLISECONDS;
+    private static final java.lang.String DIGITS;
+    public static final int UNRECOGNIZED_MILLISECONDS;
+    private static final int MAGIC1;
+    private static final java.lang.String MAGICSTRING1;
+    private static final int MAGIC2;
+    private static final java.lang.String MAGICSTRING2;
+    private static final java.lang.String ZERO_STRING;
+    private final java.text.DateFormat formatter;
+    private int millisecondStart;
+    private long slotBegin;
+    private java.lang.StringBuffer cache;
+    private final int expiration;
+    private long previousTime;
+    private final java.util.Date tmpDate;
+
+    public void <init>(java.text.DateFormat, int)
+    {
+        org.apache.log4j.pattern.CachedDateFormat r0;
+        java.text.DateFormat r1;
+        int i0;
+        java.lang.StringBuffer $r2;
+        java.util.Date $r3;
+        java.lang.IllegalArgumentException $r4, $r5;
+
+        r0 := @this: org.apache.log4j.pattern.CachedDateFormat;
+
+        r1 := @parameter0: java.text.DateFormat;
+
+        i0 := @parameter1: int;
+
+        specialinvoke r0.<java.text.DateFormat: void <init>()>();
+
+        $r2 = new java.lang.StringBuffer;
+
+        specialinvoke $r2.<java.lang.StringBuffer: void <init>(int)>(50);
+
+        r0.<org.apache.log4j.pattern.CachedDateFormat: java.lang.StringBuffer cache> = $r2;
+
+        $r3 = new java.util.Date;
+
+        specialinvoke $r3.<java.util.Date: void <init>(long)>(0L);
+
+        r0.<org.apache.log4j.pattern.CachedDateFormat: java.util.Date tmpDate> = $r3;
+
+        if r1 != null goto label1;
+
+        $r5 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r5.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("dateFormat cannot be null");
+
+        throw $r5;
+
+     label1:
+        if i0 >= 0 goto label2;
+
+        $r4 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r4.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("expiration must be non-negative");
+
+        throw $r4;
+
+     label2:
+        r0.<org.apache.log4j.pattern.CachedDateFormat: java.text.DateFormat formatter> = r1;
+
+        r0.<org.apache.log4j.pattern.CachedDateFormat: int expiration> = i0;
+
+        r0.<org.apache.log4j.pattern.CachedDateFormat: int millisecondStart> = 0;
+
+        r0.<org.apache.log4j.pattern.CachedDateFormat: long previousTime> = -9223372036854775808L;
+
+        r0.<org.apache.log4j.pattern.CachedDateFormat: long slotBegin> = -9223372036854775808L;
+
+        return;
+    }
+
+    public static int findMillisecondStart(long, java.lang.String, java.text.DateFormat)
+    {
+        long l0, $l2, $l4, $l5, $l6, l17;
+        java.lang.String r0, r2, r4, $r8, $r9, $r10, r11;
+        java.text.DateFormat r1;
+        int i1, $i7, $i8, $i9, $i12, $i13, $i14, $i15, $i16, i19;
+        byte $b3;
+        java.util.Date $r5, $r7;
+        char $c10, $c11;
+        java.lang.StringBuffer $r6;
+        boolean $z0, $z1, $z2;
+        short s18;
+
+        l0 := @parameter0: long;
+
+        r0 := @parameter1: java.lang.String;
+
+        r1 := @parameter2: java.text.DateFormat;
+
+        $l2 = l0 / 1000L;
+
+        l17 = $l2 * 1000L;
+
+        $b3 = l17 cmp l0;
+
+        if $b3 <= 0 goto label1;
+
+        l17 = l17 - 1000L;
+
+     label1:
+        $l4 = l0 - l17;
+
+        i1 = (int) $l4;
+
+        s18 = 654;
+
+        r11 = "654";
+
+        if i1 != 654 goto label2;
+
+        s18 = 987;
+
+        r11 = "987";
+
+     label2:
+        $r5 = new java.util.Date;
+
+        $l5 = (long) s18;
+
+        $l6 = l17 + $l5;
+
+        specialinvoke $r5.<java.util.Date: void <init>(long)>($l6);
+
+        r2 = virtualinvoke r1.<java.text.DateFormat: java.lang.String format(java.util.Date)>($r5);
+
+        $i7 = virtualinvoke r2.<java.lang.String: int length()>();
+
+        $i8 = virtualinvoke r0.<java.lang.String: int length()>();
+
+        if $i7 == $i8 goto label3;
+
+        return -1;
+
+     label3:
+        i19 = 0;
+
+        goto label7;
+
+     label4:
+        $c10 = virtualinvoke r0.<java.lang.String: char charAt(int)>(i19);
+
+        $c11 = virtualinvoke r2.<java.lang.String: char charAt(int)>(i19);
+
+        if $c10 == $c11 goto label6;
+
+        $r6 = new java.lang.StringBuffer;
+
+        specialinvoke $r6.<java.lang.StringBuffer: void <init>(java.lang.String)>("ABC");
+
+        staticinvoke <org.apache.log4j.pattern.CachedDateFormat: void millisecondFormat(int,java.lang.StringBuffer,int)>(i1, $r6, 0);
+
+        $r7 = new java.util.Date;
+
+        specialinvoke $r7.<java.util.Date: void <init>(long)>(l17);
+
+        r4 = virtualinvoke r1.<java.text.DateFormat: java.lang.String format(java.util.Date)>($r7);
+
+        $i12 = virtualinvoke r4.<java.lang.String: int length()>();
+
+        $i13 = virtualinvoke r0.<java.lang.String: int length()>();
+
+        if $i12 != $i13 goto label5;
+
+        $i14 = virtualinvoke r11.<java.lang.String: int length()>();
+
+        $z0 = virtualinvoke r11.<java.lang.String: boolean regionMatches(int,java.lang.String,int,int)>(0, r2, i19, $i14);
+
+        if $z0 == 0 goto label5;
+
+        $r8 = virtualinvoke $r6.<java.lang.StringBuffer: java.lang.String toString()>();
+
+        $i15 = virtualinvoke r11.<java.lang.String: int length()>();
+
+        $z1 = virtualinvoke $r8.<java.lang.String: boolean regionMatches(int,java.lang.String,int,int)>(0, r0, i19, $i15);
+
+        if $z1 == 0 goto label5;
+
+        $r10 = "000";
+
+        $r9 = "000";
+
+        $i16 = virtualinvoke $r9.<java.lang.String: int length()>();
+
+        $z2 = virtualinvoke $r10.<java.lang.String: boolean regionMatches(int,java.lang.String,int,int)>(0, r4, i19, $i16);
+
+        if $z2 == 0 goto label5;
+
+        return i19;
+
+     label5:
+        return -1;
+
+     label6:
+        i19 = i19 + 1;
+
+     label7:
+        $i9 = virtualinvoke r0.<java.lang.String: int length()>();
+
+        if i19 < $i9 goto label4;
+
+        return -2;
+    }
+
+    public java.lang.StringBuffer format(java.util.Date, java.lang.StringBuffer, java.text.FieldPosition)
+    {
+        org.apache.log4j.pattern.CachedDateFormat r0;
+        java.util.Date r1;
+        java.lang.StringBuffer r2;
+        java.text.FieldPosition r3;
+        long $l0;
+
+        r0 := @this: org.apache.log4j.pattern.CachedDateFormat;
+
+        r1 := @parameter0: java.util.Date;
+
+        r2 := @parameter1: java.lang.StringBuffer;
+
+        r3 := @parameter2: java.text.FieldPosition;
+
+        $l0 = virtualinvoke r1.<java.util.Date: long getTime()>();
+
+        virtualinvoke r0.<org.apache.log4j.pattern.CachedDateFormat: java.lang.StringBuffer format(long,java.lang.StringBuffer)>($l0, r2);
+
+        return r2;
+    }
+
+    public java.lang.StringBuffer format(long, java.lang.StringBuffer)
+    {
+        org.apache.log4j.pattern.CachedDateFormat r0;
+        long l0, $l1, $l6, $l7, $l9, $l10, $l11, $l13, $l15, $l16, $l19, $l20, $l23, $l24, $l25, $l26, $l27;
+        java.lang.StringBuffer r1, $r4, $r7, $r9, $r10, $r12, $r14, $r18;
+        byte $b2, $b12, $b14, $b17, $b28;
+        int $i3, $i4, $i5, $i8, $i18, $i21, $i22;
+        java.lang.String $r5, $r17;
+        java.text.DateFormat $r6, $r15;
+        java.util.Date $r13, $r16;
+
+        r0 := @this: org.apache.log4j.pattern.CachedDateFormat;
+
+        l0 := @parameter0: long;
+
+        r1 := @parameter1: java.lang.StringBuffer;
+
+        $l1 = r0.<org.apache.log4j.pattern.CachedDateFormat: long previousTime>;
+
+        $b2 = l0 cmp $l1;
+
+        if $b2 != 0 goto label1;
+
+        $r10 = r0.<org.apache.log4j.pattern.CachedDateFormat: java.lang.StringBuffer cache>;
+
+        virtualinvoke r1.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.StringBuffer)>($r10);
+
+        return r1;
+
+     label1:
+        $i3 = r0.<org.apache.log4j.pattern.CachedDateFormat: int millisecondStart>;
+
+        if $i3 == -1 goto label3;
+
+        $l10 = r0.<org.apache.log4j.pattern.CachedDateFormat: long slotBegin>;
+
+        $i8 = r0.<org.apache.log4j.pattern.CachedDateFormat: int expiration>;
+
+        $l9 = (long) $i8;
+
+        $l11 = $l10 + $l9;
+
+        $b12 = l0 cmp $l11;
+
+        if $b12 >= 0 goto label3;
+
+        $l13 = r0.<org.apache.log4j.pattern.CachedDateFormat: long slotBegin>;
+
+        $b14 = l0 cmp $l13;
+
+        if $b14 < 0 goto label3;
+
+        $l15 = r0.<org.apache.log4j.pattern.CachedDateFormat: long slotBegin>;
+
+        $l16 = $l15 + 1000L;
+
+        $b17 = l0 cmp $l16;
+
+        if $b17 >= 0 goto label3;
+
+        $i18 = r0.<org.apache.log4j.pattern.CachedDateFormat: int millisecondStart>;
+
+        if $i18 < 0 goto label2;
+
+        $l19 = r0.<org.apache.log4j.pattern.CachedDateFormat: long slotBegin>;
+
+        $l20 = l0 - $l19;
+
+        $i22 = (int) $l20;
+
+        $r9 = r0.<org.apache.log4j.pattern.CachedDateFormat: java.lang.StringBuffer cache>;
+
+        $i21 = r0.<org.apache.log4j.pattern.CachedDateFormat: int millisecondStart>;
+
+        staticinvoke <org.apache.log4j.pattern.CachedDateFormat: void millisecondFormat(int,java.lang.StringBuffer,int)>($i22, $r9, $i21);
+
+     label2:
+        r0.<org.apache.log4j.pattern.CachedDateFormat: long previousTime> = l0;
+
+        $r7 = r0.<org.apache.log4j.pattern.CachedDateFormat: java.lang.StringBuffer cache>;
+
+        virtualinvoke r1.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.StringBuffer)>($r7);
+
+        return r1;
+
+     label3:
+        $r12 = r0.<org.apache.log4j.pattern.CachedDateFormat: java.lang.StringBuffer cache>;
+
+        virtualinvoke $r12.<java.lang.StringBuffer: void setLength(int)>(0);
+
+        $r13 = r0.<org.apache.log4j.pattern.CachedDateFormat: java.util.Date tmpDate>;
+
+        virtualinvoke $r13.<java.util.Date: void setTime(long)>(l0);
+
+        $r14 = r0.<org.apache.log4j.pattern.CachedDateFormat: java.lang.StringBuffer cache>;
+
+        $r15 = r0.<org.apache.log4j.pattern.CachedDateFormat: java.text.DateFormat formatter>;
+
+        $r16 = r0.<org.apache.log4j.pattern.CachedDateFormat: java.util.Date tmpDate>;
+
+        $r17 = virtualinvoke $r15.<java.text.DateFormat: java.lang.String format(java.util.Date)>($r16);
+
+        virtualinvoke $r14.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>($r17);
+
+        $r18 = r0.<org.apache.log4j.pattern.CachedDateFormat: java.lang.StringBuffer cache>;
+
+        virtualinvoke r1.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.StringBuffer)>($r18);
+
+        r0.<org.apache.log4j.pattern.CachedDateFormat: long previousTime> = l0;
+
+        $l23 = r0.<org.apache.log4j.pattern.CachedDateFormat: long previousTime>;
+
+        $l24 = $l23 / 1000L;
+
+        $l25 = $l24 * 1000L;
+
+        r0.<org.apache.log4j.pattern.CachedDateFormat: long slotBegin> = $l25;
+
+        $l26 = r0.<org.apache.log4j.pattern.CachedDateFormat: long slotBegin>;
+
+        $l27 = r0.<org.apache.log4j.pattern.CachedDateFormat: long previousTime>;
+
+        $b28 = $l26 cmp $l27;
+
+        if $b28 <= 0 goto label4;
+
+        $l6 = r0.<org.apache.log4j.pattern.CachedDateFormat: long slotBegin>;
+
+        $l7 = $l6 - 1000L;
+
+        r0.<org.apache.log4j.pattern.CachedDateFormat: long slotBegin> = $l7;
+
+     label4:
+        $i4 = r0.<org.apache.log4j.pattern.CachedDateFormat: int millisecondStart>;
+
+        if $i4 < 0 goto label5;
+
+        $r4 = r0.<org.apache.log4j.pattern.CachedDateFormat: java.lang.StringBuffer cache>;
+
+        $r5 = virtualinvoke $r4.<java.lang.StringBuffer: java.lang.String toString()>();
+
+        $r6 = r0.<org.apache.log4j.pattern.CachedDateFormat: java.text.DateFormat formatter>;
+
+        $i5 = staticinvoke <org.apache.log4j.pattern.CachedDateFormat: int findMillisecondStart(long,java.lang.String,java.text.DateFormat)>(l0, $r5, $r6);
+
+        r0.<org.apache.log4j.pattern.CachedDateFormat: int millisecondStart> = $i5;
+
+     label5:
+        return r1;
+    }
+
+    private static void millisecondFormat(int, java.lang.StringBuffer, int)
+    {
+        int i0, i1, $i2, $i4, $i5, $i6, $i8, $i9;
+        java.lang.StringBuffer r0;
+        java.lang.String $r1, $r2, $r3;
+        char $c3, $c7, $c10;
+
+        i0 := @parameter0: int;
+
+        r0 := @parameter1: java.lang.StringBuffer;
+
+        i1 := @parameter2: int;
+
+        $r1 = "0123456789";
+
+        $i2 = i0 / 100;
+
+        $c3 = virtualinvoke $r1.<java.lang.String: char charAt(int)>($i2);
+
+        virtualinvoke r0.<java.lang.StringBuffer: void setCharAt(int,char)>(i1, $c3);
+
+        $i6 = i1 + 1;
+
+        $r2 = "0123456789";
+
+        $i4 = i0 / 10;
+
+        $i5 = $i4 % 10;
+
+        $c7 = virtualinvoke $r2.<java.lang.String: char charAt(int)>($i5);
+
+        virtualinvoke r0.<java.lang.StringBuffer: void setCharAt(int,char)>($i6, $c7);
+
+        $i9 = i1 + 2;
+
+        $r3 = "0123456789";
+
+        $i8 = i0 % 10;
+
+        $c10 = virtualinvoke $r3.<java.lang.String: char charAt(int)>($i8);
+
+        virtualinvoke r0.<java.lang.StringBuffer: void setCharAt(int,char)>($i9, $c10);
+
+        return;
+    }
+
+    public void setTimeZone(java.util.TimeZone)
+    {
+        org.apache.log4j.pattern.CachedDateFormat r0;
+        java.util.TimeZone r1;
+        java.text.DateFormat $r2;
+
+        r0 := @this: org.apache.log4j.pattern.CachedDateFormat;
+
+        r1 := @parameter0: java.util.TimeZone;
+
+        $r2 = r0.<org.apache.log4j.pattern.CachedDateFormat: java.text.DateFormat formatter>;
+
+        virtualinvoke $r2.<java.text.DateFormat: void setTimeZone(java.util.TimeZone)>(r1);
+
+        r0.<org.apache.log4j.pattern.CachedDateFormat: long previousTime> = -9223372036854775808L;
+
+        r0.<org.apache.log4j.pattern.CachedDateFormat: long slotBegin> = -9223372036854775808L;
+
+        return;
+    }
+
+    public java.util.Date parse(java.lang.String, java.text.ParsePosition)
+    {
+        org.apache.log4j.pattern.CachedDateFormat r0;
+        java.lang.String r1;
+        java.text.ParsePosition r2;
+        java.text.DateFormat $r3;
+        java.util.Date $r4;
+
+        r0 := @this: org.apache.log4j.pattern.CachedDateFormat;
+
+        r1 := @parameter0: java.lang.String;
+
+        r2 := @parameter1: java.text.ParsePosition;
+
+        $r3 = r0.<org.apache.log4j.pattern.CachedDateFormat: java.text.DateFormat formatter>;
+
+        $r4 = virtualinvoke $r3.<java.text.DateFormat: java.util.Date parse(java.lang.String,java.text.ParsePosition)>(r1, r2);
+
+        return $r4;
+    }
+
+    public java.text.NumberFormat getNumberFormat()
+    {
+        org.apache.log4j.pattern.CachedDateFormat r0;
+        java.text.DateFormat $r1;
+        java.text.NumberFormat $r2;
+
+        r0 := @this: org.apache.log4j.pattern.CachedDateFormat;
+
+        $r1 = r0.<org.apache.log4j.pattern.CachedDateFormat: java.text.DateFormat formatter>;
+
+        $r2 = virtualinvoke $r1.<java.text.DateFormat: java.text.NumberFormat getNumberFormat()>();
+
+        return $r2;
+    }
+
+    public static int getMaximumCacheValidity(java.lang.String)
+    {
+        java.lang.String r0;
+        int i0, $i1;
+
+        r0 := @parameter0: java.lang.String;
+
+        i0 = virtualinvoke r0.<java.lang.String: int indexOf(int)>(83);
+
+        if i0 < 0 goto label1;
+
+        $i1 = virtualinvoke r0.<java.lang.String: int lastIndexOf(java.lang.String)>("SSS");
+
+        if i0 == $i1 goto label1;
+
+        return 1;
+
+     label1:
+        return 1000;
+    }
+
+    public static void <clinit>()
+    {
+        <org.apache.log4j.pattern.CachedDateFormat: java.lang.String ZERO_STRING> = "000";
+
+        <org.apache.log4j.pattern.CachedDateFormat: java.lang.String MAGICSTRING2> = "987";
+
+        <org.apache.log4j.pattern.CachedDateFormat: int MAGIC2> = 987;
+
+        <org.apache.log4j.pattern.CachedDateFormat: java.lang.String MAGICSTRING1> = "654";
+
+        <org.apache.log4j.pattern.CachedDateFormat: int MAGIC1> = 654;
+
+        <org.apache.log4j.pattern.CachedDateFormat: int UNRECOGNIZED_MILLISECONDS> = -1;
+
+        <org.apache.log4j.pattern.CachedDateFormat: java.lang.String DIGITS> = "0123456789";
+
+        <org.apache.log4j.pattern.CachedDateFormat: int NO_MILLISECONDS> = -2;
+
+        <org.apache.log4j.pattern.CachedDateFormat: long serialVersionUID> = 1L;
+
+        return;
+    }
+}

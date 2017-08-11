@@ -1,0 +1,34 @@
+class org.apache.commons.io.IOUtilsTestCase$3 extends org.apache.commons.io.SelectorAdapter
+{
+    final org.apache.commons.io.IOUtilsTestCase this$0;
+
+    void <init>(org.apache.commons.io.IOUtilsTestCase)
+    {
+        org.apache.commons.io.IOUtilsTestCase$3 r0;
+        org.apache.commons.io.IOUtilsTestCase r1;
+
+        r0 := @this: org.apache.commons.io.IOUtilsTestCase$3;
+
+        r1 := @parameter0: org.apache.commons.io.IOUtilsTestCase;
+
+        r0.<org.apache.commons.io.IOUtilsTestCase$3: org.apache.commons.io.IOUtilsTestCase this$0> = r1;
+
+        specialinvoke r0.<org.apache.commons.io.SelectorAdapter: void <init>()>();
+
+        return;
+    }
+
+    public void close() throws java.io.IOException
+    {
+        org.apache.commons.io.IOUtilsTestCase$3 r0;
+        java.io.IOException $r1;
+
+        r0 := @this: org.apache.commons.io.IOUtilsTestCase$3;
+
+        $r1 = new java.io.IOException;
+
+        specialinvoke $r1.<java.io.IOException: void <init>()>();
+
+        throw $r1;
+    }
+}

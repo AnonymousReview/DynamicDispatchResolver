@@ -1,0 +1,1324 @@
+public class org.apache.log4j.net.SocketServerTestCase extends junit.framework.TestCase
+{
+    static java.lang.String TEMP;
+    static java.lang.String FILTERED;
+    static java.lang.String PAT1;
+    static java.lang.String PAT2;
+    static java.lang.String PAT3;
+    static java.lang.String PAT4;
+    static java.lang.String PAT5;
+    static java.lang.String PAT6;
+    static java.lang.String PAT7;
+    static java.lang.String PAT8;
+    static java.lang.String EXCEPTION1;
+    static java.lang.String EXCEPTION2;
+    static java.lang.String EXCEPTION3;
+    static java.lang.String EXCEPTION4;
+    static java.lang.String EXCEPTION5;
+    static org.apache.log4j.Logger logger;
+    public static final int PORT;
+    static org.apache.log4j.Logger rootLogger;
+    org.apache.log4j.net.SocketAppender socketAppender;
+
+    static void <clinit>()
+    {
+        org.apache.log4j.Logger $r0, $r1;
+
+        <org.apache.log4j.net.SocketServerTestCase: int PORT> = 12345;
+
+        <org.apache.log4j.net.SocketServerTestCase: java.lang.String TEMP> = "output/temp";
+
+        <org.apache.log4j.net.SocketServerTestCase: java.lang.String FILTERED> = "output/filtered";
+
+        <org.apache.log4j.net.SocketServerTestCase: java.lang.String PAT1> = "^(TRACE|DEBUG| INFO| WARN|ERROR|FATAL|LETHAL) T1 \\[main]\\ .* Message \\d{1,2}";
+
+        <org.apache.log4j.net.SocketServerTestCase: java.lang.String PAT2> = "^(TRACE|DEBUG| INFO| WARN|ERROR|FATAL|LETHAL) T2 \\[main]\\ \\? \\(\\?:\\?\\) Message \\d{1,2}";
+
+        <org.apache.log4j.net.SocketServerTestCase: java.lang.String PAT3> = "^(TRACE|DEBUG| INFO| WARN|ERROR|FATAL|LETHAL) T3 \\[main]\\ org.apache.log4j.net.SocketServerTestCase \\(SocketServerTestCase.java:\\d{3}\\) Message \\d{1,2}";
+
+        <org.apache.log4j.net.SocketServerTestCase: java.lang.String PAT4> = "^(TRACE|DEBUG| INFO| WARN|ERROR|FATAL|LETHAL) some T4 MDC-TEST4 \\[main]\\ (root|SocketServerTestCase) - Message \\d{1,2}";
+
+        <org.apache.log4j.net.SocketServerTestCase: java.lang.String PAT5> = "^(TRACE|DEBUG| INFO| WARN|ERROR|FATAL|LETHAL) some5 T5 MDC-TEST5 \\[main]\\ (root|SocketServerTestCase) - Message \\d{1,2}";
+
+        <org.apache.log4j.net.SocketServerTestCase: java.lang.String PAT6> = "^(TRACE|DEBUG| INFO| WARN|ERROR|FATAL|LETHAL) some6 T6 client-test6 MDC-TEST6 \\[main]\\ (root|SocketServerTestCase) - Message \\d{1,2}";
+
+        <org.apache.log4j.net.SocketServerTestCase: java.lang.String PAT7> = "^(TRACE|DEBUG| INFO| WARN|ERROR|FATAL|LETHAL) some7 T7 client-test7 MDC-TEST7 \\[main]\\ (root|SocketServerTestCase) - Message \\d{1,2}";
+
+        <org.apache.log4j.net.SocketServerTestCase: java.lang.String PAT8> = "^(TRACE|DEBUG| INFO| WARN|ERROR|FATAL|LETHAL) some8 T8 shortSocketServer MDC-TEST8 \\[main]\\ (root|SocketServerTestCase) - Message \\d{1,2}";
+
+        <org.apache.log4j.net.SocketServerTestCase: java.lang.String EXCEPTION1> = "java.lang.Exception: Just testing";
+
+        <org.apache.log4j.net.SocketServerTestCase: java.lang.String EXCEPTION2> = "\\s*at .*\\(.*\\)";
+
+        <org.apache.log4j.net.SocketServerTestCase: java.lang.String EXCEPTION3> = "\\s*at .*\\(Native Method\\)";
+
+        <org.apache.log4j.net.SocketServerTestCase: java.lang.String EXCEPTION4> = "\\s*at .*\\(.*Compiled Code\\)";
+
+        <org.apache.log4j.net.SocketServerTestCase: java.lang.String EXCEPTION5> = "\\s*at .*\\(.*libgcj.*\\)";
+
+        $r0 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getLogger(java.lang.Class)>(class "org/apache/log4j/net/SocketServerTestCase");
+
+        <org.apache.log4j.net.SocketServerTestCase: org.apache.log4j.Logger logger> = $r0;
+
+        $r1 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getRootLogger()>();
+
+        <org.apache.log4j.net.SocketServerTestCase: org.apache.log4j.Logger rootLogger> = $r1;
+
+        return;
+    }
+
+    public void <init>(java.lang.String)
+    {
+        org.apache.log4j.net.SocketServerTestCase r0;
+        java.lang.String r1;
+
+        r0 := @this: org.apache.log4j.net.SocketServerTestCase;
+
+        r1 := @parameter0: java.lang.String;
+
+        specialinvoke r0.<junit.framework.TestCase: void <init>(java.lang.String)>(r1);
+
+        return;
+    }
+
+    public void setUp()
+    {
+        org.apache.log4j.net.SocketServerTestCase r0;
+        java.io.PrintStream $r1;
+
+        r0 := @this: org.apache.log4j.net.SocketServerTestCase;
+
+        $r1 = <java.lang.System: java.io.PrintStream out>;
+
+        virtualinvoke $r1.<java.io.PrintStream: void println(java.lang.String)>("Setting up test case.");
+
+        return;
+    }
+
+    public void tearDown()
+    {
+        org.apache.log4j.net.SocketServerTestCase r0;
+        java.io.PrintStream $r1;
+        org.apache.log4j.Logger $r2;
+
+        r0 := @this: org.apache.log4j.net.SocketServerTestCase;
+
+        $r1 = <java.lang.System: java.io.PrintStream out>;
+
+        virtualinvoke $r1.<java.io.PrintStream: void println(java.lang.String)>("Tearing down test case.");
+
+        r0.<org.apache.log4j.net.SocketServerTestCase: org.apache.log4j.net.SocketAppender socketAppender> = null;
+
+        $r2 = <org.apache.log4j.net.SocketServerTestCase: org.apache.log4j.Logger rootLogger>;
+
+        virtualinvoke $r2.<org.apache.log4j.Logger: void removeAllAppenders()>();
+
+        return;
+    }
+
+    public void test1() throws java.lang.Exception
+    {
+        org.apache.log4j.net.SocketServerTestCase r0;
+        org.apache.log4j.net.SocketAppender $r2, $r3;
+        org.apache.log4j.Logger $r4;
+        org.apache.log4j.util.ControlFilter $r5;
+        java.lang.String[] $r6;
+        java.lang.String $r7, $r8, $r9, $r10, $r11, $r12, $r15, $r16, $r19;
+        org.apache.log4j.util.Filter[] $r13;
+        org.apache.log4j.util.LineNumberFilter $r14;
+        org.apache.log4j.util.JunitTestRunnerFilter $r17;
+        org.apache.log4j.util.SunReflectFilter $r18;
+        boolean $z0;
+
+        r0 := @this: org.apache.log4j.net.SocketServerTestCase;
+
+        $r2 = new org.apache.log4j.net.SocketAppender;
+
+        specialinvoke $r2.<org.apache.log4j.net.SocketAppender: void <init>(java.lang.String,int)>("localhost", 12345);
+
+        r0.<org.apache.log4j.net.SocketServerTestCase: org.apache.log4j.net.SocketAppender socketAppender> = $r2;
+
+        $r4 = <org.apache.log4j.net.SocketServerTestCase: org.apache.log4j.Logger rootLogger>;
+
+        $r3 = r0.<org.apache.log4j.net.SocketServerTestCase: org.apache.log4j.net.SocketAppender socketAppender>;
+
+        virtualinvoke $r4.<org.apache.log4j.Logger: void addAppender(org.apache.log4j.Appender)>($r3);
+
+        staticinvoke <org.apache.log4j.net.SocketServerTestCase: void common(java.lang.String,java.lang.String,java.lang.Object)>("T1", "key1", "MDC-TEST1");
+
+        virtualinvoke r0.<org.apache.log4j.net.SocketServerTestCase: void delay(int)>(1);
+
+        $r5 = new org.apache.log4j.util.ControlFilter;
+
+        $r6 = newarray (java.lang.String)[6];
+
+        $r7 = <org.apache.log4j.net.SocketServerTestCase: java.lang.String PAT1>;
+
+        $r6[0] = $r7;
+
+        $r8 = <org.apache.log4j.net.SocketServerTestCase: java.lang.String EXCEPTION1>;
+
+        $r6[1] = $r8;
+
+        $r9 = <org.apache.log4j.net.SocketServerTestCase: java.lang.String EXCEPTION2>;
+
+        $r6[2] = $r9;
+
+        $r10 = <org.apache.log4j.net.SocketServerTestCase: java.lang.String EXCEPTION3>;
+
+        $r6[3] = $r10;
+
+        $r11 = <org.apache.log4j.net.SocketServerTestCase: java.lang.String EXCEPTION4>;
+
+        $r6[4] = $r11;
+
+        $r12 = <org.apache.log4j.net.SocketServerTestCase: java.lang.String EXCEPTION5>;
+
+        $r6[5] = $r12;
+
+        specialinvoke $r5.<org.apache.log4j.util.ControlFilter: void <init>(java.lang.String[])>($r6);
+
+        $r15 = <org.apache.log4j.net.SocketServerTestCase: java.lang.String TEMP>;
+
+        $r16 = <org.apache.log4j.net.SocketServerTestCase: java.lang.String FILTERED>;
+
+        $r13 = newarray (org.apache.log4j.util.Filter)[4];
+
+        $r13[0] = $r5;
+
+        $r14 = new org.apache.log4j.util.LineNumberFilter;
+
+        specialinvoke $r14.<org.apache.log4j.util.LineNumberFilter: void <init>()>();
+
+        $r13[1] = $r14;
+
+        $r17 = new org.apache.log4j.util.JunitTestRunnerFilter;
+
+        specialinvoke $r17.<org.apache.log4j.util.JunitTestRunnerFilter: void <init>()>();
+
+        $r13[2] = $r17;
+
+        $r18 = new org.apache.log4j.util.SunReflectFilter;
+
+        specialinvoke $r18.<org.apache.log4j.util.SunReflectFilter: void <init>()>();
+
+        $r13[3] = $r18;
+
+        staticinvoke <org.apache.log4j.util.Transformer: void transform(java.lang.String,java.lang.String,org.apache.log4j.util.Filter[])>($r15, $r16, $r13);
+
+        $r19 = <org.apache.log4j.net.SocketServerTestCase: java.lang.String FILTERED>;
+
+        $z0 = staticinvoke <org.apache.log4j.util.Compare: boolean compare(java.lang.String,java.lang.String)>($r19, "witness/socketServer.1");
+
+        staticinvoke <org.apache.log4j.net.SocketServerTestCase: void assertTrue(boolean)>($z0);
+
+        return;
+    }
+
+    public void test2() throws java.lang.Exception
+    {
+        org.apache.log4j.net.SocketServerTestCase r0;
+        org.apache.log4j.net.SocketAppender $r2, $r3;
+        org.apache.log4j.Logger $r4;
+        org.apache.log4j.util.ControlFilter $r5;
+        java.lang.String[] $r6;
+        java.lang.String $r7, $r8, $r9, $r10, $r11, $r12, $r15, $r16, $r19;
+        org.apache.log4j.util.Filter[] $r13;
+        org.apache.log4j.util.LineNumberFilter $r14;
+        org.apache.log4j.util.JunitTestRunnerFilter $r17;
+        org.apache.log4j.util.SunReflectFilter $r18;
+        boolean $z0;
+
+        r0 := @this: org.apache.log4j.net.SocketServerTestCase;
+
+        $r2 = new org.apache.log4j.net.SocketAppender;
+
+        specialinvoke $r2.<org.apache.log4j.net.SocketAppender: void <init>(java.lang.String,int)>("localhost", 12345);
+
+        r0.<org.apache.log4j.net.SocketServerTestCase: org.apache.log4j.net.SocketAppender socketAppender> = $r2;
+
+        $r4 = <org.apache.log4j.net.SocketServerTestCase: org.apache.log4j.Logger rootLogger>;
+
+        $r3 = r0.<org.apache.log4j.net.SocketServerTestCase: org.apache.log4j.net.SocketAppender socketAppender>;
+
+        virtualinvoke $r4.<org.apache.log4j.Logger: void addAppender(org.apache.log4j.Appender)>($r3);
+
+        staticinvoke <org.apache.log4j.net.SocketServerTestCase: void common(java.lang.String,java.lang.String,java.lang.Object)>("T2", "key2", "MDC-TEST2");
+
+        virtualinvoke r0.<org.apache.log4j.net.SocketServerTestCase: void delay(int)>(1);
+
+        $r5 = new org.apache.log4j.util.ControlFilter;
+
+        $r6 = newarray (java.lang.String)[6];
+
+        $r7 = <org.apache.log4j.net.SocketServerTestCase: java.lang.String PAT2>;
+
+        $r6[0] = $r7;
+
+        $r8 = <org.apache.log4j.net.SocketServerTestCase: java.lang.String EXCEPTION1>;
+
+        $r6[1] = $r8;
+
+        $r9 = <org.apache.log4j.net.SocketServerTestCase: java.lang.String EXCEPTION2>;
+
+        $r6[2] = $r9;
+
+        $r10 = <org.apache.log4j.net.SocketServerTestCase: java.lang.String EXCEPTION3>;
+
+        $r6[3] = $r10;
+
+        $r11 = <org.apache.log4j.net.SocketServerTestCase: java.lang.String EXCEPTION4>;
+
+        $r6[4] = $r11;
+
+        $r12 = <org.apache.log4j.net.SocketServerTestCase: java.lang.String EXCEPTION5>;
+
+        $r6[5] = $r12;
+
+        specialinvoke $r5.<org.apache.log4j.util.ControlFilter: void <init>(java.lang.String[])>($r6);
+
+        $r15 = <org.apache.log4j.net.SocketServerTestCase: java.lang.String TEMP>;
+
+        $r16 = <org.apache.log4j.net.SocketServerTestCase: java.lang.String FILTERED>;
+
+        $r13 = newarray (org.apache.log4j.util.Filter)[4];
+
+        $r13[0] = $r5;
+
+        $r14 = new org.apache.log4j.util.LineNumberFilter;
+
+        specialinvoke $r14.<org.apache.log4j.util.LineNumberFilter: void <init>()>();
+
+        $r13[1] = $r14;
+
+        $r17 = new org.apache.log4j.util.JunitTestRunnerFilter;
+
+        specialinvoke $r17.<org.apache.log4j.util.JunitTestRunnerFilter: void <init>()>();
+
+        $r13[2] = $r17;
+
+        $r18 = new org.apache.log4j.util.SunReflectFilter;
+
+        specialinvoke $r18.<org.apache.log4j.util.SunReflectFilter: void <init>()>();
+
+        $r13[3] = $r18;
+
+        staticinvoke <org.apache.log4j.util.Transformer: void transform(java.lang.String,java.lang.String,org.apache.log4j.util.Filter[])>($r15, $r16, $r13);
+
+        $r19 = <org.apache.log4j.net.SocketServerTestCase: java.lang.String FILTERED>;
+
+        $z0 = staticinvoke <org.apache.log4j.util.Compare: boolean compare(java.lang.String,java.lang.String)>($r19, "witness/socketServer.2");
+
+        staticinvoke <org.apache.log4j.net.SocketServerTestCase: void assertTrue(boolean)>($z0);
+
+        return;
+    }
+
+    public void test3() throws java.lang.Exception
+    {
+        org.apache.log4j.net.SocketServerTestCase r0;
+        org.apache.log4j.net.SocketAppender $r2, $r3, $r4;
+        org.apache.log4j.Logger $r5;
+        org.apache.log4j.util.ControlFilter $r6;
+        java.lang.String[] $r7;
+        java.lang.String $r8, $r9, $r10, $r11, $r12, $r13, $r16, $r17, $r20;
+        org.apache.log4j.util.Filter[] $r14;
+        org.apache.log4j.util.LineNumberFilter $r15;
+        org.apache.log4j.util.JunitTestRunnerFilter $r18;
+        org.apache.log4j.util.SunReflectFilter $r19;
+        boolean $z0;
+
+        r0 := @this: org.apache.log4j.net.SocketServerTestCase;
+
+        $r2 = new org.apache.log4j.net.SocketAppender;
+
+        specialinvoke $r2.<org.apache.log4j.net.SocketAppender: void <init>(java.lang.String,int)>("localhost", 12345);
+
+        r0.<org.apache.log4j.net.SocketServerTestCase: org.apache.log4j.net.SocketAppender socketAppender> = $r2;
+
+        $r3 = r0.<org.apache.log4j.net.SocketServerTestCase: org.apache.log4j.net.SocketAppender socketAppender>;
+
+        virtualinvoke $r3.<org.apache.log4j.net.SocketAppender: void setLocationInfo(boolean)>(1);
+
+        $r5 = <org.apache.log4j.net.SocketServerTestCase: org.apache.log4j.Logger rootLogger>;
+
+        $r4 = r0.<org.apache.log4j.net.SocketServerTestCase: org.apache.log4j.net.SocketAppender socketAppender>;
+
+        virtualinvoke $r5.<org.apache.log4j.Logger: void addAppender(org.apache.log4j.Appender)>($r4);
+
+        staticinvoke <org.apache.log4j.net.SocketServerTestCase: void common(java.lang.String,java.lang.String,java.lang.Object)>("T3", "key3", "MDC-TEST3");
+
+        virtualinvoke r0.<org.apache.log4j.net.SocketServerTestCase: void delay(int)>(1);
+
+        $r6 = new org.apache.log4j.util.ControlFilter;
+
+        $r7 = newarray (java.lang.String)[6];
+
+        $r8 = <org.apache.log4j.net.SocketServerTestCase: java.lang.String PAT3>;
+
+        $r7[0] = $r8;
+
+        $r9 = <org.apache.log4j.net.SocketServerTestCase: java.lang.String EXCEPTION1>;
+
+        $r7[1] = $r9;
+
+        $r10 = <org.apache.log4j.net.SocketServerTestCase: java.lang.String EXCEPTION2>;
+
+        $r7[2] = $r10;
+
+        $r11 = <org.apache.log4j.net.SocketServerTestCase: java.lang.String EXCEPTION3>;
+
+        $r7[3] = $r11;
+
+        $r12 = <org.apache.log4j.net.SocketServerTestCase: java.lang.String EXCEPTION4>;
+
+        $r7[4] = $r12;
+
+        $r13 = <org.apache.log4j.net.SocketServerTestCase: java.lang.String EXCEPTION5>;
+
+        $r7[5] = $r13;
+
+        specialinvoke $r6.<org.apache.log4j.util.ControlFilter: void <init>(java.lang.String[])>($r7);
+
+        $r16 = <org.apache.log4j.net.SocketServerTestCase: java.lang.String TEMP>;
+
+        $r17 = <org.apache.log4j.net.SocketServerTestCase: java.lang.String FILTERED>;
+
+        $r14 = newarray (org.apache.log4j.util.Filter)[4];
+
+        $r14[0] = $r6;
+
+        $r15 = new org.apache.log4j.util.LineNumberFilter;
+
+        specialinvoke $r15.<org.apache.log4j.util.LineNumberFilter: void <init>()>();
+
+        $r14[1] = $r15;
+
+        $r18 = new org.apache.log4j.util.JunitTestRunnerFilter;
+
+        specialinvoke $r18.<org.apache.log4j.util.JunitTestRunnerFilter: void <init>()>();
+
+        $r14[2] = $r18;
+
+        $r19 = new org.apache.log4j.util.SunReflectFilter;
+
+        specialinvoke $r19.<org.apache.log4j.util.SunReflectFilter: void <init>()>();
+
+        $r14[3] = $r19;
+
+        staticinvoke <org.apache.log4j.util.Transformer: void transform(java.lang.String,java.lang.String,org.apache.log4j.util.Filter[])>($r16, $r17, $r14);
+
+        $r20 = <org.apache.log4j.net.SocketServerTestCase: java.lang.String FILTERED>;
+
+        $z0 = staticinvoke <org.apache.log4j.util.Compare: boolean compare(java.lang.String,java.lang.String)>($r20, "witness/socketServer.3");
+
+        staticinvoke <org.apache.log4j.net.SocketServerTestCase: void assertTrue(boolean)>($z0);
+
+        return;
+    }
+
+    public void test4() throws java.lang.Exception
+    {
+        org.apache.log4j.net.SocketServerTestCase r0;
+        org.apache.log4j.net.SocketAppender $r2, $r3, $r4;
+        org.apache.log4j.Logger $r5;
+        java.lang.String $r7, $r10, $r11, $r12, $r13, $r14, $r15, $r18, $r19, $r22;
+        boolean $z0, $z1;
+        org.apache.log4j.util.ControlFilter $r8;
+        java.lang.String[] $r9;
+        org.apache.log4j.util.Filter[] $r16;
+        org.apache.log4j.util.LineNumberFilter $r17;
+        org.apache.log4j.util.JunitTestRunnerFilter $r20;
+        org.apache.log4j.util.SunReflectFilter $r21;
+
+        r0 := @this: org.apache.log4j.net.SocketServerTestCase;
+
+        $r2 = new org.apache.log4j.net.SocketAppender;
+
+        specialinvoke $r2.<org.apache.log4j.net.SocketAppender: void <init>(java.lang.String,int)>("localhost", 12345);
+
+        r0.<org.apache.log4j.net.SocketServerTestCase: org.apache.log4j.net.SocketAppender socketAppender> = $r2;
+
+        $r3 = r0.<org.apache.log4j.net.SocketServerTestCase: org.apache.log4j.net.SocketAppender socketAppender>;
+
+        virtualinvoke $r3.<org.apache.log4j.net.SocketAppender: void setLocationInfo(boolean)>(1);
+
+        $r5 = <org.apache.log4j.net.SocketServerTestCase: org.apache.log4j.Logger rootLogger>;
+
+        $r4 = r0.<org.apache.log4j.net.SocketServerTestCase: org.apache.log4j.net.SocketAppender socketAppender>;
+
+        virtualinvoke $r5.<org.apache.log4j.Logger: void addAppender(org.apache.log4j.Appender)>($r4);
+
+        staticinvoke <org.apache.log4j.NDC: void push(java.lang.String)>("some");
+
+        staticinvoke <org.apache.log4j.net.SocketServerTestCase: void common(java.lang.String,java.lang.String,java.lang.Object)>("T4", "key4", "MDC-TEST4");
+
+        staticinvoke <org.apache.log4j.NDC: java.lang.String pop()>();
+
+        virtualinvoke r0.<org.apache.log4j.net.SocketServerTestCase: void delay(int)>(1);
+
+        $r7 = staticinvoke <java.lang.System: java.lang.String getProperty(java.lang.String)>("java.version");
+
+        $z0 = virtualinvoke $r7.<java.lang.String: boolean startsWith(java.lang.String)>("1.1.");
+
+        if $z0 != 0 goto label1;
+
+        $r8 = new org.apache.log4j.util.ControlFilter;
+
+        $r9 = newarray (java.lang.String)[6];
+
+        $r10 = <org.apache.log4j.net.SocketServerTestCase: java.lang.String PAT4>;
+
+        $r9[0] = $r10;
+
+        $r11 = <org.apache.log4j.net.SocketServerTestCase: java.lang.String EXCEPTION1>;
+
+        $r9[1] = $r11;
+
+        $r12 = <org.apache.log4j.net.SocketServerTestCase: java.lang.String EXCEPTION2>;
+
+        $r9[2] = $r12;
+
+        $r13 = <org.apache.log4j.net.SocketServerTestCase: java.lang.String EXCEPTION3>;
+
+        $r9[3] = $r13;
+
+        $r14 = <org.apache.log4j.net.SocketServerTestCase: java.lang.String EXCEPTION4>;
+
+        $r9[4] = $r14;
+
+        $r15 = <org.apache.log4j.net.SocketServerTestCase: java.lang.String EXCEPTION5>;
+
+        $r9[5] = $r15;
+
+        specialinvoke $r8.<org.apache.log4j.util.ControlFilter: void <init>(java.lang.String[])>($r9);
+
+        $r18 = <org.apache.log4j.net.SocketServerTestCase: java.lang.String TEMP>;
+
+        $r19 = <org.apache.log4j.net.SocketServerTestCase: java.lang.String FILTERED>;
+
+        $r16 = newarray (org.apache.log4j.util.Filter)[4];
+
+        $r16[0] = $r8;
+
+        $r17 = new org.apache.log4j.util.LineNumberFilter;
+
+        specialinvoke $r17.<org.apache.log4j.util.LineNumberFilter: void <init>()>();
+
+        $r16[1] = $r17;
+
+        $r20 = new org.apache.log4j.util.JunitTestRunnerFilter;
+
+        specialinvoke $r20.<org.apache.log4j.util.JunitTestRunnerFilter: void <init>()>();
+
+        $r16[2] = $r20;
+
+        $r21 = new org.apache.log4j.util.SunReflectFilter;
+
+        specialinvoke $r21.<org.apache.log4j.util.SunReflectFilter: void <init>()>();
+
+        $r16[3] = $r21;
+
+        staticinvoke <org.apache.log4j.util.Transformer: void transform(java.lang.String,java.lang.String,org.apache.log4j.util.Filter[])>($r18, $r19, $r16);
+
+        $r22 = <org.apache.log4j.net.SocketServerTestCase: java.lang.String FILTERED>;
+
+        $z1 = staticinvoke <org.apache.log4j.util.Compare: boolean compare(java.lang.String,java.lang.String)>($r22, "witness/socketServer.4");
+
+        staticinvoke <org.apache.log4j.net.SocketServerTestCase: void assertTrue(boolean)>($z1);
+
+     label1:
+        return;
+    }
+
+    public void test5() throws java.lang.Exception
+    {
+        org.apache.log4j.net.SocketServerTestCase r0;
+        org.apache.log4j.net.SocketAppender $r3, $r4, $r6;
+        org.apache.log4j.AsyncAppender $r5;
+        org.apache.log4j.Logger $r7;
+        java.lang.String $r9, $r12, $r13, $r14, $r15, $r16, $r17, $r20, $r21, $r24;
+        boolean $z0, $z1;
+        org.apache.log4j.util.ControlFilter $r10;
+        java.lang.String[] $r11;
+        org.apache.log4j.util.Filter[] $r18;
+        org.apache.log4j.util.LineNumberFilter $r19;
+        org.apache.log4j.util.JunitTestRunnerFilter $r22;
+        org.apache.log4j.util.SunReflectFilter $r23;
+
+        r0 := @this: org.apache.log4j.net.SocketServerTestCase;
+
+        $r3 = new org.apache.log4j.net.SocketAppender;
+
+        specialinvoke $r3.<org.apache.log4j.net.SocketAppender: void <init>(java.lang.String,int)>("localhost", 12345);
+
+        r0.<org.apache.log4j.net.SocketServerTestCase: org.apache.log4j.net.SocketAppender socketAppender> = $r3;
+
+        $r4 = r0.<org.apache.log4j.net.SocketServerTestCase: org.apache.log4j.net.SocketAppender socketAppender>;
+
+        virtualinvoke $r4.<org.apache.log4j.net.SocketAppender: void setLocationInfo(boolean)>(1);
+
+        $r5 = new org.apache.log4j.AsyncAppender;
+
+        specialinvoke $r5.<org.apache.log4j.AsyncAppender: void <init>()>();
+
+        virtualinvoke $r5.<org.apache.log4j.AsyncAppender: void setLocationInfo(boolean)>(1);
+
+        $r6 = r0.<org.apache.log4j.net.SocketServerTestCase: org.apache.log4j.net.SocketAppender socketAppender>;
+
+        virtualinvoke $r5.<org.apache.log4j.AsyncAppender: void addAppender(org.apache.log4j.Appender)>($r6);
+
+        $r7 = <org.apache.log4j.net.SocketServerTestCase: org.apache.log4j.Logger rootLogger>;
+
+        virtualinvoke $r7.<org.apache.log4j.Logger: void addAppender(org.apache.log4j.Appender)>($r5);
+
+        staticinvoke <org.apache.log4j.NDC: void push(java.lang.String)>("some5");
+
+        staticinvoke <org.apache.log4j.net.SocketServerTestCase: void common(java.lang.String,java.lang.String,java.lang.Object)>("T5", "key5", "MDC-TEST5");
+
+        staticinvoke <org.apache.log4j.NDC: java.lang.String pop()>();
+
+        virtualinvoke r0.<org.apache.log4j.net.SocketServerTestCase: void delay(int)>(2);
+
+        $r9 = staticinvoke <java.lang.System: java.lang.String getProperty(java.lang.String)>("java.version");
+
+        $z0 = virtualinvoke $r9.<java.lang.String: boolean startsWith(java.lang.String)>("1.1.");
+
+        if $z0 != 0 goto label1;
+
+        $r10 = new org.apache.log4j.util.ControlFilter;
+
+        $r11 = newarray (java.lang.String)[6];
+
+        $r12 = <org.apache.log4j.net.SocketServerTestCase: java.lang.String PAT5>;
+
+        $r11[0] = $r12;
+
+        $r13 = <org.apache.log4j.net.SocketServerTestCase: java.lang.String EXCEPTION1>;
+
+        $r11[1] = $r13;
+
+        $r14 = <org.apache.log4j.net.SocketServerTestCase: java.lang.String EXCEPTION2>;
+
+        $r11[2] = $r14;
+
+        $r15 = <org.apache.log4j.net.SocketServerTestCase: java.lang.String EXCEPTION3>;
+
+        $r11[3] = $r15;
+
+        $r16 = <org.apache.log4j.net.SocketServerTestCase: java.lang.String EXCEPTION4>;
+
+        $r11[4] = $r16;
+
+        $r17 = <org.apache.log4j.net.SocketServerTestCase: java.lang.String EXCEPTION5>;
+
+        $r11[5] = $r17;
+
+        specialinvoke $r10.<org.apache.log4j.util.ControlFilter: void <init>(java.lang.String[])>($r11);
+
+        $r20 = <org.apache.log4j.net.SocketServerTestCase: java.lang.String TEMP>;
+
+        $r21 = <org.apache.log4j.net.SocketServerTestCase: java.lang.String FILTERED>;
+
+        $r18 = newarray (org.apache.log4j.util.Filter)[4];
+
+        $r18[0] = $r10;
+
+        $r19 = new org.apache.log4j.util.LineNumberFilter;
+
+        specialinvoke $r19.<org.apache.log4j.util.LineNumberFilter: void <init>()>();
+
+        $r18[1] = $r19;
+
+        $r22 = new org.apache.log4j.util.JunitTestRunnerFilter;
+
+        specialinvoke $r22.<org.apache.log4j.util.JunitTestRunnerFilter: void <init>()>();
+
+        $r18[2] = $r22;
+
+        $r23 = new org.apache.log4j.util.SunReflectFilter;
+
+        specialinvoke $r23.<org.apache.log4j.util.SunReflectFilter: void <init>()>();
+
+        $r18[3] = $r23;
+
+        staticinvoke <org.apache.log4j.util.Transformer: void transform(java.lang.String,java.lang.String,org.apache.log4j.util.Filter[])>($r20, $r21, $r18);
+
+        $r24 = <org.apache.log4j.net.SocketServerTestCase: java.lang.String FILTERED>;
+
+        $z1 = staticinvoke <org.apache.log4j.util.Compare: boolean compare(java.lang.String,java.lang.String)>($r24, "witness/socketServer.5");
+
+        staticinvoke <org.apache.log4j.net.SocketServerTestCase: void assertTrue(boolean)>($z1);
+
+     label1:
+        return;
+    }
+
+    public void test6() throws java.lang.Exception
+    {
+        org.apache.log4j.net.SocketServerTestCase r0;
+        org.apache.log4j.net.SocketAppender $r3, $r4, $r6;
+        org.apache.log4j.AsyncAppender $r5;
+        org.apache.log4j.Logger $r7;
+        java.lang.String $r9, $r12, $r13, $r14, $r15, $r16, $r17, $r20, $r21, $r24;
+        boolean $z0, $z1;
+        org.apache.log4j.util.ControlFilter $r10;
+        java.lang.String[] $r11;
+        org.apache.log4j.util.Filter[] $r18;
+        org.apache.log4j.util.LineNumberFilter $r19;
+        org.apache.log4j.util.JunitTestRunnerFilter $r22;
+        org.apache.log4j.util.SunReflectFilter $r23;
+
+        r0 := @this: org.apache.log4j.net.SocketServerTestCase;
+
+        $r3 = new org.apache.log4j.net.SocketAppender;
+
+        specialinvoke $r3.<org.apache.log4j.net.SocketAppender: void <init>(java.lang.String,int)>("localhost", 12345);
+
+        r0.<org.apache.log4j.net.SocketServerTestCase: org.apache.log4j.net.SocketAppender socketAppender> = $r3;
+
+        $r4 = r0.<org.apache.log4j.net.SocketServerTestCase: org.apache.log4j.net.SocketAppender socketAppender>;
+
+        virtualinvoke $r4.<org.apache.log4j.net.SocketAppender: void setLocationInfo(boolean)>(1);
+
+        $r5 = new org.apache.log4j.AsyncAppender;
+
+        specialinvoke $r5.<org.apache.log4j.AsyncAppender: void <init>()>();
+
+        virtualinvoke $r5.<org.apache.log4j.AsyncAppender: void setLocationInfo(boolean)>(1);
+
+        $r6 = r0.<org.apache.log4j.net.SocketServerTestCase: org.apache.log4j.net.SocketAppender socketAppender>;
+
+        virtualinvoke $r5.<org.apache.log4j.AsyncAppender: void addAppender(org.apache.log4j.Appender)>($r6);
+
+        $r7 = <org.apache.log4j.net.SocketServerTestCase: org.apache.log4j.Logger rootLogger>;
+
+        virtualinvoke $r7.<org.apache.log4j.Logger: void addAppender(org.apache.log4j.Appender)>($r5);
+
+        staticinvoke <org.apache.log4j.NDC: void push(java.lang.String)>("some6");
+
+        staticinvoke <org.apache.log4j.MDC: void put(java.lang.String,java.lang.Object)>("hostID", "client-test6");
+
+        staticinvoke <org.apache.log4j.net.SocketServerTestCase: void common(java.lang.String,java.lang.String,java.lang.Object)>("T6", "key6", "MDC-TEST6");
+
+        staticinvoke <org.apache.log4j.NDC: java.lang.String pop()>();
+
+        staticinvoke <org.apache.log4j.MDC: void remove(java.lang.String)>("hostID");
+
+        virtualinvoke r0.<org.apache.log4j.net.SocketServerTestCase: void delay(int)>(2);
+
+        $r9 = staticinvoke <java.lang.System: java.lang.String getProperty(java.lang.String)>("java.version");
+
+        $z0 = virtualinvoke $r9.<java.lang.String: boolean startsWith(java.lang.String)>("1.1.");
+
+        if $z0 != 0 goto label1;
+
+        $r10 = new org.apache.log4j.util.ControlFilter;
+
+        $r11 = newarray (java.lang.String)[6];
+
+        $r12 = <org.apache.log4j.net.SocketServerTestCase: java.lang.String PAT6>;
+
+        $r11[0] = $r12;
+
+        $r13 = <org.apache.log4j.net.SocketServerTestCase: java.lang.String EXCEPTION1>;
+
+        $r11[1] = $r13;
+
+        $r14 = <org.apache.log4j.net.SocketServerTestCase: java.lang.String EXCEPTION2>;
+
+        $r11[2] = $r14;
+
+        $r15 = <org.apache.log4j.net.SocketServerTestCase: java.lang.String EXCEPTION3>;
+
+        $r11[3] = $r15;
+
+        $r16 = <org.apache.log4j.net.SocketServerTestCase: java.lang.String EXCEPTION4>;
+
+        $r11[4] = $r16;
+
+        $r17 = <org.apache.log4j.net.SocketServerTestCase: java.lang.String EXCEPTION5>;
+
+        $r11[5] = $r17;
+
+        specialinvoke $r10.<org.apache.log4j.util.ControlFilter: void <init>(java.lang.String[])>($r11);
+
+        $r20 = <org.apache.log4j.net.SocketServerTestCase: java.lang.String TEMP>;
+
+        $r21 = <org.apache.log4j.net.SocketServerTestCase: java.lang.String FILTERED>;
+
+        $r18 = newarray (org.apache.log4j.util.Filter)[4];
+
+        $r18[0] = $r10;
+
+        $r19 = new org.apache.log4j.util.LineNumberFilter;
+
+        specialinvoke $r19.<org.apache.log4j.util.LineNumberFilter: void <init>()>();
+
+        $r18[1] = $r19;
+
+        $r22 = new org.apache.log4j.util.JunitTestRunnerFilter;
+
+        specialinvoke $r22.<org.apache.log4j.util.JunitTestRunnerFilter: void <init>()>();
+
+        $r18[2] = $r22;
+
+        $r23 = new org.apache.log4j.util.SunReflectFilter;
+
+        specialinvoke $r23.<org.apache.log4j.util.SunReflectFilter: void <init>()>();
+
+        $r18[3] = $r23;
+
+        staticinvoke <org.apache.log4j.util.Transformer: void transform(java.lang.String,java.lang.String,org.apache.log4j.util.Filter[])>($r20, $r21, $r18);
+
+        $r24 = <org.apache.log4j.net.SocketServerTestCase: java.lang.String FILTERED>;
+
+        $z1 = staticinvoke <org.apache.log4j.util.Compare: boolean compare(java.lang.String,java.lang.String)>($r24, "witness/socketServer.6");
+
+        staticinvoke <org.apache.log4j.net.SocketServerTestCase: void assertTrue(boolean)>($z1);
+
+     label1:
+        return;
+    }
+
+    public void test7() throws java.lang.Exception
+    {
+        org.apache.log4j.net.SocketServerTestCase r0;
+        org.apache.log4j.net.SocketAppender $r2, $r3, $r4;
+        org.apache.log4j.Logger $r5;
+        java.lang.String $r7, $r10, $r11, $r12, $r13, $r14, $r15, $r18, $r19, $r22;
+        boolean $z0, $z1;
+        org.apache.log4j.util.ControlFilter $r8;
+        java.lang.String[] $r9;
+        org.apache.log4j.util.Filter[] $r16;
+        org.apache.log4j.util.LineNumberFilter $r17;
+        org.apache.log4j.util.JunitTestRunnerFilter $r20;
+        org.apache.log4j.util.SunReflectFilter $r21;
+
+        r0 := @this: org.apache.log4j.net.SocketServerTestCase;
+
+        $r2 = new org.apache.log4j.net.SocketAppender;
+
+        specialinvoke $r2.<org.apache.log4j.net.SocketAppender: void <init>(java.lang.String,int)>("localhost", 12345);
+
+        r0.<org.apache.log4j.net.SocketServerTestCase: org.apache.log4j.net.SocketAppender socketAppender> = $r2;
+
+        $r3 = r0.<org.apache.log4j.net.SocketServerTestCase: org.apache.log4j.net.SocketAppender socketAppender>;
+
+        virtualinvoke $r3.<org.apache.log4j.net.SocketAppender: void setLocationInfo(boolean)>(1);
+
+        $r5 = <org.apache.log4j.net.SocketServerTestCase: org.apache.log4j.Logger rootLogger>;
+
+        $r4 = r0.<org.apache.log4j.net.SocketServerTestCase: org.apache.log4j.net.SocketAppender socketAppender>;
+
+        virtualinvoke $r5.<org.apache.log4j.Logger: void addAppender(org.apache.log4j.Appender)>($r4);
+
+        staticinvoke <org.apache.log4j.NDC: void push(java.lang.String)>("some7");
+
+        staticinvoke <org.apache.log4j.MDC: void put(java.lang.String,java.lang.Object)>("hostID", "client-test7");
+
+        staticinvoke <org.apache.log4j.net.SocketServerTestCase: void common(java.lang.String,java.lang.String,java.lang.Object)>("T7", "key7", "MDC-TEST7");
+
+        staticinvoke <org.apache.log4j.NDC: java.lang.String pop()>();
+
+        staticinvoke <org.apache.log4j.MDC: void remove(java.lang.String)>("hostID");
+
+        virtualinvoke r0.<org.apache.log4j.net.SocketServerTestCase: void delay(int)>(2);
+
+        $r7 = staticinvoke <java.lang.System: java.lang.String getProperty(java.lang.String)>("java.version");
+
+        $z0 = virtualinvoke $r7.<java.lang.String: boolean startsWith(java.lang.String)>("1.1.");
+
+        if $z0 != 0 goto label1;
+
+        $r8 = new org.apache.log4j.util.ControlFilter;
+
+        $r9 = newarray (java.lang.String)[6];
+
+        $r10 = <org.apache.log4j.net.SocketServerTestCase: java.lang.String PAT7>;
+
+        $r9[0] = $r10;
+
+        $r11 = <org.apache.log4j.net.SocketServerTestCase: java.lang.String EXCEPTION1>;
+
+        $r9[1] = $r11;
+
+        $r12 = <org.apache.log4j.net.SocketServerTestCase: java.lang.String EXCEPTION2>;
+
+        $r9[2] = $r12;
+
+        $r13 = <org.apache.log4j.net.SocketServerTestCase: java.lang.String EXCEPTION3>;
+
+        $r9[3] = $r13;
+
+        $r14 = <org.apache.log4j.net.SocketServerTestCase: java.lang.String EXCEPTION4>;
+
+        $r9[4] = $r14;
+
+        $r15 = <org.apache.log4j.net.SocketServerTestCase: java.lang.String EXCEPTION5>;
+
+        $r9[5] = $r15;
+
+        specialinvoke $r8.<org.apache.log4j.util.ControlFilter: void <init>(java.lang.String[])>($r9);
+
+        $r18 = <org.apache.log4j.net.SocketServerTestCase: java.lang.String TEMP>;
+
+        $r19 = <org.apache.log4j.net.SocketServerTestCase: java.lang.String FILTERED>;
+
+        $r16 = newarray (org.apache.log4j.util.Filter)[4];
+
+        $r16[0] = $r8;
+
+        $r17 = new org.apache.log4j.util.LineNumberFilter;
+
+        specialinvoke $r17.<org.apache.log4j.util.LineNumberFilter: void <init>()>();
+
+        $r16[1] = $r17;
+
+        $r20 = new org.apache.log4j.util.JunitTestRunnerFilter;
+
+        specialinvoke $r20.<org.apache.log4j.util.JunitTestRunnerFilter: void <init>()>();
+
+        $r16[2] = $r20;
+
+        $r21 = new org.apache.log4j.util.SunReflectFilter;
+
+        specialinvoke $r21.<org.apache.log4j.util.SunReflectFilter: void <init>()>();
+
+        $r16[3] = $r21;
+
+        staticinvoke <org.apache.log4j.util.Transformer: void transform(java.lang.String,java.lang.String,org.apache.log4j.util.Filter[])>($r18, $r19, $r16);
+
+        $r22 = <org.apache.log4j.net.SocketServerTestCase: java.lang.String FILTERED>;
+
+        $z1 = staticinvoke <org.apache.log4j.util.Compare: boolean compare(java.lang.String,java.lang.String)>($r22, "witness/socketServer.7");
+
+        staticinvoke <org.apache.log4j.net.SocketServerTestCase: void assertTrue(boolean)>($z1);
+
+     label1:
+        return;
+    }
+
+    public void test8() throws java.lang.Exception
+    {
+        org.apache.log4j.net.SocketServerTestCase r0;
+        org.apache.log4j.net.SocketAppender $r2, $r3, $r4;
+        org.apache.log4j.Logger $r5;
+        java.lang.String $r6, $r8, $r11, $r12, $r13, $r14, $r15, $r16, $r19, $r20, $r23;
+        int $i0;
+        boolean $z0, $z1;
+        org.apache.log4j.util.ControlFilter $r9;
+        java.lang.String[] $r10;
+        org.apache.log4j.util.Filter[] $r17;
+        org.apache.log4j.util.LineNumberFilter $r18;
+        org.apache.log4j.util.JunitTestRunnerFilter $r21;
+        org.apache.log4j.util.SunReflectFilter $r22;
+
+        r0 := @this: org.apache.log4j.net.SocketServerTestCase;
+
+        $r2 = new org.apache.log4j.net.SocketAppender;
+
+        specialinvoke $r2.<org.apache.log4j.net.SocketAppender: void <init>(java.lang.String,int)>("localhost", 12345);
+
+        r0.<org.apache.log4j.net.SocketServerTestCase: org.apache.log4j.net.SocketAppender socketAppender> = $r2;
+
+        $r3 = r0.<org.apache.log4j.net.SocketServerTestCase: org.apache.log4j.net.SocketAppender socketAppender>;
+
+        virtualinvoke $r3.<org.apache.log4j.net.SocketAppender: void setLocationInfo(boolean)>(1);
+
+        $r5 = <org.apache.log4j.net.SocketServerTestCase: org.apache.log4j.Logger rootLogger>;
+
+        $r4 = r0.<org.apache.log4j.net.SocketServerTestCase: org.apache.log4j.net.SocketAppender socketAppender>;
+
+        virtualinvoke $r5.<org.apache.log4j.Logger: void addAppender(org.apache.log4j.Appender)>($r4);
+
+        staticinvoke <org.apache.log4j.NDC: void push(java.lang.String)>("some8");
+
+        $r6 = staticinvoke <java.lang.System: java.lang.String getProperty(java.lang.String)>("java.vendor");
+
+        $i0 = virtualinvoke $r6.<java.lang.String: int indexOf(java.lang.String)>("Apache");
+
+        if $i0 == -1 goto label1;
+
+        staticinvoke <org.apache.log4j.MDC: void put(java.lang.String,java.lang.Object)>("hostID", "shortSocketServer");
+
+     label1:
+        staticinvoke <org.apache.log4j.net.SocketServerTestCase: void common(java.lang.String,java.lang.String,java.lang.Object)>("T8", "key8", "MDC-TEST8");
+
+        staticinvoke <org.apache.log4j.NDC: java.lang.String pop()>();
+
+        virtualinvoke r0.<org.apache.log4j.net.SocketServerTestCase: void delay(int)>(2);
+
+        $r8 = staticinvoke <java.lang.System: java.lang.String getProperty(java.lang.String)>("java.version");
+
+        $z0 = virtualinvoke $r8.<java.lang.String: boolean startsWith(java.lang.String)>("1.1.");
+
+        if $z0 != 0 goto label2;
+
+        $r9 = new org.apache.log4j.util.ControlFilter;
+
+        $r10 = newarray (java.lang.String)[6];
+
+        $r11 = <org.apache.log4j.net.SocketServerTestCase: java.lang.String PAT8>;
+
+        $r10[0] = $r11;
+
+        $r12 = <org.apache.log4j.net.SocketServerTestCase: java.lang.String EXCEPTION1>;
+
+        $r10[1] = $r12;
+
+        $r13 = <org.apache.log4j.net.SocketServerTestCase: java.lang.String EXCEPTION2>;
+
+        $r10[2] = $r13;
+
+        $r14 = <org.apache.log4j.net.SocketServerTestCase: java.lang.String EXCEPTION3>;
+
+        $r10[3] = $r14;
+
+        $r15 = <org.apache.log4j.net.SocketServerTestCase: java.lang.String EXCEPTION4>;
+
+        $r10[4] = $r15;
+
+        $r16 = <org.apache.log4j.net.SocketServerTestCase: java.lang.String EXCEPTION5>;
+
+        $r10[5] = $r16;
+
+        specialinvoke $r9.<org.apache.log4j.util.ControlFilter: void <init>(java.lang.String[])>($r10);
+
+        $r19 = <org.apache.log4j.net.SocketServerTestCase: java.lang.String TEMP>;
+
+        $r20 = <org.apache.log4j.net.SocketServerTestCase: java.lang.String FILTERED>;
+
+        $r17 = newarray (org.apache.log4j.util.Filter)[4];
+
+        $r17[0] = $r9;
+
+        $r18 = new org.apache.log4j.util.LineNumberFilter;
+
+        specialinvoke $r18.<org.apache.log4j.util.LineNumberFilter: void <init>()>();
+
+        $r17[1] = $r18;
+
+        $r21 = new org.apache.log4j.util.JunitTestRunnerFilter;
+
+        specialinvoke $r21.<org.apache.log4j.util.JunitTestRunnerFilter: void <init>()>();
+
+        $r17[2] = $r21;
+
+        $r22 = new org.apache.log4j.util.SunReflectFilter;
+
+        specialinvoke $r22.<org.apache.log4j.util.SunReflectFilter: void <init>()>();
+
+        $r17[3] = $r22;
+
+        staticinvoke <org.apache.log4j.util.Transformer: void transform(java.lang.String,java.lang.String,org.apache.log4j.util.Filter[])>($r19, $r20, $r17);
+
+        $r23 = <org.apache.log4j.net.SocketServerTestCase: java.lang.String FILTERED>;
+
+        $z1 = staticinvoke <org.apache.log4j.util.Compare: boolean compare(java.lang.String,java.lang.String)>($r23, "witness/socketServer.8");
+
+        staticinvoke <org.apache.log4j.net.SocketServerTestCase: void assertTrue(boolean)>($z1);
+
+     label2:
+        return;
+    }
+
+    static void common(java.lang.String, java.lang.String, java.lang.Object)
+    {
+        java.lang.String r0, r1, r3, $r16, $r24, $r27, $r31, $r34, $r38, $r42, $r47, $r52, $r55;
+        java.lang.Object r2;
+        org.apache.log4j.Logger r4, $r9, $r11, $r13, $r18, $r20, $r22, $r29, $r36, $r40, $r44, $r50;
+        java.lang.Thread $r6, $r7, $r57;
+        org.apache.log4j.Level $r8, $r10, $r17, $r19;
+        java.lang.StringBuilder $r12, $r15, $r21, $r23, $r25, $r26, $r28, $r30, $r32, $r33, $r35, $r37, $r39, $r41, $r43, $r46, $r49, $r51, $r53, $r54;
+        org.apache.log4j.xml.XLevel $r14, $r45;
+        java.lang.Exception $r48;
+        int i1, i2, i3, i4, i5, i6, i7, i8, i9, i10;
+
+        r0 := @parameter0: java.lang.String;
+
+        r1 := @parameter1: java.lang.String;
+
+        r2 := @parameter2: java.lang.Object;
+
+        $r6 = staticinvoke <java.lang.Thread: java.lang.Thread currentThread()>();
+
+        r3 = virtualinvoke $r6.<java.lang.Thread: java.lang.String getName()>();
+
+        $r7 = staticinvoke <java.lang.Thread: java.lang.Thread currentThread()>();
+
+        virtualinvoke $r7.<java.lang.Thread: void setName(java.lang.String)>("main");
+
+        staticinvoke <org.apache.log4j.NDC: void push(java.lang.String)>(r0);
+
+        staticinvoke <org.apache.log4j.MDC: void put(java.lang.String,java.lang.Object)>(r1, r2);
+
+        r4 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getRootLogger()>();
+
+        $r9 = <org.apache.log4j.net.SocketServerTestCase: org.apache.log4j.Logger logger>;
+
+        $r8 = <org.apache.log4j.Level: org.apache.log4j.Level DEBUG>;
+
+        virtualinvoke $r9.<org.apache.log4j.Logger: void setLevel(org.apache.log4j.Level)>($r8);
+
+        $r11 = <org.apache.log4j.net.SocketServerTestCase: org.apache.log4j.Logger rootLogger>;
+
+        $r10 = <org.apache.log4j.Level: org.apache.log4j.Level DEBUG>;
+
+        virtualinvoke $r11.<org.apache.log4j.Logger: void setLevel(org.apache.log4j.Level)>($r10);
+
+        $r13 = <org.apache.log4j.net.SocketServerTestCase: org.apache.log4j.Logger logger>;
+
+        $r14 = <org.apache.log4j.xml.XLevel: org.apache.log4j.xml.XLevel TRACE>;
+
+        $r12 = new java.lang.StringBuilder;
+
+        specialinvoke $r12.<java.lang.StringBuilder: void <init>(java.lang.String)>("Message ");
+
+        i1 = -1 + 1;
+
+        $r15 = virtualinvoke $r12.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i1);
+
+        $r16 = virtualinvoke $r15.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r13.<org.apache.log4j.Logger: void log(org.apache.log4j.Priority,java.lang.Object)>($r14, $r16);
+
+        $r18 = <org.apache.log4j.net.SocketServerTestCase: org.apache.log4j.Logger logger>;
+
+        $r17 = <org.apache.log4j.Level: org.apache.log4j.Level TRACE>;
+
+        virtualinvoke $r18.<org.apache.log4j.Logger: void setLevel(org.apache.log4j.Level)>($r17);
+
+        $r20 = <org.apache.log4j.net.SocketServerTestCase: org.apache.log4j.Logger rootLogger>;
+
+        $r19 = <org.apache.log4j.Level: org.apache.log4j.Level TRACE>;
+
+        virtualinvoke $r20.<org.apache.log4j.Logger: void setLevel(org.apache.log4j.Level)>($r19);
+
+        $r22 = <org.apache.log4j.net.SocketServerTestCase: org.apache.log4j.Logger logger>;
+
+        $r21 = new java.lang.StringBuilder;
+
+        specialinvoke $r21.<java.lang.StringBuilder: void <init>(java.lang.String)>("Message ");
+
+        i2 = i1 + 1;
+
+        $r23 = virtualinvoke $r21.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i2);
+
+        $r24 = virtualinvoke $r23.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r22.<org.apache.log4j.Logger: void trace(java.lang.Object)>($r24);
+
+        $r25 = new java.lang.StringBuilder;
+
+        specialinvoke $r25.<java.lang.StringBuilder: void <init>(java.lang.String)>("Message ");
+
+        i3 = i2 + 1;
+
+        $r26 = virtualinvoke $r25.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i3);
+
+        $r27 = virtualinvoke $r26.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke r4.<org.apache.log4j.Logger: void trace(java.lang.Object)>($r27);
+
+        $r29 = <org.apache.log4j.net.SocketServerTestCase: org.apache.log4j.Logger logger>;
+
+        $r28 = new java.lang.StringBuilder;
+
+        specialinvoke $r28.<java.lang.StringBuilder: void <init>(java.lang.String)>("Message ");
+
+        i4 = i3 + 1;
+
+        $r30 = virtualinvoke $r28.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i4);
+
+        $r31 = virtualinvoke $r30.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r29.<org.apache.log4j.Logger: void debug(java.lang.Object)>($r31);
+
+        $r32 = new java.lang.StringBuilder;
+
+        specialinvoke $r32.<java.lang.StringBuilder: void <init>(java.lang.String)>("Message ");
+
+        i5 = i4 + 1;
+
+        $r33 = virtualinvoke $r32.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i5);
+
+        $r34 = virtualinvoke $r33.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke r4.<org.apache.log4j.Logger: void debug(java.lang.Object)>($r34);
+
+        $r36 = <org.apache.log4j.net.SocketServerTestCase: org.apache.log4j.Logger logger>;
+
+        $r35 = new java.lang.StringBuilder;
+
+        specialinvoke $r35.<java.lang.StringBuilder: void <init>(java.lang.String)>("Message ");
+
+        i6 = i5 + 1;
+
+        $r37 = virtualinvoke $r35.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i6);
+
+        $r38 = virtualinvoke $r37.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r36.<org.apache.log4j.Logger: void info(java.lang.Object)>($r38);
+
+        $r40 = <org.apache.log4j.net.SocketServerTestCase: org.apache.log4j.Logger logger>;
+
+        $r39 = new java.lang.StringBuilder;
+
+        specialinvoke $r39.<java.lang.StringBuilder: void <init>(java.lang.String)>("Message ");
+
+        i7 = i6 + 1;
+
+        $r41 = virtualinvoke $r39.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i7);
+
+        $r42 = virtualinvoke $r41.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r40.<org.apache.log4j.Logger: void warn(java.lang.Object)>($r42);
+
+        $r44 = <org.apache.log4j.net.SocketServerTestCase: org.apache.log4j.Logger logger>;
+
+        $r45 = <org.apache.log4j.xml.XLevel: org.apache.log4j.xml.XLevel LETHAL>;
+
+        $r43 = new java.lang.StringBuilder;
+
+        specialinvoke $r43.<java.lang.StringBuilder: void <init>(java.lang.String)>("Message ");
+
+        i8 = i7 + 1;
+
+        $r46 = virtualinvoke $r43.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i8);
+
+        $r47 = virtualinvoke $r46.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r44.<org.apache.log4j.Logger: void log(org.apache.log4j.Priority,java.lang.Object)>($r45, $r47);
+
+        $r48 = new java.lang.Exception;
+
+        specialinvoke $r48.<java.lang.Exception: void <init>(java.lang.String)>("Just testing");
+
+        $r50 = <org.apache.log4j.net.SocketServerTestCase: org.apache.log4j.Logger logger>;
+
+        $r49 = new java.lang.StringBuilder;
+
+        specialinvoke $r49.<java.lang.StringBuilder: void <init>(java.lang.String)>("Message ");
+
+        i9 = i8 + 1;
+
+        $r51 = virtualinvoke $r49.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i9);
+
+        $r52 = virtualinvoke $r51.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r50.<org.apache.log4j.Logger: void debug(java.lang.Object,java.lang.Throwable)>($r52, $r48);
+
+        $r53 = new java.lang.StringBuilder;
+
+        specialinvoke $r53.<java.lang.StringBuilder: void <init>(java.lang.String)>("Message ");
+
+        i10 = i9 + 1;
+
+        $r54 = virtualinvoke $r53.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i10);
+
+        $r55 = virtualinvoke $r54.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke r4.<org.apache.log4j.Logger: void error(java.lang.Object,java.lang.Throwable)>($r55, $r48);
+
+        staticinvoke <org.apache.log4j.NDC: java.lang.String pop()>();
+
+        staticinvoke <org.apache.log4j.MDC: void remove(java.lang.String)>(r1);
+
+        $r57 = staticinvoke <java.lang.Thread: java.lang.Thread currentThread()>();
+
+        virtualinvoke $r57.<java.lang.Thread: void setName(java.lang.String)>(r3);
+
+        return;
+    }
+
+    public void delay(int)
+    {
+        org.apache.log4j.net.SocketServerTestCase r0;
+        int i0, $i1;
+        long $l2;
+        java.lang.Exception $r2;
+
+        r0 := @this: org.apache.log4j.net.SocketServerTestCase;
+
+        i0 := @parameter0: int;
+
+     label1:
+        $i1 = i0 * 1000;
+
+        $l2 = (long) $i1;
+
+        staticinvoke <java.lang.Thread: void sleep(long)>($l2);
+
+     label2:
+        goto label4;
+
+     label3:
+        $r2 := @caughtexception;
+
+     label4:
+        return;
+
+        catch java.lang.Exception from label1 to label2 with label3;
+    }
+
+    public static junit.framework.Test suite()
+    {
+        junit.framework.TestSuite $r1;
+        org.apache.log4j.net.SocketServerTestCase $r2, $r3, $r4, $r5, $r6, $r7, $r8, $r9;
+
+        $r1 = new junit.framework.TestSuite;
+
+        specialinvoke $r1.<junit.framework.TestSuite: void <init>()>();
+
+        $r2 = new org.apache.log4j.net.SocketServerTestCase;
+
+        specialinvoke $r2.<org.apache.log4j.net.SocketServerTestCase: void <init>(java.lang.String)>("test1");
+
+        virtualinvoke $r1.<junit.framework.TestSuite: void addTest(junit.framework.Test)>($r2);
+
+        $r3 = new org.apache.log4j.net.SocketServerTestCase;
+
+        specialinvoke $r3.<org.apache.log4j.net.SocketServerTestCase: void <init>(java.lang.String)>("test2");
+
+        virtualinvoke $r1.<junit.framework.TestSuite: void addTest(junit.framework.Test)>($r3);
+
+        $r4 = new org.apache.log4j.net.SocketServerTestCase;
+
+        specialinvoke $r4.<org.apache.log4j.net.SocketServerTestCase: void <init>(java.lang.String)>("test3");
+
+        virtualinvoke $r1.<junit.framework.TestSuite: void addTest(junit.framework.Test)>($r4);
+
+        $r5 = new org.apache.log4j.net.SocketServerTestCase;
+
+        specialinvoke $r5.<org.apache.log4j.net.SocketServerTestCase: void <init>(java.lang.String)>("test4");
+
+        virtualinvoke $r1.<junit.framework.TestSuite: void addTest(junit.framework.Test)>($r5);
+
+        $r6 = new org.apache.log4j.net.SocketServerTestCase;
+
+        specialinvoke $r6.<org.apache.log4j.net.SocketServerTestCase: void <init>(java.lang.String)>("test5");
+
+        virtualinvoke $r1.<junit.framework.TestSuite: void addTest(junit.framework.Test)>($r6);
+
+        $r7 = new org.apache.log4j.net.SocketServerTestCase;
+
+        specialinvoke $r7.<org.apache.log4j.net.SocketServerTestCase: void <init>(java.lang.String)>("test6");
+
+        virtualinvoke $r1.<junit.framework.TestSuite: void addTest(junit.framework.Test)>($r7);
+
+        $r8 = new org.apache.log4j.net.SocketServerTestCase;
+
+        specialinvoke $r8.<org.apache.log4j.net.SocketServerTestCase: void <init>(java.lang.String)>("test7");
+
+        virtualinvoke $r1.<junit.framework.TestSuite: void addTest(junit.framework.Test)>($r8);
+
+        $r9 = new org.apache.log4j.net.SocketServerTestCase;
+
+        specialinvoke $r9.<org.apache.log4j.net.SocketServerTestCase: void <init>(java.lang.String)>("test8");
+
+        virtualinvoke $r1.<junit.framework.TestSuite: void addTest(junit.framework.Test)>($r9);
+
+        return $r1;
+    }
+}

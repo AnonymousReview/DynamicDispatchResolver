@@ -1,0 +1,984 @@
+public class org.apache.commons.io.output.ProxyWriterTest extends java.lang.Object
+{
+
+    public void <init>()
+    {
+        org.apache.commons.io.output.ProxyWriterTest r0;
+
+        r0 := @this: org.apache.commons.io.output.ProxyWriterTest;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void appendCharSequence() throws java.lang.Exception
+    {
+        org.apache.commons.io.output.ProxyWriterTest r0;
+        org.apache.commons.io.output.StringBuilderWriter $r4;
+        org.apache.commons.io.output.ProxyWriter $r5;
+        java.lang.String $r7, $r11;
+        java.lang.Exception $r8;
+        java.lang.StringBuilder $r9, $r10;
+
+        r0 := @this: org.apache.commons.io.output.ProxyWriterTest;
+
+        $r4 = new org.apache.commons.io.output.StringBuilderWriter;
+
+        specialinvoke $r4.<org.apache.commons.io.output.StringBuilderWriter: void <init>()>();
+
+        $r5 = new org.apache.commons.io.output.ProxyWriter;
+
+        specialinvoke $r5.<org.apache.commons.io.output.ProxyWriter: void <init>(java.io.Writer)>($r4);
+
+     label1:
+        virtualinvoke $r5.<org.apache.commons.io.output.ProxyWriter: java.io.Writer append(java.lang.CharSequence)>("ABC");
+
+     label2:
+        goto label4;
+
+     label3:
+        $r8 := @caughtexception;
+
+        $r9 = new java.lang.StringBuilder;
+
+        specialinvoke $r9.<java.lang.StringBuilder: void <init>(java.lang.String)>("Appending CharSequence threw ");
+
+        $r10 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r8);
+
+        $r11 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>($r11);
+
+     label4:
+        $r7 = virtualinvoke $r4.<org.apache.commons.io.output.StringBuilderWriter: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("ABC", $r7);
+
+        virtualinvoke $r5.<org.apache.commons.io.output.ProxyWriter: void close()>();
+
+        return;
+
+        catch java.lang.Exception from label1 to label2 with label3;
+    }
+
+    public void appendCharSequence_with_offset() throws java.lang.Exception
+    {
+        org.apache.commons.io.output.ProxyWriterTest r0;
+        org.apache.commons.io.output.StringBuilderWriter $r3;
+        org.apache.commons.io.output.ProxyWriter $r4;
+        java.lang.String $r6;
+
+        r0 := @this: org.apache.commons.io.output.ProxyWriterTest;
+
+        $r3 = new org.apache.commons.io.output.StringBuilderWriter;
+
+        specialinvoke $r3.<org.apache.commons.io.output.StringBuilderWriter: void <init>()>();
+
+        $r4 = new org.apache.commons.io.output.ProxyWriter;
+
+        specialinvoke $r4.<org.apache.commons.io.output.ProxyWriter: void <init>(java.io.Writer)>($r3);
+
+        virtualinvoke $r4.<org.apache.commons.io.output.ProxyWriter: java.io.Writer append(java.lang.CharSequence,int,int)>("ABC", 1, 3);
+
+        virtualinvoke $r4.<org.apache.commons.io.output.ProxyWriter: void flush()>();
+
+        $r6 = virtualinvoke $r3.<org.apache.commons.io.output.StringBuilderWriter: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("BC", $r6);
+
+        virtualinvoke $r4.<org.apache.commons.io.output.ProxyWriter: void close()>();
+
+        return;
+    }
+
+    public void appendChar() throws java.lang.Exception
+    {
+        org.apache.commons.io.output.ProxyWriterTest r0;
+        org.apache.commons.io.output.StringBuilderWriter $r3;
+        org.apache.commons.io.output.ProxyWriter $r4;
+        java.lang.String $r6;
+
+        r0 := @this: org.apache.commons.io.output.ProxyWriterTest;
+
+        $r3 = new org.apache.commons.io.output.StringBuilderWriter;
+
+        specialinvoke $r3.<org.apache.commons.io.output.StringBuilderWriter: void <init>()>();
+
+        $r4 = new org.apache.commons.io.output.ProxyWriter;
+
+        specialinvoke $r4.<org.apache.commons.io.output.ProxyWriter: void <init>(java.io.Writer)>($r3);
+
+        virtualinvoke $r4.<org.apache.commons.io.output.ProxyWriter: java.io.Writer append(char)>(99);
+
+        $r6 = virtualinvoke $r3.<org.apache.commons.io.output.StringBuilderWriter: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("c", $r6);
+
+        virtualinvoke $r4.<org.apache.commons.io.output.ProxyWriter: void close()>();
+
+        return;
+    }
+
+    public void writeString() throws java.lang.Exception
+    {
+        org.apache.commons.io.output.ProxyWriterTest r0;
+        org.apache.commons.io.output.StringBuilderWriter $r4;
+        org.apache.commons.io.output.ProxyWriter $r5;
+        java.lang.String $r6, $r10;
+        java.lang.Exception $r7;
+        java.lang.StringBuilder $r8, $r9;
+
+        r0 := @this: org.apache.commons.io.output.ProxyWriterTest;
+
+        $r4 = new org.apache.commons.io.output.StringBuilderWriter;
+
+        specialinvoke $r4.<org.apache.commons.io.output.StringBuilderWriter: void <init>()>();
+
+        $r5 = new org.apache.commons.io.output.ProxyWriter;
+
+        specialinvoke $r5.<org.apache.commons.io.output.ProxyWriter: void <init>(java.io.Writer)>($r4);
+
+     label1:
+        virtualinvoke $r5.<org.apache.commons.io.output.ProxyWriter: void write(java.lang.String)>("ABC");
+
+     label2:
+        goto label4;
+
+     label3:
+        $r7 := @caughtexception;
+
+        $r8 = new java.lang.StringBuilder;
+
+        specialinvoke $r8.<java.lang.StringBuilder: void <init>(java.lang.String)>("Writing String threw ");
+
+        $r9 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r7);
+
+        $r10 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>($r10);
+
+     label4:
+        $r6 = virtualinvoke $r4.<org.apache.commons.io.output.StringBuilderWriter: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("ABC", $r6);
+
+        virtualinvoke $r5.<org.apache.commons.io.output.ProxyWriter: void close()>();
+
+        return;
+
+        catch java.lang.Exception from label1 to label2 with label3;
+    }
+
+    public void writeStringPartial() throws java.lang.Exception
+    {
+        org.apache.commons.io.output.ProxyWriterTest r0;
+        org.apache.commons.io.output.StringBuilderWriter $r4;
+        org.apache.commons.io.output.ProxyWriter $r5;
+        java.lang.String $r6, $r10;
+        java.lang.Exception $r7;
+        java.lang.StringBuilder $r8, $r9;
+
+        r0 := @this: org.apache.commons.io.output.ProxyWriterTest;
+
+        $r4 = new org.apache.commons.io.output.StringBuilderWriter;
+
+        specialinvoke $r4.<org.apache.commons.io.output.StringBuilderWriter: void <init>()>();
+
+        $r5 = new org.apache.commons.io.output.ProxyWriter;
+
+        specialinvoke $r5.<org.apache.commons.io.output.ProxyWriter: void <init>(java.io.Writer)>($r4);
+
+     label1:
+        virtualinvoke $r5.<org.apache.commons.io.output.ProxyWriter: void write(java.lang.String,int,int)>("ABC", 1, 2);
+
+     label2:
+        goto label4;
+
+     label3:
+        $r7 := @caughtexception;
+
+        $r8 = new java.lang.StringBuilder;
+
+        specialinvoke $r8.<java.lang.StringBuilder: void <init>(java.lang.String)>("Writing String threw ");
+
+        $r9 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r7);
+
+        $r10 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>($r10);
+
+     label4:
+        $r6 = virtualinvoke $r4.<org.apache.commons.io.output.StringBuilderWriter: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("BC", $r6);
+
+        virtualinvoke $r5.<org.apache.commons.io.output.ProxyWriter: void close()>();
+
+        return;
+
+        catch java.lang.Exception from label1 to label2 with label3;
+    }
+
+    public void writeCharArray() throws java.lang.Exception
+    {
+        org.apache.commons.io.output.ProxyWriterTest r0;
+        org.apache.commons.io.output.StringBuilderWriter $r4;
+        org.apache.commons.io.output.ProxyWriter $r5;
+        char[] $r6;
+        java.lang.String $r7, $r11;
+        java.lang.Exception $r8;
+        java.lang.StringBuilder $r9, $r10;
+
+        r0 := @this: org.apache.commons.io.output.ProxyWriterTest;
+
+        $r4 = new org.apache.commons.io.output.StringBuilderWriter;
+
+        specialinvoke $r4.<org.apache.commons.io.output.StringBuilderWriter: void <init>()>();
+
+        $r5 = new org.apache.commons.io.output.ProxyWriter;
+
+        specialinvoke $r5.<org.apache.commons.io.output.ProxyWriter: void <init>(java.io.Writer)>($r4);
+
+     label1:
+        $r6 = newarray (char)[3];
+
+        $r6[0] = 65;
+
+        $r6[1] = 66;
+
+        $r6[2] = 67;
+
+        virtualinvoke $r5.<org.apache.commons.io.output.ProxyWriter: void write(char[])>($r6);
+
+     label2:
+        goto label4;
+
+     label3:
+        $r8 := @caughtexception;
+
+        $r9 = new java.lang.StringBuilder;
+
+        specialinvoke $r9.<java.lang.StringBuilder: void <init>(java.lang.String)>("Writing char[] threw ");
+
+        $r10 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r8);
+
+        $r11 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>($r11);
+
+     label4:
+        $r7 = virtualinvoke $r4.<org.apache.commons.io.output.StringBuilderWriter: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("ABC", $r7);
+
+        virtualinvoke $r5.<org.apache.commons.io.output.ProxyWriter: void close()>();
+
+        return;
+
+        catch java.lang.Exception from label1 to label2 with label3;
+    }
+
+    public void writeInt() throws java.lang.Exception
+    {
+        org.apache.commons.io.output.ProxyWriterTest r0;
+        org.apache.commons.io.output.StringBuilderWriter $r4;
+        org.apache.commons.io.output.ProxyWriter $r5;
+        java.lang.String $r6, $r10;
+        java.lang.Exception $r7;
+        java.lang.StringBuilder $r8, $r9;
+
+        r0 := @this: org.apache.commons.io.output.ProxyWriterTest;
+
+        $r4 = new org.apache.commons.io.output.StringBuilderWriter;
+
+        specialinvoke $r4.<org.apache.commons.io.output.StringBuilderWriter: void <init>()>();
+
+        $r5 = new org.apache.commons.io.output.ProxyWriter;
+
+        specialinvoke $r5.<org.apache.commons.io.output.ProxyWriter: void <init>(java.io.Writer)>($r4);
+
+     label1:
+        virtualinvoke $r5.<org.apache.commons.io.output.ProxyWriter: void write(int)>(65);
+
+     label2:
+        goto label4;
+
+     label3:
+        $r7 := @caughtexception;
+
+        $r8 = new java.lang.StringBuilder;
+
+        specialinvoke $r8.<java.lang.StringBuilder: void <init>(java.lang.String)>("Writing char[] threw ");
+
+        $r9 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r7);
+
+        $r10 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>($r10);
+
+     label4:
+        $r6 = virtualinvoke $r4.<org.apache.commons.io.output.StringBuilderWriter: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("A", $r6);
+
+        virtualinvoke $r5.<org.apache.commons.io.output.ProxyWriter: void close()>();
+
+        return;
+
+        catch java.lang.Exception from label1 to label2 with label3;
+    }
+
+    public void writeCharArrayPartial() throws java.lang.Exception
+    {
+        org.apache.commons.io.output.ProxyWriterTest r0;
+        org.apache.commons.io.output.StringBuilderWriter $r4;
+        org.apache.commons.io.output.ProxyWriter $r5;
+        char[] $r6;
+        java.lang.String $r7, $r11;
+        java.lang.Exception $r8;
+        java.lang.StringBuilder $r9, $r10;
+
+        r0 := @this: org.apache.commons.io.output.ProxyWriterTest;
+
+        $r4 = new org.apache.commons.io.output.StringBuilderWriter;
+
+        specialinvoke $r4.<org.apache.commons.io.output.StringBuilderWriter: void <init>()>();
+
+        $r5 = new org.apache.commons.io.output.ProxyWriter;
+
+        specialinvoke $r5.<org.apache.commons.io.output.ProxyWriter: void <init>(java.io.Writer)>($r4);
+
+     label1:
+        $r6 = newarray (char)[3];
+
+        $r6[0] = 65;
+
+        $r6[1] = 66;
+
+        $r6[2] = 67;
+
+        virtualinvoke $r5.<org.apache.commons.io.output.ProxyWriter: void write(char[],int,int)>($r6, 1, 2);
+
+     label2:
+        goto label4;
+
+     label3:
+        $r8 := @caughtexception;
+
+        $r9 = new java.lang.StringBuilder;
+
+        specialinvoke $r9.<java.lang.StringBuilder: void <init>(java.lang.String)>("Writing char[] threw ");
+
+        $r10 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r8);
+
+        $r11 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>($r11);
+
+     label4:
+        $r7 = virtualinvoke $r4.<org.apache.commons.io.output.StringBuilderWriter: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("BC", $r7);
+
+        virtualinvoke $r5.<org.apache.commons.io.output.ProxyWriter: void close()>();
+
+        return;
+
+        catch java.lang.Exception from label1 to label2 with label3;
+    }
+
+    public void nullString() throws java.lang.Exception
+    {
+        org.apache.commons.io.output.ProxyWriterTest r0;
+        org.apache.commons.io.output.ProxyWriter $r2;
+        org.apache.commons.io.output.NullWriter $r3;
+        java.lang.Exception $r4, $r8;
+        java.lang.StringBuilder $r5, $r6, $r9, $r10;
+        java.lang.String $r7, $r11;
+
+        r0 := @this: org.apache.commons.io.output.ProxyWriterTest;
+
+        $r2 = new org.apache.commons.io.output.ProxyWriter;
+
+        $r3 = new org.apache.commons.io.output.NullWriter;
+
+        specialinvoke $r3.<org.apache.commons.io.output.NullWriter: void <init>()>();
+
+        specialinvoke $r2.<org.apache.commons.io.output.ProxyWriter: void <init>(java.io.Writer)>($r3);
+
+     label1:
+        virtualinvoke $r2.<org.apache.commons.io.output.ProxyWriter: void write(java.lang.String)>(null);
+
+     label2:
+        goto label4;
+
+     label3:
+        $r4 := @caughtexception;
+
+        $r5 = new java.lang.StringBuilder;
+
+        specialinvoke $r5.<java.lang.StringBuilder: void <init>(java.lang.String)>("Writing null String threw ");
+
+        $r6 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r4);
+
+        $r7 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>($r7);
+
+     label4:
+        virtualinvoke $r2.<org.apache.commons.io.output.ProxyWriter: void write(java.lang.String,int,int)>(null, 0, 0);
+
+     label5:
+        goto label7;
+
+     label6:
+        $r8 := @caughtexception;
+
+        $r9 = new java.lang.StringBuilder;
+
+        specialinvoke $r9.<java.lang.StringBuilder: void <init>(java.lang.String)>("Writing null String threw ");
+
+        $r10 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r8);
+
+        $r11 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>($r11);
+
+     label7:
+        virtualinvoke $r2.<org.apache.commons.io.output.ProxyWriter: void close()>();
+
+        return;
+
+        catch java.lang.Exception from label1 to label2 with label3;
+        catch java.lang.Exception from label4 to label5 with label6;
+    }
+
+    public void nullCharArray() throws java.lang.Exception
+    {
+        org.apache.commons.io.output.ProxyWriterTest r0;
+        org.apache.commons.io.output.ProxyWriter $r2;
+        org.apache.commons.io.output.NullWriter $r3;
+        java.lang.Exception $r4, $r8;
+        java.lang.StringBuilder $r5, $r6, $r9, $r10;
+        java.lang.String $r7, $r11;
+
+        r0 := @this: org.apache.commons.io.output.ProxyWriterTest;
+
+        $r2 = new org.apache.commons.io.output.ProxyWriter;
+
+        $r3 = new org.apache.commons.io.output.NullWriter;
+
+        specialinvoke $r3.<org.apache.commons.io.output.NullWriter: void <init>()>();
+
+        specialinvoke $r2.<org.apache.commons.io.output.ProxyWriter: void <init>(java.io.Writer)>($r3);
+
+     label1:
+        virtualinvoke $r2.<org.apache.commons.io.output.ProxyWriter: void write(char[])>(null);
+
+     label2:
+        goto label4;
+
+     label3:
+        $r4 := @caughtexception;
+
+        $r5 = new java.lang.StringBuilder;
+
+        specialinvoke $r5.<java.lang.StringBuilder: void <init>(java.lang.String)>("Writing null char[] threw ");
+
+        $r6 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r4);
+
+        $r7 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>($r7);
+
+     label4:
+        virtualinvoke $r2.<org.apache.commons.io.output.ProxyWriter: void write(char[],int,int)>(null, 0, 0);
+
+     label5:
+        goto label7;
+
+     label6:
+        $r8 := @caughtexception;
+
+        $r9 = new java.lang.StringBuilder;
+
+        specialinvoke $r9.<java.lang.StringBuilder: void <init>(java.lang.String)>("Writing null char[] threw ");
+
+        $r10 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r8);
+
+        $r11 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>($r11);
+
+     label7:
+        virtualinvoke $r2.<org.apache.commons.io.output.ProxyWriter: void close()>();
+
+        return;
+
+        catch java.lang.Exception from label1 to label2 with label3;
+        catch java.lang.Exception from label4 to label5 with label6;
+    }
+
+    public void nullCharSequencec() throws java.lang.Exception
+    {
+        org.apache.commons.io.output.ProxyWriterTest r0;
+        org.apache.commons.io.output.ProxyWriter $r3;
+        org.apache.commons.io.output.NullWriter $r4;
+        java.lang.Exception $r6;
+        java.lang.StringBuilder $r7, $r8;
+        java.lang.String $r9;
+
+        r0 := @this: org.apache.commons.io.output.ProxyWriterTest;
+
+        $r3 = new org.apache.commons.io.output.ProxyWriter;
+
+        $r4 = new org.apache.commons.io.output.NullWriter;
+
+        specialinvoke $r4.<org.apache.commons.io.output.NullWriter: void <init>()>();
+
+        specialinvoke $r3.<org.apache.commons.io.output.ProxyWriter: void <init>(java.io.Writer)>($r4);
+
+     label1:
+        virtualinvoke $r3.<org.apache.commons.io.output.ProxyWriter: java.io.Writer append(java.lang.CharSequence)>(null);
+
+     label2:
+        goto label4;
+
+     label3:
+        $r6 := @caughtexception;
+
+        $r7 = new java.lang.StringBuilder;
+
+        specialinvoke $r7.<java.lang.StringBuilder: void <init>(java.lang.String)>("Appending null CharSequence threw ");
+
+        $r8 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r6);
+
+        $r9 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>($r9);
+
+     label4:
+        virtualinvoke $r3.<org.apache.commons.io.output.ProxyWriter: void close()>();
+
+        return;
+
+        catch java.lang.Exception from label1 to label2 with label3;
+    }
+
+    public void exceptions_in_append_char() throws java.io.IOException
+    {
+        org.apache.commons.io.output.ProxyWriterTest r0;
+        org.apache.commons.io.output.ProxyWriterTest$1 $r4;
+        org.apache.commons.io.output.ByteArrayOutputStream $r5;
+        org.apache.commons.io.output.ProxyWriter $r6;
+        java.lang.Throwable $r8;
+
+        r0 := @this: org.apache.commons.io.output.ProxyWriterTest;
+
+        $r4 = new org.apache.commons.io.output.ProxyWriterTest$1;
+
+        $r5 = new org.apache.commons.io.output.ByteArrayOutputStream;
+
+        specialinvoke $r5.<org.apache.commons.io.output.ByteArrayOutputStream: void <init>()>();
+
+        specialinvoke $r4.<org.apache.commons.io.output.ProxyWriterTest$1: void <init>(org.apache.commons.io.output.ProxyWriterTest,java.io.OutputStream)>(r0, $r5);
+
+        $r6 = new org.apache.commons.io.output.ProxyWriter;
+
+        specialinvoke $r6.<org.apache.commons.io.output.ProxyWriter: void <init>(java.io.Writer)>($r4);
+
+     label1:
+        virtualinvoke $r6.<org.apache.commons.io.output.ProxyWriter: java.io.Writer append(char)>(99);
+
+        goto label3;
+
+     label2:
+        $r8 := @caughtexception;
+
+        virtualinvoke $r6.<org.apache.commons.io.output.ProxyWriter: void close()>();
+
+        throw $r8;
+
+     label3:
+        virtualinvoke $r6.<org.apache.commons.io.output.ProxyWriter: void close()>();
+
+        return;
+
+        catch java.lang.Throwable from label1 to label2 with label2;
+    }
+
+    public void exceptions_in_append_charSequence() throws java.io.IOException
+    {
+        org.apache.commons.io.output.ProxyWriterTest r0;
+        org.apache.commons.io.output.ProxyWriterTest$2 $r4;
+        org.apache.commons.io.output.ByteArrayOutputStream $r5;
+        org.apache.commons.io.output.ProxyWriter $r6;
+        java.lang.Throwable $r8;
+
+        r0 := @this: org.apache.commons.io.output.ProxyWriterTest;
+
+        $r4 = new org.apache.commons.io.output.ProxyWriterTest$2;
+
+        $r5 = new org.apache.commons.io.output.ByteArrayOutputStream;
+
+        specialinvoke $r5.<org.apache.commons.io.output.ByteArrayOutputStream: void <init>()>();
+
+        specialinvoke $r4.<org.apache.commons.io.output.ProxyWriterTest$2: void <init>(org.apache.commons.io.output.ProxyWriterTest,java.io.OutputStream)>(r0, $r5);
+
+        $r6 = new org.apache.commons.io.output.ProxyWriter;
+
+        specialinvoke $r6.<org.apache.commons.io.output.ProxyWriter: void <init>(java.io.Writer)>($r4);
+
+     label1:
+        virtualinvoke $r6.<org.apache.commons.io.output.ProxyWriter: java.io.Writer append(java.lang.CharSequence)>("ABCE");
+
+        goto label3;
+
+     label2:
+        $r8 := @caughtexception;
+
+        virtualinvoke $r6.<org.apache.commons.io.output.ProxyWriter: void close()>();
+
+        throw $r8;
+
+     label3:
+        virtualinvoke $r6.<org.apache.commons.io.output.ProxyWriter: void close()>();
+
+        return;
+
+        catch java.lang.Throwable from label1 to label2 with label2;
+    }
+
+    public void exceptions_in_append_charSequence_offset() throws java.io.IOException
+    {
+        org.apache.commons.io.output.ProxyWriterTest r0;
+        org.apache.commons.io.output.ProxyWriterTest$3 $r4;
+        org.apache.commons.io.output.ByteArrayOutputStream $r5;
+        org.apache.commons.io.output.ProxyWriter $r6;
+        java.lang.Throwable $r8;
+
+        r0 := @this: org.apache.commons.io.output.ProxyWriterTest;
+
+        $r4 = new org.apache.commons.io.output.ProxyWriterTest$3;
+
+        $r5 = new org.apache.commons.io.output.ByteArrayOutputStream;
+
+        specialinvoke $r5.<org.apache.commons.io.output.ByteArrayOutputStream: void <init>()>();
+
+        specialinvoke $r4.<org.apache.commons.io.output.ProxyWriterTest$3: void <init>(org.apache.commons.io.output.ProxyWriterTest,java.io.OutputStream)>(r0, $r5);
+
+        $r6 = new org.apache.commons.io.output.ProxyWriter;
+
+        specialinvoke $r6.<org.apache.commons.io.output.ProxyWriter: void <init>(java.io.Writer)>($r4);
+
+     label1:
+        virtualinvoke $r6.<org.apache.commons.io.output.ProxyWriter: java.io.Writer append(java.lang.CharSequence,int,int)>("ABCE", 1, 2);
+
+        goto label3;
+
+     label2:
+        $r8 := @caughtexception;
+
+        virtualinvoke $r6.<org.apache.commons.io.output.ProxyWriter: void close()>();
+
+        throw $r8;
+
+     label3:
+        virtualinvoke $r6.<org.apache.commons.io.output.ProxyWriter: void close()>();
+
+        return;
+
+        catch java.lang.Throwable from label1 to label2 with label2;
+    }
+
+    public void exceptions_in_write_int() throws java.io.IOException
+    {
+        org.apache.commons.io.output.ProxyWriterTest r0;
+        org.apache.commons.io.output.ProxyWriterTest$4 $r4;
+        org.apache.commons.io.output.ByteArrayOutputStream $r5;
+        org.apache.commons.io.output.ProxyWriter $r6;
+        java.lang.Throwable $r7;
+
+        r0 := @this: org.apache.commons.io.output.ProxyWriterTest;
+
+        $r4 = new org.apache.commons.io.output.ProxyWriterTest$4;
+
+        $r5 = new org.apache.commons.io.output.ByteArrayOutputStream;
+
+        specialinvoke $r5.<org.apache.commons.io.output.ByteArrayOutputStream: void <init>()>();
+
+        specialinvoke $r4.<org.apache.commons.io.output.ProxyWriterTest$4: void <init>(org.apache.commons.io.output.ProxyWriterTest,java.io.OutputStream)>(r0, $r5);
+
+        $r6 = new org.apache.commons.io.output.ProxyWriter;
+
+        specialinvoke $r6.<org.apache.commons.io.output.ProxyWriter: void <init>(java.io.Writer)>($r4);
+
+     label1:
+        virtualinvoke $r6.<org.apache.commons.io.output.ProxyWriter: void write(int)>(97);
+
+        goto label3;
+
+     label2:
+        $r7 := @caughtexception;
+
+        virtualinvoke $r6.<org.apache.commons.io.output.ProxyWriter: void close()>();
+
+        throw $r7;
+
+     label3:
+        virtualinvoke $r6.<org.apache.commons.io.output.ProxyWriter: void close()>();
+
+        return;
+
+        catch java.lang.Throwable from label1 to label2 with label2;
+    }
+
+    public void exceptions_in_write_char_array() throws java.io.IOException
+    {
+        org.apache.commons.io.output.ProxyWriterTest r0;
+        org.apache.commons.io.output.ProxyWriterTest$5 $r4;
+        org.apache.commons.io.output.ByteArrayOutputStream $r5;
+        org.apache.commons.io.output.ProxyWriter $r6;
+        java.lang.String $r7;
+        char[] $r8;
+        java.lang.Throwable $r9;
+
+        r0 := @this: org.apache.commons.io.output.ProxyWriterTest;
+
+        $r4 = new org.apache.commons.io.output.ProxyWriterTest$5;
+
+        $r5 = new org.apache.commons.io.output.ByteArrayOutputStream;
+
+        specialinvoke $r5.<org.apache.commons.io.output.ByteArrayOutputStream: void <init>()>();
+
+        specialinvoke $r4.<org.apache.commons.io.output.ProxyWriterTest$5: void <init>(org.apache.commons.io.output.ProxyWriterTest,java.io.OutputStream)>(r0, $r5);
+
+        $r6 = new org.apache.commons.io.output.ProxyWriter;
+
+        specialinvoke $r6.<org.apache.commons.io.output.ProxyWriter: void <init>(java.io.Writer)>($r4);
+
+     label1:
+        $r7 = "ABCE";
+
+        $r8 = virtualinvoke $r7.<java.lang.String: char[] toCharArray()>();
+
+        virtualinvoke $r6.<org.apache.commons.io.output.ProxyWriter: void write(char[])>($r8);
+
+        goto label3;
+
+     label2:
+        $r9 := @caughtexception;
+
+        virtualinvoke $r6.<org.apache.commons.io.output.ProxyWriter: void close()>();
+
+        throw $r9;
+
+     label3:
+        virtualinvoke $r6.<org.apache.commons.io.output.ProxyWriter: void close()>();
+
+        return;
+
+        catch java.lang.Throwable from label1 to label2 with label2;
+    }
+
+    public void exceptions_in_write_offset_char_array() throws java.io.IOException
+    {
+        org.apache.commons.io.output.ProxyWriterTest r0;
+        org.apache.commons.io.output.ProxyWriterTest$6 $r4;
+        org.apache.commons.io.output.ByteArrayOutputStream $r5;
+        org.apache.commons.io.output.ProxyWriter $r6;
+        java.lang.String $r7;
+        char[] $r8;
+        java.lang.Throwable $r9;
+
+        r0 := @this: org.apache.commons.io.output.ProxyWriterTest;
+
+        $r4 = new org.apache.commons.io.output.ProxyWriterTest$6;
+
+        $r5 = new org.apache.commons.io.output.ByteArrayOutputStream;
+
+        specialinvoke $r5.<org.apache.commons.io.output.ByteArrayOutputStream: void <init>()>();
+
+        specialinvoke $r4.<org.apache.commons.io.output.ProxyWriterTest$6: void <init>(org.apache.commons.io.output.ProxyWriterTest,java.io.OutputStream)>(r0, $r5);
+
+        $r6 = new org.apache.commons.io.output.ProxyWriter;
+
+        specialinvoke $r6.<org.apache.commons.io.output.ProxyWriter: void <init>(java.io.Writer)>($r4);
+
+     label1:
+        $r7 = "ABCE";
+
+        $r8 = virtualinvoke $r7.<java.lang.String: char[] toCharArray()>();
+
+        virtualinvoke $r6.<org.apache.commons.io.output.ProxyWriter: void write(char[],int,int)>($r8, 2, 3);
+
+        goto label3;
+
+     label2:
+        $r9 := @caughtexception;
+
+        virtualinvoke $r6.<org.apache.commons.io.output.ProxyWriter: void close()>();
+
+        throw $r9;
+
+     label3:
+        virtualinvoke $r6.<org.apache.commons.io.output.ProxyWriter: void close()>();
+
+        return;
+
+        catch java.lang.Throwable from label1 to label2 with label2;
+    }
+
+    public void exceptions_in_write_string() throws java.io.IOException
+    {
+        org.apache.commons.io.output.ProxyWriterTest r0;
+        org.apache.commons.io.output.ProxyWriterTest$7 $r4;
+        org.apache.commons.io.output.ByteArrayOutputStream $r5;
+        org.apache.commons.io.output.ProxyWriter $r6;
+        java.lang.Throwable $r7;
+
+        r0 := @this: org.apache.commons.io.output.ProxyWriterTest;
+
+        $r4 = new org.apache.commons.io.output.ProxyWriterTest$7;
+
+        $r5 = new org.apache.commons.io.output.ByteArrayOutputStream;
+
+        specialinvoke $r5.<org.apache.commons.io.output.ByteArrayOutputStream: void <init>()>();
+
+        specialinvoke $r4.<org.apache.commons.io.output.ProxyWriterTest$7: void <init>(org.apache.commons.io.output.ProxyWriterTest,java.io.OutputStream)>(r0, $r5);
+
+        $r6 = new org.apache.commons.io.output.ProxyWriter;
+
+        specialinvoke $r6.<org.apache.commons.io.output.ProxyWriter: void <init>(java.io.Writer)>($r4);
+
+     label1:
+        virtualinvoke $r6.<org.apache.commons.io.output.ProxyWriter: void write(java.lang.String)>("ABCE");
+
+        goto label3;
+
+     label2:
+        $r7 := @caughtexception;
+
+        virtualinvoke $r6.<org.apache.commons.io.output.ProxyWriter: void close()>();
+
+        throw $r7;
+
+     label3:
+        virtualinvoke $r6.<org.apache.commons.io.output.ProxyWriter: void close()>();
+
+        return;
+
+        catch java.lang.Throwable from label1 to label2 with label2;
+    }
+
+    public void exceptions_in_write_string_offset() throws java.io.IOException
+    {
+        org.apache.commons.io.output.ProxyWriterTest r0;
+        org.apache.commons.io.output.ProxyWriterTest$8 $r4;
+        org.apache.commons.io.output.ByteArrayOutputStream $r5;
+        org.apache.commons.io.output.ProxyWriter $r6;
+        java.lang.Throwable $r7;
+
+        r0 := @this: org.apache.commons.io.output.ProxyWriterTest;
+
+        $r4 = new org.apache.commons.io.output.ProxyWriterTest$8;
+
+        $r5 = new org.apache.commons.io.output.ByteArrayOutputStream;
+
+        specialinvoke $r5.<org.apache.commons.io.output.ByteArrayOutputStream: void <init>()>();
+
+        specialinvoke $r4.<org.apache.commons.io.output.ProxyWriterTest$8: void <init>(org.apache.commons.io.output.ProxyWriterTest,java.io.OutputStream)>(r0, $r5);
+
+        $r6 = new org.apache.commons.io.output.ProxyWriter;
+
+        specialinvoke $r6.<org.apache.commons.io.output.ProxyWriter: void <init>(java.io.Writer)>($r4);
+
+     label1:
+        virtualinvoke $r6.<org.apache.commons.io.output.ProxyWriter: void write(java.lang.String,int,int)>("ABCE", 1, 3);
+
+        goto label3;
+
+     label2:
+        $r7 := @caughtexception;
+
+        virtualinvoke $r6.<org.apache.commons.io.output.ProxyWriter: void close()>();
+
+        throw $r7;
+
+     label3:
+        virtualinvoke $r6.<org.apache.commons.io.output.ProxyWriter: void close()>();
+
+        return;
+
+        catch java.lang.Throwable from label1 to label2 with label2;
+    }
+
+    public void exceptions_in_flush() throws java.io.IOException
+    {
+        org.apache.commons.io.output.ProxyWriterTest r0;
+        org.apache.commons.io.output.ProxyWriterTest$9 $r4;
+        org.apache.commons.io.output.ByteArrayOutputStream $r5;
+        org.apache.commons.io.output.ProxyWriter $r6;
+        java.lang.Throwable $r7;
+
+        r0 := @this: org.apache.commons.io.output.ProxyWriterTest;
+
+        $r4 = new org.apache.commons.io.output.ProxyWriterTest$9;
+
+        $r5 = new org.apache.commons.io.output.ByteArrayOutputStream;
+
+        specialinvoke $r5.<org.apache.commons.io.output.ByteArrayOutputStream: void <init>()>();
+
+        specialinvoke $r4.<org.apache.commons.io.output.ProxyWriterTest$9: void <init>(org.apache.commons.io.output.ProxyWriterTest,java.io.OutputStream)>(r0, $r5);
+
+        $r6 = new org.apache.commons.io.output.ProxyWriter;
+
+        specialinvoke $r6.<org.apache.commons.io.output.ProxyWriter: void <init>(java.io.Writer)>($r4);
+
+     label1:
+        virtualinvoke $r6.<org.apache.commons.io.output.ProxyWriter: void flush()>();
+
+        goto label3;
+
+     label2:
+        $r7 := @caughtexception;
+
+        virtualinvoke $r6.<org.apache.commons.io.output.ProxyWriter: void close()>();
+
+        throw $r7;
+
+     label3:
+        virtualinvoke $r6.<org.apache.commons.io.output.ProxyWriter: void close()>();
+
+        return;
+
+        catch java.lang.Throwable from label1 to label2 with label2;
+    }
+
+    public void exceptions_in_close() throws java.io.IOException
+    {
+        org.apache.commons.io.output.ProxyWriterTest r0;
+        org.apache.commons.io.output.ProxyWriterTest$10 $r3;
+        org.apache.commons.io.output.ByteArrayOutputStream $r4;
+        org.apache.commons.io.output.ProxyWriter $r5;
+
+        r0 := @this: org.apache.commons.io.output.ProxyWriterTest;
+
+        $r3 = new org.apache.commons.io.output.ProxyWriterTest$10;
+
+        $r4 = new org.apache.commons.io.output.ByteArrayOutputStream;
+
+        specialinvoke $r4.<org.apache.commons.io.output.ByteArrayOutputStream: void <init>()>();
+
+        specialinvoke $r3.<org.apache.commons.io.output.ProxyWriterTest$10: void <init>(org.apache.commons.io.output.ProxyWriterTest,java.io.OutputStream)>(r0, $r4);
+
+        $r5 = new org.apache.commons.io.output.ProxyWriter;
+
+        specialinvoke $r5.<org.apache.commons.io.output.ProxyWriter: void <init>(java.io.Writer)>($r3);
+
+        virtualinvoke $r5.<org.apache.commons.io.output.ProxyWriter: void close()>();
+
+        return;
+    }
+}

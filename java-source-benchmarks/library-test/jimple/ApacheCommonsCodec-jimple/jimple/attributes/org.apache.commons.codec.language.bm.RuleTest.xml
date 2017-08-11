@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<attributes>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="0" eline="0" spos="0" epos="0"/>
+<text info="[inner=org/apache/commons/codec/language/bm/Languages$LanguageSet, outer=org/apache/commons/codec/language/bm/Languages, name=LanguageSet,flags=1033]" aType="InnerClassTag"/>
+<text info="[inner=org/apache/commons/codec/language/bm/Rule$Phoneme, outer=org/apache/commons/codec/language/bm/Rule, name=Phoneme,flags=25]" aType="InnerClassTag"/>
+<text info="[inner=org/apache/commons/codec/language/bm/RuleTest$NegativeIntegerBaseMatcher, outer=org/apache/commons/codec/language/bm/RuleTest, name=NegativeIntegerBaseMatcher,flags=10]" aType="InnerClassTag"/>
+<text info="soot.tagkit.InnerClassAttribute@22a48177" aType="InnerClassAttribute"/>
+</attribute>
+<attribute>
+<srcPos sline="63" eline="63" spos="0" epos="0"/>
+<jmpPos sline="114" eline="114" spos="0" epos="0"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation type: Lorg/junit/Test; without elements
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+<attribute>
+<srcPos sline="77" eline="77" spos="0" epos="0"/>
+<jmpPos sline="211" eline="211" spos="0" epos="0"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation type: Lorg/junit/Test; without elements
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+<attribute>
+<srcPos sline="89" eline="89" spos="0" epos="0"/>
+<jmpPos sline="277" eline="277" spos="0" epos="0"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation type: Lorg/junit/Test; without elements
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+</attributes>

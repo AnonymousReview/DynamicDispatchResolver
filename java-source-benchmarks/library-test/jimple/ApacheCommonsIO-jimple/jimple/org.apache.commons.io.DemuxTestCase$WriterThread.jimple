@@ -1,0 +1,104 @@
+class org.apache.commons.io.DemuxTestCase$WriterThread extends java.lang.Thread
+{
+    private final byte[] m_data;
+    private final java.io.OutputStream m_output;
+    private final org.apache.commons.io.output.DemuxOutputStream m_demux;
+
+    void <init>(java.lang.String, java.lang.String, java.io.OutputStream, org.apache.commons.io.output.DemuxOutputStream)
+    {
+        org.apache.commons.io.DemuxTestCase$WriterThread r0;
+        java.lang.String r1, r2;
+        java.io.OutputStream r3;
+        org.apache.commons.io.output.DemuxOutputStream r4;
+        byte[] $r5;
+
+        r0 := @this: org.apache.commons.io.DemuxTestCase$WriterThread;
+
+        r1 := @parameter0: java.lang.String;
+
+        r2 := @parameter1: java.lang.String;
+
+        r3 := @parameter2: java.io.OutputStream;
+
+        r4 := @parameter3: org.apache.commons.io.output.DemuxOutputStream;
+
+        specialinvoke r0.<java.lang.Thread: void <init>(java.lang.String)>(r1);
+
+        r0.<org.apache.commons.io.DemuxTestCase$WriterThread: java.io.OutputStream m_output> = r3;
+
+        r0.<org.apache.commons.io.DemuxTestCase$WriterThread: org.apache.commons.io.output.DemuxOutputStream m_demux> = r4;
+
+        $r5 = virtualinvoke r2.<java.lang.String: byte[] getBytes()>();
+
+        r0.<org.apache.commons.io.DemuxTestCase$WriterThread: byte[] m_data> = $r5;
+
+        return;
+    }
+
+    public void run()
+    {
+        org.apache.commons.io.DemuxTestCase$WriterThread r0;
+        byte b0;
+        int i1, $i2, $i3, i5, i6;
+        java.io.OutputStream $r2;
+        org.apache.commons.io.output.DemuxOutputStream $r3, $r6;
+        byte[] $r5;
+        java.util.Random $r7;
+        long $l4;
+        java.lang.Exception $r8;
+
+        r0 := @this: org.apache.commons.io.DemuxTestCase$WriterThread;
+
+        $r3 = r0.<org.apache.commons.io.DemuxTestCase$WriterThread: org.apache.commons.io.output.DemuxOutputStream m_demux>;
+
+        $r2 = r0.<org.apache.commons.io.DemuxTestCase$WriterThread: java.io.OutputStream m_output>;
+
+        virtualinvoke $r3.<org.apache.commons.io.output.DemuxOutputStream: java.io.OutputStream bindStream(java.io.OutputStream)>($r2);
+
+        $r5 = r0.<org.apache.commons.io.DemuxTestCase$WriterThread: byte[] m_data>;
+
+        i1 = lengthof $r5;
+
+        i5 = 0;
+
+        goto label6;
+
+     label1:
+        b0 = $r5[i5];
+
+     label2:
+        $r6 = r0.<org.apache.commons.io.DemuxTestCase$WriterThread: org.apache.commons.io.output.DemuxOutputStream m_demux>;
+
+        virtualinvoke $r6.<org.apache.commons.io.output.DemuxOutputStream: void write(int)>(b0);
+
+        $r7 = staticinvoke <org.apache.commons.io.DemuxTestCase: java.util.Random access$0()>();
+
+        $i2 = virtualinvoke $r7.<java.util.Random: int nextInt()>();
+
+        $i3 = $i2 % 10;
+
+        i6 = staticinvoke <java.lang.Math: int abs(int)>($i3);
+
+        $l4 = (long) i6;
+
+        staticinvoke <org.apache.commons.io.testtools.TestUtils: void sleep(long)>($l4);
+
+     label3:
+        goto label5;
+
+     label4:
+        $r8 := @caughtexception;
+
+        virtualinvoke $r8.<java.lang.Exception: void printStackTrace()>();
+
+     label5:
+        i5 = i5 + 1;
+
+     label6:
+        if i5 < i1 goto label1;
+
+        return;
+
+        catch java.lang.Exception from label2 to label3 with label4;
+    }
+}

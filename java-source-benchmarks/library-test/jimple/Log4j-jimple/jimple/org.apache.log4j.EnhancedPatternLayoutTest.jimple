@@ -1,0 +1,207 @@
+public class org.apache.log4j.EnhancedPatternLayoutTest extends org.apache.log4j.LayoutTest
+{
+
+    public void <init>(java.lang.String)
+    {
+        org.apache.log4j.EnhancedPatternLayoutTest r0;
+        java.lang.String r1;
+
+        r0 := @this: org.apache.log4j.EnhancedPatternLayoutTest;
+
+        r1 := @parameter0: java.lang.String;
+
+        specialinvoke r0.<org.apache.log4j.LayoutTest: void <init>(java.lang.String,java.lang.String,boolean,java.lang.String,java.lang.String)>(r1, "text/plain", 1, null, null);
+
+        return;
+    }
+
+    protected org.apache.log4j.Layout createLayout()
+    {
+        org.apache.log4j.EnhancedPatternLayoutTest r0;
+        org.apache.log4j.EnhancedPatternLayout $r1;
+
+        r0 := @this: org.apache.log4j.EnhancedPatternLayoutTest;
+
+        $r1 = new org.apache.log4j.EnhancedPatternLayout;
+
+        specialinvoke $r1.<org.apache.log4j.EnhancedPatternLayout: void <init>(java.lang.String)>("[%t] %p %c - %m%n");
+
+        return $r1;
+    }
+
+    public void testFormat()
+    {
+        org.apache.log4j.EnhancedPatternLayoutTest r0;
+        org.apache.log4j.Logger r1;
+        org.apache.log4j.EnhancedPatternLayout r3;
+        java.lang.String r4, $r11, $r15, $r18, $r23, $r25;
+        org.apache.log4j.spi.LoggingEvent $r6;
+        org.apache.log4j.Level $r7, $r14;
+        org.apache.log4j.Layout $r8;
+        java.lang.StringBuffer $r9;
+        java.lang.Object $r21;
+
+        r0 := @this: org.apache.log4j.EnhancedPatternLayoutTest;
+
+        r1 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getLogger(java.lang.String)>("org.apache.log4j.LayoutTest");
+
+        $r6 = new org.apache.log4j.spi.LoggingEvent;
+
+        $r7 = <org.apache.log4j.Level: org.apache.log4j.Level INFO>;
+
+        specialinvoke $r6.<org.apache.log4j.spi.LoggingEvent: void <init>(java.lang.String,org.apache.log4j.Category,org.apache.log4j.Priority,java.lang.Object,java.lang.Throwable)>("org.apache.log4j.Logger", r1, $r7, "Hello, World", null);
+
+        $r8 = virtualinvoke r0.<org.apache.log4j.EnhancedPatternLayoutTest: org.apache.log4j.Layout createLayout()>();
+
+        r3 = (org.apache.log4j.EnhancedPatternLayout) $r8;
+
+        r4 = virtualinvoke r3.<org.apache.log4j.EnhancedPatternLayout: java.lang.String format(org.apache.log4j.spi.LoggingEvent)>($r6);
+
+        $r9 = new java.lang.StringBuffer;
+
+        specialinvoke $r9.<java.lang.StringBuffer: void <init>(int)>(100);
+
+        virtualinvoke $r9.<java.lang.StringBuffer: java.lang.StringBuffer append(char)>(91);
+
+        $r11 = virtualinvoke $r6.<org.apache.log4j.spi.LoggingEvent: java.lang.String getThreadName()>();
+
+        virtualinvoke $r9.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>($r11);
+
+        virtualinvoke $r9.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>("] ");
+
+        $r14 = virtualinvoke $r6.<org.apache.log4j.spi.LoggingEvent: org.apache.log4j.Level getLevel()>();
+
+        $r15 = virtualinvoke $r14.<org.apache.log4j.Level: java.lang.String toString()>();
+
+        virtualinvoke $r9.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>($r15);
+
+        virtualinvoke $r9.<java.lang.StringBuffer: java.lang.StringBuffer append(char)>(32);
+
+        $r18 = virtualinvoke $r6.<org.apache.log4j.spi.LoggingEvent: java.lang.String getLoggerName()>();
+
+        virtualinvoke $r9.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>($r18);
+
+        virtualinvoke $r9.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>(" - ");
+
+        $r21 = virtualinvoke $r6.<org.apache.log4j.spi.LoggingEvent: java.lang.Object getMessage()>();
+
+        virtualinvoke $r9.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>($r21);
+
+        $r23 = staticinvoke <java.lang.System: java.lang.String getProperty(java.lang.String)>("line.separator");
+
+        virtualinvoke $r9.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>($r23);
+
+        $r25 = virtualinvoke $r9.<java.lang.StringBuffer: java.lang.String toString()>();
+
+        staticinvoke <org.apache.log4j.EnhancedPatternLayoutTest: void assertEquals(java.lang.String,java.lang.String)>($r25, r4);
+
+        return;
+    }
+
+    public void testGetPatternFormat()
+    {
+        org.apache.log4j.EnhancedPatternLayoutTest r0;
+        org.apache.log4j.EnhancedPatternLayout r1;
+        org.apache.log4j.Layout $r2;
+        java.lang.String $r3;
+
+        r0 := @this: org.apache.log4j.EnhancedPatternLayoutTest;
+
+        $r2 = virtualinvoke r0.<org.apache.log4j.EnhancedPatternLayoutTest: org.apache.log4j.Layout createLayout()>();
+
+        r1 = (org.apache.log4j.EnhancedPatternLayout) $r2;
+
+        $r3 = virtualinvoke r1.<org.apache.log4j.EnhancedPatternLayout: java.lang.String getConversionPattern()>();
+
+        staticinvoke <org.apache.log4j.EnhancedPatternLayoutTest: void assertEquals(java.lang.String,java.lang.String)>("[%t] %p %c - %m%n", $r3);
+
+        return;
+    }
+
+    public void testDefaultConversionPattern()
+    {
+        org.apache.log4j.EnhancedPatternLayoutTest r0;
+
+        r0 := @this: org.apache.log4j.EnhancedPatternLayoutTest;
+
+        staticinvoke <org.apache.log4j.EnhancedPatternLayoutTest: void assertEquals(java.lang.String,java.lang.String)>("%m%n", "%m%n");
+
+        return;
+    }
+
+    public void testTTCCConversionPattern()
+    {
+        org.apache.log4j.EnhancedPatternLayoutTest r0;
+
+        r0 := @this: org.apache.log4j.EnhancedPatternLayoutTest;
+
+        staticinvoke <org.apache.log4j.EnhancedPatternLayoutTest: void assertEquals(java.lang.String,java.lang.String)>("%r [%t] %p %c %x - %m%n", "%r [%t] %p %c %x - %m%n");
+
+        return;
+    }
+
+    public void testFormatResize()
+    {
+        org.apache.log4j.EnhancedPatternLayoutTest r0;
+        org.apache.log4j.Logger r1;
+        char[] r2;
+        org.apache.log4j.EnhancedPatternLayout r3;
+        int $i0, i1;
+        org.apache.log4j.spi.LoggingEvent $r5, $r9;
+        java.lang.String $r6, $r11, r14;
+        org.apache.log4j.Level $r7, $r10;
+        org.apache.log4j.Layout $r8;
+
+        r0 := @this: org.apache.log4j.EnhancedPatternLayoutTest;
+
+        r1 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getLogger(java.lang.String)>("org.apache.log4j.xml.PatternLayoutTest");
+
+        staticinvoke <org.apache.log4j.NDC: void clear()>();
+
+        r2 = newarray (char)[2000];
+
+        i1 = 0;
+
+        goto label2;
+
+     label1:
+        r2[i1] = 65;
+
+        i1 = i1 + 1;
+
+     label2:
+        $i0 = lengthof r2;
+
+        if i1 < $i0 goto label1;
+
+        $r5 = new org.apache.log4j.spi.LoggingEvent;
+
+        $r7 = <org.apache.log4j.Level: org.apache.log4j.Level DEBUG>;
+
+        $r6 = new java.lang.String;
+
+        specialinvoke $r6.<java.lang.String: void <init>(char[])>(r2);
+
+        specialinvoke $r5.<org.apache.log4j.spi.LoggingEvent: void <init>(java.lang.String,org.apache.log4j.Category,org.apache.log4j.Priority,java.lang.Object,java.lang.Throwable)>("org.apache.log4j.Logger", r1, $r7, $r6, null);
+
+        $r8 = virtualinvoke r0.<org.apache.log4j.EnhancedPatternLayoutTest: org.apache.log4j.Layout createLayout()>();
+
+        r3 = (org.apache.log4j.EnhancedPatternLayout) $r8;
+
+        virtualinvoke r3.<org.apache.log4j.EnhancedPatternLayout: java.lang.String format(org.apache.log4j.spi.LoggingEvent)>($r5);
+
+        $r9 = new org.apache.log4j.spi.LoggingEvent;
+
+        $r10 = <org.apache.log4j.Level: org.apache.log4j.Level WARN>;
+
+        specialinvoke $r9.<org.apache.log4j.spi.LoggingEvent: void <init>(java.lang.String,org.apache.log4j.Category,org.apache.log4j.Priority,java.lang.Object,java.lang.Throwable)>("org.apache.log4j.Logger", r1, $r10, "Hello, World", null);
+
+        r14 = virtualinvoke r3.<org.apache.log4j.EnhancedPatternLayout: java.lang.String format(org.apache.log4j.spi.LoggingEvent)>($r9);
+
+        $r11 = virtualinvoke r14.<java.lang.String: java.lang.String substring(int,int)>(0, 1);
+
+        staticinvoke <org.apache.log4j.EnhancedPatternLayoutTest: void assertEquals(java.lang.String,java.lang.String)>("[", $r11);
+
+        return;
+    }
+}

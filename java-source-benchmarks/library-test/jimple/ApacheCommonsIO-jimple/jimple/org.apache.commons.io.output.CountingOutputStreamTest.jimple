@@ -1,0 +1,270 @@
+public class org.apache.commons.io.output.CountingOutputStreamTest extends java.lang.Object
+{
+
+    public void <init>()
+    {
+        org.apache.commons.io.output.CountingOutputStreamTest r0;
+
+        r0 := @this: org.apache.commons.io.output.CountingOutputStreamTest;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void testCounting() throws java.io.IOException
+    {
+        org.apache.commons.io.output.CountingOutputStreamTest r0;
+        java.io.ByteArrayOutputStream $r3;
+        org.apache.commons.io.output.CountingOutputStream $r4;
+        byte[] $r5, $r6, $r7, $r8, r9;
+        int $i0, $i3, $i4, $i7, $i8, $i11, i13, i14, i15, i16, i17;
+        long $l1, $l5, $l9, $l10, $l12;
+        byte $b2, $b6;
+
+        r0 := @this: org.apache.commons.io.output.CountingOutputStreamTest;
+
+        $r3 = new java.io.ByteArrayOutputStream;
+
+        specialinvoke $r3.<java.io.ByteArrayOutputStream: void <init>()>();
+
+        $r4 = new org.apache.commons.io.output.CountingOutputStream;
+
+        specialinvoke $r4.<org.apache.commons.io.output.CountingOutputStream: void <init>(java.io.OutputStream)>($r3);
+
+        i13 = 0;
+
+        goto label2;
+
+     label1:
+        virtualinvoke $r4.<org.apache.commons.io.output.CountingOutputStream: void write(int)>(i13);
+
+        i13 = i13 + 1;
+
+     label2:
+        if i13 < 20 goto label1;
+
+        $r5 = virtualinvoke $r3.<java.io.ByteArrayOutputStream: byte[] toByteArray()>();
+
+        specialinvoke r0.<org.apache.commons.io.output.CountingOutputStreamTest: void assertByteArrayEquals(java.lang.String,byte[],int,int)>("CountingOutputStream.write(int)", $r5, 0, 20);
+
+        $i0 = virtualinvoke $r4.<org.apache.commons.io.output.CountingOutputStream: int getCount()>();
+
+        $l1 = (long) $i0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("CountingOutputStream.getCount()", $l1, 20L);
+
+        r9 = newarray (byte)[10];
+
+        i14 = 20;
+
+        goto label4;
+
+     label3:
+        $i3 = i14 - 20;
+
+        $b2 = (byte) i14;
+
+        r9[$i3] = $b2;
+
+        i14 = i14 + 1;
+
+     label4:
+        if i14 < 30 goto label3;
+
+        virtualinvoke $r4.<org.apache.commons.io.output.CountingOutputStream: void write(byte[])>(r9);
+
+        $r6 = virtualinvoke $r3.<java.io.ByteArrayOutputStream: byte[] toByteArray()>();
+
+        specialinvoke r0.<org.apache.commons.io.output.CountingOutputStreamTest: void assertByteArrayEquals(java.lang.String,byte[],int,int)>("CountingOutputStream.write(byte[])", $r6, 0, 30);
+
+        $i4 = virtualinvoke $r4.<org.apache.commons.io.output.CountingOutputStream: int getCount()>();
+
+        $l5 = (long) $i4;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("CountingOutputStream.getCount()", $l5, 30L);
+
+        i15 = 25;
+
+        goto label6;
+
+     label5:
+        $i7 = i15 - 25;
+
+        $b6 = (byte) i15;
+
+        r9[$i7] = $b6;
+
+        i15 = i15 + 1;
+
+     label6:
+        if i15 < 35 goto label5;
+
+        virtualinvoke $r4.<org.apache.commons.io.output.CountingOutputStream: void write(byte[],int,int)>(r9, 5, 5);
+
+        $r7 = virtualinvoke $r3.<java.io.ByteArrayOutputStream: byte[] toByteArray()>();
+
+        specialinvoke r0.<org.apache.commons.io.output.CountingOutputStreamTest: void assertByteArrayEquals(java.lang.String,byte[],int,int)>("CountingOutputStream.write(byte[], int, int)", $r7, 0, 35);
+
+        $i8 = virtualinvoke $r4.<org.apache.commons.io.output.CountingOutputStream: int getCount()>();
+
+        $l9 = (long) $i8;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("CountingOutputStream.getCount()", $l9, 35L);
+
+        i16 = virtualinvoke $r4.<org.apache.commons.io.output.CountingOutputStream: int resetCount()>();
+
+        $l10 = (long) i16;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("CountingOutputStream.resetCount()", $l10, 35L);
+
+        i17 = 0;
+
+        goto label8;
+
+     label7:
+        virtualinvoke $r4.<org.apache.commons.io.output.CountingOutputStream: void write(int)>(i17);
+
+        i17 = i17 + 1;
+
+     label8:
+        if i17 < 10 goto label7;
+
+        $r8 = virtualinvoke $r3.<java.io.ByteArrayOutputStream: byte[] toByteArray()>();
+
+        specialinvoke r0.<org.apache.commons.io.output.CountingOutputStreamTest: void assertByteArrayEquals(java.lang.String,byte[],int,int)>("CountingOutputStream.write(int)", $r8, 35, 45);
+
+        $i11 = virtualinvoke $r4.<org.apache.commons.io.output.CountingOutputStream: int getCount()>();
+
+        $l12 = (long) $i11;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("CountingOutputStream.getCount()", $l12, 10L);
+
+        virtualinvoke $r4.<org.apache.commons.io.output.CountingOutputStream: void close()>();
+
+        return;
+    }
+
+    public void testLargeFiles_IO84() throws java.lang.Exception
+    {
+        org.apache.commons.io.output.CountingOutputStreamTest r0;
+        org.apache.commons.io.input.NullInputStream $r4;
+        org.apache.commons.io.output.NullOutputStream $r5;
+        org.apache.commons.io.output.CountingOutputStream $r6;
+        long $l5, $l6;
+        java.lang.ArithmeticException $r7, $r8;
+
+        r0 := @this: org.apache.commons.io.output.CountingOutputStreamTest;
+
+        $r4 = new org.apache.commons.io.input.NullInputStream;
+
+        specialinvoke $r4.<org.apache.commons.io.input.NullInputStream: void <init>(long)>(2147483648L);
+
+        $r5 = new org.apache.commons.io.output.NullOutputStream;
+
+        specialinvoke $r5.<org.apache.commons.io.output.NullOutputStream: void <init>()>();
+
+        $r6 = new org.apache.commons.io.output.CountingOutputStream;
+
+        specialinvoke $r6.<org.apache.commons.io.output.CountingOutputStream: void <init>(java.io.OutputStream)>($r5);
+
+        staticinvoke <org.apache.commons.io.IOUtils: long copyLarge(java.io.InputStream,java.io.OutputStream)>($r4, $r6);
+
+     label1:
+        virtualinvoke $r6.<org.apache.commons.io.output.CountingOutputStream: int getCount()>();
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("Expected getCount() to throw an ArithmeticException");
+
+     label2:
+        goto label4;
+
+     label3:
+        $r7 := @caughtexception;
+
+     label4:
+        virtualinvoke $r6.<org.apache.commons.io.output.CountingOutputStream: int resetCount()>();
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("Expected resetCount() to throw an ArithmeticException");
+
+     label5:
+        goto label7;
+
+     label6:
+        $r8 := @caughtexception;
+
+     label7:
+        virtualinvoke $r4.<org.apache.commons.io.input.NullInputStream: void close()>();
+
+        staticinvoke <org.apache.commons.io.IOUtils: long copyLarge(java.io.InputStream,java.io.OutputStream)>($r4, $r6);
+
+        $l5 = virtualinvoke $r6.<org.apache.commons.io.output.CountingOutputStream: long getByteCount()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("getByteCount()", 2147483648L, $l5);
+
+        $l6 = virtualinvoke $r6.<org.apache.commons.io.output.CountingOutputStream: long resetByteCount()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("resetByteCount()", 2147483648L, $l6);
+
+        return;
+
+        catch java.lang.ArithmeticException from label1 to label2 with label3;
+        catch java.lang.ArithmeticException from label4 to label5 with label6;
+    }
+
+    private void assertByteArrayEquals(java.lang.String, byte[], int, int)
+    {
+        org.apache.commons.io.output.CountingOutputStreamTest r0;
+        java.lang.String r1, $r4, $r8;
+        byte[] r2;
+        int i0, i1, $i3, i6;
+        java.lang.StringBuilder $r3, $r5, $r6, $r7;
+        byte $b2;
+        long $l4, $l5;
+
+        r0 := @this: org.apache.commons.io.output.CountingOutputStreamTest;
+
+        r1 := @parameter0: java.lang.String;
+
+        r2 := @parameter1: byte[];
+
+        i0 := @parameter2: int;
+
+        i1 := @parameter3: int;
+
+        i6 = i0;
+
+        goto label2;
+
+     label1:
+        $r3 = new java.lang.StringBuilder;
+
+        $r4 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>(r1);
+
+        specialinvoke $r3.<java.lang.StringBuilder: void <init>(java.lang.String)>($r4);
+
+        $r5 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(": array[");
+
+        $r6 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i6);
+
+        $r7 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("] mismatch");
+
+        $r8 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $b2 = r2[i6];
+
+        $l5 = (long) $b2;
+
+        $i3 = i6 - i0;
+
+        $l4 = (long) $i3;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>($r8, $l5, $l4);
+
+        i6 = i6 + 1;
+
+     label2:
+        if i6 < i1 goto label1;
+
+        return;
+    }
+}

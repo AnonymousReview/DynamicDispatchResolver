@@ -1,0 +1,61 @@
+public class org.apache.log4j.util.LineNumberFilter extends java.lang.Object implements org.apache.log4j.util.Filter
+{
+    org.apache.oro.text.perl.Perl5Util util;
+
+    public void <init>()
+    {
+        org.apache.log4j.util.LineNumberFilter r0;
+        org.apache.oro.text.perl.Perl5Util $r1;
+
+        r0 := @this: org.apache.log4j.util.LineNumberFilter;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r1 = new org.apache.oro.text.perl.Perl5Util;
+
+        specialinvoke $r1.<org.apache.oro.text.perl.Perl5Util: void <init>()>();
+
+        r0.<org.apache.log4j.util.LineNumberFilter: org.apache.oro.text.perl.Perl5Util util> = $r1;
+
+        return;
+    }
+
+    public java.lang.String filter(java.lang.String)
+    {
+        org.apache.log4j.util.LineNumberFilter r0;
+        java.lang.String r1, $r4, $r6;
+        org.apache.oro.text.perl.Perl5Util $r2, $r3, $r5;
+        boolean $z0;
+        int $i0;
+
+        r0 := @this: org.apache.log4j.util.LineNumberFilter;
+
+        r1 := @parameter0: java.lang.String;
+
+        $r2 = r0.<org.apache.log4j.util.LineNumberFilter: org.apache.oro.text.perl.Perl5Util util>;
+
+        $z0 = virtualinvoke $r2.<org.apache.oro.text.perl.Perl5Util: boolean match(java.lang.String,java.lang.String)>("/\\(.*:\\d{1,4}\\)/", r1);
+
+        if $z0 == 0 goto label1;
+
+        $r5 = r0.<org.apache.log4j.util.LineNumberFilter: org.apache.oro.text.perl.Perl5Util util>;
+
+        $r6 = virtualinvoke $r5.<org.apache.oro.text.perl.Perl5Util: java.lang.String substitute(java.lang.String,java.lang.String)>("s/:\\d{1,4}\\)/:XXX)/", r1);
+
+        return $r6;
+
+     label1:
+        $i0 = virtualinvoke r1.<java.lang.String: int indexOf(java.lang.String)>(", Compiled Code");
+
+        if $i0 < 0 goto label2;
+
+        $r3 = r0.<org.apache.log4j.util.LineNumberFilter: org.apache.oro.text.perl.Perl5Util util>;
+
+        $r4 = virtualinvoke $r3.<org.apache.oro.text.perl.Perl5Util: java.lang.String substitute(java.lang.String,java.lang.String)>("s/, Compiled Code/:XXX/", r1);
+
+        return $r4;
+
+     label2:
+        return r1;
+    }
+}

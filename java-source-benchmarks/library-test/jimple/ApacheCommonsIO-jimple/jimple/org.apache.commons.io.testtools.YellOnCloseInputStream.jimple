@@ -1,0 +1,31 @@
+public class org.apache.commons.io.testtools.YellOnCloseInputStream extends org.apache.commons.io.input.ProxyInputStream
+{
+
+    public void <init>(java.io.InputStream)
+    {
+        org.apache.commons.io.testtools.YellOnCloseInputStream r0;
+        java.io.InputStream r1;
+
+        r0 := @this: org.apache.commons.io.testtools.YellOnCloseInputStream;
+
+        r1 := @parameter0: java.io.InputStream;
+
+        specialinvoke r0.<org.apache.commons.io.input.ProxyInputStream: void <init>(java.io.InputStream)>(r1);
+
+        return;
+    }
+
+    public void close() throws java.io.IOException
+    {
+        org.apache.commons.io.testtools.YellOnCloseInputStream r0;
+        junit.framework.AssertionFailedError $r1;
+
+        r0 := @this: org.apache.commons.io.testtools.YellOnCloseInputStream;
+
+        $r1 = new junit.framework.AssertionFailedError;
+
+        specialinvoke $r1.<junit.framework.AssertionFailedError: void <init>(java.lang.String)>("close() was called on OutputStream");
+
+        throw $r1;
+    }
+}

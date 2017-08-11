@@ -1,0 +1,104 @@
+class org.apache.commons.codec.language.bm.Rule$Phoneme$1 extends java.lang.Object implements java.util.Comparator
+{
+
+    void <init>()
+    {
+        org.apache.commons.codec.language.bm.Rule$Phoneme$1 r0;
+
+        r0 := @this: org.apache.commons.codec.language.bm.Rule$Phoneme$1;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public int compare(org.apache.commons.codec.language.bm.Rule$Phoneme, org.apache.commons.codec.language.bm.Rule$Phoneme)
+    {
+        org.apache.commons.codec.language.bm.Rule$Phoneme$1 r0;
+        org.apache.commons.codec.language.bm.Rule$Phoneme r1, r2;
+        int i0, $i1, $i2, $i5, $i6, i7;
+        java.lang.StringBuilder $r3, $r4, $r5, $r6, $r7, $r8;
+        char $c3, $c4;
+
+        r0 := @this: org.apache.commons.codec.language.bm.Rule$Phoneme$1;
+
+        r1 := @parameter0: org.apache.commons.codec.language.bm.Rule$Phoneme;
+
+        r2 := @parameter1: org.apache.commons.codec.language.bm.Rule$Phoneme;
+
+        i7 = 0;
+
+        goto label4;
+
+     label1:
+        $r4 = staticinvoke <org.apache.commons.codec.language.bm.Rule$Phoneme: java.lang.StringBuilder access$0(org.apache.commons.codec.language.bm.Rule$Phoneme)>(r2);
+
+        $i2 = virtualinvoke $r4.<java.lang.StringBuilder: int length()>();
+
+        if i7 < $i2 goto label2;
+
+        return 1;
+
+     label2:
+        $r5 = staticinvoke <org.apache.commons.codec.language.bm.Rule$Phoneme: java.lang.StringBuilder access$0(org.apache.commons.codec.language.bm.Rule$Phoneme)>(r1);
+
+        $c3 = virtualinvoke $r5.<java.lang.StringBuilder: char charAt(int)>(i7);
+
+        $r6 = staticinvoke <org.apache.commons.codec.language.bm.Rule$Phoneme: java.lang.StringBuilder access$0(org.apache.commons.codec.language.bm.Rule$Phoneme)>(r2);
+
+        $c4 = virtualinvoke $r6.<java.lang.StringBuilder: char charAt(int)>(i7);
+
+        i0 = $c3 - $c4;
+
+        if i0 == 0 goto label3;
+
+        return i0;
+
+     label3:
+        i7 = i7 + 1;
+
+     label4:
+        $r3 = staticinvoke <org.apache.commons.codec.language.bm.Rule$Phoneme: java.lang.StringBuilder access$0(org.apache.commons.codec.language.bm.Rule$Phoneme)>(r1);
+
+        $i1 = virtualinvoke $r3.<java.lang.StringBuilder: int length()>();
+
+        if i7 < $i1 goto label1;
+
+        $r7 = staticinvoke <org.apache.commons.codec.language.bm.Rule$Phoneme: java.lang.StringBuilder access$0(org.apache.commons.codec.language.bm.Rule$Phoneme)>(r1);
+
+        $i5 = virtualinvoke $r7.<java.lang.StringBuilder: int length()>();
+
+        $r8 = staticinvoke <org.apache.commons.codec.language.bm.Rule$Phoneme: java.lang.StringBuilder access$0(org.apache.commons.codec.language.bm.Rule$Phoneme)>(r2);
+
+        $i6 = virtualinvoke $r8.<java.lang.StringBuilder: int length()>();
+
+        if $i5 >= $i6 goto label5;
+
+        return -1;
+
+     label5:
+        return 0;
+    }
+
+    public volatile int compare(java.lang.Object, java.lang.Object)
+    {
+        org.apache.commons.codec.language.bm.Rule$Phoneme$1 r0;
+        java.lang.Object r1, r2;
+        org.apache.commons.codec.language.bm.Rule$Phoneme $r3, $r4;
+        int $i0;
+
+        r0 := @this: org.apache.commons.codec.language.bm.Rule$Phoneme$1;
+
+        r1 := @parameter0: java.lang.Object;
+
+        r2 := @parameter1: java.lang.Object;
+
+        $r4 = (org.apache.commons.codec.language.bm.Rule$Phoneme) r1;
+
+        $r3 = (org.apache.commons.codec.language.bm.Rule$Phoneme) r2;
+
+        $i0 = virtualinvoke r0.<org.apache.commons.codec.language.bm.Rule$Phoneme$1: int compare(org.apache.commons.codec.language.bm.Rule$Phoneme,org.apache.commons.codec.language.bm.Rule$Phoneme)>($r4, $r3);
+
+        return $i0;
+    }
+}

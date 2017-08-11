@@ -1,0 +1,85 @@
+public class org.apache.commons.codec.language.bm.PhoneticEnginePerformanceTest extends java.lang.Object
+{
+    private static final int LOOP;
+
+    public void <init>()
+    {
+        org.apache.commons.codec.language.bm.PhoneticEnginePerformanceTest r0;
+
+        r0 := @this: org.apache.commons.codec.language.bm.PhoneticEnginePerformanceTest;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void test()
+    {
+        org.apache.commons.codec.language.bm.PhoneticEnginePerformanceTest r0;
+        long l0, $l1, l3;
+        org.apache.commons.codec.language.bm.PhoneticEngine $r3;
+        org.apache.commons.codec.language.bm.RuleType $r4;
+        org.apache.commons.codec.language.bm.NameType $r5;
+        java.lang.Object[] $r7;
+        java.io.PrintStream $r8;
+        java.lang.Integer $r9;
+        java.lang.Long $r10;
+        java.lang.String $r11;
+        int i2;
+
+        r0 := @this: org.apache.commons.codec.language.bm.PhoneticEnginePerformanceTest;
+
+        $r3 = new org.apache.commons.codec.language.bm.PhoneticEngine;
+
+        $r5 = <org.apache.commons.codec.language.bm.NameType: org.apache.commons.codec.language.bm.NameType GENERIC>;
+
+        $r4 = <org.apache.commons.codec.language.bm.RuleType: org.apache.commons.codec.language.bm.RuleType APPROX>;
+
+        specialinvoke $r3.<org.apache.commons.codec.language.bm.PhoneticEngine: void <init>(org.apache.commons.codec.language.bm.NameType,org.apache.commons.codec.language.bm.RuleType,boolean)>($r5, $r4, 1);
+
+        l0 = staticinvoke <java.lang.System: long currentTimeMillis()>();
+
+        i2 = 0;
+
+        goto label2;
+
+     label1:
+        virtualinvoke $r3.<org.apache.commons.codec.language.bm.PhoneticEngine: java.lang.String encode(java.lang.String)>("Angelo");
+
+        i2 = i2 + 1;
+
+     label2:
+        if i2 < 80000 goto label1;
+
+        $l1 = staticinvoke <java.lang.System: long currentTimeMillis()>();
+
+        l3 = $l1 - l0;
+
+        $r8 = <java.lang.System: java.io.PrintStream out>;
+
+        $r7 = newarray (java.lang.Object)[3];
+
+        $r9 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(80000);
+
+        $r7[0] = $r9;
+
+        $r7[1] = "Angelo";
+
+        $r10 = staticinvoke <java.lang.Long: java.lang.Long valueOf(long)>(l3);
+
+        $r7[2] = $r10;
+
+        $r11 = staticinvoke <java.lang.String: java.lang.String format(java.lang.String,java.lang.Object[])>("Time for encoding %,d times the input \'%s\': %,d millis.", $r7);
+
+        virtualinvoke $r8.<java.io.PrintStream: void println(java.lang.String)>($r11);
+
+        return;
+    }
+
+    public static void <clinit>()
+    {
+        <org.apache.commons.codec.language.bm.PhoneticEnginePerformanceTest: int LOOP> = 80000;
+
+        return;
+    }
+}

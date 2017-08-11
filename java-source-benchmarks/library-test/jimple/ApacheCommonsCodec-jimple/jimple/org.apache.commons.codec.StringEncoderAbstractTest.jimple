@@ -1,0 +1,359 @@
+public abstract class org.apache.commons.codec.StringEncoderAbstractTest extends java.lang.Object
+{
+    protected org.apache.commons.codec.StringEncoder stringEncoder;
+
+    public void <init>()
+    {
+        org.apache.commons.codec.StringEncoderAbstractTest r0;
+        org.apache.commons.codec.StringEncoder $r1;
+
+        r0 := @this: org.apache.commons.codec.StringEncoderAbstractTest;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r1 = virtualinvoke r0.<org.apache.commons.codec.StringEncoderAbstractTest: org.apache.commons.codec.StringEncoder createStringEncoder()>();
+
+        r0.<org.apache.commons.codec.StringEncoderAbstractTest: org.apache.commons.codec.StringEncoder stringEncoder> = $r1;
+
+        return;
+    }
+
+    public void checkEncoding(java.lang.String, java.lang.String) throws org.apache.commons.codec.EncoderException
+    {
+        org.apache.commons.codec.StringEncoderAbstractTest r0;
+        java.lang.String r1, r2, $r5, $r7;
+        java.lang.StringBuilder $r3, $r4;
+        org.apache.commons.codec.StringEncoder $r6;
+
+        r0 := @this: org.apache.commons.codec.StringEncoderAbstractTest;
+
+        r1 := @parameter0: java.lang.String;
+
+        r2 := @parameter1: java.lang.String;
+
+        $r3 = new java.lang.StringBuilder;
+
+        specialinvoke $r3.<java.lang.StringBuilder: void <init>(java.lang.String)>("Source: ");
+
+        $r4 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r2);
+
+        $r5 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r6 = virtualinvoke r0.<org.apache.commons.codec.StringEncoderAbstractTest: org.apache.commons.codec.StringEncoder getStringEncoder()>();
+
+        $r7 = interfaceinvoke $r6.<org.apache.commons.codec.StringEncoder: java.lang.String encode(java.lang.String)>(r2);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,java.lang.Object,java.lang.Object)>($r5, r1, $r7);
+
+        return;
+    }
+
+    protected void checkEncodings(java.lang.String[][]) throws org.apache.commons.codec.EncoderException
+    {
+        org.apache.commons.codec.StringEncoderAbstractTest r0;
+        java.lang.String[][] r1;
+        java.lang.String[] r2;
+        int i0, i1;
+        java.lang.String $r4, $r5;
+
+        r0 := @this: org.apache.commons.codec.StringEncoderAbstractTest;
+
+        r1 := @parameter0: java.lang.String[][];
+
+        i0 = lengthof r1;
+
+        i1 = 0;
+
+        goto label2;
+
+     label1:
+        r2 = r1[i1];
+
+        $r5 = r2[1];
+
+        $r4 = r2[0];
+
+        virtualinvoke r0.<org.apache.commons.codec.StringEncoderAbstractTest: void checkEncoding(java.lang.String,java.lang.String)>($r5, $r4);
+
+        i1 = i1 + 1;
+
+     label2:
+        if i1 < i0 goto label1;
+
+        return;
+    }
+
+    protected void checkEncodingVariations(java.lang.String, java.lang.String[]) throws org.apache.commons.codec.EncoderException
+    {
+        org.apache.commons.codec.StringEncoderAbstractTest r0;
+        java.lang.String r1, r3;
+        java.lang.String[] r2;
+        int i0, i1;
+
+        r0 := @this: org.apache.commons.codec.StringEncoderAbstractTest;
+
+        r1 := @parameter0: java.lang.String;
+
+        r2 := @parameter1: java.lang.String[];
+
+        i0 = lengthof r2;
+
+        i1 = 0;
+
+        goto label2;
+
+     label1:
+        r3 = r2[i1];
+
+        virtualinvoke r0.<org.apache.commons.codec.StringEncoderAbstractTest: void checkEncoding(java.lang.String,java.lang.String)>(r1, r3);
+
+        i1 = i1 + 1;
+
+     label2:
+        if i1 < i0 goto label1;
+
+        return;
+    }
+
+    protected abstract org.apache.commons.codec.StringEncoder createStringEncoder();
+
+    public org.apache.commons.codec.StringEncoder getStringEncoder()
+    {
+        org.apache.commons.codec.StringEncoderAbstractTest r0;
+        org.apache.commons.codec.StringEncoder $r1;
+
+        r0 := @this: org.apache.commons.codec.StringEncoderAbstractTest;
+
+        $r1 = r0.<org.apache.commons.codec.StringEncoderAbstractTest: org.apache.commons.codec.StringEncoder stringEncoder>;
+
+        return $r1;
+    }
+
+    public void testEncodeEmpty() throws java.lang.Exception
+    {
+        org.apache.commons.codec.StringEncoderAbstractTest r0;
+        org.apache.commons.codec.StringEncoder r1;
+
+        r0 := @this: org.apache.commons.codec.StringEncoderAbstractTest;
+
+        r1 = virtualinvoke r0.<org.apache.commons.codec.StringEncoderAbstractTest: org.apache.commons.codec.StringEncoder getStringEncoder()>();
+
+        interfaceinvoke r1.<org.apache.commons.codec.Encoder: java.lang.Object encode(java.lang.Object)>("");
+
+        interfaceinvoke r1.<org.apache.commons.codec.Encoder: java.lang.Object encode(java.lang.Object)>(" ");
+
+        interfaceinvoke r1.<org.apache.commons.codec.Encoder: java.lang.Object encode(java.lang.Object)>("\t");
+
+        return;
+    }
+
+    public void testEncodeNull() throws java.lang.Exception
+    {
+        org.apache.commons.codec.StringEncoderAbstractTest r0;
+        org.apache.commons.codec.StringEncoder r1;
+        org.apache.commons.codec.EncoderException $r4;
+
+        r0 := @this: org.apache.commons.codec.StringEncoderAbstractTest;
+
+        r1 = virtualinvoke r0.<org.apache.commons.codec.StringEncoderAbstractTest: org.apache.commons.codec.StringEncoder getStringEncoder()>();
+
+     label1:
+        interfaceinvoke r1.<org.apache.commons.codec.StringEncoder: java.lang.String encode(java.lang.String)>(null);
+
+     label2:
+        goto label4;
+
+     label3:
+        $r4 := @caughtexception;
+
+     label4:
+        return;
+
+        catch org.apache.commons.codec.EncoderException from label1 to label2 with label3;
+    }
+
+    public void testEncodeWithInvalidObject() throws java.lang.Exception
+    {
+        org.apache.commons.codec.StringEncoderAbstractTest r0;
+        java.lang.Float $r1;
+        java.lang.Exception $r3;
+        boolean z0;
+        org.apache.commons.codec.StringEncoder r4;
+
+        r0 := @this: org.apache.commons.codec.StringEncoderAbstractTest;
+
+        z0 = 0;
+
+     label1:
+        r4 = virtualinvoke r0.<org.apache.commons.codec.StringEncoderAbstractTest: org.apache.commons.codec.StringEncoder getStringEncoder()>();
+
+        $r1 = new java.lang.Float;
+
+        specialinvoke $r1.<java.lang.Float: void <init>(double)>(3.4);
+
+        interfaceinvoke r4.<org.apache.commons.codec.StringEncoder: java.lang.Object encode(java.lang.Object)>($r1);
+
+     label2:
+        goto label4;
+
+     label3:
+        $r3 := @caughtexception;
+
+        z0 = 1;
+
+     label4:
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>("An exception was not thrown when we tried to encode a Float object", z0);
+
+        return;
+
+        catch java.lang.Exception from label1 to label2 with label3;
+    }
+
+    public void testLocaleIndependence() throws java.lang.Exception
+    {
+        org.apache.commons.codec.StringEncoderAbstractTest r0;
+        org.apache.commons.codec.StringEncoder r1;
+        java.util.Locale r3, $r11, $r12, $r13, $r14, $r16, $r24;
+        java.lang.String r5, $r17, $r18, $r20, $r25, $r26, $r28, $r30, r31, r32;
+        int i0, i1, i2, $i3;
+        java.lang.String[] $r9;
+        java.util.Locale[] $r10;
+        java.lang.StringBuilder $r15, $r19, $r23, $r27, $r29;
+        java.lang.Throwable $r21;
+        java.lang.Exception $r22;
+
+        r0 := @this: org.apache.commons.codec.StringEncoderAbstractTest;
+
+        r1 = virtualinvoke r0.<org.apache.commons.codec.StringEncoderAbstractTest: org.apache.commons.codec.StringEncoder getStringEncoder()>();
+
+        $r9 = newarray (java.lang.String)[2];
+
+        $r9[0] = "I";
+
+        $r9[1] = "i";
+
+        r3 = staticinvoke <java.util.Locale: java.util.Locale getDefault()>();
+
+        $r10 = newarray (java.util.Locale)[3];
+
+        $r11 = <java.util.Locale: java.util.Locale ENGLISH>;
+
+        $r10[0] = $r11;
+
+        $r12 = new java.util.Locale;
+
+        specialinvoke $r12.<java.util.Locale: void <init>(java.lang.String)>("tr");
+
+        $r10[1] = $r12;
+
+        $r13 = staticinvoke <java.util.Locale: java.util.Locale getDefault()>();
+
+        $r10[2] = $r13;
+
+     label01:
+        i0 = lengthof $r9;
+
+        i1 = 0;
+
+        goto label11;
+
+     label02:
+        r5 = $r9[i1];
+
+        r31 = null;
+
+        i2 = 0;
+
+        goto label10;
+
+     label03:
+        $r14 = $r10[i2];
+
+        staticinvoke <java.util.Locale: void setDefault(java.util.Locale)>($r14);
+
+        if i2 > 0 goto label04;
+
+        r31 = interfaceinvoke r1.<org.apache.commons.codec.StringEncoder: java.lang.String encode(java.lang.String)>(r5);
+
+        goto label09;
+
+     label04:
+        r32 = null;
+
+     label05:
+        r32 = interfaceinvoke r1.<org.apache.commons.codec.StringEncoder: java.lang.String encode(java.lang.String)>(r5);
+
+     label06:
+        goto label08;
+
+     label07:
+        $r22 := @caughtexception;
+
+        $r23 = new java.lang.StringBuilder;
+
+        $r24 = staticinvoke <java.util.Locale: java.util.Locale getDefault()>();
+
+        $r25 = virtualinvoke $r24.<java.util.Locale: java.lang.String toString()>();
+
+        $r26 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r25);
+
+        specialinvoke $r23.<java.lang.StringBuilder: void <init>(java.lang.String)>($r26);
+
+        $r27 = virtualinvoke $r23.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(": ");
+
+        $r28 = virtualinvoke $r22.<java.lang.Exception: java.lang.String getMessage()>();
+
+        $r29 = virtualinvoke $r27.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r28);
+
+        $r30 = virtualinvoke $r29.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>($r30);
+
+     label08:
+        $r15 = new java.lang.StringBuilder;
+
+        $r16 = staticinvoke <java.util.Locale: java.util.Locale getDefault()>();
+
+        $r17 = virtualinvoke $r16.<java.util.Locale: java.lang.String toString()>();
+
+        $r18 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r17);
+
+        specialinvoke $r15.<java.lang.StringBuilder: void <init>(java.lang.String)>($r18);
+
+        $r19 = virtualinvoke $r15.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(": ");
+
+        $r20 = virtualinvoke $r19.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,java.lang.Object,java.lang.Object)>($r20, r31, r32);
+
+     label09:
+        i2 = i2 + 1;
+
+     label10:
+        $i3 = lengthof $r10;
+
+        if i2 < $i3 goto label03;
+
+        i1 = i1 + 1;
+
+     label11:
+        if i1 < i0 goto label02;
+
+        goto label13;
+
+     label12:
+        $r21 := @caughtexception;
+
+        staticinvoke <java.util.Locale: void setDefault(java.util.Locale)>(r3);
+
+        throw $r21;
+
+     label13:
+        staticinvoke <java.util.Locale: void setDefault(java.util.Locale)>(r3);
+
+        return;
+
+        catch java.lang.Exception from label05 to label06 with label07;
+        catch java.lang.Throwable from label01 to label12 with label12;
+    }
+}

@@ -1,0 +1,316 @@
+public class org.apache.log4j.varia.FallbackErrorHandler extends java.lang.Object implements org.apache.log4j.spi.ErrorHandler
+{
+    org.apache.log4j.Appender backup;
+    org.apache.log4j.Appender primary;
+    java.util.Vector loggers;
+
+    public void <init>()
+    {
+        org.apache.log4j.varia.FallbackErrorHandler r0;
+
+        r0 := @this: org.apache.log4j.varia.FallbackErrorHandler;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void setLogger(org.apache.log4j.Logger)
+    {
+        org.apache.log4j.varia.FallbackErrorHandler r0;
+        org.apache.log4j.Logger r1;
+        java.lang.StringBuilder $r2, $r4, $r5;
+        java.lang.String $r3, $r6;
+        java.util.Vector $r7, $r8, $r9;
+
+        r0 := @this: org.apache.log4j.varia.FallbackErrorHandler;
+
+        r1 := @parameter0: org.apache.log4j.Logger;
+
+        $r2 = new java.lang.StringBuilder;
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>(java.lang.String)>("FB: Adding logger [");
+
+        $r3 = virtualinvoke r1.<org.apache.log4j.Logger: java.lang.String getName()>();
+
+        $r4 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r3);
+
+        $r5 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("].");
+
+        $r6 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.apache.log4j.helpers.LogLog: void debug(java.lang.String)>($r6);
+
+        $r7 = r0.<org.apache.log4j.varia.FallbackErrorHandler: java.util.Vector loggers>;
+
+        if $r7 != null goto label1;
+
+        $r9 = new java.util.Vector;
+
+        specialinvoke $r9.<java.util.Vector: void <init>()>();
+
+        r0.<org.apache.log4j.varia.FallbackErrorHandler: java.util.Vector loggers> = $r9;
+
+     label1:
+        $r8 = r0.<org.apache.log4j.varia.FallbackErrorHandler: java.util.Vector loggers>;
+
+        virtualinvoke $r8.<java.util.Vector: void addElement(java.lang.Object)>(r1);
+
+        return;
+    }
+
+    public void activateOptions()
+    {
+        org.apache.log4j.varia.FallbackErrorHandler r0;
+
+        r0 := @this: org.apache.log4j.varia.FallbackErrorHandler;
+
+        return;
+    }
+
+    public void error(java.lang.String, java.lang.Exception, int)
+    {
+        org.apache.log4j.varia.FallbackErrorHandler r0;
+        java.lang.String r1;
+        java.lang.Exception r2;
+        int i0;
+
+        r0 := @this: org.apache.log4j.varia.FallbackErrorHandler;
+
+        r1 := @parameter0: java.lang.String;
+
+        r2 := @parameter1: java.lang.Exception;
+
+        i0 := @parameter2: int;
+
+        virtualinvoke r0.<org.apache.log4j.varia.FallbackErrorHandler: void error(java.lang.String,java.lang.Exception,int,org.apache.log4j.spi.LoggingEvent)>(r1, r2, i0, null);
+
+        return;
+    }
+
+    public void error(java.lang.String, java.lang.Exception, int, org.apache.log4j.spi.LoggingEvent)
+    {
+        org.apache.log4j.varia.FallbackErrorHandler r0;
+        java.lang.String r1, $r7, $r14, $r17, $r20, $r23, $r27, $r30, $r33, $r37, $r40, $r42;
+        java.lang.Exception r2;
+        int i0, $i1, i2;
+        org.apache.log4j.spi.LoggingEvent r3;
+        org.apache.log4j.Logger r4;
+        boolean $z0;
+        java.lang.StringBuilder $r5, $r6, $r12, $r15, $r16, $r18, $r19, $r21, $r24, $r25, $r28, $r29, $r31, $r32, $r35, $r38, $r39, $r41;
+        java.util.Vector $r8, $r9, $r10;
+        java.lang.Object $r11;
+        org.apache.log4j.Appender $r13, $r22, $r26, $r34, $r36, $r43;
+        java.lang.Thread $r44;
+
+        r0 := @this: org.apache.log4j.varia.FallbackErrorHandler;
+
+        r1 := @parameter0: java.lang.String;
+
+        r2 := @parameter1: java.lang.Exception;
+
+        i0 := @parameter2: int;
+
+        r3 := @parameter3: org.apache.log4j.spi.LoggingEvent;
+
+        $z0 = r2 instanceof java.io.InterruptedIOException;
+
+        if $z0 == 0 goto label1;
+
+        $r44 = staticinvoke <java.lang.Thread: java.lang.Thread currentThread()>();
+
+        virtualinvoke $r44.<java.lang.Thread: void interrupt()>();
+
+     label1:
+        $r5 = new java.lang.StringBuilder;
+
+        specialinvoke $r5.<java.lang.StringBuilder: void <init>(java.lang.String)>("FB: The following error reported: ");
+
+        $r6 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r1);
+
+        $r7 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.apache.log4j.helpers.LogLog: void debug(java.lang.String,java.lang.Throwable)>($r7, r2);
+
+        staticinvoke <org.apache.log4j.helpers.LogLog: void debug(java.lang.String)>("FB: INITIATING FALLBACK PROCEDURE.");
+
+        $r8 = r0.<org.apache.log4j.varia.FallbackErrorHandler: java.util.Vector loggers>;
+
+        if $r8 == null goto label4;
+
+        i2 = 0;
+
+        goto label3;
+
+     label2:
+        $r10 = r0.<org.apache.log4j.varia.FallbackErrorHandler: java.util.Vector loggers>;
+
+        $r11 = virtualinvoke $r10.<java.util.Vector: java.lang.Object elementAt(int)>(i2);
+
+        r4 = (org.apache.log4j.Logger) $r11;
+
+        $r12 = new java.lang.StringBuilder;
+
+        specialinvoke $r12.<java.lang.StringBuilder: void <init>(java.lang.String)>("FB: Searching for [");
+
+        $r13 = r0.<org.apache.log4j.varia.FallbackErrorHandler: org.apache.log4j.Appender primary>;
+
+        $r14 = interfaceinvoke $r13.<org.apache.log4j.Appender: java.lang.String getName()>();
+
+        $r15 = virtualinvoke $r12.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r14);
+
+        $r16 = virtualinvoke $r15.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("] in logger [");
+
+        $r17 = virtualinvoke r4.<org.apache.log4j.Logger: java.lang.String getName()>();
+
+        $r18 = virtualinvoke $r16.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r17);
+
+        $r19 = virtualinvoke $r18.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("].");
+
+        $r20 = virtualinvoke $r19.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.apache.log4j.helpers.LogLog: void debug(java.lang.String)>($r20);
+
+        $r21 = new java.lang.StringBuilder;
+
+        specialinvoke $r21.<java.lang.StringBuilder: void <init>(java.lang.String)>("FB: Replacing [");
+
+        $r22 = r0.<org.apache.log4j.varia.FallbackErrorHandler: org.apache.log4j.Appender primary>;
+
+        $r23 = interfaceinvoke $r22.<org.apache.log4j.Appender: java.lang.String getName()>();
+
+        $r24 = virtualinvoke $r21.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r23);
+
+        $r25 = virtualinvoke $r24.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("] by [");
+
+        $r26 = r0.<org.apache.log4j.varia.FallbackErrorHandler: org.apache.log4j.Appender backup>;
+
+        $r27 = interfaceinvoke $r26.<org.apache.log4j.Appender: java.lang.String getName()>();
+
+        $r28 = virtualinvoke $r25.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r27);
+
+        $r29 = virtualinvoke $r28.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("] in logger [");
+
+        $r30 = virtualinvoke r4.<org.apache.log4j.Logger: java.lang.String getName()>();
+
+        $r31 = virtualinvoke $r29.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r30);
+
+        $r32 = virtualinvoke $r31.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("].");
+
+        $r33 = virtualinvoke $r32.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.apache.log4j.helpers.LogLog: void debug(java.lang.String)>($r33);
+
+        $r34 = r0.<org.apache.log4j.varia.FallbackErrorHandler: org.apache.log4j.Appender primary>;
+
+        virtualinvoke r4.<org.apache.log4j.Logger: void removeAppender(org.apache.log4j.Appender)>($r34);
+
+        $r35 = new java.lang.StringBuilder;
+
+        specialinvoke $r35.<java.lang.StringBuilder: void <init>(java.lang.String)>("FB: Adding appender [");
+
+        $r36 = r0.<org.apache.log4j.varia.FallbackErrorHandler: org.apache.log4j.Appender backup>;
+
+        $r37 = interfaceinvoke $r36.<org.apache.log4j.Appender: java.lang.String getName()>();
+
+        $r38 = virtualinvoke $r35.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r37);
+
+        $r39 = virtualinvoke $r38.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("] to logger ");
+
+        $r40 = virtualinvoke r4.<org.apache.log4j.Logger: java.lang.String getName()>();
+
+        $r41 = virtualinvoke $r39.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r40);
+
+        $r42 = virtualinvoke $r41.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.apache.log4j.helpers.LogLog: void debug(java.lang.String)>($r42);
+
+        $r43 = r0.<org.apache.log4j.varia.FallbackErrorHandler: org.apache.log4j.Appender backup>;
+
+        virtualinvoke r4.<org.apache.log4j.Logger: void addAppender(org.apache.log4j.Appender)>($r43);
+
+        i2 = i2 + 1;
+
+     label3:
+        $r9 = r0.<org.apache.log4j.varia.FallbackErrorHandler: java.util.Vector loggers>;
+
+        $i1 = virtualinvoke $r9.<java.util.Vector: int size()>();
+
+        if i2 < $i1 goto label2;
+
+     label4:
+        return;
+    }
+
+    public void error(java.lang.String)
+    {
+        org.apache.log4j.varia.FallbackErrorHandler r0;
+        java.lang.String r1;
+
+        r0 := @this: org.apache.log4j.varia.FallbackErrorHandler;
+
+        r1 := @parameter0: java.lang.String;
+
+        return;
+    }
+
+    public void setAppender(org.apache.log4j.Appender)
+    {
+        org.apache.log4j.varia.FallbackErrorHandler r0;
+        org.apache.log4j.Appender r1;
+        java.lang.StringBuilder $r2, $r4, $r5;
+        java.lang.String $r3, $r6;
+
+        r0 := @this: org.apache.log4j.varia.FallbackErrorHandler;
+
+        r1 := @parameter0: org.apache.log4j.Appender;
+
+        $r2 = new java.lang.StringBuilder;
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>(java.lang.String)>("FB: Setting primary appender to [");
+
+        $r3 = interfaceinvoke r1.<org.apache.log4j.Appender: java.lang.String getName()>();
+
+        $r4 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r3);
+
+        $r5 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("].");
+
+        $r6 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.apache.log4j.helpers.LogLog: void debug(java.lang.String)>($r6);
+
+        r0.<org.apache.log4j.varia.FallbackErrorHandler: org.apache.log4j.Appender primary> = r1;
+
+        return;
+    }
+
+    public void setBackupAppender(org.apache.log4j.Appender)
+    {
+        org.apache.log4j.varia.FallbackErrorHandler r0;
+        org.apache.log4j.Appender r1;
+        java.lang.StringBuilder $r2, $r4, $r5;
+        java.lang.String $r3, $r6;
+
+        r0 := @this: org.apache.log4j.varia.FallbackErrorHandler;
+
+        r1 := @parameter0: org.apache.log4j.Appender;
+
+        $r2 = new java.lang.StringBuilder;
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>(java.lang.String)>("FB: Setting backup appender to [");
+
+        $r3 = interfaceinvoke r1.<org.apache.log4j.Appender: java.lang.String getName()>();
+
+        $r4 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r3);
+
+        $r5 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("].");
+
+        $r6 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.apache.log4j.helpers.LogLog: void debug(java.lang.String)>($r6);
+
+        r0.<org.apache.log4j.varia.FallbackErrorHandler: org.apache.log4j.Appender backup> = r1;
+
+        return;
+    }
+}

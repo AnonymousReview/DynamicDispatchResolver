@@ -1,0 +1,43 @@
+class org.apache.commons.io.FileUtilsTestCase$1 extends java.io.File
+{
+    private static final long serialVersionUID;
+    final org.apache.commons.io.FileUtilsTestCase this$0;
+
+    void <init>(org.apache.commons.io.FileUtilsTestCase, java.lang.String)
+    {
+        org.apache.commons.io.FileUtilsTestCase$1 r0;
+        org.apache.commons.io.FileUtilsTestCase r1;
+        java.lang.String $r2;
+
+        r0 := @this: org.apache.commons.io.FileUtilsTestCase$1;
+
+        r1 := @parameter0: org.apache.commons.io.FileUtilsTestCase;
+
+        $r2 := @parameter1: java.lang.String;
+
+        r0.<org.apache.commons.io.FileUtilsTestCase$1: org.apache.commons.io.FileUtilsTestCase this$0> = r1;
+
+        specialinvoke r0.<java.io.File: void <init>(java.lang.String)>($r2);
+
+        return;
+    }
+
+    public boolean renameTo(java.io.File)
+    {
+        org.apache.commons.io.FileUtilsTestCase$1 r0;
+        java.io.File r1;
+
+        r0 := @this: org.apache.commons.io.FileUtilsTestCase$1;
+
+        r1 := @parameter0: java.io.File;
+
+        return 0;
+    }
+
+    public static void <clinit>()
+    {
+        <org.apache.commons.io.FileUtilsTestCase$1: long serialVersionUID> = 1L;
+
+        return;
+    }
+}

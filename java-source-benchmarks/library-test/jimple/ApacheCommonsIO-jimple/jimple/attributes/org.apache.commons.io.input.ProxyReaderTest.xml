@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<attributes>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="0" eline="0" spos="0" epos="0"/>
+<text info="[inner=org/apache/commons/io/input/ProxyReaderTest$CustomNullReader, outer=org/apache/commons/io/input/ProxyReaderTest, name=CustomNullReader,flags=10]" aType="InnerClassTag"/>
+<text info="[inner=org/apache/commons/io/input/ProxyReaderTest$ProxyReaderImpl, outer=org/apache/commons/io/input/ProxyReaderTest, name=ProxyReaderImpl,flags=10]" aType="InnerClassTag"/>
+<text info="soot.tagkit.InnerClassAttribute@26cc1316" aType="InnerClassAttribute"/>
+</attribute>
+<attribute>
+<srcPos sline="36" eline="36" spos="0" epos="0"/>
+<jmpPos sline="15" eline="15" spos="0" epos="0"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation type: Lorg/junit/Test; without elements
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+<attribute>
+<srcPos sline="55" eline="55" spos="0" epos="0"/>
+<jmpPos sline="81" eline="81" spos="0" epos="0"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation type: Lorg/junit/Test; without elements
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+</attributes>

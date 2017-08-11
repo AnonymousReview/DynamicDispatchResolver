@@ -1,0 +1,68 @@
+class org.apache.log4j.pattern.NameAbbreviator$MaxElementAbbreviator extends org.apache.log4j.pattern.NameAbbreviator
+{
+    private final int count;
+
+    public void <init>(int)
+    {
+        org.apache.log4j.pattern.NameAbbreviator$MaxElementAbbreviator r0;
+        int i0;
+
+        r0 := @this: org.apache.log4j.pattern.NameAbbreviator$MaxElementAbbreviator;
+
+        i0 := @parameter0: int;
+
+        specialinvoke r0.<org.apache.log4j.pattern.NameAbbreviator: void <init>()>();
+
+        r0.<org.apache.log4j.pattern.NameAbbreviator$MaxElementAbbreviator: int count> = i0;
+
+        return;
+    }
+
+    public void abbreviate(int, java.lang.StringBuffer)
+    {
+        org.apache.log4j.pattern.NameAbbreviator$MaxElementAbbreviator r0;
+        int i0, $i1, $i2, $i3, i4, i5;
+        java.lang.StringBuffer r1;
+        java.lang.String r2;
+
+        r0 := @this: org.apache.log4j.pattern.NameAbbreviator$MaxElementAbbreviator;
+
+        i0 := @parameter0: int;
+
+        r1 := @parameter1: java.lang.StringBuffer;
+
+        $i1 = virtualinvoke r1.<java.lang.StringBuffer: int length()>();
+
+        i4 = $i1 - 1;
+
+        r2 = virtualinvoke r1.<java.lang.StringBuffer: java.lang.String toString()>();
+
+        i5 = r0.<org.apache.log4j.pattern.NameAbbreviator$MaxElementAbbreviator: int count>;
+
+        goto label4;
+
+     label1:
+        $i2 = i4 - 1;
+
+        i4 = virtualinvoke r2.<java.lang.String: int lastIndexOf(java.lang.String,int)>(".", $i2);
+
+        if i4 == -1 goto label2;
+
+        if i4 >= i0 goto label3;
+
+     label2:
+        return;
+
+     label3:
+        i5 = i5 + -1;
+
+     label4:
+        if i5 > 0 goto label1;
+
+        $i3 = i4 + 1;
+
+        virtualinvoke r1.<java.lang.StringBuffer: java.lang.StringBuffer delete(int,int)>(i0, $i3);
+
+        return;
+    }
+}

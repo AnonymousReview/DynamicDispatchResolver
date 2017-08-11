@@ -1,0 +1,222 @@
+public abstract class org.apache.log4j.helpers.PatternConverter extends java.lang.Object
+{
+    public org.apache.log4j.helpers.PatternConverter next;
+    int min;
+    int max;
+    boolean leftAlign;
+    static java.lang.String[] SPACES;
+
+    static void <clinit>()
+    {
+        java.lang.String[] $r0;
+
+        $r0 = newarray (java.lang.String)[6];
+
+        $r0[0] = " ";
+
+        $r0[1] = "  ";
+
+        $r0[2] = "    ";
+
+        $r0[3] = "        ";
+
+        $r0[4] = "                ";
+
+        $r0[5] = "                                ";
+
+        <org.apache.log4j.helpers.PatternConverter: java.lang.String[] SPACES> = $r0;
+
+        return;
+    }
+
+    protected void <init>()
+    {
+        org.apache.log4j.helpers.PatternConverter r0;
+
+        r0 := @this: org.apache.log4j.helpers.PatternConverter;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<org.apache.log4j.helpers.PatternConverter: int min> = -1;
+
+        r0.<org.apache.log4j.helpers.PatternConverter: int max> = 2147483647;
+
+        r0.<org.apache.log4j.helpers.PatternConverter: boolean leftAlign> = 0;
+
+        return;
+    }
+
+    protected void <init>(org.apache.log4j.helpers.FormattingInfo)
+    {
+        org.apache.log4j.helpers.PatternConverter r0;
+        org.apache.log4j.helpers.FormattingInfo r1;
+        int $i0, $i1;
+        boolean $z0;
+
+        r0 := @this: org.apache.log4j.helpers.PatternConverter;
+
+        r1 := @parameter0: org.apache.log4j.helpers.FormattingInfo;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<org.apache.log4j.helpers.PatternConverter: int min> = -1;
+
+        r0.<org.apache.log4j.helpers.PatternConverter: int max> = 2147483647;
+
+        r0.<org.apache.log4j.helpers.PatternConverter: boolean leftAlign> = 0;
+
+        $i0 = r1.<org.apache.log4j.helpers.FormattingInfo: int min>;
+
+        r0.<org.apache.log4j.helpers.PatternConverter: int min> = $i0;
+
+        $i1 = r1.<org.apache.log4j.helpers.FormattingInfo: int max>;
+
+        r0.<org.apache.log4j.helpers.PatternConverter: int max> = $i1;
+
+        $z0 = r1.<org.apache.log4j.helpers.FormattingInfo: boolean leftAlign>;
+
+        r0.<org.apache.log4j.helpers.PatternConverter: boolean leftAlign> = $z0;
+
+        return;
+    }
+
+    protected abstract java.lang.String convert(org.apache.log4j.spi.LoggingEvent);
+
+    public void format(java.lang.StringBuffer, org.apache.log4j.spi.LoggingEvent)
+    {
+        org.apache.log4j.helpers.PatternConverter r0;
+        java.lang.StringBuffer r1;
+        org.apache.log4j.spi.LoggingEvent r2;
+        java.lang.String r3, $r7;
+        int i0, $i1, $i2, $i3, $i4, $i5, $i6, $i7, $i8, $i9, $i10;
+        boolean $z0;
+
+        r0 := @this: org.apache.log4j.helpers.PatternConverter;
+
+        r1 := @parameter0: java.lang.StringBuffer;
+
+        r2 := @parameter1: org.apache.log4j.spi.LoggingEvent;
+
+        r3 = virtualinvoke r0.<org.apache.log4j.helpers.PatternConverter: java.lang.String convert(org.apache.log4j.spi.LoggingEvent)>(r2);
+
+        if r3 != null goto label2;
+
+        $i9 = r0.<org.apache.log4j.helpers.PatternConverter: int min>;
+
+        if $i9 <= 0 goto label1;
+
+        $i10 = r0.<org.apache.log4j.helpers.PatternConverter: int min>;
+
+        virtualinvoke r0.<org.apache.log4j.helpers.PatternConverter: void spacePad(java.lang.StringBuffer,int)>(r1, $i10);
+
+     label1:
+        return;
+
+     label2:
+        i0 = virtualinvoke r3.<java.lang.String: int length()>();
+
+        $i1 = r0.<org.apache.log4j.helpers.PatternConverter: int max>;
+
+        if i0 <= $i1 goto label3;
+
+        $i7 = r0.<org.apache.log4j.helpers.PatternConverter: int max>;
+
+        $i8 = i0 - $i7;
+
+        $r7 = virtualinvoke r3.<java.lang.String: java.lang.String substring(int)>($i8);
+
+        virtualinvoke r1.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>($r7);
+
+        goto label6;
+
+     label3:
+        $i2 = r0.<org.apache.log4j.helpers.PatternConverter: int min>;
+
+        if i0 >= $i2 goto label5;
+
+        $z0 = r0.<org.apache.log4j.helpers.PatternConverter: boolean leftAlign>;
+
+        if $z0 == 0 goto label4;
+
+        virtualinvoke r1.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>(r3);
+
+        $i5 = r0.<org.apache.log4j.helpers.PatternConverter: int min>;
+
+        $i6 = $i5 - i0;
+
+        virtualinvoke r0.<org.apache.log4j.helpers.PatternConverter: void spacePad(java.lang.StringBuffer,int)>(r1, $i6);
+
+        goto label6;
+
+     label4:
+        $i3 = r0.<org.apache.log4j.helpers.PatternConverter: int min>;
+
+        $i4 = $i3 - i0;
+
+        virtualinvoke r0.<org.apache.log4j.helpers.PatternConverter: void spacePad(java.lang.StringBuffer,int)>(r1, $i4);
+
+        virtualinvoke r1.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>(r3);
+
+        goto label6;
+
+     label5:
+        virtualinvoke r1.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>(r3);
+
+     label6:
+        return;
+    }
+
+    public void spacePad(java.lang.StringBuffer, int)
+    {
+        org.apache.log4j.helpers.PatternConverter r0;
+        java.lang.StringBuffer r1;
+        java.lang.String[] $r2, $r5;
+        java.lang.String $r3, $r6;
+        int $i0, $i1, i2, i3;
+
+        r0 := @this: org.apache.log4j.helpers.PatternConverter;
+
+        r1 := @parameter0: java.lang.StringBuffer;
+
+        i2 := @parameter1: int;
+
+        goto label2;
+
+     label1:
+        $r2 = <org.apache.log4j.helpers.PatternConverter: java.lang.String[] SPACES>;
+
+        $r3 = $r2[5];
+
+        virtualinvoke r1.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>($r3);
+
+        i2 = i2 + -32;
+
+     label2:
+        if i2 >= 32 goto label1;
+
+        i3 = 4;
+
+        goto label5;
+
+     label3:
+        $i0 = 1 << i3;
+
+        $i1 = i2 & $i0;
+
+        if $i1 == 0 goto label4;
+
+        $r5 = <org.apache.log4j.helpers.PatternConverter: java.lang.String[] SPACES>;
+
+        $r6 = $r5[i3];
+
+        virtualinvoke r1.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>($r6);
+
+     label4:
+        i3 = i3 + -1;
+
+     label5:
+        if i3 >= 0 goto label3;
+
+        return;
+    }
+}

@@ -1,0 +1,30 @@
+class org.apache.log4j.xml.XMLLayoutTestCase$X extends java.lang.Object
+{
+    org.apache.log4j.Logger logger;
+    final org.apache.log4j.xml.XMLLayoutTestCase this$0;
+
+    public void <init>(org.apache.log4j.xml.XMLLayoutTestCase)
+    {
+        org.apache.log4j.xml.XMLLayoutTestCase$X r0;
+        org.apache.log4j.xml.XMLLayoutTestCase r1;
+        org.apache.log4j.Logger $r2, $r3;
+
+        r0 := @this: org.apache.log4j.xml.XMLLayoutTestCase$X;
+
+        r1 := @parameter0: org.apache.log4j.xml.XMLLayoutTestCase;
+
+        r0.<org.apache.log4j.xml.XMLLayoutTestCase$X: org.apache.log4j.xml.XMLLayoutTestCase this$0> = r1;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r2 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getLogger(java.lang.Class)>(class "org/apache/log4j/xml/XMLLayoutTestCase$X");
+
+        r0.<org.apache.log4j.xml.XMLLayoutTestCase$X: org.apache.log4j.Logger logger> = $r2;
+
+        $r3 = r0.<org.apache.log4j.xml.XMLLayoutTestCase$X: org.apache.log4j.Logger logger>;
+
+        virtualinvoke $r3.<org.apache.log4j.Logger: void info(java.lang.Object)>("in X() constructor");
+
+        return;
+    }
+}

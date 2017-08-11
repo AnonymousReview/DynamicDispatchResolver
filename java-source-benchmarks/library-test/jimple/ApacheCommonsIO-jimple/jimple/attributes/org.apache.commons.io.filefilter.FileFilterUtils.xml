@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<attributes>
+<attribute>
+<srcPos sline="121" eline="121" spos="0" epos="0"/>
+<jmpPos sline="133" eline="133" spos="0" epos="0"/>
+<text info="Signature: (Lorg/apache/commons/io/filefilter/IOFileFilter;Ljava/lang/Iterable&lt;Ljava/io/File;&gt;;)[Ljava/io/File;" aType="SignatureTag"/>
+</attribute>
+<attribute>
+<srcPos sline="151" eline="151" spos="0" epos="0"/>
+<jmpPos sline="159" eline="159" spos="0" epos="0"/>
+<text info="Signature: (Lorg/apache/commons/io/filefilter/IOFileFilter;Ljava/lang/Iterable&lt;Ljava/io/File;&gt;;)Ljava/util/List&lt;Ljava/io/File;&gt;;" aType="SignatureTag"/>
+</attribute>
+<attribute>
+<srcPos sline="180" eline="180" spos="0" epos="0"/>
+<jmpPos sline="182" eline="182" spos="0" epos="0"/>
+<text info="Signature: (Lorg/apache/commons/io/filefilter/IOFileFilter;[Ljava/io/File;)Ljava/util/List&lt;Ljava/io/File;&gt;;" aType="SignatureTag"/>
+</attribute>
+<attribute>
+<srcPos sline="211" eline="211" spos="0" epos="0"/>
+<jmpPos sline="199" eline="199" spos="0" epos="0"/>
+<text info="Signature: (Lorg/apache/commons/io/filefilter/IOFileFilter;[Ljava/io/File;)Ljava/util/Set&lt;Ljava/io/File;&gt;;" aType="SignatureTag"/>
+</attribute>
+<attribute>
+<srcPos sline="242" eline="242" spos="0" epos="0"/>
+<jmpPos sline="221" eline="221" spos="0" epos="0"/>
+<text info="Signature: (Lorg/apache/commons/io/filefilter/IOFileFilter;Ljava/lang/Iterable&lt;Ljava/io/File;&gt;;)Ljava/util/Set&lt;Ljava/io/File;&gt;;" aType="SignatureTag"/>
+</attribute>
+<attribute>
+<srcPos sline="269" eline="269" spos="0" epos="0"/>
+<jmpPos sline="244" eline="244" spos="0" epos="0"/>
+<text info="Signature: &lt;T::Ljava/util/Collection&lt;Ljava/io/File;&gt;;&gt;(Lorg/apache/commons/io/filefilter/IOFileFilter;Ljava/lang/Iterable&lt;Ljava/io/File;&gt;;TT;)TT;" aType="SignatureTag"/>
+</attribute>
+<attribute>
+<srcPos sline="390" eline="390" spos="0" epos="0"/>
+<jmpPos sline="416" eline="416" spos="0" epos="0"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation type: Ljava/lang/Deprecated; without elements
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+<attribute>
+<srcPos sline="405" eline="405" spos="0" epos="0"/>
+<jmpPos sline="432" eline="432" spos="0" epos="0"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation type: Ljava/lang/Deprecated; without elements
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+<attribute>
+<srcPos sline="448" eline="448" spos="0" epos="0"/>
+<jmpPos sline="482" eline="482" spos="0" epos="0"/>
+<text info="Signature: ([Lorg/apache/commons/io/filefilter/IOFileFilter;)Ljava/util/List&lt;Lorg/apache/commons/io/filefilter/IOFileFilter;&gt;;" aType="SignatureTag"/>
+</attribute>
+</attributes>

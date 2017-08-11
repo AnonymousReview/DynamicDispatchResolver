@@ -1,0 +1,256 @@
+public class org.apache.log4j.TTCCLayout extends org.apache.log4j.helpers.DateLayout
+{
+    private boolean threadPrinting;
+    private boolean categoryPrefixing;
+    private boolean contextPrinting;
+    protected final java.lang.StringBuffer buf;
+
+    public void <init>()
+    {
+        org.apache.log4j.TTCCLayout r0;
+        java.lang.StringBuffer $r1;
+
+        r0 := @this: org.apache.log4j.TTCCLayout;
+
+        specialinvoke r0.<org.apache.log4j.helpers.DateLayout: void <init>()>();
+
+        r0.<org.apache.log4j.TTCCLayout: boolean threadPrinting> = 1;
+
+        r0.<org.apache.log4j.TTCCLayout: boolean categoryPrefixing> = 1;
+
+        r0.<org.apache.log4j.TTCCLayout: boolean contextPrinting> = 1;
+
+        $r1 = new java.lang.StringBuffer;
+
+        specialinvoke $r1.<java.lang.StringBuffer: void <init>(int)>(256);
+
+        r0.<org.apache.log4j.TTCCLayout: java.lang.StringBuffer buf> = $r1;
+
+        virtualinvoke r0.<org.apache.log4j.TTCCLayout: void setDateFormat(java.lang.String,java.util.TimeZone)>("RELATIVE", null);
+
+        return;
+    }
+
+    public void <init>(java.lang.String)
+    {
+        org.apache.log4j.TTCCLayout r0;
+        java.lang.String r1;
+        java.lang.StringBuffer $r2;
+
+        r0 := @this: org.apache.log4j.TTCCLayout;
+
+        r1 := @parameter0: java.lang.String;
+
+        specialinvoke r0.<org.apache.log4j.helpers.DateLayout: void <init>()>();
+
+        r0.<org.apache.log4j.TTCCLayout: boolean threadPrinting> = 1;
+
+        r0.<org.apache.log4j.TTCCLayout: boolean categoryPrefixing> = 1;
+
+        r0.<org.apache.log4j.TTCCLayout: boolean contextPrinting> = 1;
+
+        $r2 = new java.lang.StringBuffer;
+
+        specialinvoke $r2.<java.lang.StringBuffer: void <init>(int)>(256);
+
+        r0.<org.apache.log4j.TTCCLayout: java.lang.StringBuffer buf> = $r2;
+
+        virtualinvoke r0.<org.apache.log4j.TTCCLayout: void setDateFormat(java.lang.String)>(r1);
+
+        return;
+    }
+
+    public void setThreadPrinting(boolean)
+    {
+        org.apache.log4j.TTCCLayout r0;
+        boolean z0;
+
+        r0 := @this: org.apache.log4j.TTCCLayout;
+
+        z0 := @parameter0: boolean;
+
+        r0.<org.apache.log4j.TTCCLayout: boolean threadPrinting> = z0;
+
+        return;
+    }
+
+    public boolean getThreadPrinting()
+    {
+        org.apache.log4j.TTCCLayout r0;
+        boolean $z0;
+
+        r0 := @this: org.apache.log4j.TTCCLayout;
+
+        $z0 = r0.<org.apache.log4j.TTCCLayout: boolean threadPrinting>;
+
+        return $z0;
+    }
+
+    public void setCategoryPrefixing(boolean)
+    {
+        org.apache.log4j.TTCCLayout r0;
+        boolean z0;
+
+        r0 := @this: org.apache.log4j.TTCCLayout;
+
+        z0 := @parameter0: boolean;
+
+        r0.<org.apache.log4j.TTCCLayout: boolean categoryPrefixing> = z0;
+
+        return;
+    }
+
+    public boolean getCategoryPrefixing()
+    {
+        org.apache.log4j.TTCCLayout r0;
+        boolean $z0;
+
+        r0 := @this: org.apache.log4j.TTCCLayout;
+
+        $z0 = r0.<org.apache.log4j.TTCCLayout: boolean categoryPrefixing>;
+
+        return $z0;
+    }
+
+    public void setContextPrinting(boolean)
+    {
+        org.apache.log4j.TTCCLayout r0;
+        boolean z0;
+
+        r0 := @this: org.apache.log4j.TTCCLayout;
+
+        z0 := @parameter0: boolean;
+
+        r0.<org.apache.log4j.TTCCLayout: boolean contextPrinting> = z0;
+
+        return;
+    }
+
+    public boolean getContextPrinting()
+    {
+        org.apache.log4j.TTCCLayout r0;
+        boolean $z0;
+
+        r0 := @this: org.apache.log4j.TTCCLayout;
+
+        $z0 = r0.<org.apache.log4j.TTCCLayout: boolean contextPrinting>;
+
+        return $z0;
+    }
+
+    public java.lang.String format(org.apache.log4j.spi.LoggingEvent)
+    {
+        org.apache.log4j.TTCCLayout r0;
+        org.apache.log4j.spi.LoggingEvent r1;
+        java.lang.String r2, $r7, $r19, $r26, $r32, $r34, $r36;
+        java.lang.StringBuffer $r3, $r4, $r5, $r9, $r14, $r16, $r18, $r21, $r23, $r25, $r28, $r30, $r31, $r33, $r35;
+        boolean $z0, $z1, $z2;
+        org.apache.log4j.Level $r6;
+
+        r0 := @this: org.apache.log4j.TTCCLayout;
+
+        r1 := @parameter0: org.apache.log4j.spi.LoggingEvent;
+
+        $r3 = r0.<org.apache.log4j.TTCCLayout: java.lang.StringBuffer buf>;
+
+        virtualinvoke $r3.<java.lang.StringBuffer: void setLength(int)>(0);
+
+        $r4 = r0.<org.apache.log4j.TTCCLayout: java.lang.StringBuffer buf>;
+
+        virtualinvoke r0.<org.apache.log4j.TTCCLayout: void dateFormat(java.lang.StringBuffer,org.apache.log4j.spi.LoggingEvent)>($r4, r1);
+
+        $z0 = r0.<org.apache.log4j.TTCCLayout: boolean threadPrinting>;
+
+        if $z0 == 0 goto label1;
+
+        $r23 = r0.<org.apache.log4j.TTCCLayout: java.lang.StringBuffer buf>;
+
+        virtualinvoke $r23.<java.lang.StringBuffer: java.lang.StringBuffer append(char)>(91);
+
+        $r25 = r0.<org.apache.log4j.TTCCLayout: java.lang.StringBuffer buf>;
+
+        $r26 = virtualinvoke r1.<org.apache.log4j.spi.LoggingEvent: java.lang.String getThreadName()>();
+
+        virtualinvoke $r25.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>($r26);
+
+        $r28 = r0.<org.apache.log4j.TTCCLayout: java.lang.StringBuffer buf>;
+
+        virtualinvoke $r28.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>("] ");
+
+     label1:
+        $r5 = r0.<org.apache.log4j.TTCCLayout: java.lang.StringBuffer buf>;
+
+        $r6 = virtualinvoke r1.<org.apache.log4j.spi.LoggingEvent: org.apache.log4j.Level getLevel()>();
+
+        $r7 = virtualinvoke $r6.<org.apache.log4j.Level: java.lang.String toString()>();
+
+        virtualinvoke $r5.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>($r7);
+
+        $r9 = r0.<org.apache.log4j.TTCCLayout: java.lang.StringBuffer buf>;
+
+        virtualinvoke $r9.<java.lang.StringBuffer: java.lang.StringBuffer append(char)>(32);
+
+        $z1 = r0.<org.apache.log4j.TTCCLayout: boolean categoryPrefixing>;
+
+        if $z1 == 0 goto label2;
+
+        $r18 = r0.<org.apache.log4j.TTCCLayout: java.lang.StringBuffer buf>;
+
+        $r19 = virtualinvoke r1.<org.apache.log4j.spi.LoggingEvent: java.lang.String getLoggerName()>();
+
+        virtualinvoke $r18.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>($r19);
+
+        $r21 = r0.<org.apache.log4j.TTCCLayout: java.lang.StringBuffer buf>;
+
+        virtualinvoke $r21.<java.lang.StringBuffer: java.lang.StringBuffer append(char)>(32);
+
+     label2:
+        $z2 = r0.<org.apache.log4j.TTCCLayout: boolean contextPrinting>;
+
+        if $z2 == 0 goto label3;
+
+        r2 = virtualinvoke r1.<org.apache.log4j.spi.LoggingEvent: java.lang.String getNDC()>();
+
+        if r2 == null goto label3;
+
+        $r14 = r0.<org.apache.log4j.TTCCLayout: java.lang.StringBuffer buf>;
+
+        virtualinvoke $r14.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>(r2);
+
+        $r16 = r0.<org.apache.log4j.TTCCLayout: java.lang.StringBuffer buf>;
+
+        virtualinvoke $r16.<java.lang.StringBuffer: java.lang.StringBuffer append(char)>(32);
+
+     label3:
+        $r30 = r0.<org.apache.log4j.TTCCLayout: java.lang.StringBuffer buf>;
+
+        virtualinvoke $r30.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>("- ");
+
+        $r31 = r0.<org.apache.log4j.TTCCLayout: java.lang.StringBuffer buf>;
+
+        $r32 = virtualinvoke r1.<org.apache.log4j.spi.LoggingEvent: java.lang.String getRenderedMessage()>();
+
+        virtualinvoke $r31.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>($r32);
+
+        $r33 = r0.<org.apache.log4j.TTCCLayout: java.lang.StringBuffer buf>;
+
+        $r34 = <org.apache.log4j.TTCCLayout: java.lang.String LINE_SEP>;
+
+        virtualinvoke $r33.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>($r34);
+
+        $r35 = r0.<org.apache.log4j.TTCCLayout: java.lang.StringBuffer buf>;
+
+        $r36 = virtualinvoke $r35.<java.lang.StringBuffer: java.lang.String toString()>();
+
+        return $r36;
+    }
+
+    public boolean ignoresThrowable()
+    {
+        org.apache.log4j.TTCCLayout r0;
+
+        r0 := @this: org.apache.log4j.TTCCLayout;
+
+        return 1;
+    }
+}

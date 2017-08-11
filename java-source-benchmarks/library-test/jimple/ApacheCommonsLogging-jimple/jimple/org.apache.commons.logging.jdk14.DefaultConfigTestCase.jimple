@@ -1,0 +1,262 @@
+public class org.apache.commons.logging.jdk14.DefaultConfigTestCase extends junit.framework.TestCase
+{
+    protected org.apache.commons.logging.LogFactory factory;
+    protected org.apache.commons.logging.Log log;
+
+    public void <init>(java.lang.String)
+    {
+        org.apache.commons.logging.jdk14.DefaultConfigTestCase r0;
+        java.lang.String r1;
+
+        r0 := @this: org.apache.commons.logging.jdk14.DefaultConfigTestCase;
+
+        r1 := @parameter0: java.lang.String;
+
+        specialinvoke r0.<junit.framework.TestCase: void <init>(java.lang.String)>(r1);
+
+        r0.<org.apache.commons.logging.jdk14.DefaultConfigTestCase: org.apache.commons.logging.LogFactory factory> = null;
+
+        r0.<org.apache.commons.logging.jdk14.DefaultConfigTestCase: org.apache.commons.logging.Log log> = null;
+
+        return;
+    }
+
+    public void setUp() throws java.lang.Exception
+    {
+        org.apache.commons.logging.jdk14.DefaultConfigTestCase r0;
+
+        r0 := @this: org.apache.commons.logging.jdk14.DefaultConfigTestCase;
+
+        virtualinvoke r0.<org.apache.commons.logging.jdk14.DefaultConfigTestCase: void setUpFactory()>();
+
+        virtualinvoke r0.<org.apache.commons.logging.jdk14.DefaultConfigTestCase: void setUpLog(java.lang.String)>("TestLogger");
+
+        return;
+    }
+
+    public static junit.framework.Test suite() throws java.lang.Exception
+    {
+        java.lang.Class r1, $r3, $r5;
+        org.apache.commons.logging.PathableClassLoader $r2;
+        java.lang.ClassLoader $r4;
+        java.lang.String $r6;
+        org.apache.commons.logging.PathableTestSuite $r7;
+
+        $r2 = new org.apache.commons.logging.PathableClassLoader;
+
+        specialinvoke $r2.<org.apache.commons.logging.PathableClassLoader: void <init>(java.lang.ClassLoader)>(null);
+
+        $r3 = class "junit/framework/Test";
+
+        $r4 = virtualinvoke $r3.<java.lang.Class: java.lang.ClassLoader getClassLoader()>();
+
+        virtualinvoke $r2.<org.apache.commons.logging.PathableClassLoader: void useExplicitLoader(java.lang.String,java.lang.ClassLoader)>("junit.", $r4);
+
+        virtualinvoke $r2.<org.apache.commons.logging.PathableClassLoader: void addLogicalLib(java.lang.String)>("testclasses");
+
+        virtualinvoke $r2.<org.apache.commons.logging.PathableClassLoader: void addLogicalLib(java.lang.String)>("commons-logging");
+
+        $r5 = class "org/apache/commons/logging/jdk14/DefaultConfigTestCase";
+
+        $r6 = virtualinvoke $r5.<java.lang.Class: java.lang.String getName()>();
+
+        r1 = virtualinvoke $r2.<org.apache.commons.logging.PathableClassLoader: java.lang.Class loadClass(java.lang.String)>($r6);
+
+        $r7 = new org.apache.commons.logging.PathableTestSuite;
+
+        specialinvoke $r7.<org.apache.commons.logging.PathableTestSuite: void <init>(java.lang.Class,java.lang.ClassLoader)>(r1, $r2);
+
+        return $r7;
+    }
+
+    public void tearDown()
+    {
+        org.apache.commons.logging.jdk14.DefaultConfigTestCase r0;
+
+        r0 := @this: org.apache.commons.logging.jdk14.DefaultConfigTestCase;
+
+        r0.<org.apache.commons.logging.jdk14.DefaultConfigTestCase: org.apache.commons.logging.Log log> = null;
+
+        r0.<org.apache.commons.logging.jdk14.DefaultConfigTestCase: org.apache.commons.logging.LogFactory factory> = null;
+
+        staticinvoke <org.apache.commons.logging.LogFactory: void releaseAll()>();
+
+        return;
+    }
+
+    public void testPristineLog()
+    {
+        org.apache.commons.logging.jdk14.DefaultConfigTestCase r0;
+
+        r0 := @this: org.apache.commons.logging.jdk14.DefaultConfigTestCase;
+
+        virtualinvoke r0.<org.apache.commons.logging.jdk14.DefaultConfigTestCase: void checkLog()>();
+
+        return;
+    }
+
+    public void testPristineFactory()
+    {
+        org.apache.commons.logging.jdk14.DefaultConfigTestCase r0;
+        java.lang.String[] r1;
+        org.apache.commons.logging.LogFactory $r2, $r3, $r6;
+        java.lang.Class $r4;
+        java.lang.String $r5;
+        int $i0;
+
+        r0 := @this: org.apache.commons.logging.jdk14.DefaultConfigTestCase;
+
+        $r2 = r0.<org.apache.commons.logging.jdk14.DefaultConfigTestCase: org.apache.commons.logging.LogFactory factory>;
+
+        staticinvoke <org.apache.commons.logging.jdk14.DefaultConfigTestCase: void assertNotNull(java.lang.String,java.lang.Object)>("LogFactory exists", $r2);
+
+        $r3 = r0.<org.apache.commons.logging.jdk14.DefaultConfigTestCase: org.apache.commons.logging.LogFactory factory>;
+
+        $r4 = virtualinvoke $r3.<java.lang.Object: java.lang.Class getClass()>();
+
+        $r5 = virtualinvoke $r4.<java.lang.Class: java.lang.String getName()>();
+
+        staticinvoke <org.apache.commons.logging.jdk14.DefaultConfigTestCase: void assertEquals(java.lang.String,java.lang.String,java.lang.String)>("LogFactory class", "org.apache.commons.logging.impl.LogFactoryImpl", $r5);
+
+        $r6 = r0.<org.apache.commons.logging.jdk14.DefaultConfigTestCase: org.apache.commons.logging.LogFactory factory>;
+
+        r1 = virtualinvoke $r6.<org.apache.commons.logging.LogFactory: java.lang.String[] getAttributeNames()>();
+
+        staticinvoke <org.apache.commons.logging.jdk14.DefaultConfigTestCase: void assertNotNull(java.lang.String,java.lang.Object)>("Names exists", r1);
+
+        $i0 = lengthof r1;
+
+        staticinvoke <org.apache.commons.logging.jdk14.DefaultConfigTestCase: void assertEquals(java.lang.String,int,int)>("Names empty", 0, $i0);
+
+        return;
+    }
+
+    public void testSerializable() throws java.lang.Exception
+    {
+        org.apache.commons.logging.jdk14.DefaultConfigTestCase r0;
+        java.io.ByteArrayOutputStream $r5;
+        java.io.ObjectOutputStream $r6;
+        org.apache.commons.logging.Log $r7, $r12;
+        java.io.ByteArrayInputStream $r8;
+        byte[] $r9;
+        java.io.ObjectInputStream $r10;
+        java.lang.Object $r11;
+
+        r0 := @this: org.apache.commons.logging.jdk14.DefaultConfigTestCase;
+
+        $r5 = new java.io.ByteArrayOutputStream;
+
+        specialinvoke $r5.<java.io.ByteArrayOutputStream: void <init>()>();
+
+        $r6 = new java.io.ObjectOutputStream;
+
+        specialinvoke $r6.<java.io.ObjectOutputStream: void <init>(java.io.OutputStream)>($r5);
+
+        $r7 = r0.<org.apache.commons.logging.jdk14.DefaultConfigTestCase: org.apache.commons.logging.Log log>;
+
+        virtualinvoke $r6.<java.io.ObjectOutputStream: void writeObject(java.lang.Object)>($r7);
+
+        virtualinvoke $r6.<java.io.ObjectOutputStream: void close()>();
+
+        $r8 = new java.io.ByteArrayInputStream;
+
+        $r9 = virtualinvoke $r5.<java.io.ByteArrayOutputStream: byte[] toByteArray()>();
+
+        specialinvoke $r8.<java.io.ByteArrayInputStream: void <init>(byte[])>($r9);
+
+        $r10 = new java.io.ObjectInputStream;
+
+        specialinvoke $r10.<java.io.ObjectInputStream: void <init>(java.io.InputStream)>($r8);
+
+        $r11 = virtualinvoke $r10.<java.io.ObjectInputStream: java.lang.Object readObject()>();
+
+        $r12 = (org.apache.commons.logging.Log) $r11;
+
+        r0.<org.apache.commons.logging.jdk14.DefaultConfigTestCase: org.apache.commons.logging.Log log> = $r12;
+
+        virtualinvoke $r10.<java.io.ObjectInputStream: void close()>();
+
+        virtualinvoke r0.<org.apache.commons.logging.jdk14.DefaultConfigTestCase: void checkLog()>();
+
+        return;
+    }
+
+    protected void checkLog()
+    {
+        org.apache.commons.logging.jdk14.DefaultConfigTestCase r0;
+        org.apache.commons.logging.Log $r1, $r2, $r5, $r6, $r7, $r8, $r9, $r10;
+        java.lang.Class $r3;
+        java.lang.String $r4;
+
+        r0 := @this: org.apache.commons.logging.jdk14.DefaultConfigTestCase;
+
+        $r1 = r0.<org.apache.commons.logging.jdk14.DefaultConfigTestCase: org.apache.commons.logging.Log log>;
+
+        staticinvoke <org.apache.commons.logging.jdk14.DefaultConfigTestCase: void assertNotNull(java.lang.String,java.lang.Object)>("Log exists", $r1);
+
+        $r2 = r0.<org.apache.commons.logging.jdk14.DefaultConfigTestCase: org.apache.commons.logging.Log log>;
+
+        $r3 = virtualinvoke $r2.<java.lang.Object: java.lang.Class getClass()>();
+
+        $r4 = virtualinvoke $r3.<java.lang.Class: java.lang.String getName()>();
+
+        staticinvoke <org.apache.commons.logging.jdk14.DefaultConfigTestCase: void assertEquals(java.lang.String,java.lang.String,java.lang.String)>("Log class", "org.apache.commons.logging.impl.Jdk14Logger", $r4);
+
+        $r5 = r0.<org.apache.commons.logging.jdk14.DefaultConfigTestCase: org.apache.commons.logging.Log log>;
+
+        interfaceinvoke $r5.<org.apache.commons.logging.Log: boolean isDebugEnabled()>();
+
+        $r6 = r0.<org.apache.commons.logging.jdk14.DefaultConfigTestCase: org.apache.commons.logging.Log log>;
+
+        interfaceinvoke $r6.<org.apache.commons.logging.Log: boolean isErrorEnabled()>();
+
+        $r7 = r0.<org.apache.commons.logging.jdk14.DefaultConfigTestCase: org.apache.commons.logging.Log log>;
+
+        interfaceinvoke $r7.<org.apache.commons.logging.Log: boolean isFatalEnabled()>();
+
+        $r8 = r0.<org.apache.commons.logging.jdk14.DefaultConfigTestCase: org.apache.commons.logging.Log log>;
+
+        interfaceinvoke $r8.<org.apache.commons.logging.Log: boolean isInfoEnabled()>();
+
+        $r9 = r0.<org.apache.commons.logging.jdk14.DefaultConfigTestCase: org.apache.commons.logging.Log log>;
+
+        interfaceinvoke $r9.<org.apache.commons.logging.Log: boolean isTraceEnabled()>();
+
+        $r10 = r0.<org.apache.commons.logging.jdk14.DefaultConfigTestCase: org.apache.commons.logging.Log log>;
+
+        interfaceinvoke $r10.<org.apache.commons.logging.Log: boolean isWarnEnabled()>();
+
+        return;
+    }
+
+    protected void setUpFactory() throws java.lang.Exception
+    {
+        org.apache.commons.logging.jdk14.DefaultConfigTestCase r0;
+        org.apache.commons.logging.LogFactory $r1;
+
+        r0 := @this: org.apache.commons.logging.jdk14.DefaultConfigTestCase;
+
+        $r1 = staticinvoke <org.apache.commons.logging.LogFactory: org.apache.commons.logging.LogFactory getFactory()>();
+
+        r0.<org.apache.commons.logging.jdk14.DefaultConfigTestCase: org.apache.commons.logging.LogFactory factory> = $r1;
+
+        return;
+    }
+
+    protected void setUpLog(java.lang.String) throws java.lang.Exception
+    {
+        org.apache.commons.logging.jdk14.DefaultConfigTestCase r0;
+        java.lang.String r1;
+        org.apache.commons.logging.Log $r2;
+
+        r0 := @this: org.apache.commons.logging.jdk14.DefaultConfigTestCase;
+
+        r1 := @parameter0: java.lang.String;
+
+        $r2 = staticinvoke <org.apache.commons.logging.LogFactory: org.apache.commons.logging.Log getLog(java.lang.String)>(r1);
+
+        r0.<org.apache.commons.logging.jdk14.DefaultConfigTestCase: org.apache.commons.logging.Log log> = $r2;
+
+        return;
+    }
+}

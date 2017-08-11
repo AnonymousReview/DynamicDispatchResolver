@@ -1,0 +1,30 @@
+public class org.apache.commons.codec.digest.Sha2CryptTest extends java.lang.Object
+{
+
+    public void <init>()
+    {
+        org.apache.commons.codec.digest.Sha2CryptTest r0;
+
+        r0 := @this: org.apache.commons.codec.digest.Sha2CryptTest;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void testCtor()
+    {
+        org.apache.commons.codec.digest.Sha2CryptTest r0;
+        org.apache.commons.codec.digest.Sha2Crypt $r1;
+
+        r0 := @this: org.apache.commons.codec.digest.Sha2CryptTest;
+
+        $r1 = new org.apache.commons.codec.digest.Sha2Crypt;
+
+        specialinvoke $r1.<org.apache.commons.codec.digest.Sha2Crypt: void <init>()>();
+
+        staticinvoke <org.junit.Assert: void assertNotNull(java.lang.Object)>($r1);
+
+        return;
+    }
+}

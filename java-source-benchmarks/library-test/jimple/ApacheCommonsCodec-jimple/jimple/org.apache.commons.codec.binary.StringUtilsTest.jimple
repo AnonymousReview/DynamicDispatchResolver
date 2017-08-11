@@ -1,0 +1,523 @@
+public class org.apache.commons.codec.binary.StringUtilsTest extends java.lang.Object
+{
+    private static final byte[] BYTES_FIXTURE;
+    private static final byte[] BYTES_FIXTURE_16BE;
+    private static final byte[] BYTES_FIXTURE_16LE;
+    private static final java.lang.String STRING_FIXTURE;
+
+    static void <clinit>()
+    {
+        byte[] $r0, $r1, $r2;
+
+        <org.apache.commons.codec.binary.StringUtilsTest: java.lang.String STRING_FIXTURE> = "ABC";
+
+        $r0 = newarray (byte)[3];
+
+        $r0[0] = 97;
+
+        $r0[1] = 98;
+
+        $r0[2] = 99;
+
+        <org.apache.commons.codec.binary.StringUtilsTest: byte[] BYTES_FIXTURE> = $r0;
+
+        $r1 = newarray (byte)[6];
+
+        $r1[1] = 97;
+
+        $r1[3] = 98;
+
+        $r1[5] = 99;
+
+        <org.apache.commons.codec.binary.StringUtilsTest: byte[] BYTES_FIXTURE_16BE> = $r1;
+
+        $r2 = newarray (byte)[6];
+
+        $r2[0] = 97;
+
+        $r2[2] = 98;
+
+        $r2[4] = 99;
+
+        <org.apache.commons.codec.binary.StringUtilsTest: byte[] BYTES_FIXTURE_16LE> = $r2;
+
+        return;
+    }
+
+    public void <init>()
+    {
+        org.apache.commons.codec.binary.StringUtilsTest r0;
+
+        r0 := @this: org.apache.commons.codec.binary.StringUtilsTest;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void testConstructor()
+    {
+        org.apache.commons.codec.binary.StringUtilsTest r0;
+        org.apache.commons.codec.binary.StringUtils $r1;
+
+        r0 := @this: org.apache.commons.codec.binary.StringUtilsTest;
+
+        $r1 = new org.apache.commons.codec.binary.StringUtils;
+
+        specialinvoke $r1.<org.apache.commons.codec.binary.StringUtils: void <init>()>();
+
+        return;
+    }
+
+    public void testGetBytesIso8859_1() throws java.io.UnsupportedEncodingException
+    {
+        org.apache.commons.codec.binary.StringUtilsTest r0;
+        byte[] r2, r3;
+        java.lang.String $r4;
+        boolean $z0;
+
+        r0 := @this: org.apache.commons.codec.binary.StringUtilsTest;
+
+        specialinvoke r0.<org.apache.commons.codec.binary.StringUtilsTest: void testGetBytesUnchecked(java.lang.String)>("ISO-8859-1");
+
+        $r4 = "ABC";
+
+        r2 = virtualinvoke $r4.<java.lang.String: byte[] getBytes(java.lang.String)>("ISO-8859-1");
+
+        r3 = staticinvoke <org.apache.commons.codec.binary.StringUtils: byte[] getBytesIso8859_1(java.lang.String)>("ABC");
+
+        $z0 = staticinvoke <java.util.Arrays: boolean equals(byte[],byte[])>(r2, r3);
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z0);
+
+        return;
+    }
+
+    private void testGetBytesUnchecked(java.lang.String) throws java.io.UnsupportedEncodingException
+    {
+        org.apache.commons.codec.binary.StringUtilsTest r0;
+        java.lang.String r1, $r4;
+        byte[] r2, r3;
+        boolean $z0;
+
+        r0 := @this: org.apache.commons.codec.binary.StringUtilsTest;
+
+        r1 := @parameter0: java.lang.String;
+
+        $r4 = "ABC";
+
+        r2 = virtualinvoke $r4.<java.lang.String: byte[] getBytes(java.lang.String)>(r1);
+
+        r3 = staticinvoke <org.apache.commons.codec.binary.StringUtils: byte[] getBytesUnchecked(java.lang.String,java.lang.String)>("ABC", r1);
+
+        $z0 = staticinvoke <java.util.Arrays: boolean equals(byte[],byte[])>(r2, r3);
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z0);
+
+        return;
+    }
+
+    public void testGetBytesUsAscii() throws java.io.UnsupportedEncodingException
+    {
+        org.apache.commons.codec.binary.StringUtilsTest r0;
+        byte[] r2, r3;
+        java.lang.String $r4;
+        boolean $z0;
+
+        r0 := @this: org.apache.commons.codec.binary.StringUtilsTest;
+
+        specialinvoke r0.<org.apache.commons.codec.binary.StringUtilsTest: void testGetBytesUnchecked(java.lang.String)>("US-ASCII");
+
+        $r4 = "ABC";
+
+        r2 = virtualinvoke $r4.<java.lang.String: byte[] getBytes(java.lang.String)>("US-ASCII");
+
+        r3 = staticinvoke <org.apache.commons.codec.binary.StringUtils: byte[] getBytesUsAscii(java.lang.String)>("ABC");
+
+        $z0 = staticinvoke <java.util.Arrays: boolean equals(byte[],byte[])>(r2, r3);
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z0);
+
+        return;
+    }
+
+    public void testGetBytesUtf16() throws java.io.UnsupportedEncodingException
+    {
+        org.apache.commons.codec.binary.StringUtilsTest r0;
+        byte[] r2, r3;
+        java.lang.String $r4;
+        boolean $z0;
+
+        r0 := @this: org.apache.commons.codec.binary.StringUtilsTest;
+
+        specialinvoke r0.<org.apache.commons.codec.binary.StringUtilsTest: void testGetBytesUnchecked(java.lang.String)>("UTF-16");
+
+        $r4 = "ABC";
+
+        r2 = virtualinvoke $r4.<java.lang.String: byte[] getBytes(java.lang.String)>("UTF-16");
+
+        r3 = staticinvoke <org.apache.commons.codec.binary.StringUtils: byte[] getBytesUtf16(java.lang.String)>("ABC");
+
+        $z0 = staticinvoke <java.util.Arrays: boolean equals(byte[],byte[])>(r2, r3);
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z0);
+
+        return;
+    }
+
+    public void testGetBytesUtf16Be() throws java.io.UnsupportedEncodingException
+    {
+        org.apache.commons.codec.binary.StringUtilsTest r0;
+        byte[] r2, r3;
+        java.lang.String $r4;
+        boolean $z0;
+
+        r0 := @this: org.apache.commons.codec.binary.StringUtilsTest;
+
+        specialinvoke r0.<org.apache.commons.codec.binary.StringUtilsTest: void testGetBytesUnchecked(java.lang.String)>("UTF-16BE");
+
+        $r4 = "ABC";
+
+        r2 = virtualinvoke $r4.<java.lang.String: byte[] getBytes(java.lang.String)>("UTF-16BE");
+
+        r3 = staticinvoke <org.apache.commons.codec.binary.StringUtils: byte[] getBytesUtf16Be(java.lang.String)>("ABC");
+
+        $z0 = staticinvoke <java.util.Arrays: boolean equals(byte[],byte[])>(r2, r3);
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z0);
+
+        return;
+    }
+
+    public void testGetBytesUtf16Le() throws java.io.UnsupportedEncodingException
+    {
+        org.apache.commons.codec.binary.StringUtilsTest r0;
+        byte[] r2, r3;
+        java.lang.String $r4;
+        boolean $z0;
+
+        r0 := @this: org.apache.commons.codec.binary.StringUtilsTest;
+
+        specialinvoke r0.<org.apache.commons.codec.binary.StringUtilsTest: void testGetBytesUnchecked(java.lang.String)>("UTF-16LE");
+
+        $r4 = "ABC";
+
+        r2 = virtualinvoke $r4.<java.lang.String: byte[] getBytes(java.lang.String)>("UTF-16LE");
+
+        r3 = staticinvoke <org.apache.commons.codec.binary.StringUtils: byte[] getBytesUtf16Le(java.lang.String)>("ABC");
+
+        $z0 = staticinvoke <java.util.Arrays: boolean equals(byte[],byte[])>(r2, r3);
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z0);
+
+        return;
+    }
+
+    public void testGetBytesUtf8() throws java.io.UnsupportedEncodingException
+    {
+        org.apache.commons.codec.binary.StringUtilsTest r0;
+        byte[] r2, r3;
+        java.lang.String $r4;
+        boolean $z0;
+
+        r0 := @this: org.apache.commons.codec.binary.StringUtilsTest;
+
+        specialinvoke r0.<org.apache.commons.codec.binary.StringUtilsTest: void testGetBytesUnchecked(java.lang.String)>("UTF-8");
+
+        $r4 = "ABC";
+
+        r2 = virtualinvoke $r4.<java.lang.String: byte[] getBytes(java.lang.String)>("UTF-8");
+
+        r3 = staticinvoke <org.apache.commons.codec.binary.StringUtils: byte[] getBytesUtf8(java.lang.String)>("ABC");
+
+        $z0 = staticinvoke <java.util.Arrays: boolean equals(byte[],byte[])>(r2, r3);
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z0);
+
+        return;
+    }
+
+    public void testGetBytesUncheckedBadName()
+    {
+        org.apache.commons.codec.binary.StringUtilsTest r0;
+        java.lang.StringBuilder $r3, $r6;
+        java.lang.Class $r4;
+        java.lang.String $r5, $r7;
+        java.lang.IllegalStateException $r8;
+
+        r0 := @this: org.apache.commons.codec.binary.StringUtilsTest;
+
+     label1:
+        staticinvoke <org.apache.commons.codec.binary.StringUtils: byte[] getBytesUnchecked(java.lang.String,java.lang.String)>("ABC", "UNKNOWN");
+
+        $r3 = new java.lang.StringBuilder;
+
+        specialinvoke $r3.<java.lang.StringBuilder: void <init>(java.lang.String)>("Expected ");
+
+        $r4 = class "java/lang/IllegalStateException";
+
+        $r5 = virtualinvoke $r4.<java.lang.Class: java.lang.String getName()>();
+
+        $r6 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r5);
+
+        $r7 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>($r7);
+
+     label2:
+        goto label4;
+
+     label3:
+        $r8 := @caughtexception;
+
+     label4:
+        return;
+
+        catch java.lang.IllegalStateException from label1 to label2 with label3;
+    }
+
+    public void testGetBytesUncheckedNullInput()
+    {
+        org.apache.commons.codec.binary.StringUtilsTest r0;
+        byte[] $r1;
+
+        r0 := @this: org.apache.commons.codec.binary.StringUtilsTest;
+
+        $r1 = staticinvoke <org.apache.commons.codec.binary.StringUtils: byte[] getBytesUnchecked(java.lang.String,java.lang.String)>(null, "UNKNOWN");
+
+        staticinvoke <org.junit.Assert: void assertNull(java.lang.Object)>($r1);
+
+        return;
+    }
+
+    private void testNewString(java.lang.String) throws java.io.UnsupportedEncodingException
+    {
+        org.apache.commons.codec.binary.StringUtilsTest r0;
+        java.lang.String r1, r3, $r4;
+        byte[] $r5, $r6;
+
+        r0 := @this: org.apache.commons.codec.binary.StringUtilsTest;
+
+        r1 := @parameter0: java.lang.String;
+
+        $r4 = new java.lang.String;
+
+        $r5 = <org.apache.commons.codec.binary.StringUtilsTest: byte[] BYTES_FIXTURE>;
+
+        specialinvoke $r4.<java.lang.String: void <init>(byte[],java.lang.String)>($r5, r1);
+
+        $r6 = <org.apache.commons.codec.binary.StringUtilsTest: byte[] BYTES_FIXTURE>;
+
+        r3 = staticinvoke <org.apache.commons.codec.binary.StringUtils: java.lang.String newString(byte[],java.lang.String)>($r6, r1);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r4, r3);
+
+        return;
+    }
+
+    public void testNewStringBadEnc()
+    {
+        org.apache.commons.codec.binary.StringUtilsTest r0;
+        byte[] $r2;
+        java.lang.StringBuilder $r4, $r7;
+        java.lang.Class $r5;
+        java.lang.String $r6, $r8;
+        java.lang.IllegalStateException $r9;
+
+        r0 := @this: org.apache.commons.codec.binary.StringUtilsTest;
+
+     label1:
+        $r2 = <org.apache.commons.codec.binary.StringUtilsTest: byte[] BYTES_FIXTURE>;
+
+        staticinvoke <org.apache.commons.codec.binary.StringUtils: java.lang.String newString(byte[],java.lang.String)>($r2, "UNKNOWN");
+
+        $r4 = new java.lang.StringBuilder;
+
+        specialinvoke $r4.<java.lang.StringBuilder: void <init>(java.lang.String)>("Expected ");
+
+        $r5 = class "java/lang/IllegalStateException";
+
+        $r6 = virtualinvoke $r5.<java.lang.Class: java.lang.String getName()>();
+
+        $r7 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r6);
+
+        $r8 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>($r8);
+
+     label2:
+        goto label4;
+
+     label3:
+        $r9 := @caughtexception;
+
+     label4:
+        return;
+
+        catch java.lang.IllegalStateException from label1 to label2 with label3;
+    }
+
+    public void testNewStringNullInput()
+    {
+        org.apache.commons.codec.binary.StringUtilsTest r0;
+        java.lang.String $r1;
+
+        r0 := @this: org.apache.commons.codec.binary.StringUtilsTest;
+
+        $r1 = staticinvoke <org.apache.commons.codec.binary.StringUtils: java.lang.String newString(byte[],java.lang.String)>(null, "UNKNOWN");
+
+        staticinvoke <org.junit.Assert: void assertNull(java.lang.Object)>($r1);
+
+        return;
+    }
+
+    public void testNewStringIso8859_1() throws java.io.UnsupportedEncodingException
+    {
+        org.apache.commons.codec.binary.StringUtilsTest r0;
+        java.lang.String r3, $r4;
+        byte[] $r5, $r6;
+
+        r0 := @this: org.apache.commons.codec.binary.StringUtilsTest;
+
+        specialinvoke r0.<org.apache.commons.codec.binary.StringUtilsTest: void testNewString(java.lang.String)>("ISO-8859-1");
+
+        $r4 = new java.lang.String;
+
+        $r5 = <org.apache.commons.codec.binary.StringUtilsTest: byte[] BYTES_FIXTURE>;
+
+        specialinvoke $r4.<java.lang.String: void <init>(byte[],java.lang.String)>($r5, "ISO-8859-1");
+
+        $r6 = <org.apache.commons.codec.binary.StringUtilsTest: byte[] BYTES_FIXTURE>;
+
+        r3 = staticinvoke <org.apache.commons.codec.binary.StringUtils: java.lang.String newStringIso8859_1(byte[])>($r6);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r4, r3);
+
+        return;
+    }
+
+    public void testNewStringUsAscii() throws java.io.UnsupportedEncodingException
+    {
+        org.apache.commons.codec.binary.StringUtilsTest r0;
+        java.lang.String r3, $r4;
+        byte[] $r5, $r6;
+
+        r0 := @this: org.apache.commons.codec.binary.StringUtilsTest;
+
+        specialinvoke r0.<org.apache.commons.codec.binary.StringUtilsTest: void testNewString(java.lang.String)>("US-ASCII");
+
+        $r4 = new java.lang.String;
+
+        $r5 = <org.apache.commons.codec.binary.StringUtilsTest: byte[] BYTES_FIXTURE>;
+
+        specialinvoke $r4.<java.lang.String: void <init>(byte[],java.lang.String)>($r5, "US-ASCII");
+
+        $r6 = <org.apache.commons.codec.binary.StringUtilsTest: byte[] BYTES_FIXTURE>;
+
+        r3 = staticinvoke <org.apache.commons.codec.binary.StringUtils: java.lang.String newStringUsAscii(byte[])>($r6);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r4, r3);
+
+        return;
+    }
+
+    public void testNewStringUtf16() throws java.io.UnsupportedEncodingException
+    {
+        org.apache.commons.codec.binary.StringUtilsTest r0;
+        java.lang.String r3, $r4;
+        byte[] $r5, $r6;
+
+        r0 := @this: org.apache.commons.codec.binary.StringUtilsTest;
+
+        specialinvoke r0.<org.apache.commons.codec.binary.StringUtilsTest: void testNewString(java.lang.String)>("UTF-16");
+
+        $r4 = new java.lang.String;
+
+        $r5 = <org.apache.commons.codec.binary.StringUtilsTest: byte[] BYTES_FIXTURE>;
+
+        specialinvoke $r4.<java.lang.String: void <init>(byte[],java.lang.String)>($r5, "UTF-16");
+
+        $r6 = <org.apache.commons.codec.binary.StringUtilsTest: byte[] BYTES_FIXTURE>;
+
+        r3 = staticinvoke <org.apache.commons.codec.binary.StringUtils: java.lang.String newStringUtf16(byte[])>($r6);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r4, r3);
+
+        return;
+    }
+
+    public void testNewStringUtf16Be() throws java.io.UnsupportedEncodingException
+    {
+        org.apache.commons.codec.binary.StringUtilsTest r0;
+        java.lang.String r3, $r4;
+        byte[] $r5, $r6;
+
+        r0 := @this: org.apache.commons.codec.binary.StringUtilsTest;
+
+        specialinvoke r0.<org.apache.commons.codec.binary.StringUtilsTest: void testNewString(java.lang.String)>("UTF-16BE");
+
+        $r4 = new java.lang.String;
+
+        $r5 = <org.apache.commons.codec.binary.StringUtilsTest: byte[] BYTES_FIXTURE_16BE>;
+
+        specialinvoke $r4.<java.lang.String: void <init>(byte[],java.lang.String)>($r5, "UTF-16BE");
+
+        $r6 = <org.apache.commons.codec.binary.StringUtilsTest: byte[] BYTES_FIXTURE_16BE>;
+
+        r3 = staticinvoke <org.apache.commons.codec.binary.StringUtils: java.lang.String newStringUtf16Be(byte[])>($r6);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r4, r3);
+
+        return;
+    }
+
+    public void testNewStringUtf16Le() throws java.io.UnsupportedEncodingException
+    {
+        org.apache.commons.codec.binary.StringUtilsTest r0;
+        java.lang.String r3, $r4;
+        byte[] $r5, $r6;
+
+        r0 := @this: org.apache.commons.codec.binary.StringUtilsTest;
+
+        specialinvoke r0.<org.apache.commons.codec.binary.StringUtilsTest: void testNewString(java.lang.String)>("UTF-16LE");
+
+        $r4 = new java.lang.String;
+
+        $r5 = <org.apache.commons.codec.binary.StringUtilsTest: byte[] BYTES_FIXTURE_16LE>;
+
+        specialinvoke $r4.<java.lang.String: void <init>(byte[],java.lang.String)>($r5, "UTF-16LE");
+
+        $r6 = <org.apache.commons.codec.binary.StringUtilsTest: byte[] BYTES_FIXTURE_16LE>;
+
+        r3 = staticinvoke <org.apache.commons.codec.binary.StringUtils: java.lang.String newStringUtf16Le(byte[])>($r6);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r4, r3);
+
+        return;
+    }
+
+    public void testNewStringUtf8() throws java.io.UnsupportedEncodingException
+    {
+        org.apache.commons.codec.binary.StringUtilsTest r0;
+        java.lang.String r3, $r4;
+        byte[] $r5, $r6;
+
+        r0 := @this: org.apache.commons.codec.binary.StringUtilsTest;
+
+        specialinvoke r0.<org.apache.commons.codec.binary.StringUtilsTest: void testNewString(java.lang.String)>("UTF-8");
+
+        $r4 = new java.lang.String;
+
+        $r5 = <org.apache.commons.codec.binary.StringUtilsTest: byte[] BYTES_FIXTURE>;
+
+        specialinvoke $r4.<java.lang.String: void <init>(byte[],java.lang.String)>($r5, "UTF-8");
+
+        $r6 = <org.apache.commons.codec.binary.StringUtilsTest: byte[] BYTES_FIXTURE>;
+
+        r3 = staticinvoke <org.apache.commons.codec.binary.StringUtils: java.lang.String newStringUtf8(byte[])>($r6);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r4, r3);
+
+        return;
+    }
+}

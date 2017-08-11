@@ -1,0 +1,226 @@
+abstract class org.apache.commons.codec.net.RFC1522Codec extends java.lang.Object
+{
+    protected static final char SEP;
+    protected static final java.lang.String POSTFIX;
+    protected static final java.lang.String PREFIX;
+
+    void <init>()
+    {
+        org.apache.commons.codec.net.RFC1522Codec r0;
+
+        r0 := @this: org.apache.commons.codec.net.RFC1522Codec;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    protected java.lang.String encodeText(java.lang.String, java.nio.charset.Charset) throws org.apache.commons.codec.EncoderException
+    {
+        org.apache.commons.codec.net.RFC1522Codec r0;
+        java.lang.String r1, $r9, $r13, $r16;
+        java.nio.charset.Charset r2;
+        byte[] r4, $r12;
+        java.lang.StringBuilder $r5;
+
+        r0 := @this: org.apache.commons.codec.net.RFC1522Codec;
+
+        r1 := @parameter0: java.lang.String;
+
+        r2 := @parameter1: java.nio.charset.Charset;
+
+        if r1 != null goto label1;
+
+        return null;
+
+     label1:
+        $r5 = new java.lang.StringBuilder;
+
+        specialinvoke $r5.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("=?");
+
+        virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(r2);
+
+        virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(63);
+
+        $r9 = virtualinvoke r0.<org.apache.commons.codec.net.RFC1522Codec: java.lang.String getEncoding()>();
+
+        virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r9);
+
+        virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(63);
+
+        $r12 = virtualinvoke r1.<java.lang.String: byte[] getBytes(java.nio.charset.Charset)>(r2);
+
+        r4 = virtualinvoke r0.<org.apache.commons.codec.net.RFC1522Codec: byte[] doEncoding(byte[])>($r12);
+
+        $r13 = staticinvoke <org.apache.commons.codec.binary.StringUtils: java.lang.String newStringUsAscii(byte[])>(r4);
+
+        virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r13);
+
+        virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("?=");
+
+        $r16 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $r16;
+    }
+
+    protected java.lang.String encodeText(java.lang.String, java.lang.String) throws org.apache.commons.codec.EncoderException, java.io.UnsupportedEncodingException
+    {
+        org.apache.commons.codec.net.RFC1522Codec r0;
+        java.lang.String r1, r2, $r4;
+        java.nio.charset.Charset $r3;
+
+        r0 := @this: org.apache.commons.codec.net.RFC1522Codec;
+
+        r1 := @parameter0: java.lang.String;
+
+        r2 := @parameter1: java.lang.String;
+
+        if r1 != null goto label1;
+
+        return null;
+
+     label1:
+        $r3 = staticinvoke <java.nio.charset.Charset: java.nio.charset.Charset forName(java.lang.String)>(r2);
+
+        $r4 = virtualinvoke r0.<org.apache.commons.codec.net.RFC1522Codec: java.lang.String encodeText(java.lang.String,java.nio.charset.Charset)>(r1, $r3);
+
+        return $r4;
+    }
+
+    protected java.lang.String decodeText(java.lang.String) throws org.apache.commons.codec.DecoderException, java.io.UnsupportedEncodingException
+    {
+        org.apache.commons.codec.net.RFC1522Codec r0;
+        java.lang.String r1, r2, r3, $r5, $r6, $r7, $r12;
+        int i0, $i1, i3, i4, i5, i6, i7;
+        boolean $z0, $z1, $z2, $z3;
+        org.apache.commons.codec.DecoderException $r4, $r8, $r13, $r14, $r15;
+        java.lang.StringBuilder $r9, $r10, $r11;
+        byte[] r16, r17;
+
+        r0 := @this: org.apache.commons.codec.net.RFC1522Codec;
+
+        r1 := @parameter0: java.lang.String;
+
+        if r1 != null goto label1;
+
+        return null;
+
+     label1:
+        $z0 = virtualinvoke r1.<java.lang.String: boolean startsWith(java.lang.String)>("=?");
+
+        if $z0 == 0 goto label2;
+
+        $z1 = virtualinvoke r1.<java.lang.String: boolean endsWith(java.lang.String)>("?=");
+
+        if $z1 != 0 goto label3;
+
+     label2:
+        $r4 = new org.apache.commons.codec.DecoderException;
+
+        specialinvoke $r4.<org.apache.commons.codec.DecoderException: void <init>(java.lang.String)>("RFC 1522 violation: malformed encoded content");
+
+        throw $r4;
+
+     label3:
+        $i1 = virtualinvoke r1.<java.lang.String: int length()>();
+
+        i0 = $i1 - 2;
+
+        i3 = virtualinvoke r1.<java.lang.String: int indexOf(int,int)>(63, 2);
+
+        if i3 != i0 goto label4;
+
+        $r15 = new org.apache.commons.codec.DecoderException;
+
+        specialinvoke $r15.<org.apache.commons.codec.DecoderException: void <init>(java.lang.String)>("RFC 1522 violation: charset token not found");
+
+        throw $r15;
+
+     label4:
+        r2 = virtualinvoke r1.<java.lang.String: java.lang.String substring(int,int)>(2, i3);
+
+        $z2 = virtualinvoke r2.<java.lang.String: boolean equals(java.lang.Object)>("");
+
+        if $z2 == 0 goto label5;
+
+        $r14 = new org.apache.commons.codec.DecoderException;
+
+        specialinvoke $r14.<org.apache.commons.codec.DecoderException: void <init>(java.lang.String)>("RFC 1522 violation: charset not specified");
+
+        throw $r14;
+
+     label5:
+        i4 = i3 + 1;
+
+        i5 = virtualinvoke r1.<java.lang.String: int indexOf(int,int)>(63, i4);
+
+        if i5 != i0 goto label6;
+
+        $r13 = new org.apache.commons.codec.DecoderException;
+
+        specialinvoke $r13.<org.apache.commons.codec.DecoderException: void <init>(java.lang.String)>("RFC 1522 violation: encoding token not found");
+
+        throw $r13;
+
+     label6:
+        r3 = virtualinvoke r1.<java.lang.String: java.lang.String substring(int,int)>(i4, i5);
+
+        $r5 = virtualinvoke r0.<org.apache.commons.codec.net.RFC1522Codec: java.lang.String getEncoding()>();
+
+        $z3 = virtualinvoke $r5.<java.lang.String: boolean equalsIgnoreCase(java.lang.String)>(r3);
+
+        if $z3 != 0 goto label7;
+
+        $r8 = new org.apache.commons.codec.DecoderException;
+
+        $r9 = new java.lang.StringBuilder;
+
+        specialinvoke $r9.<java.lang.StringBuilder: void <init>(java.lang.String)>("This codec cannot decode ");
+
+        $r10 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r3);
+
+        $r11 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" encoded content");
+
+        $r12 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r8.<org.apache.commons.codec.DecoderException: void <init>(java.lang.String)>($r12);
+
+        throw $r8;
+
+     label7:
+        i6 = i5 + 1;
+
+        i7 = virtualinvoke r1.<java.lang.String: int indexOf(int,int)>(63, i6);
+
+        $r6 = virtualinvoke r1.<java.lang.String: java.lang.String substring(int,int)>(i6, i7);
+
+        r16 = staticinvoke <org.apache.commons.codec.binary.StringUtils: byte[] getBytesUsAscii(java.lang.String)>($r6);
+
+        r17 = virtualinvoke r0.<org.apache.commons.codec.net.RFC1522Codec: byte[] doDecoding(byte[])>(r16);
+
+        $r7 = new java.lang.String;
+
+        specialinvoke $r7.<java.lang.String: void <init>(byte[],java.lang.String)>(r17, r2);
+
+        return $r7;
+    }
+
+    protected abstract java.lang.String getEncoding();
+
+    protected abstract byte[] doEncoding(byte[]) throws org.apache.commons.codec.EncoderException;
+
+    protected abstract byte[] doDecoding(byte[]) throws org.apache.commons.codec.DecoderException;
+
+    public static void <clinit>()
+    {
+        <org.apache.commons.codec.net.RFC1522Codec: java.lang.String PREFIX> = "=?";
+
+        <org.apache.commons.codec.net.RFC1522Codec: java.lang.String POSTFIX> = "?=";
+
+        <org.apache.commons.codec.net.RFC1522Codec: char SEP> = 63;
+
+        return;
+    }
+}

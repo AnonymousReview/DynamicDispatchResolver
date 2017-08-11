@@ -1,0 +1,51 @@
+public class org.apache.commons.io.output.NullWriterTest extends java.lang.Object
+{
+
+    public void <init>()
+    {
+        org.apache.commons.io.output.NullWriterTest r0;
+
+        r0 := @this: org.apache.commons.io.output.NullWriterTest;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void testNull()
+    {
+        org.apache.commons.io.output.NullWriterTest r0;
+        char[] $r3;
+        org.apache.commons.io.output.NullWriter $r4;
+
+        r0 := @this: org.apache.commons.io.output.NullWriterTest;
+
+        $r3 = newarray (char)[3];
+
+        $r3[0] = 65;
+
+        $r3[1] = 66;
+
+        $r3[2] = 67;
+
+        $r4 = new org.apache.commons.io.output.NullWriter;
+
+        specialinvoke $r4.<org.apache.commons.io.output.NullWriter: void <init>()>();
+
+        virtualinvoke $r4.<org.apache.commons.io.output.NullWriter: void write(int)>(1);
+
+        virtualinvoke $r4.<org.apache.commons.io.output.NullWriter: void write(char[])>($r3);
+
+        virtualinvoke $r4.<org.apache.commons.io.output.NullWriter: void write(char[],int,int)>($r3, 1, 1);
+
+        virtualinvoke $r4.<org.apache.commons.io.output.NullWriter: void write(java.lang.String)>("some string");
+
+        virtualinvoke $r4.<org.apache.commons.io.output.NullWriter: void write(java.lang.String,int,int)>("some string", 2, 2);
+
+        virtualinvoke $r4.<org.apache.commons.io.output.NullWriter: void flush()>();
+
+        virtualinvoke $r4.<org.apache.commons.io.output.NullWriter: void close()>();
+
+        return;
+    }
+}

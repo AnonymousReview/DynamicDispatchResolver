@@ -1,0 +1,1284 @@
+public class org.apache.log4j.LoggerTestCase extends junit.framework.TestCase
+{
+    org.apache.log4j.Logger logger;
+    org.apache.log4j.Appender a1;
+    org.apache.log4j.Appender a2;
+    java.util.ResourceBundle rbUS;
+    java.util.ResourceBundle rbFR;
+    java.util.ResourceBundle rbCH;
+    static java.lang.String MSG;
+
+    static void <clinit>()
+    {
+        <org.apache.log4j.LoggerTestCase: java.lang.String MSG> = "M";
+
+        return;
+    }
+
+    public void <init>(java.lang.String)
+    {
+        org.apache.log4j.LoggerTestCase r0;
+        java.lang.String r1;
+
+        r0 := @this: org.apache.log4j.LoggerTestCase;
+
+        r1 := @parameter0: java.lang.String;
+
+        specialinvoke r0.<junit.framework.TestCase: void <init>(java.lang.String)>(r1);
+
+        return;
+    }
+
+    public void setUp()
+    {
+        org.apache.log4j.LoggerTestCase r0;
+        java.util.Locale $r1, $r4, $r7;
+        java.util.ResourceBundle $r2, $r3, $r5, $r6, $r8, $r9;
+
+        r0 := @this: org.apache.log4j.LoggerTestCase;
+
+        $r1 = new java.util.Locale;
+
+        specialinvoke $r1.<java.util.Locale: void <init>(java.lang.String,java.lang.String)>("en", "US");
+
+        $r2 = staticinvoke <java.util.ResourceBundle: java.util.ResourceBundle getBundle(java.lang.String,java.util.Locale)>("L7D", $r1);
+
+        r0.<org.apache.log4j.LoggerTestCase: java.util.ResourceBundle rbUS> = $r2;
+
+        $r3 = r0.<org.apache.log4j.LoggerTestCase: java.util.ResourceBundle rbUS>;
+
+        staticinvoke <org.apache.log4j.LoggerTestCase: void assertNotNull(java.lang.Object)>($r3);
+
+        $r4 = new java.util.Locale;
+
+        specialinvoke $r4.<java.util.Locale: void <init>(java.lang.String,java.lang.String)>("fr", "FR");
+
+        $r5 = staticinvoke <java.util.ResourceBundle: java.util.ResourceBundle getBundle(java.lang.String,java.util.Locale)>("L7D", $r4);
+
+        r0.<org.apache.log4j.LoggerTestCase: java.util.ResourceBundle rbFR> = $r5;
+
+        $r6 = r0.<org.apache.log4j.LoggerTestCase: java.util.ResourceBundle rbFR>;
+
+        staticinvoke <org.apache.log4j.LoggerTestCase: void assertNotNull(java.lang.String,java.lang.Object)>("Got a null resource bundle.", $r6);
+
+        $r7 = new java.util.Locale;
+
+        specialinvoke $r7.<java.util.Locale: void <init>(java.lang.String,java.lang.String)>("fr", "CH");
+
+        $r8 = staticinvoke <java.util.ResourceBundle: java.util.ResourceBundle getBundle(java.lang.String,java.util.Locale)>("L7D", $r7);
+
+        r0.<org.apache.log4j.LoggerTestCase: java.util.ResourceBundle rbCH> = $r8;
+
+        $r9 = r0.<org.apache.log4j.LoggerTestCase: java.util.ResourceBundle rbCH>;
+
+        staticinvoke <org.apache.log4j.LoggerTestCase: void assertNotNull(java.lang.String,java.lang.Object)>("Got a null resource bundle.", $r9);
+
+        return;
+    }
+
+    public void tearDown()
+    {
+        org.apache.log4j.LoggerTestCase r0;
+
+        r0 := @this: org.apache.log4j.LoggerTestCase;
+
+        staticinvoke <org.apache.log4j.BasicConfigurator: void resetConfiguration()>();
+
+        r0.<org.apache.log4j.LoggerTestCase: org.apache.log4j.Appender a1> = null;
+
+        r0.<org.apache.log4j.LoggerTestCase: org.apache.log4j.Appender a2> = null;
+
+        return;
+    }
+
+    public void testAppender1()
+    {
+        org.apache.log4j.LoggerTestCase r0;
+        java.util.Enumeration r1;
+        org.apache.log4j.Appender r2, $r5, $r6, $r10;
+        org.apache.log4j.Logger $r3, $r7, $r8;
+        org.apache.log4j.FileAppender $r4;
+        java.lang.Object $r9;
+
+        r0 := @this: org.apache.log4j.LoggerTestCase;
+
+        $r3 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getLogger(java.lang.String)>("test");
+
+        r0.<org.apache.log4j.LoggerTestCase: org.apache.log4j.Logger logger> = $r3;
+
+        $r4 = new org.apache.log4j.FileAppender;
+
+        specialinvoke $r4.<org.apache.log4j.FileAppender: void <init>()>();
+
+        r0.<org.apache.log4j.LoggerTestCase: org.apache.log4j.Appender a1> = $r4;
+
+        $r5 = r0.<org.apache.log4j.LoggerTestCase: org.apache.log4j.Appender a1>;
+
+        interfaceinvoke $r5.<org.apache.log4j.Appender: void setName(java.lang.String)>("testAppender1");
+
+        $r7 = r0.<org.apache.log4j.LoggerTestCase: org.apache.log4j.Logger logger>;
+
+        $r6 = r0.<org.apache.log4j.LoggerTestCase: org.apache.log4j.Appender a1>;
+
+        virtualinvoke $r7.<org.apache.log4j.Logger: void addAppender(org.apache.log4j.Appender)>($r6);
+
+        $r8 = r0.<org.apache.log4j.LoggerTestCase: org.apache.log4j.Logger logger>;
+
+        r1 = virtualinvoke $r8.<org.apache.log4j.Logger: java.util.Enumeration getAllAppenders()>();
+
+        $r9 = interfaceinvoke r1.<java.util.Enumeration: java.lang.Object nextElement()>();
+
+        r2 = (org.apache.log4j.Appender) $r9;
+
+        $r10 = r0.<org.apache.log4j.LoggerTestCase: org.apache.log4j.Appender a1>;
+
+        staticinvoke <org.apache.log4j.LoggerTestCase: void assertEquals(java.lang.Object,java.lang.Object)>($r10, r2);
+
+        return;
+    }
+
+    public void testAppender2()
+    {
+        org.apache.log4j.LoggerTestCase r0;
+        java.util.Enumeration r1;
+        org.apache.log4j.Appender r2, $r4, $r6, $r8, $r10, $r15;
+        org.apache.log4j.FileAppender $r3, $r5;
+        org.apache.log4j.Logger $r7, $r9, $r11, $r12, $r13;
+        java.lang.Object $r14;
+        boolean $z0, $z1;
+
+        r0 := @this: org.apache.log4j.LoggerTestCase;
+
+        $r3 = new org.apache.log4j.FileAppender;
+
+        specialinvoke $r3.<org.apache.log4j.FileAppender: void <init>()>();
+
+        r0.<org.apache.log4j.LoggerTestCase: org.apache.log4j.Appender a1> = $r3;
+
+        $r4 = r0.<org.apache.log4j.LoggerTestCase: org.apache.log4j.Appender a1>;
+
+        interfaceinvoke $r4.<org.apache.log4j.Appender: void setName(java.lang.String)>("testAppender2.1");
+
+        $r5 = new org.apache.log4j.FileAppender;
+
+        specialinvoke $r5.<org.apache.log4j.FileAppender: void <init>()>();
+
+        r0.<org.apache.log4j.LoggerTestCase: org.apache.log4j.Appender a2> = $r5;
+
+        $r6 = r0.<org.apache.log4j.LoggerTestCase: org.apache.log4j.Appender a2>;
+
+        interfaceinvoke $r6.<org.apache.log4j.Appender: void setName(java.lang.String)>("testAppender2.2");
+
+        $r7 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getLogger(java.lang.String)>("test");
+
+        r0.<org.apache.log4j.LoggerTestCase: org.apache.log4j.Logger logger> = $r7;
+
+        $r9 = r0.<org.apache.log4j.LoggerTestCase: org.apache.log4j.Logger logger>;
+
+        $r8 = r0.<org.apache.log4j.LoggerTestCase: org.apache.log4j.Appender a1>;
+
+        virtualinvoke $r9.<org.apache.log4j.Logger: void addAppender(org.apache.log4j.Appender)>($r8);
+
+        $r11 = r0.<org.apache.log4j.LoggerTestCase: org.apache.log4j.Logger logger>;
+
+        $r10 = r0.<org.apache.log4j.LoggerTestCase: org.apache.log4j.Appender a2>;
+
+        virtualinvoke $r11.<org.apache.log4j.Logger: void addAppender(org.apache.log4j.Appender)>($r10);
+
+        $r12 = r0.<org.apache.log4j.LoggerTestCase: org.apache.log4j.Logger logger>;
+
+        virtualinvoke $r12.<org.apache.log4j.Logger: void removeAppender(java.lang.String)>("testAppender2.1");
+
+        $r13 = r0.<org.apache.log4j.LoggerTestCase: org.apache.log4j.Logger logger>;
+
+        r1 = virtualinvoke $r13.<org.apache.log4j.Logger: java.util.Enumeration getAllAppenders()>();
+
+        $r14 = interfaceinvoke r1.<java.util.Enumeration: java.lang.Object nextElement()>();
+
+        r2 = (org.apache.log4j.Appender) $r14;
+
+        $r15 = r0.<org.apache.log4j.LoggerTestCase: org.apache.log4j.Appender a2>;
+
+        staticinvoke <org.apache.log4j.LoggerTestCase: void assertEquals(java.lang.Object,java.lang.Object)>($r15, r2);
+
+        $z0 = interfaceinvoke r1.<java.util.Enumeration: boolean hasMoreElements()>();
+
+        if $z0 == 0 goto label1;
+
+        $z1 = 0;
+
+        goto label2;
+
+     label1:
+        $z1 = 1;
+
+     label2:
+        staticinvoke <org.apache.log4j.LoggerTestCase: void assertTrue(boolean)>($z1);
+
+        return;
+    }
+
+    public void testAdditivity1()
+    {
+        org.apache.log4j.LoggerTestCase r0;
+        org.apache.log4j.Logger r1, r2;
+        org.apache.log4j.LoggerTestCase$CountingAppender $r4;
+        int $i0, $i1, $i2, $i3, $i4;
+        java.lang.String $r5, $r6, $r7, $r8;
+
+        r0 := @this: org.apache.log4j.LoggerTestCase;
+
+        r1 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getLogger(java.lang.String)>("a");
+
+        r2 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getLogger(java.lang.String)>("a.b");
+
+        $r4 = new org.apache.log4j.LoggerTestCase$CountingAppender;
+
+        specialinvoke $r4.<org.apache.log4j.LoggerTestCase$CountingAppender: void <init>()>();
+
+        virtualinvoke r1.<org.apache.log4j.Logger: void addAppender(org.apache.log4j.Appender)>($r4);
+
+        $i0 = $r4.<org.apache.log4j.LoggerTestCase$CountingAppender: int counter>;
+
+        staticinvoke <org.apache.log4j.LoggerTestCase: void assertEquals(int,int)>($i0, 0);
+
+        $r5 = <org.apache.log4j.LoggerTestCase: java.lang.String MSG>;
+
+        virtualinvoke r2.<org.apache.log4j.Logger: void debug(java.lang.Object)>($r5);
+
+        $i1 = $r4.<org.apache.log4j.LoggerTestCase$CountingAppender: int counter>;
+
+        staticinvoke <org.apache.log4j.LoggerTestCase: void assertEquals(int,int)>($i1, 1);
+
+        $r6 = <org.apache.log4j.LoggerTestCase: java.lang.String MSG>;
+
+        virtualinvoke r2.<org.apache.log4j.Logger: void info(java.lang.Object)>($r6);
+
+        $i2 = $r4.<org.apache.log4j.LoggerTestCase$CountingAppender: int counter>;
+
+        staticinvoke <org.apache.log4j.LoggerTestCase: void assertEquals(int,int)>($i2, 2);
+
+        $r7 = <org.apache.log4j.LoggerTestCase: java.lang.String MSG>;
+
+        virtualinvoke r2.<org.apache.log4j.Logger: void warn(java.lang.Object)>($r7);
+
+        $i3 = $r4.<org.apache.log4j.LoggerTestCase$CountingAppender: int counter>;
+
+        staticinvoke <org.apache.log4j.LoggerTestCase: void assertEquals(int,int)>($i3, 3);
+
+        $r8 = <org.apache.log4j.LoggerTestCase: java.lang.String MSG>;
+
+        virtualinvoke r2.<org.apache.log4j.Logger: void error(java.lang.Object)>($r8);
+
+        $i4 = $r4.<org.apache.log4j.LoggerTestCase$CountingAppender: int counter>;
+
+        staticinvoke <org.apache.log4j.LoggerTestCase: void assertEquals(int,int)>($i4, 4);
+
+        return;
+    }
+
+    public void testAdditivity2()
+    {
+        org.apache.log4j.LoggerTestCase r0;
+        org.apache.log4j.Logger r1, r2, r3, r4;
+        org.apache.log4j.LoggerTestCase$CountingAppender $r7, $r8;
+        int $i0, $i1, $i2, $i3, $i4, $i5, $i6, $i7;
+        java.lang.String $r9, $r10, $r11;
+
+        r0 := @this: org.apache.log4j.LoggerTestCase;
+
+        r1 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getLogger(java.lang.String)>("a");
+
+        r2 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getLogger(java.lang.String)>("a.b");
+
+        r3 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getLogger(java.lang.String)>("a.b.c");
+
+        r4 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getLogger(java.lang.String)>("x");
+
+        $r7 = new org.apache.log4j.LoggerTestCase$CountingAppender;
+
+        specialinvoke $r7.<org.apache.log4j.LoggerTestCase$CountingAppender: void <init>()>();
+
+        $r8 = new org.apache.log4j.LoggerTestCase$CountingAppender;
+
+        specialinvoke $r8.<org.apache.log4j.LoggerTestCase$CountingAppender: void <init>()>();
+
+        virtualinvoke r1.<org.apache.log4j.Logger: void addAppender(org.apache.log4j.Appender)>($r7);
+
+        virtualinvoke r3.<org.apache.log4j.Logger: void addAppender(org.apache.log4j.Appender)>($r8);
+
+        $i0 = $r7.<org.apache.log4j.LoggerTestCase$CountingAppender: int counter>;
+
+        staticinvoke <org.apache.log4j.LoggerTestCase: void assertEquals(int,int)>($i0, 0);
+
+        $i1 = $r8.<org.apache.log4j.LoggerTestCase$CountingAppender: int counter>;
+
+        staticinvoke <org.apache.log4j.LoggerTestCase: void assertEquals(int,int)>($i1, 0);
+
+        $r9 = <org.apache.log4j.LoggerTestCase: java.lang.String MSG>;
+
+        virtualinvoke r2.<org.apache.log4j.Logger: void debug(java.lang.Object)>($r9);
+
+        $i2 = $r7.<org.apache.log4j.LoggerTestCase$CountingAppender: int counter>;
+
+        staticinvoke <org.apache.log4j.LoggerTestCase: void assertEquals(int,int)>($i2, 1);
+
+        $i3 = $r8.<org.apache.log4j.LoggerTestCase$CountingAppender: int counter>;
+
+        staticinvoke <org.apache.log4j.LoggerTestCase: void assertEquals(int,int)>($i3, 0);
+
+        $r10 = <org.apache.log4j.LoggerTestCase: java.lang.String MSG>;
+
+        virtualinvoke r3.<org.apache.log4j.Logger: void debug(java.lang.Object)>($r10);
+
+        $i4 = $r7.<org.apache.log4j.LoggerTestCase$CountingAppender: int counter>;
+
+        staticinvoke <org.apache.log4j.LoggerTestCase: void assertEquals(int,int)>($i4, 2);
+
+        $i5 = $r8.<org.apache.log4j.LoggerTestCase$CountingAppender: int counter>;
+
+        staticinvoke <org.apache.log4j.LoggerTestCase: void assertEquals(int,int)>($i5, 1);
+
+        $r11 = <org.apache.log4j.LoggerTestCase: java.lang.String MSG>;
+
+        virtualinvoke r4.<org.apache.log4j.Logger: void debug(java.lang.Object)>($r11);
+
+        $i6 = $r7.<org.apache.log4j.LoggerTestCase$CountingAppender: int counter>;
+
+        staticinvoke <org.apache.log4j.LoggerTestCase: void assertEquals(int,int)>($i6, 2);
+
+        $i7 = $r8.<org.apache.log4j.LoggerTestCase$CountingAppender: int counter>;
+
+        staticinvoke <org.apache.log4j.LoggerTestCase: void assertEquals(int,int)>($i7, 1);
+
+        return;
+    }
+
+    public void testAdditivity3()
+    {
+        org.apache.log4j.LoggerTestCase r0;
+        org.apache.log4j.Logger r1, r2, r3, r4;
+        org.apache.log4j.LoggerTestCase$CountingAppender $r8, $r9, $r10;
+        int $i0, $i1, $i2, $i3, $i4, $i5, $i6, $i7, $i8, $i9, $i10, $i11;
+        java.lang.String $r11, $r12, $r13;
+
+        r0 := @this: org.apache.log4j.LoggerTestCase;
+
+        r1 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getRootLogger()>();
+
+        r2 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getLogger(java.lang.String)>("a");
+
+        r3 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getLogger(java.lang.String)>("a.b");
+
+        r4 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getLogger(java.lang.String)>("a.b.c");
+
+        $r8 = new org.apache.log4j.LoggerTestCase$CountingAppender;
+
+        specialinvoke $r8.<org.apache.log4j.LoggerTestCase$CountingAppender: void <init>()>();
+
+        $r9 = new org.apache.log4j.LoggerTestCase$CountingAppender;
+
+        specialinvoke $r9.<org.apache.log4j.LoggerTestCase$CountingAppender: void <init>()>();
+
+        $r10 = new org.apache.log4j.LoggerTestCase$CountingAppender;
+
+        specialinvoke $r10.<org.apache.log4j.LoggerTestCase$CountingAppender: void <init>()>();
+
+        virtualinvoke r1.<org.apache.log4j.Logger: void addAppender(org.apache.log4j.Appender)>($r8);
+
+        virtualinvoke r2.<org.apache.log4j.Logger: void addAppender(org.apache.log4j.Appender)>($r9);
+
+        virtualinvoke r4.<org.apache.log4j.Logger: void addAppender(org.apache.log4j.Appender)>($r10);
+
+        $i0 = $r8.<org.apache.log4j.LoggerTestCase$CountingAppender: int counter>;
+
+        staticinvoke <org.apache.log4j.LoggerTestCase: void assertEquals(int,int)>($i0, 0);
+
+        $i1 = $r9.<org.apache.log4j.LoggerTestCase$CountingAppender: int counter>;
+
+        staticinvoke <org.apache.log4j.LoggerTestCase: void assertEquals(int,int)>($i1, 0);
+
+        $i2 = $r10.<org.apache.log4j.LoggerTestCase$CountingAppender: int counter>;
+
+        staticinvoke <org.apache.log4j.LoggerTestCase: void assertEquals(int,int)>($i2, 0);
+
+        virtualinvoke r3.<org.apache.log4j.Logger: void setAdditivity(boolean)>(0);
+
+        $r11 = <org.apache.log4j.LoggerTestCase: java.lang.String MSG>;
+
+        virtualinvoke r2.<org.apache.log4j.Logger: void debug(java.lang.Object)>($r11);
+
+        $i3 = $r8.<org.apache.log4j.LoggerTestCase$CountingAppender: int counter>;
+
+        staticinvoke <org.apache.log4j.LoggerTestCase: void assertEquals(int,int)>($i3, 1);
+
+        $i4 = $r9.<org.apache.log4j.LoggerTestCase$CountingAppender: int counter>;
+
+        staticinvoke <org.apache.log4j.LoggerTestCase: void assertEquals(int,int)>($i4, 1);
+
+        $i5 = $r10.<org.apache.log4j.LoggerTestCase$CountingAppender: int counter>;
+
+        staticinvoke <org.apache.log4j.LoggerTestCase: void assertEquals(int,int)>($i5, 0);
+
+        $r12 = <org.apache.log4j.LoggerTestCase: java.lang.String MSG>;
+
+        virtualinvoke r3.<org.apache.log4j.Logger: void debug(java.lang.Object)>($r12);
+
+        $i6 = $r8.<org.apache.log4j.LoggerTestCase$CountingAppender: int counter>;
+
+        staticinvoke <org.apache.log4j.LoggerTestCase: void assertEquals(int,int)>($i6, 1);
+
+        $i7 = $r9.<org.apache.log4j.LoggerTestCase$CountingAppender: int counter>;
+
+        staticinvoke <org.apache.log4j.LoggerTestCase: void assertEquals(int,int)>($i7, 1);
+
+        $i8 = $r10.<org.apache.log4j.LoggerTestCase$CountingAppender: int counter>;
+
+        staticinvoke <org.apache.log4j.LoggerTestCase: void assertEquals(int,int)>($i8, 0);
+
+        $r13 = <org.apache.log4j.LoggerTestCase: java.lang.String MSG>;
+
+        virtualinvoke r4.<org.apache.log4j.Logger: void debug(java.lang.Object)>($r13);
+
+        $i9 = $r8.<org.apache.log4j.LoggerTestCase$CountingAppender: int counter>;
+
+        staticinvoke <org.apache.log4j.LoggerTestCase: void assertEquals(int,int)>($i9, 1);
+
+        $i10 = $r9.<org.apache.log4j.LoggerTestCase$CountingAppender: int counter>;
+
+        staticinvoke <org.apache.log4j.LoggerTestCase: void assertEquals(int,int)>($i10, 1);
+
+        $i11 = $r10.<org.apache.log4j.LoggerTestCase$CountingAppender: int counter>;
+
+        staticinvoke <org.apache.log4j.LoggerTestCase: void assertEquals(int,int)>($i11, 1);
+
+        return;
+    }
+
+    public void testDisable1()
+    {
+        org.apache.log4j.LoggerTestCase r0;
+        org.apache.log4j.Logger r2;
+        org.apache.log4j.spi.LoggerRepository r3;
+        org.apache.log4j.LoggerTestCase$CountingAppender $r4;
+        org.apache.log4j.Level $r5, $r9, $r11, $r15, $r18, $r19, $r23, $r26, $r28, $r29, $r33, $r36, $r38;
+        int $i0, $i1, $i2, $i3, $i4, $i5, $i6, $i7, $i8, $i9, $i10, $i11, $i12, $i13, $i14, $i15, $i16, $i17, $i18, $i19, $i20, $i21;
+        java.lang.String $r6, $r7, $r8, $r10, $r12, $r13, $r14, $r16, $r17, $r20, $r21, $r22, $r24, $r25, $r27, $r30, $r31, $r32, $r34, $r35, $r37;
+
+        r0 := @this: org.apache.log4j.LoggerTestCase;
+
+        $r4 = new org.apache.log4j.LoggerTestCase$CountingAppender;
+
+        specialinvoke $r4.<org.apache.log4j.LoggerTestCase$CountingAppender: void <init>()>();
+
+        r2 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getRootLogger()>();
+
+        virtualinvoke r2.<org.apache.log4j.Logger: void addAppender(org.apache.log4j.Appender)>($r4);
+
+        r3 = staticinvoke <org.apache.log4j.LogManager: org.apache.log4j.spi.LoggerRepository getLoggerRepository()>();
+
+        $r5 = <org.apache.log4j.Level: org.apache.log4j.Level INFO>;
+
+        interfaceinvoke r3.<org.apache.log4j.spi.LoggerRepository: void setThreshold(org.apache.log4j.Level)>($r5);
+
+        $i0 = $r4.<org.apache.log4j.LoggerTestCase$CountingAppender: int counter>;
+
+        staticinvoke <org.apache.log4j.LoggerTestCase: void assertEquals(int,int)>($i0, 0);
+
+        $r6 = <org.apache.log4j.LoggerTestCase: java.lang.String MSG>;
+
+        virtualinvoke r2.<org.apache.log4j.Logger: void debug(java.lang.Object)>($r6);
+
+        $i1 = $r4.<org.apache.log4j.LoggerTestCase$CountingAppender: int counter>;
+
+        staticinvoke <org.apache.log4j.LoggerTestCase: void assertEquals(int,int)>($i1, 0);
+
+        $r7 = <org.apache.log4j.LoggerTestCase: java.lang.String MSG>;
+
+        virtualinvoke r2.<org.apache.log4j.Logger: void info(java.lang.Object)>($r7);
+
+        $i2 = $r4.<org.apache.log4j.LoggerTestCase$CountingAppender: int counter>;
+
+        staticinvoke <org.apache.log4j.LoggerTestCase: void assertEquals(int,int)>($i2, 1);
+
+        $r9 = <org.apache.log4j.Level: org.apache.log4j.Level WARN>;
+
+        $r8 = <org.apache.log4j.LoggerTestCase: java.lang.String MSG>;
+
+        virtualinvoke r2.<org.apache.log4j.Logger: void log(org.apache.log4j.Priority,java.lang.Object)>($r9, $r8);
+
+        $i3 = $r4.<org.apache.log4j.LoggerTestCase$CountingAppender: int counter>;
+
+        staticinvoke <org.apache.log4j.LoggerTestCase: void assertEquals(int,int)>($i3, 2);
+
+        $r10 = <org.apache.log4j.LoggerTestCase: java.lang.String MSG>;
+
+        virtualinvoke r2.<org.apache.log4j.Logger: void warn(java.lang.Object)>($r10);
+
+        $i4 = $r4.<org.apache.log4j.LoggerTestCase$CountingAppender: int counter>;
+
+        staticinvoke <org.apache.log4j.LoggerTestCase: void assertEquals(int,int)>($i4, 3);
+
+        $r11 = <org.apache.log4j.Level: org.apache.log4j.Level WARN>;
+
+        interfaceinvoke r3.<org.apache.log4j.spi.LoggerRepository: void setThreshold(org.apache.log4j.Level)>($r11);
+
+        $r12 = <org.apache.log4j.LoggerTestCase: java.lang.String MSG>;
+
+        virtualinvoke r2.<org.apache.log4j.Logger: void debug(java.lang.Object)>($r12);
+
+        $i5 = $r4.<org.apache.log4j.LoggerTestCase$CountingAppender: int counter>;
+
+        staticinvoke <org.apache.log4j.LoggerTestCase: void assertEquals(int,int)>($i5, 3);
+
+        $r13 = <org.apache.log4j.LoggerTestCase: java.lang.String MSG>;
+
+        virtualinvoke r2.<org.apache.log4j.Logger: void info(java.lang.Object)>($r13);
+
+        $i6 = $r4.<org.apache.log4j.LoggerTestCase$CountingAppender: int counter>;
+
+        staticinvoke <org.apache.log4j.LoggerTestCase: void assertEquals(int,int)>($i6, 3);
+
+        $r15 = <org.apache.log4j.Level: org.apache.log4j.Level WARN>;
+
+        $r14 = <org.apache.log4j.LoggerTestCase: java.lang.String MSG>;
+
+        virtualinvoke r2.<org.apache.log4j.Logger: void log(org.apache.log4j.Priority,java.lang.Object)>($r15, $r14);
+
+        $i7 = $r4.<org.apache.log4j.LoggerTestCase$CountingAppender: int counter>;
+
+        staticinvoke <org.apache.log4j.LoggerTestCase: void assertEquals(int,int)>($i7, 4);
+
+        $r16 = <org.apache.log4j.LoggerTestCase: java.lang.String MSG>;
+
+        virtualinvoke r2.<org.apache.log4j.Logger: void error(java.lang.Object)>($r16);
+
+        $i8 = $r4.<org.apache.log4j.LoggerTestCase$CountingAppender: int counter>;
+
+        staticinvoke <org.apache.log4j.LoggerTestCase: void assertEquals(int,int)>($i8, 5);
+
+        $r18 = <org.apache.log4j.Level: org.apache.log4j.Level ERROR>;
+
+        $r17 = <org.apache.log4j.LoggerTestCase: java.lang.String MSG>;
+
+        virtualinvoke r2.<org.apache.log4j.Logger: void log(org.apache.log4j.Priority,java.lang.Object)>($r18, $r17);
+
+        $i9 = $r4.<org.apache.log4j.LoggerTestCase$CountingAppender: int counter>;
+
+        staticinvoke <org.apache.log4j.LoggerTestCase: void assertEquals(int,int)>($i9, 6);
+
+        $r19 = <org.apache.log4j.Level: org.apache.log4j.Level OFF>;
+
+        interfaceinvoke r3.<org.apache.log4j.spi.LoggerRepository: void setThreshold(org.apache.log4j.Level)>($r19);
+
+        $r20 = <org.apache.log4j.LoggerTestCase: java.lang.String MSG>;
+
+        virtualinvoke r2.<org.apache.log4j.Logger: void debug(java.lang.Object)>($r20);
+
+        $i10 = $r4.<org.apache.log4j.LoggerTestCase$CountingAppender: int counter>;
+
+        staticinvoke <org.apache.log4j.LoggerTestCase: void assertEquals(int,int)>($i10, 6);
+
+        $r21 = <org.apache.log4j.LoggerTestCase: java.lang.String MSG>;
+
+        virtualinvoke r2.<org.apache.log4j.Logger: void info(java.lang.Object)>($r21);
+
+        $i11 = $r4.<org.apache.log4j.LoggerTestCase$CountingAppender: int counter>;
+
+        staticinvoke <org.apache.log4j.LoggerTestCase: void assertEquals(int,int)>($i11, 6);
+
+        $r23 = <org.apache.log4j.Level: org.apache.log4j.Level WARN>;
+
+        $r22 = <org.apache.log4j.LoggerTestCase: java.lang.String MSG>;
+
+        virtualinvoke r2.<org.apache.log4j.Logger: void log(org.apache.log4j.Priority,java.lang.Object)>($r23, $r22);
+
+        $i12 = $r4.<org.apache.log4j.LoggerTestCase$CountingAppender: int counter>;
+
+        staticinvoke <org.apache.log4j.LoggerTestCase: void assertEquals(int,int)>($i12, 6);
+
+        $r24 = <org.apache.log4j.LoggerTestCase: java.lang.String MSG>;
+
+        virtualinvoke r2.<org.apache.log4j.Logger: void error(java.lang.Object)>($r24);
+
+        $i13 = $r4.<org.apache.log4j.LoggerTestCase$CountingAppender: int counter>;
+
+        staticinvoke <org.apache.log4j.LoggerTestCase: void assertEquals(int,int)>($i13, 6);
+
+        $r26 = <org.apache.log4j.Level: org.apache.log4j.Level FATAL>;
+
+        $r25 = <org.apache.log4j.LoggerTestCase: java.lang.String MSG>;
+
+        virtualinvoke r2.<org.apache.log4j.Logger: void log(org.apache.log4j.Priority,java.lang.Object)>($r26, $r25);
+
+        $i14 = $r4.<org.apache.log4j.LoggerTestCase$CountingAppender: int counter>;
+
+        staticinvoke <org.apache.log4j.LoggerTestCase: void assertEquals(int,int)>($i14, 6);
+
+        $r28 = <org.apache.log4j.Level: org.apache.log4j.Level FATAL>;
+
+        $r27 = <org.apache.log4j.LoggerTestCase: java.lang.String MSG>;
+
+        virtualinvoke r2.<org.apache.log4j.Logger: void log(org.apache.log4j.Priority,java.lang.Object)>($r28, $r27);
+
+        $i15 = $r4.<org.apache.log4j.LoggerTestCase$CountingAppender: int counter>;
+
+        staticinvoke <org.apache.log4j.LoggerTestCase: void assertEquals(int,int)>($i15, 6);
+
+        $r29 = <org.apache.log4j.Level: org.apache.log4j.Level OFF>;
+
+        interfaceinvoke r3.<org.apache.log4j.spi.LoggerRepository: void setThreshold(org.apache.log4j.Level)>($r29);
+
+        $r30 = <org.apache.log4j.LoggerTestCase: java.lang.String MSG>;
+
+        virtualinvoke r2.<org.apache.log4j.Logger: void debug(java.lang.Object)>($r30);
+
+        $i16 = $r4.<org.apache.log4j.LoggerTestCase$CountingAppender: int counter>;
+
+        staticinvoke <org.apache.log4j.LoggerTestCase: void assertEquals(int,int)>($i16, 6);
+
+        $r31 = <org.apache.log4j.LoggerTestCase: java.lang.String MSG>;
+
+        virtualinvoke r2.<org.apache.log4j.Logger: void info(java.lang.Object)>($r31);
+
+        $i17 = $r4.<org.apache.log4j.LoggerTestCase$CountingAppender: int counter>;
+
+        staticinvoke <org.apache.log4j.LoggerTestCase: void assertEquals(int,int)>($i17, 6);
+
+        $r33 = <org.apache.log4j.Level: org.apache.log4j.Level WARN>;
+
+        $r32 = <org.apache.log4j.LoggerTestCase: java.lang.String MSG>;
+
+        virtualinvoke r2.<org.apache.log4j.Logger: void log(org.apache.log4j.Priority,java.lang.Object)>($r33, $r32);
+
+        $i18 = $r4.<org.apache.log4j.LoggerTestCase$CountingAppender: int counter>;
+
+        staticinvoke <org.apache.log4j.LoggerTestCase: void assertEquals(int,int)>($i18, 6);
+
+        $r34 = <org.apache.log4j.LoggerTestCase: java.lang.String MSG>;
+
+        virtualinvoke r2.<org.apache.log4j.Logger: void error(java.lang.Object)>($r34);
+
+        $i19 = $r4.<org.apache.log4j.LoggerTestCase$CountingAppender: int counter>;
+
+        staticinvoke <org.apache.log4j.LoggerTestCase: void assertEquals(int,int)>($i19, 6);
+
+        $r36 = <org.apache.log4j.Level: org.apache.log4j.Level ERROR>;
+
+        $r35 = <org.apache.log4j.LoggerTestCase: java.lang.String MSG>;
+
+        virtualinvoke r2.<org.apache.log4j.Logger: void log(org.apache.log4j.Priority,java.lang.Object)>($r36, $r35);
+
+        $i20 = $r4.<org.apache.log4j.LoggerTestCase$CountingAppender: int counter>;
+
+        staticinvoke <org.apache.log4j.LoggerTestCase: void assertEquals(int,int)>($i20, 6);
+
+        $r38 = <org.apache.log4j.Level: org.apache.log4j.Level FATAL>;
+
+        $r37 = <org.apache.log4j.LoggerTestCase: java.lang.String MSG>;
+
+        virtualinvoke r2.<org.apache.log4j.Logger: void log(org.apache.log4j.Priority,java.lang.Object)>($r38, $r37);
+
+        $i21 = $r4.<org.apache.log4j.LoggerTestCase$CountingAppender: int counter>;
+
+        staticinvoke <org.apache.log4j.LoggerTestCase: void assertEquals(int,int)>($i21, 6);
+
+        return;
+    }
+
+    public void testRB1()
+    {
+        org.apache.log4j.LoggerTestCase r0;
+        org.apache.log4j.Logger r1, r2, r3, r4;
+        java.util.ResourceBundle $r5, $r6, $r7, $r8, $r9, r10, r11, r12, r13;
+
+        r0 := @this: org.apache.log4j.LoggerTestCase;
+
+        r1 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getRootLogger()>();
+
+        $r5 = r0.<org.apache.log4j.LoggerTestCase: java.util.ResourceBundle rbUS>;
+
+        virtualinvoke r1.<org.apache.log4j.Logger: void setResourceBundle(java.util.ResourceBundle)>($r5);
+
+        r10 = virtualinvoke r1.<org.apache.log4j.Logger: java.util.ResourceBundle getResourceBundle()>();
+
+        $r6 = r0.<org.apache.log4j.LoggerTestCase: java.util.ResourceBundle rbUS>;
+
+        staticinvoke <org.apache.log4j.LoggerTestCase: void assertSame(java.lang.Object,java.lang.Object)>(r10, $r6);
+
+        r2 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getLogger(java.lang.String)>("x");
+
+        r3 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getLogger(java.lang.String)>("x.y");
+
+        r4 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getLogger(java.lang.String)>("x.y.z");
+
+        r11 = virtualinvoke r2.<org.apache.log4j.Logger: java.util.ResourceBundle getResourceBundle()>();
+
+        $r7 = r0.<org.apache.log4j.LoggerTestCase: java.util.ResourceBundle rbUS>;
+
+        staticinvoke <org.apache.log4j.LoggerTestCase: void assertSame(java.lang.Object,java.lang.Object)>(r11, $r7);
+
+        r12 = virtualinvoke r3.<org.apache.log4j.Logger: java.util.ResourceBundle getResourceBundle()>();
+
+        $r8 = r0.<org.apache.log4j.LoggerTestCase: java.util.ResourceBundle rbUS>;
+
+        staticinvoke <org.apache.log4j.LoggerTestCase: void assertSame(java.lang.Object,java.lang.Object)>(r12, $r8);
+
+        r13 = virtualinvoke r4.<org.apache.log4j.Logger: java.util.ResourceBundle getResourceBundle()>();
+
+        $r9 = r0.<org.apache.log4j.LoggerTestCase: java.util.ResourceBundle rbUS>;
+
+        staticinvoke <org.apache.log4j.LoggerTestCase: void assertSame(java.lang.Object,java.lang.Object)>(r13, $r9);
+
+        return;
+    }
+
+    public void testRB2()
+    {
+        org.apache.log4j.LoggerTestCase r0;
+        org.apache.log4j.Logger r1, r2, r3, r4;
+        java.util.ResourceBundle $r5, $r6, $r7, $r8, $r9, $r10, r11, r12, r13, r14;
+
+        r0 := @this: org.apache.log4j.LoggerTestCase;
+
+        r1 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getRootLogger()>();
+
+        $r5 = r0.<org.apache.log4j.LoggerTestCase: java.util.ResourceBundle rbUS>;
+
+        virtualinvoke r1.<org.apache.log4j.Logger: void setResourceBundle(java.util.ResourceBundle)>($r5);
+
+        r11 = virtualinvoke r1.<org.apache.log4j.Logger: java.util.ResourceBundle getResourceBundle()>();
+
+        $r6 = r0.<org.apache.log4j.LoggerTestCase: java.util.ResourceBundle rbUS>;
+
+        staticinvoke <org.apache.log4j.LoggerTestCase: void assertSame(java.lang.Object,java.lang.Object)>(r11, $r6);
+
+        r2 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getLogger(java.lang.String)>("x");
+
+        r3 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getLogger(java.lang.String)>("x.y");
+
+        r4 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getLogger(java.lang.String)>("x.y.z");
+
+        $r7 = r0.<org.apache.log4j.LoggerTestCase: java.util.ResourceBundle rbFR>;
+
+        virtualinvoke r3.<org.apache.log4j.Logger: void setResourceBundle(java.util.ResourceBundle)>($r7);
+
+        r12 = virtualinvoke r2.<org.apache.log4j.Logger: java.util.ResourceBundle getResourceBundle()>();
+
+        $r8 = r0.<org.apache.log4j.LoggerTestCase: java.util.ResourceBundle rbUS>;
+
+        staticinvoke <org.apache.log4j.LoggerTestCase: void assertSame(java.lang.Object,java.lang.Object)>(r12, $r8);
+
+        r13 = virtualinvoke r3.<org.apache.log4j.Logger: java.util.ResourceBundle getResourceBundle()>();
+
+        $r9 = r0.<org.apache.log4j.LoggerTestCase: java.util.ResourceBundle rbFR>;
+
+        staticinvoke <org.apache.log4j.LoggerTestCase: void assertSame(java.lang.Object,java.lang.Object)>(r13, $r9);
+
+        r14 = virtualinvoke r4.<org.apache.log4j.Logger: java.util.ResourceBundle getResourceBundle()>();
+
+        $r10 = r0.<org.apache.log4j.LoggerTestCase: java.util.ResourceBundle rbFR>;
+
+        staticinvoke <org.apache.log4j.LoggerTestCase: void assertSame(java.lang.Object,java.lang.Object)>(r14, $r10);
+
+        return;
+    }
+
+    public void testRB3()
+    {
+        org.apache.log4j.LoggerTestCase r0;
+        org.apache.log4j.Logger r1, r2, r3, r4;
+        java.util.ResourceBundle $r5, $r6, $r7, $r8, $r9, $r10, $r11, r12, r13, r14, r15;
+
+        r0 := @this: org.apache.log4j.LoggerTestCase;
+
+        r1 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getRootLogger()>();
+
+        $r5 = r0.<org.apache.log4j.LoggerTestCase: java.util.ResourceBundle rbUS>;
+
+        virtualinvoke r1.<org.apache.log4j.Logger: void setResourceBundle(java.util.ResourceBundle)>($r5);
+
+        r12 = virtualinvoke r1.<org.apache.log4j.Logger: java.util.ResourceBundle getResourceBundle()>();
+
+        $r6 = r0.<org.apache.log4j.LoggerTestCase: java.util.ResourceBundle rbUS>;
+
+        staticinvoke <org.apache.log4j.LoggerTestCase: void assertSame(java.lang.Object,java.lang.Object)>(r12, $r6);
+
+        r2 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getLogger(java.lang.String)>("x");
+
+        r3 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getLogger(java.lang.String)>("x.y");
+
+        r4 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getLogger(java.lang.String)>("x.y.z");
+
+        $r7 = r0.<org.apache.log4j.LoggerTestCase: java.util.ResourceBundle rbFR>;
+
+        virtualinvoke r3.<org.apache.log4j.Logger: void setResourceBundle(java.util.ResourceBundle)>($r7);
+
+        $r8 = r0.<org.apache.log4j.LoggerTestCase: java.util.ResourceBundle rbCH>;
+
+        virtualinvoke r4.<org.apache.log4j.Logger: void setResourceBundle(java.util.ResourceBundle)>($r8);
+
+        r13 = virtualinvoke r2.<org.apache.log4j.Logger: java.util.ResourceBundle getResourceBundle()>();
+
+        $r9 = r0.<org.apache.log4j.LoggerTestCase: java.util.ResourceBundle rbUS>;
+
+        staticinvoke <org.apache.log4j.LoggerTestCase: void assertSame(java.lang.Object,java.lang.Object)>(r13, $r9);
+
+        r14 = virtualinvoke r3.<org.apache.log4j.Logger: java.util.ResourceBundle getResourceBundle()>();
+
+        $r10 = r0.<org.apache.log4j.LoggerTestCase: java.util.ResourceBundle rbFR>;
+
+        staticinvoke <org.apache.log4j.LoggerTestCase: void assertSame(java.lang.Object,java.lang.Object)>(r14, $r10);
+
+        r15 = virtualinvoke r4.<org.apache.log4j.Logger: java.util.ResourceBundle getResourceBundle()>();
+
+        $r11 = r0.<org.apache.log4j.LoggerTestCase: java.util.ResourceBundle rbCH>;
+
+        staticinvoke <org.apache.log4j.LoggerTestCase: void assertSame(java.lang.Object,java.lang.Object)>(r15, $r11);
+
+        return;
+    }
+
+    public void testExists()
+    {
+        org.apache.log4j.LoggerTestCase r0;
+        org.apache.log4j.Logger r1, r2, r3, r4, r5, r6, r7;
+
+        r0 := @this: org.apache.log4j.LoggerTestCase;
+
+        r1 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getLogger(java.lang.String)>("a");
+
+        r2 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getLogger(java.lang.String)>("a.b");
+
+        r3 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getLogger(java.lang.String)>("a.b.c");
+
+        r4 = staticinvoke <org.apache.log4j.LogManager: org.apache.log4j.Logger exists(java.lang.String)>("xx");
+
+        staticinvoke <org.apache.log4j.LoggerTestCase: void assertNull(java.lang.Object)>(r4);
+
+        r5 = staticinvoke <org.apache.log4j.LogManager: org.apache.log4j.Logger exists(java.lang.String)>("a");
+
+        staticinvoke <org.apache.log4j.LoggerTestCase: void assertSame(java.lang.Object,java.lang.Object)>(r1, r5);
+
+        r6 = staticinvoke <org.apache.log4j.LogManager: org.apache.log4j.Logger exists(java.lang.String)>("a.b");
+
+        staticinvoke <org.apache.log4j.LoggerTestCase: void assertSame(java.lang.Object,java.lang.Object)>(r2, r6);
+
+        r7 = staticinvoke <org.apache.log4j.LogManager: org.apache.log4j.Logger exists(java.lang.String)>("a.b.c");
+
+        staticinvoke <org.apache.log4j.LoggerTestCase: void assertSame(java.lang.Object,java.lang.Object)>(r3, r7);
+
+        return;
+    }
+
+    public void testHierarchy1()
+    {
+        org.apache.log4j.LoggerTestCase r0;
+        org.apache.log4j.Logger r2, r3;
+        org.apache.log4j.Hierarchy $r4;
+        org.apache.log4j.spi.RootLogger $r5;
+        org.apache.log4j.Level $r6, $r8, $r9, $r10;
+        java.lang.String $r7;
+
+        r0 := @this: org.apache.log4j.LoggerTestCase;
+
+        $r4 = new org.apache.log4j.Hierarchy;
+
+        $r5 = new org.apache.log4j.spi.RootLogger;
+
+        $r6 = <org.apache.log4j.Level: org.apache.log4j.Level ERROR>;
+
+        specialinvoke $r5.<org.apache.log4j.spi.RootLogger: void <init>(org.apache.log4j.Level)>($r6);
+
+        specialinvoke $r4.<org.apache.log4j.Hierarchy: void <init>(org.apache.log4j.Logger)>($r5);
+
+        r2 = virtualinvoke $r4.<org.apache.log4j.Hierarchy: org.apache.log4j.Logger getLogger(java.lang.String)>("a");
+
+        $r7 = virtualinvoke r2.<org.apache.log4j.Logger: java.lang.String getName()>();
+
+        staticinvoke <org.apache.log4j.LoggerTestCase: void assertEquals(java.lang.String,java.lang.String)>("a", $r7);
+
+        $r8 = virtualinvoke r2.<org.apache.log4j.Logger: org.apache.log4j.Level getLevel()>();
+
+        staticinvoke <org.apache.log4j.LoggerTestCase: void assertNull(java.lang.Object)>($r8);
+
+        $r9 = <org.apache.log4j.Level: org.apache.log4j.Level ERROR>;
+
+        $r10 = virtualinvoke r2.<org.apache.log4j.Logger: org.apache.log4j.Level getEffectiveLevel()>();
+
+        staticinvoke <org.apache.log4j.LoggerTestCase: void assertSame(java.lang.Object,java.lang.Object)>($r9, $r10);
+
+        r3 = virtualinvoke $r4.<org.apache.log4j.Hierarchy: org.apache.log4j.Logger getLogger(java.lang.String)>("a");
+
+        staticinvoke <org.apache.log4j.LoggerTestCase: void assertSame(java.lang.Object,java.lang.Object)>(r2, r3);
+
+        return;
+    }
+
+    public void testTrace()
+    {
+        org.apache.log4j.LoggerTestCase r0;
+        org.apache.log4j.Logger r2, r3;
+        java.util.Vector r4;
+        org.apache.log4j.spi.LoggingEvent r5;
+        org.apache.log4j.VectorAppender $r6;
+        org.apache.log4j.Level $r7, $r8, $r10, $r11;
+        int $i0;
+        java.lang.Object $r9, $r12;
+
+        r0 := @this: org.apache.log4j.LoggerTestCase;
+
+        $r6 = new org.apache.log4j.VectorAppender;
+
+        specialinvoke $r6.<org.apache.log4j.VectorAppender: void <init>()>();
+
+        virtualinvoke $r6.<org.apache.log4j.VectorAppender: void activateOptions()>();
+
+        r2 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getRootLogger()>();
+
+        virtualinvoke r2.<org.apache.log4j.Logger: void addAppender(org.apache.log4j.Appender)>($r6);
+
+        $r7 = <org.apache.log4j.Level: org.apache.log4j.Level INFO>;
+
+        virtualinvoke r2.<org.apache.log4j.Logger: void setLevel(org.apache.log4j.Level)>($r7);
+
+        r3 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getLogger(java.lang.String)>("com.example.Tracer");
+
+        $r8 = <org.apache.log4j.Level: org.apache.log4j.Level TRACE>;
+
+        virtualinvoke r3.<org.apache.log4j.Logger: void setLevel(org.apache.log4j.Level)>($r8);
+
+        virtualinvoke r3.<org.apache.log4j.Logger: void trace(java.lang.Object)>("Message 1");
+
+        virtualinvoke r2.<org.apache.log4j.Logger: void trace(java.lang.Object)>("Discarded Message");
+
+        virtualinvoke r2.<org.apache.log4j.Logger: void trace(java.lang.Object)>("Discarded Message");
+
+        r4 = virtualinvoke $r6.<org.apache.log4j.VectorAppender: java.util.Vector getVector()>();
+
+        $i0 = virtualinvoke r4.<java.util.Vector: int size()>();
+
+        staticinvoke <org.apache.log4j.LoggerTestCase: void assertEquals(int,int)>(1, $i0);
+
+        $r9 = virtualinvoke r4.<java.util.Vector: java.lang.Object elementAt(int)>(0);
+
+        r5 = (org.apache.log4j.spi.LoggingEvent) $r9;
+
+        $r10 = <org.apache.log4j.Level: org.apache.log4j.Level TRACE>;
+
+        $r11 = virtualinvoke r5.<org.apache.log4j.spi.LoggingEvent: org.apache.log4j.Level getLevel()>();
+
+        staticinvoke <org.apache.log4j.LoggerTestCase: void assertEquals(java.lang.Object,java.lang.Object)>($r10, $r11);
+
+        $r12 = virtualinvoke r5.<org.apache.log4j.spi.LoggingEvent: java.lang.Object getMessage()>();
+
+        staticinvoke <org.apache.log4j.LoggerTestCase: void assertEquals(java.lang.Object,java.lang.Object)>("Message 1", $r12);
+
+        return;
+    }
+
+    public void testTraceWithException()
+    {
+        org.apache.log4j.LoggerTestCase r0;
+        org.apache.log4j.Logger r2, r3;
+        java.util.Vector r5;
+        org.apache.log4j.spi.LoggingEvent r6;
+        org.apache.log4j.VectorAppender $r7;
+        org.apache.log4j.Level $r8, $r9, $r12, $r13;
+        java.lang.NullPointerException $r10;
+        int $i0;
+        java.lang.Object $r11, $r14;
+
+        r0 := @this: org.apache.log4j.LoggerTestCase;
+
+        $r7 = new org.apache.log4j.VectorAppender;
+
+        specialinvoke $r7.<org.apache.log4j.VectorAppender: void <init>()>();
+
+        virtualinvoke $r7.<org.apache.log4j.VectorAppender: void activateOptions()>();
+
+        r2 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getRootLogger()>();
+
+        virtualinvoke r2.<org.apache.log4j.Logger: void addAppender(org.apache.log4j.Appender)>($r7);
+
+        $r8 = <org.apache.log4j.Level: org.apache.log4j.Level INFO>;
+
+        virtualinvoke r2.<org.apache.log4j.Logger: void setLevel(org.apache.log4j.Level)>($r8);
+
+        r3 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getLogger(java.lang.String)>("com.example.Tracer");
+
+        $r9 = <org.apache.log4j.Level: org.apache.log4j.Level TRACE>;
+
+        virtualinvoke r3.<org.apache.log4j.Logger: void setLevel(org.apache.log4j.Level)>($r9);
+
+        $r10 = new java.lang.NullPointerException;
+
+        specialinvoke $r10.<java.lang.NullPointerException: void <init>()>();
+
+        virtualinvoke r3.<org.apache.log4j.Logger: void trace(java.lang.Object,java.lang.Throwable)>("Message 1", $r10);
+
+        virtualinvoke r2.<org.apache.log4j.Logger: void trace(java.lang.Object,java.lang.Throwable)>("Discarded Message", $r10);
+
+        virtualinvoke r2.<org.apache.log4j.Logger: void trace(java.lang.Object,java.lang.Throwable)>("Discarded Message", $r10);
+
+        r5 = virtualinvoke $r7.<org.apache.log4j.VectorAppender: java.util.Vector getVector()>();
+
+        $i0 = virtualinvoke r5.<java.util.Vector: int size()>();
+
+        staticinvoke <org.apache.log4j.LoggerTestCase: void assertEquals(int,int)>(1, $i0);
+
+        $r11 = virtualinvoke r5.<java.util.Vector: java.lang.Object elementAt(int)>(0);
+
+        r6 = (org.apache.log4j.spi.LoggingEvent) $r11;
+
+        $r12 = <org.apache.log4j.Level: org.apache.log4j.Level TRACE>;
+
+        $r13 = virtualinvoke r6.<org.apache.log4j.spi.LoggingEvent: org.apache.log4j.Level getLevel()>();
+
+        staticinvoke <org.apache.log4j.LoggerTestCase: void assertEquals(java.lang.Object,java.lang.Object)>($r12, $r13);
+
+        $r14 = virtualinvoke r6.<org.apache.log4j.spi.LoggingEvent: java.lang.Object getMessage()>();
+
+        staticinvoke <org.apache.log4j.LoggerTestCase: void assertEquals(java.lang.Object,java.lang.Object)>("Message 1", $r14);
+
+        return;
+    }
+
+    public void testIsTraceEnabled()
+    {
+        org.apache.log4j.LoggerTestCase r0;
+        org.apache.log4j.Logger r2, r3;
+        org.apache.log4j.VectorAppender $r4;
+        org.apache.log4j.Level $r5, $r6;
+        boolean $z0, $z1;
+
+        r0 := @this: org.apache.log4j.LoggerTestCase;
+
+        $r4 = new org.apache.log4j.VectorAppender;
+
+        specialinvoke $r4.<org.apache.log4j.VectorAppender: void <init>()>();
+
+        virtualinvoke $r4.<org.apache.log4j.VectorAppender: void activateOptions()>();
+
+        r2 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getRootLogger()>();
+
+        virtualinvoke r2.<org.apache.log4j.Logger: void addAppender(org.apache.log4j.Appender)>($r4);
+
+        $r5 = <org.apache.log4j.Level: org.apache.log4j.Level INFO>;
+
+        virtualinvoke r2.<org.apache.log4j.Logger: void setLevel(org.apache.log4j.Level)>($r5);
+
+        r3 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getLogger(java.lang.String)>("com.example.Tracer");
+
+        $r6 = <org.apache.log4j.Level: org.apache.log4j.Level TRACE>;
+
+        virtualinvoke r3.<org.apache.log4j.Logger: void setLevel(org.apache.log4j.Level)>($r6);
+
+        $z0 = virtualinvoke r3.<org.apache.log4j.Logger: boolean isTraceEnabled()>();
+
+        staticinvoke <org.apache.log4j.LoggerTestCase: void assertTrue(boolean)>($z0);
+
+        $z1 = virtualinvoke r2.<org.apache.log4j.Logger: boolean isTraceEnabled()>();
+
+        staticinvoke <org.apache.log4j.LoggerTestCase: void assertFalse(boolean)>($z1);
+
+        return;
+    }
+
+    public void testAppenderEvent1()
+    {
+        org.apache.log4j.LoggerTestCase r0;
+        org.apache.log4j.Logger r3;
+        org.apache.log4j.LoggerTestCase$CountingHierarchyEventListener $r4;
+        org.apache.log4j.spi.LoggerRepository $r5;
+        org.apache.log4j.LoggerTestCase$CountingAppender $r6;
+        int $i0, $i1, $i2, $i3;
+
+        r0 := @this: org.apache.log4j.LoggerTestCase;
+
+        $r4 = new org.apache.log4j.LoggerTestCase$CountingHierarchyEventListener;
+
+        specialinvoke $r4.<org.apache.log4j.LoggerTestCase$CountingHierarchyEventListener: void <init>()>();
+
+        $r5 = staticinvoke <org.apache.log4j.LogManager: org.apache.log4j.spi.LoggerRepository getLoggerRepository()>();
+
+        interfaceinvoke $r5.<org.apache.log4j.spi.LoggerRepository: void addHierarchyEventListener(org.apache.log4j.spi.HierarchyEventListener)>($r4);
+
+        $r6 = new org.apache.log4j.LoggerTestCase$CountingAppender;
+
+        specialinvoke $r6.<org.apache.log4j.LoggerTestCase$CountingAppender: void <init>()>();
+
+        r3 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getRootLogger()>();
+
+        virtualinvoke r3.<org.apache.log4j.Logger: void addAppender(org.apache.log4j.Appender)>($r6);
+
+        $i0 = virtualinvoke $r4.<org.apache.log4j.LoggerTestCase$CountingHierarchyEventListener: int getAddEventCount()>();
+
+        staticinvoke <org.apache.log4j.LoggerTestCase: void assertEquals(int,int)>(1, $i0);
+
+        $i1 = virtualinvoke $r4.<org.apache.log4j.LoggerTestCase$CountingHierarchyEventListener: int getRemoveEventCount()>();
+
+        staticinvoke <org.apache.log4j.LoggerTestCase: void assertEquals(int,int)>(0, $i1);
+
+        virtualinvoke r3.<org.apache.log4j.Logger: void removeAppender(org.apache.log4j.Appender)>($r6);
+
+        $i2 = virtualinvoke $r4.<org.apache.log4j.LoggerTestCase$CountingHierarchyEventListener: int getAddEventCount()>();
+
+        staticinvoke <org.apache.log4j.LoggerTestCase: void assertEquals(int,int)>(1, $i2);
+
+        $i3 = virtualinvoke $r4.<org.apache.log4j.LoggerTestCase$CountingHierarchyEventListener: int getRemoveEventCount()>();
+
+        staticinvoke <org.apache.log4j.LoggerTestCase: void assertEquals(int,int)>(1, $i3);
+
+        return;
+    }
+
+    public void testAppenderEvent2()
+    {
+        org.apache.log4j.LoggerTestCase r0;
+        org.apache.log4j.Logger r3;
+        org.apache.log4j.LoggerTestCase$CountingHierarchyEventListener $r4;
+        org.apache.log4j.spi.LoggerRepository $r5;
+        org.apache.log4j.LoggerTestCase$CountingAppender $r6;
+        int $i0, $i1, $i2, $i3;
+        java.lang.String $r7;
+
+        r0 := @this: org.apache.log4j.LoggerTestCase;
+
+        $r4 = new org.apache.log4j.LoggerTestCase$CountingHierarchyEventListener;
+
+        specialinvoke $r4.<org.apache.log4j.LoggerTestCase$CountingHierarchyEventListener: void <init>()>();
+
+        $r5 = staticinvoke <org.apache.log4j.LogManager: org.apache.log4j.spi.LoggerRepository getLoggerRepository()>();
+
+        interfaceinvoke $r5.<org.apache.log4j.spi.LoggerRepository: void addHierarchyEventListener(org.apache.log4j.spi.HierarchyEventListener)>($r4);
+
+        $r6 = new org.apache.log4j.LoggerTestCase$CountingAppender;
+
+        specialinvoke $r6.<org.apache.log4j.LoggerTestCase$CountingAppender: void <init>()>();
+
+        virtualinvoke $r6.<org.apache.log4j.LoggerTestCase$CountingAppender: void setName(java.lang.String)>("A1");
+
+        r3 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getRootLogger()>();
+
+        virtualinvoke r3.<org.apache.log4j.Logger: void addAppender(org.apache.log4j.Appender)>($r6);
+
+        $i0 = virtualinvoke $r4.<org.apache.log4j.LoggerTestCase$CountingHierarchyEventListener: int getAddEventCount()>();
+
+        staticinvoke <org.apache.log4j.LoggerTestCase: void assertEquals(int,int)>(1, $i0);
+
+        $i1 = virtualinvoke $r4.<org.apache.log4j.LoggerTestCase$CountingHierarchyEventListener: int getRemoveEventCount()>();
+
+        staticinvoke <org.apache.log4j.LoggerTestCase: void assertEquals(int,int)>(0, $i1);
+
+        $r7 = virtualinvoke $r6.<org.apache.log4j.LoggerTestCase$CountingAppender: java.lang.String getName()>();
+
+        virtualinvoke r3.<org.apache.log4j.Logger: void removeAppender(java.lang.String)>($r7);
+
+        $i2 = virtualinvoke $r4.<org.apache.log4j.LoggerTestCase$CountingHierarchyEventListener: int getAddEventCount()>();
+
+        staticinvoke <org.apache.log4j.LoggerTestCase: void assertEquals(int,int)>(1, $i2);
+
+        $i3 = virtualinvoke $r4.<org.apache.log4j.LoggerTestCase$CountingHierarchyEventListener: int getRemoveEventCount()>();
+
+        staticinvoke <org.apache.log4j.LoggerTestCase: void assertEquals(int,int)>(1, $i3);
+
+        return;
+    }
+
+    public void testAppenderEvent3()
+    {
+        org.apache.log4j.LoggerTestCase r0;
+        org.apache.log4j.Logger r3;
+        org.apache.log4j.LoggerTestCase$CountingHierarchyEventListener $r4;
+        org.apache.log4j.spi.LoggerRepository $r5;
+        org.apache.log4j.LoggerTestCase$CountingAppender $r6;
+        int $i0, $i1, $i2, $i3;
+
+        r0 := @this: org.apache.log4j.LoggerTestCase;
+
+        $r4 = new org.apache.log4j.LoggerTestCase$CountingHierarchyEventListener;
+
+        specialinvoke $r4.<org.apache.log4j.LoggerTestCase$CountingHierarchyEventListener: void <init>()>();
+
+        $r5 = staticinvoke <org.apache.log4j.LogManager: org.apache.log4j.spi.LoggerRepository getLoggerRepository()>();
+
+        interfaceinvoke $r5.<org.apache.log4j.spi.LoggerRepository: void addHierarchyEventListener(org.apache.log4j.spi.HierarchyEventListener)>($r4);
+
+        $r6 = new org.apache.log4j.LoggerTestCase$CountingAppender;
+
+        specialinvoke $r6.<org.apache.log4j.LoggerTestCase$CountingAppender: void <init>()>();
+
+        r3 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getRootLogger()>();
+
+        virtualinvoke r3.<org.apache.log4j.Logger: void addAppender(org.apache.log4j.Appender)>($r6);
+
+        $i0 = virtualinvoke $r4.<org.apache.log4j.LoggerTestCase$CountingHierarchyEventListener: int getAddEventCount()>();
+
+        staticinvoke <org.apache.log4j.LoggerTestCase: void assertEquals(int,int)>(1, $i0);
+
+        $i1 = virtualinvoke $r4.<org.apache.log4j.LoggerTestCase$CountingHierarchyEventListener: int getRemoveEventCount()>();
+
+        staticinvoke <org.apache.log4j.LoggerTestCase: void assertEquals(int,int)>(0, $i1);
+
+        virtualinvoke r3.<org.apache.log4j.Logger: void removeAllAppenders()>();
+
+        $i2 = virtualinvoke $r4.<org.apache.log4j.LoggerTestCase$CountingHierarchyEventListener: int getAddEventCount()>();
+
+        staticinvoke <org.apache.log4j.LoggerTestCase: void assertEquals(int,int)>(1, $i2);
+
+        $i3 = virtualinvoke $r4.<org.apache.log4j.LoggerTestCase$CountingHierarchyEventListener: int getRemoveEventCount()>();
+
+        staticinvoke <org.apache.log4j.LoggerTestCase: void assertEquals(int,int)>(1, $i3);
+
+        return;
+    }
+
+    public void testAppenderEvent4()
+    {
+        org.apache.log4j.LoggerTestCase r0;
+        org.apache.log4j.Logger r3;
+        org.apache.log4j.LoggerTestCase$CountingHierarchyEventListener $r4;
+        org.apache.log4j.spi.LoggerRepository $r5;
+        org.apache.log4j.LoggerTestCase$CountingAppender $r6;
+        int $i0, $i1, $i2, $i3;
+
+        r0 := @this: org.apache.log4j.LoggerTestCase;
+
+        $r4 = new org.apache.log4j.LoggerTestCase$CountingHierarchyEventListener;
+
+        specialinvoke $r4.<org.apache.log4j.LoggerTestCase$CountingHierarchyEventListener: void <init>()>();
+
+        $r5 = staticinvoke <org.apache.log4j.LogManager: org.apache.log4j.spi.LoggerRepository getLoggerRepository()>();
+
+        interfaceinvoke $r5.<org.apache.log4j.spi.LoggerRepository: void addHierarchyEventListener(org.apache.log4j.spi.HierarchyEventListener)>($r4);
+
+        $r6 = new org.apache.log4j.LoggerTestCase$CountingAppender;
+
+        specialinvoke $r6.<org.apache.log4j.LoggerTestCase$CountingAppender: void <init>()>();
+
+        r3 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getRootLogger()>();
+
+        virtualinvoke r3.<org.apache.log4j.Logger: void addAppender(org.apache.log4j.Appender)>($r6);
+
+        $i0 = virtualinvoke $r4.<org.apache.log4j.LoggerTestCase$CountingHierarchyEventListener: int getAddEventCount()>();
+
+        staticinvoke <org.apache.log4j.LoggerTestCase: void assertEquals(int,int)>(1, $i0);
+
+        $i1 = virtualinvoke $r4.<org.apache.log4j.LoggerTestCase$CountingHierarchyEventListener: int getRemoveEventCount()>();
+
+        staticinvoke <org.apache.log4j.LoggerTestCase: void assertEquals(int,int)>(0, $i1);
+
+        staticinvoke <org.apache.log4j.LogManager: void resetConfiguration()>();
+
+        $i2 = virtualinvoke $r4.<org.apache.log4j.LoggerTestCase$CountingHierarchyEventListener: int getAddEventCount()>();
+
+        staticinvoke <org.apache.log4j.LoggerTestCase: void assertEquals(int,int)>(1, $i2);
+
+        $i3 = virtualinvoke $r4.<org.apache.log4j.LoggerTestCase$CountingHierarchyEventListener: int getRemoveEventCount()>();
+
+        staticinvoke <org.apache.log4j.LoggerTestCase: void assertEquals(int,int)>(1, $i3);
+
+        return;
+    }
+}

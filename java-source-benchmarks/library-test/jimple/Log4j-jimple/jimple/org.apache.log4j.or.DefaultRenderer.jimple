@@ -1,0 +1,41 @@
+class org.apache.log4j.or.DefaultRenderer extends java.lang.Object implements org.apache.log4j.or.ObjectRenderer
+{
+
+    void <init>()
+    {
+        org.apache.log4j.or.DefaultRenderer r0;
+
+        r0 := @this: org.apache.log4j.or.DefaultRenderer;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public java.lang.String doRender(java.lang.Object)
+    {
+        org.apache.log4j.or.DefaultRenderer r0;
+        java.lang.Object r1;
+        java.lang.String $r3, $r5;
+        java.lang.Exception $r4;
+
+        r0 := @this: org.apache.log4j.or.DefaultRenderer;
+
+        r1 := @parameter0: java.lang.Object;
+
+     label1:
+        $r3 = virtualinvoke r1.<java.lang.Object: java.lang.String toString()>();
+
+     label2:
+        return $r3;
+
+     label3:
+        $r4 := @caughtexception;
+
+        $r5 = virtualinvoke $r4.<java.lang.Exception: java.lang.String toString()>();
+
+        return $r5;
+
+        catch java.lang.Exception from label1 to label2 with label3;
+    }
+}

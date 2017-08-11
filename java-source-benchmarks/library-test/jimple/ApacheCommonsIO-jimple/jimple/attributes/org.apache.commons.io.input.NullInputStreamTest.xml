@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<attributes>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="0" eline="0" spos="0" epos="0"/>
+<text info="[inner=org/apache/commons/io/input/NullInputStreamTest$TestNullInputStream, outer=org/apache/commons/io/input/NullInputStreamTest, name=TestNullInputStream,flags=26]" aType="InnerClassTag"/>
+<text info="soot.tagkit.InnerClassAttribute@75ce2a7d" aType="InnerClassAttribute"/>
+</attribute>
+<attribute>
+<srcPos sline="38" eline="38" spos="0" epos="0"/>
+<jmpPos sline="15" eline="15" spos="0" epos="0"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation type: Lorg/junit/Test; without elements
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+<attribute>
+<srcPos sline="65" eline="65" spos="0" epos="0"/>
+<jmpPos sline="136" eline="136" spos="0" epos="0"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation type: Lorg/junit/Test; without elements
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+<attribute>
+<srcPos sline="109" eline="109" spos="0" epos="0"/>
+<jmpPos sline="273" eline="273" spos="0" epos="0"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation type: Lorg/junit/Test; without elements
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+<attribute>
+<srcPos sline="123" eline="123" spos="0" epos="0"/>
+<jmpPos sline="330" eline="330" spos="0" epos="0"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation type: Lorg/junit/Test; without elements
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+<attribute>
+<srcPos sline="175" eline="175" spos="0" epos="0"/>
+<jmpPos sline="496" eline="496" spos="0" epos="0"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation type: Lorg/junit/Test; without elements
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+<attribute>
+<srcPos sline="196" eline="196" spos="0" epos="0"/>
+<jmpPos sline="553" eline="553" spos="0" epos="0"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation type: Lorg/junit/Test; without elements
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+</attributes>

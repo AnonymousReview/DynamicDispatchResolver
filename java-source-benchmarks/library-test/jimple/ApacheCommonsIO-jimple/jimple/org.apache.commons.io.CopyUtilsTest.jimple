@@ -1,0 +1,595 @@
+public class org.apache.commons.io.CopyUtilsTest extends org.apache.commons.io.testtools.FileBasedTestCase
+{
+    private static final int FILE_SIZE;
+    private final byte[] inData;
+
+    public void <init>()
+    {
+        org.apache.commons.io.CopyUtilsTest r0;
+        byte[] $r1;
+
+        r0 := @this: org.apache.commons.io.CopyUtilsTest;
+
+        specialinvoke r0.<org.apache.commons.io.testtools.FileBasedTestCase: void <init>()>();
+
+        $r1 = staticinvoke <org.apache.commons.io.testtools.TestUtils: byte[] generateTestData(long)>(4097L);
+
+        r0.<org.apache.commons.io.CopyUtilsTest: byte[] inData> = $r1;
+
+        return;
+    }
+
+    public void testCtor()
+    {
+        org.apache.commons.io.CopyUtilsTest r0;
+        org.apache.commons.io.CopyUtils $r1;
+
+        r0 := @this: org.apache.commons.io.CopyUtilsTest;
+
+        $r1 = new org.apache.commons.io.CopyUtils;
+
+        specialinvoke $r1.<org.apache.commons.io.CopyUtils: void <init>()>();
+
+        return;
+    }
+
+    public void copy_byteArrayToOutputStream() throws java.lang.Exception
+    {
+        org.apache.commons.io.CopyUtilsTest r0;
+        org.apache.commons.io.output.ByteArrayOutputStream $r3;
+        org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream $r4;
+        byte[] $r5, $r6, $r7, $r8;
+        int $i0, $i2;
+        long $l1, $l3;
+        boolean $z0;
+
+        r0 := @this: org.apache.commons.io.CopyUtilsTest;
+
+        $r3 = new org.apache.commons.io.output.ByteArrayOutputStream;
+
+        specialinvoke $r3.<org.apache.commons.io.output.ByteArrayOutputStream: void <init>()>();
+
+        $r4 = new org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream;
+
+        specialinvoke $r4.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void <init>(java.io.OutputStream,boolean,boolean)>($r3, 0, 1);
+
+        $r5 = r0.<org.apache.commons.io.CopyUtilsTest: byte[] inData>;
+
+        staticinvoke <org.apache.commons.io.CopyUtils: void copy(byte[],java.io.OutputStream)>($r5, $r4);
+
+        $r6 = r0.<org.apache.commons.io.CopyUtilsTest: byte[] inData>;
+
+        $i0 = lengthof $r6;
+
+        $l1 = (long) $i0;
+
+        $i2 = virtualinvoke $r3.<org.apache.commons.io.output.ByteArrayOutputStream: int size()>();
+
+        $l3 = (long) $i2;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("Sizes differ", $l1, $l3);
+
+        $r7 = r0.<org.apache.commons.io.CopyUtilsTest: byte[] inData>;
+
+        $r8 = virtualinvoke $r3.<org.apache.commons.io.output.ByteArrayOutputStream: byte[] toByteArray()>();
+
+        $z0 = staticinvoke <java.util.Arrays: boolean equals(byte[],byte[])>($r7, $r8);
+
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>("Content differs", $z0);
+
+        return;
+    }
+
+    public void copy_byteArrayToWriter() throws java.lang.Exception
+    {
+        org.apache.commons.io.CopyUtilsTest r0;
+        org.apache.commons.io.output.ByteArrayOutputStream $r4;
+        org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream $r5;
+        java.io.OutputStreamWriter $r6;
+        byte[] $r7, $r8, $r9, $r10;
+        int $i0, $i2;
+        long $l1, $l3;
+        boolean $z0;
+
+        r0 := @this: org.apache.commons.io.CopyUtilsTest;
+
+        $r4 = new org.apache.commons.io.output.ByteArrayOutputStream;
+
+        specialinvoke $r4.<org.apache.commons.io.output.ByteArrayOutputStream: void <init>()>();
+
+        $r5 = new org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream;
+
+        specialinvoke $r5.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void <init>(java.io.OutputStream,boolean,boolean)>($r4, 0, 1);
+
+        $r6 = new java.io.OutputStreamWriter;
+
+        specialinvoke $r6.<java.io.OutputStreamWriter: void <init>(java.io.OutputStream,java.lang.String)>($r5, "US-ASCII");
+
+        $r7 = r0.<org.apache.commons.io.CopyUtilsTest: byte[] inData>;
+
+        staticinvoke <org.apache.commons.io.CopyUtils: void copy(byte[],java.io.Writer)>($r7, $r6);
+
+        virtualinvoke $r6.<java.io.Writer: void flush()>();
+
+        $r8 = r0.<org.apache.commons.io.CopyUtilsTest: byte[] inData>;
+
+        $i0 = lengthof $r8;
+
+        $l1 = (long) $i0;
+
+        $i2 = virtualinvoke $r4.<org.apache.commons.io.output.ByteArrayOutputStream: int size()>();
+
+        $l3 = (long) $i2;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("Sizes differ", $l1, $l3);
+
+        $r9 = r0.<org.apache.commons.io.CopyUtilsTest: byte[] inData>;
+
+        $r10 = virtualinvoke $r4.<org.apache.commons.io.output.ByteArrayOutputStream: byte[] toByteArray()>();
+
+        $z0 = staticinvoke <java.util.Arrays: boolean equals(byte[],byte[])>($r9, $r10);
+
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>("Content differs", $z0);
+
+        return;
+    }
+
+    public void testCopy_byteArrayToWriterWithEncoding() throws java.lang.Exception
+    {
+        org.apache.commons.io.CopyUtilsTest r0;
+        java.io.StringWriter $r4;
+        java.lang.String $r5, $r7;
+        byte[] $r6;
+
+        r0 := @this: org.apache.commons.io.CopyUtilsTest;
+
+        $r4 = new java.io.StringWriter;
+
+        specialinvoke $r4.<java.io.StringWriter: void <init>()>();
+
+        $r5 = "data";
+
+        $r6 = virtualinvoke $r5.<java.lang.String: byte[] getBytes(java.lang.String)>("UTF-8");
+
+        staticinvoke <org.apache.commons.io.CopyUtils: void copy(byte[],java.io.Writer,java.lang.String)>($r6, $r4, "UTF-8");
+
+        $r7 = virtualinvoke $r4.<java.io.StringWriter: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("data", $r7);
+
+        return;
+    }
+
+    public void testCopy_inputStreamToOutputStream() throws java.lang.Exception
+    {
+        org.apache.commons.io.CopyUtilsTest r0;
+        int i0, $i1, $i3, $i5, $i7;
+        java.io.ByteArrayInputStream $r3;
+        byte[] $r4, $r8, $r9, $r10, $r11;
+        org.apache.commons.io.testtools.YellOnCloseInputStream $r5;
+        org.apache.commons.io.output.ByteArrayOutputStream $r6;
+        org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream $r7;
+        long $l2, $l4, $l6, $l8, $l9;
+        boolean $z0;
+
+        r0 := @this: org.apache.commons.io.CopyUtilsTest;
+
+        $r3 = new java.io.ByteArrayInputStream;
+
+        $r4 = r0.<org.apache.commons.io.CopyUtilsTest: byte[] inData>;
+
+        specialinvoke $r3.<java.io.ByteArrayInputStream: void <init>(byte[])>($r4);
+
+        $r5 = new org.apache.commons.io.testtools.YellOnCloseInputStream;
+
+        specialinvoke $r5.<org.apache.commons.io.testtools.YellOnCloseInputStream: void <init>(java.io.InputStream)>($r3);
+
+        $r6 = new org.apache.commons.io.output.ByteArrayOutputStream;
+
+        specialinvoke $r6.<org.apache.commons.io.output.ByteArrayOutputStream: void <init>()>();
+
+        $r7 = new org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream;
+
+        specialinvoke $r7.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void <init>(java.io.OutputStream,boolean,boolean)>($r6, 0, 1);
+
+        i0 = staticinvoke <org.apache.commons.io.CopyUtils: int copy(java.io.InputStream,java.io.OutputStream)>($r5, $r7);
+
+        $i1 = virtualinvoke $r5.<java.io.InputStream: int available()>();
+
+        $l2 = (long) $i1;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("Not all bytes were read", 0L, $l2);
+
+        $r8 = r0.<org.apache.commons.io.CopyUtilsTest: byte[] inData>;
+
+        $i3 = lengthof $r8;
+
+        $l4 = (long) $i3;
+
+        $i5 = virtualinvoke $r6.<org.apache.commons.io.output.ByteArrayOutputStream: int size()>();
+
+        $l6 = (long) $i5;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("Sizes differ", $l4, $l6);
+
+        $r9 = r0.<org.apache.commons.io.CopyUtilsTest: byte[] inData>;
+
+        $r10 = virtualinvoke $r6.<org.apache.commons.io.output.ByteArrayOutputStream: byte[] toByteArray()>();
+
+        $z0 = staticinvoke <java.util.Arrays: boolean equals(byte[],byte[])>($r9, $r10);
+
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>("Content differs", $z0);
+
+        $r11 = r0.<org.apache.commons.io.CopyUtilsTest: byte[] inData>;
+
+        $i7 = lengthof $r11;
+
+        $l9 = (long) $i7;
+
+        $l8 = (long) i0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>($l9, $l8);
+
+        return;
+    }
+
+    public void copy_inputStreamToWriter() throws java.lang.Exception
+    {
+        org.apache.commons.io.CopyUtilsTest r0;
+        java.io.ByteArrayInputStream $r4;
+        byte[] $r5, $r10, $r11, $r12;
+        org.apache.commons.io.testtools.YellOnCloseInputStream $r6;
+        org.apache.commons.io.output.ByteArrayOutputStream $r7;
+        org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream $r8;
+        java.io.OutputStreamWriter $r9;
+        int $i0, $i2, $i4;
+        long $l1, $l3, $l5;
+        boolean $z0;
+
+        r0 := @this: org.apache.commons.io.CopyUtilsTest;
+
+        $r4 = new java.io.ByteArrayInputStream;
+
+        $r5 = r0.<org.apache.commons.io.CopyUtilsTest: byte[] inData>;
+
+        specialinvoke $r4.<java.io.ByteArrayInputStream: void <init>(byte[])>($r5);
+
+        $r6 = new org.apache.commons.io.testtools.YellOnCloseInputStream;
+
+        specialinvoke $r6.<org.apache.commons.io.testtools.YellOnCloseInputStream: void <init>(java.io.InputStream)>($r4);
+
+        $r7 = new org.apache.commons.io.output.ByteArrayOutputStream;
+
+        specialinvoke $r7.<org.apache.commons.io.output.ByteArrayOutputStream: void <init>()>();
+
+        $r8 = new org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream;
+
+        specialinvoke $r8.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void <init>(java.io.OutputStream,boolean,boolean)>($r7, 0, 1);
+
+        $r9 = new java.io.OutputStreamWriter;
+
+        specialinvoke $r9.<java.io.OutputStreamWriter: void <init>(java.io.OutputStream,java.lang.String)>($r8, "US-ASCII");
+
+        staticinvoke <org.apache.commons.io.CopyUtils: void copy(java.io.InputStream,java.io.Writer)>($r6, $r9);
+
+        virtualinvoke $r9.<java.io.Writer: void flush()>();
+
+        $i0 = virtualinvoke $r6.<java.io.InputStream: int available()>();
+
+        $l1 = (long) $i0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("Not all bytes were read", 0L, $l1);
+
+        $r10 = r0.<org.apache.commons.io.CopyUtilsTest: byte[] inData>;
+
+        $i2 = lengthof $r10;
+
+        $l3 = (long) $i2;
+
+        $i4 = virtualinvoke $r7.<org.apache.commons.io.output.ByteArrayOutputStream: int size()>();
+
+        $l5 = (long) $i4;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("Sizes differ", $l3, $l5);
+
+        $r11 = r0.<org.apache.commons.io.CopyUtilsTest: byte[] inData>;
+
+        $r12 = virtualinvoke $r7.<org.apache.commons.io.output.ByteArrayOutputStream: byte[] toByteArray()>();
+
+        $z0 = staticinvoke <java.util.Arrays: boolean equals(byte[],byte[])>($r11, $r12);
+
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>("Content differs", $z0);
+
+        return;
+    }
+
+    public void copy_inputStreamToWriterWithEncoding() throws java.lang.Exception
+    {
+        org.apache.commons.io.CopyUtilsTest r0;
+        java.io.StringWriter $r4;
+        java.io.ByteArrayInputStream $r5;
+        java.lang.String $r6, $r8;
+        byte[] $r7;
+
+        r0 := @this: org.apache.commons.io.CopyUtilsTest;
+
+        $r4 = new java.io.StringWriter;
+
+        specialinvoke $r4.<java.io.StringWriter: void <init>()>();
+
+        $r5 = new java.io.ByteArrayInputStream;
+
+        $r6 = "data";
+
+        $r7 = virtualinvoke $r6.<java.lang.String: byte[] getBytes(java.lang.String)>("UTF-8");
+
+        specialinvoke $r5.<java.io.ByteArrayInputStream: void <init>(byte[])>($r7);
+
+        staticinvoke <org.apache.commons.io.CopyUtils: void copy(java.io.InputStream,java.io.Writer,java.lang.String)>($r5, $r4, "UTF-8");
+
+        $r8 = virtualinvoke $r4.<java.io.StringWriter: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("data", $r8);
+
+        return;
+    }
+
+    public void testCopy_readerToOutputStream() throws java.lang.Exception
+    {
+        org.apache.commons.io.CopyUtilsTest r0;
+        java.io.ByteArrayInputStream $r4;
+        byte[] $r5, $r10, $r11, $r12;
+        org.apache.commons.io.testtools.YellOnCloseInputStream $r6;
+        java.io.InputStreamReader $r7;
+        org.apache.commons.io.output.ByteArrayOutputStream $r8;
+        org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream $r9;
+        int $i0, $i2;
+        long $l1, $l3;
+        boolean $z0;
+
+        r0 := @this: org.apache.commons.io.CopyUtilsTest;
+
+        $r4 = new java.io.ByteArrayInputStream;
+
+        $r5 = r0.<org.apache.commons.io.CopyUtilsTest: byte[] inData>;
+
+        specialinvoke $r4.<java.io.ByteArrayInputStream: void <init>(byte[])>($r5);
+
+        $r6 = new org.apache.commons.io.testtools.YellOnCloseInputStream;
+
+        specialinvoke $r6.<org.apache.commons.io.testtools.YellOnCloseInputStream: void <init>(java.io.InputStream)>($r4);
+
+        $r7 = new java.io.InputStreamReader;
+
+        specialinvoke $r7.<java.io.InputStreamReader: void <init>(java.io.InputStream,java.lang.String)>($r6, "US-ASCII");
+
+        $r8 = new org.apache.commons.io.output.ByteArrayOutputStream;
+
+        specialinvoke $r8.<org.apache.commons.io.output.ByteArrayOutputStream: void <init>()>();
+
+        $r9 = new org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream;
+
+        specialinvoke $r9.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void <init>(java.io.OutputStream,boolean,boolean)>($r8, 0, 1);
+
+        staticinvoke <org.apache.commons.io.CopyUtils: void copy(java.io.Reader,java.io.OutputStream)>($r7, $r9);
+
+        $r10 = r0.<org.apache.commons.io.CopyUtilsTest: byte[] inData>;
+
+        $i0 = lengthof $r10;
+
+        $l1 = (long) $i0;
+
+        $i2 = virtualinvoke $r8.<org.apache.commons.io.output.ByteArrayOutputStream: int size()>();
+
+        $l3 = (long) $i2;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("Sizes differ", $l1, $l3);
+
+        $r11 = r0.<org.apache.commons.io.CopyUtilsTest: byte[] inData>;
+
+        $r12 = virtualinvoke $r8.<org.apache.commons.io.output.ByteArrayOutputStream: byte[] toByteArray()>();
+
+        $z0 = staticinvoke <java.util.Arrays: boolean equals(byte[],byte[])>($r11, $r12);
+
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>("Content differs", $z0);
+
+        return;
+    }
+
+    public void copy_readerToWriter() throws java.lang.Exception
+    {
+        org.apache.commons.io.CopyUtilsTest r0;
+        int i0, $i1, $i4, $i6;
+        java.io.ByteArrayInputStream $r5;
+        byte[] $r6, $r12, $r13, $r14, $r15;
+        org.apache.commons.io.testtools.YellOnCloseInputStream $r7;
+        java.io.InputStreamReader $r8;
+        org.apache.commons.io.output.ByteArrayOutputStream $r9;
+        org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream $r10;
+        java.io.OutputStreamWriter $r11;
+        long $l2, $l3, $l5, $l7;
+        boolean $z0;
+
+        r0 := @this: org.apache.commons.io.CopyUtilsTest;
+
+        $r5 = new java.io.ByteArrayInputStream;
+
+        $r6 = r0.<org.apache.commons.io.CopyUtilsTest: byte[] inData>;
+
+        specialinvoke $r5.<java.io.ByteArrayInputStream: void <init>(byte[])>($r6);
+
+        $r7 = new org.apache.commons.io.testtools.YellOnCloseInputStream;
+
+        specialinvoke $r7.<org.apache.commons.io.testtools.YellOnCloseInputStream: void <init>(java.io.InputStream)>($r5);
+
+        $r8 = new java.io.InputStreamReader;
+
+        specialinvoke $r8.<java.io.InputStreamReader: void <init>(java.io.InputStream,java.lang.String)>($r7, "US-ASCII");
+
+        $r9 = new org.apache.commons.io.output.ByteArrayOutputStream;
+
+        specialinvoke $r9.<org.apache.commons.io.output.ByteArrayOutputStream: void <init>()>();
+
+        $r10 = new org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream;
+
+        specialinvoke $r10.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void <init>(java.io.OutputStream,boolean,boolean)>($r9, 0, 1);
+
+        $r11 = new java.io.OutputStreamWriter;
+
+        specialinvoke $r11.<java.io.OutputStreamWriter: void <init>(java.io.OutputStream,java.lang.String)>($r10, "US-ASCII");
+
+        i0 = staticinvoke <org.apache.commons.io.CopyUtils: int copy(java.io.Reader,java.io.Writer)>($r8, $r11);
+
+        virtualinvoke $r11.<java.io.Writer: void flush()>();
+
+        $r12 = r0.<org.apache.commons.io.CopyUtilsTest: byte[] inData>;
+
+        $i1 = lengthof $r12;
+
+        $l3 = (long) $i1;
+
+        $l2 = (long) i0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("The number of characters returned by copy is wrong", $l3, $l2);
+
+        $r13 = r0.<org.apache.commons.io.CopyUtilsTest: byte[] inData>;
+
+        $i4 = lengthof $r13;
+
+        $l5 = (long) $i4;
+
+        $i6 = virtualinvoke $r9.<org.apache.commons.io.output.ByteArrayOutputStream: int size()>();
+
+        $l7 = (long) $i6;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("Sizes differ", $l5, $l7);
+
+        $r14 = r0.<org.apache.commons.io.CopyUtilsTest: byte[] inData>;
+
+        $r15 = virtualinvoke $r9.<org.apache.commons.io.output.ByteArrayOutputStream: byte[] toByteArray()>();
+
+        $z0 = staticinvoke <java.util.Arrays: boolean equals(byte[],byte[])>($r14, $r15);
+
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>("Content differs", $z0);
+
+        return;
+    }
+
+    public void copy_stringToOutputStream() throws java.lang.Exception
+    {
+        org.apache.commons.io.CopyUtilsTest r0;
+        java.lang.String $r4;
+        byte[] $r5, $r8, $r9, $r10;
+        org.apache.commons.io.output.ByteArrayOutputStream $r6;
+        org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream $r7;
+        int $i0, $i2;
+        long $l1, $l3;
+        boolean $z0;
+
+        r0 := @this: org.apache.commons.io.CopyUtilsTest;
+
+        $r4 = new java.lang.String;
+
+        $r5 = r0.<org.apache.commons.io.CopyUtilsTest: byte[] inData>;
+
+        specialinvoke $r4.<java.lang.String: void <init>(byte[],java.lang.String)>($r5, "US-ASCII");
+
+        $r6 = new org.apache.commons.io.output.ByteArrayOutputStream;
+
+        specialinvoke $r6.<org.apache.commons.io.output.ByteArrayOutputStream: void <init>()>();
+
+        $r7 = new org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream;
+
+        specialinvoke $r7.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void <init>(java.io.OutputStream,boolean,boolean)>($r6, 0, 1);
+
+        staticinvoke <org.apache.commons.io.CopyUtils: void copy(java.lang.String,java.io.OutputStream)>($r4, $r7);
+
+        $r8 = r0.<org.apache.commons.io.CopyUtilsTest: byte[] inData>;
+
+        $i0 = lengthof $r8;
+
+        $l1 = (long) $i0;
+
+        $i2 = virtualinvoke $r6.<org.apache.commons.io.output.ByteArrayOutputStream: int size()>();
+
+        $l3 = (long) $i2;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("Sizes differ", $l1, $l3);
+
+        $r9 = r0.<org.apache.commons.io.CopyUtilsTest: byte[] inData>;
+
+        $r10 = virtualinvoke $r6.<org.apache.commons.io.output.ByteArrayOutputStream: byte[] toByteArray()>();
+
+        $z0 = staticinvoke <java.util.Arrays: boolean equals(byte[],byte[])>($r9, $r10);
+
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>("Content differs", $z0);
+
+        return;
+    }
+
+    public void copy_stringToWriter() throws java.lang.Exception
+    {
+        org.apache.commons.io.CopyUtilsTest r0;
+        java.lang.String $r5;
+        byte[] $r6, $r10, $r11, $r12;
+        org.apache.commons.io.output.ByteArrayOutputStream $r7;
+        org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream $r8;
+        java.io.OutputStreamWriter $r9;
+        int $i0, $i2;
+        long $l1, $l3;
+        boolean $z0;
+
+        r0 := @this: org.apache.commons.io.CopyUtilsTest;
+
+        $r5 = new java.lang.String;
+
+        $r6 = r0.<org.apache.commons.io.CopyUtilsTest: byte[] inData>;
+
+        specialinvoke $r5.<java.lang.String: void <init>(byte[],java.lang.String)>($r6, "US-ASCII");
+
+        $r7 = new org.apache.commons.io.output.ByteArrayOutputStream;
+
+        specialinvoke $r7.<org.apache.commons.io.output.ByteArrayOutputStream: void <init>()>();
+
+        $r8 = new org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream;
+
+        specialinvoke $r8.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void <init>(java.io.OutputStream,boolean,boolean)>($r7, 0, 1);
+
+        $r9 = new java.io.OutputStreamWriter;
+
+        specialinvoke $r9.<java.io.OutputStreamWriter: void <init>(java.io.OutputStream,java.lang.String)>($r8, "US-ASCII");
+
+        staticinvoke <org.apache.commons.io.CopyUtils: void copy(java.lang.String,java.io.Writer)>($r5, $r9);
+
+        virtualinvoke $r9.<java.io.Writer: void flush()>();
+
+        $r10 = r0.<org.apache.commons.io.CopyUtilsTest: byte[] inData>;
+
+        $i0 = lengthof $r10;
+
+        $l1 = (long) $i0;
+
+        $i2 = virtualinvoke $r7.<org.apache.commons.io.output.ByteArrayOutputStream: int size()>();
+
+        $l3 = (long) $i2;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("Sizes differ", $l1, $l3);
+
+        $r11 = r0.<org.apache.commons.io.CopyUtilsTest: byte[] inData>;
+
+        $r12 = virtualinvoke $r7.<org.apache.commons.io.output.ByteArrayOutputStream: byte[] toByteArray()>();
+
+        $z0 = staticinvoke <java.util.Arrays: boolean equals(byte[],byte[])>($r11, $r12);
+
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>("Content differs", $z0);
+
+        return;
+    }
+
+    public static void <clinit>()
+    {
+        <org.apache.commons.io.CopyUtilsTest: int FILE_SIZE> = 4097;
+
+        return;
+    }
+}

@@ -1,0 +1,414 @@
+public class org.apache.log4j.helpers.OptionConverterTestCase extends junit.framework.TestCase
+{
+    java.util.Properties props;
+
+    public void <init>(java.lang.String)
+    {
+        org.apache.log4j.helpers.OptionConverterTestCase r0;
+        java.lang.String r1;
+
+        r0 := @this: org.apache.log4j.helpers.OptionConverterTestCase;
+
+        r1 := @parameter0: java.lang.String;
+
+        specialinvoke r0.<junit.framework.TestCase: void <init>(java.lang.String)>(r1);
+
+        return;
+    }
+
+    public void setUp()
+    {
+        org.apache.log4j.helpers.OptionConverterTestCase r0;
+        java.util.Properties $r1, $r2, $r4, $r6, $r8, $r11, $r14;
+        java.lang.String $r9, $r12;
+
+        r0 := @this: org.apache.log4j.helpers.OptionConverterTestCase;
+
+        $r1 = new java.util.Properties;
+
+        specialinvoke $r1.<java.util.Properties: void <init>()>();
+
+        r0.<org.apache.log4j.helpers.OptionConverterTestCase: java.util.Properties props> = $r1;
+
+        $r2 = r0.<org.apache.log4j.helpers.OptionConverterTestCase: java.util.Properties props>;
+
+        virtualinvoke $r2.<java.util.Properties: java.lang.Object put(java.lang.Object,java.lang.Object)>("TOTO", "wonderful");
+
+        $r4 = r0.<org.apache.log4j.helpers.OptionConverterTestCase: java.util.Properties props>;
+
+        virtualinvoke $r4.<java.util.Properties: java.lang.Object put(java.lang.Object,java.lang.Object)>("key1", "value1");
+
+        $r6 = r0.<org.apache.log4j.helpers.OptionConverterTestCase: java.util.Properties props>;
+
+        virtualinvoke $r6.<java.util.Properties: java.lang.Object put(java.lang.Object,java.lang.Object)>("key2", "value2");
+
+        $r8 = r0.<org.apache.log4j.helpers.OptionConverterTestCase: java.util.Properties props>;
+
+        $r9 = staticinvoke <java.lang.System: java.lang.String getProperty(java.lang.String)>("line.separator");
+
+        virtualinvoke $r8.<java.util.Properties: java.lang.Object put(java.lang.Object,java.lang.Object)>("line.separator", $r9);
+
+        $r11 = r0.<org.apache.log4j.helpers.OptionConverterTestCase: java.util.Properties props>;
+
+        $r12 = staticinvoke <java.lang.System: java.lang.String getProperty(java.lang.String)>("java.home");
+
+        virtualinvoke $r11.<java.util.Properties: java.lang.Object put(java.lang.Object,java.lang.Object)>("java.home", $r12);
+
+        $r14 = r0.<org.apache.log4j.helpers.OptionConverterTestCase: java.util.Properties props>;
+
+        staticinvoke <java.lang.System: void setProperties(java.util.Properties)>($r14);
+
+        return;
+    }
+
+    public void tearDown()
+    {
+        org.apache.log4j.helpers.OptionConverterTestCase r0;
+
+        r0 := @this: org.apache.log4j.helpers.OptionConverterTestCase;
+
+        r0.<org.apache.log4j.helpers.OptionConverterTestCase: java.util.Properties props> = null;
+
+        staticinvoke <org.apache.log4j.LogManager: void resetConfiguration()>();
+
+        return;
+    }
+
+    public void varSubstTest1()
+    {
+        org.apache.log4j.helpers.OptionConverterTestCase r0;
+        java.lang.String r1, r2;
+
+        r0 := @this: org.apache.log4j.helpers.OptionConverterTestCase;
+
+        r1 = staticinvoke <org.apache.log4j.helpers.OptionConverter: java.lang.String substVars(java.lang.String,java.util.Properties)>("hello world.", null);
+
+        staticinvoke <org.apache.log4j.helpers.OptionConverterTestCase: void assertEquals(java.lang.String,java.lang.String)>("hello world.", r1);
+
+        r2 = staticinvoke <org.apache.log4j.helpers.OptionConverter: java.lang.String substVars(java.lang.String,java.util.Properties)>("hello ${TOTO} world.", null);
+
+        staticinvoke <org.apache.log4j.helpers.OptionConverterTestCase: void assertEquals(java.lang.String,java.lang.String)>("hello wonderful world.", r2);
+
+        return;
+    }
+
+    public void varSubstTest2()
+    {
+        org.apache.log4j.helpers.OptionConverterTestCase r0;
+        java.lang.String r1;
+
+        r0 := @this: org.apache.log4j.helpers.OptionConverterTestCase;
+
+        r1 = staticinvoke <org.apache.log4j.helpers.OptionConverter: java.lang.String substVars(java.lang.String,java.util.Properties)>("Test2 ${key1} mid ${key2} end.", null);
+
+        staticinvoke <org.apache.log4j.helpers.OptionConverterTestCase: void assertEquals(java.lang.String,java.lang.String)>("Test2 value1 mid value2 end.", r1);
+
+        return;
+    }
+
+    public void varSubstTest3()
+    {
+        org.apache.log4j.helpers.OptionConverterTestCase r0;
+        java.lang.String r1;
+
+        r0 := @this: org.apache.log4j.helpers.OptionConverterTestCase;
+
+        r1 = staticinvoke <org.apache.log4j.helpers.OptionConverter: java.lang.String substVars(java.lang.String,java.util.Properties)>("Test3 ${unset} mid ${key1} end.", null);
+
+        staticinvoke <org.apache.log4j.helpers.OptionConverterTestCase: void assertEquals(java.lang.String,java.lang.String)>("Test3  mid value1 end.", r1);
+
+        return;
+    }
+
+    public void varSubstTest4()
+    {
+        org.apache.log4j.helpers.OptionConverterTestCase r0;
+        java.lang.String r3, $r7, $r10;
+        java.lang.IllegalArgumentException $r5;
+        java.lang.StringBuilder $r6, $r8, $r9;
+
+        r0 := @this: org.apache.log4j.helpers.OptionConverterTestCase;
+
+     label1:
+        staticinvoke <org.apache.log4j.helpers.OptionConverter: java.lang.String substVars(java.lang.String,java.util.Properties)>("Test4 ${incomplete ", null);
+
+     label2:
+        goto label4;
+
+     label3:
+        $r5 := @caughtexception;
+
+        r3 = virtualinvoke $r5.<java.lang.IllegalArgumentException: java.lang.String getMessage()>();
+
+        $r6 = new java.lang.StringBuilder;
+
+        $r7 = staticinvoke <java.lang.String: java.lang.String valueOf(char)>(34);
+
+        specialinvoke $r6.<java.lang.StringBuilder: void <init>(java.lang.String)>($r7);
+
+        $r8 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Test4 ${incomplete ");
+
+        $r9 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\" has no closing brace. Opening brace at position 6.");
+
+        $r10 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.apache.log4j.helpers.OptionConverterTestCase: void assertEquals(java.lang.String,java.lang.String)>($r10, r3);
+
+     label4:
+        return;
+
+        catch java.lang.IllegalArgumentException from label1 to label2 with label3;
+    }
+
+    public void varSubstTest5()
+    {
+        org.apache.log4j.helpers.OptionConverterTestCase r0;
+        java.lang.String r2, $r10;
+        java.util.Properties $r3;
+        java.lang.StringBuilder $r6, $r8, $r9;
+        java.io.PrintStream $r7;
+
+        r0 := @this: org.apache.log4j.helpers.OptionConverterTestCase;
+
+        $r3 = new java.util.Properties;
+
+        specialinvoke $r3.<java.util.Properties: void <init>()>();
+
+        virtualinvoke $r3.<java.util.Properties: java.lang.Object put(java.lang.Object,java.lang.Object)>("p1", "x1");
+
+        virtualinvoke $r3.<java.util.Properties: java.lang.Object put(java.lang.Object,java.lang.Object)>("p2", "${p1}");
+
+        r2 = staticinvoke <org.apache.log4j.helpers.OptionConverter: java.lang.String substVars(java.lang.String,java.util.Properties)>("${p2}", $r3);
+
+        $r7 = <java.lang.System: java.io.PrintStream out>;
+
+        $r6 = new java.lang.StringBuilder;
+
+        specialinvoke $r6.<java.lang.StringBuilder: void <init>(java.lang.String)>("Result is [");
+
+        $r8 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r2);
+
+        $r9 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("].");
+
+        $r10 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r7.<java.io.PrintStream: void println(java.lang.String)>($r10);
+
+        staticinvoke <org.apache.log4j.helpers.OptionConverterTestCase: void assertEquals(java.lang.String,java.lang.String)>(r2, "x1");
+
+        return;
+    }
+
+    public void testInputStream() throws java.io.IOException
+    {
+        org.apache.log4j.helpers.OptionConverterTestCase r0;
+        java.io.File $r4;
+        boolean $z0;
+        java.io.FileInputStream $r5;
+        org.apache.log4j.spi.LoggerRepository $r6;
+        org.apache.log4j.PropertyConfiguratorTest $r7;
+        java.lang.Class $r8;
+        java.lang.String $r9;
+        java.lang.Throwable $r10;
+
+        r0 := @this: org.apache.log4j.helpers.OptionConverterTestCase;
+
+        $r4 = new java.io.File;
+
+        specialinvoke $r4.<java.io.File: void <init>(java.lang.String)>("input/filter1.properties");
+
+        $z0 = virtualinvoke $r4.<java.io.File: boolean exists()>();
+
+        staticinvoke <org.apache.log4j.helpers.OptionConverterTestCase: void assertTrue(boolean)>($z0);
+
+        $r5 = new java.io.FileInputStream;
+
+        specialinvoke $r5.<java.io.FileInputStream: void <init>(java.io.File)>($r4);
+
+     label1:
+        $r6 = staticinvoke <org.apache.log4j.LogManager: org.apache.log4j.spi.LoggerRepository getLoggerRepository()>();
+
+        staticinvoke <org.apache.log4j.helpers.OptionConverter: void selectAndConfigure(java.io.InputStream,java.lang.String,org.apache.log4j.spi.LoggerRepository)>($r5, null, $r6);
+
+        goto label3;
+
+     label2:
+        $r10 := @caughtexception;
+
+        virtualinvoke $r5.<java.io.FileInputStream: void close()>();
+
+        throw $r10;
+
+     label3:
+        virtualinvoke $r5.<java.io.FileInputStream: void close()>();
+
+        $r7 = new org.apache.log4j.PropertyConfiguratorTest;
+
+        $r8 = virtualinvoke r0.<java.lang.Object: java.lang.Class getClass()>();
+
+        $r9 = virtualinvoke $r8.<java.lang.Class: java.lang.String getName()>();
+
+        specialinvoke $r7.<org.apache.log4j.PropertyConfiguratorTest: void <init>(java.lang.String)>($r9);
+
+        virtualinvoke $r7.<org.apache.log4j.PropertyConfiguratorTest: void validateNested()>();
+
+        return;
+
+        catch java.lang.Throwable from label1 to label2 with label2;
+    }
+
+    public void toLevelTest1()
+    {
+        org.apache.log4j.helpers.OptionConverterTestCase r0;
+        org.apache.log4j.Level r2, $r3;
+
+        r0 := @this: org.apache.log4j.helpers.OptionConverterTestCase;
+
+        r2 = staticinvoke <org.apache.log4j.helpers.OptionConverter: org.apache.log4j.Level toLevel(java.lang.String,org.apache.log4j.Level)>("INFO", null);
+
+        $r3 = <org.apache.log4j.Level: org.apache.log4j.Level INFO>;
+
+        staticinvoke <org.apache.log4j.helpers.OptionConverterTestCase: void assertEquals(java.lang.Object,java.lang.Object)>(r2, $r3);
+
+        return;
+    }
+
+    public void toLevelTest2()
+    {
+        org.apache.log4j.helpers.OptionConverterTestCase r0;
+        org.apache.log4j.Level r2, $r3;
+
+        r0 := @this: org.apache.log4j.helpers.OptionConverterTestCase;
+
+        r2 = staticinvoke <org.apache.log4j.helpers.OptionConverter: org.apache.log4j.Level toLevel(java.lang.String,org.apache.log4j.Level)>("INFO#org.apache.log4j.xml.XLevel", null);
+
+        $r3 = <org.apache.log4j.Level: org.apache.log4j.Level INFO>;
+
+        staticinvoke <org.apache.log4j.helpers.OptionConverterTestCase: void assertEquals(java.lang.Object,java.lang.Object)>(r2, $r3);
+
+        return;
+    }
+
+    public void toLevelTest3()
+    {
+        org.apache.log4j.helpers.OptionConverterTestCase r0;
+        org.apache.log4j.Level r2;
+        org.apache.log4j.xml.XLevel $r3;
+
+        r0 := @this: org.apache.log4j.helpers.OptionConverterTestCase;
+
+        r2 = staticinvoke <org.apache.log4j.helpers.OptionConverter: org.apache.log4j.Level toLevel(java.lang.String,org.apache.log4j.Level)>("TRACE#org.apache.log4j.xml.XLevel", null);
+
+        $r3 = <org.apache.log4j.xml.XLevel: org.apache.log4j.xml.XLevel TRACE>;
+
+        staticinvoke <org.apache.log4j.helpers.OptionConverterTestCase: void assertEquals(java.lang.Object,java.lang.Object)>(r2, $r3);
+
+        return;
+    }
+
+    public void toLevelTest4()
+    {
+        org.apache.log4j.helpers.OptionConverterTestCase r0;
+        org.apache.log4j.Level r2;
+
+        r0 := @this: org.apache.log4j.helpers.OptionConverterTestCase;
+
+        r2 = staticinvoke <org.apache.log4j.helpers.OptionConverter: org.apache.log4j.Level toLevel(java.lang.String,org.apache.log4j.Level)>("TR#org.apache.log4j.xml.XLevel", null);
+
+        staticinvoke <org.apache.log4j.helpers.OptionConverterTestCase: void assertEquals(java.lang.Object,java.lang.Object)>(r2, null);
+
+        return;
+    }
+
+    public void toLevelTest5()
+    {
+        org.apache.log4j.helpers.OptionConverterTestCase r0;
+        org.apache.log4j.Level r2;
+
+        r0 := @this: org.apache.log4j.helpers.OptionConverterTestCase;
+
+        r2 = staticinvoke <org.apache.log4j.helpers.OptionConverter: org.apache.log4j.Level toLevel(java.lang.String,org.apache.log4j.Level)>("INFO#org.apache.log4j.xml.TOTO", null);
+
+        staticinvoke <org.apache.log4j.helpers.OptionConverterTestCase: void assertEquals(java.lang.Object,java.lang.Object)>(r2, null);
+
+        return;
+    }
+
+    public static junit.framework.Test suite()
+    {
+        junit.framework.TestSuite $r1;
+        org.apache.log4j.helpers.OptionConverterTestCase $r2, $r3, $r4, $r5, $r6, $r7, $r8, $r9, $r10, $r11, $r12;
+
+        $r1 = new junit.framework.TestSuite;
+
+        specialinvoke $r1.<junit.framework.TestSuite: void <init>()>();
+
+        $r2 = new org.apache.log4j.helpers.OptionConverterTestCase;
+
+        specialinvoke $r2.<org.apache.log4j.helpers.OptionConverterTestCase: void <init>(java.lang.String)>("varSubstTest5");
+
+        virtualinvoke $r1.<junit.framework.TestSuite: void addTest(junit.framework.Test)>($r2);
+
+        $r3 = new org.apache.log4j.helpers.OptionConverterTestCase;
+
+        specialinvoke $r3.<org.apache.log4j.helpers.OptionConverterTestCase: void <init>(java.lang.String)>("varSubstTest1");
+
+        virtualinvoke $r1.<junit.framework.TestSuite: void addTest(junit.framework.Test)>($r3);
+
+        $r4 = new org.apache.log4j.helpers.OptionConverterTestCase;
+
+        specialinvoke $r4.<org.apache.log4j.helpers.OptionConverterTestCase: void <init>(java.lang.String)>("varSubstTest2");
+
+        virtualinvoke $r1.<junit.framework.TestSuite: void addTest(junit.framework.Test)>($r4);
+
+        $r5 = new org.apache.log4j.helpers.OptionConverterTestCase;
+
+        specialinvoke $r5.<org.apache.log4j.helpers.OptionConverterTestCase: void <init>(java.lang.String)>("varSubstTest3");
+
+        virtualinvoke $r1.<junit.framework.TestSuite: void addTest(junit.framework.Test)>($r5);
+
+        $r6 = new org.apache.log4j.helpers.OptionConverterTestCase;
+
+        specialinvoke $r6.<org.apache.log4j.helpers.OptionConverterTestCase: void <init>(java.lang.String)>("varSubstTest4");
+
+        virtualinvoke $r1.<junit.framework.TestSuite: void addTest(junit.framework.Test)>($r6);
+
+        $r7 = new org.apache.log4j.helpers.OptionConverterTestCase;
+
+        specialinvoke $r7.<org.apache.log4j.helpers.OptionConverterTestCase: void <init>(java.lang.String)>("testInputStream");
+
+        virtualinvoke $r1.<junit.framework.TestSuite: void addTest(junit.framework.Test)>($r7);
+
+        $r8 = new org.apache.log4j.helpers.OptionConverterTestCase;
+
+        specialinvoke $r8.<org.apache.log4j.helpers.OptionConverterTestCase: void <init>(java.lang.String)>("toLevelTest1");
+
+        virtualinvoke $r1.<junit.framework.TestSuite: void addTest(junit.framework.Test)>($r8);
+
+        $r9 = new org.apache.log4j.helpers.OptionConverterTestCase;
+
+        specialinvoke $r9.<org.apache.log4j.helpers.OptionConverterTestCase: void <init>(java.lang.String)>("toLevelTest2");
+
+        virtualinvoke $r1.<junit.framework.TestSuite: void addTest(junit.framework.Test)>($r9);
+
+        $r10 = new org.apache.log4j.helpers.OptionConverterTestCase;
+
+        specialinvoke $r10.<org.apache.log4j.helpers.OptionConverterTestCase: void <init>(java.lang.String)>("toLevelTest3");
+
+        virtualinvoke $r1.<junit.framework.TestSuite: void addTest(junit.framework.Test)>($r10);
+
+        $r11 = new org.apache.log4j.helpers.OptionConverterTestCase;
+
+        specialinvoke $r11.<org.apache.log4j.helpers.OptionConverterTestCase: void <init>(java.lang.String)>("toLevelTest4");
+
+        virtualinvoke $r1.<junit.framework.TestSuite: void addTest(junit.framework.Test)>($r11);
+
+        $r12 = new org.apache.log4j.helpers.OptionConverterTestCase;
+
+        specialinvoke $r12.<org.apache.log4j.helpers.OptionConverterTestCase: void <init>(java.lang.String)>("toLevelTest5");
+
+        virtualinvoke $r1.<junit.framework.TestSuite: void addTest(junit.framework.Test)>($r12);
+
+        return $r1;
+    }
+}

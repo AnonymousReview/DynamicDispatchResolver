@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<attributes>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="0" eline="0" spos="0" epos="0"/>
+<text info="[inner=org/apache/commons/io/output/CloseShieldOutputStreamTest$1, outer=null, name=null,flags=0]" aType="InnerClassTag"/>
+<text info="soot.tagkit.InnerClassAttribute@39f46ee9" aType="InnerClassAttribute"/>
+</attribute>
+<attribute>
+<srcPos sline="41" eline="41" spos="0" epos="0"/>
+<jmpPos sline="18" eline="18" spos="0" epos="0"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation type: Lorg/junit/Before; without elements
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+<attribute>
+<srcPos sline="53" eline="53" spos="0" epos="0"/>
+<jmpPos sline="46" eline="46" spos="0" epos="0"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation type: Lorg/junit/Test; without elements
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+</attributes>

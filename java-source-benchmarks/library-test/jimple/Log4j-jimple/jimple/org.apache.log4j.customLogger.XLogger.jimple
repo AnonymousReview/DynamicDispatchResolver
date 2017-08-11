@@ -1,0 +1,319 @@
+public class org.apache.log4j.customLogger.XLogger extends org.apache.log4j.Logger implements org.apache.log4j.spi.OptionHandler
+{
+    private static java.lang.String FQCN;
+    private static org.apache.log4j.customLogger.XLogger$XFactory factory;
+    java.lang.String suffix;
+
+    static void <clinit>()
+    {
+        java.lang.StringBuilder $r0, $r4;
+        java.lang.Class $r1;
+        java.lang.String $r2, $r3, $r5;
+        org.apache.log4j.customLogger.XLogger$XFactory $r6;
+
+        $r0 = new java.lang.StringBuilder;
+
+        $r1 = class "org/apache/log4j/customLogger/XLogger";
+
+        $r2 = virtualinvoke $r1.<java.lang.Class: java.lang.String getName()>();
+
+        $r3 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r2);
+
+        specialinvoke $r0.<java.lang.StringBuilder: void <init>(java.lang.String)>($r3);
+
+        $r4 = virtualinvoke $r0.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(".");
+
+        $r5 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        <org.apache.log4j.customLogger.XLogger: java.lang.String FQCN> = $r5;
+
+        $r6 = new org.apache.log4j.customLogger.XLogger$XFactory;
+
+        specialinvoke $r6.<org.apache.log4j.customLogger.XLogger$XFactory: void <init>()>();
+
+        <org.apache.log4j.customLogger.XLogger: org.apache.log4j.customLogger.XLogger$XFactory factory> = $r6;
+
+        return;
+    }
+
+    protected void <init>(java.lang.String)
+    {
+        org.apache.log4j.customLogger.XLogger r0;
+        java.lang.String r1;
+
+        r0 := @this: org.apache.log4j.customLogger.XLogger;
+
+        r1 := @parameter0: java.lang.String;
+
+        specialinvoke r0.<org.apache.log4j.Logger: void <init>(java.lang.String)>(r1);
+
+        r0.<org.apache.log4j.customLogger.XLogger: java.lang.String suffix> = "";
+
+        return;
+    }
+
+    public void activateOptions()
+    {
+        org.apache.log4j.customLogger.XLogger r0;
+
+        r0 := @this: org.apache.log4j.customLogger.XLogger;
+
+        return;
+    }
+
+    public void debug(java.lang.String)
+    {
+        org.apache.log4j.customLogger.XLogger r0;
+        java.lang.String r1, $r3, $r5, $r7, $r9;
+        java.lang.StringBuilder $r2, $r6, $r8;
+        org.apache.log4j.Level $r4;
+
+        r0 := @this: org.apache.log4j.customLogger.XLogger;
+
+        r1 := @parameter0: java.lang.String;
+
+        $r3 = <org.apache.log4j.customLogger.XLogger: java.lang.String FQCN>;
+
+        $r4 = <org.apache.log4j.Level: org.apache.log4j.Level DEBUG>;
+
+        $r2 = new java.lang.StringBuilder;
+
+        $r5 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>(r1);
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>(java.lang.String)>($r5);
+
+        $r6 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" ");
+
+        $r7 = r0.<org.apache.log4j.customLogger.XLogger: java.lang.String suffix>;
+
+        $r8 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r7);
+
+        $r9 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke r0.<org.apache.log4j.Logger: void log(java.lang.String,org.apache.log4j.Priority,java.lang.Object,java.lang.Throwable)>($r3, $r4, $r9, null);
+
+        return;
+    }
+
+    public void lethal(java.lang.String, java.lang.Throwable)
+    {
+        org.apache.log4j.customLogger.XLogger r0;
+        java.lang.String r1, $r7;
+        java.lang.Throwable r2;
+        org.apache.log4j.spi.LoggerRepository $r3;
+        boolean $z0, $z1;
+        org.apache.log4j.xml.XLevel $r4, $r6;
+        org.apache.log4j.Level $r5;
+
+        r0 := @this: org.apache.log4j.customLogger.XLogger;
+
+        r1 := @parameter0: java.lang.String;
+
+        r2 := @parameter1: java.lang.Throwable;
+
+        $r3 = r0.<org.apache.log4j.customLogger.XLogger: org.apache.log4j.spi.LoggerRepository repository>;
+
+        $z0 = interfaceinvoke $r3.<org.apache.log4j.spi.LoggerRepository: boolean isDisabled(int)>(50001);
+
+        if $z0 == 0 goto label1;
+
+        return;
+
+     label1:
+        $r4 = <org.apache.log4j.xml.XLevel: org.apache.log4j.xml.XLevel LETHAL>;
+
+        $r5 = virtualinvoke r0.<org.apache.log4j.customLogger.XLogger: org.apache.log4j.Level getEffectiveLevel()>();
+
+        $z1 = virtualinvoke $r4.<org.apache.log4j.xml.XLevel: boolean isGreaterOrEqual(org.apache.log4j.Priority)>($r5);
+
+        if $z1 == 0 goto label2;
+
+        $r7 = <org.apache.log4j.customLogger.XLogger: java.lang.String FQCN>;
+
+        $r6 = <org.apache.log4j.xml.XLevel: org.apache.log4j.xml.XLevel LETHAL>;
+
+        virtualinvoke r0.<org.apache.log4j.customLogger.XLogger: void forcedLog(java.lang.String,org.apache.log4j.Priority,java.lang.Object,java.lang.Throwable)>($r7, $r6, r1, r2);
+
+     label2:
+        return;
+    }
+
+    public void lethal(java.lang.String)
+    {
+        org.apache.log4j.customLogger.XLogger r0;
+        java.lang.String r1, $r6;
+        org.apache.log4j.spi.LoggerRepository $r2;
+        boolean $z0, $z1;
+        org.apache.log4j.xml.XLevel $r3, $r5;
+        org.apache.log4j.Level $r4;
+
+        r0 := @this: org.apache.log4j.customLogger.XLogger;
+
+        r1 := @parameter0: java.lang.String;
+
+        $r2 = r0.<org.apache.log4j.customLogger.XLogger: org.apache.log4j.spi.LoggerRepository repository>;
+
+        $z0 = interfaceinvoke $r2.<org.apache.log4j.spi.LoggerRepository: boolean isDisabled(int)>(50001);
+
+        if $z0 == 0 goto label1;
+
+        return;
+
+     label1:
+        $r3 = <org.apache.log4j.xml.XLevel: org.apache.log4j.xml.XLevel LETHAL>;
+
+        $r4 = virtualinvoke r0.<org.apache.log4j.customLogger.XLogger: org.apache.log4j.Level getEffectiveLevel()>();
+
+        $z1 = virtualinvoke $r3.<org.apache.log4j.xml.XLevel: boolean isGreaterOrEqual(org.apache.log4j.Priority)>($r4);
+
+        if $z1 == 0 goto label2;
+
+        $r6 = <org.apache.log4j.customLogger.XLogger: java.lang.String FQCN>;
+
+        $r5 = <org.apache.log4j.xml.XLevel: org.apache.log4j.xml.XLevel LETHAL>;
+
+        virtualinvoke r0.<org.apache.log4j.customLogger.XLogger: void forcedLog(java.lang.String,org.apache.log4j.Priority,java.lang.Object,java.lang.Throwable)>($r6, $r5, r1, null);
+
+     label2:
+        return;
+    }
+
+    public static org.apache.log4j.Logger getLogger(java.lang.String)
+    {
+        java.lang.String r0;
+        org.apache.log4j.customLogger.XLogger$XFactory $r1;
+        org.apache.log4j.Logger $r2;
+
+        r0 := @parameter0: java.lang.String;
+
+        $r1 = <org.apache.log4j.customLogger.XLogger: org.apache.log4j.customLogger.XLogger$XFactory factory>;
+
+        $r2 = staticinvoke <org.apache.log4j.LogManager: org.apache.log4j.Logger getLogger(java.lang.String,org.apache.log4j.spi.LoggerFactory)>(r0, $r1);
+
+        return $r2;
+    }
+
+    public static org.apache.log4j.Logger getLogger(java.lang.Class)
+    {
+        java.lang.Class r0;
+        java.lang.String $r1;
+        org.apache.log4j.Logger $r2;
+
+        r0 := @parameter0: java.lang.Class;
+
+        $r1 = virtualinvoke r0.<java.lang.Class: java.lang.String getName()>();
+
+        $r2 = staticinvoke <org.apache.log4j.customLogger.XLogger: org.apache.log4j.Logger getLogger(java.lang.String)>($r1);
+
+        return $r2;
+    }
+
+    public java.lang.String getSuffix()
+    {
+        org.apache.log4j.customLogger.XLogger r0;
+        java.lang.String $r1;
+
+        r0 := @this: org.apache.log4j.customLogger.XLogger;
+
+        $r1 = r0.<org.apache.log4j.customLogger.XLogger: java.lang.String suffix>;
+
+        return $r1;
+    }
+
+    public void setSuffix(java.lang.String)
+    {
+        org.apache.log4j.customLogger.XLogger r0;
+        java.lang.String r1;
+
+        r0 := @this: org.apache.log4j.customLogger.XLogger;
+
+        r1 := @parameter0: java.lang.String;
+
+        r0.<org.apache.log4j.customLogger.XLogger: java.lang.String suffix> = r1;
+
+        return;
+    }
+
+    public void trace(java.lang.String, java.lang.Throwable)
+    {
+        org.apache.log4j.customLogger.XLogger r0;
+        java.lang.String r1, $r7;
+        java.lang.Throwable r2;
+        org.apache.log4j.spi.LoggerRepository $r3;
+        boolean $z0, $z1;
+        org.apache.log4j.xml.XLevel $r4, $r6;
+        org.apache.log4j.Level $r5;
+
+        r0 := @this: org.apache.log4j.customLogger.XLogger;
+
+        r1 := @parameter0: java.lang.String;
+
+        r2 := @parameter1: java.lang.Throwable;
+
+        $r3 = r0.<org.apache.log4j.customLogger.XLogger: org.apache.log4j.spi.LoggerRepository repository>;
+
+        $z0 = interfaceinvoke $r3.<org.apache.log4j.spi.LoggerRepository: boolean isDisabled(int)>(9999);
+
+        if $z0 == 0 goto label1;
+
+        return;
+
+     label1:
+        $r4 = <org.apache.log4j.xml.XLevel: org.apache.log4j.xml.XLevel TRACE>;
+
+        $r5 = virtualinvoke r0.<org.apache.log4j.customLogger.XLogger: org.apache.log4j.Level getEffectiveLevel()>();
+
+        $z1 = virtualinvoke $r4.<org.apache.log4j.xml.XLevel: boolean isGreaterOrEqual(org.apache.log4j.Priority)>($r5);
+
+        if $z1 == 0 goto label2;
+
+        $r7 = <org.apache.log4j.customLogger.XLogger: java.lang.String FQCN>;
+
+        $r6 = <org.apache.log4j.xml.XLevel: org.apache.log4j.xml.XLevel TRACE>;
+
+        virtualinvoke r0.<org.apache.log4j.customLogger.XLogger: void forcedLog(java.lang.String,org.apache.log4j.Priority,java.lang.Object,java.lang.Throwable)>($r7, $r6, r1, r2);
+
+     label2:
+        return;
+    }
+
+    public void trace(java.lang.String)
+    {
+        org.apache.log4j.customLogger.XLogger r0;
+        java.lang.String r1, $r6;
+        org.apache.log4j.spi.LoggerRepository $r2;
+        boolean $z0, $z1;
+        org.apache.log4j.xml.XLevel $r3, $r5;
+        org.apache.log4j.Level $r4;
+
+        r0 := @this: org.apache.log4j.customLogger.XLogger;
+
+        r1 := @parameter0: java.lang.String;
+
+        $r2 = r0.<org.apache.log4j.customLogger.XLogger: org.apache.log4j.spi.LoggerRepository repository>;
+
+        $z0 = interfaceinvoke $r2.<org.apache.log4j.spi.LoggerRepository: boolean isDisabled(int)>(9999);
+
+        if $z0 == 0 goto label1;
+
+        return;
+
+     label1:
+        $r3 = <org.apache.log4j.xml.XLevel: org.apache.log4j.xml.XLevel TRACE>;
+
+        $r4 = virtualinvoke r0.<org.apache.log4j.customLogger.XLogger: org.apache.log4j.Level getEffectiveLevel()>();
+
+        $z1 = virtualinvoke $r3.<org.apache.log4j.xml.XLevel: boolean isGreaterOrEqual(org.apache.log4j.Priority)>($r4);
+
+        if $z1 == 0 goto label2;
+
+        $r6 = <org.apache.log4j.customLogger.XLogger: java.lang.String FQCN>;
+
+        $r5 = <org.apache.log4j.xml.XLevel: org.apache.log4j.xml.XLevel TRACE>;
+
+        virtualinvoke r0.<org.apache.log4j.customLogger.XLogger: void forcedLog(java.lang.String,org.apache.log4j.Priority,java.lang.Object,java.lang.Throwable)>($r6, $r5, r1, null);
+
+     label2:
+        return;
+    }
+}

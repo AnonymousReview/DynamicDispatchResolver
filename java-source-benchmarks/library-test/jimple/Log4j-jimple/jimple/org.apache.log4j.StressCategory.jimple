@@ -1,0 +1,781 @@
+class org.apache.log4j.StressCategory extends java.lang.Object
+{
+    static org.apache.log4j.Level[] level;
+    static org.apache.log4j.Level defaultLevel;
+    static int LENGTH;
+    static java.lang.String[] names;
+    static org.apache.log4j.Logger[] cat;
+    static org.apache.log4j.StressCategory$CT[] ct;
+    static java.util.Random random;
+
+    static void <clinit>()
+    {
+        org.apache.log4j.Level[] $r0;
+        org.apache.log4j.Level $r1, $r2, $r3, $r4, $r5, $r7;
+        org.apache.log4j.Logger $r6;
+        java.util.Random $r8;
+
+        $r0 = newarray (org.apache.log4j.Level)[5];
+
+        $r1 = <org.apache.log4j.Level: org.apache.log4j.Level DEBUG>;
+
+        $r0[0] = $r1;
+
+        $r2 = <org.apache.log4j.Level: org.apache.log4j.Level INFO>;
+
+        $r0[1] = $r2;
+
+        $r3 = <org.apache.log4j.Level: org.apache.log4j.Level WARN>;
+
+        $r0[2] = $r3;
+
+        $r4 = <org.apache.log4j.Level: org.apache.log4j.Level ERROR>;
+
+        $r0[3] = $r4;
+
+        $r5 = <org.apache.log4j.Level: org.apache.log4j.Level FATAL>;
+
+        $r0[4] = $r5;
+
+        <org.apache.log4j.StressCategory: org.apache.log4j.Level[] level> = $r0;
+
+        $r6 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getRootLogger()>();
+
+        $r7 = virtualinvoke $r6.<org.apache.log4j.Logger: org.apache.log4j.Level getLevel()>();
+
+        <org.apache.log4j.StressCategory: org.apache.log4j.Level defaultLevel> = $r7;
+
+        $r8 = new java.util.Random;
+
+        specialinvoke $r8.<java.util.Random: void <init>(long)>(10L);
+
+        <org.apache.log4j.StressCategory: java.util.Random random> = $r8;
+
+        return;
+    }
+
+    void <init>()
+    {
+        org.apache.log4j.StressCategory r0;
+
+        r0 := @this: org.apache.log4j.StressCategory;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static void main(java.lang.String[])
+    {
+        java.lang.String[] r0, $r1, $r3;
+        int $i0, $i1, $i2, $i3, $i4, $i5, $i6, i7;
+        java.lang.String $r2, $r10, $r13;
+        org.apache.log4j.Logger[] $r4;
+        org.apache.log4j.StressCategory$CT[] $r5;
+        java.io.PrintStream $r6, $r8;
+        java.lang.StringBuilder $r7, $r11, $r12;
+        java.lang.Class $r9;
+
+        r0 := @parameter0: java.lang.String[];
+
+        $i0 = lengthof r0;
+
+        <org.apache.log4j.StressCategory: int LENGTH> = $i0;
+
+        $i1 = <org.apache.log4j.StressCategory: int LENGTH>;
+
+        if $i1 != 0 goto label1;
+
+        $r8 = <java.lang.System: java.io.PrintStream err>;
+
+        $r7 = new java.lang.StringBuilder;
+
+        specialinvoke $r7.<java.lang.StringBuilder: void <init>(java.lang.String)>("Usage: java ");
+
+        $r9 = class "org/apache/log4j/StressCategory";
+
+        $r10 = virtualinvoke $r9.<java.lang.Class: java.lang.String getName()>();
+
+        $r11 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r10);
+
+        $r12 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" name1 ... nameN\n.");
+
+        $r13 = virtualinvoke $r12.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r8.<java.io.PrintStream: void println(java.lang.String)>($r13);
+
+        staticinvoke <java.lang.System: void exit(int)>(1);
+
+     label1:
+        $i2 = <org.apache.log4j.StressCategory: int LENGTH>;
+
+        if $i2 < 7 goto label2;
+
+        $r6 = <java.lang.System: java.io.PrintStream err>;
+
+        virtualinvoke $r6.<java.io.PrintStream: void println(java.lang.String)>("This stress test suffers from combinatorial explosion.\nInvoking with seven arguments takes about 90 minutes even on fast machines");
+
+     label2:
+        $i3 = <org.apache.log4j.StressCategory: int LENGTH>;
+
+        $r1 = newarray (java.lang.String)[$i3];
+
+        <org.apache.log4j.StressCategory: java.lang.String[] names> = $r1;
+
+        i7 = 0;
+
+        goto label4;
+
+     label3:
+        $r3 = <org.apache.log4j.StressCategory: java.lang.String[] names>;
+
+        $r2 = r0[i7];
+
+        $r3[i7] = $r2;
+
+        i7 = i7 + 1;
+
+     label4:
+        $i4 = <org.apache.log4j.StressCategory: int LENGTH>;
+
+        if i7 < $i4 goto label3;
+
+        $i5 = <org.apache.log4j.StressCategory: int LENGTH>;
+
+        $r4 = newarray (org.apache.log4j.Logger)[$i5];
+
+        <org.apache.log4j.StressCategory: org.apache.log4j.Logger[] cat> = $r4;
+
+        $i6 = <org.apache.log4j.StressCategory: int LENGTH>;
+
+        $r5 = newarray (org.apache.log4j.StressCategory$CT)[$i6];
+
+        <org.apache.log4j.StressCategory: org.apache.log4j.StressCategory$CT[] ct> = $r5;
+
+        staticinvoke <org.apache.log4j.StressCategory: void permute(int)>(0);
+
+        return;
+    }
+
+    static void permute(int)
+    {
+        int i0, $i1, $i2, $i3, i4;
+        java.lang.String[] $r0, $r1;
+
+        i0 := @parameter0: int;
+
+        $i1 = <org.apache.log4j.StressCategory: int LENGTH>;
+
+        if i0 != $i1 goto label1;
+
+        staticinvoke <org.apache.log4j.StressCategory: void createLoop(int)>(0);
+
+        goto label4;
+
+     label1:
+        i4 = i0;
+
+        goto label3;
+
+     label2:
+        $r0 = <org.apache.log4j.StressCategory: java.lang.String[] names>;
+
+        staticinvoke <org.apache.log4j.StressCategory: void swap(java.lang.String[],int,int)>($r0, i0, i4);
+
+        $i3 = i0 + 1;
+
+        staticinvoke <org.apache.log4j.StressCategory: void permute(int)>($i3);
+
+        $r1 = <org.apache.log4j.StressCategory: java.lang.String[] names>;
+
+        staticinvoke <org.apache.log4j.StressCategory: void swap(java.lang.String[],int,int)>($r1, i0, i4);
+
+        i4 = i4 + 1;
+
+     label3:
+        $i2 = <org.apache.log4j.StressCategory: int LENGTH>;
+
+        if i4 < $i2 goto label2;
+
+     label4:
+        return;
+    }
+
+    static void swap(java.lang.String[], int, int)
+    {
+        java.lang.String[] r0;
+        int i0, i1;
+        java.lang.String r1, $r2;
+
+        r0 := @parameter0: java.lang.String[];
+
+        i0 := @parameter1: int;
+
+        i1 := @parameter2: int;
+
+        r1 = r0[i0];
+
+        $r2 = r0[i1];
+
+        r0[i0] = $r2;
+
+        r0[i1] = r1;
+
+        return;
+    }
+
+    public static void permutationDump()
+    {
+        java.io.PrintStream $r0, $r4, $r8;
+        int $i0, i1;
+        java.lang.StringBuilder $r1, $r6;
+        java.lang.String[] $r2;
+        java.lang.String $r3, $r5, $r7;
+
+        $r0 = <java.lang.System: java.io.PrintStream out>;
+
+        virtualinvoke $r0.<java.io.PrintStream: void print(java.lang.String)>("Current permutation is - ");
+
+        i1 = 0;
+
+        goto label2;
+
+     label1:
+        $r4 = <java.lang.System: java.io.PrintStream out>;
+
+        $r1 = new java.lang.StringBuilder;
+
+        $r2 = <org.apache.log4j.StressCategory: java.lang.String[] names>;
+
+        $r3 = $r2[i1];
+
+        $r5 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r3);
+
+        specialinvoke $r1.<java.lang.StringBuilder: void <init>(java.lang.String)>($r5);
+
+        $r6 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" ");
+
+        $r7 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r4.<java.io.PrintStream: void print(java.lang.String)>($r7);
+
+        i1 = i1 + 1;
+
+     label2:
+        $i0 = <org.apache.log4j.StressCategory: int LENGTH>;
+
+        if i1 < $i0 goto label1;
+
+        $r8 = <java.lang.System: java.io.PrintStream out>;
+
+        virtualinvoke $r8.<java.io.PrintStream: void println()>();
+
+        return;
+    }
+
+    static void createLoop(int)
+    {
+        int i0, $i1, $i2, $i3, $i4, $i5, i6, $i7, i8;
+        org.apache.log4j.StressCategory$CT[] $r0, $r4, $r11, $r12, $r14, $r20;
+        org.apache.log4j.StressCategory$CT $r1, $r6, $r13, $r15, $r21;
+        java.lang.String[] $r2, $r7;
+        java.lang.String $r3, $r10, $r16;
+        java.util.Random $r5;
+        org.apache.log4j.Level[] $r8;
+        org.apache.log4j.Level $r9, $r22;
+        org.apache.log4j.Logger[] $r17, $r19, $r24;
+        org.apache.log4j.Logger $r18, $r23;
+        org.apache.log4j.spi.LoggerRepository $r25;
+        org.apache.log4j.Hierarchy r26;
+
+        i0 := @parameter0: int;
+
+        $i1 = <org.apache.log4j.StressCategory: int LENGTH>;
+
+        if i0 != $i1 goto label5;
+
+        i6 = 0;
+
+        goto label4;
+
+     label1:
+        $r12 = <org.apache.log4j.StressCategory: org.apache.log4j.StressCategory$CT[] ct>;
+
+        $r13 = $r12[i6];
+
+        if $r13 != null goto label2;
+
+        $r24 = <org.apache.log4j.StressCategory: org.apache.log4j.Logger[] cat>;
+
+        $r24[i6] = null;
+
+        goto label3;
+
+     label2:
+        $r17 = <org.apache.log4j.StressCategory: org.apache.log4j.Logger[] cat>;
+
+        $r14 = <org.apache.log4j.StressCategory: org.apache.log4j.StressCategory$CT[] ct>;
+
+        $r15 = $r14[i6];
+
+        $r16 = $r15.<org.apache.log4j.StressCategory$CT: java.lang.String catstr>;
+
+        $r18 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getLogger(java.lang.String)>($r16);
+
+        $r17[i6] = $r18;
+
+        $r19 = <org.apache.log4j.StressCategory: org.apache.log4j.Logger[] cat>;
+
+        $r23 = $r19[i6];
+
+        $r20 = <org.apache.log4j.StressCategory: org.apache.log4j.StressCategory$CT[] ct>;
+
+        $r21 = $r20[i6];
+
+        $r22 = $r21.<org.apache.log4j.StressCategory$CT: org.apache.log4j.Level level>;
+
+        virtualinvoke $r23.<org.apache.log4j.Logger: void setLevel(org.apache.log4j.Level)>($r22);
+
+     label3:
+        i6 = i6 + 1;
+
+     label4:
+        $i7 = <org.apache.log4j.StressCategory: int LENGTH>;
+
+        if i6 < $i7 goto label1;
+
+        staticinvoke <org.apache.log4j.StressCategory: void test()>();
+
+        $r25 = staticinvoke <org.apache.log4j.LogManager: org.apache.log4j.spi.LoggerRepository getLoggerRepository()>();
+
+        r26 = (org.apache.log4j.Hierarchy) $r25;
+
+        virtualinvoke r26.<org.apache.log4j.Hierarchy: void clear()>();
+
+        goto label7;
+
+     label5:
+        $r0 = <org.apache.log4j.StressCategory: org.apache.log4j.StressCategory$CT[] ct>;
+
+        $r0[i0] = null;
+
+        $i2 = i0 + 1;
+
+        staticinvoke <org.apache.log4j.StressCategory: void createLoop(int)>($i2);
+
+        $r4 = <org.apache.log4j.StressCategory: org.apache.log4j.StressCategory$CT[] ct>;
+
+        $r1 = new org.apache.log4j.StressCategory$CT;
+
+        $r2 = <org.apache.log4j.StressCategory: java.lang.String[] names>;
+
+        $r3 = $r2[i0];
+
+        specialinvoke $r1.<org.apache.log4j.StressCategory$CT: void <init>(java.lang.String,org.apache.log4j.Level)>($r3, null);
+
+        $r4[i0] = $r1;
+
+        $i3 = i0 + 1;
+
+        staticinvoke <org.apache.log4j.StressCategory: void createLoop(int)>($i3);
+
+        $r5 = <org.apache.log4j.StressCategory: java.util.Random random>;
+
+        i8 = virtualinvoke $r5.<java.util.Random: int nextInt()>();
+
+        if i8 >= 0 goto label6;
+
+        i8 = neg i8;
+
+     label6:
+        $r11 = <org.apache.log4j.StressCategory: org.apache.log4j.StressCategory$CT[] ct>;
+
+        $r6 = new org.apache.log4j.StressCategory$CT;
+
+        $r7 = <org.apache.log4j.StressCategory: java.lang.String[] names>;
+
+        $r10 = $r7[i0];
+
+        $r8 = <org.apache.log4j.StressCategory: org.apache.log4j.Level[] level>;
+
+        $i4 = i8 % 5;
+
+        $r9 = $r8[$i4];
+
+        specialinvoke $r6.<org.apache.log4j.StressCategory$CT: void <init>(java.lang.String,org.apache.log4j.Level)>($r10, $r9);
+
+        $r11[i0] = $r6;
+
+        $i5 = i0 + 1;
+
+        staticinvoke <org.apache.log4j.StressCategory: void createLoop(int)>($i5);
+
+     label7:
+        return;
+    }
+
+    static void test()
+    {
+        boolean $z0;
+        java.io.PrintStream $r0;
+        int i0, $i1;
+
+        i0 = 0;
+
+        goto label3;
+
+     label1:
+        $z0 = staticinvoke <org.apache.log4j.StressCategory: boolean checkCorrectness(int)>(i0);
+
+        if $z0 != 0 goto label2;
+
+        $r0 = <java.lang.System: java.io.PrintStream out>;
+
+        virtualinvoke $r0.<java.io.PrintStream: void println(java.lang.String)>("Failed stress test.");
+
+        staticinvoke <org.apache.log4j.StressCategory: void permutationDump()>();
+
+        staticinvoke <org.apache.log4j.StressCategory: void ctDump()>();
+
+        staticinvoke <org.apache.log4j.StressCategory: void catDump()>();
+
+        staticinvoke <java.lang.System: void exit(int)>(1);
+
+     label2:
+        i0 = i0 + 1;
+
+     label3:
+        $i1 = <org.apache.log4j.StressCategory: int LENGTH>;
+
+        if i0 < $i1 goto label1;
+
+        return;
+    }
+
+    static void ctDump()
+    {
+        org.apache.log4j.StressCategory$CT[] $r0, $r11, $r16;
+        org.apache.log4j.StressCategory$CT $r1, $r12, $r17;
+        java.lang.StringBuilder $r2, $r4, $r5, $r7, $r9, $r10, $r14, $r15, $r19, $r20;
+        java.io.PrintStream $r3, $r8;
+        java.lang.String $r6, $r13, $r21;
+        org.apache.log4j.Level $r18;
+        int i0, $i1;
+
+        i0 = 0;
+
+        goto label4;
+
+     label1:
+        $r0 = <org.apache.log4j.StressCategory: org.apache.log4j.StressCategory$CT[] ct>;
+
+        $r1 = $r0[i0];
+
+        if $r1 == null goto label2;
+
+        $r8 = <java.lang.System: java.io.PrintStream out>;
+
+        $r7 = new java.lang.StringBuilder;
+
+        specialinvoke $r7.<java.lang.StringBuilder: void <init>(java.lang.String)>("ct [");
+
+        $r9 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i0);
+
+        $r10 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("] = (");
+
+        $r11 = <org.apache.log4j.StressCategory: org.apache.log4j.StressCategory$CT[] ct>;
+
+        $r12 = $r11[i0];
+
+        $r13 = $r12.<org.apache.log4j.StressCategory$CT: java.lang.String catstr>;
+
+        $r14 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r13);
+
+        $r15 = virtualinvoke $r14.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(",");
+
+        $r16 = <org.apache.log4j.StressCategory: org.apache.log4j.StressCategory$CT[] ct>;
+
+        $r17 = $r16[i0];
+
+        $r18 = $r17.<org.apache.log4j.StressCategory$CT: org.apache.log4j.Level level>;
+
+        $r19 = virtualinvoke $r15.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r18);
+
+        $r20 = virtualinvoke $r19.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(")");
+
+        $r21 = virtualinvoke $r20.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r8.<java.io.PrintStream: void println(java.lang.String)>($r21);
+
+        goto label3;
+
+     label2:
+        $r3 = <java.lang.System: java.io.PrintStream out>;
+
+        $r2 = new java.lang.StringBuilder;
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>(java.lang.String)>("ct [");
+
+        $r4 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i0);
+
+        $r5 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("] = undefined");
+
+        $r6 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r3.<java.io.PrintStream: void println(java.lang.String)>($r6);
+
+     label3:
+        i0 = i0 + 1;
+
+     label4:
+        $i1 = <org.apache.log4j.StressCategory: int LENGTH>;
+
+        if i0 < $i1 goto label1;
+
+        return;
+    }
+
+    static void catDump()
+    {
+        org.apache.log4j.Logger[] $r0, $r11, $r16;
+        org.apache.log4j.Logger $r1, $r12, $r17;
+        java.lang.StringBuilder $r2, $r4, $r5, $r7, $r9, $r10, $r14, $r15, $r19, $r20;
+        java.io.PrintStream $r3, $r8;
+        java.lang.String $r6, $r13, $r21;
+        org.apache.log4j.Level $r18;
+        int i0, $i1;
+
+        i0 = 0;
+
+        goto label4;
+
+     label1:
+        $r0 = <org.apache.log4j.StressCategory: org.apache.log4j.Logger[] cat>;
+
+        $r1 = $r0[i0];
+
+        if $r1 == null goto label2;
+
+        $r8 = <java.lang.System: java.io.PrintStream out>;
+
+        $r7 = new java.lang.StringBuilder;
+
+        specialinvoke $r7.<java.lang.StringBuilder: void <init>(java.lang.String)>("cat[");
+
+        $r9 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i0);
+
+        $r10 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("] = (");
+
+        $r11 = <org.apache.log4j.StressCategory: org.apache.log4j.Logger[] cat>;
+
+        $r12 = $r11[i0];
+
+        $r13 = $r12.<org.apache.log4j.Logger: java.lang.String name>;
+
+        $r14 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r13);
+
+        $r15 = virtualinvoke $r14.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(",");
+
+        $r16 = <org.apache.log4j.StressCategory: org.apache.log4j.Logger[] cat>;
+
+        $r17 = $r16[i0];
+
+        $r18 = virtualinvoke $r17.<org.apache.log4j.Logger: org.apache.log4j.Level getLevel()>();
+
+        $r19 = virtualinvoke $r15.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r18);
+
+        $r20 = virtualinvoke $r19.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(")");
+
+        $r21 = virtualinvoke $r20.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r8.<java.io.PrintStream: void println(java.lang.String)>($r21);
+
+        goto label3;
+
+     label2:
+        $r3 = <java.lang.System: java.io.PrintStream out>;
+
+        $r2 = new java.lang.StringBuilder;
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>(java.lang.String)>("cat[");
+
+        $r4 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i0);
+
+        $r5 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("] = undefined");
+
+        $r6 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r3.<java.io.PrintStream: void println(java.lang.String)>($r6);
+
+     label3:
+        i0 = i0 + 1;
+
+     label4:
+        $i1 = <org.apache.log4j.StressCategory: int LENGTH>;
+
+        if i0 < $i1 goto label1;
+
+        return;
+    }
+
+    static boolean checkCorrectness(int)
+    {
+        int i0;
+        org.apache.log4j.StressCategory$CT r0;
+        org.apache.log4j.Level r1, r2;
+        org.apache.log4j.StressCategory$CT[] $r3;
+        org.apache.log4j.Logger[] $r4, $r15;
+        org.apache.log4j.Logger $r5, $r16;
+        java.lang.StringBuilder $r6, $r9, $r10, $r11, $r13, $r18, $r19, $r20;
+        java.io.PrintStream $r7, $r14;
+        java.lang.String $r8, $r12, $r17, $r21;
+
+        i0 := @parameter0: int;
+
+        $r3 = <org.apache.log4j.StressCategory: org.apache.log4j.StressCategory$CT[] ct>;
+
+        r0 = $r3[i0];
+
+        if r0 != null goto label1;
+
+        return 1;
+
+     label1:
+        r1 = staticinvoke <org.apache.log4j.StressCategory: org.apache.log4j.Level getExpectedPrioriy(org.apache.log4j.StressCategory$CT)>(r0);
+
+        $r4 = <org.apache.log4j.StressCategory: org.apache.log4j.Logger[] cat>;
+
+        $r5 = $r4[i0];
+
+        r2 = virtualinvoke $r5.<org.apache.log4j.Logger: org.apache.log4j.Level getEffectiveLevel()>();
+
+        if r1 == r2 goto label2;
+
+        $r7 = <java.lang.System: java.io.PrintStream out>;
+
+        $r6 = new java.lang.StringBuilder;
+
+        specialinvoke $r6.<java.lang.StringBuilder: void <init>(java.lang.String)>("Expected level for ");
+
+        $r8 = r0.<org.apache.log4j.StressCategory$CT: java.lang.String catstr>;
+
+        $r9 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r8);
+
+        $r10 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" is ");
+
+        $r11 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(r1);
+
+        $r12 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r7.<java.io.PrintStream: void println(java.lang.String)>($r12);
+
+        $r14 = <java.lang.System: java.io.PrintStream out>;
+
+        $r13 = new java.lang.StringBuilder;
+
+        specialinvoke $r13.<java.lang.StringBuilder: void <init>(java.lang.String)>("Purported level for ");
+
+        $r15 = <org.apache.log4j.StressCategory: org.apache.log4j.Logger[] cat>;
+
+        $r16 = $r15[i0];
+
+        $r17 = $r16.<org.apache.log4j.Logger: java.lang.String name>;
+
+        $r18 = virtualinvoke $r13.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r17);
+
+        $r19 = virtualinvoke $r18.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" is ");
+
+        $r20 = virtualinvoke $r19.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(r2);
+
+        $r21 = virtualinvoke $r20.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r14.<java.io.PrintStream: void println(java.lang.String)>($r21);
+
+        return 0;
+
+     label2:
+        return 1;
+    }
+
+    static org.apache.log4j.Level getExpectedPrioriy(org.apache.log4j.StressCategory$CT)
+    {
+        org.apache.log4j.StressCategory$CT r0, $r6, $r8, $r11;
+        org.apache.log4j.Level r1, r4, $r12;
+        java.lang.String r2, r3, $r9;
+        int $i0, $i1, $i2, i3, i4, $i5;
+        org.apache.log4j.StressCategory$CT[] $r5, $r7, $r10;
+        boolean $z0;
+
+        r0 := @parameter0: org.apache.log4j.StressCategory$CT;
+
+        r1 = r0.<org.apache.log4j.StressCategory$CT: org.apache.log4j.Level level>;
+
+        if r1 == null goto label1;
+
+        return r1;
+
+     label1:
+        r2 = r0.<org.apache.log4j.StressCategory$CT: java.lang.String catstr>;
+
+        $i0 = virtualinvoke r2.<java.lang.String: int length()>();
+
+        $i1 = $i0 - 1;
+
+        i3 = virtualinvoke r2.<java.lang.String: int lastIndexOf(int,int)>(46, $i1);
+
+        goto label6;
+
+     label2:
+        r3 = virtualinvoke r2.<java.lang.String: java.lang.String substring(int,int)>(0, i3);
+
+        i4 = 0;
+
+        goto label5;
+
+     label3:
+        $r5 = <org.apache.log4j.StressCategory: org.apache.log4j.StressCategory$CT[] ct>;
+
+        $r6 = $r5[i4];
+
+        if $r6 == null goto label4;
+
+        $r7 = <org.apache.log4j.StressCategory: org.apache.log4j.StressCategory$CT[] ct>;
+
+        $r8 = $r7[i4];
+
+        $r9 = $r8.<org.apache.log4j.StressCategory$CT: java.lang.String catstr>;
+
+        $z0 = virtualinvoke r3.<java.lang.String: boolean equals(java.lang.Object)>($r9);
+
+        if $z0 == 0 goto label4;
+
+        $r10 = <org.apache.log4j.StressCategory: org.apache.log4j.StressCategory$CT[] ct>;
+
+        $r11 = $r10[i4];
+
+        r4 = $r11.<org.apache.log4j.StressCategory$CT: org.apache.log4j.Level level>;
+
+        if r4 == null goto label4;
+
+        return r4;
+
+     label4:
+        i4 = i4 + 1;
+
+     label5:
+        $i5 = <org.apache.log4j.StressCategory: int LENGTH>;
+
+        if i4 < $i5 goto label3;
+
+        $i2 = i3 - 1;
+
+        i3 = virtualinvoke r2.<java.lang.String: int lastIndexOf(int,int)>(46, $i2);
+
+     label6:
+        if i3 >= 0 goto label2;
+
+        $r12 = <org.apache.log4j.StressCategory: org.apache.log4j.Level defaultLevel>;
+
+        return $r12;
+    }
+}

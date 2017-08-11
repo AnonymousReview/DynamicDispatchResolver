@@ -1,0 +1,93 @@
+public class org.apache.log4j.or.sax.AttributesRenderer extends java.lang.Object implements org.apache.log4j.or.ObjectRenderer
+{
+
+    public void <init>()
+    {
+        org.apache.log4j.or.sax.AttributesRenderer r0;
+
+        r0 := @this: org.apache.log4j.or.sax.AttributesRenderer;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public java.lang.String doRender(java.lang.Object)
+    {
+        org.apache.log4j.or.sax.AttributesRenderer r0;
+        java.lang.Object r1;
+        org.xml.sax.Attributes r2;
+        int i0, i1;
+        boolean $z0, z1;
+        java.lang.String $r3, $r6, $r9, $r11, $r13;
+        java.lang.StringBuffer $r4;
+        java.lang.Exception $r12;
+
+        r0 := @this: org.apache.log4j.or.sax.AttributesRenderer;
+
+        r1 := @parameter0: java.lang.Object;
+
+        $z0 = r1 instanceof org.xml.sax.Attributes;
+
+        if $z0 == 0 goto label5;
+
+        $r4 = new java.lang.StringBuffer;
+
+        specialinvoke $r4.<java.lang.StringBuffer: void <init>()>();
+
+        r2 = (org.xml.sax.Attributes) r1;
+
+        i0 = interfaceinvoke r2.<org.xml.sax.Attributes: int getLength()>();
+
+        z1 = 1;
+
+        i1 = 0;
+
+        goto label4;
+
+     label1:
+        if z1 == 0 goto label2;
+
+        z1 = 0;
+
+        goto label3;
+
+     label2:
+        virtualinvoke $r4.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>(", ");
+
+     label3:
+        $r6 = interfaceinvoke r2.<org.xml.sax.Attributes: java.lang.String getQName(int)>(i1);
+
+        virtualinvoke $r4.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>($r6);
+
+        virtualinvoke $r4.<java.lang.StringBuffer: java.lang.StringBuffer append(char)>(61);
+
+        $r9 = interfaceinvoke r2.<org.xml.sax.Attributes: java.lang.String getValue(int)>(i1);
+
+        virtualinvoke $r4.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>($r9);
+
+        i1 = i1 + 1;
+
+     label4:
+        if i1 < i0 goto label1;
+
+        $r11 = virtualinvoke $r4.<java.lang.StringBuffer: java.lang.String toString()>();
+
+        return $r11;
+
+     label5:
+        $r3 = virtualinvoke r1.<java.lang.Object: java.lang.String toString()>();
+
+     label6:
+        return $r3;
+
+     label7:
+        $r12 := @caughtexception;
+
+        $r13 = virtualinvoke $r12.<java.lang.Exception: java.lang.String toString()>();
+
+        return $r13;
+
+        catch java.lang.Exception from label5 to label6 with label7;
+    }
+}

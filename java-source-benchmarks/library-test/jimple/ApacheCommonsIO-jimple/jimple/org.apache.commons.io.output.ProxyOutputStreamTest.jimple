@@ -1,0 +1,98 @@
+public class org.apache.commons.io.output.ProxyOutputStreamTest extends java.lang.Object
+{
+    private org.apache.commons.io.output.ByteArrayOutputStream original;
+    private java.io.OutputStream proxied;
+
+    public void <init>()
+    {
+        org.apache.commons.io.output.ProxyOutputStreamTest r0;
+
+        r0 := @this: org.apache.commons.io.output.ProxyOutputStreamTest;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void setUp()
+    {
+        org.apache.commons.io.output.ProxyOutputStreamTest r0;
+        org.apache.commons.io.output.ProxyOutputStreamTest$1 $r1;
+        org.apache.commons.io.output.ProxyOutputStream $r2;
+        org.apache.commons.io.output.ByteArrayOutputStream $r3;
+
+        r0 := @this: org.apache.commons.io.output.ProxyOutputStreamTest;
+
+        $r1 = new org.apache.commons.io.output.ProxyOutputStreamTest$1;
+
+        specialinvoke $r1.<org.apache.commons.io.output.ProxyOutputStreamTest$1: void <init>(org.apache.commons.io.output.ProxyOutputStreamTest)>(r0);
+
+        r0.<org.apache.commons.io.output.ProxyOutputStreamTest: org.apache.commons.io.output.ByteArrayOutputStream original> = $r1;
+
+        $r2 = new org.apache.commons.io.output.ProxyOutputStream;
+
+        $r3 = r0.<org.apache.commons.io.output.ProxyOutputStreamTest: org.apache.commons.io.output.ByteArrayOutputStream original>;
+
+        specialinvoke $r2.<org.apache.commons.io.output.ProxyOutputStream: void <init>(java.io.OutputStream)>($r3);
+
+        r0.<org.apache.commons.io.output.ProxyOutputStreamTest: java.io.OutputStream proxied> = $r2;
+
+        return;
+    }
+
+    public void testWrite() throws java.lang.Exception
+    {
+        org.apache.commons.io.output.ProxyOutputStreamTest r0;
+        java.io.OutputStream $r1;
+        org.apache.commons.io.output.ByteArrayOutputStream $r2, $r3;
+        int $i0;
+        long $l1, $l3;
+        byte[] $r4;
+        byte $b2;
+
+        r0 := @this: org.apache.commons.io.output.ProxyOutputStreamTest;
+
+        $r1 = r0.<org.apache.commons.io.output.ProxyOutputStreamTest: java.io.OutputStream proxied>;
+
+        virtualinvoke $r1.<java.io.OutputStream: void write(int)>(121);
+
+        $r2 = r0.<org.apache.commons.io.output.ProxyOutputStreamTest: org.apache.commons.io.output.ByteArrayOutputStream original>;
+
+        $i0 = virtualinvoke $r2.<org.apache.commons.io.output.ByteArrayOutputStream: int size()>();
+
+        $l1 = (long) $i0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(1L, $l1);
+
+        $r3 = r0.<org.apache.commons.io.output.ProxyOutputStreamTest: org.apache.commons.io.output.ByteArrayOutputStream original>;
+
+        $r4 = virtualinvoke $r3.<org.apache.commons.io.output.ByteArrayOutputStream: byte[] toByteArray()>();
+
+        $b2 = $r4[0];
+
+        $l3 = (long) $b2;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(121L, $l3);
+
+        return;
+    }
+
+    public void testWriteNullBaSucceeds() throws java.lang.Exception
+    {
+        org.apache.commons.io.output.ProxyOutputStreamTest r0;
+        org.apache.commons.io.output.ByteArrayOutputStream $r1;
+        java.io.OutputStream $r2;
+
+        r0 := @this: org.apache.commons.io.output.ProxyOutputStreamTest;
+
+        $r1 = r0.<org.apache.commons.io.output.ProxyOutputStreamTest: org.apache.commons.io.output.ByteArrayOutputStream original>;
+
+        virtualinvoke $r1.<org.apache.commons.io.output.ByteArrayOutputStream: void write(byte[])>(null);
+
+        $r2 = r0.<org.apache.commons.io.output.ProxyOutputStreamTest: java.io.OutputStream proxied>;
+
+        virtualinvoke $r2.<java.io.OutputStream: void write(byte[])>(null);
+
+        return;
+    }
+}

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<attributes>
+<attribute>
+<srcPos sline="50" eline="50" spos="0" epos="0"/>
+<jmpPos sline="31" eline="31" spos="0" epos="0"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation type: Lorg/junit/Before; without elements
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+<attribute>
+<srcPos sline="88" eline="88" spos="0" epos="0"/>
+<jmpPos sline="121" eline="121" spos="0" epos="0"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation type: Lorg/junit/After; without elements
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+<attribute>
+<srcPos sline="93" eline="93" spos="0" epos="0"/>
+<jmpPos sline="135" eline="135" spos="0" epos="0"/>
+<text info="Signature: (Ljava/util/Collection&lt;Ljava/io/File;&gt;;)Ljava/util/Collection&lt;Ljava/lang/String;&gt;;" aType="SignatureTag"/>
+</attribute>
+<attribute>
+<srcPos sline="101" eline="101" spos="0" epos="0"/>
+<jmpPos sline="178" eline="178" spos="0" epos="0"/>
+<text info="Signature: (Ljava/util/Iterator&lt;Ljava/io/File;&gt;;)Ljava/util/Collection&lt;Ljava/lang/String;&gt;;" aType="SignatureTag"/>
+</attribute>
+<attribute>
+<srcPos sline="110" eline="110" spos="0" epos="0"/>
+<jmpPos sline="215" eline="215" spos="0" epos="0"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation type: Lorg/junit/Test; without elements
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+<attribute>
+<srcPos sline="135" eline="135" spos="0" epos="0"/>
+<jmpPos sline="305" eline="305" spos="0" epos="0"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation type: Lorg/junit/Test; without elements
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+<attribute>
+<srcPos sline="166" eline="166" spos="0" epos="0"/>
+<jmpPos sline="394" eline="394" spos="0" epos="0"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation type: Lorg/junit/Test; without elements
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+</attributes>

@@ -1,0 +1,370 @@
+public class org.apache.commons.io.DemuxTestCase extends java.lang.Object
+{
+    private static final java.lang.String T1;
+    private static final java.lang.String T2;
+    private static final java.lang.String T3;
+    private static final java.lang.String T4;
+    private static final java.lang.String DATA1;
+    private static final java.lang.String DATA2;
+    private static final java.lang.String DATA3;
+    private static final java.lang.String DATA4;
+    private static final java.util.Random c_random;
+    private final java.util.HashMap m_outputMap;
+    private final java.util.HashMap m_threadMap;
+
+    static void <clinit>()
+    {
+        java.util.Random $r0;
+
+        <org.apache.commons.io.DemuxTestCase: java.lang.String DATA4> = "Data for thread4";
+
+        <org.apache.commons.io.DemuxTestCase: java.lang.String DATA3> = "Data for thread3";
+
+        <org.apache.commons.io.DemuxTestCase: java.lang.String DATA2> = "Data for thread2";
+
+        <org.apache.commons.io.DemuxTestCase: java.lang.String DATA1> = "Data for thread1";
+
+        <org.apache.commons.io.DemuxTestCase: java.lang.String T4> = "Thread4";
+
+        <org.apache.commons.io.DemuxTestCase: java.lang.String T3> = "Thread3";
+
+        <org.apache.commons.io.DemuxTestCase: java.lang.String T2> = "Thread2";
+
+        <org.apache.commons.io.DemuxTestCase: java.lang.String T1> = "Thread1";
+
+        $r0 = new java.util.Random;
+
+        specialinvoke $r0.<java.util.Random: void <init>()>();
+
+        <org.apache.commons.io.DemuxTestCase: java.util.Random c_random> = $r0;
+
+        return;
+    }
+
+    public void <init>()
+    {
+        org.apache.commons.io.DemuxTestCase r0;
+        java.util.HashMap $r1, $r2;
+
+        r0 := @this: org.apache.commons.io.DemuxTestCase;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r1 = new java.util.HashMap;
+
+        specialinvoke $r1.<java.util.HashMap: void <init>()>();
+
+        r0.<org.apache.commons.io.DemuxTestCase: java.util.HashMap m_outputMap> = $r1;
+
+        $r2 = new java.util.HashMap;
+
+        specialinvoke $r2.<java.util.HashMap: void <init>()>();
+
+        r0.<org.apache.commons.io.DemuxTestCase: java.util.HashMap m_threadMap> = $r2;
+
+        return;
+    }
+
+    private java.lang.String getOutput(java.lang.String)
+    {
+        org.apache.commons.io.DemuxTestCase r0;
+        java.lang.String r1, $r6;
+        org.apache.commons.io.output.ByteArrayOutputStream r2;
+        java.util.HashMap $r3;
+        java.lang.Object $r4;
+        java.nio.charset.Charset $r5;
+
+        r0 := @this: org.apache.commons.io.DemuxTestCase;
+
+        r1 := @parameter0: java.lang.String;
+
+        $r3 = r0.<org.apache.commons.io.DemuxTestCase: java.util.HashMap m_outputMap>;
+
+        $r4 = virtualinvoke $r3.<java.util.HashMap: java.lang.Object get(java.lang.Object)>(r1);
+
+        r2 = (org.apache.commons.io.output.ByteArrayOutputStream) $r4;
+
+        staticinvoke <org.junit.Assert: void assertNotNull(java.lang.String,java.lang.Object)>("getOutput()", r2);
+
+        $r5 = <org.apache.commons.io.Charsets: java.nio.charset.Charset UTF_8>;
+
+        $r6 = virtualinvoke r2.<org.apache.commons.io.output.ByteArrayOutputStream: java.lang.String toString(java.nio.charset.Charset)>($r5);
+
+        return $r6;
+    }
+
+    private java.lang.String getInput(java.lang.String)
+    {
+        org.apache.commons.io.DemuxTestCase r0;
+        java.lang.String r1, $r5;
+        org.apache.commons.io.DemuxTestCase$ReaderThread r2;
+        java.util.HashMap $r3;
+        java.lang.Object $r4;
+
+        r0 := @this: org.apache.commons.io.DemuxTestCase;
+
+        r1 := @parameter0: java.lang.String;
+
+        $r3 = r0.<org.apache.commons.io.DemuxTestCase: java.util.HashMap m_threadMap>;
+
+        $r4 = virtualinvoke $r3.<java.util.HashMap: java.lang.Object get(java.lang.Object)>(r1);
+
+        r2 = (org.apache.commons.io.DemuxTestCase$ReaderThread) $r4;
+
+        staticinvoke <org.junit.Assert: void assertNotNull(java.lang.String,java.lang.Object)>("getInput()", r2);
+
+        $r5 = virtualinvoke r2.<org.apache.commons.io.DemuxTestCase$ReaderThread: java.lang.String getData()>();
+
+        return $r5;
+    }
+
+    private void doStart() throws java.lang.Exception
+    {
+        org.apache.commons.io.DemuxTestCase r0;
+        java.lang.String r1;
+        java.util.Iterator r2;
+        java.lang.Thread r3;
+        java.util.HashMap $r4, $r7;
+        java.util.Set $r5;
+        boolean $z0;
+        java.lang.Object $r6, $r8;
+
+        r0 := @this: org.apache.commons.io.DemuxTestCase;
+
+        $r4 = r0.<org.apache.commons.io.DemuxTestCase: java.util.HashMap m_threadMap>;
+
+        $r5 = virtualinvoke $r4.<java.util.HashMap: java.util.Set keySet()>();
+
+        r2 = interfaceinvoke $r5.<java.util.Set: java.util.Iterator iterator()>();
+
+        goto label2;
+
+     label1:
+        $r6 = interfaceinvoke r2.<java.util.Iterator: java.lang.Object next()>();
+
+        r1 = (java.lang.String) $r6;
+
+        $r7 = r0.<org.apache.commons.io.DemuxTestCase: java.util.HashMap m_threadMap>;
+
+        $r8 = virtualinvoke $r7.<java.util.HashMap: java.lang.Object get(java.lang.Object)>(r1);
+
+        r3 = (java.lang.Thread) $r8;
+
+        virtualinvoke r3.<java.lang.Thread: void start()>();
+
+     label2:
+        $z0 = interfaceinvoke r2.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 != 0 goto label1;
+
+        return;
+    }
+
+    private void doJoin() throws java.lang.Exception
+    {
+        org.apache.commons.io.DemuxTestCase r0;
+        java.lang.String r1;
+        java.util.Iterator r2;
+        java.lang.Thread r3;
+        java.util.HashMap $r4, $r7;
+        java.util.Set $r5;
+        boolean $z0;
+        java.lang.Object $r6, $r8;
+
+        r0 := @this: org.apache.commons.io.DemuxTestCase;
+
+        $r4 = r0.<org.apache.commons.io.DemuxTestCase: java.util.HashMap m_threadMap>;
+
+        $r5 = virtualinvoke $r4.<java.util.HashMap: java.util.Set keySet()>();
+
+        r2 = interfaceinvoke $r5.<java.util.Set: java.util.Iterator iterator()>();
+
+        goto label2;
+
+     label1:
+        $r6 = interfaceinvoke r2.<java.util.Iterator: java.lang.Object next()>();
+
+        r1 = (java.lang.String) $r6;
+
+        $r7 = r0.<org.apache.commons.io.DemuxTestCase: java.util.HashMap m_threadMap>;
+
+        $r8 = virtualinvoke $r7.<java.util.HashMap: java.lang.Object get(java.lang.Object)>(r1);
+
+        r3 = (java.lang.Thread) $r8;
+
+        virtualinvoke r3.<java.lang.Thread: void join()>();
+
+     label2:
+        $z0 = interfaceinvoke r2.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 != 0 goto label1;
+
+        return;
+    }
+
+    private void startWriter(java.lang.String, java.lang.String, org.apache.commons.io.output.DemuxOutputStream) throws java.lang.Exception
+    {
+        org.apache.commons.io.DemuxTestCase r0;
+        java.lang.String r1, r2;
+        org.apache.commons.io.output.DemuxOutputStream r3;
+        org.apache.commons.io.output.ByteArrayOutputStream $r6;
+        java.util.HashMap $r7, $r10;
+        org.apache.commons.io.DemuxTestCase$WriterThread $r9;
+
+        r0 := @this: org.apache.commons.io.DemuxTestCase;
+
+        r1 := @parameter0: java.lang.String;
+
+        r2 := @parameter1: java.lang.String;
+
+        r3 := @parameter2: org.apache.commons.io.output.DemuxOutputStream;
+
+        $r6 = new org.apache.commons.io.output.ByteArrayOutputStream;
+
+        specialinvoke $r6.<org.apache.commons.io.output.ByteArrayOutputStream: void <init>()>();
+
+        $r7 = r0.<org.apache.commons.io.DemuxTestCase: java.util.HashMap m_outputMap>;
+
+        virtualinvoke $r7.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(r1, $r6);
+
+        $r9 = new org.apache.commons.io.DemuxTestCase$WriterThread;
+
+        specialinvoke $r9.<org.apache.commons.io.DemuxTestCase$WriterThread: void <init>(java.lang.String,java.lang.String,java.io.OutputStream,org.apache.commons.io.output.DemuxOutputStream)>(r1, r2, $r6, r3);
+
+        $r10 = r0.<org.apache.commons.io.DemuxTestCase: java.util.HashMap m_threadMap>;
+
+        virtualinvoke $r10.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(r1, $r9);
+
+        return;
+    }
+
+    private void startReader(java.lang.String, java.lang.String, org.apache.commons.io.input.DemuxInputStream) throws java.lang.Exception
+    {
+        org.apache.commons.io.DemuxTestCase r0;
+        java.lang.String r1, r2;
+        org.apache.commons.io.input.DemuxInputStream r3;
+        java.io.ByteArrayInputStream $r6;
+        byte[] $r7;
+        org.apache.commons.io.DemuxTestCase$ReaderThread $r8;
+        java.util.HashMap $r9;
+
+        r0 := @this: org.apache.commons.io.DemuxTestCase;
+
+        r1 := @parameter0: java.lang.String;
+
+        r2 := @parameter1: java.lang.String;
+
+        r3 := @parameter2: org.apache.commons.io.input.DemuxInputStream;
+
+        $r6 = new java.io.ByteArrayInputStream;
+
+        $r7 = virtualinvoke r2.<java.lang.String: byte[] getBytes()>();
+
+        specialinvoke $r6.<java.io.ByteArrayInputStream: void <init>(byte[])>($r7);
+
+        $r8 = new org.apache.commons.io.DemuxTestCase$ReaderThread;
+
+        specialinvoke $r8.<org.apache.commons.io.DemuxTestCase$ReaderThread: void <init>(java.lang.String,java.io.InputStream,org.apache.commons.io.input.DemuxInputStream)>(r1, $r6, r3);
+
+        $r9 = r0.<org.apache.commons.io.DemuxTestCase: java.util.HashMap m_threadMap>;
+
+        virtualinvoke $r9.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(r1, $r8);
+
+        return;
+    }
+
+    public void testOutputStream() throws java.lang.Exception
+    {
+        org.apache.commons.io.DemuxTestCase r0;
+        org.apache.commons.io.output.DemuxOutputStream $r2;
+        java.lang.String $r3, $r4, $r5, $r6;
+
+        r0 := @this: org.apache.commons.io.DemuxTestCase;
+
+        $r2 = new org.apache.commons.io.output.DemuxOutputStream;
+
+        specialinvoke $r2.<org.apache.commons.io.output.DemuxOutputStream: void <init>()>();
+
+        specialinvoke r0.<org.apache.commons.io.DemuxTestCase: void startWriter(java.lang.String,java.lang.String,org.apache.commons.io.output.DemuxOutputStream)>("Thread1", "Data for thread1", $r2);
+
+        specialinvoke r0.<org.apache.commons.io.DemuxTestCase: void startWriter(java.lang.String,java.lang.String,org.apache.commons.io.output.DemuxOutputStream)>("Thread2", "Data for thread2", $r2);
+
+        specialinvoke r0.<org.apache.commons.io.DemuxTestCase: void startWriter(java.lang.String,java.lang.String,org.apache.commons.io.output.DemuxOutputStream)>("Thread3", "Data for thread3", $r2);
+
+        specialinvoke r0.<org.apache.commons.io.DemuxTestCase: void startWriter(java.lang.String,java.lang.String,org.apache.commons.io.output.DemuxOutputStream)>("Thread4", "Data for thread4", $r2);
+
+        specialinvoke r0.<org.apache.commons.io.DemuxTestCase: void doStart()>();
+
+        specialinvoke r0.<org.apache.commons.io.DemuxTestCase: void doJoin()>();
+
+        $r3 = specialinvoke r0.<org.apache.commons.io.DemuxTestCase: java.lang.String getOutput(java.lang.String)>("Thread1");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,java.lang.Object,java.lang.Object)>("Data1", "Data for thread1", $r3);
+
+        $r4 = specialinvoke r0.<org.apache.commons.io.DemuxTestCase: java.lang.String getOutput(java.lang.String)>("Thread2");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,java.lang.Object,java.lang.Object)>("Data2", "Data for thread2", $r4);
+
+        $r5 = specialinvoke r0.<org.apache.commons.io.DemuxTestCase: java.lang.String getOutput(java.lang.String)>("Thread3");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,java.lang.Object,java.lang.Object)>("Data3", "Data for thread3", $r5);
+
+        $r6 = specialinvoke r0.<org.apache.commons.io.DemuxTestCase: java.lang.String getOutput(java.lang.String)>("Thread4");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,java.lang.Object,java.lang.Object)>("Data4", "Data for thread4", $r6);
+
+        return;
+    }
+
+    public void testInputStream() throws java.lang.Exception
+    {
+        org.apache.commons.io.DemuxTestCase r0;
+        org.apache.commons.io.input.DemuxInputStream $r2;
+        java.lang.String $r3, $r4, $r5, $r6;
+
+        r0 := @this: org.apache.commons.io.DemuxTestCase;
+
+        $r2 = new org.apache.commons.io.input.DemuxInputStream;
+
+        specialinvoke $r2.<org.apache.commons.io.input.DemuxInputStream: void <init>()>();
+
+        specialinvoke r0.<org.apache.commons.io.DemuxTestCase: void startReader(java.lang.String,java.lang.String,org.apache.commons.io.input.DemuxInputStream)>("Thread1", "Data for thread1", $r2);
+
+        specialinvoke r0.<org.apache.commons.io.DemuxTestCase: void startReader(java.lang.String,java.lang.String,org.apache.commons.io.input.DemuxInputStream)>("Thread2", "Data for thread2", $r2);
+
+        specialinvoke r0.<org.apache.commons.io.DemuxTestCase: void startReader(java.lang.String,java.lang.String,org.apache.commons.io.input.DemuxInputStream)>("Thread3", "Data for thread3", $r2);
+
+        specialinvoke r0.<org.apache.commons.io.DemuxTestCase: void startReader(java.lang.String,java.lang.String,org.apache.commons.io.input.DemuxInputStream)>("Thread4", "Data for thread4", $r2);
+
+        specialinvoke r0.<org.apache.commons.io.DemuxTestCase: void doStart()>();
+
+        specialinvoke r0.<org.apache.commons.io.DemuxTestCase: void doJoin()>();
+
+        $r3 = specialinvoke r0.<org.apache.commons.io.DemuxTestCase: java.lang.String getInput(java.lang.String)>("Thread1");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,java.lang.Object,java.lang.Object)>("Data1", "Data for thread1", $r3);
+
+        $r4 = specialinvoke r0.<org.apache.commons.io.DemuxTestCase: java.lang.String getInput(java.lang.String)>("Thread2");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,java.lang.Object,java.lang.Object)>("Data2", "Data for thread2", $r4);
+
+        $r5 = specialinvoke r0.<org.apache.commons.io.DemuxTestCase: java.lang.String getInput(java.lang.String)>("Thread3");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,java.lang.Object,java.lang.Object)>("Data3", "Data for thread3", $r5);
+
+        $r6 = specialinvoke r0.<org.apache.commons.io.DemuxTestCase: java.lang.String getInput(java.lang.String)>("Thread4");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,java.lang.Object,java.lang.Object)>("Data4", "Data for thread4", $r6);
+
+        return;
+    }
+
+    static java.util.Random access$0()
+    {
+        java.util.Random $r0;
+
+        $r0 = <org.apache.commons.io.DemuxTestCase: java.util.Random c_random>;
+
+        return $r0;
+    }
+}

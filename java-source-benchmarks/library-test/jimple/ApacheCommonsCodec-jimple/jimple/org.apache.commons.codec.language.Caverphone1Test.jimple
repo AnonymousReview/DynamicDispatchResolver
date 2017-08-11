@@ -1,0 +1,200 @@
+public class org.apache.commons.codec.language.Caverphone1Test extends org.apache.commons.codec.StringEncoderAbstractTest
+{
+
+    public void <init>()
+    {
+        org.apache.commons.codec.language.Caverphone1Test r0;
+
+        r0 := @this: org.apache.commons.codec.language.Caverphone1Test;
+
+        specialinvoke r0.<org.apache.commons.codec.StringEncoderAbstractTest: void <init>()>();
+
+        return;
+    }
+
+    protected org.apache.commons.codec.language.Caverphone1 createStringEncoder()
+    {
+        org.apache.commons.codec.language.Caverphone1Test r0;
+        org.apache.commons.codec.language.Caverphone1 $r1;
+
+        r0 := @this: org.apache.commons.codec.language.Caverphone1Test;
+
+        $r1 = new org.apache.commons.codec.language.Caverphone1;
+
+        specialinvoke $r1.<org.apache.commons.codec.language.Caverphone1: void <init>()>();
+
+        return $r1;
+    }
+
+    public void testCaverphoneRevisitedCommonCodeAT1111() throws org.apache.commons.codec.EncoderException
+    {
+        org.apache.commons.codec.language.Caverphone1Test r0;
+        java.lang.String[] $r1;
+
+        r0 := @this: org.apache.commons.codec.language.Caverphone1Test;
+
+        $r1 = newarray (java.lang.String)[15];
+
+        $r1[0] = "add";
+
+        $r1[1] = "aid";
+
+        $r1[2] = "at";
+
+        $r1[3] = "art";
+
+        $r1[4] = "eat";
+
+        $r1[5] = "earth";
+
+        $r1[6] = "head";
+
+        $r1[7] = "hit";
+
+        $r1[8] = "hot";
+
+        $r1[9] = "hold";
+
+        $r1[10] = "hard";
+
+        $r1[11] = "heart";
+
+        $r1[12] = "it";
+
+        $r1[13] = "out";
+
+        $r1[14] = "old";
+
+        virtualinvoke r0.<org.apache.commons.codec.language.Caverphone1Test: void checkEncodingVariations(java.lang.String,java.lang.String[])>("AT1111", $r1);
+
+        return;
+    }
+
+    public void testEndMb() throws org.apache.commons.codec.EncoderException
+    {
+        org.apache.commons.codec.language.Caverphone1Test r0;
+        java.lang.String[][] $r2;
+        java.lang.String[] $r3, $r4;
+
+        r0 := @this: org.apache.commons.codec.language.Caverphone1Test;
+
+        $r2 = newarray (java.lang.String[])[2];
+
+        $r3 = newarray (java.lang.String)[2];
+
+        $r3[0] = "mb";
+
+        $r3[1] = "M11111";
+
+        $r2[0] = $r3;
+
+        $r4 = newarray (java.lang.String)[2];
+
+        $r4[0] = "mbmb";
+
+        $r4[1] = "MPM111";
+
+        $r2[1] = $r4;
+
+        virtualinvoke r0.<org.apache.commons.codec.language.Caverphone1Test: void checkEncodings(java.lang.String[][])>($r2);
+
+        return;
+    }
+
+    public void testIsCaverphoneEquals() throws org.apache.commons.codec.EncoderException
+    {
+        org.apache.commons.codec.language.Caverphone1Test r0;
+        org.apache.commons.codec.language.Caverphone1 $r2;
+        boolean $z0, $z1;
+
+        r0 := @this: org.apache.commons.codec.language.Caverphone1Test;
+
+        $r2 = new org.apache.commons.codec.language.Caverphone1;
+
+        specialinvoke $r2.<org.apache.commons.codec.language.Caverphone1: void <init>()>();
+
+        $z0 = virtualinvoke $r2.<org.apache.commons.codec.language.Caverphone1: boolean isEncodeEqual(java.lang.String,java.lang.String)>("Peter", "Stevenson");
+
+        staticinvoke <org.junit.Assert: void assertFalse(java.lang.String,boolean)>("Caverphone encodings should not be equal", $z0);
+
+        $z1 = virtualinvoke $r2.<org.apache.commons.codec.language.Caverphone1: boolean isEncodeEqual(java.lang.String,java.lang.String)>("Peter", "Peady");
+
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>("Caverphone encodings should be equal", $z1);
+
+        return;
+    }
+
+    public void testSpecificationV1Examples() throws org.apache.commons.codec.EncoderException
+    {
+        org.apache.commons.codec.language.Caverphone1Test r0;
+        java.lang.String[][] $r2;
+        java.lang.String[] $r3, $r4;
+
+        r0 := @this: org.apache.commons.codec.language.Caverphone1Test;
+
+        $r2 = newarray (java.lang.String[])[2];
+
+        $r3 = newarray (java.lang.String)[2];
+
+        $r3[0] = "David";
+
+        $r3[1] = "TFT111";
+
+        $r2[0] = $r3;
+
+        $r4 = newarray (java.lang.String)[2];
+
+        $r4[0] = "Whittle";
+
+        $r4[1] = "WTL111";
+
+        $r2[1] = $r4;
+
+        virtualinvoke r0.<org.apache.commons.codec.language.Caverphone1Test: void checkEncodings(java.lang.String[][])>($r2);
+
+        return;
+    }
+
+    public void testWikipediaExamples() throws org.apache.commons.codec.EncoderException
+    {
+        org.apache.commons.codec.language.Caverphone1Test r0;
+        java.lang.String[][] $r2;
+        java.lang.String[] $r3, $r4;
+
+        r0 := @this: org.apache.commons.codec.language.Caverphone1Test;
+
+        $r2 = newarray (java.lang.String[])[2];
+
+        $r3 = newarray (java.lang.String)[2];
+
+        $r3[0] = "Lee";
+
+        $r3[1] = "L11111";
+
+        $r2[0] = $r3;
+
+        $r4 = newarray (java.lang.String)[2];
+
+        $r4[0] = "Thompson";
+
+        $r4[1] = "TMPSN1";
+
+        $r2[1] = $r4;
+
+        virtualinvoke r0.<org.apache.commons.codec.language.Caverphone1Test: void checkEncodings(java.lang.String[][])>($r2);
+
+        return;
+    }
+
+    protected volatile org.apache.commons.codec.StringEncoder createStringEncoder()
+    {
+        org.apache.commons.codec.language.Caverphone1Test r0;
+        org.apache.commons.codec.language.Caverphone1 $r1;
+
+        r0 := @this: org.apache.commons.codec.language.Caverphone1Test;
+
+        $r1 = virtualinvoke r0.<org.apache.commons.codec.language.Caverphone1Test: org.apache.commons.codec.language.Caverphone1 createStringEncoder()>();
+
+        return $r1;
+    }
+}

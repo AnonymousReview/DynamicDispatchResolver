@@ -1,0 +1,542 @@
+public class org.apache.commons.io.input.CountingInputStreamTest extends java.lang.Object
+{
+
+    public void <init>()
+    {
+        org.apache.commons.io.input.CountingInputStreamTest r0;
+
+        r0 := @this: org.apache.commons.io.input.CountingInputStreamTest;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void testCounting() throws java.lang.Exception
+    {
+        org.apache.commons.io.input.CountingInputStreamTest r0;
+        byte[] r2, r5, r6;
+        int i0, $i2, $i6, $i8, $i10, $i12, $i14, i16, i17, i18, i19;
+        java.lang.String r7, $r8, $r11;
+        java.io.ByteArrayInputStream $r9;
+        org.apache.commons.io.input.CountingInputStream $r10;
+        long $l1, $l3, $l5, $l7, $l9, $l11, $l13, $l15;
+        byte $b4;
+
+        r0 := @this: org.apache.commons.io.input.CountingInputStreamTest;
+
+        $r8 = "A piece of text";
+
+        r2 = virtualinvoke $r8.<java.lang.String: byte[] getBytes()>();
+
+        $r9 = new java.io.ByteArrayInputStream;
+
+        specialinvoke $r9.<java.io.ByteArrayInputStream: void <init>(byte[])>(r2);
+
+        $r10 = new org.apache.commons.io.input.CountingInputStream;
+
+        specialinvoke $r10.<org.apache.commons.io.input.CountingInputStream: void <init>(java.io.InputStream)>($r9);
+
+        r5 = newarray (byte)[21];
+
+        r6 = newarray (byte)[5];
+
+        i16 = virtualinvoke $r10.<org.apache.commons.io.input.CountingInputStream: int read(byte[])>(r6);
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>(r6, 0, r5, 0, 5);
+
+        $l1 = (long) i16;
+
+        $i2 = virtualinvoke $r10.<org.apache.commons.io.input.CountingInputStream: int getCount()>();
+
+        $l3 = (long) $i2;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>($l1, $l3);
+
+        i0 = virtualinvoke $r10.<org.apache.commons.io.input.CountingInputStream: int read()>();
+
+        i17 = i16 + 1;
+
+        $b4 = (byte) i0;
+
+        r5[5] = $b4;
+
+        $l5 = (long) i17;
+
+        $i6 = virtualinvoke $r10.<org.apache.commons.io.input.CountingInputStream: int getCount()>();
+
+        $l7 = (long) $i6;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>($l5, $l7);
+
+        $i8 = virtualinvoke $r10.<org.apache.commons.io.input.CountingInputStream: int read(byte[],int,int)>(r5, 6, 5);
+
+        i18 = i17 + $i8;
+
+        $l9 = (long) i18;
+
+        $i10 = virtualinvoke $r10.<org.apache.commons.io.input.CountingInputStream: int getCount()>();
+
+        $l11 = (long) $i10;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>($l9, $l11);
+
+        $i12 = virtualinvoke $r10.<org.apache.commons.io.input.CountingInputStream: int read(byte[],int,int)>(r5, 11, 10);
+
+        i19 = i18 + $i12;
+
+        $l13 = (long) i19;
+
+        $i14 = virtualinvoke $r10.<org.apache.commons.io.input.CountingInputStream: int getCount()>();
+
+        $l15 = (long) $i14;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>($l13, $l15);
+
+        $r11 = new java.lang.String;
+
+        specialinvoke $r11.<java.lang.String: void <init>(byte[])>(r5);
+
+        r7 = virtualinvoke $r11.<java.lang.String: java.lang.String trim()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>(r7, "A piece of text");
+
+        virtualinvoke $r10.<org.apache.commons.io.input.CountingInputStream: void close()>();
+
+        return;
+    }
+
+    public void testLargeFiles_IO84() throws java.lang.Exception
+    {
+        org.apache.commons.io.input.CountingInputStreamTest r0;
+        org.apache.commons.io.input.NullInputStream $r4;
+        org.apache.commons.io.input.CountingInputStream $r5;
+        org.apache.commons.io.output.NullOutputStream $r6;
+        long $l5, $l6;
+        java.lang.ArithmeticException $r7, $r8;
+
+        r0 := @this: org.apache.commons.io.input.CountingInputStreamTest;
+
+        $r4 = new org.apache.commons.io.input.NullInputStream;
+
+        specialinvoke $r4.<org.apache.commons.io.input.NullInputStream: void <init>(long)>(2147483648L);
+
+        $r5 = new org.apache.commons.io.input.CountingInputStream;
+
+        specialinvoke $r5.<org.apache.commons.io.input.CountingInputStream: void <init>(java.io.InputStream)>($r4);
+
+        $r6 = new org.apache.commons.io.output.NullOutputStream;
+
+        specialinvoke $r6.<org.apache.commons.io.output.NullOutputStream: void <init>()>();
+
+        staticinvoke <org.apache.commons.io.IOUtils: long copyLarge(java.io.InputStream,java.io.OutputStream)>($r5, $r6);
+
+     label1:
+        virtualinvoke $r5.<org.apache.commons.io.input.CountingInputStream: int getCount()>();
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("Expected getCount() to throw an ArithmeticException");
+
+     label2:
+        goto label4;
+
+     label3:
+        $r8 := @caughtexception;
+
+     label4:
+        virtualinvoke $r5.<org.apache.commons.io.input.CountingInputStream: int resetCount()>();
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("Expected resetCount() to throw an ArithmeticException");
+
+     label5:
+        goto label7;
+
+     label6:
+        $r7 := @caughtexception;
+
+     label7:
+        virtualinvoke $r4.<org.apache.commons.io.input.NullInputStream: void close()>();
+
+        staticinvoke <org.apache.commons.io.IOUtils: long copyLarge(java.io.InputStream,java.io.OutputStream)>($r5, $r6);
+
+        $l5 = virtualinvoke $r5.<org.apache.commons.io.input.CountingInputStream: long getByteCount()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("getByteCount()", 2147483648L, $l5);
+
+        $l6 = virtualinvoke $r5.<org.apache.commons.io.input.CountingInputStream: long resetByteCount()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("resetByteCount()", 2147483648L, $l6);
+
+        return;
+
+        catch java.lang.ArithmeticException from label1 to label2 with label3;
+        catch java.lang.ArithmeticException from label4 to label5 with label6;
+    }
+
+    public void testResetting() throws java.lang.Exception
+    {
+        org.apache.commons.io.input.CountingInputStreamTest r0;
+        byte[] r2, r5;
+        int i0, $i1, $i3, i7, i8;
+        java.lang.String $r6;
+        java.io.ByteArrayInputStream $r7;
+        org.apache.commons.io.input.CountingInputStream $r8;
+        long $l2, $l4, $l5, $l6;
+
+        r0 := @this: org.apache.commons.io.input.CountingInputStreamTest;
+
+        $r6 = "A piece of text";
+
+        r2 = virtualinvoke $r6.<java.lang.String: byte[] getBytes()>();
+
+        $r7 = new java.io.ByteArrayInputStream;
+
+        specialinvoke $r7.<java.io.ByteArrayInputStream: void <init>(byte[])>(r2);
+
+        $r8 = new org.apache.commons.io.input.CountingInputStream;
+
+        specialinvoke $r8.<org.apache.commons.io.input.CountingInputStream: void <init>(java.io.InputStream)>($r7);
+
+        $i1 = lengthof r2;
+
+        r5 = newarray (byte)[$i1];
+
+        i7 = virtualinvoke $r8.<org.apache.commons.io.input.CountingInputStream: int read(byte[],int,int)>(r5, 0, 5);
+
+        $l2 = (long) i7;
+
+        $i3 = virtualinvoke $r8.<org.apache.commons.io.input.CountingInputStream: int getCount()>();
+
+        $l4 = (long) $i3;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>($l2, $l4);
+
+        i0 = virtualinvoke $r8.<org.apache.commons.io.input.CountingInputStream: int resetCount()>();
+
+        i8 = virtualinvoke $r8.<org.apache.commons.io.input.CountingInputStream: int read(byte[],int,int)>(r5, 6, 5);
+
+        $l6 = (long) i8;
+
+        $l5 = (long) i0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>($l6, $l5);
+
+        virtualinvoke $r8.<org.apache.commons.io.input.CountingInputStream: void close()>();
+
+        return;
+    }
+
+    public void testZeroLength1() throws java.lang.Exception
+    {
+        org.apache.commons.io.input.CountingInputStreamTest r0;
+        int i0, $i2;
+        java.io.ByteArrayInputStream $r3;
+        byte[] $r4;
+        org.apache.commons.io.input.CountingInputStream $r5;
+        long $l1, $l3;
+
+        r0 := @this: org.apache.commons.io.input.CountingInputStreamTest;
+
+        $r3 = new java.io.ByteArrayInputStream;
+
+        $r4 = newarray (byte)[0];
+
+        specialinvoke $r3.<java.io.ByteArrayInputStream: void <init>(byte[])>($r4);
+
+        $r5 = new org.apache.commons.io.input.CountingInputStream;
+
+        specialinvoke $r5.<org.apache.commons.io.input.CountingInputStream: void <init>(java.io.InputStream)>($r3);
+
+        i0 = virtualinvoke $r5.<org.apache.commons.io.input.CountingInputStream: int read()>();
+
+        $l1 = (long) i0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(-1L, $l1);
+
+        $i2 = virtualinvoke $r5.<org.apache.commons.io.input.CountingInputStream: int getCount()>();
+
+        $l3 = (long) $i2;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(0L, $l3);
+
+        virtualinvoke $r5.<org.apache.commons.io.input.CountingInputStream: void close()>();
+
+        return;
+    }
+
+    public void testZeroLength2() throws java.lang.Exception
+    {
+        org.apache.commons.io.input.CountingInputStreamTest r0;
+        byte[] r3, $r5;
+        int i0, $i2;
+        java.io.ByteArrayInputStream $r4;
+        org.apache.commons.io.input.CountingInputStream $r6;
+        long $l1, $l3;
+
+        r0 := @this: org.apache.commons.io.input.CountingInputStreamTest;
+
+        $r4 = new java.io.ByteArrayInputStream;
+
+        $r5 = newarray (byte)[0];
+
+        specialinvoke $r4.<java.io.ByteArrayInputStream: void <init>(byte[])>($r5);
+
+        $r6 = new org.apache.commons.io.input.CountingInputStream;
+
+        specialinvoke $r6.<org.apache.commons.io.input.CountingInputStream: void <init>(java.io.InputStream)>($r4);
+
+        r3 = newarray (byte)[10];
+
+        i0 = virtualinvoke $r6.<org.apache.commons.io.input.CountingInputStream: int read(byte[])>(r3);
+
+        $l1 = (long) i0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(-1L, $l1);
+
+        $i2 = virtualinvoke $r6.<org.apache.commons.io.input.CountingInputStream: int getCount()>();
+
+        $l3 = (long) $i2;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(0L, $l3);
+
+        virtualinvoke $r6.<org.apache.commons.io.input.CountingInputStream: void close()>();
+
+        return;
+    }
+
+    public void testZeroLength3() throws java.lang.Exception
+    {
+        org.apache.commons.io.input.CountingInputStreamTest r0;
+        byte[] r3, $r5;
+        int i0, $i2;
+        java.io.ByteArrayInputStream $r4;
+        org.apache.commons.io.input.CountingInputStream $r6;
+        long $l1, $l3;
+
+        r0 := @this: org.apache.commons.io.input.CountingInputStreamTest;
+
+        $r4 = new java.io.ByteArrayInputStream;
+
+        $r5 = newarray (byte)[0];
+
+        specialinvoke $r4.<java.io.ByteArrayInputStream: void <init>(byte[])>($r5);
+
+        $r6 = new org.apache.commons.io.input.CountingInputStream;
+
+        specialinvoke $r6.<org.apache.commons.io.input.CountingInputStream: void <init>(java.io.InputStream)>($r4);
+
+        r3 = newarray (byte)[10];
+
+        i0 = virtualinvoke $r6.<org.apache.commons.io.input.CountingInputStream: int read(byte[],int,int)>(r3, 0, 5);
+
+        $l1 = (long) i0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(-1L, $l1);
+
+        $i2 = virtualinvoke $r6.<org.apache.commons.io.input.CountingInputStream: int getCount()>();
+
+        $l3 = (long) $i2;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(0L, $l3);
+
+        virtualinvoke $r6.<org.apache.commons.io.input.CountingInputStream: void close()>();
+
+        return;
+    }
+
+    public void testEOF1() throws java.lang.Exception
+    {
+        org.apache.commons.io.input.CountingInputStreamTest r0;
+        java.io.ByteArrayInputStream $r3;
+        byte[] $r4;
+        org.apache.commons.io.input.CountingInputStream $r5;
+        long $l0, $l2, $l3, $l5, $l6, $l8;
+        int $i1, $i4, $i7, i9, i10, i11;
+
+        r0 := @this: org.apache.commons.io.input.CountingInputStreamTest;
+
+        $r3 = new java.io.ByteArrayInputStream;
+
+        $r4 = newarray (byte)[2];
+
+        specialinvoke $r3.<java.io.ByteArrayInputStream: void <init>(byte[])>($r4);
+
+        $r5 = new org.apache.commons.io.input.CountingInputStream;
+
+        specialinvoke $r5.<org.apache.commons.io.input.CountingInputStream: void <init>(java.io.InputStream)>($r3);
+
+        i9 = virtualinvoke $r5.<org.apache.commons.io.input.CountingInputStream: int read()>();
+
+        $l0 = (long) i9;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(0L, $l0);
+
+        $i1 = virtualinvoke $r5.<org.apache.commons.io.input.CountingInputStream: int getCount()>();
+
+        $l2 = (long) $i1;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(1L, $l2);
+
+        i10 = virtualinvoke $r5.<org.apache.commons.io.input.CountingInputStream: int read()>();
+
+        $l3 = (long) i10;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(0L, $l3);
+
+        $i4 = virtualinvoke $r5.<org.apache.commons.io.input.CountingInputStream: int getCount()>();
+
+        $l5 = (long) $i4;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(2L, $l5);
+
+        i11 = virtualinvoke $r5.<org.apache.commons.io.input.CountingInputStream: int read()>();
+
+        $l6 = (long) i11;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(-1L, $l6);
+
+        $i7 = virtualinvoke $r5.<org.apache.commons.io.input.CountingInputStream: int getCount()>();
+
+        $l8 = (long) $i7;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(2L, $l8);
+
+        virtualinvoke $r5.<org.apache.commons.io.input.CountingInputStream: void close()>();
+
+        return;
+    }
+
+    public void testEOF2() throws java.lang.Exception
+    {
+        org.apache.commons.io.input.CountingInputStreamTest r0;
+        byte[] r3, $r5;
+        int i0, $i2;
+        java.io.ByteArrayInputStream $r4;
+        org.apache.commons.io.input.CountingInputStream $r6;
+        long $l1, $l3;
+
+        r0 := @this: org.apache.commons.io.input.CountingInputStreamTest;
+
+        $r4 = new java.io.ByteArrayInputStream;
+
+        $r5 = newarray (byte)[2];
+
+        specialinvoke $r4.<java.io.ByteArrayInputStream: void <init>(byte[])>($r5);
+
+        $r6 = new org.apache.commons.io.input.CountingInputStream;
+
+        specialinvoke $r6.<org.apache.commons.io.input.CountingInputStream: void <init>(java.io.InputStream)>($r4);
+
+        r3 = newarray (byte)[10];
+
+        i0 = virtualinvoke $r6.<org.apache.commons.io.input.CountingInputStream: int read(byte[])>(r3);
+
+        $l1 = (long) i0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(2L, $l1);
+
+        $i2 = virtualinvoke $r6.<org.apache.commons.io.input.CountingInputStream: int getCount()>();
+
+        $l3 = (long) $i2;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(2L, $l3);
+
+        virtualinvoke $r6.<org.apache.commons.io.input.CountingInputStream: void close()>();
+
+        return;
+    }
+
+    public void testEOF3() throws java.lang.Exception
+    {
+        org.apache.commons.io.input.CountingInputStreamTest r0;
+        byte[] r3, $r5;
+        int i0, $i2;
+        java.io.ByteArrayInputStream $r4;
+        org.apache.commons.io.input.CountingInputStream $r6;
+        long $l1, $l3;
+
+        r0 := @this: org.apache.commons.io.input.CountingInputStreamTest;
+
+        $r4 = new java.io.ByteArrayInputStream;
+
+        $r5 = newarray (byte)[2];
+
+        specialinvoke $r4.<java.io.ByteArrayInputStream: void <init>(byte[])>($r5);
+
+        $r6 = new org.apache.commons.io.input.CountingInputStream;
+
+        specialinvoke $r6.<org.apache.commons.io.input.CountingInputStream: void <init>(java.io.InputStream)>($r4);
+
+        r3 = newarray (byte)[10];
+
+        i0 = virtualinvoke $r6.<org.apache.commons.io.input.CountingInputStream: int read(byte[],int,int)>(r3, 0, 5);
+
+        $l1 = (long) i0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(2L, $l1);
+
+        $i2 = virtualinvoke $r6.<org.apache.commons.io.input.CountingInputStream: int getCount()>();
+
+        $l3 = (long) $i2;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(2L, $l3);
+
+        virtualinvoke $r6.<org.apache.commons.io.input.CountingInputStream: void close()>();
+
+        return;
+    }
+
+    public void testSkipping() throws java.io.IOException
+    {
+        org.apache.commons.io.input.CountingInputStreamTest r0;
+        byte[] r2, r5;
+        java.lang.String $r6, $r9;
+        java.io.ByteArrayInputStream $r7;
+        org.apache.commons.io.input.CountingInputStream $r8;
+        long $l0, $l2, $l5;
+        int $i1, $i4;
+
+        r0 := @this: org.apache.commons.io.input.CountingInputStreamTest;
+
+        $r6 = "Hello World!";
+
+        r2 = virtualinvoke $r6.<java.lang.String: byte[] getBytes()>();
+
+        $r7 = new java.io.ByteArrayInputStream;
+
+        specialinvoke $r7.<java.io.ByteArrayInputStream: void <init>(byte[])>(r2);
+
+        $r8 = new org.apache.commons.io.input.CountingInputStream;
+
+        specialinvoke $r8.<org.apache.commons.io.input.CountingInputStream: void <init>(java.io.InputStream)>($r7);
+
+        $l0 = virtualinvoke $r8.<org.apache.commons.io.input.CountingInputStream: long skip(long)>(6L);
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(6L, $l0);
+
+        $i1 = virtualinvoke $r8.<org.apache.commons.io.input.CountingInputStream: int getCount()>();
+
+        $l2 = (long) $i1;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(6L, $l2);
+
+        r5 = newarray (byte)[6];
+
+        virtualinvoke $r8.<org.apache.commons.io.input.CountingInputStream: int read(byte[])>(r5);
+
+        $r9 = new java.lang.String;
+
+        specialinvoke $r9.<java.lang.String: void <init>(byte[])>(r5);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("World!", $r9);
+
+        $i4 = virtualinvoke $r8.<org.apache.commons.io.input.CountingInputStream: int getCount()>();
+
+        $l5 = (long) $i4;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(12L, $l5);
+
+        virtualinvoke $r8.<org.apache.commons.io.input.CountingInputStream: void close()>();
+
+        return;
+    }
+}

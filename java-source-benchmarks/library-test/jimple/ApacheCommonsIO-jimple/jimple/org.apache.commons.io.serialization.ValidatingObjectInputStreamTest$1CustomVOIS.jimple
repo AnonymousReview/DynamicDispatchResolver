@@ -1,0 +1,40 @@
+class org.apache.commons.io.serialization.ValidatingObjectInputStreamTest$1CustomVOIS extends org.apache.commons.io.serialization.ValidatingObjectInputStream
+{
+    final org.apache.commons.io.serialization.ValidatingObjectInputStreamTest this$0;
+
+    void <init>(org.apache.commons.io.serialization.ValidatingObjectInputStreamTest, java.io.InputStream) throws java.io.IOException
+    {
+        org.apache.commons.io.serialization.ValidatingObjectInputStreamTest$1CustomVOIS r0;
+        org.apache.commons.io.serialization.ValidatingObjectInputStreamTest r1;
+        java.io.InputStream r2;
+
+        r0 := @this: org.apache.commons.io.serialization.ValidatingObjectInputStreamTest$1CustomVOIS;
+
+        r1 := @parameter0: org.apache.commons.io.serialization.ValidatingObjectInputStreamTest;
+
+        r2 := @parameter1: java.io.InputStream;
+
+        r0.<org.apache.commons.io.serialization.ValidatingObjectInputStreamTest$1CustomVOIS: org.apache.commons.io.serialization.ValidatingObjectInputStreamTest this$0> = r1;
+
+        specialinvoke r0.<org.apache.commons.io.serialization.ValidatingObjectInputStream: void <init>(java.io.InputStream)>(r2);
+
+        return;
+    }
+
+    protected void invalidClassNameFound(java.lang.String) throws java.io.InvalidClassException
+    {
+        org.apache.commons.io.serialization.ValidatingObjectInputStreamTest$1CustomVOIS r0;
+        java.lang.String r1;
+        java.lang.RuntimeException $r2;
+
+        r0 := @this: org.apache.commons.io.serialization.ValidatingObjectInputStreamTest$1CustomVOIS;
+
+        r1 := @parameter0: java.lang.String;
+
+        $r2 = new java.lang.RuntimeException;
+
+        specialinvoke $r2.<java.lang.RuntimeException: void <init>(java.lang.String)>("Custom exception");
+
+        throw $r2;
+    }
+}

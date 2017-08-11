@@ -1,0 +1,82 @@
+public class org.apache.commons.io.comparator.DirectoryFileComparatorTest extends org.apache.commons.io.comparator.ComparatorAbstractTestCase
+{
+
+    public void <init>()
+    {
+        org.apache.commons.io.comparator.DirectoryFileComparatorTest r0;
+
+        r0 := @this: org.apache.commons.io.comparator.DirectoryFileComparatorTest;
+
+        specialinvoke r0.<org.apache.commons.io.comparator.ComparatorAbstractTestCase: void <init>()>();
+
+        return;
+    }
+
+    public void setUp() throws java.lang.Exception
+    {
+        org.apache.commons.io.comparator.DirectoryFileComparatorTest r0;
+        java.util.Comparator $r2, $r4;
+        org.apache.commons.io.comparator.AbstractFileComparator $r3;
+        java.io.File $r5, $r6, $r7, $r8, $r9;
+
+        r0 := @this: org.apache.commons.io.comparator.DirectoryFileComparatorTest;
+
+        $r2 = <org.apache.commons.io.comparator.DirectoryFileComparator: java.util.Comparator DIRECTORY_COMPARATOR>;
+
+        $r3 = (org.apache.commons.io.comparator.AbstractFileComparator) $r2;
+
+        r0.<org.apache.commons.io.comparator.DirectoryFileComparatorTest: org.apache.commons.io.comparator.AbstractFileComparator comparator> = $r3;
+
+        $r4 = <org.apache.commons.io.comparator.DirectoryFileComparator: java.util.Comparator DIRECTORY_REVERSE>;
+
+        r0.<org.apache.commons.io.comparator.DirectoryFileComparatorTest: java.util.Comparator reverse> = $r4;
+
+        $r5 = new java.io.File;
+
+        specialinvoke $r5.<java.io.File: void <init>(java.lang.String)>(".");
+
+        $r6 = new java.io.File;
+
+        specialinvoke $r6.<java.io.File: void <init>(java.io.File,java.lang.String)>($r5, "src");
+
+        r0.<org.apache.commons.io.comparator.DirectoryFileComparatorTest: java.io.File equalFile1> = $r6;
+
+        $r7 = new java.io.File;
+
+        specialinvoke $r7.<java.io.File: void <init>(java.io.File,java.lang.String)>($r5, "src/site/xdoc");
+
+        r0.<org.apache.commons.io.comparator.DirectoryFileComparatorTest: java.io.File equalFile2> = $r7;
+
+        $r8 = new java.io.File;
+
+        specialinvoke $r8.<java.io.File: void <init>(java.io.File,java.lang.String)>($r5, "src");
+
+        r0.<org.apache.commons.io.comparator.DirectoryFileComparatorTest: java.io.File lessFile> = $r8;
+
+        $r9 = new java.io.File;
+
+        specialinvoke $r9.<java.io.File: void <init>(java.io.File,java.lang.String)>($r5, "pom.xml");
+
+        r0.<org.apache.commons.io.comparator.DirectoryFileComparatorTest: java.io.File moreFile> = $r9;
+
+        return;
+    }
+
+    public void testSortArray()
+    {
+        org.apache.commons.io.comparator.DirectoryFileComparatorTest r0;
+
+        r0 := @this: org.apache.commons.io.comparator.DirectoryFileComparatorTest;
+
+        return;
+    }
+
+    public void testSortList()
+    {
+        org.apache.commons.io.comparator.DirectoryFileComparatorTest r0;
+
+        r0 := @this: org.apache.commons.io.comparator.DirectoryFileComparatorTest;
+
+        return;
+    }
+}

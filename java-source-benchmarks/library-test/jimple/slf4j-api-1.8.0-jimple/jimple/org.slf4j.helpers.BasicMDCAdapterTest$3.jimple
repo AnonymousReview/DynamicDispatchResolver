@@ -1,0 +1,54 @@
+class org.slf4j.helpers.BasicMDCAdapterTest$3 extends java.lang.Object implements java.lang.Runnable
+{
+    final org.slf4j.helpers.BasicMDCAdapterTest this$0;
+
+    void <init>(org.slf4j.helpers.BasicMDCAdapterTest)
+    {
+        org.slf4j.helpers.BasicMDCAdapterTest$3 r0;
+        org.slf4j.helpers.BasicMDCAdapterTest r1;
+
+        r0 := @this: org.slf4j.helpers.BasicMDCAdapterTest$3;
+
+        r1 := @parameter0: org.slf4j.helpers.BasicMDCAdapterTest;
+
+        r0.<org.slf4j.helpers.BasicMDCAdapterTest$3: org.slf4j.helpers.BasicMDCAdapterTest this$0> = r1;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void run()
+    {
+        org.slf4j.helpers.BasicMDCAdapterTest$3 r0;
+        org.slf4j.helpers.BasicMDCAdapterTest $r1, $r4, $r6;
+        org.slf4j.spi.MDCAdapter $r2, $r5, $r7;
+        java.lang.String $r3, $r8;
+
+        r0 := @this: org.slf4j.helpers.BasicMDCAdapterTest$3;
+
+        $r1 = r0.<org.slf4j.helpers.BasicMDCAdapterTest$3: org.slf4j.helpers.BasicMDCAdapterTest this$0>;
+
+        $r2 = $r1.<org.slf4j.helpers.BasicMDCAdapterTest: org.slf4j.spi.MDCAdapter mdc>;
+
+        $r3 = interfaceinvoke $r2.<org.slf4j.spi.MDCAdapter: java.lang.String get(java.lang.String)>("sharedKey");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("parentValue", $r3);
+
+        $r4 = r0.<org.slf4j.helpers.BasicMDCAdapterTest$3: org.slf4j.helpers.BasicMDCAdapterTest this$0>;
+
+        $r5 = $r4.<org.slf4j.helpers.BasicMDCAdapterTest: org.slf4j.spi.MDCAdapter mdc>;
+
+        interfaceinvoke $r5.<org.slf4j.spi.MDCAdapter: void put(java.lang.String,java.lang.String)>("sharedKey", "childValue");
+
+        $r6 = r0.<org.slf4j.helpers.BasicMDCAdapterTest$3: org.slf4j.helpers.BasicMDCAdapterTest this$0>;
+
+        $r7 = $r6.<org.slf4j.helpers.BasicMDCAdapterTest: org.slf4j.spi.MDCAdapter mdc>;
+
+        $r8 = interfaceinvoke $r7.<org.slf4j.spi.MDCAdapter: java.lang.String get(java.lang.String)>("sharedKey");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("childValue", $r8);
+
+        return;
+    }
+}

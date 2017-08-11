@@ -1,0 +1,74 @@
+public class org.apache.log4j.util.EnhancedLineNumberFilter extends java.lang.Object implements org.apache.log4j.util.Filter
+{
+    private java.util.regex.Pattern linePattern;
+    private java.util.regex.Pattern nativePattern;
+
+    public void <init>()
+    {
+        org.apache.log4j.util.EnhancedLineNumberFilter r0;
+        java.util.regex.Pattern $r1, $r2;
+
+        r0 := @this: org.apache.log4j.util.EnhancedLineNumberFilter;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r1 = staticinvoke <java.util.regex.Pattern: java.util.regex.Pattern compile(java.lang.String)>("\\(.*:\\d{1,4}\\)");
+
+        r0.<org.apache.log4j.util.EnhancedLineNumberFilter: java.util.regex.Pattern linePattern> = $r1;
+
+        $r2 = staticinvoke <java.util.regex.Pattern: java.util.regex.Pattern compile(java.lang.String)>("\\(Native Method\\)");
+
+        r0.<org.apache.log4j.util.EnhancedLineNumberFilter: java.util.regex.Pattern nativePattern> = $r2;
+
+        return;
+    }
+
+    public java.lang.String filter(java.lang.String)
+    {
+        org.apache.log4j.util.EnhancedLineNumberFilter r0;
+        java.lang.String r1, $r8, $r11;
+        java.util.regex.Pattern $r2, $r4, $r6, $r9;
+        java.util.regex.Matcher $r3, $r5, $r7, $r10;
+        boolean $z0, $z1;
+
+        r0 := @this: org.apache.log4j.util.EnhancedLineNumberFilter;
+
+        r1 := @parameter0: java.lang.String;
+
+        $r2 = r0.<org.apache.log4j.util.EnhancedLineNumberFilter: java.util.regex.Pattern linePattern>;
+
+        $r3 = virtualinvoke $r2.<java.util.regex.Pattern: java.util.regex.Matcher matcher(java.lang.CharSequence)>(r1);
+
+        $z0 = virtualinvoke $r3.<java.util.regex.Matcher: boolean find()>();
+
+        if $z0 == 0 goto label1;
+
+        $r9 = r0.<org.apache.log4j.util.EnhancedLineNumberFilter: java.util.regex.Pattern linePattern>;
+
+        $r10 = virtualinvoke $r9.<java.util.regex.Pattern: java.util.regex.Matcher matcher(java.lang.CharSequence)>(r1);
+
+        $r11 = virtualinvoke $r10.<java.util.regex.Matcher: java.lang.String replaceAll(java.lang.String)>("(X)");
+
+        return $r11;
+
+     label1:
+        $r4 = r0.<org.apache.log4j.util.EnhancedLineNumberFilter: java.util.regex.Pattern nativePattern>;
+
+        $r5 = virtualinvoke $r4.<java.util.regex.Pattern: java.util.regex.Matcher matcher(java.lang.CharSequence)>(r1);
+
+        $z1 = virtualinvoke $r5.<java.util.regex.Matcher: boolean find()>();
+
+        if $z1 == 0 goto label2;
+
+        $r6 = r0.<org.apache.log4j.util.EnhancedLineNumberFilter: java.util.regex.Pattern nativePattern>;
+
+        $r7 = virtualinvoke $r6.<java.util.regex.Pattern: java.util.regex.Matcher matcher(java.lang.CharSequence)>(r1);
+
+        $r8 = virtualinvoke $r7.<java.util.regex.Matcher: java.lang.String replaceAll(java.lang.String)>("(X)");
+
+        return $r8;
+
+     label2:
+        return r1;
+    }
+}

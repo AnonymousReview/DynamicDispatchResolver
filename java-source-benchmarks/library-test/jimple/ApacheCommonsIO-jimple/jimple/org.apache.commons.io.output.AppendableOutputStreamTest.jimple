@@ -1,0 +1,95 @@
+public class org.apache.commons.io.output.AppendableOutputStreamTest extends java.lang.Object
+{
+    private org.apache.commons.io.output.AppendableOutputStream out;
+
+    public void <init>()
+    {
+        org.apache.commons.io.output.AppendableOutputStreamTest r0;
+
+        r0 := @this: org.apache.commons.io.output.AppendableOutputStreamTest;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void setUp() throws java.lang.Exception
+    {
+        org.apache.commons.io.output.AppendableOutputStreamTest r0;
+        org.apache.commons.io.output.AppendableOutputStream $r1;
+        java.lang.StringBuilder $r2;
+
+        r0 := @this: org.apache.commons.io.output.AppendableOutputStreamTest;
+
+        $r1 = new org.apache.commons.io.output.AppendableOutputStream;
+
+        $r2 = new java.lang.StringBuilder;
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>()>();
+
+        specialinvoke $r1.<org.apache.commons.io.output.AppendableOutputStream: void <init>(java.lang.Appendable)>($r2);
+
+        r0.<org.apache.commons.io.output.AppendableOutputStreamTest: org.apache.commons.io.output.AppendableOutputStream out> = $r1;
+
+        return;
+    }
+
+    public void testWriteStringBuilder() throws java.lang.Exception
+    {
+        org.apache.commons.io.output.AppendableOutputStreamTest r0;
+        java.lang.String r1, $r7;
+        org.apache.commons.io.output.AppendableOutputStream $r2, $r4;
+        byte[] $r3;
+        java.lang.Appendable $r5;
+        java.lang.StringBuilder $r6;
+
+        r0 := @this: org.apache.commons.io.output.AppendableOutputStreamTest;
+
+        r1 = "ABCD";
+
+        $r2 = r0.<org.apache.commons.io.output.AppendableOutputStreamTest: org.apache.commons.io.output.AppendableOutputStream out>;
+
+        $r3 = virtualinvoke r1.<java.lang.String: byte[] getBytes()>();
+
+        virtualinvoke $r2.<org.apache.commons.io.output.AppendableOutputStream: void write(byte[])>($r3);
+
+        $r4 = r0.<org.apache.commons.io.output.AppendableOutputStreamTest: org.apache.commons.io.output.AppendableOutputStream out>;
+
+        $r5 = virtualinvoke $r4.<org.apache.commons.io.output.AppendableOutputStream: java.lang.Appendable getAppendable()>();
+
+        $r6 = (java.lang.StringBuilder) $r5;
+
+        $r7 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("ABCD", $r7);
+
+        return;
+    }
+
+    public void testWriteInt() throws java.lang.Exception
+    {
+        org.apache.commons.io.output.AppendableOutputStreamTest r0;
+        org.apache.commons.io.output.AppendableOutputStream $r1, $r2;
+        java.lang.Appendable $r3;
+        java.lang.StringBuilder $r4;
+        java.lang.String $r5;
+
+        r0 := @this: org.apache.commons.io.output.AppendableOutputStreamTest;
+
+        $r1 = r0.<org.apache.commons.io.output.AppendableOutputStreamTest: org.apache.commons.io.output.AppendableOutputStream out>;
+
+        virtualinvoke $r1.<org.apache.commons.io.output.AppendableOutputStream: void write(int)>(70);
+
+        $r2 = r0.<org.apache.commons.io.output.AppendableOutputStreamTest: org.apache.commons.io.output.AppendableOutputStream out>;
+
+        $r3 = virtualinvoke $r2.<org.apache.commons.io.output.AppendableOutputStream: java.lang.Appendable getAppendable()>();
+
+        $r4 = (java.lang.StringBuilder) $r3;
+
+        $r5 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("F", $r5);
+
+        return;
+    }
+}

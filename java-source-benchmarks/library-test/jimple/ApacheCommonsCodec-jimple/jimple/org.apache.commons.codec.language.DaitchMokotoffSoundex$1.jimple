@@ -1,0 +1,57 @@
+class org.apache.commons.codec.language.DaitchMokotoffSoundex$1 extends java.lang.Object implements java.util.Comparator
+{
+
+    void <init>()
+    {
+        org.apache.commons.codec.language.DaitchMokotoffSoundex$1 r0;
+
+        r0 := @this: org.apache.commons.codec.language.DaitchMokotoffSoundex$1;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public int compare(org.apache.commons.codec.language.DaitchMokotoffSoundex$Rule, org.apache.commons.codec.language.DaitchMokotoffSoundex$Rule)
+    {
+        org.apache.commons.codec.language.DaitchMokotoffSoundex$1 r0;
+        org.apache.commons.codec.language.DaitchMokotoffSoundex$Rule r1, r2;
+        int $i0, $i1, $i2;
+
+        r0 := @this: org.apache.commons.codec.language.DaitchMokotoffSoundex$1;
+
+        r1 := @parameter0: org.apache.commons.codec.language.DaitchMokotoffSoundex$Rule;
+
+        r2 := @parameter1: org.apache.commons.codec.language.DaitchMokotoffSoundex$Rule;
+
+        $i0 = virtualinvoke r2.<org.apache.commons.codec.language.DaitchMokotoffSoundex$Rule: int getPatternLength()>();
+
+        $i1 = virtualinvoke r1.<org.apache.commons.codec.language.DaitchMokotoffSoundex$Rule: int getPatternLength()>();
+
+        $i2 = $i0 - $i1;
+
+        return $i2;
+    }
+
+    public volatile int compare(java.lang.Object, java.lang.Object)
+    {
+        org.apache.commons.codec.language.DaitchMokotoffSoundex$1 r0;
+        java.lang.Object r1, r2;
+        org.apache.commons.codec.language.DaitchMokotoffSoundex$Rule $r3, $r4;
+        int $i0;
+
+        r0 := @this: org.apache.commons.codec.language.DaitchMokotoffSoundex$1;
+
+        r1 := @parameter0: java.lang.Object;
+
+        r2 := @parameter1: java.lang.Object;
+
+        $r4 = (org.apache.commons.codec.language.DaitchMokotoffSoundex$Rule) r1;
+
+        $r3 = (org.apache.commons.codec.language.DaitchMokotoffSoundex$Rule) r2;
+
+        $i0 = virtualinvoke r0.<org.apache.commons.codec.language.DaitchMokotoffSoundex$1: int compare(org.apache.commons.codec.language.DaitchMokotoffSoundex$Rule,org.apache.commons.codec.language.DaitchMokotoffSoundex$Rule)>($r4, $r3);
+
+        return $i0;
+    }
+}

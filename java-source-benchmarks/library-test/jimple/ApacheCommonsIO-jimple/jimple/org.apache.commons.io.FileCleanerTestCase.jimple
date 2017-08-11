@@ -1,0 +1,26 @@
+public class org.apache.commons.io.FileCleanerTestCase extends org.apache.commons.io.FileCleaningTrackerTestCase
+{
+
+    public void <init>()
+    {
+        org.apache.commons.io.FileCleanerTestCase r0;
+
+        r0 := @this: org.apache.commons.io.FileCleanerTestCase;
+
+        specialinvoke r0.<org.apache.commons.io.FileCleaningTrackerTestCase: void <init>()>();
+
+        return;
+    }
+
+    protected org.apache.commons.io.FileCleaningTracker newInstance()
+    {
+        org.apache.commons.io.FileCleanerTestCase r0;
+        org.apache.commons.io.FileCleaningTracker $r1;
+
+        r0 := @this: org.apache.commons.io.FileCleanerTestCase;
+
+        $r1 = staticinvoke <org.apache.commons.io.FileCleaner: org.apache.commons.io.FileCleaningTracker getInstance()>();
+
+        return $r1;
+    }
+}

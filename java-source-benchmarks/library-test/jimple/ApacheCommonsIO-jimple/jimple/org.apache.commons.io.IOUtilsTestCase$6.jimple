@@ -1,0 +1,29 @@
+class org.apache.commons.io.IOUtilsTestCase$6 extends java.io.InputStream
+{
+    final org.apache.commons.io.IOUtilsTestCase this$0;
+
+    void <init>(org.apache.commons.io.IOUtilsTestCase)
+    {
+        org.apache.commons.io.IOUtilsTestCase$6 r0;
+        org.apache.commons.io.IOUtilsTestCase r1;
+
+        r0 := @this: org.apache.commons.io.IOUtilsTestCase$6;
+
+        r1 := @parameter0: org.apache.commons.io.IOUtilsTestCase;
+
+        r0.<org.apache.commons.io.IOUtilsTestCase$6: org.apache.commons.io.IOUtilsTestCase this$0> = r1;
+
+        specialinvoke r0.<java.io.InputStream: void <init>()>();
+
+        return;
+    }
+
+    public int read() throws java.io.IOException
+    {
+        org.apache.commons.io.IOUtilsTestCase$6 r0;
+
+        r0 := @this: org.apache.commons.io.IOUtilsTestCase$6;
+
+        return 0;
+    }
+}

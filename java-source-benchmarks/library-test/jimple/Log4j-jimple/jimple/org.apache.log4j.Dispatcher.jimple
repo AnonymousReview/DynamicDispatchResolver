@@ -1,0 +1,228 @@
+class org.apache.log4j.Dispatcher extends java.lang.Thread
+{
+    private org.apache.log4j.helpers.BoundedFIFO bf;
+    private org.apache.log4j.helpers.AppenderAttachableImpl aai;
+    private boolean interrupted;
+    org.apache.log4j.AsyncAppender container;
+
+    void <init>(org.apache.log4j.helpers.BoundedFIFO, org.apache.log4j.AsyncAppender)
+    {
+        org.apache.log4j.Dispatcher r0;
+        org.apache.log4j.helpers.BoundedFIFO r1;
+        org.apache.log4j.AsyncAppender r2;
+        org.apache.log4j.helpers.AppenderAttachableImpl $r3;
+        java.lang.StringBuilder $r4, $r6;
+        java.lang.String $r5, $r7;
+
+        r0 := @this: org.apache.log4j.Dispatcher;
+
+        r1 := @parameter0: org.apache.log4j.helpers.BoundedFIFO;
+
+        r2 := @parameter1: org.apache.log4j.AsyncAppender;
+
+        specialinvoke r0.<java.lang.Thread: void <init>()>();
+
+        r0.<org.apache.log4j.Dispatcher: boolean interrupted> = 0;
+
+        r0.<org.apache.log4j.Dispatcher: org.apache.log4j.helpers.BoundedFIFO bf> = r1;
+
+        r0.<org.apache.log4j.Dispatcher: org.apache.log4j.AsyncAppender container> = r2;
+
+        $r3 = r2.<org.apache.log4j.AsyncAppender: org.apache.log4j.helpers.AppenderAttachableImpl aai>;
+
+        r0.<org.apache.log4j.Dispatcher: org.apache.log4j.helpers.AppenderAttachableImpl aai> = $r3;
+
+        virtualinvoke r0.<org.apache.log4j.Dispatcher: void setDaemon(boolean)>(1);
+
+        virtualinvoke r0.<org.apache.log4j.Dispatcher: void setPriority(int)>(1);
+
+        $r4 = new java.lang.StringBuilder;
+
+        specialinvoke $r4.<java.lang.StringBuilder: void <init>(java.lang.String)>("Dispatcher-");
+
+        $r5 = virtualinvoke r0.<org.apache.log4j.Dispatcher: java.lang.String getName()>();
+
+        $r6 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r5);
+
+        $r7 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke r0.<org.apache.log4j.Dispatcher: void setName(java.lang.String)>($r7);
+
+        return;
+    }
+
+    void close()
+    {
+        org.apache.log4j.Dispatcher r0;
+        org.apache.log4j.helpers.BoundedFIFO $r2, $r3, $r4;
+        int $i0;
+        java.lang.Throwable $r5;
+
+        r0 := @this: org.apache.log4j.Dispatcher;
+
+        $r2 = r0.<org.apache.log4j.Dispatcher: org.apache.log4j.helpers.BoundedFIFO bf>;
+
+        entermonitor $r2;
+
+     label1:
+        r0.<org.apache.log4j.Dispatcher: boolean interrupted> = 1;
+
+        $r3 = r0.<org.apache.log4j.Dispatcher: org.apache.log4j.helpers.BoundedFIFO bf>;
+
+        $i0 = virtualinvoke $r3.<org.apache.log4j.helpers.BoundedFIFO: int length()>();
+
+        if $i0 != 0 goto label2;
+
+        $r4 = r0.<org.apache.log4j.Dispatcher: org.apache.log4j.helpers.BoundedFIFO bf>;
+
+        virtualinvoke $r4.<java.lang.Object: void notify()>();
+
+     label2:
+        exitmonitor $r2;
+
+     label3:
+        goto label6;
+
+     label4:
+        $r5 := @caughtexception;
+
+        exitmonitor $r2;
+
+     label5:
+        throw $r5;
+
+     label6:
+        return;
+
+        catch java.lang.Throwable from label1 to label3 with label4;
+        catch java.lang.Throwable from label4 to label5 with label4;
+    }
+
+    public void run()
+    {
+        org.apache.log4j.Dispatcher r0;
+        org.apache.log4j.spi.LoggingEvent r1;
+        org.apache.log4j.helpers.BoundedFIFO $r3, $r4, $r5, $r6, $r11, $r12;
+        int $i0;
+        boolean $z0, $z1;
+        org.apache.log4j.AsyncAppender $r7;
+        org.apache.log4j.helpers.AppenderAttachableImpl $r8, $r9, $r10, $r13;
+        java.lang.Throwable $r14, $r15;
+        java.lang.InterruptedException $r16;
+
+        r0 := @this: org.apache.log4j.Dispatcher;
+
+     label01:
+        $r3 = r0.<org.apache.log4j.Dispatcher: org.apache.log4j.helpers.BoundedFIFO bf>;
+
+        entermonitor $r3;
+
+     label02:
+        $r4 = r0.<org.apache.log4j.Dispatcher: org.apache.log4j.helpers.BoundedFIFO bf>;
+
+        $i0 = virtualinvoke $r4.<org.apache.log4j.helpers.BoundedFIFO: int length()>();
+
+        if $i0 != 0 goto label08;
+
+        $z1 = r0.<org.apache.log4j.Dispatcher: boolean interrupted>;
+
+        if $z1 == 0 goto label04;
+
+        exitmonitor $r3;
+
+     label03:
+        goto label19;
+
+     label04:
+        $r12 = r0.<org.apache.log4j.Dispatcher: org.apache.log4j.helpers.BoundedFIFO bf>;
+
+        virtualinvoke $r12.<java.lang.Object: void wait()>();
+
+     label05:
+        goto label08;
+
+     label06:
+        $r16 := @caughtexception;
+
+        exitmonitor $r3;
+
+     label07:
+        goto label19;
+
+     label08:
+        $r5 = r0.<org.apache.log4j.Dispatcher: org.apache.log4j.helpers.BoundedFIFO bf>;
+
+        r1 = virtualinvoke $r5.<org.apache.log4j.helpers.BoundedFIFO: org.apache.log4j.spi.LoggingEvent get()>();
+
+        $r6 = r0.<org.apache.log4j.Dispatcher: org.apache.log4j.helpers.BoundedFIFO bf>;
+
+        $z0 = virtualinvoke $r6.<org.apache.log4j.helpers.BoundedFIFO: boolean wasFull()>();
+
+        if $z0 == 0 goto label09;
+
+        $r11 = r0.<org.apache.log4j.Dispatcher: org.apache.log4j.helpers.BoundedFIFO bf>;
+
+        virtualinvoke $r11.<java.lang.Object: void notify()>();
+
+     label09:
+        exitmonitor $r3;
+
+     label10:
+        goto label13;
+
+     label11:
+        $r15 := @caughtexception;
+
+        exitmonitor $r3;
+
+     label12:
+        throw $r15;
+
+     label13:
+        $r7 = r0.<org.apache.log4j.Dispatcher: org.apache.log4j.AsyncAppender container>;
+
+        $r8 = $r7.<org.apache.log4j.AsyncAppender: org.apache.log4j.helpers.AppenderAttachableImpl aai>;
+
+        entermonitor $r8;
+
+     label14:
+        $r9 = r0.<org.apache.log4j.Dispatcher: org.apache.log4j.helpers.AppenderAttachableImpl aai>;
+
+        if $r9 == null goto label15;
+
+        if r1 == null goto label15;
+
+        $r10 = r0.<org.apache.log4j.Dispatcher: org.apache.log4j.helpers.AppenderAttachableImpl aai>;
+
+        virtualinvoke $r10.<org.apache.log4j.helpers.AppenderAttachableImpl: int appendLoopOnAppenders(org.apache.log4j.spi.LoggingEvent)>(r1);
+
+     label15:
+        exitmonitor $r8;
+
+     label16:
+        goto label01;
+
+     label17:
+        $r14 := @caughtexception;
+
+        exitmonitor $r8;
+
+     label18:
+        throw $r14;
+
+     label19:
+        $r13 = r0.<org.apache.log4j.Dispatcher: org.apache.log4j.helpers.AppenderAttachableImpl aai>;
+
+        virtualinvoke $r13.<org.apache.log4j.helpers.AppenderAttachableImpl: void removeAllAppenders()>();
+
+        return;
+
+        catch java.lang.InterruptedException from label04 to label05 with label06;
+        catch java.lang.Throwable from label02 to label03 with label11;
+        catch java.lang.Throwable from label04 to label07 with label11;
+        catch java.lang.Throwable from label08 to label10 with label11;
+        catch java.lang.Throwable from label11 to label12 with label11;
+        catch java.lang.Throwable from label14 to label16 with label17;
+        catch java.lang.Throwable from label17 to label18 with label17;
+    }
+}

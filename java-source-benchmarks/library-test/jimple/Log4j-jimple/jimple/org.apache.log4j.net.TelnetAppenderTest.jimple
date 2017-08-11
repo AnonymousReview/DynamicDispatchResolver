@@ -1,0 +1,105 @@
+public class org.apache.log4j.net.TelnetAppenderTest extends junit.framework.TestCase
+{
+    int port;
+    java.io.ByteArrayOutputStream bo;
+
+    public void <init>()
+    {
+        org.apache.log4j.net.TelnetAppenderTest r0;
+        java.io.ByteArrayOutputStream $r1;
+
+        r0 := @this: org.apache.log4j.net.TelnetAppenderTest;
+
+        specialinvoke r0.<junit.framework.TestCase: void <init>()>();
+
+        r0.<org.apache.log4j.net.TelnetAppenderTest: int port> = 54353;
+
+        $r1 = new java.io.ByteArrayOutputStream;
+
+        specialinvoke $r1.<java.io.ByteArrayOutputStream: void <init>()>();
+
+        r0.<org.apache.log4j.net.TelnetAppenderTest: java.io.ByteArrayOutputStream bo> = $r1;
+
+        return;
+    }
+
+    public void testIt() throws java.lang.Exception
+    {
+        org.apache.log4j.net.TelnetAppenderTest r0;
+        int i0, $i1, $i2, $i3;
+        org.apache.log4j.Logger r2;
+        java.lang.String r4, $r9;
+        org.apache.log4j.net.TelnetAppender $r5;
+        org.apache.log4j.PatternLayout $r6;
+        org.apache.log4j.net.TelnetAppenderTest$ReadThread $r7;
+        java.io.ByteArrayOutputStream $r8;
+        boolean $z0;
+
+        r0 := @this: org.apache.log4j.net.TelnetAppenderTest;
+
+        i0 = staticinvoke <java.lang.Thread: int activeCount()>();
+
+        $r5 = new org.apache.log4j.net.TelnetAppender;
+
+        specialinvoke $r5.<org.apache.log4j.net.TelnetAppender: void <init>()>();
+
+        virtualinvoke $r5.<org.apache.log4j.net.TelnetAppender: void setName(java.lang.String)>("ta");
+
+        $i1 = r0.<org.apache.log4j.net.TelnetAppenderTest: int port>;
+
+        virtualinvoke $r5.<org.apache.log4j.net.TelnetAppender: void setPort(int)>($i1);
+
+        $r6 = new org.apache.log4j.PatternLayout;
+
+        specialinvoke $r6.<org.apache.log4j.PatternLayout: void <init>(java.lang.String)>("%p - %m");
+
+        virtualinvoke $r5.<org.apache.log4j.net.TelnetAppender: void setLayout(org.apache.log4j.Layout)>($r6);
+
+        virtualinvoke $r5.<org.apache.log4j.net.TelnetAppender: void activateOptions()>();
+
+        r2 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getLogger(java.lang.String)>("x");
+
+        virtualinvoke r2.<org.apache.log4j.Logger: void addAppender(org.apache.log4j.Appender)>($r5);
+
+        $r7 = new org.apache.log4j.net.TelnetAppenderTest$ReadThread;
+
+        specialinvoke $r7.<org.apache.log4j.net.TelnetAppenderTest$ReadThread: void <init>(org.apache.log4j.net.TelnetAppenderTest)>(r0);
+
+        virtualinvoke $r7.<java.lang.Thread: void start()>();
+
+        staticinvoke <java.lang.Thread: void sleep(long)>(200L);
+
+        virtualinvoke r2.<org.apache.log4j.Logger: void info(java.lang.Object)>("hi");
+
+        staticinvoke <java.lang.Thread: void sleep(long)>(1000L);
+
+        virtualinvoke $r5.<org.apache.log4j.net.TelnetAppender: void close()>();
+
+        staticinvoke <java.lang.Thread: void sleep(long)>(200L);
+
+        virtualinvoke $r7.<java.lang.Thread: void interrupt()>();
+
+        virtualinvoke $r7.<java.lang.Thread: void join()>();
+
+        $r8 = r0.<org.apache.log4j.net.TelnetAppenderTest: java.io.ByteArrayOutputStream bo>;
+
+        r4 = virtualinvoke $r8.<java.io.ByteArrayOutputStream: java.lang.String toString()>();
+
+        $z0 = virtualinvoke r4.<java.lang.String: boolean endsWith(java.lang.String)>("INFO - hi");
+
+        staticinvoke <org.apache.log4j.net.TelnetAppenderTest: void assertTrue(boolean)>($z0);
+
+        $r9 = staticinvoke <java.lang.System: java.lang.String getProperty(java.lang.String)>("java.vendor");
+
+        $i2 = virtualinvoke $r9.<java.lang.String: int indexOf(java.lang.String)>("Free");
+
+        if $i2 != -1 goto label1;
+
+        $i3 = staticinvoke <java.lang.Thread: int activeCount()>();
+
+        staticinvoke <org.apache.log4j.net.TelnetAppenderTest: void assertEquals(int,int)>(i0, $i3);
+
+     label1:
+        return;
+    }
+}

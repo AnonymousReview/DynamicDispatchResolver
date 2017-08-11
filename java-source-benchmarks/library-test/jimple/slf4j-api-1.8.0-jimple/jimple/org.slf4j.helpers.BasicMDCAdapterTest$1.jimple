@@ -1,0 +1,46 @@
+class org.slf4j.helpers.BasicMDCAdapterTest$1 extends java.lang.Object implements java.lang.Runnable
+{
+    final org.slf4j.helpers.BasicMDCAdapterTest this$0;
+
+    void <init>(org.slf4j.helpers.BasicMDCAdapterTest)
+    {
+        org.slf4j.helpers.BasicMDCAdapterTest$1 r0;
+        org.slf4j.helpers.BasicMDCAdapterTest r1;
+
+        r0 := @this: org.slf4j.helpers.BasicMDCAdapterTest$1;
+
+        r1 := @parameter0: org.slf4j.helpers.BasicMDCAdapterTest;
+
+        r0.<org.slf4j.helpers.BasicMDCAdapterTest$1: org.slf4j.helpers.BasicMDCAdapterTest this$0> = r1;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void run()
+    {
+        org.slf4j.helpers.BasicMDCAdapterTest$1 r0;
+        org.slf4j.helpers.BasicMDCAdapterTest $r1, $r3;
+        org.slf4j.spi.MDCAdapter $r2, $r4;
+        java.lang.String $r5;
+
+        r0 := @this: org.slf4j.helpers.BasicMDCAdapterTest$1;
+
+        $r1 = r0.<org.slf4j.helpers.BasicMDCAdapterTest$1: org.slf4j.helpers.BasicMDCAdapterTest this$0>;
+
+        $r2 = $r1.<org.slf4j.helpers.BasicMDCAdapterTest: org.slf4j.spi.MDCAdapter mdc>;
+
+        interfaceinvoke $r2.<org.slf4j.spi.MDCAdapter: void put(java.lang.String,java.lang.String)>("childKey", "childValue");
+
+        $r3 = r0.<org.slf4j.helpers.BasicMDCAdapterTest$1: org.slf4j.helpers.BasicMDCAdapterTest this$0>;
+
+        $r4 = $r3.<org.slf4j.helpers.BasicMDCAdapterTest: org.slf4j.spi.MDCAdapter mdc>;
+
+        $r5 = interfaceinvoke $r4.<org.slf4j.spi.MDCAdapter: java.lang.String get(java.lang.String)>("parentKey");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("parentValue", $r5);
+
+        return;
+    }
+}

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<attributes>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="0" eline="0" spos="0" epos="0"/>
+<text info="[inner=org/apache/commons/logging/security/SecurityAllowedTestCase$CustomHashtable, outer=org/apache/commons/logging/security/SecurityAllowedTestCase, name=CustomHashtable,flags=9]" aType="InnerClassTag"/>
+<text info="soot.tagkit.InnerClassAttribute@1d846a49" aType="InnerClassAttribute"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="3" eline="3" spos="0" epos="0"/>
+<text info="ConstantValue: 8941017300059246720" aType="LongConstantValueTag"/>
+</attribute>
+</attributes>

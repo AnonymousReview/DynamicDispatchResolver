@@ -1,0 +1,201 @@
+public class org.apache.commons.codec.digest.Sha256CryptTest extends java.lang.Object
+{
+
+    public void <init>()
+    {
+        org.apache.commons.codec.digest.Sha256CryptTest r0;
+
+        r0 := @this: org.apache.commons.codec.digest.Sha256CryptTest;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void testSha256CryptStrings()
+    {
+        org.apache.commons.codec.digest.Sha256CryptTest r0;
+        java.lang.String $r1, $r2, $r3, $r4, $r5, $r6;
+
+        r0 := @this: org.apache.commons.codec.digest.Sha256CryptTest;
+
+        $r1 = staticinvoke <org.apache.commons.codec.digest.Crypt: java.lang.String crypt(java.lang.String,java.lang.String)>("", "$5$foo");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("$5$foo$Fq9CX624QIfnCAmlGiPKLlAasdacKCRxZztPoeo7o0B", $r1);
+
+        $r2 = staticinvoke <org.apache.commons.codec.digest.Crypt: java.lang.String crypt(java.lang.String,java.lang.String)>("secret", "$5$45678");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("$5$45678$LulJuUIJIn.1uU.KPV9x92umMYFopzVDD.o2ZqA1i2/", $r2);
+
+        $r3 = staticinvoke <org.apache.commons.codec.digest.Crypt: java.lang.String crypt(java.lang.String,java.lang.String)>("secret", "$5$45678$012");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("$5$45678$LulJuUIJIn.1uU.KPV9x92umMYFopzVDD.o2ZqA1i2/", $r3);
+
+        $r4 = staticinvoke <org.apache.commons.codec.digest.Crypt: java.lang.String crypt(java.lang.String,java.lang.String)>("secret", "$5$45678$012$456");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("$5$45678$LulJuUIJIn.1uU.KPV9x92umMYFopzVDD.o2ZqA1i2/", $r4);
+
+        $r5 = staticinvoke <org.apache.commons.codec.digest.Crypt: java.lang.String crypt(java.lang.String,java.lang.String)>("secret", "$5$1234567890123456");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("$5$1234567890123456$GUiFKBSTUAGvcK772ulTDPltkTOLtFvPOmp9o.9FNPB", $r5);
+
+        $r6 = staticinvoke <org.apache.commons.codec.digest.Crypt: java.lang.String crypt(java.lang.String,java.lang.String)>("secret", "$5$1234567890123456789");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("$5$1234567890123456$GUiFKBSTUAGvcK772ulTDPltkTOLtFvPOmp9o.9FNPB", $r6);
+
+        return;
+    }
+
+    public void testSha256CryptBytes()
+    {
+        org.apache.commons.codec.digest.Sha256CryptTest r0;
+        byte[] $r1, $r6;
+        java.lang.String $r2, $r3, $r5, $r7;
+        java.nio.charset.Charset $r4;
+
+        r0 := @this: org.apache.commons.codec.digest.Sha256CryptTest;
+
+        $r1 = newarray (byte)[0];
+
+        $r2 = staticinvoke <org.apache.commons.codec.digest.Crypt: java.lang.String crypt(byte[],java.lang.String)>($r1, "$5$foo");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("$5$foo$Fq9CX624QIfnCAmlGiPKLlAasdacKCRxZztPoeo7o0B", $r2);
+
+        $r3 = staticinvoke <org.apache.commons.codec.digest.Crypt: java.lang.String crypt(java.lang.String,java.lang.String)>("t\u00e4st", "$5$./$");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("$5$./$iH66LwY5sTDTdHeOxq5nvNDVAxuoCcyH/y6Ptte82P8", $r3);
+
+        $r5 = "t\u00e4st";
+
+        $r4 = <org.apache.commons.codec.Charsets: java.nio.charset.Charset ISO_8859_1>;
+
+        $r6 = virtualinvoke $r5.<java.lang.String: byte[] getBytes(java.nio.charset.Charset)>($r4);
+
+        $r7 = staticinvoke <org.apache.commons.codec.digest.Crypt: java.lang.String crypt(byte[],java.lang.String)>($r6, "$5$./$");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("$5$./$qx5gFfCzjuWUOvsDDy.5Nor3UULPIqLVBZhgGNS0c14", $r7);
+
+        return;
+    }
+
+    public void testSha2CryptRounds()
+    {
+        org.apache.commons.codec.digest.Sha256CryptTest r0;
+        java.nio.charset.Charset $r1, $r5, $r9;
+        java.lang.String $r2, $r4, $r6, $r8, $r10, $r12;
+        byte[] $r3, $r7, $r11;
+
+        r0 := @this: org.apache.commons.codec.digest.Sha256CryptTest;
+
+        $r2 = "secret";
+
+        $r1 = <org.apache.commons.codec.Charsets: java.nio.charset.Charset UTF_8>;
+
+        $r3 = virtualinvoke $r2.<java.lang.String: byte[] getBytes(java.nio.charset.Charset)>($r1);
+
+        $r4 = staticinvoke <org.apache.commons.codec.digest.Sha2Crypt: java.lang.String sha256Crypt(byte[],java.lang.String)>($r3, "$5$rounds=50$abcd$");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("$5$rounds=1000$abcd$b8MCU4GEeZIekOy5ahQ8EWfT330hvYGVeDYkBxXBva.", $r4);
+
+        $r6 = "secret";
+
+        $r5 = <org.apache.commons.codec.Charsets: java.nio.charset.Charset UTF_8>;
+
+        $r7 = virtualinvoke $r6.<java.lang.String: byte[] getBytes(java.nio.charset.Charset)>($r5);
+
+        $r8 = staticinvoke <org.apache.commons.codec.digest.Sha2Crypt: java.lang.String sha256Crypt(byte[],java.lang.String)>($r7, "$5$rounds=1001$abcd$");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("$5$rounds=1001$abcd$SQsJZs7KXKdd2DtklI3TY3tkD7UYA99RD0FBLm4Sk48", $r8);
+
+        $r10 = "secret";
+
+        $r9 = <org.apache.commons.codec.Charsets: java.nio.charset.Charset UTF_8>;
+
+        $r11 = virtualinvoke $r10.<java.lang.String: byte[] getBytes(java.nio.charset.Charset)>($r9);
+
+        $r12 = staticinvoke <org.apache.commons.codec.digest.Sha2Crypt: java.lang.String sha256Crypt(byte[],java.lang.String)>($r11, "$5$rounds=9999$abcd");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("$5$rounds=9999$abcd$Rh/8ngVh9oyuS6lL3.fsq.9xbvXJsfyKWxSjO2mPIa7", $r12);
+
+        return;
+    }
+
+    public void testSha256CryptExplicitCall()
+    {
+        org.apache.commons.codec.digest.Sha256CryptTest r0;
+        java.lang.String $r1, $r3, $r4, $r6;
+        byte[] $r2, $r5;
+        boolean $z0, $z1;
+
+        r0 := @this: org.apache.commons.codec.digest.Sha256CryptTest;
+
+        $r1 = "secret";
+
+        $r2 = virtualinvoke $r1.<java.lang.String: byte[] getBytes()>();
+
+        $r3 = staticinvoke <org.apache.commons.codec.digest.Sha2Crypt: java.lang.String sha256Crypt(byte[])>($r2);
+
+        $z0 = virtualinvoke $r3.<java.lang.String: boolean matches(java.lang.String)>("^\\$5\\$[a-zA-Z0-9./]{0,16}\\$.{1,}$");
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z0);
+
+        $r4 = "secret";
+
+        $r5 = virtualinvoke $r4.<java.lang.String: byte[] getBytes()>();
+
+        $r6 = staticinvoke <org.apache.commons.codec.digest.Sha2Crypt: java.lang.String sha256Crypt(byte[],java.lang.String)>($r5, null);
+
+        $z1 = virtualinvoke $r6.<java.lang.String: boolean matches(java.lang.String)>("^\\$5\\$[a-zA-Z0-9./]{0,16}\\$.{1,}$");
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z1);
+
+        return;
+    }
+
+    public void testSha256CryptNullData()
+    {
+        org.apache.commons.codec.digest.Sha256CryptTest r0;
+
+        r0 := @this: org.apache.commons.codec.digest.Sha256CryptTest;
+
+        staticinvoke <org.apache.commons.codec.digest.Sha2Crypt: java.lang.String sha256Crypt(byte[])>(null);
+
+        return;
+    }
+
+    public void testSha256CryptWithEmptySalt()
+    {
+        org.apache.commons.codec.digest.Sha256CryptTest r0;
+        java.lang.String $r1;
+        byte[] $r2;
+
+        r0 := @this: org.apache.commons.codec.digest.Sha256CryptTest;
+
+        $r1 = "secret";
+
+        $r2 = virtualinvoke $r1.<java.lang.String: byte[] getBytes()>();
+
+        staticinvoke <org.apache.commons.codec.digest.Sha2Crypt: java.lang.String sha256Crypt(byte[],java.lang.String)>($r2, "");
+
+        return;
+    }
+
+    public void testSha256LargetThanBlocksize()
+    {
+        org.apache.commons.codec.digest.Sha256CryptTest r0;
+        byte[] r1;
+        java.lang.String $r2;
+
+        r0 := @this: org.apache.commons.codec.digest.Sha256CryptTest;
+
+        r1 = newarray (byte)[200];
+
+        staticinvoke <java.util.Arrays: void fill(byte[],int,int,byte)>(r1, 0, 200, 65);
+
+        $r2 = staticinvoke <org.apache.commons.codec.digest.Sha2Crypt: java.lang.String sha256Crypt(byte[],java.lang.String)>(r1, "$5$abc");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("$5$abc$HbF3RRc15OwNKB/RZZ5F.1I6zsLcKXHQoSdB9Owx/Q8", $r2);
+
+        return;
+    }
+}

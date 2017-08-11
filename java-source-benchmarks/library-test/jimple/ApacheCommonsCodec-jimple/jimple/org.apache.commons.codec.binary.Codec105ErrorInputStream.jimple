@@ -1,0 +1,76 @@
+public class org.apache.commons.codec.binary.Codec105ErrorInputStream extends java.io.InputStream
+{
+    private static final int EOF;
+    int countdown;
+
+    public void <init>()
+    {
+        org.apache.commons.codec.binary.Codec105ErrorInputStream r0;
+
+        r0 := @this: org.apache.commons.codec.binary.Codec105ErrorInputStream;
+
+        specialinvoke r0.<java.io.InputStream: void <init>()>();
+
+        r0.<org.apache.commons.codec.binary.Codec105ErrorInputStream: int countdown> = 3;
+
+        return;
+    }
+
+    public int read() throws java.io.IOException
+    {
+        org.apache.commons.codec.binary.Codec105ErrorInputStream r0;
+        int $i0, $i1;
+
+        r0 := @this: org.apache.commons.codec.binary.Codec105ErrorInputStream;
+
+        $i0 = r0.<org.apache.commons.codec.binary.Codec105ErrorInputStream: int countdown>;
+
+        $i1 = $i0 - 1;
+
+        r0.<org.apache.commons.codec.binary.Codec105ErrorInputStream: int countdown> = $i1;
+
+        if $i0 <= 0 goto label1;
+
+        return 10;
+
+     label1:
+        return -1;
+    }
+
+    public int read(byte[], int, int) throws java.io.IOException
+    {
+        org.apache.commons.codec.binary.Codec105ErrorInputStream r0;
+        byte[] r1;
+        int i0, i1, $i2, $i3;
+
+        r0 := @this: org.apache.commons.codec.binary.Codec105ErrorInputStream;
+
+        r1 := @parameter0: byte[];
+
+        i0 := @parameter1: int;
+
+        i1 := @parameter2: int;
+
+        $i2 = r0.<org.apache.commons.codec.binary.Codec105ErrorInputStream: int countdown>;
+
+        $i3 = $i2 - 1;
+
+        r0.<org.apache.commons.codec.binary.Codec105ErrorInputStream: int countdown> = $i3;
+
+        if $i2 <= 0 goto label1;
+
+        r1[i0] = 10;
+
+        return 1;
+
+     label1:
+        return -1;
+    }
+
+    public static void <clinit>()
+    {
+        <org.apache.commons.codec.binary.Codec105ErrorInputStream: int EOF> = -1;
+
+        return;
+    }
+}

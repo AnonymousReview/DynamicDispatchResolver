@@ -1,0 +1,85 @@
+public class org.apache.commons.io.IOExceptionWithCauseTestCase extends java.lang.Object
+{
+
+    public void <init>()
+    {
+        org.apache.commons.io.IOExceptionWithCauseTestCase r0;
+
+        r0 := @this: org.apache.commons.io.IOExceptionWithCauseTestCase;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void testIOExceptionStringThrowable()
+    {
+        org.apache.commons.io.IOExceptionWithCauseTestCase r0;
+        java.lang.IllegalArgumentException $r3;
+        java.io.IOException $r4;
+
+        r0 := @this: org.apache.commons.io.IOExceptionWithCauseTestCase;
+
+        $r3 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r3.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("cause");
+
+        $r4 = new java.io.IOException;
+
+        specialinvoke $r4.<java.io.IOException: void <init>(java.lang.String,java.lang.Throwable)>("message", $r3);
+
+        virtualinvoke r0.<org.apache.commons.io.IOExceptionWithCauseTestCase: void validate(java.lang.Throwable,java.lang.Throwable,java.lang.String)>($r4, $r3, "message");
+
+        return;
+    }
+
+    public void testIOExceptionThrowable()
+    {
+        org.apache.commons.io.IOExceptionWithCauseTestCase r0;
+        java.lang.IllegalArgumentException $r3;
+        java.io.IOException $r4;
+
+        r0 := @this: org.apache.commons.io.IOExceptionWithCauseTestCase;
+
+        $r3 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r3.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("cause");
+
+        $r4 = new java.io.IOException;
+
+        specialinvoke $r4.<java.io.IOException: void <init>(java.lang.Throwable)>($r3);
+
+        virtualinvoke r0.<org.apache.commons.io.IOExceptionWithCauseTestCase: void validate(java.lang.Throwable,java.lang.Throwable,java.lang.String)>($r4, $r3, "java.lang.IllegalArgumentException: cause");
+
+        return;
+    }
+
+    void validate(java.lang.Throwable, java.lang.Throwable, java.lang.String)
+    {
+        org.apache.commons.io.IOExceptionWithCauseTestCase r0;
+        java.lang.Throwable r1, r2, $r5, $r6;
+        java.lang.String r3, $r4;
+
+        r0 := @this: org.apache.commons.io.IOExceptionWithCauseTestCase;
+
+        r1 := @parameter0: java.lang.Throwable;
+
+        r2 := @parameter1: java.lang.Throwable;
+
+        r3 := @parameter2: java.lang.String;
+
+        $r4 = virtualinvoke r1.<java.lang.Throwable: java.lang.String getMessage()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>(r3, $r4);
+
+        $r5 = virtualinvoke r1.<java.lang.Throwable: java.lang.Throwable getCause()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>(r2, $r5);
+
+        $r6 = virtualinvoke r1.<java.lang.Throwable: java.lang.Throwable getCause()>();
+
+        staticinvoke <org.junit.Assert: void assertSame(java.lang.Object,java.lang.Object)>(r2, $r6);
+
+        return;
+    }
+}

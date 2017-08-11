@@ -1,0 +1,44 @@
+public class org.apache.log4j.Last extends junit.framework.TestCase
+{
+
+    public void <init>(java.lang.String)
+    {
+        org.apache.log4j.Last r0;
+        java.lang.String r1;
+
+        r0 := @this: org.apache.log4j.Last;
+
+        r1 := @parameter0: java.lang.String;
+
+        specialinvoke r0.<junit.framework.TestCase: void <init>(java.lang.String)>(r1);
+
+        return;
+    }
+
+    public void test1()
+    {
+        org.apache.log4j.Last r0;
+
+        r0 := @this: org.apache.log4j.Last;
+
+        return;
+    }
+
+    public static junit.framework.Test suite()
+    {
+        junit.framework.TestSuite $r1;
+        org.apache.log4j.Last $r2;
+
+        $r1 = new junit.framework.TestSuite;
+
+        specialinvoke $r1.<junit.framework.TestSuite: void <init>()>();
+
+        $r2 = new org.apache.log4j.Last;
+
+        specialinvoke $r2.<org.apache.log4j.Last: void <init>(java.lang.String)>("test1");
+
+        virtualinvoke $r1.<junit.framework.TestSuite: void addTest(junit.framework.Test)>($r2);
+
+        return $r1;
+    }
+}

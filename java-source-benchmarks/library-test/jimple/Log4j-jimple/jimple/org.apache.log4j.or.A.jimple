@@ -1,0 +1,14 @@
+class org.apache.log4j.or.A extends java.lang.Object implements org.apache.log4j.or.Y
+{
+
+    void <init>()
+    {
+        org.apache.log4j.or.A r0;
+
+        r0 := @this: org.apache.log4j.or.A;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+}

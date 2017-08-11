@@ -1,0 +1,1012 @@
+public final class org.slf4j.LoggerFactory extends java.lang.Object
+{
+    static final java.lang.String CODES_PREFIX;
+    static final java.lang.String NO_PROVIDERS_URL;
+    static final java.lang.String IGNORED_BINDINGS_URL;
+    static final java.lang.String NO_STATICLOGGERBINDER_URL;
+    static final java.lang.String MULTIPLE_BINDINGS_URL;
+    static final java.lang.String NULL_LF_URL;
+    static final java.lang.String VERSION_MISMATCH;
+    static final java.lang.String SUBSTITUTE_LOGGER_URL;
+    static final java.lang.String LOGGER_NAME_MISMATCH_URL;
+    static final java.lang.String REPLAY_URL;
+    static final java.lang.String UNSUCCESSFUL_INIT_URL;
+    static final java.lang.String UNSUCCESSFUL_INIT_MSG;
+    static final int UNINITIALIZED;
+    static final int ONGOING_INITIALIZATION;
+    static final int FAILED_INITIALIZATION;
+    static final int SUCCESSFUL_INITIALIZATION;
+    static final int NOP_FALLBACK_INITIALIZATION;
+    static volatile int INITIALIZATION_STATE;
+    static final org.slf4j.helpers.SubstitureServiceProvider SUBST_PROVIDER;
+    static final org.slf4j.helpers.NOPServiceProvider NOP_FALLBACK_FACTORY;
+    static final java.lang.String DETECT_LOGGER_NAME_MISMATCH_PROPERTY;
+    static final java.lang.String JAVA_VENDOR_PROPERTY;
+    static boolean DETECT_LOGGER_NAME_MISMATCH;
+    static volatile org.slf4j.spi.SLF4JServiceProvider PROVIDER;
+    private static final java.lang.String[] API_COMPATIBILITY_LIST;
+    private static java.lang.String STATIC_LOGGER_BINDER_PATH;
+
+    static void <clinit>()
+    {
+        org.slf4j.helpers.SubstitureServiceProvider $r0;
+        org.slf4j.helpers.NOPServiceProvider $r1;
+        boolean $z0;
+        java.lang.String[] $r2;
+
+        <org.slf4j.LoggerFactory: java.lang.String JAVA_VENDOR_PROPERTY> = "java.vendor.url";
+
+        <org.slf4j.LoggerFactory: java.lang.String DETECT_LOGGER_NAME_MISMATCH_PROPERTY> = "slf4j.detectLoggerNameMismatch";
+
+        <org.slf4j.LoggerFactory: int NOP_FALLBACK_INITIALIZATION> = 4;
+
+        <org.slf4j.LoggerFactory: int SUCCESSFUL_INITIALIZATION> = 3;
+
+        <org.slf4j.LoggerFactory: int FAILED_INITIALIZATION> = 2;
+
+        <org.slf4j.LoggerFactory: int ONGOING_INITIALIZATION> = 1;
+
+        <org.slf4j.LoggerFactory: int UNINITIALIZED> = 0;
+
+        <org.slf4j.LoggerFactory: java.lang.String UNSUCCESSFUL_INIT_MSG> = "org.slf4j.LoggerFactory in failed state. Original exception was thrown EARLIER. See also http://www.slf4j.org/codes.html#unsuccessfulInit";
+
+        <org.slf4j.LoggerFactory: java.lang.String UNSUCCESSFUL_INIT_URL> = "http://www.slf4j.org/codes.html#unsuccessfulInit";
+
+        <org.slf4j.LoggerFactory: java.lang.String REPLAY_URL> = "http://www.slf4j.org/codes.html#replay";
+
+        <org.slf4j.LoggerFactory: java.lang.String LOGGER_NAME_MISMATCH_URL> = "http://www.slf4j.org/codes.html#loggerNameMismatch";
+
+        <org.slf4j.LoggerFactory: java.lang.String SUBSTITUTE_LOGGER_URL> = "http://www.slf4j.org/codes.html#substituteLogger";
+
+        <org.slf4j.LoggerFactory: java.lang.String VERSION_MISMATCH> = "http://www.slf4j.org/codes.html#version_mismatch";
+
+        <org.slf4j.LoggerFactory: java.lang.String NULL_LF_URL> = "http://www.slf4j.org/codes.html#null_LF";
+
+        <org.slf4j.LoggerFactory: java.lang.String MULTIPLE_BINDINGS_URL> = "http://www.slf4j.org/codes.html#multiple_bindings";
+
+        <org.slf4j.LoggerFactory: java.lang.String NO_STATICLOGGERBINDER_URL> = "http://www.slf4j.org/codes.html#StaticLoggerBinder";
+
+        <org.slf4j.LoggerFactory: java.lang.String IGNORED_BINDINGS_URL> = "http://www.slf4j.org/codes.html#ignoredBindings";
+
+        <org.slf4j.LoggerFactory: java.lang.String NO_PROVIDERS_URL> = "http://www.slf4j.org/codes.html#noProviders";
+
+        <org.slf4j.LoggerFactory: java.lang.String CODES_PREFIX> = "http://www.slf4j.org/codes.html";
+
+        <org.slf4j.LoggerFactory: int INITIALIZATION_STATE> = 0;
+
+        $r0 = new org.slf4j.helpers.SubstitureServiceProvider;
+
+        specialinvoke $r0.<org.slf4j.helpers.SubstitureServiceProvider: void <init>()>();
+
+        <org.slf4j.LoggerFactory: org.slf4j.helpers.SubstitureServiceProvider SUBST_PROVIDER> = $r0;
+
+        $r1 = new org.slf4j.helpers.NOPServiceProvider;
+
+        specialinvoke $r1.<org.slf4j.helpers.NOPServiceProvider: void <init>()>();
+
+        <org.slf4j.LoggerFactory: org.slf4j.helpers.NOPServiceProvider NOP_FALLBACK_FACTORY> = $r1;
+
+        $z0 = staticinvoke <org.slf4j.helpers.Util: boolean safeGetBooleanSystemProperty(java.lang.String)>("slf4j.detectLoggerNameMismatch");
+
+        <org.slf4j.LoggerFactory: boolean DETECT_LOGGER_NAME_MISMATCH> = $z0;
+
+        $r2 = newarray (java.lang.String)[2];
+
+        $r2[0] = "1.8";
+
+        $r2[1] = "1.7";
+
+        <org.slf4j.LoggerFactory: java.lang.String[] API_COMPATIBILITY_LIST> = $r2;
+
+        <org.slf4j.LoggerFactory: java.lang.String STATIC_LOGGER_BINDER_PATH> = "org/slf4j/impl/StaticLoggerBinder.class";
+
+        return;
+    }
+
+    private static java.util.List findServiceProviders()
+    {
+        java.util.ServiceLoader r0;
+        org.slf4j.spi.SLF4JServiceProvider r2;
+        java.util.Iterator r3;
+        java.util.ArrayList $r4;
+        boolean $z0;
+        java.lang.Object $r5;
+
+        r0 = staticinvoke <java.util.ServiceLoader: java.util.ServiceLoader load(java.lang.Class)>(class "org/slf4j/spi/SLF4JServiceProvider");
+
+        $r4 = new java.util.ArrayList;
+
+        specialinvoke $r4.<java.util.ArrayList: void <init>()>();
+
+        r3 = virtualinvoke r0.<java.util.ServiceLoader: java.util.Iterator iterator()>();
+
+        goto label2;
+
+     label1:
+        $r5 = interfaceinvoke r3.<java.util.Iterator: java.lang.Object next()>();
+
+        r2 = (org.slf4j.spi.SLF4JServiceProvider) $r5;
+
+        interfaceinvoke $r4.<java.util.List: boolean add(java.lang.Object)>(r2);
+
+     label2:
+        $z0 = interfaceinvoke r3.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 != 0 goto label1;
+
+        return $r4;
+    }
+
+    private void <init>()
+    {
+        org.slf4j.LoggerFactory r0;
+
+        r0 := @this: org.slf4j.LoggerFactory;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    static void reset()
+    {
+        <org.slf4j.LoggerFactory: int INITIALIZATION_STATE> = 0;
+
+        return;
+    }
+
+    private static final void performInitialization()
+    {
+        int $i0;
+
+        staticinvoke <org.slf4j.LoggerFactory: void bind()>();
+
+        $i0 = <org.slf4j.LoggerFactory: int INITIALIZATION_STATE>;
+
+        if $i0 != 3 goto label1;
+
+        staticinvoke <org.slf4j.LoggerFactory: void versionSanityCheck()>();
+
+     label1:
+        return;
+    }
+
+    private static final void bind()
+    {
+        java.util.Set r0;
+        boolean $z0;
+        java.lang.Object $r1;
+        org.slf4j.spi.SLF4JServiceProvider $r2, $r3;
+        org.slf4j.helpers.SubstitureServiceProvider $r4;
+        org.slf4j.helpers.SubstituteLoggerFactory $r5;
+        java.lang.Exception $r6;
+        java.lang.IllegalStateException $r7;
+        java.util.List r8;
+
+     label1:
+        r8 = staticinvoke <org.slf4j.LoggerFactory: java.util.List findServiceProviders()>();
+
+        staticinvoke <org.slf4j.LoggerFactory: void reportMultipleBindingAmbiguity(java.util.List)>(r8);
+
+        if r8 == null goto label2;
+
+        $z0 = interfaceinvoke r8.<java.util.List: boolean isEmpty()>();
+
+        if $z0 != 0 goto label2;
+
+        $r1 = interfaceinvoke r8.<java.util.List: java.lang.Object get(int)>(0);
+
+        $r2 = (org.slf4j.spi.SLF4JServiceProvider) $r1;
+
+        <org.slf4j.LoggerFactory: org.slf4j.spi.SLF4JServiceProvider PROVIDER> = $r2;
+
+        $r3 = <org.slf4j.LoggerFactory: org.slf4j.spi.SLF4JServiceProvider PROVIDER>;
+
+        interfaceinvoke $r3.<org.slf4j.spi.SLF4JServiceProvider: void initialize()>();
+
+        <org.slf4j.LoggerFactory: int INITIALIZATION_STATE> = 3;
+
+        staticinvoke <org.slf4j.LoggerFactory: void reportActualBinding(java.util.List)>(r8);
+
+        staticinvoke <org.slf4j.LoggerFactory: void fixSubstituteLoggers()>();
+
+        staticinvoke <org.slf4j.LoggerFactory: void replayEvents()>();
+
+        $r4 = <org.slf4j.LoggerFactory: org.slf4j.helpers.SubstitureServiceProvider SUBST_PROVIDER>;
+
+        $r5 = virtualinvoke $r4.<org.slf4j.helpers.SubstitureServiceProvider: org.slf4j.helpers.SubstituteLoggerFactory getSubstituteLoggerFactory()>();
+
+        virtualinvoke $r5.<org.slf4j.helpers.SubstituteLoggerFactory: void clear()>();
+
+        goto label5;
+
+     label2:
+        <org.slf4j.LoggerFactory: int INITIALIZATION_STATE> = 4;
+
+        staticinvoke <org.slf4j.helpers.Util: void report(java.lang.String)>("No SLF4J providers were found.");
+
+        staticinvoke <org.slf4j.helpers.Util: void report(java.lang.String)>("Defaulting to no-operation (NOP) logger implementation");
+
+        staticinvoke <org.slf4j.helpers.Util: void report(java.lang.String)>("See http://www.slf4j.org/codes.html#noProviders for further details.");
+
+        r0 = staticinvoke <org.slf4j.LoggerFactory: java.util.Set findPossibleStaticLoggerBinderPathSet()>();
+
+        staticinvoke <org.slf4j.LoggerFactory: void reportIgnoredStaticLoggerBinders(java.util.Set)>(r0);
+
+     label3:
+        goto label5;
+
+     label4:
+        $r6 := @caughtexception;
+
+        staticinvoke <org.slf4j.LoggerFactory: void failedBinding(java.lang.Throwable)>($r6);
+
+        $r7 = new java.lang.IllegalStateException;
+
+        specialinvoke $r7.<java.lang.IllegalStateException: void <init>(java.lang.String,java.lang.Throwable)>("Unexpected initialization failure", $r6);
+
+        throw $r7;
+
+     label5:
+        return;
+
+        catch java.lang.Exception from label1 to label3 with label4;
+    }
+
+    private static void reportIgnoredStaticLoggerBinders(java.util.Set)
+    {
+        java.util.Set r0;
+        java.net.URL r1;
+        java.util.Iterator r2;
+        boolean $z0, $z1;
+        java.lang.Object $r3;
+        java.lang.StringBuilder $r4, $r5, $r6;
+        java.lang.String $r7;
+
+        r0 := @parameter0: java.util.Set;
+
+        $z0 = interfaceinvoke r0.<java.util.Set: boolean isEmpty()>();
+
+        if $z0 == 0 goto label1;
+
+        return;
+
+     label1:
+        staticinvoke <org.slf4j.helpers.Util: void report(java.lang.String)>("Class path contains SLF4J bindings targeting slf4j-api versions prior to 1.8.");
+
+        r2 = interfaceinvoke r0.<java.util.Set: java.util.Iterator iterator()>();
+
+        goto label3;
+
+     label2:
+        $r3 = interfaceinvoke r2.<java.util.Iterator: java.lang.Object next()>();
+
+        r1 = (java.net.URL) $r3;
+
+        $r4 = new java.lang.StringBuilder;
+
+        specialinvoke $r4.<java.lang.StringBuilder: void <init>(java.lang.String)>("Ignoring binding found at [");
+
+        $r5 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(r1);
+
+        $r6 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("]");
+
+        $r7 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.slf4j.helpers.Util: void report(java.lang.String)>($r7);
+
+     label3:
+        $z1 = interfaceinvoke r2.<java.util.Iterator: boolean hasNext()>();
+
+        if $z1 != 0 goto label2;
+
+        staticinvoke <org.slf4j.helpers.Util: void report(java.lang.String)>("See http://www.slf4j.org/codes.html#ignoredBindings for an explanation.");
+
+        return;
+    }
+
+    static java.util.Set findPossibleStaticLoggerBinderPathSet()
+    {
+        java.net.URL r1;
+        java.util.LinkedHashSet $r2;
+        java.lang.Class $r3;
+        java.lang.String $r4, $r6;
+        java.lang.Object $r5;
+        java.io.IOException $r7;
+        java.lang.ClassLoader r8;
+        java.util.Enumeration r9;
+        boolean $z1;
+
+        $r2 = new java.util.LinkedHashSet;
+
+        specialinvoke $r2.<java.util.LinkedHashSet: void <init>()>();
+
+     label1:
+        $r3 = class "org/slf4j/LoggerFactory";
+
+        r8 = virtualinvoke $r3.<java.lang.Class: java.lang.ClassLoader getClassLoader()>();
+
+        if r8 != null goto label2;
+
+        $r6 = <org.slf4j.LoggerFactory: java.lang.String STATIC_LOGGER_BINDER_PATH>;
+
+        r9 = staticinvoke <java.lang.ClassLoader: java.util.Enumeration getSystemResources(java.lang.String)>($r6);
+
+        goto label4;
+
+     label2:
+        $r4 = <org.slf4j.LoggerFactory: java.lang.String STATIC_LOGGER_BINDER_PATH>;
+
+        r9 = virtualinvoke r8.<java.lang.ClassLoader: java.util.Enumeration getResources(java.lang.String)>($r4);
+
+        goto label4;
+
+     label3:
+        $r5 = interfaceinvoke r9.<java.util.Enumeration: java.lang.Object nextElement()>();
+
+        r1 = (java.net.URL) $r5;
+
+        interfaceinvoke $r2.<java.util.Set: boolean add(java.lang.Object)>(r1);
+
+     label4:
+        $z1 = interfaceinvoke r9.<java.util.Enumeration: boolean hasMoreElements()>();
+
+        if $z1 != 0 goto label3;
+
+     label5:
+        goto label7;
+
+     label6:
+        $r7 := @caughtexception;
+
+        staticinvoke <org.slf4j.helpers.Util: void report(java.lang.String,java.lang.Throwable)>("Error getting resources from path", $r7);
+
+     label7:
+        return $r2;
+
+        catch java.io.IOException from label1 to label5 with label6;
+    }
+
+    private static void fixSubstituteLoggers()
+    {
+        org.slf4j.helpers.SubstituteLogger r1;
+        java.util.Iterator r2;
+        org.slf4j.Logger r3;
+        org.slf4j.helpers.SubstitureServiceProvider $r4, $r5, $r7;
+        org.slf4j.helpers.SubstituteLoggerFactory $r6, $r8;
+        java.util.List $r9;
+        boolean $z0;
+        java.lang.Object $r10;
+        java.lang.String $r11;
+        java.lang.Throwable $r12;
+
+        $r4 = <org.slf4j.LoggerFactory: org.slf4j.helpers.SubstitureServiceProvider SUBST_PROVIDER>;
+
+        entermonitor $r4;
+
+     label1:
+        $r5 = <org.slf4j.LoggerFactory: org.slf4j.helpers.SubstitureServiceProvider SUBST_PROVIDER>;
+
+        $r6 = virtualinvoke $r5.<org.slf4j.helpers.SubstitureServiceProvider: org.slf4j.helpers.SubstituteLoggerFactory getSubstituteLoggerFactory()>();
+
+        virtualinvoke $r6.<org.slf4j.helpers.SubstituteLoggerFactory: void postInitialization()>();
+
+        $r7 = <org.slf4j.LoggerFactory: org.slf4j.helpers.SubstitureServiceProvider SUBST_PROVIDER>;
+
+        $r8 = virtualinvoke $r7.<org.slf4j.helpers.SubstitureServiceProvider: org.slf4j.helpers.SubstituteLoggerFactory getSubstituteLoggerFactory()>();
+
+        $r9 = virtualinvoke $r8.<org.slf4j.helpers.SubstituteLoggerFactory: java.util.List getLoggers()>();
+
+        r2 = interfaceinvoke $r9.<java.util.List: java.util.Iterator iterator()>();
+
+        goto label3;
+
+     label2:
+        $r10 = interfaceinvoke r2.<java.util.Iterator: java.lang.Object next()>();
+
+        r1 = (org.slf4j.helpers.SubstituteLogger) $r10;
+
+        $r11 = virtualinvoke r1.<org.slf4j.helpers.SubstituteLogger: java.lang.String getName()>();
+
+        r3 = staticinvoke <org.slf4j.LoggerFactory: org.slf4j.Logger getLogger(java.lang.String)>($r11);
+
+        virtualinvoke r1.<org.slf4j.helpers.SubstituteLogger: void setDelegate(org.slf4j.Logger)>(r3);
+
+     label3:
+        $z0 = interfaceinvoke r2.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 != 0 goto label2;
+
+        exitmonitor $r4;
+
+     label4:
+        goto label7;
+
+     label5:
+        $r12 := @caughtexception;
+
+        exitmonitor $r4;
+
+     label6:
+        throw $r12;
+
+     label7:
+        return;
+
+        catch java.lang.Throwable from label1 to label4 with label5;
+        catch java.lang.Throwable from label5 to label6 with label5;
+    }
+
+    static void failedBinding(java.lang.Throwable)
+    {
+        java.lang.Throwable r0;
+
+        r0 := @parameter0: java.lang.Throwable;
+
+        <org.slf4j.LoggerFactory: int INITIALIZATION_STATE> = 2;
+
+        staticinvoke <org.slf4j.helpers.Util: void report(java.lang.String,java.lang.Throwable)>("Failed to instantiate SLF4J LoggerFactory", r0);
+
+        return;
+    }
+
+    private static void replayEvents()
+    {
+        java.util.concurrent.LinkedBlockingQueue r0;
+        int i0, i2, $i3, i4;
+        org.slf4j.event.SubstituteLoggingEvent r2;
+        java.util.Iterator r3;
+        org.slf4j.helpers.SubstitureServiceProvider $r4;
+        org.slf4j.helpers.SubstituteLoggerFactory $r5;
+        java.util.ArrayList $r6;
+        java.lang.Object $r7;
+        boolean $z0;
+
+        $r4 = <org.slf4j.LoggerFactory: org.slf4j.helpers.SubstitureServiceProvider SUBST_PROVIDER>;
+
+        $r5 = virtualinvoke $r4.<org.slf4j.helpers.SubstitureServiceProvider: org.slf4j.helpers.SubstituteLoggerFactory getSubstituteLoggerFactory()>();
+
+        r0 = virtualinvoke $r5.<org.slf4j.helpers.SubstituteLoggerFactory: java.util.concurrent.LinkedBlockingQueue getEventQueue()>();
+
+        i0 = virtualinvoke r0.<java.util.concurrent.LinkedBlockingQueue: int size()>();
+
+        i4 = 0;
+
+        $r6 = new java.util.ArrayList;
+
+        specialinvoke $r6.<java.util.ArrayList: void <init>(int)>(128);
+
+     label1:
+        i2 = virtualinvoke r0.<java.util.concurrent.LinkedBlockingQueue: int drainTo(java.util.Collection,int)>($r6, 128);
+
+        if i2 != 0 goto label2;
+
+        goto label5;
+
+     label2:
+        r3 = interfaceinvoke $r6.<java.util.List: java.util.Iterator iterator()>();
+
+        goto label4;
+
+     label3:
+        $r7 = interfaceinvoke r3.<java.util.Iterator: java.lang.Object next()>();
+
+        r2 = (org.slf4j.event.SubstituteLoggingEvent) $r7;
+
+        staticinvoke <org.slf4j.LoggerFactory: void replaySingleEvent(org.slf4j.event.SubstituteLoggingEvent)>(r2);
+
+        $i3 = i4;
+
+        i4 = i4 + 1;
+
+        if $i3 != 0 goto label4;
+
+        staticinvoke <org.slf4j.LoggerFactory: void emitReplayOrSubstituionWarning(org.slf4j.event.SubstituteLoggingEvent,int)>(r2, i0);
+
+     label4:
+        $z0 = interfaceinvoke r3.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 != 0 goto label3;
+
+        interfaceinvoke $r6.<java.util.List: void clear()>();
+
+        goto label1;
+
+     label5:
+        return;
+    }
+
+    private static void emitReplayOrSubstituionWarning(org.slf4j.event.SubstituteLoggingEvent, int)
+    {
+        org.slf4j.event.SubstituteLoggingEvent r0;
+        int i0;
+        org.slf4j.helpers.SubstituteLogger $r1, $r2;
+        boolean $z0, $z1;
+
+        r0 := @parameter0: org.slf4j.event.SubstituteLoggingEvent;
+
+        i0 := @parameter1: int;
+
+        $r1 = virtualinvoke r0.<org.slf4j.event.SubstituteLoggingEvent: org.slf4j.helpers.SubstituteLogger getLogger()>();
+
+        $z0 = virtualinvoke $r1.<org.slf4j.helpers.SubstituteLogger: boolean isDelegateEventAware()>();
+
+        if $z0 == 0 goto label1;
+
+        staticinvoke <org.slf4j.LoggerFactory: void emitReplayWarning(int)>(i0);
+
+        goto label2;
+
+     label1:
+        $r2 = virtualinvoke r0.<org.slf4j.event.SubstituteLoggingEvent: org.slf4j.helpers.SubstituteLogger getLogger()>();
+
+        $z1 = virtualinvoke $r2.<org.slf4j.helpers.SubstituteLogger: boolean isDelegateNOP()>();
+
+        if $z1 != 0 goto label2;
+
+        staticinvoke <org.slf4j.LoggerFactory: void emitSubstitutionWarning()>();
+
+     label2:
+        return;
+    }
+
+    private static void replaySingleEvent(org.slf4j.event.SubstituteLoggingEvent)
+    {
+        org.slf4j.event.SubstituteLoggingEvent r0;
+        org.slf4j.helpers.SubstituteLogger r1;
+        java.lang.String r2;
+        boolean $z0, $z1, $z2;
+        java.lang.IllegalStateException $r3;
+
+        r0 := @parameter0: org.slf4j.event.SubstituteLoggingEvent;
+
+        if r0 != null goto label1;
+
+        return;
+
+     label1:
+        r1 = virtualinvoke r0.<org.slf4j.event.SubstituteLoggingEvent: org.slf4j.helpers.SubstituteLogger getLogger()>();
+
+        r2 = virtualinvoke r1.<org.slf4j.helpers.SubstituteLogger: java.lang.String getName()>();
+
+        $z0 = virtualinvoke r1.<org.slf4j.helpers.SubstituteLogger: boolean isDelegateNull()>();
+
+        if $z0 == 0 goto label2;
+
+        $r3 = new java.lang.IllegalStateException;
+
+        specialinvoke $r3.<java.lang.IllegalStateException: void <init>(java.lang.String)>("Delegate logger cannot be null at this state.");
+
+        throw $r3;
+
+     label2:
+        $z1 = virtualinvoke r1.<org.slf4j.helpers.SubstituteLogger: boolean isDelegateNOP()>();
+
+        if $z1 != 0 goto label4;
+
+        $z2 = virtualinvoke r1.<org.slf4j.helpers.SubstituteLogger: boolean isDelegateEventAware()>();
+
+        if $z2 == 0 goto label3;
+
+        virtualinvoke r1.<org.slf4j.helpers.SubstituteLogger: void log(org.slf4j.event.LoggingEvent)>(r0);
+
+        goto label4;
+
+     label3:
+        staticinvoke <org.slf4j.helpers.Util: void report(java.lang.String)>(r2);
+
+     label4:
+        return;
+    }
+
+    private static void emitSubstitutionWarning()
+    {
+        staticinvoke <org.slf4j.helpers.Util: void report(java.lang.String)>("The following set of substitute loggers may have been accessed");
+
+        staticinvoke <org.slf4j.helpers.Util: void report(java.lang.String)>("during the initialization phase. Logging calls during this");
+
+        staticinvoke <org.slf4j.helpers.Util: void report(java.lang.String)>("phase were not honored. However, subsequent logging calls to these");
+
+        staticinvoke <org.slf4j.helpers.Util: void report(java.lang.String)>("loggers will work as normally expected.");
+
+        staticinvoke <org.slf4j.helpers.Util: void report(java.lang.String)>("See also http://www.slf4j.org/codes.html#substituteLogger");
+
+        return;
+    }
+
+    private static void emitReplayWarning(int)
+    {
+        int i0;
+        java.lang.StringBuilder $r0, $r1, $r2;
+        java.lang.String $r3;
+
+        i0 := @parameter0: int;
+
+        $r0 = new java.lang.StringBuilder;
+
+        specialinvoke $r0.<java.lang.StringBuilder: void <init>(java.lang.String)>("A number (");
+
+        $r1 = virtualinvoke $r0.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i0);
+
+        $r2 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(") of logging calls during the initialization phase have been intercepted and are");
+
+        $r3 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.slf4j.helpers.Util: void report(java.lang.String)>($r3);
+
+        staticinvoke <org.slf4j.helpers.Util: void report(java.lang.String)>("now being replayed. These are subject to the filtering rules of the underlying logging system.");
+
+        staticinvoke <org.slf4j.helpers.Util: void report(java.lang.String)>("See also http://www.slf4j.org/codes.html#replay");
+
+        return;
+    }
+
+    private static final void versionSanityCheck()
+    {
+        java.lang.String r0, $r9, $r11, r14;
+        int i0, i1;
+        org.slf4j.spi.SLF4JServiceProvider $r2;
+        java.lang.String[] $r3, $r7;
+        boolean $z0, z1;
+        java.lang.StringBuilder $r4, $r5, $r6, $r10;
+        java.util.List $r8;
+        java.lang.Throwable $r12;
+        java.lang.NoSuchFieldError $r13;
+
+     label1:
+        $r2 = <org.slf4j.LoggerFactory: org.slf4j.spi.SLF4JServiceProvider PROVIDER>;
+
+        r14 = interfaceinvoke $r2.<org.slf4j.spi.SLF4JServiceProvider: java.lang.String getRequesteApiVersion()>();
+
+        z1 = 0;
+
+        $r3 = <org.slf4j.LoggerFactory: java.lang.String[] API_COMPATIBILITY_LIST>;
+
+        i0 = lengthof $r3;
+
+        i1 = 0;
+
+        goto label4;
+
+     label2:
+        r0 = $r3[i1];
+
+        $z0 = virtualinvoke r14.<java.lang.String: boolean startsWith(java.lang.String)>(r0);
+
+        if $z0 == 0 goto label3;
+
+        z1 = 1;
+
+     label3:
+        i1 = i1 + 1;
+
+     label4:
+        if i1 < i0 goto label2;
+
+        if z1 != 0 goto label8;
+
+        $r4 = new java.lang.StringBuilder;
+
+        specialinvoke $r4.<java.lang.StringBuilder: void <init>(java.lang.String)>("The requested version ");
+
+        $r5 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r14);
+
+        $r6 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" by your slf4j binding is not compatible with ");
+
+        $r7 = <org.slf4j.LoggerFactory: java.lang.String[] API_COMPATIBILITY_LIST>;
+
+        $r8 = staticinvoke <java.util.Arrays: java.util.List asList(java.lang.Object[])>($r7);
+
+        $r9 = virtualinvoke $r8.<java.lang.Object: java.lang.String toString()>();
+
+        $r10 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r9);
+
+        $r11 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.slf4j.helpers.Util: void report(java.lang.String)>($r11);
+
+        staticinvoke <org.slf4j.helpers.Util: void report(java.lang.String)>("See http://www.slf4j.org/codes.html#version_mismatch for further details.");
+
+     label5:
+        goto label8;
+
+     label6:
+        $r13 := @caughtexception;
+
+        goto label8;
+
+     label7:
+        $r12 := @caughtexception;
+
+        staticinvoke <org.slf4j.helpers.Util: void report(java.lang.String,java.lang.Throwable)>("Unexpected problem occured during version sanity check", $r12);
+
+     label8:
+        return;
+
+        catch java.lang.NoSuchFieldError from label1 to label5 with label6;
+        catch java.lang.Throwable from label1 to label5 with label7;
+    }
+
+    private static boolean isAmbiguousProviderList(java.util.List)
+    {
+        java.util.List r0;
+        int $i0;
+
+        r0 := @parameter0: java.util.List;
+
+        $i0 = interfaceinvoke r0.<java.util.List: int size()>();
+
+        if $i0 <= 1 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    private static void reportMultipleBindingAmbiguity(java.util.List)
+    {
+        java.util.List r0;
+        org.slf4j.spi.SLF4JServiceProvider r1;
+        java.util.Iterator r2;
+        boolean $z0, $z1;
+        java.lang.Object $r3;
+        java.lang.StringBuilder $r4, $r5, $r6;
+        java.lang.String $r7;
+
+        r0 := @parameter0: java.util.List;
+
+        $z0 = staticinvoke <org.slf4j.LoggerFactory: boolean isAmbiguousProviderList(java.util.List)>(r0);
+
+        if $z0 == 0 goto label3;
+
+        staticinvoke <org.slf4j.helpers.Util: void report(java.lang.String)>("Class path contains multiple SLF4J providers.");
+
+        r2 = interfaceinvoke r0.<java.util.List: java.util.Iterator iterator()>();
+
+        goto label2;
+
+     label1:
+        $r3 = interfaceinvoke r2.<java.util.Iterator: java.lang.Object next()>();
+
+        r1 = (org.slf4j.spi.SLF4JServiceProvider) $r3;
+
+        $r4 = new java.lang.StringBuilder;
+
+        specialinvoke $r4.<java.lang.StringBuilder: void <init>(java.lang.String)>("Found provider [");
+
+        $r5 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(r1);
+
+        $r6 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("]");
+
+        $r7 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.slf4j.helpers.Util: void report(java.lang.String)>($r7);
+
+     label2:
+        $z1 = interfaceinvoke r2.<java.util.Iterator: boolean hasNext()>();
+
+        if $z1 != 0 goto label1;
+
+        staticinvoke <org.slf4j.helpers.Util: void report(java.lang.String)>("See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.");
+
+     label3:
+        return;
+    }
+
+    private static void reportActualBinding(java.util.List)
+    {
+        java.util.List r0;
+        boolean $z0, $z1;
+        java.lang.StringBuilder $r1, $r3, $r4;
+        java.lang.Object $r2;
+        java.lang.String $r5;
+
+        r0 := @parameter0: java.util.List;
+
+        $z0 = interfaceinvoke r0.<java.util.List: boolean isEmpty()>();
+
+        if $z0 != 0 goto label1;
+
+        $z1 = staticinvoke <org.slf4j.LoggerFactory: boolean isAmbiguousProviderList(java.util.List)>(r0);
+
+        if $z1 == 0 goto label1;
+
+        $r1 = new java.lang.StringBuilder;
+
+        specialinvoke $r1.<java.lang.StringBuilder: void <init>(java.lang.String)>("Actual provider is of type [");
+
+        $r2 = interfaceinvoke r0.<java.util.List: java.lang.Object get(int)>(0);
+
+        $r3 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r2);
+
+        $r4 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("]");
+
+        $r5 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.slf4j.helpers.Util: void report(java.lang.String)>($r5);
+
+     label1:
+        return;
+    }
+
+    public static org.slf4j.Logger getLogger(java.lang.String)
+    {
+        java.lang.String r0;
+        org.slf4j.ILoggerFactory r1;
+        org.slf4j.Logger $r2;
+
+        r0 := @parameter0: java.lang.String;
+
+        r1 = staticinvoke <org.slf4j.LoggerFactory: org.slf4j.ILoggerFactory getILoggerFactory()>();
+
+        $r2 = interfaceinvoke r1.<org.slf4j.ILoggerFactory: org.slf4j.Logger getLogger(java.lang.String)>(r0);
+
+        return $r2;
+    }
+
+    public static org.slf4j.Logger getLogger(java.lang.Class)
+    {
+        java.lang.Class r0, r2;
+        org.slf4j.Logger r1;
+        java.lang.String $r3, $r5, $r6, $r7;
+        boolean $z0, $z1;
+        java.lang.Object[] $r4;
+
+        r0 := @parameter0: java.lang.Class;
+
+        $r3 = virtualinvoke r0.<java.lang.Class: java.lang.String getName()>();
+
+        r1 = staticinvoke <org.slf4j.LoggerFactory: org.slf4j.Logger getLogger(java.lang.String)>($r3);
+
+        $z0 = <org.slf4j.LoggerFactory: boolean DETECT_LOGGER_NAME_MISMATCH>;
+
+        if $z0 == 0 goto label1;
+
+        r2 = staticinvoke <org.slf4j.helpers.Util: java.lang.Class getCallingClass()>();
+
+        if r2 == null goto label1;
+
+        $z1 = staticinvoke <org.slf4j.LoggerFactory: boolean nonMatchingClasses(java.lang.Class,java.lang.Class)>(r0, r2);
+
+        if $z1 == 0 goto label1;
+
+        $r4 = newarray (java.lang.Object)[2];
+
+        $r5 = interfaceinvoke r1.<org.slf4j.Logger: java.lang.String getName()>();
+
+        $r4[0] = $r5;
+
+        $r6 = virtualinvoke r2.<java.lang.Class: java.lang.String getName()>();
+
+        $r4[1] = $r6;
+
+        $r7 = staticinvoke <java.lang.String: java.lang.String format(java.lang.String,java.lang.Object[])>("Detected logger name mismatch. Given name: \"%s\"; computed name: \"%s\".", $r4);
+
+        staticinvoke <org.slf4j.helpers.Util: void report(java.lang.String)>($r7);
+
+        staticinvoke <org.slf4j.helpers.Util: void report(java.lang.String)>("See http://www.slf4j.org/codes.html#loggerNameMismatch for an explanation");
+
+     label1:
+        return r1;
+    }
+
+    private static boolean nonMatchingClasses(java.lang.Class, java.lang.Class)
+    {
+        java.lang.Class r0, r1;
+        boolean $z0, $z1;
+
+        r0 := @parameter0: java.lang.Class;
+
+        r1 := @parameter1: java.lang.Class;
+
+        $z0 = virtualinvoke r1.<java.lang.Class: boolean isAssignableFrom(java.lang.Class)>(r0);
+
+        if $z0 == 0 goto label1;
+
+        $z1 = 0;
+
+        goto label2;
+
+     label1:
+        $z1 = 1;
+
+     label2:
+        return $z1;
+    }
+
+    public static org.slf4j.ILoggerFactory getILoggerFactory()
+    {
+        org.slf4j.spi.SLF4JServiceProvider $r0;
+        org.slf4j.ILoggerFactory $r1;
+
+        $r0 = staticinvoke <org.slf4j.LoggerFactory: org.slf4j.spi.SLF4JServiceProvider getProvider()>();
+
+        $r1 = interfaceinvoke $r0.<org.slf4j.spi.SLF4JServiceProvider: org.slf4j.ILoggerFactory getLoggerFactory()>();
+
+        return $r1;
+    }
+
+    static org.slf4j.spi.SLF4JServiceProvider getProvider()
+    {
+        int $i0, $i1, $i2;
+        org.slf4j.helpers.NOPServiceProvider $r1;
+        java.lang.IllegalStateException $r2, $r4;
+        org.slf4j.helpers.SubstitureServiceProvider $r3;
+        java.lang.Throwable $r5;
+        org.slf4j.spi.SLF4JServiceProvider $r6;
+
+        $i0 = <org.slf4j.LoggerFactory: int INITIALIZATION_STATE>;
+
+        if $i0 != 0 goto label06;
+
+        entermonitor class "org/slf4j/LoggerFactory";
+
+     label01:
+        $i2 = <org.slf4j.LoggerFactory: int INITIALIZATION_STATE>;
+
+        if $i2 != 0 goto label02;
+
+        <org.slf4j.LoggerFactory: int INITIALIZATION_STATE> = 1;
+
+        staticinvoke <org.slf4j.LoggerFactory: void performInitialization()>();
+
+     label02:
+        exitmonitor class "org/slf4j/LoggerFactory";
+
+     label03:
+        goto label06;
+
+     label04:
+        $r5 := @caughtexception;
+
+        exitmonitor class "org/slf4j/LoggerFactory";
+
+     label05:
+        throw $r5;
+
+     label06:
+        $i1 = <org.slf4j.LoggerFactory: int INITIALIZATION_STATE>;
+
+        tableswitch($i1)
+        {
+            case 1: goto label10;
+            case 2: goto label09;
+            case 3: goto label07;
+            case 4: goto label08;
+            default: goto label11;
+        };
+
+     label07:
+        $r6 = <org.slf4j.LoggerFactory: org.slf4j.spi.SLF4JServiceProvider PROVIDER>;
+
+        return $r6;
+
+     label08:
+        $r1 = <org.slf4j.LoggerFactory: org.slf4j.helpers.NOPServiceProvider NOP_FALLBACK_FACTORY>;
+
+        return $r1;
+
+     label09:
+        $r2 = new java.lang.IllegalStateException;
+
+        specialinvoke $r2.<java.lang.IllegalStateException: void <init>(java.lang.String)>("org.slf4j.LoggerFactory in failed state. Original exception was thrown EARLIER. See also http://www.slf4j.org/codes.html#unsuccessfulInit");
+
+        throw $r2;
+
+     label10:
+        $r3 = <org.slf4j.LoggerFactory: org.slf4j.helpers.SubstitureServiceProvider SUBST_PROVIDER>;
+
+        return $r3;
+
+     label11:
+        $r4 = new java.lang.IllegalStateException;
+
+        specialinvoke $r4.<java.lang.IllegalStateException: void <init>(java.lang.String)>("Unreachable code");
+
+        throw $r4;
+
+        catch java.lang.Throwable from label01 to label03 with label04;
+        catch java.lang.Throwable from label04 to label05 with label04;
+    }
+}

@@ -1,0 +1,533 @@
+public class org.apache.commons.codec.language.bm.PhoneticEngineRegressionTest extends java.lang.Object
+{
+
+    public void <init>()
+    {
+        org.apache.commons.codec.language.bm.PhoneticEngineRegressionTest r0;
+
+        r0 := @this: org.apache.commons.codec.language.bm.PhoneticEngineRegressionTest;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void testSolrGENERIC()
+    {
+        org.apache.commons.codec.language.bm.PhoneticEngineRegressionTest r0;
+        java.util.TreeMap $r1, $r10, $r18, $r26;
+        java.lang.String $r3, $r5, $r6, $r8, $r9, $r11, $r13, $r14, $r16, $r17, $r19, $r21, $r22, $r24, $r25, $r27, $r29, $r30, $r32, $r33;
+
+        r0 := @this: org.apache.commons.codec.language.bm.PhoneticEngineRegressionTest;
+
+        $r1 = new java.util.TreeMap;
+
+        specialinvoke $r1.<java.util.TreeMap: void <init>()>();
+
+        interfaceinvoke $r1.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("nameType", "GENERIC");
+
+        $r3 = staticinvoke <org.apache.commons.codec.language.bm.PhoneticEngineRegressionTest: java.lang.String encode(java.util.Map,boolean,java.lang.String)>($r1, 1, "Angelo");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r3, "YngYlo|Yngilo|agilo|angYlo|angilo|aniilo|anilo|anxilo|anzilo|ogilo|ongYlo|ongilo|oniilo|onilo|onxilo|onzilo");
+
+        interfaceinvoke $r1.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("ruleType", "EXACT");
+
+        $r5 = staticinvoke <org.apache.commons.codec.language.bm.PhoneticEngineRegressionTest: java.lang.String encode(java.util.Map,boolean,java.lang.String)>($r1, 1, "Angelo");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r5, "anZelo|andZelo|angelo|anhelo|anjelo|anxelo");
+
+        $r6 = staticinvoke <org.apache.commons.codec.language.bm.PhoneticEngineRegressionTest: java.lang.String encode(java.util.Map,boolean,java.lang.String)>($r1, 1, "D\'Angelo");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r6, "(anZelo|andZelo|angelo|anhelo|anjelo|anxelo)-(danZelo|dandZelo|dangelo|danhelo|danjelo|danxelo)");
+
+        interfaceinvoke $r1.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("languageSet", "italian,greek,spanish");
+
+        $r8 = staticinvoke <org.apache.commons.codec.language.bm.PhoneticEngineRegressionTest: java.lang.String encode(java.util.Map,boolean,java.lang.String)>($r1, 1, "Angelo");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r8, "andZelo|angelo|anxelo");
+
+        $r9 = staticinvoke <org.apache.commons.codec.language.bm.PhoneticEngineRegressionTest: java.lang.String encode(java.util.Map,boolean,java.lang.String)>($r1, 1, "1234");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r9, "");
+
+        $r10 = new java.util.TreeMap;
+
+        specialinvoke $r10.<java.util.TreeMap: void <init>()>();
+
+        $r11 = staticinvoke <org.apache.commons.codec.language.bm.PhoneticEngineRegressionTest: java.lang.String encode(java.util.Map,boolean,java.lang.String)>($r10, 0, "Angelo");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r11, "YngYlo|Yngilo|agilo|angYlo|angilo|aniilo|anilo|anxilo|anzilo|ogilo|ongYlo|ongilo|oniilo|onilo|onxilo|onzilo");
+
+        interfaceinvoke $r10.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("ruleType", "EXACT");
+
+        $r13 = staticinvoke <org.apache.commons.codec.language.bm.PhoneticEngineRegressionTest: java.lang.String encode(java.util.Map,boolean,java.lang.String)>($r10, 0, "Angelo");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r13, "anZelo|andZelo|angelo|anhelo|anjelo|anxelo");
+
+        $r14 = staticinvoke <org.apache.commons.codec.language.bm.PhoneticEngineRegressionTest: java.lang.String encode(java.util.Map,boolean,java.lang.String)>($r10, 0, "D\'Angelo");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r14, "(anZelo|andZelo|angelo|anhelo|anjelo|anxelo)-(danZelo|dandZelo|dangelo|danhelo|danjelo|danxelo)");
+
+        interfaceinvoke $r10.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("languageSet", "italian,greek,spanish");
+
+        $r16 = staticinvoke <org.apache.commons.codec.language.bm.PhoneticEngineRegressionTest: java.lang.String encode(java.util.Map,boolean,java.lang.String)>($r10, 0, "Angelo");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r16, "andZelo|angelo|anxelo");
+
+        $r17 = staticinvoke <org.apache.commons.codec.language.bm.PhoneticEngineRegressionTest: java.lang.String encode(java.util.Map,boolean,java.lang.String)>($r10, 0, "1234");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r17, "");
+
+        $r18 = new java.util.TreeMap;
+
+        specialinvoke $r18.<java.util.TreeMap: void <init>()>();
+
+        $r19 = staticinvoke <org.apache.commons.codec.language.bm.PhoneticEngineRegressionTest: java.lang.String encode(java.util.Map,boolean,java.lang.String)>($r18, 1, "Angelo");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r19, "YngYlo|Yngilo|agilo|angYlo|angilo|aniilo|anilo|anxilo|anzilo|ogilo|ongYlo|ongilo|oniilo|onilo|onxilo|onzilo");
+
+        interfaceinvoke $r18.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("ruleType", "APPROX");
+
+        $r21 = staticinvoke <org.apache.commons.codec.language.bm.PhoneticEngineRegressionTest: java.lang.String encode(java.util.Map,boolean,java.lang.String)>($r18, 1, "Angelo");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r21, "YngYlo|Yngilo|agilo|angYlo|angilo|aniilo|anilo|anxilo|anzilo|ogilo|ongYlo|ongilo|oniilo|onilo|onxilo|onzilo");
+
+        $r22 = staticinvoke <org.apache.commons.codec.language.bm.PhoneticEngineRegressionTest: java.lang.String encode(java.util.Map,boolean,java.lang.String)>($r18, 1, "D\'Angelo");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r22, "(YngYlo|Yngilo|agilo|angYlo|angilo|aniilo|anilo|anxilo|anzilo|ogilo|ongYlo|ongilo|oniilo|onilo|onxilo|onzilo)-(dYngYlo|dYngilo|dagilo|dangYlo|dangilo|daniilo|danilo|danxilo|danzilo|dogilo|dongYlo|dongilo|doniilo|donilo|donxilo|donzilo)");
+
+        interfaceinvoke $r18.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("languageSet", "italian,greek,spanish");
+
+        $r24 = staticinvoke <org.apache.commons.codec.language.bm.PhoneticEngineRegressionTest: java.lang.String encode(java.util.Map,boolean,java.lang.String)>($r18, 1, "Angelo");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r24, "angilo|anxilo|anzilo|ongilo|onxilo|onzilo");
+
+        $r25 = staticinvoke <org.apache.commons.codec.language.bm.PhoneticEngineRegressionTest: java.lang.String encode(java.util.Map,boolean,java.lang.String)>($r18, 1, "1234");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r25, "");
+
+        $r26 = new java.util.TreeMap;
+
+        specialinvoke $r26.<java.util.TreeMap: void <init>()>();
+
+        $r27 = staticinvoke <org.apache.commons.codec.language.bm.PhoneticEngineRegressionTest: java.lang.String encode(java.util.Map,boolean,java.lang.String)>($r26, 0, "Angelo");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r27, "YngYlo|Yngilo|agilo|angYlo|angilo|aniilo|anilo|anxilo|anzilo|ogilo|ongYlo|ongilo|oniilo|onilo|onxilo|onzilo");
+
+        interfaceinvoke $r26.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("ruleType", "APPROX");
+
+        $r29 = staticinvoke <org.apache.commons.codec.language.bm.PhoneticEngineRegressionTest: java.lang.String encode(java.util.Map,boolean,java.lang.String)>($r26, 0, "Angelo");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r29, "YngYlo|Yngilo|agilo|angYlo|angilo|aniilo|anilo|anxilo|anzilo|ogilo|ongYlo|ongilo|oniilo|onilo|onxilo|onzilo");
+
+        $r30 = staticinvoke <org.apache.commons.codec.language.bm.PhoneticEngineRegressionTest: java.lang.String encode(java.util.Map,boolean,java.lang.String)>($r26, 0, "D\'Angelo");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r30, "(YngYlo|Yngilo|agilo|angYlo|angilo|aniilo|anilo|anxilo|anzilo|ogilo|ongYlo|ongilo|oniilo|onilo|onxilo|onzilo)-(dYngYlo|dYngilo|dagilo|dangYlo|dangilo|daniilo|danilo|danxilo|danzilo|dogilo|dongYlo|dongilo|doniilo|donilo|donxilo|donzilo)");
+
+        interfaceinvoke $r26.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("languageSet", "italian,greek,spanish");
+
+        $r32 = staticinvoke <org.apache.commons.codec.language.bm.PhoneticEngineRegressionTest: java.lang.String encode(java.util.Map,boolean,java.lang.String)>($r26, 0, "Angelo");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r32, "angilo|anxilo|anzilo|ongilo|onxilo|onzilo");
+
+        $r33 = staticinvoke <org.apache.commons.codec.language.bm.PhoneticEngineRegressionTest: java.lang.String encode(java.util.Map,boolean,java.lang.String)>($r26, 0, "1234");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r33, "");
+
+        return;
+    }
+
+    public void testSolrASHKENAZI()
+    {
+        org.apache.commons.codec.language.bm.PhoneticEngineRegressionTest r0;
+        java.util.TreeMap $r1, $r10, $r19, $r28;
+        java.lang.String $r3, $r5, $r6, $r8, $r9, $r12, $r14, $r15, $r17, $r18, $r21, $r23, $r24, $r26, $r27, $r30, $r32, $r33, $r35, $r36;
+
+        r0 := @this: org.apache.commons.codec.language.bm.PhoneticEngineRegressionTest;
+
+        $r1 = new java.util.TreeMap;
+
+        specialinvoke $r1.<java.util.TreeMap: void <init>()>();
+
+        interfaceinvoke $r1.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("nameType", "ASHKENAZI");
+
+        $r3 = staticinvoke <org.apache.commons.codec.language.bm.PhoneticEngineRegressionTest: java.lang.String encode(java.util.Map,boolean,java.lang.String)>($r1, 1, "Angelo");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r3, "YngYlo|Yngilo|angYlo|angilo|anilo|anxilo|anzilo|ongYlo|ongilo|onilo|onxilo|onzilo");
+
+        interfaceinvoke $r1.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("ruleType", "EXACT");
+
+        $r5 = staticinvoke <org.apache.commons.codec.language.bm.PhoneticEngineRegressionTest: java.lang.String encode(java.util.Map,boolean,java.lang.String)>($r1, 1, "Angelo");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r5, "andZelo|angelo|anhelo|anxelo");
+
+        $r6 = staticinvoke <org.apache.commons.codec.language.bm.PhoneticEngineRegressionTest: java.lang.String encode(java.util.Map,boolean,java.lang.String)>($r1, 1, "D\'Angelo");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r6, "dandZelo|dangelo|danhelo|danxelo");
+
+        interfaceinvoke $r1.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("languageSet", "italian,greek,spanish");
+
+        $r8 = staticinvoke <org.apache.commons.codec.language.bm.PhoneticEngineRegressionTest: java.lang.String encode(java.util.Map,boolean,java.lang.String)>($r1, 1, "Angelo");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r8, "angelo|anxelo");
+
+        $r9 = staticinvoke <org.apache.commons.codec.language.bm.PhoneticEngineRegressionTest: java.lang.String encode(java.util.Map,boolean,java.lang.String)>($r1, 1, "1234");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r9, "");
+
+        $r10 = new java.util.TreeMap;
+
+        specialinvoke $r10.<java.util.TreeMap: void <init>()>();
+
+        interfaceinvoke $r10.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("nameType", "ASHKENAZI");
+
+        $r12 = staticinvoke <org.apache.commons.codec.language.bm.PhoneticEngineRegressionTest: java.lang.String encode(java.util.Map,boolean,java.lang.String)>($r10, 0, "Angelo");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r12, "YngYlo|Yngilo|angYlo|angilo|anilo|anxilo|anzilo|ongYlo|ongilo|onilo|onxilo|onzilo");
+
+        interfaceinvoke $r10.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("ruleType", "EXACT");
+
+        $r14 = staticinvoke <org.apache.commons.codec.language.bm.PhoneticEngineRegressionTest: java.lang.String encode(java.util.Map,boolean,java.lang.String)>($r10, 0, "Angelo");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r14, "andZelo|angelo|anhelo|anxelo");
+
+        $r15 = staticinvoke <org.apache.commons.codec.language.bm.PhoneticEngineRegressionTest: java.lang.String encode(java.util.Map,boolean,java.lang.String)>($r10, 0, "D\'Angelo");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r15, "dandZelo|dangelo|danhelo|danxelo");
+
+        interfaceinvoke $r10.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("languageSet", "italian,greek,spanish");
+
+        $r17 = staticinvoke <org.apache.commons.codec.language.bm.PhoneticEngineRegressionTest: java.lang.String encode(java.util.Map,boolean,java.lang.String)>($r10, 0, "Angelo");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r17, "angelo|anxelo");
+
+        $r18 = staticinvoke <org.apache.commons.codec.language.bm.PhoneticEngineRegressionTest: java.lang.String encode(java.util.Map,boolean,java.lang.String)>($r10, 0, "1234");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r18, "");
+
+        $r19 = new java.util.TreeMap;
+
+        specialinvoke $r19.<java.util.TreeMap: void <init>()>();
+
+        interfaceinvoke $r19.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("nameType", "ASHKENAZI");
+
+        $r21 = staticinvoke <org.apache.commons.codec.language.bm.PhoneticEngineRegressionTest: java.lang.String encode(java.util.Map,boolean,java.lang.String)>($r19, 1, "Angelo");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r21, "YngYlo|Yngilo|angYlo|angilo|anilo|anxilo|anzilo|ongYlo|ongilo|onilo|onxilo|onzilo");
+
+        interfaceinvoke $r19.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("ruleType", "APPROX");
+
+        $r23 = staticinvoke <org.apache.commons.codec.language.bm.PhoneticEngineRegressionTest: java.lang.String encode(java.util.Map,boolean,java.lang.String)>($r19, 1, "Angelo");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r23, "YngYlo|Yngilo|angYlo|angilo|anilo|anxilo|anzilo|ongYlo|ongilo|onilo|onxilo|onzilo");
+
+        $r24 = staticinvoke <org.apache.commons.codec.language.bm.PhoneticEngineRegressionTest: java.lang.String encode(java.util.Map,boolean,java.lang.String)>($r19, 1, "D\'Angelo");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r24, "dYngYlo|dYngilo|dangYlo|dangilo|danilo|danxilo|danzilo|dongYlo|dongilo|donilo|donxilo|donzilo");
+
+        interfaceinvoke $r19.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("languageSet", "italian,greek,spanish");
+
+        $r26 = staticinvoke <org.apache.commons.codec.language.bm.PhoneticEngineRegressionTest: java.lang.String encode(java.util.Map,boolean,java.lang.String)>($r19, 1, "Angelo");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r26, "angilo|anxilo|ongilo|onxilo");
+
+        $r27 = staticinvoke <org.apache.commons.codec.language.bm.PhoneticEngineRegressionTest: java.lang.String encode(java.util.Map,boolean,java.lang.String)>($r19, 1, "1234");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r27, "");
+
+        $r28 = new java.util.TreeMap;
+
+        specialinvoke $r28.<java.util.TreeMap: void <init>()>();
+
+        interfaceinvoke $r28.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("nameType", "ASHKENAZI");
+
+        $r30 = staticinvoke <org.apache.commons.codec.language.bm.PhoneticEngineRegressionTest: java.lang.String encode(java.util.Map,boolean,java.lang.String)>($r28, 0, "Angelo");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r30, "YngYlo|Yngilo|angYlo|angilo|anilo|anxilo|anzilo|ongYlo|ongilo|onilo|onxilo|onzilo");
+
+        interfaceinvoke $r28.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("ruleType", "APPROX");
+
+        $r32 = staticinvoke <org.apache.commons.codec.language.bm.PhoneticEngineRegressionTest: java.lang.String encode(java.util.Map,boolean,java.lang.String)>($r28, 0, "Angelo");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r32, "YngYlo|Yngilo|angYlo|angilo|anilo|anxilo|anzilo|ongYlo|ongilo|onilo|onxilo|onzilo");
+
+        $r33 = staticinvoke <org.apache.commons.codec.language.bm.PhoneticEngineRegressionTest: java.lang.String encode(java.util.Map,boolean,java.lang.String)>($r28, 0, "D\'Angelo");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r33, "dYngYlo|dYngilo|dangYlo|dangilo|danilo|danxilo|danzilo|dongYlo|dongilo|donilo|donxilo|donzilo");
+
+        interfaceinvoke $r28.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("languageSet", "italian,greek,spanish");
+
+        $r35 = staticinvoke <org.apache.commons.codec.language.bm.PhoneticEngineRegressionTest: java.lang.String encode(java.util.Map,boolean,java.lang.String)>($r28, 0, "Angelo");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r35, "angilo|anxilo|ongilo|onxilo");
+
+        $r36 = staticinvoke <org.apache.commons.codec.language.bm.PhoneticEngineRegressionTest: java.lang.String encode(java.util.Map,boolean,java.lang.String)>($r28, 0, "1234");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r36, "");
+
+        return;
+    }
+
+    public void testSolrSEPHARDIC()
+    {
+        org.apache.commons.codec.language.bm.PhoneticEngineRegressionTest r0;
+        java.util.TreeMap $r1, $r10, $r19, $r28;
+        java.lang.String $r3, $r5, $r6, $r8, $r9, $r12, $r14, $r15, $r17, $r18, $r21, $r23, $r24, $r26, $r27, $r30, $r32, $r33, $r35, $r36;
+
+        r0 := @this: org.apache.commons.codec.language.bm.PhoneticEngineRegressionTest;
+
+        $r1 = new java.util.TreeMap;
+
+        specialinvoke $r1.<java.util.TreeMap: void <init>()>();
+
+        interfaceinvoke $r1.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("nameType", "SEPHARDIC");
+
+        $r3 = staticinvoke <org.apache.commons.codec.language.bm.PhoneticEngineRegressionTest: java.lang.String encode(java.util.Map,boolean,java.lang.String)>($r1, 1, "Angelo");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r3, "anhila|anhilu|anzila|anzilu|nhila|nhilu|nzila|nzilu");
+
+        interfaceinvoke $r1.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("ruleType", "EXACT");
+
+        $r5 = staticinvoke <org.apache.commons.codec.language.bm.PhoneticEngineRegressionTest: java.lang.String encode(java.util.Map,boolean,java.lang.String)>($r1, 1, "Angelo");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r5, "anZelo|andZelo|anxelo");
+
+        $r6 = staticinvoke <org.apache.commons.codec.language.bm.PhoneticEngineRegressionTest: java.lang.String encode(java.util.Map,boolean,java.lang.String)>($r1, 1, "D\'Angelo");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r6, "anZelo|andZelo|anxelo");
+
+        interfaceinvoke $r1.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("languageSet", "italian,greek,spanish");
+
+        $r8 = staticinvoke <org.apache.commons.codec.language.bm.PhoneticEngineRegressionTest: java.lang.String encode(java.util.Map,boolean,java.lang.String)>($r1, 1, "Angelo");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r8, "andZelo|anxelo");
+
+        $r9 = staticinvoke <org.apache.commons.codec.language.bm.PhoneticEngineRegressionTest: java.lang.String encode(java.util.Map,boolean,java.lang.String)>($r1, 1, "1234");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r9, "");
+
+        $r10 = new java.util.TreeMap;
+
+        specialinvoke $r10.<java.util.TreeMap: void <init>()>();
+
+        interfaceinvoke $r10.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("nameType", "SEPHARDIC");
+
+        $r12 = staticinvoke <org.apache.commons.codec.language.bm.PhoneticEngineRegressionTest: java.lang.String encode(java.util.Map,boolean,java.lang.String)>($r10, 0, "Angelo");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r12, "anhila|anhilu|anzila|anzilu|nhila|nhilu|nzila|nzilu");
+
+        interfaceinvoke $r10.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("ruleType", "EXACT");
+
+        $r14 = staticinvoke <org.apache.commons.codec.language.bm.PhoneticEngineRegressionTest: java.lang.String encode(java.util.Map,boolean,java.lang.String)>($r10, 0, "Angelo");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r14, "anZelo|andZelo|anxelo");
+
+        $r15 = staticinvoke <org.apache.commons.codec.language.bm.PhoneticEngineRegressionTest: java.lang.String encode(java.util.Map,boolean,java.lang.String)>($r10, 0, "D\'Angelo");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r15, "danZelo|dandZelo|danxelo");
+
+        interfaceinvoke $r10.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("languageSet", "italian,greek,spanish");
+
+        $r17 = staticinvoke <org.apache.commons.codec.language.bm.PhoneticEngineRegressionTest: java.lang.String encode(java.util.Map,boolean,java.lang.String)>($r10, 0, "Angelo");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r17, "andZelo|anxelo");
+
+        $r18 = staticinvoke <org.apache.commons.codec.language.bm.PhoneticEngineRegressionTest: java.lang.String encode(java.util.Map,boolean,java.lang.String)>($r10, 0, "1234");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r18, "");
+
+        $r19 = new java.util.TreeMap;
+
+        specialinvoke $r19.<java.util.TreeMap: void <init>()>();
+
+        interfaceinvoke $r19.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("nameType", "SEPHARDIC");
+
+        $r21 = staticinvoke <org.apache.commons.codec.language.bm.PhoneticEngineRegressionTest: java.lang.String encode(java.util.Map,boolean,java.lang.String)>($r19, 1, "Angelo");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r21, "anhila|anhilu|anzila|anzilu|nhila|nhilu|nzila|nzilu");
+
+        interfaceinvoke $r19.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("ruleType", "APPROX");
+
+        $r23 = staticinvoke <org.apache.commons.codec.language.bm.PhoneticEngineRegressionTest: java.lang.String encode(java.util.Map,boolean,java.lang.String)>($r19, 1, "Angelo");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r23, "anhila|anhilu|anzila|anzilu|nhila|nhilu|nzila|nzilu");
+
+        $r24 = staticinvoke <org.apache.commons.codec.language.bm.PhoneticEngineRegressionTest: java.lang.String encode(java.util.Map,boolean,java.lang.String)>($r19, 1, "D\'Angelo");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r24, "anhila|anhilu|anzila|anzilu|nhila|nhilu|nzila|nzilu");
+
+        interfaceinvoke $r19.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("languageSet", "italian,greek,spanish");
+
+        $r26 = staticinvoke <org.apache.commons.codec.language.bm.PhoneticEngineRegressionTest: java.lang.String encode(java.util.Map,boolean,java.lang.String)>($r19, 1, "Angelo");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r26, "anhila|anhilu|anzila|anzilu|nhila|nhilu|nzila|nzilu");
+
+        $r27 = staticinvoke <org.apache.commons.codec.language.bm.PhoneticEngineRegressionTest: java.lang.String encode(java.util.Map,boolean,java.lang.String)>($r19, 1, "1234");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r27, "");
+
+        $r28 = new java.util.TreeMap;
+
+        specialinvoke $r28.<java.util.TreeMap: void <init>()>();
+
+        interfaceinvoke $r28.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("nameType", "SEPHARDIC");
+
+        $r30 = staticinvoke <org.apache.commons.codec.language.bm.PhoneticEngineRegressionTest: java.lang.String encode(java.util.Map,boolean,java.lang.String)>($r28, 0, "Angelo");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r30, "anhila|anhilu|anzila|anzilu|nhila|nhilu|nzila|nzilu");
+
+        interfaceinvoke $r28.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("ruleType", "APPROX");
+
+        $r32 = staticinvoke <org.apache.commons.codec.language.bm.PhoneticEngineRegressionTest: java.lang.String encode(java.util.Map,boolean,java.lang.String)>($r28, 0, "Angelo");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r32, "anhila|anhilu|anzila|anzilu|nhila|nhilu|nzila|nzilu");
+
+        $r33 = staticinvoke <org.apache.commons.codec.language.bm.PhoneticEngineRegressionTest: java.lang.String encode(java.util.Map,boolean,java.lang.String)>($r28, 0, "D\'Angelo");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r33, "danhila|danhilu|danzila|danzilu|nhila|nhilu|nzila|nzilu");
+
+        interfaceinvoke $r28.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("languageSet", "italian,greek,spanish");
+
+        $r35 = staticinvoke <org.apache.commons.codec.language.bm.PhoneticEngineRegressionTest: java.lang.String encode(java.util.Map,boolean,java.lang.String)>($r28, 0, "Angelo");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r35, "anhila|anhilu|anzila|anzilu|nhila|nhilu|nzila|nzilu");
+
+        $r36 = staticinvoke <org.apache.commons.codec.language.bm.PhoneticEngineRegressionTest: java.lang.String encode(java.util.Map,boolean,java.lang.String)>($r28, 0, "1234");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r36, "");
+
+        return;
+    }
+
+    public void testCompatibilityWithOriginalVersion()
+    {
+        org.apache.commons.codec.language.bm.PhoneticEngineRegressionTest r0;
+        java.util.TreeMap $r2;
+        java.lang.String $r5, $r6, $r9, $r10;
+
+        r0 := @this: org.apache.commons.codec.language.bm.PhoneticEngineRegressionTest;
+
+        $r2 = new java.util.TreeMap;
+
+        specialinvoke $r2.<java.util.TreeMap: void <init>()>();
+
+        interfaceinvoke $r2.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("nameType", "GENERIC");
+
+        interfaceinvoke $r2.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("ruleType", "APPROX");
+
+        $r5 = staticinvoke <org.apache.commons.codec.language.bm.PhoneticEngineRegressionTest: java.lang.String encode(java.util.Map,boolean,java.lang.String)>($r2, 1, "abram");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r5, "Ybram|Ybrom|abram|abran|abrom|abron|avram|avrom|obram|obran|obrom|obron|ovram|ovrom");
+
+        $r6 = staticinvoke <org.apache.commons.codec.language.bm.PhoneticEngineRegressionTest: java.lang.String encode(java.util.Map,boolean,java.lang.String)>($r2, 1, "Bendzin");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r6, "bndzn|bntsn|bnzn|vndzn|vntsn");
+
+        interfaceinvoke $r2.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("nameType", "ASHKENAZI");
+
+        interfaceinvoke $r2.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("ruleType", "APPROX");
+
+        $r9 = staticinvoke <org.apache.commons.codec.language.bm.PhoneticEngineRegressionTest: java.lang.String encode(java.util.Map,boolean,java.lang.String)>($r2, 1, "abram");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r9, "Ybram|Ybrom|abram|abrom|avram|avrom|imbram|imbrom|obram|obrom|ombram|ombrom|ovram|ovrom");
+
+        $r10 = staticinvoke <org.apache.commons.codec.language.bm.PhoneticEngineRegressionTest: java.lang.String encode(java.util.Map,boolean,java.lang.String)>($r2, 1, "Halpern");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r10, "YlpYrn|Ylpirn|alpYrn|alpirn|olpYrn|olpirn|xalpirn|xolpirn");
+
+        return;
+    }
+
+    private static java.lang.String encode(java.util.Map, boolean, java.lang.String)
+    {
+        java.util.Map r0;
+        boolean z0, $z1;
+        java.lang.String r1, r3, r5, r7, $r12, $r13;
+        org.apache.commons.codec.language.bm.NameType r4, $r17;
+        java.lang.Object $r8, $r9, $r11;
+        org.apache.commons.codec.language.bm.PhoneticEngine $r10;
+        java.util.HashSet $r14;
+        java.lang.String[] $r15;
+        java.util.List $r16;
+        org.apache.commons.codec.language.bm.RuleType $r18;
+        org.apache.commons.codec.language.bm.Languages$LanguageSet r19;
+
+        r0 := @parameter0: java.util.Map;
+
+        z0 := @parameter1: boolean;
+
+        r1 := @parameter2: java.lang.String;
+
+        $r8 = interfaceinvoke r0.<java.util.Map: java.lang.Object get(java.lang.Object)>("nameType");
+
+        r3 = (java.lang.String) $r8;
+
+        if r3 != null goto label1;
+
+        $r17 = <org.apache.commons.codec.language.bm.NameType: org.apache.commons.codec.language.bm.NameType GENERIC>;
+
+        goto label2;
+
+     label1:
+        $r17 = staticinvoke <org.apache.commons.codec.language.bm.NameType: org.apache.commons.codec.language.bm.NameType valueOf(java.lang.String)>(r3);
+
+     label2:
+        r4 = $r17;
+
+        $r9 = interfaceinvoke r0.<java.util.Map: java.lang.Object get(java.lang.Object)>("ruleType");
+
+        r5 = (java.lang.String) $r9;
+
+        if r5 != null goto label3;
+
+        $r18 = <org.apache.commons.codec.language.bm.RuleType: org.apache.commons.codec.language.bm.RuleType APPROX>;
+
+        goto label4;
+
+     label3:
+        $r18 = staticinvoke <org.apache.commons.codec.language.bm.RuleType: org.apache.commons.codec.language.bm.RuleType valueOf(java.lang.String)>(r5);
+
+     label4:
+        $r10 = new org.apache.commons.codec.language.bm.PhoneticEngine;
+
+        specialinvoke $r10.<org.apache.commons.codec.language.bm.PhoneticEngine: void <init>(org.apache.commons.codec.language.bm.NameType,org.apache.commons.codec.language.bm.RuleType,boolean)>(r4, $r18, z0);
+
+        $r11 = interfaceinvoke r0.<java.util.Map: java.lang.Object get(java.lang.Object)>("languageSet");
+
+        r7 = (java.lang.String) $r11;
+
+        if r7 == null goto label5;
+
+        $z1 = virtualinvoke r7.<java.lang.String: boolean equals(java.lang.Object)>("auto");
+
+        if $z1 == 0 goto label6;
+
+     label5:
+        r19 = null;
+
+        goto label7;
+
+     label6:
+        $r14 = new java.util.HashSet;
+
+        $r15 = virtualinvoke r7.<java.lang.String: java.lang.String[] split(java.lang.String)>(",");
+
+        $r16 = staticinvoke <java.util.Arrays: java.util.List asList(java.lang.Object[])>($r15);
+
+        specialinvoke $r14.<java.util.HashSet: void <init>(java.util.Collection)>($r16);
+
+        r19 = staticinvoke <org.apache.commons.codec.language.bm.Languages$LanguageSet: org.apache.commons.codec.language.bm.Languages$LanguageSet 'from'(java.util.Set)>($r14);
+
+     label7:
+        if r19 != null goto label8;
+
+        $r13 = virtualinvoke $r10.<org.apache.commons.codec.language.bm.PhoneticEngine: java.lang.String encode(java.lang.String)>(r1);
+
+        return $r13;
+
+     label8:
+        $r12 = virtualinvoke $r10.<org.apache.commons.codec.language.bm.PhoneticEngine: java.lang.String encode(java.lang.String,org.apache.commons.codec.language.bm.Languages$LanguageSet)>(r1, r19);
+
+        return $r12;
+    }
+}

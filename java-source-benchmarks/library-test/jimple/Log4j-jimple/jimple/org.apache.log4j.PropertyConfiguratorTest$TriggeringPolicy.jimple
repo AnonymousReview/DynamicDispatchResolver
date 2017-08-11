@@ -1,0 +1,40 @@
+public class org.apache.log4j.PropertyConfiguratorTest$TriggeringPolicy extends java.lang.Object implements org.apache.log4j.spi.OptionHandler
+{
+    private boolean activated;
+
+    public void <init>()
+    {
+        org.apache.log4j.PropertyConfiguratorTest$TriggeringPolicy r0;
+
+        r0 := @this: org.apache.log4j.PropertyConfiguratorTest$TriggeringPolicy;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<org.apache.log4j.PropertyConfiguratorTest$TriggeringPolicy: boolean activated> = 0;
+
+        return;
+    }
+
+    public void activateOptions()
+    {
+        org.apache.log4j.PropertyConfiguratorTest$TriggeringPolicy r0;
+
+        r0 := @this: org.apache.log4j.PropertyConfiguratorTest$TriggeringPolicy;
+
+        r0.<org.apache.log4j.PropertyConfiguratorTest$TriggeringPolicy: boolean activated> = 1;
+
+        return;
+    }
+
+    public final boolean isActivated()
+    {
+        org.apache.log4j.PropertyConfiguratorTest$TriggeringPolicy r0;
+        boolean $z0;
+
+        r0 := @this: org.apache.log4j.PropertyConfiguratorTest$TriggeringPolicy;
+
+        $z0 = r0.<org.apache.log4j.PropertyConfiguratorTest$TriggeringPolicy: boolean activated>;
+
+        return $z0;
+    }
+}

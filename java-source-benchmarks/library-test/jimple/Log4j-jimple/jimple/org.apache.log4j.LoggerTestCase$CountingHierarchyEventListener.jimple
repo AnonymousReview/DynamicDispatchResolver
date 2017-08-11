@@ -1,0 +1,88 @@
+final class org.apache.log4j.LoggerTestCase$CountingHierarchyEventListener extends java.lang.Object implements org.apache.log4j.spi.HierarchyEventListener
+{
+    private int addEventCount;
+    private int removeEventCount;
+
+    public void <init>()
+    {
+        org.apache.log4j.LoggerTestCase$CountingHierarchyEventListener r0;
+
+        r0 := @this: org.apache.log4j.LoggerTestCase$CountingHierarchyEventListener;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<org.apache.log4j.LoggerTestCase$CountingHierarchyEventListener: int removeEventCount> = 0;
+
+        r0.<org.apache.log4j.LoggerTestCase$CountingHierarchyEventListener: int addEventCount> = 0;
+
+        return;
+    }
+
+    public void addAppenderEvent(org.apache.log4j.Category, org.apache.log4j.Appender)
+    {
+        org.apache.log4j.LoggerTestCase$CountingHierarchyEventListener r0;
+        org.apache.log4j.Category r1;
+        org.apache.log4j.Appender r2;
+        int $i0, $i1;
+
+        r0 := @this: org.apache.log4j.LoggerTestCase$CountingHierarchyEventListener;
+
+        r1 := @parameter0: org.apache.log4j.Category;
+
+        r2 := @parameter1: org.apache.log4j.Appender;
+
+        $i0 = r0.<org.apache.log4j.LoggerTestCase$CountingHierarchyEventListener: int addEventCount>;
+
+        $i1 = $i0 + 1;
+
+        r0.<org.apache.log4j.LoggerTestCase$CountingHierarchyEventListener: int addEventCount> = $i1;
+
+        return;
+    }
+
+    public void removeAppenderEvent(org.apache.log4j.Category, org.apache.log4j.Appender)
+    {
+        org.apache.log4j.LoggerTestCase$CountingHierarchyEventListener r0;
+        org.apache.log4j.Category r1;
+        org.apache.log4j.Appender r2;
+        int $i0, $i1;
+
+        r0 := @this: org.apache.log4j.LoggerTestCase$CountingHierarchyEventListener;
+
+        r1 := @parameter0: org.apache.log4j.Category;
+
+        r2 := @parameter1: org.apache.log4j.Appender;
+
+        $i0 = r0.<org.apache.log4j.LoggerTestCase$CountingHierarchyEventListener: int removeEventCount>;
+
+        $i1 = $i0 + 1;
+
+        r0.<org.apache.log4j.LoggerTestCase$CountingHierarchyEventListener: int removeEventCount> = $i1;
+
+        return;
+    }
+
+    public int getAddEventCount()
+    {
+        org.apache.log4j.LoggerTestCase$CountingHierarchyEventListener r0;
+        int $i0;
+
+        r0 := @this: org.apache.log4j.LoggerTestCase$CountingHierarchyEventListener;
+
+        $i0 = r0.<org.apache.log4j.LoggerTestCase$CountingHierarchyEventListener: int addEventCount>;
+
+        return $i0;
+    }
+
+    public int getRemoveEventCount()
+    {
+        org.apache.log4j.LoggerTestCase$CountingHierarchyEventListener r0;
+        int $i0;
+
+        r0 := @this: org.apache.log4j.LoggerTestCase$CountingHierarchyEventListener;
+
+        $i0 = r0.<org.apache.log4j.LoggerTestCase$CountingHierarchyEventListener: int removeEventCount>;
+
+        return $i0;
+    }
+}

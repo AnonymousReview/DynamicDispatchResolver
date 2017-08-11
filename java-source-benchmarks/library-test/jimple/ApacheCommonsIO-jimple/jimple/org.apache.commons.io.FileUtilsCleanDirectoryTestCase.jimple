@@ -1,0 +1,415 @@
+public class org.apache.commons.io.FileUtilsCleanDirectoryTestCase extends org.apache.commons.io.testtools.FileBasedTestCase
+{
+    final java.io.File top;
+
+    public void <init>()
+    {
+        org.apache.commons.io.FileUtilsCleanDirectoryTestCase r0;
+        java.io.File $r1;
+
+        r0 := @this: org.apache.commons.io.FileUtilsCleanDirectoryTestCase;
+
+        specialinvoke r0.<org.apache.commons.io.testtools.FileBasedTestCase: void <init>()>();
+
+        $r1 = specialinvoke r0.<org.apache.commons.io.FileUtilsCleanDirectoryTestCase: java.io.File getLocalTestDirectory()>();
+
+        r0.<org.apache.commons.io.FileUtilsCleanDirectoryTestCase: java.io.File top> = $r1;
+
+        return;
+    }
+
+    private java.io.File getLocalTestDirectory()
+    {
+        org.apache.commons.io.FileUtilsCleanDirectoryTestCase r0;
+        java.io.File $r1, $r2;
+
+        r0 := @this: org.apache.commons.io.FileUtilsCleanDirectoryTestCase;
+
+        $r1 = new java.io.File;
+
+        $r2 = staticinvoke <org.apache.commons.io.FileUtilsCleanDirectoryTestCase: java.io.File getTestDirectory()>();
+
+        specialinvoke $r1.<java.io.File: void <init>(java.io.File,java.lang.String)>($r2, "list-files");
+
+        return $r1;
+    }
+
+    public void setUp() throws java.lang.Exception
+    {
+        org.apache.commons.io.FileUtilsCleanDirectoryTestCase r0;
+        java.io.File $r1;
+
+        r0 := @this: org.apache.commons.io.FileUtilsCleanDirectoryTestCase;
+
+        $r1 = r0.<org.apache.commons.io.FileUtilsCleanDirectoryTestCase: java.io.File top>;
+
+        virtualinvoke $r1.<java.io.File: boolean mkdirs()>();
+
+        return;
+    }
+
+    public void tearDown() throws java.lang.Exception
+    {
+        org.apache.commons.io.FileUtilsCleanDirectoryTestCase r0;
+        java.io.File $r1, $r2;
+
+        r0 := @this: org.apache.commons.io.FileUtilsCleanDirectoryTestCase;
+
+        $r1 = r0.<org.apache.commons.io.FileUtilsCleanDirectoryTestCase: java.io.File top>;
+
+        specialinvoke r0.<org.apache.commons.io.FileUtilsCleanDirectoryTestCase: boolean chmod(java.io.File,int,boolean)>($r1, 775, 1);
+
+        $r2 = r0.<org.apache.commons.io.FileUtilsCleanDirectoryTestCase: java.io.File top>;
+
+        staticinvoke <org.apache.commons.io.FileUtils: void deleteDirectory(java.io.File)>($r2);
+
+        return;
+    }
+
+    public void testCleanEmpty() throws java.lang.Exception
+    {
+        org.apache.commons.io.FileUtilsCleanDirectoryTestCase r0;
+        java.io.File $r1, $r3, $r4;
+        java.lang.String[] $r2, $r5;
+        int $i0, $i2;
+        long $l1, $l3;
+
+        r0 := @this: org.apache.commons.io.FileUtilsCleanDirectoryTestCase;
+
+        $r1 = r0.<org.apache.commons.io.FileUtilsCleanDirectoryTestCase: java.io.File top>;
+
+        $r2 = virtualinvoke $r1.<java.io.File: java.lang.String[] list()>();
+
+        $i0 = lengthof $r2;
+
+        $l1 = (long) $i0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(0L, $l1);
+
+        $r3 = r0.<org.apache.commons.io.FileUtilsCleanDirectoryTestCase: java.io.File top>;
+
+        staticinvoke <org.apache.commons.io.FileUtils: void cleanDirectory(java.io.File)>($r3);
+
+        $r4 = r0.<org.apache.commons.io.FileUtilsCleanDirectoryTestCase: java.io.File top>;
+
+        $r5 = virtualinvoke $r4.<java.io.File: java.lang.String[] list()>();
+
+        $i2 = lengthof $r5;
+
+        $l3 = (long) $i2;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(0L, $l3);
+
+        return;
+    }
+
+    public void testDeletesRegular() throws java.lang.Exception
+    {
+        org.apache.commons.io.FileUtilsCleanDirectoryTestCase r0;
+        java.io.File $r1, $r2, $r3, $r4, $r5, $r7, $r8;
+        java.lang.String[] $r6, $r9;
+        int $i0, $i2;
+        long $l1, $l3;
+
+        r0 := @this: org.apache.commons.io.FileUtilsCleanDirectoryTestCase;
+
+        $r1 = new java.io.File;
+
+        $r2 = r0.<org.apache.commons.io.FileUtilsCleanDirectoryTestCase: java.io.File top>;
+
+        specialinvoke $r1.<java.io.File: void <init>(java.io.File,java.lang.String)>($r2, "regular");
+
+        staticinvoke <org.apache.commons.io.FileUtils: void touch(java.io.File)>($r1);
+
+        $r3 = new java.io.File;
+
+        $r4 = r0.<org.apache.commons.io.FileUtilsCleanDirectoryTestCase: java.io.File top>;
+
+        specialinvoke $r3.<java.io.File: void <init>(java.io.File,java.lang.String)>($r4, ".hidden");
+
+        staticinvoke <org.apache.commons.io.FileUtils: void touch(java.io.File)>($r3);
+
+        $r5 = r0.<org.apache.commons.io.FileUtilsCleanDirectoryTestCase: java.io.File top>;
+
+        $r6 = virtualinvoke $r5.<java.io.File: java.lang.String[] list()>();
+
+        $i0 = lengthof $r6;
+
+        $l1 = (long) $i0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(2L, $l1);
+
+        $r7 = r0.<org.apache.commons.io.FileUtilsCleanDirectoryTestCase: java.io.File top>;
+
+        staticinvoke <org.apache.commons.io.FileUtils: void cleanDirectory(java.io.File)>($r7);
+
+        $r8 = r0.<org.apache.commons.io.FileUtilsCleanDirectoryTestCase: java.io.File top>;
+
+        $r9 = virtualinvoke $r8.<java.io.File: java.lang.String[] list()>();
+
+        $i2 = lengthof $r9;
+
+        $l3 = (long) $i2;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(0L, $l3);
+
+        return;
+    }
+
+    public void testDeletesNested() throws java.lang.Exception
+    {
+        org.apache.commons.io.FileUtilsCleanDirectoryTestCase r0;
+        java.io.File $r2, $r3, $r4, $r5, $r7, $r8;
+        boolean $z0;
+        java.lang.String[] $r6, $r9;
+        int $i0, $i2;
+        long $l1, $l3;
+
+        r0 := @this: org.apache.commons.io.FileUtilsCleanDirectoryTestCase;
+
+        $r2 = new java.io.File;
+
+        $r3 = r0.<org.apache.commons.io.FileUtilsCleanDirectoryTestCase: java.io.File top>;
+
+        specialinvoke $r2.<java.io.File: void <init>(java.io.File,java.lang.String)>($r3, "nested");
+
+        $z0 = virtualinvoke $r2.<java.io.File: boolean mkdirs()>();
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z0);
+
+        $r4 = new java.io.File;
+
+        specialinvoke $r4.<java.io.File: void <init>(java.io.File,java.lang.String)>($r2, "file");
+
+        staticinvoke <org.apache.commons.io.FileUtils: void touch(java.io.File)>($r4);
+
+        $r5 = r0.<org.apache.commons.io.FileUtilsCleanDirectoryTestCase: java.io.File top>;
+
+        $r6 = virtualinvoke $r5.<java.io.File: java.lang.String[] list()>();
+
+        $i0 = lengthof $r6;
+
+        $l1 = (long) $i0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(1L, $l1);
+
+        $r7 = r0.<org.apache.commons.io.FileUtilsCleanDirectoryTestCase: java.io.File top>;
+
+        staticinvoke <org.apache.commons.io.FileUtils: void cleanDirectory(java.io.File)>($r7);
+
+        $r8 = r0.<org.apache.commons.io.FileUtilsCleanDirectoryTestCase: java.io.File top>;
+
+        $r9 = virtualinvoke $r8.<java.io.File: java.lang.String[] list()>();
+
+        $i2 = lengthof $r9;
+
+        $l3 = (long) $i2;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(0L, $l3);
+
+        return;
+    }
+
+    public void testThrowsOnNullList() throws java.lang.Exception
+    {
+        org.apache.commons.io.FileUtilsCleanDirectoryTestCase r0;
+        java.lang.String $r2, $r8, $r10, $r11;
+        boolean $z0, $z1;
+        java.io.File $r3, $r4, $r7;
+        java.io.IOException $r5;
+        java.lang.StringBuilder $r6, $r9;
+
+        r0 := @this: org.apache.commons.io.FileUtilsCleanDirectoryTestCase;
+
+        $r2 = staticinvoke <java.lang.System: java.lang.String getProperty(java.lang.String)>("os.name");
+
+        $z0 = virtualinvoke $r2.<java.lang.String: boolean startsWith(java.lang.String)>("Win");
+
+        if $z0 != 0 goto label1;
+
+        $r3 = r0.<org.apache.commons.io.FileUtilsCleanDirectoryTestCase: java.io.File top>;
+
+        $z1 = specialinvoke r0.<org.apache.commons.io.FileUtilsCleanDirectoryTestCase: boolean chmod(java.io.File,int,boolean)>($r3, 0, 0);
+
+        if $z1 != 0 goto label2;
+
+     label1:
+        return;
+
+     label2:
+        $r4 = r0.<org.apache.commons.io.FileUtilsCleanDirectoryTestCase: java.io.File top>;
+
+        staticinvoke <org.apache.commons.io.FileUtils: void cleanDirectory(java.io.File)>($r4);
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("expected IOException");
+
+     label3:
+        goto label5;
+
+     label4:
+        $r5 := @caughtexception;
+
+        $r6 = new java.lang.StringBuilder;
+
+        specialinvoke $r6.<java.lang.StringBuilder: void <init>(java.lang.String)>("Failed to list contents of ");
+
+        $r7 = r0.<org.apache.commons.io.FileUtilsCleanDirectoryTestCase: java.io.File top>;
+
+        $r8 = virtualinvoke $r7.<java.io.File: java.lang.String getAbsolutePath()>();
+
+        $r9 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r8);
+
+        $r10 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r11 = virtualinvoke $r5.<java.io.IOException: java.lang.String getMessage()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r10, $r11);
+
+     label5:
+        return;
+
+        catch java.io.IOException from label2 to label3 with label4;
+    }
+
+    public void testThrowsOnCannotDeleteFile() throws java.lang.Exception
+    {
+        org.apache.commons.io.FileUtilsCleanDirectoryTestCase r0;
+        java.io.File $r3, $r4, $r6, $r7;
+        java.lang.String $r5, $r10, $r12, $r13;
+        boolean $z0, $z1;
+        java.io.IOException $r8;
+        java.lang.StringBuilder $r9, $r11;
+
+        r0 := @this: org.apache.commons.io.FileUtilsCleanDirectoryTestCase;
+
+        $r3 = new java.io.File;
+
+        $r4 = r0.<org.apache.commons.io.FileUtilsCleanDirectoryTestCase: java.io.File top>;
+
+        specialinvoke $r3.<java.io.File: void <init>(java.io.File,java.lang.String)>($r4, "restricted");
+
+        staticinvoke <org.apache.commons.io.FileUtils: void touch(java.io.File)>($r3);
+
+        $r5 = staticinvoke <java.lang.System: java.lang.String getProperty(java.lang.String)>("os.name");
+
+        $z0 = virtualinvoke $r5.<java.lang.String: boolean startsWith(java.lang.String)>("Win");
+
+        if $z0 != 0 goto label1;
+
+        $r6 = r0.<org.apache.commons.io.FileUtilsCleanDirectoryTestCase: java.io.File top>;
+
+        $z1 = specialinvoke r0.<org.apache.commons.io.FileUtilsCleanDirectoryTestCase: boolean chmod(java.io.File,int,boolean)>($r6, 500, 0);
+
+        if $z1 != 0 goto label2;
+
+     label1:
+        return;
+
+     label2:
+        $r7 = r0.<org.apache.commons.io.FileUtilsCleanDirectoryTestCase: java.io.File top>;
+
+        staticinvoke <org.apache.commons.io.FileUtils: void cleanDirectory(java.io.File)>($r7);
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("expected IOException");
+
+     label3:
+        goto label5;
+
+     label4:
+        $r8 := @caughtexception;
+
+        $r9 = new java.lang.StringBuilder;
+
+        specialinvoke $r9.<java.lang.StringBuilder: void <init>(java.lang.String)>("Unable to delete file: ");
+
+        $r10 = virtualinvoke $r3.<java.io.File: java.lang.String getAbsolutePath()>();
+
+        $r11 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r10);
+
+        $r12 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r13 = virtualinvoke $r8.<java.io.IOException: java.lang.String getMessage()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r12, $r13);
+
+     label5:
+        return;
+
+        catch java.io.IOException from label2 to label3 with label4;
+    }
+
+    private boolean chmod(java.io.File, int, boolean) throws java.lang.InterruptedException
+    {
+        org.apache.commons.io.FileUtilsCleanDirectoryTestCase r0;
+        java.io.File r1;
+        int i0, $i1, i2;
+        boolean z0;
+        java.lang.Process r3;
+        java.util.ArrayList $r4;
+        java.lang.String $r5, $r6;
+        java.lang.Runtime $r7;
+        java.lang.String[] $r8, $r10;
+        java.lang.Object[] $r9;
+        java.io.IOException $r11;
+
+        r0 := @this: org.apache.commons.io.FileUtilsCleanDirectoryTestCase;
+
+        r1 := @parameter0: java.io.File;
+
+        i0 := @parameter1: int;
+
+        z0 := @parameter2: boolean;
+
+        $r4 = new java.util.ArrayList;
+
+        specialinvoke $r4.<java.util.ArrayList: void <init>()>();
+
+        interfaceinvoke $r4.<java.util.List: boolean add(java.lang.Object)>("chmod");
+
+        if z0 == 0 goto label1;
+
+        interfaceinvoke $r4.<java.util.List: boolean add(java.lang.Object)>("-R");
+
+     label1:
+        $r5 = staticinvoke <java.lang.Integer: java.lang.String toString(int)>(i0);
+
+        interfaceinvoke $r4.<java.util.List: boolean add(java.lang.Object)>($r5);
+
+        $r6 = virtualinvoke r1.<java.io.File: java.lang.String getAbsolutePath()>();
+
+        interfaceinvoke $r4.<java.util.List: boolean add(java.lang.Object)>($r6);
+
+     label2:
+        $r7 = staticinvoke <java.lang.Runtime: java.lang.Runtime getRuntime()>();
+
+        $i1 = interfaceinvoke $r4.<java.util.List: int size()>();
+
+        $r8 = newarray (java.lang.String)[$i1];
+
+        $r9 = interfaceinvoke $r4.<java.util.List: java.lang.Object[] toArray(java.lang.Object[])>($r8);
+
+        $r10 = (java.lang.String[]) $r9;
+
+        r3 = virtualinvoke $r7.<java.lang.Runtime: java.lang.Process exec(java.lang.String[])>($r10);
+
+     label3:
+        goto label5;
+
+     label4:
+        $r11 := @caughtexception;
+
+        return 0;
+
+     label5:
+        i2 = virtualinvoke r3.<java.lang.Process: int waitFor()>();
+
+        if i2 != 0 goto label6;
+
+        return 1;
+
+     label6:
+        return 0;
+
+        catch java.io.IOException from label2 to label3 with label4;
+    }
+}

@@ -1,0 +1,95 @@
+public class org.apache.commons.logging.tccl.custom.MyLogFactoryImpl extends org.apache.commons.logging.LogFactory
+{
+
+    public void <init>()
+    {
+        org.apache.commons.logging.tccl.custom.MyLogFactoryImpl r0;
+
+        r0 := @this: org.apache.commons.logging.tccl.custom.MyLogFactoryImpl;
+
+        specialinvoke r0.<org.apache.commons.logging.LogFactory: void <init>()>();
+
+        return;
+    }
+
+    public java.lang.Object getAttribute(java.lang.String)
+    {
+        org.apache.commons.logging.tccl.custom.MyLogFactoryImpl r0;
+        java.lang.String r1;
+
+        r0 := @this: org.apache.commons.logging.tccl.custom.MyLogFactoryImpl;
+
+        r1 := @parameter0: java.lang.String;
+
+        return null;
+    }
+
+    public java.lang.String[] getAttributeNames()
+    {
+        org.apache.commons.logging.tccl.custom.MyLogFactoryImpl r0;
+
+        r0 := @this: org.apache.commons.logging.tccl.custom.MyLogFactoryImpl;
+
+        return null;
+    }
+
+    public org.apache.commons.logging.Log getInstance(java.lang.Class)
+    {
+        org.apache.commons.logging.tccl.custom.MyLogFactoryImpl r0;
+        java.lang.Class r1;
+
+        r0 := @this: org.apache.commons.logging.tccl.custom.MyLogFactoryImpl;
+
+        r1 := @parameter0: java.lang.Class;
+
+        return null;
+    }
+
+    public org.apache.commons.logging.Log getInstance(java.lang.String)
+    {
+        org.apache.commons.logging.tccl.custom.MyLogFactoryImpl r0;
+        java.lang.String r1;
+
+        r0 := @this: org.apache.commons.logging.tccl.custom.MyLogFactoryImpl;
+
+        r1 := @parameter0: java.lang.String;
+
+        return null;
+    }
+
+    public void release()
+    {
+        org.apache.commons.logging.tccl.custom.MyLogFactoryImpl r0;
+
+        r0 := @this: org.apache.commons.logging.tccl.custom.MyLogFactoryImpl;
+
+        return;
+    }
+
+    public void removeAttribute(java.lang.String)
+    {
+        org.apache.commons.logging.tccl.custom.MyLogFactoryImpl r0;
+        java.lang.String r1;
+
+        r0 := @this: org.apache.commons.logging.tccl.custom.MyLogFactoryImpl;
+
+        r1 := @parameter0: java.lang.String;
+
+        return;
+    }
+
+    public void setAttribute(java.lang.String, java.lang.Object)
+    {
+        org.apache.commons.logging.tccl.custom.MyLogFactoryImpl r0;
+        java.lang.String r1;
+        java.lang.Object r2;
+
+        r0 := @this: org.apache.commons.logging.tccl.custom.MyLogFactoryImpl;
+
+        r1 := @parameter0: java.lang.String;
+
+        r2 := @parameter1: java.lang.Object;
+
+        return;
+    }
+}

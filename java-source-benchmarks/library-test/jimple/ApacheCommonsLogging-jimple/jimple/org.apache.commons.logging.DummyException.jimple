@@ -1,0 +1,22 @@
+public class org.apache.commons.logging.DummyException extends java.lang.Exception
+{
+    private static final long serialVersionUID;
+
+    public void <init>()
+    {
+        org.apache.commons.logging.DummyException r0;
+
+        r0 := @this: org.apache.commons.logging.DummyException;
+
+        specialinvoke r0.<java.lang.Exception: void <init>()>();
+
+        return;
+    }
+
+    public static void <clinit>()
+    {
+        <org.apache.commons.logging.DummyException: long serialVersionUID> = 1L;
+
+        return;
+    }
+}

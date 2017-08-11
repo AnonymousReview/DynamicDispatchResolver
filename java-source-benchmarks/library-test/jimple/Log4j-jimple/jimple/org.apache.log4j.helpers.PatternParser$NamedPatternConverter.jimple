@@ -1,0 +1,75 @@
+abstract class org.apache.log4j.helpers.PatternParser$NamedPatternConverter extends org.apache.log4j.helpers.PatternConverter
+{
+    int precision;
+
+    void <init>(org.apache.log4j.helpers.FormattingInfo, int)
+    {
+        org.apache.log4j.helpers.PatternParser$NamedPatternConverter r0;
+        org.apache.log4j.helpers.FormattingInfo r1;
+        int i0;
+
+        r0 := @this: org.apache.log4j.helpers.PatternParser$NamedPatternConverter;
+
+        r1 := @parameter0: org.apache.log4j.helpers.FormattingInfo;
+
+        i0 := @parameter1: int;
+
+        specialinvoke r0.<org.apache.log4j.helpers.PatternConverter: void <init>(org.apache.log4j.helpers.FormattingInfo)>(r1);
+
+        r0.<org.apache.log4j.helpers.PatternParser$NamedPatternConverter: int precision> = i0;
+
+        return;
+    }
+
+    abstract java.lang.String getFullyQualifiedName(org.apache.log4j.spi.LoggingEvent);
+
+    public java.lang.String convert(org.apache.log4j.spi.LoggingEvent)
+    {
+        org.apache.log4j.helpers.PatternParser$NamedPatternConverter r0;
+        org.apache.log4j.spi.LoggingEvent r1;
+        java.lang.String r2, $r3;
+        int i0, $i1, $i2, $i3, i4, i5;
+
+        r0 := @this: org.apache.log4j.helpers.PatternParser$NamedPatternConverter;
+
+        r1 := @parameter0: org.apache.log4j.spi.LoggingEvent;
+
+        r2 = virtualinvoke r0.<org.apache.log4j.helpers.PatternParser$NamedPatternConverter: java.lang.String getFullyQualifiedName(org.apache.log4j.spi.LoggingEvent)>(r1);
+
+        $i1 = r0.<org.apache.log4j.helpers.PatternParser$NamedPatternConverter: int precision>;
+
+        if $i1 > 0 goto label1;
+
+        return r2;
+
+     label1:
+        i0 = virtualinvoke r2.<java.lang.String: int length()>();
+
+        i4 = i0 - 1;
+
+        i5 = r0.<org.apache.log4j.helpers.PatternParser$NamedPatternConverter: int precision>;
+
+        goto label4;
+
+     label2:
+        $i2 = i4 - 1;
+
+        i4 = virtualinvoke r2.<java.lang.String: int lastIndexOf(int,int)>(46, $i2);
+
+        if i4 != -1 goto label3;
+
+        return r2;
+
+     label3:
+        i5 = i5 + -1;
+
+     label4:
+        if i5 > 0 goto label2;
+
+        $i3 = i4 + 1;
+
+        $r3 = virtualinvoke r2.<java.lang.String: java.lang.String substring(int,int)>($i3, i0);
+
+        return $r3;
+    }
+}

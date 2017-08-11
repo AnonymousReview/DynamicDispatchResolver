@@ -1,0 +1,821 @@
+public final class org.apache.commons.codec.digest.HmacUtils extends java.lang.Object
+{
+    private static final int STREAM_BUFFER_LENGTH;
+
+    public void <init>()
+    {
+        org.apache.commons.codec.digest.HmacUtils r0;
+
+        r0 := @this: org.apache.commons.codec.digest.HmacUtils;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static javax.crypto.Mac getHmacMd5(byte[])
+    {
+        byte[] r0;
+        org.apache.commons.codec.digest.HmacAlgorithms $r1;
+        javax.crypto.Mac $r2;
+
+        r0 := @parameter0: byte[];
+
+        $r1 = <org.apache.commons.codec.digest.HmacAlgorithms: org.apache.commons.codec.digest.HmacAlgorithms HMAC_MD5>;
+
+        $r2 = staticinvoke <org.apache.commons.codec.digest.HmacUtils: javax.crypto.Mac getInitializedMac(org.apache.commons.codec.digest.HmacAlgorithms,byte[])>($r1, r0);
+
+        return $r2;
+    }
+
+    public static javax.crypto.Mac getHmacSha1(byte[])
+    {
+        byte[] r0;
+        org.apache.commons.codec.digest.HmacAlgorithms $r1;
+        javax.crypto.Mac $r2;
+
+        r0 := @parameter0: byte[];
+
+        $r1 = <org.apache.commons.codec.digest.HmacAlgorithms: org.apache.commons.codec.digest.HmacAlgorithms HMAC_SHA_1>;
+
+        $r2 = staticinvoke <org.apache.commons.codec.digest.HmacUtils: javax.crypto.Mac getInitializedMac(org.apache.commons.codec.digest.HmacAlgorithms,byte[])>($r1, r0);
+
+        return $r2;
+    }
+
+    public static javax.crypto.Mac getHmacSha256(byte[])
+    {
+        byte[] r0;
+        org.apache.commons.codec.digest.HmacAlgorithms $r1;
+        javax.crypto.Mac $r2;
+
+        r0 := @parameter0: byte[];
+
+        $r1 = <org.apache.commons.codec.digest.HmacAlgorithms: org.apache.commons.codec.digest.HmacAlgorithms HMAC_SHA_256>;
+
+        $r2 = staticinvoke <org.apache.commons.codec.digest.HmacUtils: javax.crypto.Mac getInitializedMac(org.apache.commons.codec.digest.HmacAlgorithms,byte[])>($r1, r0);
+
+        return $r2;
+    }
+
+    public static javax.crypto.Mac getHmacSha384(byte[])
+    {
+        byte[] r0;
+        org.apache.commons.codec.digest.HmacAlgorithms $r1;
+        javax.crypto.Mac $r2;
+
+        r0 := @parameter0: byte[];
+
+        $r1 = <org.apache.commons.codec.digest.HmacAlgorithms: org.apache.commons.codec.digest.HmacAlgorithms HMAC_SHA_384>;
+
+        $r2 = staticinvoke <org.apache.commons.codec.digest.HmacUtils: javax.crypto.Mac getInitializedMac(org.apache.commons.codec.digest.HmacAlgorithms,byte[])>($r1, r0);
+
+        return $r2;
+    }
+
+    public static javax.crypto.Mac getHmacSha512(byte[])
+    {
+        byte[] r0;
+        org.apache.commons.codec.digest.HmacAlgorithms $r1;
+        javax.crypto.Mac $r2;
+
+        r0 := @parameter0: byte[];
+
+        $r1 = <org.apache.commons.codec.digest.HmacAlgorithms: org.apache.commons.codec.digest.HmacAlgorithms HMAC_SHA_512>;
+
+        $r2 = staticinvoke <org.apache.commons.codec.digest.HmacUtils: javax.crypto.Mac getInitializedMac(org.apache.commons.codec.digest.HmacAlgorithms,byte[])>($r1, r0);
+
+        return $r2;
+    }
+
+    public static javax.crypto.Mac getInitializedMac(org.apache.commons.codec.digest.HmacAlgorithms, byte[])
+    {
+        org.apache.commons.codec.digest.HmacAlgorithms r0;
+        byte[] r1;
+        java.lang.String $r2;
+        javax.crypto.Mac $r3;
+
+        r0 := @parameter0: org.apache.commons.codec.digest.HmacAlgorithms;
+
+        r1 := @parameter1: byte[];
+
+        $r2 = virtualinvoke r0.<org.apache.commons.codec.digest.HmacAlgorithms: java.lang.String toString()>();
+
+        $r3 = staticinvoke <org.apache.commons.codec.digest.HmacUtils: javax.crypto.Mac getInitializedMac(java.lang.String,byte[])>($r2, r1);
+
+        return $r3;
+    }
+
+    public static javax.crypto.Mac getInitializedMac(java.lang.String, byte[])
+    {
+        java.lang.String r0;
+        byte[] r1;
+        javax.crypto.Mac r2;
+        javax.crypto.spec.SecretKeySpec $r3;
+        java.lang.IllegalArgumentException $r4, $r6, $r8;
+        java.security.InvalidKeyException $r5;
+        java.security.NoSuchAlgorithmException $r7;
+
+        r0 := @parameter0: java.lang.String;
+
+        r1 := @parameter1: byte[];
+
+        if r1 != null goto label1;
+
+        $r4 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r4.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Null key");
+
+        throw $r4;
+
+     label1:
+        $r3 = new javax.crypto.spec.SecretKeySpec;
+
+        specialinvoke $r3.<javax.crypto.spec.SecretKeySpec: void <init>(byte[],java.lang.String)>(r1, r0);
+
+        r2 = staticinvoke <javax.crypto.Mac: javax.crypto.Mac getInstance(java.lang.String)>(r0);
+
+        virtualinvoke r2.<javax.crypto.Mac: void init(java.security.Key)>($r3);
+
+     label2:
+        return r2;
+
+     label3:
+        $r7 := @caughtexception;
+
+        $r8 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r8.<java.lang.IllegalArgumentException: void <init>(java.lang.Throwable)>($r7);
+
+        throw $r8;
+
+     label4:
+        $r5 := @caughtexception;
+
+        $r6 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r6.<java.lang.IllegalArgumentException: void <init>(java.lang.Throwable)>($r5);
+
+        throw $r6;
+
+        catch java.security.NoSuchAlgorithmException from label1 to label2 with label3;
+        catch java.security.InvalidKeyException from label1 to label2 with label4;
+    }
+
+    public static byte[] hmacMd5(byte[], byte[])
+    {
+        byte[] r0, r1, $r4;
+        javax.crypto.Mac $r3;
+        java.lang.IllegalStateException $r5;
+        java.lang.IllegalArgumentException $r6;
+
+        r0 := @parameter0: byte[];
+
+        r1 := @parameter1: byte[];
+
+     label1:
+        $r3 = staticinvoke <org.apache.commons.codec.digest.HmacUtils: javax.crypto.Mac getHmacMd5(byte[])>(r0);
+
+        $r4 = virtualinvoke $r3.<javax.crypto.Mac: byte[] doFinal(byte[])>(r1);
+
+     label2:
+        return $r4;
+
+     label3:
+        $r5 := @caughtexception;
+
+        $r6 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r6.<java.lang.IllegalArgumentException: void <init>(java.lang.Throwable)>($r5);
+
+        throw $r6;
+
+        catch java.lang.IllegalStateException from label1 to label2 with label3;
+    }
+
+    public static byte[] hmacMd5(byte[], java.io.InputStream) throws java.io.IOException
+    {
+        byte[] r0, $r4;
+        java.io.InputStream r1;
+        javax.crypto.Mac $r2, $r3;
+
+        r0 := @parameter0: byte[];
+
+        r1 := @parameter1: java.io.InputStream;
+
+        $r2 = staticinvoke <org.apache.commons.codec.digest.HmacUtils: javax.crypto.Mac getHmacMd5(byte[])>(r0);
+
+        $r3 = staticinvoke <org.apache.commons.codec.digest.HmacUtils: javax.crypto.Mac updateHmac(javax.crypto.Mac,java.io.InputStream)>($r2, r1);
+
+        $r4 = virtualinvoke $r3.<javax.crypto.Mac: byte[] doFinal()>();
+
+        return $r4;
+    }
+
+    public static byte[] hmacMd5(java.lang.String, java.lang.String)
+    {
+        java.lang.String r0, r1;
+        byte[] $r2, $r3, $r4;
+
+        r0 := @parameter0: java.lang.String;
+
+        r1 := @parameter1: java.lang.String;
+
+        $r2 = staticinvoke <org.apache.commons.codec.binary.StringUtils: byte[] getBytesUtf8(java.lang.String)>(r0);
+
+        $r3 = staticinvoke <org.apache.commons.codec.binary.StringUtils: byte[] getBytesUtf8(java.lang.String)>(r1);
+
+        $r4 = staticinvoke <org.apache.commons.codec.digest.HmacUtils: byte[] hmacMd5(byte[],byte[])>($r2, $r3);
+
+        return $r4;
+    }
+
+    public static java.lang.String hmacMd5Hex(byte[], byte[])
+    {
+        byte[] r0, r1, $r2;
+        java.lang.String $r3;
+
+        r0 := @parameter0: byte[];
+
+        r1 := @parameter1: byte[];
+
+        $r2 = staticinvoke <org.apache.commons.codec.digest.HmacUtils: byte[] hmacMd5(byte[],byte[])>(r0, r1);
+
+        $r3 = staticinvoke <org.apache.commons.codec.binary.Hex: java.lang.String encodeHexString(byte[])>($r2);
+
+        return $r3;
+    }
+
+    public static java.lang.String hmacMd5Hex(byte[], java.io.InputStream) throws java.io.IOException
+    {
+        byte[] r0, $r2;
+        java.io.InputStream r1;
+        java.lang.String $r3;
+
+        r0 := @parameter0: byte[];
+
+        r1 := @parameter1: java.io.InputStream;
+
+        $r2 = staticinvoke <org.apache.commons.codec.digest.HmacUtils: byte[] hmacMd5(byte[],java.io.InputStream)>(r0, r1);
+
+        $r3 = staticinvoke <org.apache.commons.codec.binary.Hex: java.lang.String encodeHexString(byte[])>($r2);
+
+        return $r3;
+    }
+
+    public static java.lang.String hmacMd5Hex(java.lang.String, java.lang.String)
+    {
+        java.lang.String r0, r1, $r3;
+        byte[] $r2;
+
+        r0 := @parameter0: java.lang.String;
+
+        r1 := @parameter1: java.lang.String;
+
+        $r2 = staticinvoke <org.apache.commons.codec.digest.HmacUtils: byte[] hmacMd5(java.lang.String,java.lang.String)>(r0, r1);
+
+        $r3 = staticinvoke <org.apache.commons.codec.binary.Hex: java.lang.String encodeHexString(byte[])>($r2);
+
+        return $r3;
+    }
+
+    public static byte[] hmacSha1(byte[], byte[])
+    {
+        byte[] r0, r1, $r4;
+        javax.crypto.Mac $r3;
+        java.lang.IllegalStateException $r5;
+        java.lang.IllegalArgumentException $r6;
+
+        r0 := @parameter0: byte[];
+
+        r1 := @parameter1: byte[];
+
+     label1:
+        $r3 = staticinvoke <org.apache.commons.codec.digest.HmacUtils: javax.crypto.Mac getHmacSha1(byte[])>(r0);
+
+        $r4 = virtualinvoke $r3.<javax.crypto.Mac: byte[] doFinal(byte[])>(r1);
+
+     label2:
+        return $r4;
+
+     label3:
+        $r5 := @caughtexception;
+
+        $r6 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r6.<java.lang.IllegalArgumentException: void <init>(java.lang.Throwable)>($r5);
+
+        throw $r6;
+
+        catch java.lang.IllegalStateException from label1 to label2 with label3;
+    }
+
+    public static byte[] hmacSha1(byte[], java.io.InputStream) throws java.io.IOException
+    {
+        byte[] r0, $r4;
+        java.io.InputStream r1;
+        javax.crypto.Mac $r2, $r3;
+
+        r0 := @parameter0: byte[];
+
+        r1 := @parameter1: java.io.InputStream;
+
+        $r2 = staticinvoke <org.apache.commons.codec.digest.HmacUtils: javax.crypto.Mac getHmacSha1(byte[])>(r0);
+
+        $r3 = staticinvoke <org.apache.commons.codec.digest.HmacUtils: javax.crypto.Mac updateHmac(javax.crypto.Mac,java.io.InputStream)>($r2, r1);
+
+        $r4 = virtualinvoke $r3.<javax.crypto.Mac: byte[] doFinal()>();
+
+        return $r4;
+    }
+
+    public static byte[] hmacSha1(java.lang.String, java.lang.String)
+    {
+        java.lang.String r0, r1;
+        byte[] $r2, $r3, $r4;
+
+        r0 := @parameter0: java.lang.String;
+
+        r1 := @parameter1: java.lang.String;
+
+        $r2 = staticinvoke <org.apache.commons.codec.binary.StringUtils: byte[] getBytesUtf8(java.lang.String)>(r0);
+
+        $r3 = staticinvoke <org.apache.commons.codec.binary.StringUtils: byte[] getBytesUtf8(java.lang.String)>(r1);
+
+        $r4 = staticinvoke <org.apache.commons.codec.digest.HmacUtils: byte[] hmacSha1(byte[],byte[])>($r2, $r3);
+
+        return $r4;
+    }
+
+    public static java.lang.String hmacSha1Hex(byte[], byte[])
+    {
+        byte[] r0, r1, $r2;
+        java.lang.String $r3;
+
+        r0 := @parameter0: byte[];
+
+        r1 := @parameter1: byte[];
+
+        $r2 = staticinvoke <org.apache.commons.codec.digest.HmacUtils: byte[] hmacSha1(byte[],byte[])>(r0, r1);
+
+        $r3 = staticinvoke <org.apache.commons.codec.binary.Hex: java.lang.String encodeHexString(byte[])>($r2);
+
+        return $r3;
+    }
+
+    public static java.lang.String hmacSha1Hex(byte[], java.io.InputStream) throws java.io.IOException
+    {
+        byte[] r0, $r2;
+        java.io.InputStream r1;
+        java.lang.String $r3;
+
+        r0 := @parameter0: byte[];
+
+        r1 := @parameter1: java.io.InputStream;
+
+        $r2 = staticinvoke <org.apache.commons.codec.digest.HmacUtils: byte[] hmacSha1(byte[],java.io.InputStream)>(r0, r1);
+
+        $r3 = staticinvoke <org.apache.commons.codec.binary.Hex: java.lang.String encodeHexString(byte[])>($r2);
+
+        return $r3;
+    }
+
+    public static java.lang.String hmacSha1Hex(java.lang.String, java.lang.String)
+    {
+        java.lang.String r0, r1, $r3;
+        byte[] $r2;
+
+        r0 := @parameter0: java.lang.String;
+
+        r1 := @parameter1: java.lang.String;
+
+        $r2 = staticinvoke <org.apache.commons.codec.digest.HmacUtils: byte[] hmacSha1(java.lang.String,java.lang.String)>(r0, r1);
+
+        $r3 = staticinvoke <org.apache.commons.codec.binary.Hex: java.lang.String encodeHexString(byte[])>($r2);
+
+        return $r3;
+    }
+
+    public static byte[] hmacSha256(byte[], byte[])
+    {
+        byte[] r0, r1, $r4;
+        javax.crypto.Mac $r3;
+        java.lang.IllegalStateException $r5;
+        java.lang.IllegalArgumentException $r6;
+
+        r0 := @parameter0: byte[];
+
+        r1 := @parameter1: byte[];
+
+     label1:
+        $r3 = staticinvoke <org.apache.commons.codec.digest.HmacUtils: javax.crypto.Mac getHmacSha256(byte[])>(r0);
+
+        $r4 = virtualinvoke $r3.<javax.crypto.Mac: byte[] doFinal(byte[])>(r1);
+
+     label2:
+        return $r4;
+
+     label3:
+        $r5 := @caughtexception;
+
+        $r6 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r6.<java.lang.IllegalArgumentException: void <init>(java.lang.Throwable)>($r5);
+
+        throw $r6;
+
+        catch java.lang.IllegalStateException from label1 to label2 with label3;
+    }
+
+    public static byte[] hmacSha256(byte[], java.io.InputStream) throws java.io.IOException
+    {
+        byte[] r0, $r4;
+        java.io.InputStream r1;
+        javax.crypto.Mac $r2, $r3;
+
+        r0 := @parameter0: byte[];
+
+        r1 := @parameter1: java.io.InputStream;
+
+        $r2 = staticinvoke <org.apache.commons.codec.digest.HmacUtils: javax.crypto.Mac getHmacSha256(byte[])>(r0);
+
+        $r3 = staticinvoke <org.apache.commons.codec.digest.HmacUtils: javax.crypto.Mac updateHmac(javax.crypto.Mac,java.io.InputStream)>($r2, r1);
+
+        $r4 = virtualinvoke $r3.<javax.crypto.Mac: byte[] doFinal()>();
+
+        return $r4;
+    }
+
+    public static byte[] hmacSha256(java.lang.String, java.lang.String)
+    {
+        java.lang.String r0, r1;
+        byte[] $r2, $r3, $r4;
+
+        r0 := @parameter0: java.lang.String;
+
+        r1 := @parameter1: java.lang.String;
+
+        $r2 = staticinvoke <org.apache.commons.codec.binary.StringUtils: byte[] getBytesUtf8(java.lang.String)>(r0);
+
+        $r3 = staticinvoke <org.apache.commons.codec.binary.StringUtils: byte[] getBytesUtf8(java.lang.String)>(r1);
+
+        $r4 = staticinvoke <org.apache.commons.codec.digest.HmacUtils: byte[] hmacSha256(byte[],byte[])>($r2, $r3);
+
+        return $r4;
+    }
+
+    public static java.lang.String hmacSha256Hex(byte[], byte[])
+    {
+        byte[] r0, r1, $r2;
+        java.lang.String $r3;
+
+        r0 := @parameter0: byte[];
+
+        r1 := @parameter1: byte[];
+
+        $r2 = staticinvoke <org.apache.commons.codec.digest.HmacUtils: byte[] hmacSha256(byte[],byte[])>(r0, r1);
+
+        $r3 = staticinvoke <org.apache.commons.codec.binary.Hex: java.lang.String encodeHexString(byte[])>($r2);
+
+        return $r3;
+    }
+
+    public static java.lang.String hmacSha256Hex(byte[], java.io.InputStream) throws java.io.IOException
+    {
+        byte[] r0, $r2;
+        java.io.InputStream r1;
+        java.lang.String $r3;
+
+        r0 := @parameter0: byte[];
+
+        r1 := @parameter1: java.io.InputStream;
+
+        $r2 = staticinvoke <org.apache.commons.codec.digest.HmacUtils: byte[] hmacSha256(byte[],java.io.InputStream)>(r0, r1);
+
+        $r3 = staticinvoke <org.apache.commons.codec.binary.Hex: java.lang.String encodeHexString(byte[])>($r2);
+
+        return $r3;
+    }
+
+    public static java.lang.String hmacSha256Hex(java.lang.String, java.lang.String)
+    {
+        java.lang.String r0, r1, $r3;
+        byte[] $r2;
+
+        r0 := @parameter0: java.lang.String;
+
+        r1 := @parameter1: java.lang.String;
+
+        $r2 = staticinvoke <org.apache.commons.codec.digest.HmacUtils: byte[] hmacSha256(java.lang.String,java.lang.String)>(r0, r1);
+
+        $r3 = staticinvoke <org.apache.commons.codec.binary.Hex: java.lang.String encodeHexString(byte[])>($r2);
+
+        return $r3;
+    }
+
+    public static byte[] hmacSha384(byte[], byte[])
+    {
+        byte[] r0, r1, $r4;
+        javax.crypto.Mac $r3;
+        java.lang.IllegalStateException $r5;
+        java.lang.IllegalArgumentException $r6;
+
+        r0 := @parameter0: byte[];
+
+        r1 := @parameter1: byte[];
+
+     label1:
+        $r3 = staticinvoke <org.apache.commons.codec.digest.HmacUtils: javax.crypto.Mac getHmacSha384(byte[])>(r0);
+
+        $r4 = virtualinvoke $r3.<javax.crypto.Mac: byte[] doFinal(byte[])>(r1);
+
+     label2:
+        return $r4;
+
+     label3:
+        $r5 := @caughtexception;
+
+        $r6 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r6.<java.lang.IllegalArgumentException: void <init>(java.lang.Throwable)>($r5);
+
+        throw $r6;
+
+        catch java.lang.IllegalStateException from label1 to label2 with label3;
+    }
+
+    public static byte[] hmacSha384(byte[], java.io.InputStream) throws java.io.IOException
+    {
+        byte[] r0, $r4;
+        java.io.InputStream r1;
+        javax.crypto.Mac $r2, $r3;
+
+        r0 := @parameter0: byte[];
+
+        r1 := @parameter1: java.io.InputStream;
+
+        $r2 = staticinvoke <org.apache.commons.codec.digest.HmacUtils: javax.crypto.Mac getHmacSha384(byte[])>(r0);
+
+        $r3 = staticinvoke <org.apache.commons.codec.digest.HmacUtils: javax.crypto.Mac updateHmac(javax.crypto.Mac,java.io.InputStream)>($r2, r1);
+
+        $r4 = virtualinvoke $r3.<javax.crypto.Mac: byte[] doFinal()>();
+
+        return $r4;
+    }
+
+    public static byte[] hmacSha384(java.lang.String, java.lang.String)
+    {
+        java.lang.String r0, r1;
+        byte[] $r2, $r3, $r4;
+
+        r0 := @parameter0: java.lang.String;
+
+        r1 := @parameter1: java.lang.String;
+
+        $r2 = staticinvoke <org.apache.commons.codec.binary.StringUtils: byte[] getBytesUtf8(java.lang.String)>(r0);
+
+        $r3 = staticinvoke <org.apache.commons.codec.binary.StringUtils: byte[] getBytesUtf8(java.lang.String)>(r1);
+
+        $r4 = staticinvoke <org.apache.commons.codec.digest.HmacUtils: byte[] hmacSha384(byte[],byte[])>($r2, $r3);
+
+        return $r4;
+    }
+
+    public static java.lang.String hmacSha384Hex(byte[], byte[])
+    {
+        byte[] r0, r1, $r2;
+        java.lang.String $r3;
+
+        r0 := @parameter0: byte[];
+
+        r1 := @parameter1: byte[];
+
+        $r2 = staticinvoke <org.apache.commons.codec.digest.HmacUtils: byte[] hmacSha384(byte[],byte[])>(r0, r1);
+
+        $r3 = staticinvoke <org.apache.commons.codec.binary.Hex: java.lang.String encodeHexString(byte[])>($r2);
+
+        return $r3;
+    }
+
+    public static java.lang.String hmacSha384Hex(byte[], java.io.InputStream) throws java.io.IOException
+    {
+        byte[] r0, $r2;
+        java.io.InputStream r1;
+        java.lang.String $r3;
+
+        r0 := @parameter0: byte[];
+
+        r1 := @parameter1: java.io.InputStream;
+
+        $r2 = staticinvoke <org.apache.commons.codec.digest.HmacUtils: byte[] hmacSha384(byte[],java.io.InputStream)>(r0, r1);
+
+        $r3 = staticinvoke <org.apache.commons.codec.binary.Hex: java.lang.String encodeHexString(byte[])>($r2);
+
+        return $r3;
+    }
+
+    public static java.lang.String hmacSha384Hex(java.lang.String, java.lang.String)
+    {
+        java.lang.String r0, r1, $r3;
+        byte[] $r2;
+
+        r0 := @parameter0: java.lang.String;
+
+        r1 := @parameter1: java.lang.String;
+
+        $r2 = staticinvoke <org.apache.commons.codec.digest.HmacUtils: byte[] hmacSha384(java.lang.String,java.lang.String)>(r0, r1);
+
+        $r3 = staticinvoke <org.apache.commons.codec.binary.Hex: java.lang.String encodeHexString(byte[])>($r2);
+
+        return $r3;
+    }
+
+    public static byte[] hmacSha512(byte[], byte[])
+    {
+        byte[] r0, r1, $r4;
+        javax.crypto.Mac $r3;
+        java.lang.IllegalStateException $r5;
+        java.lang.IllegalArgumentException $r6;
+
+        r0 := @parameter0: byte[];
+
+        r1 := @parameter1: byte[];
+
+     label1:
+        $r3 = staticinvoke <org.apache.commons.codec.digest.HmacUtils: javax.crypto.Mac getHmacSha512(byte[])>(r0);
+
+        $r4 = virtualinvoke $r3.<javax.crypto.Mac: byte[] doFinal(byte[])>(r1);
+
+     label2:
+        return $r4;
+
+     label3:
+        $r5 := @caughtexception;
+
+        $r6 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r6.<java.lang.IllegalArgumentException: void <init>(java.lang.Throwable)>($r5);
+
+        throw $r6;
+
+        catch java.lang.IllegalStateException from label1 to label2 with label3;
+    }
+
+    public static byte[] hmacSha512(byte[], java.io.InputStream) throws java.io.IOException
+    {
+        byte[] r0, $r4;
+        java.io.InputStream r1;
+        javax.crypto.Mac $r2, $r3;
+
+        r0 := @parameter0: byte[];
+
+        r1 := @parameter1: java.io.InputStream;
+
+        $r2 = staticinvoke <org.apache.commons.codec.digest.HmacUtils: javax.crypto.Mac getHmacSha512(byte[])>(r0);
+
+        $r3 = staticinvoke <org.apache.commons.codec.digest.HmacUtils: javax.crypto.Mac updateHmac(javax.crypto.Mac,java.io.InputStream)>($r2, r1);
+
+        $r4 = virtualinvoke $r3.<javax.crypto.Mac: byte[] doFinal()>();
+
+        return $r4;
+    }
+
+    public static byte[] hmacSha512(java.lang.String, java.lang.String)
+    {
+        java.lang.String r0, r1;
+        byte[] $r2, $r3, $r4;
+
+        r0 := @parameter0: java.lang.String;
+
+        r1 := @parameter1: java.lang.String;
+
+        $r2 = staticinvoke <org.apache.commons.codec.binary.StringUtils: byte[] getBytesUtf8(java.lang.String)>(r0);
+
+        $r3 = staticinvoke <org.apache.commons.codec.binary.StringUtils: byte[] getBytesUtf8(java.lang.String)>(r1);
+
+        $r4 = staticinvoke <org.apache.commons.codec.digest.HmacUtils: byte[] hmacSha512(byte[],byte[])>($r2, $r3);
+
+        return $r4;
+    }
+
+    public static java.lang.String hmacSha512Hex(byte[], byte[])
+    {
+        byte[] r0, r1, $r2;
+        java.lang.String $r3;
+
+        r0 := @parameter0: byte[];
+
+        r1 := @parameter1: byte[];
+
+        $r2 = staticinvoke <org.apache.commons.codec.digest.HmacUtils: byte[] hmacSha512(byte[],byte[])>(r0, r1);
+
+        $r3 = staticinvoke <org.apache.commons.codec.binary.Hex: java.lang.String encodeHexString(byte[])>($r2);
+
+        return $r3;
+    }
+
+    public static java.lang.String hmacSha512Hex(byte[], java.io.InputStream) throws java.io.IOException
+    {
+        byte[] r0, $r2;
+        java.io.InputStream r1;
+        java.lang.String $r3;
+
+        r0 := @parameter0: byte[];
+
+        r1 := @parameter1: java.io.InputStream;
+
+        $r2 = staticinvoke <org.apache.commons.codec.digest.HmacUtils: byte[] hmacSha512(byte[],java.io.InputStream)>(r0, r1);
+
+        $r3 = staticinvoke <org.apache.commons.codec.binary.Hex: java.lang.String encodeHexString(byte[])>($r2);
+
+        return $r3;
+    }
+
+    public static java.lang.String hmacSha512Hex(java.lang.String, java.lang.String)
+    {
+        java.lang.String r0, r1, $r3;
+        byte[] $r2;
+
+        r0 := @parameter0: java.lang.String;
+
+        r1 := @parameter1: java.lang.String;
+
+        $r2 = staticinvoke <org.apache.commons.codec.digest.HmacUtils: byte[] hmacSha512(java.lang.String,java.lang.String)>(r0, r1);
+
+        $r3 = staticinvoke <org.apache.commons.codec.binary.Hex: java.lang.String encodeHexString(byte[])>($r2);
+
+        return $r3;
+    }
+
+    public static javax.crypto.Mac updateHmac(javax.crypto.Mac, byte[])
+    {
+        javax.crypto.Mac r0;
+        byte[] r1;
+
+        r0 := @parameter0: javax.crypto.Mac;
+
+        r1 := @parameter1: byte[];
+
+        virtualinvoke r0.<javax.crypto.Mac: void reset()>();
+
+        virtualinvoke r0.<javax.crypto.Mac: void update(byte[])>(r1);
+
+        return r0;
+    }
+
+    public static javax.crypto.Mac updateHmac(javax.crypto.Mac, java.io.InputStream) throws java.io.IOException
+    {
+        javax.crypto.Mac r0;
+        java.io.InputStream r1;
+        byte[] r2;
+        int i0;
+
+        r0 := @parameter0: javax.crypto.Mac;
+
+        r1 := @parameter1: java.io.InputStream;
+
+        virtualinvoke r0.<javax.crypto.Mac: void reset()>();
+
+        r2 = newarray (byte)[1024];
+
+        i0 = virtualinvoke r1.<java.io.InputStream: int read(byte[],int,int)>(r2, 0, 1024);
+
+        goto label2;
+
+     label1:
+        virtualinvoke r0.<javax.crypto.Mac: void update(byte[],int,int)>(r2, 0, i0);
+
+        i0 = virtualinvoke r1.<java.io.InputStream: int read(byte[],int,int)>(r2, 0, 1024);
+
+     label2:
+        if i0 > -1 goto label1;
+
+        return r0;
+    }
+
+    public static javax.crypto.Mac updateHmac(javax.crypto.Mac, java.lang.String)
+    {
+        javax.crypto.Mac r0;
+        java.lang.String r1;
+        byte[] $r2;
+
+        r0 := @parameter0: javax.crypto.Mac;
+
+        r1 := @parameter1: java.lang.String;
+
+        virtualinvoke r0.<javax.crypto.Mac: void reset()>();
+
+        $r2 = staticinvoke <org.apache.commons.codec.binary.StringUtils: byte[] getBytesUtf8(java.lang.String)>(r1);
+
+        virtualinvoke r0.<javax.crypto.Mac: void update(byte[])>($r2);
+
+        return r0;
+    }
+
+    public static void <clinit>()
+    {
+        <org.apache.commons.codec.digest.HmacUtils: int STREAM_BUFFER_LENGTH> = 1024;
+
+        return;
+    }
+}

@@ -1,0 +1,792 @@
+public class org.apache.commons.io.output.LockableFileWriterTest extends org.apache.commons.io.testtools.FileBasedTestCase
+{
+    private java.io.File file;
+    private java.io.File lockDir;
+    private java.io.File lockFile;
+    private java.io.File altLockDir;
+    private java.io.File altLockFile;
+
+    public void <init>()
+    {
+        org.apache.commons.io.output.LockableFileWriterTest r0;
+
+        r0 := @this: org.apache.commons.io.output.LockableFileWriterTest;
+
+        specialinvoke r0.<org.apache.commons.io.testtools.FileBasedTestCase: void <init>()>();
+
+        return;
+    }
+
+    public void setUp()
+    {
+        org.apache.commons.io.output.LockableFileWriterTest r0;
+        java.io.File $r1, $r2, $r3, $r5, $r7, $r8, $r13, $r14, $r16, $r17;
+        java.lang.String $r4, $r9, $r10, $r12, $r18, $r19, $r21;
+        java.lang.StringBuilder $r6, $r11, $r15, $r20;
+
+        r0 := @this: org.apache.commons.io.output.LockableFileWriterTest;
+
+        $r1 = new java.io.File;
+
+        $r2 = staticinvoke <org.apache.commons.io.output.LockableFileWriterTest: java.io.File getTestDirectory()>();
+
+        specialinvoke $r1.<java.io.File: void <init>(java.io.File,java.lang.String)>($r2, "testlockfile");
+
+        r0.<org.apache.commons.io.output.LockableFileWriterTest: java.io.File file> = $r1;
+
+        $r3 = new java.io.File;
+
+        $r4 = staticinvoke <java.lang.System: java.lang.String getProperty(java.lang.String)>("java.io.tmpdir");
+
+        specialinvoke $r3.<java.io.File: void <init>(java.lang.String)>($r4);
+
+        r0.<org.apache.commons.io.output.LockableFileWriterTest: java.io.File lockDir> = $r3;
+
+        $r5 = new java.io.File;
+
+        $r8 = r0.<org.apache.commons.io.output.LockableFileWriterTest: java.io.File lockDir>;
+
+        $r6 = new java.lang.StringBuilder;
+
+        $r7 = r0.<org.apache.commons.io.output.LockableFileWriterTest: java.io.File file>;
+
+        $r9 = virtualinvoke $r7.<java.io.File: java.lang.String getName()>();
+
+        $r10 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r9);
+
+        specialinvoke $r6.<java.lang.StringBuilder: void <init>(java.lang.String)>($r10);
+
+        $r11 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(".lck");
+
+        $r12 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r5.<java.io.File: void <init>(java.io.File,java.lang.String)>($r8, $r12);
+
+        r0.<org.apache.commons.io.output.LockableFileWriterTest: java.io.File lockFile> = $r5;
+
+        $r13 = staticinvoke <org.apache.commons.io.output.LockableFileWriterTest: java.io.File getTestDirectory()>();
+
+        r0.<org.apache.commons.io.output.LockableFileWriterTest: java.io.File altLockDir> = $r13;
+
+        $r14 = new java.io.File;
+
+        $r17 = r0.<org.apache.commons.io.output.LockableFileWriterTest: java.io.File altLockDir>;
+
+        $r15 = new java.lang.StringBuilder;
+
+        $r16 = r0.<org.apache.commons.io.output.LockableFileWriterTest: java.io.File file>;
+
+        $r18 = virtualinvoke $r16.<java.io.File: java.lang.String getName()>();
+
+        $r19 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r18);
+
+        specialinvoke $r15.<java.lang.StringBuilder: void <init>(java.lang.String)>($r19);
+
+        $r20 = virtualinvoke $r15.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(".lck");
+
+        $r21 = virtualinvoke $r20.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r14.<java.io.File: void <init>(java.io.File,java.lang.String)>($r17, $r21);
+
+        r0.<org.apache.commons.io.output.LockableFileWriterTest: java.io.File altLockFile> = $r14;
+
+        return;
+    }
+
+    public void tearDown()
+    {
+        org.apache.commons.io.output.LockableFileWriterTest r0;
+        java.io.File $r1, $r2, $r3;
+
+        r0 := @this: org.apache.commons.io.output.LockableFileWriterTest;
+
+        $r1 = r0.<org.apache.commons.io.output.LockableFileWriterTest: java.io.File file>;
+
+        virtualinvoke $r1.<java.io.File: boolean delete()>();
+
+        $r2 = r0.<org.apache.commons.io.output.LockableFileWriterTest: java.io.File lockFile>;
+
+        virtualinvoke $r2.<java.io.File: boolean delete()>();
+
+        $r3 = r0.<org.apache.commons.io.output.LockableFileWriterTest: java.io.File altLockFile>;
+
+        virtualinvoke $r3.<java.io.File: boolean delete()>();
+
+        return;
+    }
+
+    public void testFileLocked() throws java.io.IOException
+    {
+        org.apache.commons.io.output.LockableFileWriterTest r0;
+        org.apache.commons.io.output.LockableFileWriter $r2, $r6, $r8, r19, r20, r21;
+        java.io.File $r3, $r4, $r5, $r7, $r9, $r10, $r11, $r14, $r15, $r17, $r18;
+        boolean $z0, $z1, $z2, $z3, $z4, $z5, $z6, $z7, $z8, $z9;
+        java.lang.Throwable $r12;
+        java.io.IOException $r13, $r16;
+        java.lang.String r23, r25;
+
+        r0 := @this: org.apache.commons.io.output.LockableFileWriterTest;
+
+        r19 = null;
+
+        r20 = null;
+
+        r21 = null;
+
+     label1:
+        $r2 = new org.apache.commons.io.output.LockableFileWriter;
+
+        $r3 = r0.<org.apache.commons.io.output.LockableFileWriterTest: java.io.File file>;
+
+        specialinvoke $r2.<org.apache.commons.io.output.LockableFileWriter: void <init>(java.io.File)>($r3);
+
+        r19 = $r2;
+
+        $r4 = r0.<org.apache.commons.io.output.LockableFileWriterTest: java.io.File file>;
+
+        $z0 = virtualinvoke $r4.<java.io.File: boolean exists()>();
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z0);
+
+        $r5 = r0.<org.apache.commons.io.output.LockableFileWriterTest: java.io.File lockFile>;
+
+        $z1 = virtualinvoke $r5.<java.io.File: boolean exists()>();
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z1);
+
+     label2:
+        $r6 = new org.apache.commons.io.output.LockableFileWriter;
+
+        $r7 = r0.<org.apache.commons.io.output.LockableFileWriterTest: java.io.File file>;
+
+        specialinvoke $r6.<org.apache.commons.io.output.LockableFileWriter: void <init>(java.io.File)>($r7);
+
+        r20 = $r6;
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("Somehow able to open a locked file. ");
+
+     label3:
+        goto label5;
+
+     label4:
+        $r16 := @caughtexception;
+
+        r23 = virtualinvoke $r16.<java.io.IOException: java.lang.String getMessage()>();
+
+        $z7 = virtualinvoke r23.<java.lang.String: boolean startsWith(java.lang.String)>("Can\'t write file, lock ");
+
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>("Exception message does not start correctly. ", $z7);
+
+        $r17 = r0.<org.apache.commons.io.output.LockableFileWriterTest: java.io.File file>;
+
+        $z8 = virtualinvoke $r17.<java.io.File: boolean exists()>();
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z8);
+
+        $r18 = r0.<org.apache.commons.io.output.LockableFileWriterTest: java.io.File lockFile>;
+
+        $z9 = virtualinvoke $r18.<java.io.File: boolean exists()>();
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z9);
+
+     label5:
+        $r8 = new org.apache.commons.io.output.LockableFileWriter;
+
+        $r9 = r0.<org.apache.commons.io.output.LockableFileWriterTest: java.io.File file>;
+
+        specialinvoke $r8.<org.apache.commons.io.output.LockableFileWriter: void <init>(java.io.File)>($r9);
+
+        r21 = $r8;
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("Somehow able to open a locked file. ");
+
+     label6:
+        goto label9;
+
+     label7:
+        $r13 := @caughtexception;
+
+        r25 = virtualinvoke $r13.<java.io.IOException: java.lang.String getMessage()>();
+
+        $z4 = virtualinvoke r25.<java.lang.String: boolean startsWith(java.lang.String)>("Can\'t write file, lock ");
+
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>("Exception message does not start correctly. ", $z4);
+
+        $r14 = r0.<org.apache.commons.io.output.LockableFileWriterTest: java.io.File file>;
+
+        $z5 = virtualinvoke $r14.<java.io.File: boolean exists()>();
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z5);
+
+        $r15 = r0.<org.apache.commons.io.output.LockableFileWriterTest: java.io.File lockFile>;
+
+        $z6 = virtualinvoke $r15.<java.io.File: boolean exists()>();
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z6);
+
+        goto label9;
+
+     label8:
+        $r12 := @caughtexception;
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.Writer)>(r19);
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.Writer)>(r20);
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.Writer)>(r21);
+
+        throw $r12;
+
+     label9:
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.Writer)>($r2);
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.Writer)>(r20);
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.Writer)>(r21);
+
+        $r10 = r0.<org.apache.commons.io.output.LockableFileWriterTest: java.io.File file>;
+
+        $z2 = virtualinvoke $r10.<java.io.File: boolean exists()>();
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z2);
+
+        $r11 = r0.<org.apache.commons.io.output.LockableFileWriterTest: java.io.File lockFile>;
+
+        $z3 = virtualinvoke $r11.<java.io.File: boolean exists()>();
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z3);
+
+        return;
+
+        catch java.io.IOException from label2 to label3 with label4;
+        catch java.io.IOException from label5 to label6 with label7;
+        catch java.lang.Throwable from label1 to label8 with label8;
+    }
+
+    public void testAlternateLockDir() throws java.io.IOException
+    {
+        org.apache.commons.io.output.LockableFileWriterTest r0;
+        java.lang.String r2, $r7, $r14;
+        org.apache.commons.io.output.LockableFileWriter $r4, $r10, r21, r22;
+        java.io.File $r5, $r6, $r8, $r9, $r11, $r12, $r15, $r16, $r19, $r20;
+        boolean $z0, $z1, $z2, $z3, $z4, $z5, $z6;
+        java.nio.charset.Charset $r13;
+        java.lang.Throwable $r17;
+        java.io.IOException $r18;
+
+        r0 := @this: org.apache.commons.io.output.LockableFileWriterTest;
+
+        r21 = null;
+
+        r22 = null;
+
+     label1:
+        $r4 = new org.apache.commons.io.output.LockableFileWriter;
+
+        $r6 = r0.<org.apache.commons.io.output.LockableFileWriterTest: java.io.File file>;
+
+        $r5 = r0.<org.apache.commons.io.output.LockableFileWriterTest: java.io.File altLockDir>;
+
+        $r7 = virtualinvoke $r5.<java.io.File: java.lang.String getAbsolutePath()>();
+
+        specialinvoke $r4.<org.apache.commons.io.output.LockableFileWriter: void <init>(java.io.File,java.lang.String,boolean,java.lang.String)>($r6, "UTF-8", 1, $r7);
+
+        r21 = $r4;
+
+        $r8 = r0.<org.apache.commons.io.output.LockableFileWriterTest: java.io.File file>;
+
+        $z0 = virtualinvoke $r8.<java.io.File: boolean exists()>();
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z0);
+
+        $r9 = r0.<org.apache.commons.io.output.LockableFileWriterTest: java.io.File altLockFile>;
+
+        $z1 = virtualinvoke $r9.<java.io.File: boolean exists()>();
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z1);
+
+     label2:
+        $r10 = new org.apache.commons.io.output.LockableFileWriter;
+
+        $r12 = r0.<org.apache.commons.io.output.LockableFileWriterTest: java.io.File file>;
+
+        $r13 = <org.apache.commons.io.Charsets: java.nio.charset.Charset UTF_8>;
+
+        $r11 = r0.<org.apache.commons.io.output.LockableFileWriterTest: java.io.File altLockDir>;
+
+        $r14 = virtualinvoke $r11.<java.io.File: java.lang.String getAbsolutePath()>();
+
+        specialinvoke $r10.<org.apache.commons.io.output.LockableFileWriter: void <init>(java.io.File,java.nio.charset.Charset,boolean,java.lang.String)>($r12, $r13, 1, $r14);
+
+        r22 = $r10;
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("Somehow able to open a locked file. ");
+
+     label3:
+        goto label6;
+
+     label4:
+        $r18 := @caughtexception;
+
+        r2 = virtualinvoke $r18.<java.io.IOException: java.lang.String getMessage()>();
+
+        $z4 = virtualinvoke r2.<java.lang.String: boolean startsWith(java.lang.String)>("Can\'t write file, lock ");
+
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>("Exception message does not start correctly. ", $z4);
+
+        $r19 = r0.<org.apache.commons.io.output.LockableFileWriterTest: java.io.File file>;
+
+        $z5 = virtualinvoke $r19.<java.io.File: boolean exists()>();
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z5);
+
+        $r20 = r0.<org.apache.commons.io.output.LockableFileWriterTest: java.io.File altLockFile>;
+
+        $z6 = virtualinvoke $r20.<java.io.File: boolean exists()>();
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z6);
+
+        goto label6;
+
+     label5:
+        $r17 := @caughtexception;
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.Writer)>(r21);
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.Writer)>(r22);
+
+        throw $r17;
+
+     label6:
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.Writer)>($r4);
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.Writer)>(r22);
+
+        $r15 = r0.<org.apache.commons.io.output.LockableFileWriterTest: java.io.File file>;
+
+        $z2 = virtualinvoke $r15.<java.io.File: boolean exists()>();
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z2);
+
+        $r16 = r0.<org.apache.commons.io.output.LockableFileWriterTest: java.io.File altLockFile>;
+
+        $z3 = virtualinvoke $r16.<java.io.File: boolean exists()>();
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z3);
+
+        return;
+
+        catch java.io.IOException from label2 to label3 with label4;
+        catch java.lang.Throwable from label1 to label5 with label5;
+    }
+
+    public void testFileNotLocked() throws java.io.IOException
+    {
+        org.apache.commons.io.output.LockableFileWriterTest r0;
+        org.apache.commons.io.output.LockableFileWriter $r2, $r8, r16, r18;
+        java.io.File $r3, $r4, $r5, $r6, $r7, $r9, $r10, $r11, $r12, $r13;
+        boolean $z0, $z1, $z2, $z3, $z4, $z5, $z6, $z7;
+        java.lang.Throwable $r14, $r15;
+
+        r0 := @this: org.apache.commons.io.output.LockableFileWriterTest;
+
+        r16 = null;
+
+     label1:
+        $r2 = new org.apache.commons.io.output.LockableFileWriter;
+
+        $r3 = r0.<org.apache.commons.io.output.LockableFileWriterTest: java.io.File file>;
+
+        specialinvoke $r2.<org.apache.commons.io.output.LockableFileWriter: void <init>(java.io.File)>($r3);
+
+        r16 = $r2;
+
+        $r4 = r0.<org.apache.commons.io.output.LockableFileWriterTest: java.io.File file>;
+
+        $z0 = virtualinvoke $r4.<java.io.File: boolean exists()>();
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z0);
+
+        $r5 = r0.<org.apache.commons.io.output.LockableFileWriterTest: java.io.File lockFile>;
+
+        $z1 = virtualinvoke $r5.<java.io.File: boolean exists()>();
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z1);
+
+        goto label3;
+
+     label2:
+        $r14 := @caughtexception;
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.Writer)>(r16);
+
+        throw $r14;
+
+     label3:
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.Writer)>($r2);
+
+        $r6 = r0.<org.apache.commons.io.output.LockableFileWriterTest: java.io.File file>;
+
+        $z2 = virtualinvoke $r6.<java.io.File: boolean exists()>();
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z2);
+
+        $r7 = r0.<org.apache.commons.io.output.LockableFileWriterTest: java.io.File lockFile>;
+
+        $z3 = virtualinvoke $r7.<java.io.File: boolean exists()>();
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z3);
+
+        r18 = null;
+
+     label4:
+        $r8 = new org.apache.commons.io.output.LockableFileWriter;
+
+        $r9 = r0.<org.apache.commons.io.output.LockableFileWriterTest: java.io.File file>;
+
+        specialinvoke $r8.<org.apache.commons.io.output.LockableFileWriter: void <init>(java.io.File)>($r9);
+
+        r18 = $r8;
+
+        $r10 = r0.<org.apache.commons.io.output.LockableFileWriterTest: java.io.File file>;
+
+        $z4 = virtualinvoke $r10.<java.io.File: boolean exists()>();
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z4);
+
+        $r11 = r0.<org.apache.commons.io.output.LockableFileWriterTest: java.io.File lockFile>;
+
+        $z5 = virtualinvoke $r11.<java.io.File: boolean exists()>();
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z5);
+
+        goto label6;
+
+     label5:
+        $r15 := @caughtexception;
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.Writer)>(r18);
+
+        throw $r15;
+
+     label6:
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.Writer)>($r8);
+
+        $r12 = r0.<org.apache.commons.io.output.LockableFileWriterTest: java.io.File file>;
+
+        $z6 = virtualinvoke $r12.<java.io.File: boolean exists()>();
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z6);
+
+        $r13 = r0.<org.apache.commons.io.output.LockableFileWriterTest: java.io.File lockFile>;
+
+        $z7 = virtualinvoke $r13.<java.io.File: boolean exists()>();
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z7);
+
+        return;
+
+        catch java.lang.Throwable from label1 to label2 with label2;
+        catch java.lang.Throwable from label4 to label5 with label5;
+    }
+
+    public void testConstructor_File_encoding_badEncoding() throws java.io.IOException
+    {
+        org.apache.commons.io.output.LockableFileWriterTest r0;
+        org.apache.commons.io.output.LockableFileWriter $r3, r11;
+        java.io.File $r4, $r5, $r6, $r9, $r10;
+        boolean $z0, $z1, $z2, $z3;
+        java.lang.Throwable $r7;
+        java.nio.charset.UnsupportedCharsetException $r8;
+
+        r0 := @this: org.apache.commons.io.output.LockableFileWriterTest;
+
+        r11 = null;
+
+     label1:
+        $r3 = new org.apache.commons.io.output.LockableFileWriter;
+
+        $r4 = r0.<org.apache.commons.io.output.LockableFileWriterTest: java.io.File file>;
+
+        specialinvoke $r3.<org.apache.commons.io.output.LockableFileWriter: void <init>(java.io.File,java.lang.String)>($r4, "BAD-ENCODE");
+
+        r11 = $r3;
+
+        staticinvoke <org.junit.Assert: void fail()>();
+
+     label2:
+        goto label6;
+
+     label3:
+        $r8 := @caughtexception;
+
+        $r9 = r0.<org.apache.commons.io.output.LockableFileWriterTest: java.io.File file>;
+
+        $z2 = virtualinvoke $r9.<java.io.File: boolean exists()>();
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z2);
+
+        $r10 = r0.<org.apache.commons.io.output.LockableFileWriterTest: java.io.File lockFile>;
+
+        $z3 = virtualinvoke $r10.<java.io.File: boolean exists()>();
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z3);
+
+     label4:
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.Writer)>(r11);
+
+        goto label7;
+
+     label5:
+        $r7 := @caughtexception;
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.Writer)>(r11);
+
+        throw $r7;
+
+     label6:
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.Writer)>($r3);
+
+     label7:
+        $r5 = r0.<org.apache.commons.io.output.LockableFileWriterTest: java.io.File file>;
+
+        $z0 = virtualinvoke $r5.<java.io.File: boolean exists()>();
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z0);
+
+        $r6 = r0.<org.apache.commons.io.output.LockableFileWriterTest: java.io.File lockFile>;
+
+        $z1 = virtualinvoke $r6.<java.io.File: boolean exists()>();
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z1);
+
+        return;
+
+        catch java.nio.charset.UnsupportedCharsetException from label1 to label2 with label3;
+        catch java.lang.Throwable from label1 to label4 with label5;
+    }
+
+    public void testConstructor_File_directory()
+    {
+        org.apache.commons.io.output.LockableFileWriterTest r0;
+        org.apache.commons.io.output.LockableFileWriter $r3, r11;
+        java.io.File $r4, $r5, $r6, $r9, $r10;
+        boolean $z0, $z1, $z2, $z3;
+        java.lang.Throwable $r7;
+        java.io.IOException $r8;
+
+        r0 := @this: org.apache.commons.io.output.LockableFileWriterTest;
+
+        r11 = null;
+
+     label1:
+        $r3 = new org.apache.commons.io.output.LockableFileWriter;
+
+        $r4 = staticinvoke <org.apache.commons.io.output.LockableFileWriterTest: java.io.File getTestDirectory()>();
+
+        specialinvoke $r3.<org.apache.commons.io.output.LockableFileWriter: void <init>(java.io.File)>($r4);
+
+        r11 = $r3;
+
+        staticinvoke <org.junit.Assert: void fail()>();
+
+     label2:
+        goto label6;
+
+     label3:
+        $r8 := @caughtexception;
+
+        $r9 = r0.<org.apache.commons.io.output.LockableFileWriterTest: java.io.File file>;
+
+        $z2 = virtualinvoke $r9.<java.io.File: boolean exists()>();
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z2);
+
+        $r10 = r0.<org.apache.commons.io.output.LockableFileWriterTest: java.io.File lockFile>;
+
+        $z3 = virtualinvoke $r10.<java.io.File: boolean exists()>();
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z3);
+
+     label4:
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.Writer)>(r11);
+
+        goto label7;
+
+     label5:
+        $r7 := @caughtexception;
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.Writer)>(r11);
+
+        throw $r7;
+
+     label6:
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.Writer)>($r3);
+
+     label7:
+        $r5 = r0.<org.apache.commons.io.output.LockableFileWriterTest: java.io.File file>;
+
+        $z0 = virtualinvoke $r5.<java.io.File: boolean exists()>();
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z0);
+
+        $r6 = r0.<org.apache.commons.io.output.LockableFileWriterTest: java.io.File lockFile>;
+
+        $z1 = virtualinvoke $r6.<java.io.File: boolean exists()>();
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z1);
+
+        return;
+
+        catch java.io.IOException from label1 to label2 with label3;
+        catch java.lang.Throwable from label1 to label4 with label5;
+    }
+
+    public void testConstructor_File_nullFile() throws java.io.IOException
+    {
+        org.apache.commons.io.output.LockableFileWriterTest r0;
+        org.apache.commons.io.output.LockableFileWriter $r3, r10;
+        java.io.File $r4, $r5, $r7, $r8;
+        boolean $z0, $z1, $z2, $z3;
+        java.lang.NullPointerException $r6;
+        java.lang.Throwable $r9;
+
+        r0 := @this: org.apache.commons.io.output.LockableFileWriterTest;
+
+        r10 = null;
+
+     label1:
+        $r3 = new org.apache.commons.io.output.LockableFileWriter;
+
+        specialinvoke $r3.<org.apache.commons.io.output.LockableFileWriter: void <init>(java.io.File)>(null);
+
+        r10 = $r3;
+
+        staticinvoke <org.junit.Assert: void fail()>();
+
+     label2:
+        goto label6;
+
+     label3:
+        $r6 := @caughtexception;
+
+        $r7 = r0.<org.apache.commons.io.output.LockableFileWriterTest: java.io.File file>;
+
+        $z2 = virtualinvoke $r7.<java.io.File: boolean exists()>();
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z2);
+
+        $r8 = r0.<org.apache.commons.io.output.LockableFileWriterTest: java.io.File lockFile>;
+
+        $z3 = virtualinvoke $r8.<java.io.File: boolean exists()>();
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z3);
+
+     label4:
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.Writer)>(r10);
+
+        goto label7;
+
+     label5:
+        $r9 := @caughtexception;
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.Writer)>(r10);
+
+        throw $r9;
+
+     label6:
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.Writer)>($r3);
+
+     label7:
+        $r4 = r0.<org.apache.commons.io.output.LockableFileWriterTest: java.io.File file>;
+
+        $z0 = virtualinvoke $r4.<java.io.File: boolean exists()>();
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z0);
+
+        $r5 = r0.<org.apache.commons.io.output.LockableFileWriterTest: java.io.File lockFile>;
+
+        $z1 = virtualinvoke $r5.<java.io.File: boolean exists()>();
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z1);
+
+        return;
+
+        catch java.lang.NullPointerException from label1 to label2 with label3;
+        catch java.lang.Throwable from label1 to label4 with label5;
+    }
+
+    public void testConstructor_fileName_nullFile() throws java.io.IOException
+    {
+        org.apache.commons.io.output.LockableFileWriterTest r0;
+        org.apache.commons.io.output.LockableFileWriter $r3, r10;
+        java.io.File $r4, $r5, $r8, $r9;
+        boolean $z0, $z1, $z2, $z3;
+        java.lang.Throwable $r6;
+        java.lang.NullPointerException $r7;
+
+        r0 := @this: org.apache.commons.io.output.LockableFileWriterTest;
+
+        r10 = null;
+
+     label1:
+        $r3 = new org.apache.commons.io.output.LockableFileWriter;
+
+        specialinvoke $r3.<org.apache.commons.io.output.LockableFileWriter: void <init>(java.lang.String)>(null);
+
+        r10 = $r3;
+
+        staticinvoke <org.junit.Assert: void fail()>();
+
+     label2:
+        goto label6;
+
+     label3:
+        $r7 := @caughtexception;
+
+        $r8 = r0.<org.apache.commons.io.output.LockableFileWriterTest: java.io.File file>;
+
+        $z2 = virtualinvoke $r8.<java.io.File: boolean exists()>();
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z2);
+
+        $r9 = r0.<org.apache.commons.io.output.LockableFileWriterTest: java.io.File lockFile>;
+
+        $z3 = virtualinvoke $r9.<java.io.File: boolean exists()>();
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z3);
+
+     label4:
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.Writer)>(r10);
+
+        goto label7;
+
+     label5:
+        $r6 := @caughtexception;
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.Writer)>(r10);
+
+        throw $r6;
+
+     label6:
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.Writer)>($r3);
+
+     label7:
+        $r4 = r0.<org.apache.commons.io.output.LockableFileWriterTest: java.io.File file>;
+
+        $z0 = virtualinvoke $r4.<java.io.File: boolean exists()>();
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z0);
+
+        $r5 = r0.<org.apache.commons.io.output.LockableFileWriterTest: java.io.File lockFile>;
+
+        $z1 = virtualinvoke $r5.<java.io.File: boolean exists()>();
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z1);
+
+        return;
+
+        catch java.lang.NullPointerException from label1 to label2 with label3;
+        catch java.lang.Throwable from label1 to label4 with label5;
+    }
+}

@@ -1,0 +1,731 @@
+public class org.apache.commons.io.serialization.ValidatingObjectInputStreamTest extends org.apache.commons.io.serialization.ClosingBase
+{
+    private org.apache.commons.io.serialization.MockSerializedClass testObject;
+    private java.io.InputStream testStream;
+    private static final org.apache.commons.io.serialization.ClassNameMatcher ALWAYS_TRUE;
+
+    static void <clinit>()
+    {
+        org.apache.commons.io.serialization.ValidatingObjectInputStreamTest$1 $r0;
+
+        $r0 = new org.apache.commons.io.serialization.ValidatingObjectInputStreamTest$1;
+
+        specialinvoke $r0.<org.apache.commons.io.serialization.ValidatingObjectInputStreamTest$1: void <init>()>();
+
+        <org.apache.commons.io.serialization.ValidatingObjectInputStreamTest: org.apache.commons.io.serialization.ClassNameMatcher ALWAYS_TRUE> = $r0;
+
+        return;
+    }
+
+    public void <init>()
+    {
+        org.apache.commons.io.serialization.ValidatingObjectInputStreamTest r0;
+
+        r0 := @this: org.apache.commons.io.serialization.ValidatingObjectInputStreamTest;
+
+        specialinvoke r0.<org.apache.commons.io.serialization.ClosingBase: void <init>()>();
+
+        return;
+    }
+
+    public void setup() throws java.io.IOException
+    {
+        org.apache.commons.io.serialization.ValidatingObjectInputStreamTest r0;
+        java.io.ByteArrayOutputStream r1, $r6;
+        java.io.ObjectOutputStream r2, $r8;
+        org.apache.commons.io.serialization.MockSerializedClass $r3, $r10;
+        java.util.UUID $r4;
+        java.lang.String $r5;
+        java.io.Closeable $r7, $r9, $r13;
+        java.io.ByteArrayInputStream $r11;
+        byte[] $r12;
+        java.io.InputStream $r14;
+
+        r0 := @this: org.apache.commons.io.serialization.ValidatingObjectInputStreamTest;
+
+        $r3 = new org.apache.commons.io.serialization.MockSerializedClass;
+
+        $r4 = staticinvoke <java.util.UUID: java.util.UUID randomUUID()>();
+
+        $r5 = virtualinvoke $r4.<java.util.UUID: java.lang.String toString()>();
+
+        specialinvoke $r3.<org.apache.commons.io.serialization.MockSerializedClass: void <init>(java.lang.String)>($r5);
+
+        r0.<org.apache.commons.io.serialization.ValidatingObjectInputStreamTest: org.apache.commons.io.serialization.MockSerializedClass testObject> = $r3;
+
+        $r6 = new java.io.ByteArrayOutputStream;
+
+        specialinvoke $r6.<java.io.ByteArrayOutputStream: void <init>()>();
+
+        $r7 = virtualinvoke r0.<org.apache.commons.io.serialization.ValidatingObjectInputStreamTest: java.io.Closeable willClose(java.io.Closeable)>($r6);
+
+        r1 = (java.io.ByteArrayOutputStream) $r7;
+
+        $r8 = new java.io.ObjectOutputStream;
+
+        specialinvoke $r8.<java.io.ObjectOutputStream: void <init>(java.io.OutputStream)>(r1);
+
+        $r9 = virtualinvoke r0.<org.apache.commons.io.serialization.ValidatingObjectInputStreamTest: java.io.Closeable willClose(java.io.Closeable)>($r8);
+
+        r2 = (java.io.ObjectOutputStream) $r9;
+
+        $r10 = r0.<org.apache.commons.io.serialization.ValidatingObjectInputStreamTest: org.apache.commons.io.serialization.MockSerializedClass testObject>;
+
+        virtualinvoke r2.<java.io.ObjectOutputStream: void writeObject(java.lang.Object)>($r10);
+
+        $r11 = new java.io.ByteArrayInputStream;
+
+        $r12 = virtualinvoke r1.<java.io.ByteArrayOutputStream: byte[] toByteArray()>();
+
+        specialinvoke $r11.<java.io.ByteArrayInputStream: void <init>(byte[])>($r12);
+
+        $r13 = virtualinvoke r0.<org.apache.commons.io.serialization.ValidatingObjectInputStreamTest: java.io.Closeable willClose(java.io.Closeable)>($r11);
+
+        $r14 = (java.io.InputStream) $r13;
+
+        r0.<org.apache.commons.io.serialization.ValidatingObjectInputStreamTest: java.io.InputStream testStream> = $r14;
+
+        return;
+    }
+
+    private void assertSerialization(java.io.ObjectInputStream) throws java.lang.ClassNotFoundException, java.io.IOException
+    {
+        org.apache.commons.io.serialization.ValidatingObjectInputStreamTest r0;
+        java.io.ObjectInputStream r1;
+        org.apache.commons.io.serialization.MockSerializedClass r2, $r4;
+        java.lang.Object $r3;
+
+        r0 := @this: org.apache.commons.io.serialization.ValidatingObjectInputStreamTest;
+
+        r1 := @parameter0: java.io.ObjectInputStream;
+
+        $r3 = virtualinvoke r1.<java.io.ObjectInputStream: java.lang.Object readObject()>();
+
+        r2 = (org.apache.commons.io.serialization.MockSerializedClass) $r3;
+
+        $r4 = r0.<org.apache.commons.io.serialization.ValidatingObjectInputStreamTest: org.apache.commons.io.serialization.MockSerializedClass testObject>;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r4, r2);
+
+        return;
+    }
+
+    public void noAccept() throws java.lang.Exception
+    {
+        org.apache.commons.io.serialization.ValidatingObjectInputStreamTest r0;
+        org.apache.commons.io.serialization.ValidatingObjectInputStream $r1;
+        java.io.InputStream $r2;
+        java.io.Closeable $r3;
+        java.io.ObjectInputStream $r4;
+
+        r0 := @this: org.apache.commons.io.serialization.ValidatingObjectInputStreamTest;
+
+        $r1 = new org.apache.commons.io.serialization.ValidatingObjectInputStream;
+
+        $r2 = r0.<org.apache.commons.io.serialization.ValidatingObjectInputStreamTest: java.io.InputStream testStream>;
+
+        specialinvoke $r1.<org.apache.commons.io.serialization.ValidatingObjectInputStream: void <init>(java.io.InputStream)>($r2);
+
+        $r3 = virtualinvoke r0.<org.apache.commons.io.serialization.ValidatingObjectInputStreamTest: java.io.Closeable willClose(java.io.Closeable)>($r1);
+
+        $r4 = (java.io.ObjectInputStream) $r3;
+
+        specialinvoke r0.<org.apache.commons.io.serialization.ValidatingObjectInputStreamTest: void assertSerialization(java.io.ObjectInputStream)>($r4);
+
+        return;
+    }
+
+    public void exceptionIncludesClassName() throws java.lang.Exception
+    {
+        org.apache.commons.io.serialization.ValidatingObjectInputStreamTest r0;
+        java.lang.String r2, $r11, $r12;
+        org.apache.commons.io.serialization.ValidatingObjectInputStream $r3;
+        java.io.InputStream $r4;
+        java.io.Closeable $r5;
+        java.io.ObjectInputStream $r6;
+        java.io.InvalidClassException $r7;
+        java.lang.Class $r8;
+        java.lang.StringBuilder $r9, $r10;
+        boolean $z0;
+
+        r0 := @this: org.apache.commons.io.serialization.ValidatingObjectInputStreamTest;
+
+     label1:
+        $r3 = new org.apache.commons.io.serialization.ValidatingObjectInputStream;
+
+        $r4 = r0.<org.apache.commons.io.serialization.ValidatingObjectInputStreamTest: java.io.InputStream testStream>;
+
+        specialinvoke $r3.<org.apache.commons.io.serialization.ValidatingObjectInputStream: void <init>(java.io.InputStream)>($r4);
+
+        $r5 = virtualinvoke r0.<org.apache.commons.io.serialization.ValidatingObjectInputStreamTest: java.io.Closeable willClose(java.io.Closeable)>($r3);
+
+        $r6 = (java.io.ObjectInputStream) $r5;
+
+        specialinvoke r0.<org.apache.commons.io.serialization.ValidatingObjectInputStreamTest: void assertSerialization(java.io.ObjectInputStream)>($r6);
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("Expected an InvalidClassException");
+
+     label2:
+        goto label4;
+
+     label3:
+        $r7 := @caughtexception;
+
+        $r8 = class "org/apache/commons/io/serialization/MockSerializedClass";
+
+        r2 = virtualinvoke $r8.<java.lang.Class: java.lang.String getName()>();
+
+        $r9 = new java.lang.StringBuilder;
+
+        specialinvoke $r9.<java.lang.StringBuilder: void <init>(java.lang.String)>("Expecting message to contain ");
+
+        $r10 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r2);
+
+        $r11 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r12 = virtualinvoke $r7.<java.io.InvalidClassException: java.lang.String getMessage()>();
+
+        $z0 = virtualinvoke $r12.<java.lang.String: boolean contains(java.lang.CharSequence)>(r2);
+
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>($r11, $z0);
+
+     label4:
+        return;
+
+        catch java.io.InvalidClassException from label1 to label2 with label3;
+    }
+
+    public void acceptCustomMatcher() throws java.lang.Exception
+    {
+        org.apache.commons.io.serialization.ValidatingObjectInputStreamTest r0;
+        org.apache.commons.io.serialization.ValidatingObjectInputStream $r1, $r5, $r6;
+        java.io.InputStream $r2;
+        java.io.Closeable $r3;
+        org.apache.commons.io.serialization.ClassNameMatcher $r4;
+
+        r0 := @this: org.apache.commons.io.serialization.ValidatingObjectInputStreamTest;
+
+        $r1 = new org.apache.commons.io.serialization.ValidatingObjectInputStream;
+
+        $r2 = r0.<org.apache.commons.io.serialization.ValidatingObjectInputStreamTest: java.io.InputStream testStream>;
+
+        specialinvoke $r1.<org.apache.commons.io.serialization.ValidatingObjectInputStream: void <init>(java.io.InputStream)>($r2);
+
+        $r3 = virtualinvoke r0.<org.apache.commons.io.serialization.ValidatingObjectInputStreamTest: java.io.Closeable willClose(java.io.Closeable)>($r1);
+
+        $r5 = (org.apache.commons.io.serialization.ValidatingObjectInputStream) $r3;
+
+        $r4 = <org.apache.commons.io.serialization.ValidatingObjectInputStreamTest: org.apache.commons.io.serialization.ClassNameMatcher ALWAYS_TRUE>;
+
+        $r6 = virtualinvoke $r5.<org.apache.commons.io.serialization.ValidatingObjectInputStream: org.apache.commons.io.serialization.ValidatingObjectInputStream accept(org.apache.commons.io.serialization.ClassNameMatcher)>($r4);
+
+        specialinvoke r0.<org.apache.commons.io.serialization.ValidatingObjectInputStreamTest: void assertSerialization(java.io.ObjectInputStream)>($r6);
+
+        return;
+    }
+
+    public void rejectCustomMatcher() throws java.lang.Exception
+    {
+        org.apache.commons.io.serialization.ValidatingObjectInputStreamTest r0;
+        org.apache.commons.io.serialization.ValidatingObjectInputStream $r1, $r5, $r6, $r8;
+        java.io.InputStream $r2;
+        java.io.Closeable $r3;
+        java.lang.Class[] $r4;
+        org.apache.commons.io.serialization.ClassNameMatcher $r7;
+
+        r0 := @this: org.apache.commons.io.serialization.ValidatingObjectInputStreamTest;
+
+        $r1 = new org.apache.commons.io.serialization.ValidatingObjectInputStream;
+
+        $r2 = r0.<org.apache.commons.io.serialization.ValidatingObjectInputStreamTest: java.io.InputStream testStream>;
+
+        specialinvoke $r1.<org.apache.commons.io.serialization.ValidatingObjectInputStream: void <init>(java.io.InputStream)>($r2);
+
+        $r3 = virtualinvoke r0.<org.apache.commons.io.serialization.ValidatingObjectInputStreamTest: java.io.Closeable willClose(java.io.Closeable)>($r1);
+
+        $r5 = (org.apache.commons.io.serialization.ValidatingObjectInputStream) $r3;
+
+        $r4 = newarray (java.lang.Class)[1];
+
+        $r4[0] = class "org/apache/commons/io/serialization/MockSerializedClass";
+
+        $r6 = virtualinvoke $r5.<org.apache.commons.io.serialization.ValidatingObjectInputStream: org.apache.commons.io.serialization.ValidatingObjectInputStream accept(java.lang.Class[])>($r4);
+
+        $r7 = <org.apache.commons.io.serialization.ValidatingObjectInputStreamTest: org.apache.commons.io.serialization.ClassNameMatcher ALWAYS_TRUE>;
+
+        $r8 = virtualinvoke $r6.<org.apache.commons.io.serialization.ValidatingObjectInputStream: org.apache.commons.io.serialization.ValidatingObjectInputStream reject(org.apache.commons.io.serialization.ClassNameMatcher)>($r7);
+
+        specialinvoke r0.<org.apache.commons.io.serialization.ValidatingObjectInputStreamTest: void assertSerialization(java.io.ObjectInputStream)>($r8);
+
+        return;
+    }
+
+    public void acceptPattern() throws java.lang.Exception
+    {
+        org.apache.commons.io.serialization.ValidatingObjectInputStreamTest r0;
+        org.apache.commons.io.serialization.ValidatingObjectInputStream $r1, $r4, $r6;
+        java.io.InputStream $r2;
+        java.io.Closeable $r3;
+        java.util.regex.Pattern $r5;
+
+        r0 := @this: org.apache.commons.io.serialization.ValidatingObjectInputStreamTest;
+
+        $r1 = new org.apache.commons.io.serialization.ValidatingObjectInputStream;
+
+        $r2 = r0.<org.apache.commons.io.serialization.ValidatingObjectInputStreamTest: java.io.InputStream testStream>;
+
+        specialinvoke $r1.<org.apache.commons.io.serialization.ValidatingObjectInputStream: void <init>(java.io.InputStream)>($r2);
+
+        $r3 = virtualinvoke r0.<org.apache.commons.io.serialization.ValidatingObjectInputStreamTest: java.io.Closeable willClose(java.io.Closeable)>($r1);
+
+        $r4 = (org.apache.commons.io.serialization.ValidatingObjectInputStream) $r3;
+
+        $r5 = staticinvoke <java.util.regex.Pattern: java.util.regex.Pattern compile(java.lang.String)>(".*MockSerializedClass.*");
+
+        $r6 = virtualinvoke $r4.<org.apache.commons.io.serialization.ValidatingObjectInputStream: org.apache.commons.io.serialization.ValidatingObjectInputStream accept(java.util.regex.Pattern)>($r5);
+
+        specialinvoke r0.<org.apache.commons.io.serialization.ValidatingObjectInputStreamTest: void assertSerialization(java.io.ObjectInputStream)>($r6);
+
+        return;
+    }
+
+    public void rejectPattern() throws java.lang.Exception
+    {
+        org.apache.commons.io.serialization.ValidatingObjectInputStreamTest r0;
+        org.apache.commons.io.serialization.ValidatingObjectInputStream $r1, $r5, $r6, $r8;
+        java.io.InputStream $r2;
+        java.io.Closeable $r3;
+        java.lang.Class[] $r4;
+        java.util.regex.Pattern $r7;
+
+        r0 := @this: org.apache.commons.io.serialization.ValidatingObjectInputStreamTest;
+
+        $r1 = new org.apache.commons.io.serialization.ValidatingObjectInputStream;
+
+        $r2 = r0.<org.apache.commons.io.serialization.ValidatingObjectInputStreamTest: java.io.InputStream testStream>;
+
+        specialinvoke $r1.<org.apache.commons.io.serialization.ValidatingObjectInputStream: void <init>(java.io.InputStream)>($r2);
+
+        $r3 = virtualinvoke r0.<org.apache.commons.io.serialization.ValidatingObjectInputStreamTest: java.io.Closeable willClose(java.io.Closeable)>($r1);
+
+        $r5 = (org.apache.commons.io.serialization.ValidatingObjectInputStream) $r3;
+
+        $r4 = newarray (java.lang.Class)[1];
+
+        $r4[0] = class "org/apache/commons/io/serialization/MockSerializedClass";
+
+        $r6 = virtualinvoke $r5.<org.apache.commons.io.serialization.ValidatingObjectInputStream: org.apache.commons.io.serialization.ValidatingObjectInputStream accept(java.lang.Class[])>($r4);
+
+        $r7 = staticinvoke <java.util.regex.Pattern: java.util.regex.Pattern compile(java.lang.String)>("org.*");
+
+        $r8 = virtualinvoke $r6.<org.apache.commons.io.serialization.ValidatingObjectInputStream: org.apache.commons.io.serialization.ValidatingObjectInputStream reject(java.util.regex.Pattern)>($r7);
+
+        specialinvoke r0.<org.apache.commons.io.serialization.ValidatingObjectInputStreamTest: void assertSerialization(java.io.ObjectInputStream)>($r8);
+
+        return;
+    }
+
+    public void acceptWildcard() throws java.lang.Exception
+    {
+        org.apache.commons.io.serialization.ValidatingObjectInputStreamTest r0;
+        org.apache.commons.io.serialization.ValidatingObjectInputStream $r1, $r5, $r6;
+        java.io.InputStream $r2;
+        java.io.Closeable $r3;
+        java.lang.String[] $r4;
+
+        r0 := @this: org.apache.commons.io.serialization.ValidatingObjectInputStreamTest;
+
+        $r1 = new org.apache.commons.io.serialization.ValidatingObjectInputStream;
+
+        $r2 = r0.<org.apache.commons.io.serialization.ValidatingObjectInputStreamTest: java.io.InputStream testStream>;
+
+        specialinvoke $r1.<org.apache.commons.io.serialization.ValidatingObjectInputStream: void <init>(java.io.InputStream)>($r2);
+
+        $r3 = virtualinvoke r0.<org.apache.commons.io.serialization.ValidatingObjectInputStreamTest: java.io.Closeable willClose(java.io.Closeable)>($r1);
+
+        $r5 = (org.apache.commons.io.serialization.ValidatingObjectInputStream) $r3;
+
+        $r4 = newarray (java.lang.String)[1];
+
+        $r4[0] = "org.apache.commons.io.*";
+
+        $r6 = virtualinvoke $r5.<org.apache.commons.io.serialization.ValidatingObjectInputStream: org.apache.commons.io.serialization.ValidatingObjectInputStream accept(java.lang.String[])>($r4);
+
+        specialinvoke r0.<org.apache.commons.io.serialization.ValidatingObjectInputStreamTest: void assertSerialization(java.io.ObjectInputStream)>($r6);
+
+        return;
+    }
+
+    public void rejectWildcard() throws java.lang.Exception
+    {
+        org.apache.commons.io.serialization.ValidatingObjectInputStreamTest r0;
+        org.apache.commons.io.serialization.ValidatingObjectInputStream $r1, $r5, $r6, $r8;
+        java.io.InputStream $r2;
+        java.io.Closeable $r3;
+        java.lang.Class[] $r4;
+        java.lang.String[] $r7;
+
+        r0 := @this: org.apache.commons.io.serialization.ValidatingObjectInputStreamTest;
+
+        $r1 = new org.apache.commons.io.serialization.ValidatingObjectInputStream;
+
+        $r2 = r0.<org.apache.commons.io.serialization.ValidatingObjectInputStreamTest: java.io.InputStream testStream>;
+
+        specialinvoke $r1.<org.apache.commons.io.serialization.ValidatingObjectInputStream: void <init>(java.io.InputStream)>($r2);
+
+        $r3 = virtualinvoke r0.<org.apache.commons.io.serialization.ValidatingObjectInputStreamTest: java.io.Closeable willClose(java.io.Closeable)>($r1);
+
+        $r5 = (org.apache.commons.io.serialization.ValidatingObjectInputStream) $r3;
+
+        $r4 = newarray (java.lang.Class)[1];
+
+        $r4[0] = class "org/apache/commons/io/serialization/MockSerializedClass";
+
+        $r6 = virtualinvoke $r5.<org.apache.commons.io.serialization.ValidatingObjectInputStream: org.apache.commons.io.serialization.ValidatingObjectInputStream accept(java.lang.Class[])>($r4);
+
+        $r7 = newarray (java.lang.String)[1];
+
+        $r7[0] = "org.*";
+
+        $r8 = virtualinvoke $r6.<org.apache.commons.io.serialization.ValidatingObjectInputStream: org.apache.commons.io.serialization.ValidatingObjectInputStream reject(java.lang.String[])>($r7);
+
+        specialinvoke r0.<org.apache.commons.io.serialization.ValidatingObjectInputStreamTest: void assertSerialization(java.io.ObjectInputStream)>($r8);
+
+        return;
+    }
+
+    public void ourTestClassNotAccepted() throws java.lang.Exception
+    {
+        org.apache.commons.io.serialization.ValidatingObjectInputStreamTest r0;
+        org.apache.commons.io.serialization.ValidatingObjectInputStream $r1, $r5, $r6;
+        java.io.InputStream $r2;
+        java.io.Closeable $r3;
+        java.lang.Class[] $r4;
+
+        r0 := @this: org.apache.commons.io.serialization.ValidatingObjectInputStreamTest;
+
+        $r1 = new org.apache.commons.io.serialization.ValidatingObjectInputStream;
+
+        $r2 = r0.<org.apache.commons.io.serialization.ValidatingObjectInputStreamTest: java.io.InputStream testStream>;
+
+        specialinvoke $r1.<org.apache.commons.io.serialization.ValidatingObjectInputStream: void <init>(java.io.InputStream)>($r2);
+
+        $r3 = virtualinvoke r0.<org.apache.commons.io.serialization.ValidatingObjectInputStreamTest: java.io.Closeable willClose(java.io.Closeable)>($r1);
+
+        $r5 = (org.apache.commons.io.serialization.ValidatingObjectInputStream) $r3;
+
+        $r4 = newarray (java.lang.Class)[1];
+
+        $r4[0] = class "java/lang/Integer";
+
+        $r6 = virtualinvoke $r5.<org.apache.commons.io.serialization.ValidatingObjectInputStream: org.apache.commons.io.serialization.ValidatingObjectInputStream accept(java.lang.Class[])>($r4);
+
+        specialinvoke r0.<org.apache.commons.io.serialization.ValidatingObjectInputStreamTest: void assertSerialization(java.io.ObjectInputStream)>($r6);
+
+        return;
+    }
+
+    public void ourTestClassOnlyAccepted() throws java.lang.Exception
+    {
+        org.apache.commons.io.serialization.ValidatingObjectInputStreamTest r0;
+        org.apache.commons.io.serialization.ValidatingObjectInputStream $r1, $r5, $r6;
+        java.io.InputStream $r2;
+        java.io.Closeable $r3;
+        java.lang.Class[] $r4;
+
+        r0 := @this: org.apache.commons.io.serialization.ValidatingObjectInputStreamTest;
+
+        $r1 = new org.apache.commons.io.serialization.ValidatingObjectInputStream;
+
+        $r2 = r0.<org.apache.commons.io.serialization.ValidatingObjectInputStreamTest: java.io.InputStream testStream>;
+
+        specialinvoke $r1.<org.apache.commons.io.serialization.ValidatingObjectInputStream: void <init>(java.io.InputStream)>($r2);
+
+        $r3 = virtualinvoke r0.<org.apache.commons.io.serialization.ValidatingObjectInputStreamTest: java.io.Closeable willClose(java.io.Closeable)>($r1);
+
+        $r5 = (org.apache.commons.io.serialization.ValidatingObjectInputStream) $r3;
+
+        $r4 = newarray (java.lang.Class)[1];
+
+        $r4[0] = class "org/apache/commons/io/serialization/MockSerializedClass";
+
+        $r6 = virtualinvoke $r5.<org.apache.commons.io.serialization.ValidatingObjectInputStream: org.apache.commons.io.serialization.ValidatingObjectInputStream accept(java.lang.Class[])>($r4);
+
+        specialinvoke r0.<org.apache.commons.io.serialization.ValidatingObjectInputStreamTest: void assertSerialization(java.io.ObjectInputStream)>($r6);
+
+        return;
+    }
+
+    public void ourTestClassAcceptedFirst() throws java.lang.Exception
+    {
+        org.apache.commons.io.serialization.ValidatingObjectInputStreamTest r0;
+        org.apache.commons.io.serialization.ValidatingObjectInputStream $r1, $r5, $r6;
+        java.io.InputStream $r2;
+        java.io.Closeable $r3;
+        java.lang.Class[] $r4;
+
+        r0 := @this: org.apache.commons.io.serialization.ValidatingObjectInputStreamTest;
+
+        $r1 = new org.apache.commons.io.serialization.ValidatingObjectInputStream;
+
+        $r2 = r0.<org.apache.commons.io.serialization.ValidatingObjectInputStreamTest: java.io.InputStream testStream>;
+
+        specialinvoke $r1.<org.apache.commons.io.serialization.ValidatingObjectInputStream: void <init>(java.io.InputStream)>($r2);
+
+        $r3 = virtualinvoke r0.<org.apache.commons.io.serialization.ValidatingObjectInputStreamTest: java.io.Closeable willClose(java.io.Closeable)>($r1);
+
+        $r5 = (org.apache.commons.io.serialization.ValidatingObjectInputStream) $r3;
+
+        $r4 = newarray (java.lang.Class)[2];
+
+        $r4[0] = class "org/apache/commons/io/serialization/MockSerializedClass";
+
+        $r4[1] = class "java/lang/Integer";
+
+        $r6 = virtualinvoke $r5.<org.apache.commons.io.serialization.ValidatingObjectInputStream: org.apache.commons.io.serialization.ValidatingObjectInputStream accept(java.lang.Class[])>($r4);
+
+        specialinvoke r0.<org.apache.commons.io.serialization.ValidatingObjectInputStreamTest: void assertSerialization(java.io.ObjectInputStream)>($r6);
+
+        return;
+    }
+
+    public void ourTestClassAcceptedSecond() throws java.lang.Exception
+    {
+        org.apache.commons.io.serialization.ValidatingObjectInputStreamTest r0;
+        org.apache.commons.io.serialization.ValidatingObjectInputStream $r1, $r5, $r6;
+        java.io.InputStream $r2;
+        java.io.Closeable $r3;
+        java.lang.Class[] $r4;
+
+        r0 := @this: org.apache.commons.io.serialization.ValidatingObjectInputStreamTest;
+
+        $r1 = new org.apache.commons.io.serialization.ValidatingObjectInputStream;
+
+        $r2 = r0.<org.apache.commons.io.serialization.ValidatingObjectInputStreamTest: java.io.InputStream testStream>;
+
+        specialinvoke $r1.<org.apache.commons.io.serialization.ValidatingObjectInputStream: void <init>(java.io.InputStream)>($r2);
+
+        $r3 = virtualinvoke r0.<org.apache.commons.io.serialization.ValidatingObjectInputStreamTest: java.io.Closeable willClose(java.io.Closeable)>($r1);
+
+        $r5 = (org.apache.commons.io.serialization.ValidatingObjectInputStream) $r3;
+
+        $r4 = newarray (java.lang.Class)[2];
+
+        $r4[0] = class "java/lang/Integer";
+
+        $r4[1] = class "org/apache/commons/io/serialization/MockSerializedClass";
+
+        $r6 = virtualinvoke $r5.<org.apache.commons.io.serialization.ValidatingObjectInputStream: org.apache.commons.io.serialization.ValidatingObjectInputStream accept(java.lang.Class[])>($r4);
+
+        specialinvoke r0.<org.apache.commons.io.serialization.ValidatingObjectInputStreamTest: void assertSerialization(java.io.ObjectInputStream)>($r6);
+
+        return;
+    }
+
+    public void ourTestClassAcceptedFirstWildcard() throws java.lang.Exception
+    {
+        org.apache.commons.io.serialization.ValidatingObjectInputStreamTest r0;
+        org.apache.commons.io.serialization.ValidatingObjectInputStream $r1, $r5, $r6;
+        java.io.InputStream $r2;
+        java.io.Closeable $r3;
+        java.lang.String[] $r4;
+
+        r0 := @this: org.apache.commons.io.serialization.ValidatingObjectInputStreamTest;
+
+        $r1 = new org.apache.commons.io.serialization.ValidatingObjectInputStream;
+
+        $r2 = r0.<org.apache.commons.io.serialization.ValidatingObjectInputStreamTest: java.io.InputStream testStream>;
+
+        specialinvoke $r1.<org.apache.commons.io.serialization.ValidatingObjectInputStream: void <init>(java.io.InputStream)>($r2);
+
+        $r3 = virtualinvoke r0.<org.apache.commons.io.serialization.ValidatingObjectInputStreamTest: java.io.Closeable willClose(java.io.Closeable)>($r1);
+
+        $r5 = (org.apache.commons.io.serialization.ValidatingObjectInputStream) $r3;
+
+        $r4 = newarray (java.lang.String)[2];
+
+        $r4[0] = "*MockSerializedClass";
+
+        $r4[1] = "*Integer";
+
+        $r6 = virtualinvoke $r5.<org.apache.commons.io.serialization.ValidatingObjectInputStream: org.apache.commons.io.serialization.ValidatingObjectInputStream accept(java.lang.String[])>($r4);
+
+        specialinvoke r0.<org.apache.commons.io.serialization.ValidatingObjectInputStreamTest: void assertSerialization(java.io.ObjectInputStream)>($r6);
+
+        return;
+    }
+
+    public void ourTestClassAcceptedSecondWildcard() throws java.lang.Exception
+    {
+        org.apache.commons.io.serialization.ValidatingObjectInputStreamTest r0;
+        org.apache.commons.io.serialization.ValidatingObjectInputStream $r1, $r5, $r6;
+        java.io.InputStream $r2;
+        java.io.Closeable $r3;
+        java.lang.String[] $r4;
+
+        r0 := @this: org.apache.commons.io.serialization.ValidatingObjectInputStreamTest;
+
+        $r1 = new org.apache.commons.io.serialization.ValidatingObjectInputStream;
+
+        $r2 = r0.<org.apache.commons.io.serialization.ValidatingObjectInputStreamTest: java.io.InputStream testStream>;
+
+        specialinvoke $r1.<org.apache.commons.io.serialization.ValidatingObjectInputStream: void <init>(java.io.InputStream)>($r2);
+
+        $r3 = virtualinvoke r0.<org.apache.commons.io.serialization.ValidatingObjectInputStreamTest: java.io.Closeable willClose(java.io.Closeable)>($r1);
+
+        $r5 = (org.apache.commons.io.serialization.ValidatingObjectInputStream) $r3;
+
+        $r4 = newarray (java.lang.String)[2];
+
+        $r4[0] = "*Integer";
+
+        $r4[1] = "*MockSerializedClass";
+
+        $r6 = virtualinvoke $r5.<org.apache.commons.io.serialization.ValidatingObjectInputStream: org.apache.commons.io.serialization.ValidatingObjectInputStream accept(java.lang.String[])>($r4);
+
+        specialinvoke r0.<org.apache.commons.io.serialization.ValidatingObjectInputStreamTest: void assertSerialization(java.io.ObjectInputStream)>($r6);
+
+        return;
+    }
+
+    public void reject() throws java.lang.Exception
+    {
+        org.apache.commons.io.serialization.ValidatingObjectInputStreamTest r0;
+        org.apache.commons.io.serialization.ValidatingObjectInputStream $r1, $r5, $r6, $r8;
+        java.io.InputStream $r2;
+        java.io.Closeable $r3;
+        java.lang.Class[] $r4, $r7;
+
+        r0 := @this: org.apache.commons.io.serialization.ValidatingObjectInputStreamTest;
+
+        $r1 = new org.apache.commons.io.serialization.ValidatingObjectInputStream;
+
+        $r2 = r0.<org.apache.commons.io.serialization.ValidatingObjectInputStreamTest: java.io.InputStream testStream>;
+
+        specialinvoke $r1.<org.apache.commons.io.serialization.ValidatingObjectInputStream: void <init>(java.io.InputStream)>($r2);
+
+        $r3 = virtualinvoke r0.<org.apache.commons.io.serialization.ValidatingObjectInputStreamTest: java.io.Closeable willClose(java.io.Closeable)>($r1);
+
+        $r5 = (org.apache.commons.io.serialization.ValidatingObjectInputStream) $r3;
+
+        $r4 = newarray (java.lang.Class)[1];
+
+        $r4[0] = class "java/lang/Long";
+
+        $r6 = virtualinvoke $r5.<org.apache.commons.io.serialization.ValidatingObjectInputStream: org.apache.commons.io.serialization.ValidatingObjectInputStream accept(java.lang.Class[])>($r4);
+
+        $r7 = newarray (java.lang.Class)[2];
+
+        $r7[0] = class "org/apache/commons/io/serialization/MockSerializedClass";
+
+        $r7[1] = class "java/lang/Integer";
+
+        $r8 = virtualinvoke $r6.<org.apache.commons.io.serialization.ValidatingObjectInputStream: org.apache.commons.io.serialization.ValidatingObjectInputStream reject(java.lang.Class[])>($r7);
+
+        specialinvoke r0.<org.apache.commons.io.serialization.ValidatingObjectInputStreamTest: void assertSerialization(java.io.ObjectInputStream)>($r8);
+
+        return;
+    }
+
+    public void rejectPrecedence() throws java.lang.Exception
+    {
+        org.apache.commons.io.serialization.ValidatingObjectInputStreamTest r0;
+        org.apache.commons.io.serialization.ValidatingObjectInputStream $r1, $r5, $r6, $r8;
+        java.io.InputStream $r2;
+        java.io.Closeable $r3;
+        java.lang.Class[] $r4, $r7;
+
+        r0 := @this: org.apache.commons.io.serialization.ValidatingObjectInputStreamTest;
+
+        $r1 = new org.apache.commons.io.serialization.ValidatingObjectInputStream;
+
+        $r2 = r0.<org.apache.commons.io.serialization.ValidatingObjectInputStreamTest: java.io.InputStream testStream>;
+
+        specialinvoke $r1.<org.apache.commons.io.serialization.ValidatingObjectInputStream: void <init>(java.io.InputStream)>($r2);
+
+        $r3 = virtualinvoke r0.<org.apache.commons.io.serialization.ValidatingObjectInputStreamTest: java.io.Closeable willClose(java.io.Closeable)>($r1);
+
+        $r5 = (org.apache.commons.io.serialization.ValidatingObjectInputStream) $r3;
+
+        $r4 = newarray (java.lang.Class)[1];
+
+        $r4[0] = class "org/apache/commons/io/serialization/MockSerializedClass";
+
+        $r6 = virtualinvoke $r5.<org.apache.commons.io.serialization.ValidatingObjectInputStream: org.apache.commons.io.serialization.ValidatingObjectInputStream accept(java.lang.Class[])>($r4);
+
+        $r7 = newarray (java.lang.Class)[2];
+
+        $r7[0] = class "org/apache/commons/io/serialization/MockSerializedClass";
+
+        $r7[1] = class "java/lang/Integer";
+
+        $r8 = virtualinvoke $r6.<org.apache.commons.io.serialization.ValidatingObjectInputStream: org.apache.commons.io.serialization.ValidatingObjectInputStream reject(java.lang.Class[])>($r7);
+
+        specialinvoke r0.<org.apache.commons.io.serialization.ValidatingObjectInputStreamTest: void assertSerialization(java.io.ObjectInputStream)>($r8);
+
+        return;
+    }
+
+    public void rejectOnly() throws java.lang.Exception
+    {
+        org.apache.commons.io.serialization.ValidatingObjectInputStreamTest r0;
+        org.apache.commons.io.serialization.ValidatingObjectInputStream $r1, $r5, $r6;
+        java.io.InputStream $r2;
+        java.io.Closeable $r3;
+        java.lang.Class[] $r4;
+
+        r0 := @this: org.apache.commons.io.serialization.ValidatingObjectInputStreamTest;
+
+        $r1 = new org.apache.commons.io.serialization.ValidatingObjectInputStream;
+
+        $r2 = r0.<org.apache.commons.io.serialization.ValidatingObjectInputStreamTest: java.io.InputStream testStream>;
+
+        specialinvoke $r1.<org.apache.commons.io.serialization.ValidatingObjectInputStream: void <init>(java.io.InputStream)>($r2);
+
+        $r3 = virtualinvoke r0.<org.apache.commons.io.serialization.ValidatingObjectInputStreamTest: java.io.Closeable willClose(java.io.Closeable)>($r1);
+
+        $r5 = (org.apache.commons.io.serialization.ValidatingObjectInputStream) $r3;
+
+        $r4 = newarray (java.lang.Class)[1];
+
+        $r4[0] = class "java/lang/Integer";
+
+        $r6 = virtualinvoke $r5.<org.apache.commons.io.serialization.ValidatingObjectInputStream: org.apache.commons.io.serialization.ValidatingObjectInputStream reject(java.lang.Class[])>($r4);
+
+        specialinvoke r0.<org.apache.commons.io.serialization.ValidatingObjectInputStreamTest: void assertSerialization(java.io.ObjectInputStream)>($r6);
+
+        return;
+    }
+
+    public void customInvalidMethod() throws java.lang.Exception
+    {
+        org.apache.commons.io.serialization.ValidatingObjectInputStreamTest r0;
+        org.apache.commons.io.serialization.ValidatingObjectInputStreamTest$1CustomVOIS $r1, $r5;
+        java.io.InputStream $r2;
+        java.io.Closeable $r3;
+        java.lang.Class[] $r4;
+        org.apache.commons.io.serialization.ValidatingObjectInputStream $r6;
+
+        r0 := @this: org.apache.commons.io.serialization.ValidatingObjectInputStreamTest;
+
+        $r1 = new org.apache.commons.io.serialization.ValidatingObjectInputStreamTest$1CustomVOIS;
+
+        $r2 = r0.<org.apache.commons.io.serialization.ValidatingObjectInputStreamTest: java.io.InputStream testStream>;
+
+        specialinvoke $r1.<org.apache.commons.io.serialization.ValidatingObjectInputStreamTest$1CustomVOIS: void <init>(org.apache.commons.io.serialization.ValidatingObjectInputStreamTest,java.io.InputStream)>(r0, $r2);
+
+        $r3 = virtualinvoke r0.<org.apache.commons.io.serialization.ValidatingObjectInputStreamTest: java.io.Closeable willClose(java.io.Closeable)>($r1);
+
+        $r5 = (org.apache.commons.io.serialization.ValidatingObjectInputStreamTest$1CustomVOIS) $r3;
+
+        $r4 = newarray (java.lang.Class)[1];
+
+        $r4[0] = class "java/lang/Integer";
+
+        $r6 = virtualinvoke $r5.<org.apache.commons.io.serialization.ValidatingObjectInputStreamTest$1CustomVOIS: org.apache.commons.io.serialization.ValidatingObjectInputStream reject(java.lang.Class[])>($r4);
+
+        specialinvoke r0.<org.apache.commons.io.serialization.ValidatingObjectInputStreamTest: void assertSerialization(java.io.ObjectInputStream)>($r6);
+
+        return;
+    }
+}

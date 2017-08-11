@@ -1,0 +1,58 @@
+public class org.apache.commons.io.TaggedIOExceptionTest extends java.lang.Object
+{
+
+    public void <init>()
+    {
+        org.apache.commons.io.TaggedIOExceptionTest r0;
+
+        r0 := @this: org.apache.commons.io.TaggedIOExceptionTest;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void testTaggedIOException()
+    {
+        org.apache.commons.io.TaggedIOExceptionTest r0;
+        java.util.UUID r1, $r6;
+        java.io.IOException $r4, $r7;
+        org.apache.commons.io.TaggedIOException $r5;
+        boolean $z0, $z1;
+        java.lang.String $r8, $r9;
+
+        r0 := @this: org.apache.commons.io.TaggedIOExceptionTest;
+
+        r1 = staticinvoke <java.util.UUID: java.util.UUID randomUUID()>();
+
+        $r4 = new java.io.IOException;
+
+        specialinvoke $r4.<java.io.IOException: void <init>(java.lang.String)>("Test exception");
+
+        $r5 = new org.apache.commons.io.TaggedIOException;
+
+        specialinvoke $r5.<org.apache.commons.io.TaggedIOException: void <init>(java.io.IOException,java.io.Serializable)>($r4, r1);
+
+        $z0 = staticinvoke <org.apache.commons.io.TaggedIOException: boolean isTaggedWith(java.lang.Throwable,java.lang.Object)>($r5, r1);
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z0);
+
+        $r6 = staticinvoke <java.util.UUID: java.util.UUID randomUUID()>();
+
+        $z1 = staticinvoke <org.apache.commons.io.TaggedIOException: boolean isTaggedWith(java.lang.Throwable,java.lang.Object)>($r5, $r6);
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z1);
+
+        $r7 = virtualinvoke $r5.<org.apache.commons.io.TaggedIOException: java.io.IOException getCause()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r4, $r7);
+
+        $r8 = virtualinvoke $r4.<java.io.IOException: java.lang.String getMessage()>();
+
+        $r9 = virtualinvoke $r5.<org.apache.commons.io.TaggedIOException: java.lang.String getMessage()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r8, $r9);
+
+        return;
+    }
+}

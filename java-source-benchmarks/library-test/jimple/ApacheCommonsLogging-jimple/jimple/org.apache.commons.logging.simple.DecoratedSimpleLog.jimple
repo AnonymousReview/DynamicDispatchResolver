@@ -1,0 +1,149 @@
+public class org.apache.commons.logging.simple.DecoratedSimpleLog extends org.apache.commons.logging.impl.SimpleLog
+{
+    private static final long serialVersionUID;
+    protected java.util.ArrayList cache;
+
+    public void <init>(java.lang.String)
+    {
+        org.apache.commons.logging.simple.DecoratedSimpleLog r0;
+        java.lang.String r1;
+        java.util.ArrayList $r2;
+
+        r0 := @this: org.apache.commons.logging.simple.DecoratedSimpleLog;
+
+        r1 := @parameter0: java.lang.String;
+
+        specialinvoke r0.<org.apache.commons.logging.impl.SimpleLog: void <init>(java.lang.String)>(r1);
+
+        $r2 = new java.util.ArrayList;
+
+        specialinvoke $r2.<java.util.ArrayList: void <init>()>();
+
+        r0.<org.apache.commons.logging.simple.DecoratedSimpleLog: java.util.ArrayList cache> = $r2;
+
+        return;
+    }
+
+    public java.text.DateFormat getDateTimeFormatter()
+    {
+        org.apache.commons.logging.simple.DecoratedSimpleLog r0;
+        java.text.DateFormat $r1;
+
+        r0 := @this: org.apache.commons.logging.simple.DecoratedSimpleLog;
+
+        $r1 = <org.apache.commons.logging.simple.DecoratedSimpleLog: java.text.DateFormat dateFormatter>;
+
+        return $r1;
+    }
+
+    public java.lang.String getDateTimeFormat()
+    {
+        org.apache.commons.logging.simple.DecoratedSimpleLog r0;
+        java.lang.String $r1;
+
+        r0 := @this: org.apache.commons.logging.simple.DecoratedSimpleLog;
+
+        $r1 = <org.apache.commons.logging.simple.DecoratedSimpleLog: java.lang.String dateTimeFormat>;
+
+        return $r1;
+    }
+
+    public java.lang.String getLogName()
+    {
+        org.apache.commons.logging.simple.DecoratedSimpleLog r0;
+        java.lang.String $r1;
+
+        r0 := @this: org.apache.commons.logging.simple.DecoratedSimpleLog;
+
+        $r1 = r0.<org.apache.commons.logging.simple.DecoratedSimpleLog: java.lang.String logName>;
+
+        return $r1;
+    }
+
+    public boolean getShowDateTime()
+    {
+        org.apache.commons.logging.simple.DecoratedSimpleLog r0;
+        boolean $z0;
+
+        r0 := @this: org.apache.commons.logging.simple.DecoratedSimpleLog;
+
+        $z0 = <org.apache.commons.logging.simple.DecoratedSimpleLog: boolean showDateTime>;
+
+        return $z0;
+    }
+
+    public boolean getShowShortName()
+    {
+        org.apache.commons.logging.simple.DecoratedSimpleLog r0;
+        boolean $z0;
+
+        r0 := @this: org.apache.commons.logging.simple.DecoratedSimpleLog;
+
+        $z0 = <org.apache.commons.logging.simple.DecoratedSimpleLog: boolean showShortName>;
+
+        return $z0;
+    }
+
+    protected void log(int, java.lang.Object, java.lang.Throwable)
+    {
+        org.apache.commons.logging.simple.DecoratedSimpleLog r0;
+        int i0;
+        java.lang.Object r1;
+        java.lang.Throwable r2;
+        org.apache.commons.logging.simple.LogRecord $r3;
+        java.util.ArrayList $r4;
+
+        r0 := @this: org.apache.commons.logging.simple.DecoratedSimpleLog;
+
+        i0 := @parameter0: int;
+
+        r1 := @parameter1: java.lang.Object;
+
+        r2 := @parameter2: java.lang.Throwable;
+
+        specialinvoke r0.<org.apache.commons.logging.impl.SimpleLog: void log(int,java.lang.Object,java.lang.Throwable)>(i0, r1, r2);
+
+        $r4 = r0.<org.apache.commons.logging.simple.DecoratedSimpleLog: java.util.ArrayList cache>;
+
+        $r3 = new org.apache.commons.logging.simple.LogRecord;
+
+        specialinvoke $r3.<org.apache.commons.logging.simple.LogRecord: void <init>(int,java.lang.Object,java.lang.Throwable)>(i0, r1, r2);
+
+        virtualinvoke $r4.<java.util.ArrayList: boolean add(java.lang.Object)>($r3);
+
+        return;
+    }
+
+    public void clearCache()
+    {
+        org.apache.commons.logging.simple.DecoratedSimpleLog r0;
+        java.util.ArrayList $r1;
+
+        r0 := @this: org.apache.commons.logging.simple.DecoratedSimpleLog;
+
+        $r1 = r0.<org.apache.commons.logging.simple.DecoratedSimpleLog: java.util.ArrayList cache>;
+
+        virtualinvoke $r1.<java.util.ArrayList: void clear()>();
+
+        return;
+    }
+
+    public java.util.List getCache()
+    {
+        org.apache.commons.logging.simple.DecoratedSimpleLog r0;
+        java.util.ArrayList $r1;
+
+        r0 := @this: org.apache.commons.logging.simple.DecoratedSimpleLog;
+
+        $r1 = r0.<org.apache.commons.logging.simple.DecoratedSimpleLog: java.util.ArrayList cache>;
+
+        return $r1;
+    }
+
+    public static void <clinit>()
+    {
+        <org.apache.commons.logging.simple.DecoratedSimpleLog: long serialVersionUID> = 196544280770017153L;
+
+        return;
+    }
+}

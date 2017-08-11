@@ -1,0 +1,37 @@
+public class org.slf4j.event.EventConstants extends java.lang.Object
+{
+    public static final int ERROR_INT;
+    public static final int WARN_INT;
+    public static final int INFO_INT;
+    public static final int DEBUG_INT;
+    public static final int TRACE_INT;
+    public static final java.lang.String NA_SUBST;
+
+    public void <init>()
+    {
+        org.slf4j.event.EventConstants r0;
+
+        r0 := @this: org.slf4j.event.EventConstants;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static void <clinit>()
+    {
+        <org.slf4j.event.EventConstants: java.lang.String NA_SUBST> = "NA/SubstituteLogger";
+
+        <org.slf4j.event.EventConstants: int TRACE_INT> = 0;
+
+        <org.slf4j.event.EventConstants: int DEBUG_INT> = 10;
+
+        <org.slf4j.event.EventConstants: int INFO_INT> = 20;
+
+        <org.slf4j.event.EventConstants: int WARN_INT> = 30;
+
+        <org.slf4j.event.EventConstants: int ERROR_INT> = 40;
+
+        return;
+    }
+}

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<attributes>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="0" eline="0" spos="0" epos="0"/>
+<text info="Signature: &lt;T:Ljava/lang/Object;&gt;Ljava/lang/Object;" aType="SignatureTag"/>
+<text info="[inner=org/apache/commons/io/DirectoryWalker$CancelException, outer=org/apache/commons/io/DirectoryWalker, name=CancelException,flags=9]" aType="InnerClassTag"/>
+<text info="soot.tagkit.InnerClassAttribute@532d092e" aType="InnerClassAttribute"/>
+</attribute>
+<attribute>
+<srcPos sline="329" eline="329" spos="0" epos="0"/>
+<jmpPos sline="106" eline="106" spos="0" epos="0"/>
+<text info="Signature: (Ljava/io/File;Ljava/util/Collection&lt;TT;&gt;;)V" aType="SignatureTag"/>
+</attribute>
+<attribute>
+<srcPos sline="350" eline="350" spos="0" epos="0"/>
+<jmpPos sline="149" eline="149" spos="0" epos="0"/>
+<text info="Signature: (Ljava/io/File;ILjava/util/Collection&lt;TT;&gt;;)V" aType="SignatureTag"/>
+</attribute>
+<attribute>
+<srcPos sline="394" eline="394" spos="0" epos="0"/>
+<jmpPos sline="250" eline="250" spos="0" epos="0"/>
+<text info="Signature: (Ljava/io/File;ILjava/util/Collection&lt;TT;&gt;;)V" aType="SignatureTag"/>
+</attribute>
+<attribute>
+<srcPos sline="437" eline="437" spos="0" epos="0"/>
+<jmpPos sline="281" eline="281" spos="0" epos="0"/>
+<text info="Signature: (Ljava/io/File;ILjava/util/Collection&lt;TT;&gt;;)Z" aType="SignatureTag"/>
+</attribute>
+<attribute>
+<srcPos sline="456" eline="456" spos="0" epos="0"/>
+<jmpPos sline="299" eline="299" spos="0" epos="0"/>
+<text info="Signature: (Ljava/io/File;Ljava/util/Collection&lt;TT;&gt;;Lorg/apache/commons/io/DirectoryWalker$CancelException;)V" aType="SignatureTag"/>
+</attribute>
+<attribute>
+<srcPos sline="471" eline="471" spos="0" epos="0"/>
+<jmpPos sline="317" eline="317" spos="0" epos="0"/>
+<text info="Signature: (Ljava/io/File;Ljava/util/Collection&lt;TT;&gt;;)V" aType="SignatureTag"/>
+</attribute>
+<attribute>
+<srcPos sline="491" eline="491" spos="0" epos="0"/>
+<jmpPos sline="332" eline="332" spos="0" epos="0"/>
+<text info="Signature: (Ljava/io/File;ILjava/util/Collection&lt;TT;&gt;;)Z" aType="SignatureTag"/>
+</attribute>
+<attribute>
+<srcPos sline="507" eline="507" spos="0" epos="0"/>
+<jmpPos sline="350" eline="350" spos="0" epos="0"/>
+<text info="Signature: (Ljava/io/File;ILjava/util/Collection&lt;TT;&gt;;)V" aType="SignatureTag"/>
+</attribute>
+<attribute>
+<srcPos sline="538" eline="538" spos="0" epos="0"/>
+<jmpPos sline="386" eline="386" spos="0" epos="0"/>
+<text info="Signature: (Ljava/io/File;ILjava/util/Collection&lt;TT;&gt;;)V" aType="SignatureTag"/>
+</attribute>
+<attribute>
+<srcPos sline="553" eline="553" spos="0" epos="0"/>
+<jmpPos sline="404" eline="404" spos="0" epos="0"/>
+<text info="Signature: (Ljava/io/File;ILjava/util/Collection&lt;TT;&gt;;)V" aType="SignatureTag"/>
+</attribute>
+<attribute>
+<srcPos sline="568" eline="568" spos="0" epos="0"/>
+<jmpPos sline="422" eline="422" spos="0" epos="0"/>
+<text info="Signature: (Ljava/io/File;ILjava/util/Collection&lt;TT;&gt;;)V" aType="SignatureTag"/>
+</attribute>
+<attribute>
+<srcPos sline="580" eline="580" spos="0" epos="0"/>
+<jmpPos sline="440" eline="440" spos="0" epos="0"/>
+<text info="Signature: (Ljava/util/Collection&lt;TT;&gt;;)V" aType="SignatureTag"/>
+</attribute>
+</attributes>

@@ -1,0 +1,102 @@
+public class org.apache.commons.codec.net.RFC1522CodecTest extends java.lang.Object
+{
+
+    public void <init>()
+    {
+        org.apache.commons.codec.net.RFC1522CodecTest r0;
+
+        r0 := @this: org.apache.commons.codec.net.RFC1522CodecTest;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void testNullInput() throws java.lang.Exception
+    {
+        org.apache.commons.codec.net.RFC1522CodecTest r0;
+        org.apache.commons.codec.net.RFC1522CodecTest$RFC1522TestCodec $r2;
+        java.lang.String $r3, $r4;
+
+        r0 := @this: org.apache.commons.codec.net.RFC1522CodecTest;
+
+        $r2 = new org.apache.commons.codec.net.RFC1522CodecTest$RFC1522TestCodec;
+
+        specialinvoke $r2.<org.apache.commons.codec.net.RFC1522CodecTest$RFC1522TestCodec: void <init>()>();
+
+        $r3 = virtualinvoke $r2.<org.apache.commons.codec.net.RFC1522CodecTest$RFC1522TestCodec: java.lang.String decodeText(java.lang.String)>(null);
+
+        staticinvoke <org.junit.Assert: void assertNull(java.lang.Object)>($r3);
+
+        $r4 = virtualinvoke $r2.<org.apache.commons.codec.net.RFC1522CodecTest$RFC1522TestCodec: java.lang.String encodeText(java.lang.String,java.lang.String)>(null, "UTF-8");
+
+        staticinvoke <org.junit.Assert: void assertNull(java.lang.Object)>($r4);
+
+        return;
+    }
+
+    private void assertExpectedDecoderException(java.lang.String) throws java.lang.Exception
+    {
+        org.apache.commons.codec.net.RFC1522CodecTest r0;
+        java.lang.String r1;
+        org.apache.commons.codec.net.RFC1522CodecTest$RFC1522TestCodec $r4;
+        org.apache.commons.codec.DecoderException $r6;
+
+        r0 := @this: org.apache.commons.codec.net.RFC1522CodecTest;
+
+        r1 := @parameter0: java.lang.String;
+
+        $r4 = new org.apache.commons.codec.net.RFC1522CodecTest$RFC1522TestCodec;
+
+        specialinvoke $r4.<org.apache.commons.codec.net.RFC1522CodecTest$RFC1522TestCodec: void <init>()>();
+
+     label1:
+        virtualinvoke $r4.<org.apache.commons.codec.net.RFC1522CodecTest$RFC1522TestCodec: java.lang.String decodeText(java.lang.String)>(r1);
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("DecoderException should have been thrown");
+
+     label2:
+        goto label4;
+
+     label3:
+        $r6 := @caughtexception;
+
+     label4:
+        return;
+
+        catch org.apache.commons.codec.DecoderException from label1 to label2 with label3;
+    }
+
+    public void testDecodeInvalid() throws java.lang.Exception
+    {
+        org.apache.commons.codec.net.RFC1522CodecTest r0;
+
+        r0 := @this: org.apache.commons.codec.net.RFC1522CodecTest;
+
+        specialinvoke r0.<org.apache.commons.codec.net.RFC1522CodecTest: void assertExpectedDecoderException(java.lang.String)>("whatever");
+
+        specialinvoke r0.<org.apache.commons.codec.net.RFC1522CodecTest: void assertExpectedDecoderException(java.lang.String)>("=?");
+
+        specialinvoke r0.<org.apache.commons.codec.net.RFC1522CodecTest: void assertExpectedDecoderException(java.lang.String)>("?=");
+
+        specialinvoke r0.<org.apache.commons.codec.net.RFC1522CodecTest: void assertExpectedDecoderException(java.lang.String)>("==");
+
+        specialinvoke r0.<org.apache.commons.codec.net.RFC1522CodecTest: void assertExpectedDecoderException(java.lang.String)>("=??=");
+
+        specialinvoke r0.<org.apache.commons.codec.net.RFC1522CodecTest: void assertExpectedDecoderException(java.lang.String)>("=?stuff?=");
+
+        specialinvoke r0.<org.apache.commons.codec.net.RFC1522CodecTest: void assertExpectedDecoderException(java.lang.String)>("=?UTF-8??=");
+
+        specialinvoke r0.<org.apache.commons.codec.net.RFC1522CodecTest: void assertExpectedDecoderException(java.lang.String)>("=?UTF-8?stuff?=");
+
+        specialinvoke r0.<org.apache.commons.codec.net.RFC1522CodecTest: void assertExpectedDecoderException(java.lang.String)>("=?UTF-8?T?stuff");
+
+        specialinvoke r0.<org.apache.commons.codec.net.RFC1522CodecTest: void assertExpectedDecoderException(java.lang.String)>("=??T?stuff?=");
+
+        specialinvoke r0.<org.apache.commons.codec.net.RFC1522CodecTest: void assertExpectedDecoderException(java.lang.String)>("=?UTF-8??stuff?=");
+
+        specialinvoke r0.<org.apache.commons.codec.net.RFC1522CodecTest: void assertExpectedDecoderException(java.lang.String)>("=?UTF-8?W?stuff?=");
+
+        return;
+    }
+}

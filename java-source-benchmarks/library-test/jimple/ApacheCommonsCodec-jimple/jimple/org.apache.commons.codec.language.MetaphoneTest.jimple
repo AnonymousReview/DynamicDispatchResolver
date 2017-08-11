@@ -1,0 +1,1417 @@
+public class org.apache.commons.codec.language.MetaphoneTest extends org.apache.commons.codec.StringEncoderAbstractTest
+{
+
+    public void <init>()
+    {
+        org.apache.commons.codec.language.MetaphoneTest r0;
+
+        r0 := @this: org.apache.commons.codec.language.MetaphoneTest;
+
+        specialinvoke r0.<org.apache.commons.codec.StringEncoderAbstractTest: void <init>()>();
+
+        return;
+    }
+
+    public void assertIsMetaphoneEqual(java.lang.String, java.lang.String[])
+    {
+        org.apache.commons.codec.language.MetaphoneTest r0;
+        java.lang.String r1, r3, $r9, r15, r17;
+        java.lang.String[] r2;
+        int i0, i1, i2, i3, i4, i5;
+        java.lang.StringBuilder $r5, $r6, $r7, $r8;
+        org.apache.commons.codec.StringEncoder $r10, $r12;
+        org.apache.commons.codec.language.Metaphone $r11, $r13;
+        boolean $z0, $z1;
+
+        r0 := @this: org.apache.commons.codec.language.MetaphoneTest;
+
+        r1 := @parameter0: java.lang.String;
+
+        r2 := @parameter1: java.lang.String[];
+
+        i1 = lengthof r2;
+
+        i2 = 0;
+
+        goto label2;
+
+     label1:
+        r15 = r2[i2];
+
+        $r5 = new java.lang.StringBuilder;
+
+        specialinvoke $r5.<java.lang.StringBuilder: void <init>(java.lang.String)>("Source: ");
+
+        $r6 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r1);
+
+        $r7 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", should have same Metaphone as: ");
+
+        $r8 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r15);
+
+        $r9 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r10 = virtualinvoke r0.<org.apache.commons.codec.language.MetaphoneTest: org.apache.commons.codec.StringEncoder getStringEncoder()>();
+
+        $r11 = (org.apache.commons.codec.language.Metaphone) $r10;
+
+        $z0 = virtualinvoke $r11.<org.apache.commons.codec.language.Metaphone: boolean isMetaphoneEqual(java.lang.String,java.lang.String)>(r1, r15);
+
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>($r9, $z0);
+
+        i2 = i2 + 1;
+
+     label2:
+        if i2 < i1 goto label1;
+
+        i3 = lengthof r2;
+
+        i4 = 0;
+
+        goto label6;
+
+     label3:
+        r17 = r2[i4];
+
+        i0 = lengthof r2;
+
+        i5 = 0;
+
+        goto label5;
+
+     label4:
+        r3 = r2[i5];
+
+        $r12 = virtualinvoke r0.<org.apache.commons.codec.language.MetaphoneTest: org.apache.commons.codec.StringEncoder getStringEncoder()>();
+
+        $r13 = (org.apache.commons.codec.language.Metaphone) $r12;
+
+        $z1 = virtualinvoke $r13.<org.apache.commons.codec.language.Metaphone: boolean isMetaphoneEqual(java.lang.String,java.lang.String)>(r17, r3);
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z1);
+
+        i5 = i5 + 1;
+
+     label5:
+        if i5 < i0 goto label4;
+
+        i4 = i4 + 1;
+
+     label6:
+        if i4 < i3 goto label3;
+
+        return;
+    }
+
+    public void assertMetaphoneEqual(java.lang.String[][])
+    {
+        org.apache.commons.codec.language.MetaphoneTest r0;
+        java.lang.String[][] r1;
+        java.lang.String[] r2;
+        int i0, i1;
+        java.lang.String r4, r5, r6;
+        java.lang.StringBuilder $r7, $r8, $r9, $r10;
+        org.apache.commons.codec.StringEncoder $r11, $r13;
+        org.apache.commons.codec.language.Metaphone $r12, $r14;
+        boolean $z0, $z1;
+
+        r0 := @this: org.apache.commons.codec.language.MetaphoneTest;
+
+        r1 := @parameter0: java.lang.String[][];
+
+        virtualinvoke r0.<org.apache.commons.codec.language.MetaphoneTest: void validateFixture(java.lang.String[][])>(r1);
+
+        i0 = lengthof r1;
+
+        i1 = 0;
+
+        goto label2;
+
+     label1:
+        r2 = r1[i1];
+
+        r4 = r2[0];
+
+        r5 = r2[1];
+
+        $r7 = new java.lang.StringBuilder;
+
+        specialinvoke $r7.<java.lang.StringBuilder: void <init>(java.lang.String)>("Expected match between ");
+
+        $r8 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r4);
+
+        $r9 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" and ");
+
+        $r10 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r5);
+
+        r6 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r11 = virtualinvoke r0.<org.apache.commons.codec.language.MetaphoneTest: org.apache.commons.codec.StringEncoder getStringEncoder()>();
+
+        $r12 = (org.apache.commons.codec.language.Metaphone) $r11;
+
+        $z0 = virtualinvoke $r12.<org.apache.commons.codec.language.Metaphone: boolean isMetaphoneEqual(java.lang.String,java.lang.String)>(r4, r5);
+
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>(r6, $z0);
+
+        $r13 = virtualinvoke r0.<org.apache.commons.codec.language.MetaphoneTest: org.apache.commons.codec.StringEncoder getStringEncoder()>();
+
+        $r14 = (org.apache.commons.codec.language.Metaphone) $r13;
+
+        $z1 = virtualinvoke $r14.<org.apache.commons.codec.language.Metaphone: boolean isMetaphoneEqual(java.lang.String,java.lang.String)>(r5, r4);
+
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>(r6, $z1);
+
+        i1 = i1 + 1;
+
+     label2:
+        if i1 < i0 goto label1;
+
+        return;
+    }
+
+    protected org.apache.commons.codec.language.Metaphone createStringEncoder()
+    {
+        org.apache.commons.codec.language.MetaphoneTest r0;
+        org.apache.commons.codec.language.Metaphone $r1;
+
+        r0 := @this: org.apache.commons.codec.language.MetaphoneTest;
+
+        $r1 = new org.apache.commons.codec.language.Metaphone;
+
+        specialinvoke $r1.<org.apache.commons.codec.language.Metaphone: void <init>()>();
+
+        return $r1;
+    }
+
+    public void testIsMetaphoneEqual1()
+    {
+        org.apache.commons.codec.language.MetaphoneTest r0;
+        java.lang.String[][] $r1;
+        java.lang.String[] $r2, $r3, $r4, $r5;
+
+        r0 := @this: org.apache.commons.codec.language.MetaphoneTest;
+
+        $r1 = newarray (java.lang.String[])[4];
+
+        $r2 = newarray (java.lang.String)[2];
+
+        $r2[0] = "Case";
+
+        $r2[1] = "case";
+
+        $r1[0] = $r2;
+
+        $r3 = newarray (java.lang.String)[2];
+
+        $r3[0] = "CASE";
+
+        $r3[1] = "Case";
+
+        $r1[1] = $r3;
+
+        $r4 = newarray (java.lang.String)[2];
+
+        $r4[0] = "caSe";
+
+        $r4[1] = "cAsE";
+
+        $r1[2] = $r4;
+
+        $r5 = newarray (java.lang.String)[2];
+
+        $r5[0] = "quick";
+
+        $r5[1] = "cookie";
+
+        $r1[3] = $r5;
+
+        virtualinvoke r0.<org.apache.commons.codec.language.MetaphoneTest: void assertMetaphoneEqual(java.lang.String[][])>($r1);
+
+        return;
+    }
+
+    public void testIsMetaphoneEqual2()
+    {
+        org.apache.commons.codec.language.MetaphoneTest r0;
+        java.lang.String[][] $r1;
+        java.lang.String[] $r2, $r3;
+
+        r0 := @this: org.apache.commons.codec.language.MetaphoneTest;
+
+        $r1 = newarray (java.lang.String[])[2];
+
+        $r2 = newarray (java.lang.String)[2];
+
+        $r2[0] = "Lawrence";
+
+        $r2[1] = "Lorenza";
+
+        $r1[0] = $r2;
+
+        $r3 = newarray (java.lang.String)[2];
+
+        $r3[0] = "Gary";
+
+        $r3[1] = "Cahra";
+
+        $r1[1] = $r3;
+
+        virtualinvoke r0.<org.apache.commons.codec.language.MetaphoneTest: void assertMetaphoneEqual(java.lang.String[][])>($r1);
+
+        return;
+    }
+
+    public void testIsMetaphoneEqualAero()
+    {
+        org.apache.commons.codec.language.MetaphoneTest r0;
+        java.lang.String[] $r1;
+
+        r0 := @this: org.apache.commons.codec.language.MetaphoneTest;
+
+        $r1 = newarray (java.lang.String)[1];
+
+        $r1[0] = "Eure";
+
+        virtualinvoke r0.<org.apache.commons.codec.language.MetaphoneTest: void assertIsMetaphoneEqual(java.lang.String,java.lang.String[])>("Aero", $r1);
+
+        return;
+    }
+
+    public void testIsMetaphoneEqualWhite()
+    {
+        org.apache.commons.codec.language.MetaphoneTest r0;
+        java.lang.String[] $r1;
+
+        r0 := @this: org.apache.commons.codec.language.MetaphoneTest;
+
+        $r1 = newarray (java.lang.String)[12];
+
+        $r1[0] = "Wade";
+
+        $r1[1] = "Wait";
+
+        $r1[2] = "Waite";
+
+        $r1[3] = "Wat";
+
+        $r1[4] = "Whit";
+
+        $r1[5] = "Wiatt";
+
+        $r1[6] = "Wit";
+
+        $r1[7] = "Wittie";
+
+        $r1[8] = "Witty";
+
+        $r1[9] = "Wood";
+
+        $r1[10] = "Woodie";
+
+        $r1[11] = "Woody";
+
+        virtualinvoke r0.<org.apache.commons.codec.language.MetaphoneTest: void assertIsMetaphoneEqual(java.lang.String,java.lang.String[])>("White", $r1);
+
+        return;
+    }
+
+    public void testIsMetaphoneEqualAlbert()
+    {
+        org.apache.commons.codec.language.MetaphoneTest r0;
+        java.lang.String[] $r1;
+
+        r0 := @this: org.apache.commons.codec.language.MetaphoneTest;
+
+        $r1 = newarray (java.lang.String)[5];
+
+        $r1[0] = "Ailbert";
+
+        $r1[1] = "Alberik";
+
+        $r1[2] = "Albert";
+
+        $r1[3] = "Alberto";
+
+        $r1[4] = "Albrecht";
+
+        virtualinvoke r0.<org.apache.commons.codec.language.MetaphoneTest: void assertIsMetaphoneEqual(java.lang.String,java.lang.String[])>("Albert", $r1);
+
+        return;
+    }
+
+    public void testIsMetaphoneEqualGary()
+    {
+        org.apache.commons.codec.language.MetaphoneTest r0;
+        java.lang.String[] $r1;
+
+        r0 := @this: org.apache.commons.codec.language.MetaphoneTest;
+
+        $r1 = newarray (java.lang.String)[44];
+
+        $r1[0] = "Cahra";
+
+        $r1[1] = "Cara";
+
+        $r1[2] = "Carey";
+
+        $r1[3] = "Cari";
+
+        $r1[4] = "Caria";
+
+        $r1[5] = "Carie";
+
+        $r1[6] = "Caro";
+
+        $r1[7] = "Carree";
+
+        $r1[8] = "Carri";
+
+        $r1[9] = "Carrie";
+
+        $r1[10] = "Carry";
+
+        $r1[11] = "Cary";
+
+        $r1[12] = "Cora";
+
+        $r1[13] = "Corey";
+
+        $r1[14] = "Cori";
+
+        $r1[15] = "Corie";
+
+        $r1[16] = "Correy";
+
+        $r1[17] = "Corri";
+
+        $r1[18] = "Corrie";
+
+        $r1[19] = "Corry";
+
+        $r1[20] = "Cory";
+
+        $r1[21] = "Gray";
+
+        $r1[22] = "Kara";
+
+        $r1[23] = "Kare";
+
+        $r1[24] = "Karee";
+
+        $r1[25] = "Kari";
+
+        $r1[26] = "Karia";
+
+        $r1[27] = "Karie";
+
+        $r1[28] = "Karrah";
+
+        $r1[29] = "Karrie";
+
+        $r1[30] = "Karry";
+
+        $r1[31] = "Kary";
+
+        $r1[32] = "Keri";
+
+        $r1[33] = "Kerri";
+
+        $r1[34] = "Kerrie";
+
+        $r1[35] = "Kerry";
+
+        $r1[36] = "Kira";
+
+        $r1[37] = "Kiri";
+
+        $r1[38] = "Kora";
+
+        $r1[39] = "Kore";
+
+        $r1[40] = "Kori";
+
+        $r1[41] = "Korie";
+
+        $r1[42] = "Korrie";
+
+        $r1[43] = "Korry";
+
+        virtualinvoke r0.<org.apache.commons.codec.language.MetaphoneTest: void assertIsMetaphoneEqual(java.lang.String,java.lang.String[])>("Gary", $r1);
+
+        return;
+    }
+
+    public void testIsMetaphoneEqualJohn()
+    {
+        org.apache.commons.codec.language.MetaphoneTest r0;
+        java.lang.String[] $r1;
+
+        r0 := @this: org.apache.commons.codec.language.MetaphoneTest;
+
+        $r1 = newarray (java.lang.String)[59];
+
+        $r1[0] = "Gena";
+
+        $r1[1] = "Gene";
+
+        $r1[2] = "Genia";
+
+        $r1[3] = "Genna";
+
+        $r1[4] = "Genni";
+
+        $r1[5] = "Gennie";
+
+        $r1[6] = "Genny";
+
+        $r1[7] = "Giana";
+
+        $r1[8] = "Gianna";
+
+        $r1[9] = "Gina";
+
+        $r1[10] = "Ginni";
+
+        $r1[11] = "Ginnie";
+
+        $r1[12] = "Ginny";
+
+        $r1[13] = "Jaine";
+
+        $r1[14] = "Jan";
+
+        $r1[15] = "Jana";
+
+        $r1[16] = "Jane";
+
+        $r1[17] = "Janey";
+
+        $r1[18] = "Jania";
+
+        $r1[19] = "Janie";
+
+        $r1[20] = "Janna";
+
+        $r1[21] = "Jany";
+
+        $r1[22] = "Jayne";
+
+        $r1[23] = "Jean";
+
+        $r1[24] = "Jeana";
+
+        $r1[25] = "Jeane";
+
+        $r1[26] = "Jeanie";
+
+        $r1[27] = "Jeanna";
+
+        $r1[28] = "Jeanne";
+
+        $r1[29] = "Jeannie";
+
+        $r1[30] = "Jen";
+
+        $r1[31] = "Jena";
+
+        $r1[32] = "Jeni";
+
+        $r1[33] = "Jenn";
+
+        $r1[34] = "Jenna";
+
+        $r1[35] = "Jennee";
+
+        $r1[36] = "Jenni";
+
+        $r1[37] = "Jennie";
+
+        $r1[38] = "Jenny";
+
+        $r1[39] = "Jinny";
+
+        $r1[40] = "Jo Ann";
+
+        $r1[41] = "Jo-Ann";
+
+        $r1[42] = "Jo-Anne";
+
+        $r1[43] = "Joan";
+
+        $r1[44] = "Joana";
+
+        $r1[45] = "Joane";
+
+        $r1[46] = "Joanie";
+
+        $r1[47] = "Joann";
+
+        $r1[48] = "Joanna";
+
+        $r1[49] = "Joanne";
+
+        $r1[50] = "Joeann";
+
+        $r1[51] = "Johna";
+
+        $r1[52] = "Johnna";
+
+        $r1[53] = "Joni";
+
+        $r1[54] = "Jonie";
+
+        $r1[55] = "Juana";
+
+        $r1[56] = "June";
+
+        $r1[57] = "Junia";
+
+        $r1[58] = "Junie";
+
+        virtualinvoke r0.<org.apache.commons.codec.language.MetaphoneTest: void assertIsMetaphoneEqual(java.lang.String,java.lang.String[])>("John", $r1);
+
+        return;
+    }
+
+    public void testIsMetaphoneEqualKnight()
+    {
+        org.apache.commons.codec.language.MetaphoneTest r0;
+        java.lang.String[] $r1;
+
+        r0 := @this: org.apache.commons.codec.language.MetaphoneTest;
+
+        $r1 = newarray (java.lang.String)[16];
+
+        $r1[0] = "Hynda";
+
+        $r1[1] = "Nada";
+
+        $r1[2] = "Nadia";
+
+        $r1[3] = "Nady";
+
+        $r1[4] = "Nat";
+
+        $r1[5] = "Nata";
+
+        $r1[6] = "Natty";
+
+        $r1[7] = "Neda";
+
+        $r1[8] = "Nedda";
+
+        $r1[9] = "Nedi";
+
+        $r1[10] = "Netta";
+
+        $r1[11] = "Netti";
+
+        $r1[12] = "Nettie";
+
+        $r1[13] = "Netty";
+
+        $r1[14] = "Nita";
+
+        $r1[15] = "Nydia";
+
+        virtualinvoke r0.<org.apache.commons.codec.language.MetaphoneTest: void assertIsMetaphoneEqual(java.lang.String,java.lang.String[])>("Knight", $r1);
+
+        return;
+    }
+
+    public void testIsMetaphoneEqualMary()
+    {
+        org.apache.commons.codec.language.MetaphoneTest r0;
+        java.lang.String[] $r1;
+
+        r0 := @this: org.apache.commons.codec.language.MetaphoneTest;
+
+        $r1 = newarray (java.lang.String)[21];
+
+        $r1[0] = "Mair";
+
+        $r1[1] = "Maire";
+
+        $r1[2] = "Mara";
+
+        $r1[3] = "Mareah";
+
+        $r1[4] = "Mari";
+
+        $r1[5] = "Maria";
+
+        $r1[6] = "Marie";
+
+        $r1[7] = "Mary";
+
+        $r1[8] = "Maura";
+
+        $r1[9] = "Maure";
+
+        $r1[10] = "Meara";
+
+        $r1[11] = "Merrie";
+
+        $r1[12] = "Merry";
+
+        $r1[13] = "Mira";
+
+        $r1[14] = "Moira";
+
+        $r1[15] = "Mora";
+
+        $r1[16] = "Moria";
+
+        $r1[17] = "Moyra";
+
+        $r1[18] = "Muire";
+
+        $r1[19] = "Myra";
+
+        $r1[20] = "Myrah";
+
+        virtualinvoke r0.<org.apache.commons.codec.language.MetaphoneTest: void assertIsMetaphoneEqual(java.lang.String,java.lang.String[])>("Mary", $r1);
+
+        return;
+    }
+
+    public void testIsMetaphoneEqualParis()
+    {
+        org.apache.commons.codec.language.MetaphoneTest r0;
+        java.lang.String[] $r1;
+
+        r0 := @this: org.apache.commons.codec.language.MetaphoneTest;
+
+        $r1 = newarray (java.lang.String)[5];
+
+        $r1[0] = "Pearcy";
+
+        $r1[1] = "Perris";
+
+        $r1[2] = "Piercy";
+
+        $r1[3] = "Pierz";
+
+        $r1[4] = "Pryse";
+
+        virtualinvoke r0.<org.apache.commons.codec.language.MetaphoneTest: void assertIsMetaphoneEqual(java.lang.String,java.lang.String[])>("Paris", $r1);
+
+        return;
+    }
+
+    public void testIsMetaphoneEqualPeter()
+    {
+        org.apache.commons.codec.language.MetaphoneTest r0;
+        java.lang.String[] $r1;
+
+        r0 := @this: org.apache.commons.codec.language.MetaphoneTest;
+
+        $r1 = newarray (java.lang.String)[9];
+
+        $r1[0] = "Peadar";
+
+        $r1[1] = "Peder";
+
+        $r1[2] = "Pedro";
+
+        $r1[3] = "Peter";
+
+        $r1[4] = "Petr";
+
+        $r1[5] = "Peyter";
+
+        $r1[6] = "Pieter";
+
+        $r1[7] = "Pietro";
+
+        $r1[8] = "Piotr";
+
+        virtualinvoke r0.<org.apache.commons.codec.language.MetaphoneTest: void assertIsMetaphoneEqual(java.lang.String,java.lang.String[])>("Peter", $r1);
+
+        return;
+    }
+
+    public void testIsMetaphoneEqualRay()
+    {
+        org.apache.commons.codec.language.MetaphoneTest r0;
+        java.lang.String[] $r1;
+
+        r0 := @this: org.apache.commons.codec.language.MetaphoneTest;
+
+        $r1 = newarray (java.lang.String)[5];
+
+        $r1[0] = "Ray";
+
+        $r1[1] = "Rey";
+
+        $r1[2] = "Roi";
+
+        $r1[3] = "Roy";
+
+        $r1[4] = "Ruy";
+
+        virtualinvoke r0.<org.apache.commons.codec.language.MetaphoneTest: void assertIsMetaphoneEqual(java.lang.String,java.lang.String[])>("Ray", $r1);
+
+        return;
+    }
+
+    public void testIsMetaphoneEqualSusan()
+    {
+        org.apache.commons.codec.language.MetaphoneTest r0;
+        java.lang.String[] $r1;
+
+        r0 := @this: org.apache.commons.codec.language.MetaphoneTest;
+
+        $r1 = newarray (java.lang.String)[12];
+
+        $r1[0] = "Siusan";
+
+        $r1[1] = "Sosanna";
+
+        $r1[2] = "Susan";
+
+        $r1[3] = "Susana";
+
+        $r1[4] = "Susann";
+
+        $r1[5] = "Susanna";
+
+        $r1[6] = "Susannah";
+
+        $r1[7] = "Susanne";
+
+        $r1[8] = "Suzann";
+
+        $r1[9] = "Suzanna";
+
+        $r1[10] = "Suzanne";
+
+        $r1[11] = "Zuzana";
+
+        virtualinvoke r0.<org.apache.commons.codec.language.MetaphoneTest: void assertIsMetaphoneEqual(java.lang.String,java.lang.String[])>("Susan", $r1);
+
+        return;
+    }
+
+    public void testIsMetaphoneEqualWright()
+    {
+        org.apache.commons.codec.language.MetaphoneTest r0;
+        java.lang.String[] $r1;
+
+        r0 := @this: org.apache.commons.codec.language.MetaphoneTest;
+
+        $r1 = newarray (java.lang.String)[3];
+
+        $r1[0] = "Rota";
+
+        $r1[1] = "Rudd";
+
+        $r1[2] = "Ryde";
+
+        virtualinvoke r0.<org.apache.commons.codec.language.MetaphoneTest: void assertIsMetaphoneEqual(java.lang.String,java.lang.String[])>("Wright", $r1);
+
+        return;
+    }
+
+    public void testIsMetaphoneEqualXalan()
+    {
+        org.apache.commons.codec.language.MetaphoneTest r0;
+        java.lang.String[] $r1;
+
+        r0 := @this: org.apache.commons.codec.language.MetaphoneTest;
+
+        $r1 = newarray (java.lang.String)[9];
+
+        $r1[0] = "Celene";
+
+        $r1[1] = "Celina";
+
+        $r1[2] = "Celine";
+
+        $r1[3] = "Selena";
+
+        $r1[4] = "Selene";
+
+        $r1[5] = "Selina";
+
+        $r1[6] = "Seline";
+
+        $r1[7] = "Suellen";
+
+        $r1[8] = "Xylina";
+
+        virtualinvoke r0.<org.apache.commons.codec.language.MetaphoneTest: void assertIsMetaphoneEqual(java.lang.String,java.lang.String[])>("Xalan", $r1);
+
+        return;
+    }
+
+    public void testMetaphone()
+    {
+        org.apache.commons.codec.language.MetaphoneTest r0;
+        org.apache.commons.codec.StringEncoder $r1, $r4, $r7, $r10, $r13, $r16, $r19, $r22, $r25, $r28, $r31;
+        org.apache.commons.codec.language.Metaphone $r2, $r5, $r8, $r11, $r14, $r17, $r20, $r23, $r26, $r29, $r32;
+        java.lang.String $r3, $r6, $r9, $r12, $r15, $r18, $r21, $r24, $r27, $r30, $r33;
+
+        r0 := @this: org.apache.commons.codec.language.MetaphoneTest;
+
+        $r1 = virtualinvoke r0.<org.apache.commons.codec.language.MetaphoneTest: org.apache.commons.codec.StringEncoder getStringEncoder()>();
+
+        $r2 = (org.apache.commons.codec.language.Metaphone) $r1;
+
+        $r3 = virtualinvoke $r2.<org.apache.commons.codec.language.Metaphone: java.lang.String metaphone(java.lang.String)>("howl");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("HL", $r3);
+
+        $r4 = virtualinvoke r0.<org.apache.commons.codec.language.MetaphoneTest: org.apache.commons.codec.StringEncoder getStringEncoder()>();
+
+        $r5 = (org.apache.commons.codec.language.Metaphone) $r4;
+
+        $r6 = virtualinvoke $r5.<org.apache.commons.codec.language.Metaphone: java.lang.String metaphone(java.lang.String)>("testing");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("TSTN", $r6);
+
+        $r7 = virtualinvoke r0.<org.apache.commons.codec.language.MetaphoneTest: org.apache.commons.codec.StringEncoder getStringEncoder()>();
+
+        $r8 = (org.apache.commons.codec.language.Metaphone) $r7;
+
+        $r9 = virtualinvoke $r8.<org.apache.commons.codec.language.Metaphone: java.lang.String metaphone(java.lang.String)>("The");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("0", $r9);
+
+        $r10 = virtualinvoke r0.<org.apache.commons.codec.language.MetaphoneTest: org.apache.commons.codec.StringEncoder getStringEncoder()>();
+
+        $r11 = (org.apache.commons.codec.language.Metaphone) $r10;
+
+        $r12 = virtualinvoke $r11.<org.apache.commons.codec.language.Metaphone: java.lang.String metaphone(java.lang.String)>("quick");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("KK", $r12);
+
+        $r13 = virtualinvoke r0.<org.apache.commons.codec.language.MetaphoneTest: org.apache.commons.codec.StringEncoder getStringEncoder()>();
+
+        $r14 = (org.apache.commons.codec.language.Metaphone) $r13;
+
+        $r15 = virtualinvoke $r14.<org.apache.commons.codec.language.Metaphone: java.lang.String metaphone(java.lang.String)>("brown");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("BRN", $r15);
+
+        $r16 = virtualinvoke r0.<org.apache.commons.codec.language.MetaphoneTest: org.apache.commons.codec.StringEncoder getStringEncoder()>();
+
+        $r17 = (org.apache.commons.codec.language.Metaphone) $r16;
+
+        $r18 = virtualinvoke $r17.<org.apache.commons.codec.language.Metaphone: java.lang.String metaphone(java.lang.String)>("fox");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("FKS", $r18);
+
+        $r19 = virtualinvoke r0.<org.apache.commons.codec.language.MetaphoneTest: org.apache.commons.codec.StringEncoder getStringEncoder()>();
+
+        $r20 = (org.apache.commons.codec.language.Metaphone) $r19;
+
+        $r21 = virtualinvoke $r20.<org.apache.commons.codec.language.Metaphone: java.lang.String metaphone(java.lang.String)>("jumped");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("JMPT", $r21);
+
+        $r22 = virtualinvoke r0.<org.apache.commons.codec.language.MetaphoneTest: org.apache.commons.codec.StringEncoder getStringEncoder()>();
+
+        $r23 = (org.apache.commons.codec.language.Metaphone) $r22;
+
+        $r24 = virtualinvoke $r23.<org.apache.commons.codec.language.Metaphone: java.lang.String metaphone(java.lang.String)>("over");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("OFR", $r24);
+
+        $r25 = virtualinvoke r0.<org.apache.commons.codec.language.MetaphoneTest: org.apache.commons.codec.StringEncoder getStringEncoder()>();
+
+        $r26 = (org.apache.commons.codec.language.Metaphone) $r25;
+
+        $r27 = virtualinvoke $r26.<org.apache.commons.codec.language.Metaphone: java.lang.String metaphone(java.lang.String)>("the");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("0", $r27);
+
+        $r28 = virtualinvoke r0.<org.apache.commons.codec.language.MetaphoneTest: org.apache.commons.codec.StringEncoder getStringEncoder()>();
+
+        $r29 = (org.apache.commons.codec.language.Metaphone) $r28;
+
+        $r30 = virtualinvoke $r29.<org.apache.commons.codec.language.Metaphone: java.lang.String metaphone(java.lang.String)>("lazy");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("LS", $r30);
+
+        $r31 = virtualinvoke r0.<org.apache.commons.codec.language.MetaphoneTest: org.apache.commons.codec.StringEncoder getStringEncoder()>();
+
+        $r32 = (org.apache.commons.codec.language.Metaphone) $r31;
+
+        $r33 = virtualinvoke $r32.<org.apache.commons.codec.language.Metaphone: java.lang.String metaphone(java.lang.String)>("dogs");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("TKS", $r33);
+
+        return;
+    }
+
+    public void testWordEndingInMB()
+    {
+        org.apache.commons.codec.language.MetaphoneTest r0;
+        org.apache.commons.codec.StringEncoder $r1, $r4, $r7;
+        org.apache.commons.codec.language.Metaphone $r2, $r5, $r8;
+        java.lang.String $r3, $r6, $r9;
+
+        r0 := @this: org.apache.commons.codec.language.MetaphoneTest;
+
+        $r1 = virtualinvoke r0.<org.apache.commons.codec.language.MetaphoneTest: org.apache.commons.codec.StringEncoder getStringEncoder()>();
+
+        $r2 = (org.apache.commons.codec.language.Metaphone) $r1;
+
+        $r3 = virtualinvoke $r2.<org.apache.commons.codec.language.Metaphone: java.lang.String metaphone(java.lang.String)>("COMB");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("KM", $r3);
+
+        $r4 = virtualinvoke r0.<org.apache.commons.codec.language.MetaphoneTest: org.apache.commons.codec.StringEncoder getStringEncoder()>();
+
+        $r5 = (org.apache.commons.codec.language.Metaphone) $r4;
+
+        $r6 = virtualinvoke $r5.<org.apache.commons.codec.language.Metaphone: java.lang.String metaphone(java.lang.String)>("TOMB");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("TM", $r6);
+
+        $r7 = virtualinvoke r0.<org.apache.commons.codec.language.MetaphoneTest: org.apache.commons.codec.StringEncoder getStringEncoder()>();
+
+        $r8 = (org.apache.commons.codec.language.Metaphone) $r7;
+
+        $r9 = virtualinvoke $r8.<org.apache.commons.codec.language.Metaphone: java.lang.String metaphone(java.lang.String)>("WOMB");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("WM", $r9);
+
+        return;
+    }
+
+    public void testDiscardOfSCEOrSCIOrSCY()
+    {
+        org.apache.commons.codec.language.MetaphoneTest r0;
+        org.apache.commons.codec.StringEncoder $r1, $r4, $r7;
+        org.apache.commons.codec.language.Metaphone $r2, $r5, $r8;
+        java.lang.String $r3, $r6, $r9;
+
+        r0 := @this: org.apache.commons.codec.language.MetaphoneTest;
+
+        $r1 = virtualinvoke r0.<org.apache.commons.codec.language.MetaphoneTest: org.apache.commons.codec.StringEncoder getStringEncoder()>();
+
+        $r2 = (org.apache.commons.codec.language.Metaphone) $r1;
+
+        $r3 = virtualinvoke $r2.<org.apache.commons.codec.language.Metaphone: java.lang.String metaphone(java.lang.String)>("SCIENCE");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("SNS", $r3);
+
+        $r4 = virtualinvoke r0.<org.apache.commons.codec.language.MetaphoneTest: org.apache.commons.codec.StringEncoder getStringEncoder()>();
+
+        $r5 = (org.apache.commons.codec.language.Metaphone) $r4;
+
+        $r6 = virtualinvoke $r5.<org.apache.commons.codec.language.Metaphone: java.lang.String metaphone(java.lang.String)>("SCENE");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("SN", $r6);
+
+        $r7 = virtualinvoke r0.<org.apache.commons.codec.language.MetaphoneTest: org.apache.commons.codec.StringEncoder getStringEncoder()>();
+
+        $r8 = (org.apache.commons.codec.language.Metaphone) $r7;
+
+        $r9 = virtualinvoke $r8.<org.apache.commons.codec.language.Metaphone: java.lang.String metaphone(java.lang.String)>("SCY");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("S", $r9);
+
+        return;
+    }
+
+    public void testWhy()
+    {
+        org.apache.commons.codec.language.MetaphoneTest r0;
+        org.apache.commons.codec.StringEncoder $r1;
+        org.apache.commons.codec.language.Metaphone $r2;
+        java.lang.String $r3;
+
+        r0 := @this: org.apache.commons.codec.language.MetaphoneTest;
+
+        $r1 = virtualinvoke r0.<org.apache.commons.codec.language.MetaphoneTest: org.apache.commons.codec.StringEncoder getStringEncoder()>();
+
+        $r2 = (org.apache.commons.codec.language.Metaphone) $r1;
+
+        $r3 = virtualinvoke $r2.<org.apache.commons.codec.language.Metaphone: java.lang.String metaphone(java.lang.String)>("WHY");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("", $r3);
+
+        return;
+    }
+
+    public void testWordsWithCIA()
+    {
+        org.apache.commons.codec.language.MetaphoneTest r0;
+        org.apache.commons.codec.StringEncoder $r1;
+        org.apache.commons.codec.language.Metaphone $r2;
+        java.lang.String $r3;
+
+        r0 := @this: org.apache.commons.codec.language.MetaphoneTest;
+
+        $r1 = virtualinvoke r0.<org.apache.commons.codec.language.MetaphoneTest: org.apache.commons.codec.StringEncoder getStringEncoder()>();
+
+        $r2 = (org.apache.commons.codec.language.Metaphone) $r1;
+
+        $r3 = virtualinvoke $r2.<org.apache.commons.codec.language.Metaphone: java.lang.String metaphone(java.lang.String)>("CIAPO");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("XP", $r3);
+
+        return;
+    }
+
+    public void testTranslateOfSCHAndCH()
+    {
+        org.apache.commons.codec.language.MetaphoneTest r0;
+        org.apache.commons.codec.StringEncoder $r1, $r4, $r7, $r10;
+        org.apache.commons.codec.language.Metaphone $r2, $r5, $r8, $r11;
+        java.lang.String $r3, $r6, $r9, $r12;
+
+        r0 := @this: org.apache.commons.codec.language.MetaphoneTest;
+
+        $r1 = virtualinvoke r0.<org.apache.commons.codec.language.MetaphoneTest: org.apache.commons.codec.StringEncoder getStringEncoder()>();
+
+        $r2 = (org.apache.commons.codec.language.Metaphone) $r1;
+
+        $r3 = virtualinvoke $r2.<org.apache.commons.codec.language.Metaphone: java.lang.String metaphone(java.lang.String)>("SCHEDULE");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("SKTL", $r3);
+
+        $r4 = virtualinvoke r0.<org.apache.commons.codec.language.MetaphoneTest: org.apache.commons.codec.StringEncoder getStringEncoder()>();
+
+        $r5 = (org.apache.commons.codec.language.Metaphone) $r4;
+
+        $r6 = virtualinvoke $r5.<org.apache.commons.codec.language.Metaphone: java.lang.String metaphone(java.lang.String)>("SCHEMATIC");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("SKMT", $r6);
+
+        $r7 = virtualinvoke r0.<org.apache.commons.codec.language.MetaphoneTest: org.apache.commons.codec.StringEncoder getStringEncoder()>();
+
+        $r8 = (org.apache.commons.codec.language.Metaphone) $r7;
+
+        $r9 = virtualinvoke $r8.<org.apache.commons.codec.language.Metaphone: java.lang.String metaphone(java.lang.String)>("CHARACTER");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("KRKT", $r9);
+
+        $r10 = virtualinvoke r0.<org.apache.commons.codec.language.MetaphoneTest: org.apache.commons.codec.StringEncoder getStringEncoder()>();
+
+        $r11 = (org.apache.commons.codec.language.Metaphone) $r10;
+
+        $r12 = virtualinvoke $r11.<org.apache.commons.codec.language.Metaphone: java.lang.String metaphone(java.lang.String)>("TEACH");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("TX", $r12);
+
+        return;
+    }
+
+    public void testTranslateToJOfDGEOrDGIOrDGY()
+    {
+        org.apache.commons.codec.language.MetaphoneTest r0;
+        org.apache.commons.codec.StringEncoder $r1, $r4, $r7;
+        org.apache.commons.codec.language.Metaphone $r2, $r5, $r8;
+        java.lang.String $r3, $r6, $r9;
+
+        r0 := @this: org.apache.commons.codec.language.MetaphoneTest;
+
+        $r1 = virtualinvoke r0.<org.apache.commons.codec.language.MetaphoneTest: org.apache.commons.codec.StringEncoder getStringEncoder()>();
+
+        $r2 = (org.apache.commons.codec.language.Metaphone) $r1;
+
+        $r3 = virtualinvoke $r2.<org.apache.commons.codec.language.Metaphone: java.lang.String metaphone(java.lang.String)>("DODGY");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("TJ", $r3);
+
+        $r4 = virtualinvoke r0.<org.apache.commons.codec.language.MetaphoneTest: org.apache.commons.codec.StringEncoder getStringEncoder()>();
+
+        $r5 = (org.apache.commons.codec.language.Metaphone) $r4;
+
+        $r6 = virtualinvoke $r5.<org.apache.commons.codec.language.Metaphone: java.lang.String metaphone(java.lang.String)>("DODGE");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("TJ", $r6);
+
+        $r7 = virtualinvoke r0.<org.apache.commons.codec.language.MetaphoneTest: org.apache.commons.codec.StringEncoder getStringEncoder()>();
+
+        $r8 = (org.apache.commons.codec.language.Metaphone) $r7;
+
+        $r9 = virtualinvoke $r8.<org.apache.commons.codec.language.Metaphone: java.lang.String metaphone(java.lang.String)>("ADGIEMTI");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("AJMT", $r9);
+
+        return;
+    }
+
+    public void testDiscardOfSilentHAfterG()
+    {
+        org.apache.commons.codec.language.MetaphoneTest r0;
+        org.apache.commons.codec.StringEncoder $r1, $r4;
+        org.apache.commons.codec.language.Metaphone $r2, $r5;
+        java.lang.String $r3, $r6;
+
+        r0 := @this: org.apache.commons.codec.language.MetaphoneTest;
+
+        $r1 = virtualinvoke r0.<org.apache.commons.codec.language.MetaphoneTest: org.apache.commons.codec.StringEncoder getStringEncoder()>();
+
+        $r2 = (org.apache.commons.codec.language.Metaphone) $r1;
+
+        $r3 = virtualinvoke $r2.<org.apache.commons.codec.language.Metaphone: java.lang.String metaphone(java.lang.String)>("GHENT");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("KNT", $r3);
+
+        $r4 = virtualinvoke r0.<org.apache.commons.codec.language.MetaphoneTest: org.apache.commons.codec.StringEncoder getStringEncoder()>();
+
+        $r5 = (org.apache.commons.codec.language.Metaphone) $r4;
+
+        $r6 = virtualinvoke $r5.<org.apache.commons.codec.language.Metaphone: java.lang.String metaphone(java.lang.String)>("BAUGH");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("B", $r6);
+
+        return;
+    }
+
+    public void testDiscardOfSilentGN()
+    {
+        org.apache.commons.codec.language.MetaphoneTest r0;
+        org.apache.commons.codec.StringEncoder $r1, $r4;
+        org.apache.commons.codec.language.Metaphone $r2, $r5;
+        java.lang.String $r3, $r6;
+
+        r0 := @this: org.apache.commons.codec.language.MetaphoneTest;
+
+        $r1 = virtualinvoke r0.<org.apache.commons.codec.language.MetaphoneTest: org.apache.commons.codec.StringEncoder getStringEncoder()>();
+
+        $r2 = (org.apache.commons.codec.language.Metaphone) $r1;
+
+        $r3 = virtualinvoke $r2.<org.apache.commons.codec.language.Metaphone: java.lang.String metaphone(java.lang.String)>("GNU");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("N", $r3);
+
+        $r4 = virtualinvoke r0.<org.apache.commons.codec.language.MetaphoneTest: org.apache.commons.codec.StringEncoder getStringEncoder()>();
+
+        $r5 = (org.apache.commons.codec.language.Metaphone) $r4;
+
+        $r6 = virtualinvoke $r5.<org.apache.commons.codec.language.Metaphone: java.lang.String metaphone(java.lang.String)>("SIGNED");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("SNT", $r6);
+
+        return;
+    }
+
+    public void testPHTOF()
+    {
+        org.apache.commons.codec.language.MetaphoneTest r0;
+        org.apache.commons.codec.StringEncoder $r1;
+        org.apache.commons.codec.language.Metaphone $r2;
+        java.lang.String $r3;
+
+        r0 := @this: org.apache.commons.codec.language.MetaphoneTest;
+
+        $r1 = virtualinvoke r0.<org.apache.commons.codec.language.MetaphoneTest: org.apache.commons.codec.StringEncoder getStringEncoder()>();
+
+        $r2 = (org.apache.commons.codec.language.Metaphone) $r1;
+
+        $r3 = virtualinvoke $r2.<org.apache.commons.codec.language.Metaphone: java.lang.String metaphone(java.lang.String)>("PHISH");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("FX", $r3);
+
+        return;
+    }
+
+    public void testSHAndSIOAndSIAToX()
+    {
+        org.apache.commons.codec.language.MetaphoneTest r0;
+        org.apache.commons.codec.StringEncoder $r1, $r4, $r7;
+        org.apache.commons.codec.language.Metaphone $r2, $r5, $r8;
+        java.lang.String $r3, $r6, $r9;
+
+        r0 := @this: org.apache.commons.codec.language.MetaphoneTest;
+
+        $r1 = virtualinvoke r0.<org.apache.commons.codec.language.MetaphoneTest: org.apache.commons.codec.StringEncoder getStringEncoder()>();
+
+        $r2 = (org.apache.commons.codec.language.Metaphone) $r1;
+
+        $r3 = virtualinvoke $r2.<org.apache.commons.codec.language.Metaphone: java.lang.String metaphone(java.lang.String)>("SHOT");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("XT", $r3);
+
+        $r4 = virtualinvoke r0.<org.apache.commons.codec.language.MetaphoneTest: org.apache.commons.codec.StringEncoder getStringEncoder()>();
+
+        $r5 = (org.apache.commons.codec.language.Metaphone) $r4;
+
+        $r6 = virtualinvoke $r5.<org.apache.commons.codec.language.Metaphone: java.lang.String metaphone(java.lang.String)>("ODSIAN");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("OTXN", $r6);
+
+        $r7 = virtualinvoke r0.<org.apache.commons.codec.language.MetaphoneTest: org.apache.commons.codec.StringEncoder getStringEncoder()>();
+
+        $r8 = (org.apache.commons.codec.language.Metaphone) $r7;
+
+        $r9 = virtualinvoke $r8.<org.apache.commons.codec.language.Metaphone: java.lang.String metaphone(java.lang.String)>("PULSION");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("PLXN", $r9);
+
+        return;
+    }
+
+    public void testTIOAndTIAToX()
+    {
+        org.apache.commons.codec.language.MetaphoneTest r0;
+        org.apache.commons.codec.StringEncoder $r1, $r4;
+        org.apache.commons.codec.language.Metaphone $r2, $r5;
+        java.lang.String $r3, $r6;
+
+        r0 := @this: org.apache.commons.codec.language.MetaphoneTest;
+
+        $r1 = virtualinvoke r0.<org.apache.commons.codec.language.MetaphoneTest: org.apache.commons.codec.StringEncoder getStringEncoder()>();
+
+        $r2 = (org.apache.commons.codec.language.Metaphone) $r1;
+
+        $r3 = virtualinvoke $r2.<org.apache.commons.codec.language.Metaphone: java.lang.String metaphone(java.lang.String)>("OTIA");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("OX", $r3);
+
+        $r4 = virtualinvoke r0.<org.apache.commons.codec.language.MetaphoneTest: org.apache.commons.codec.StringEncoder getStringEncoder()>();
+
+        $r5 = (org.apache.commons.codec.language.Metaphone) $r4;
+
+        $r6 = virtualinvoke $r5.<org.apache.commons.codec.language.Metaphone: java.lang.String metaphone(java.lang.String)>("PORTION");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("PRXN", $r6);
+
+        return;
+    }
+
+    public void testTCH()
+    {
+        org.apache.commons.codec.language.MetaphoneTest r0;
+        org.apache.commons.codec.StringEncoder $r1, $r4;
+        org.apache.commons.codec.language.Metaphone $r2, $r5;
+        java.lang.String $r3, $r6;
+
+        r0 := @this: org.apache.commons.codec.language.MetaphoneTest;
+
+        $r1 = virtualinvoke r0.<org.apache.commons.codec.language.MetaphoneTest: org.apache.commons.codec.StringEncoder getStringEncoder()>();
+
+        $r2 = (org.apache.commons.codec.language.Metaphone) $r1;
+
+        $r3 = virtualinvoke $r2.<org.apache.commons.codec.language.Metaphone: java.lang.String metaphone(java.lang.String)>("RETCH");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("RX", $r3);
+
+        $r4 = virtualinvoke r0.<org.apache.commons.codec.language.MetaphoneTest: org.apache.commons.codec.StringEncoder getStringEncoder()>();
+
+        $r5 = (org.apache.commons.codec.language.Metaphone) $r4;
+
+        $r6 = virtualinvoke $r5.<org.apache.commons.codec.language.Metaphone: java.lang.String metaphone(java.lang.String)>("WATCH");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("WX", $r6);
+
+        return;
+    }
+
+    public void testExceedLength()
+    {
+        org.apache.commons.codec.language.MetaphoneTest r0;
+        org.apache.commons.codec.StringEncoder $r1;
+        org.apache.commons.codec.language.Metaphone $r2;
+        java.lang.String $r3;
+
+        r0 := @this: org.apache.commons.codec.language.MetaphoneTest;
+
+        $r1 = virtualinvoke r0.<org.apache.commons.codec.language.MetaphoneTest: org.apache.commons.codec.StringEncoder getStringEncoder()>();
+
+        $r2 = (org.apache.commons.codec.language.Metaphone) $r1;
+
+        $r3 = virtualinvoke $r2.<org.apache.commons.codec.language.Metaphone: java.lang.String metaphone(java.lang.String)>("AXEAXE");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("AKSK", $r3);
+
+        return;
+    }
+
+    public void testSetMaxLengthWithTruncation()
+    {
+        org.apache.commons.codec.language.MetaphoneTest r0;
+        org.apache.commons.codec.StringEncoder $r1, $r3;
+        org.apache.commons.codec.language.Metaphone $r2, $r4;
+        java.lang.String $r5;
+
+        r0 := @this: org.apache.commons.codec.language.MetaphoneTest;
+
+        $r1 = virtualinvoke r0.<org.apache.commons.codec.language.MetaphoneTest: org.apache.commons.codec.StringEncoder getStringEncoder()>();
+
+        $r2 = (org.apache.commons.codec.language.Metaphone) $r1;
+
+        virtualinvoke $r2.<org.apache.commons.codec.language.Metaphone: void setMaxCodeLen(int)>(6);
+
+        $r3 = virtualinvoke r0.<org.apache.commons.codec.language.MetaphoneTest: org.apache.commons.codec.StringEncoder getStringEncoder()>();
+
+        $r4 = (org.apache.commons.codec.language.Metaphone) $r3;
+
+        $r5 = virtualinvoke $r4.<org.apache.commons.codec.language.Metaphone: java.lang.String metaphone(java.lang.String)>("AXEAXEAXE");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("AKSKSK", $r5);
+
+        return;
+    }
+
+    public void validateFixture(java.lang.String[][])
+    {
+        org.apache.commons.codec.language.MetaphoneTest r0;
+        java.lang.String[][] r1;
+        int $i0, $i1, i2, $i3;
+        java.lang.String[] $r2;
+        java.lang.StringBuilder $r3, $r4;
+        java.lang.String $r5;
+
+        r0 := @this: org.apache.commons.codec.language.MetaphoneTest;
+
+        r1 := @parameter0: java.lang.String[][];
+
+        $i0 = lengthof r1;
+
+        if $i0 != 0 goto label1;
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("Test fixture is empty");
+
+     label1:
+        i2 = 0;
+
+        goto label4;
+
+     label2:
+        $r2 = r1[i2];
+
+        $i1 = lengthof $r2;
+
+        if $i1 == 2 goto label3;
+
+        $r3 = new java.lang.StringBuilder;
+
+        specialinvoke $r3.<java.lang.StringBuilder: void <init>(java.lang.String)>("Error in test fixture in the data array at index ");
+
+        $r4 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i2);
+
+        $r5 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>($r5);
+
+     label3:
+        i2 = i2 + 1;
+
+     label4:
+        $i3 = lengthof r1;
+
+        if i2 < $i3 goto label2;
+
+        return;
+    }
+
+    protected volatile org.apache.commons.codec.StringEncoder createStringEncoder()
+    {
+        org.apache.commons.codec.language.MetaphoneTest r0;
+        org.apache.commons.codec.language.Metaphone $r1;
+
+        r0 := @this: org.apache.commons.codec.language.MetaphoneTest;
+
+        $r1 = virtualinvoke r0.<org.apache.commons.codec.language.MetaphoneTest: org.apache.commons.codec.language.Metaphone createStringEncoder()>();
+
+        return $r1;
+    }
+}

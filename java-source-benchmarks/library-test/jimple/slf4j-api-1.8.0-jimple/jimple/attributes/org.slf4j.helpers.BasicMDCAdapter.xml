@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<attributes>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="0" eline="0" spos="0" epos="0"/>
+<text info="[inner=org/slf4j/helpers/BasicMDCAdapter$1, outer=null, name=null,flags=0]" aType="InnerClassTag"/>
+<text info="soot.tagkit.InnerClassAttribute@5552f72f" aType="InnerClassAttribute"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="3" eline="3" spos="0" epos="0"/>
+<text info="Signature: Ljava/lang/InheritableThreadLocal&lt;Ljava/util/Map&lt;Ljava/lang/String;Ljava/lang/String;&gt;;&gt;;" aType="SignatureTag"/>
+</attribute>
+<attribute>
+<srcPos sline="120" eline="120" spos="0" epos="0"/>
+<jmpPos sline="157" eline="157" spos="0" epos="0"/>
+<text info="Signature: ()Ljava/util/Set&lt;Ljava/lang/String;&gt;;" aType="SignatureTag"/>
+</attribute>
+<attribute>
+<srcPos sline="134" eline="134" spos="0" epos="0"/>
+<jmpPos sline="183" eline="183" spos="0" epos="0"/>
+<text info="Signature: ()Ljava/util/Map&lt;Ljava/lang/String;Ljava/lang/String;&gt;;" aType="SignatureTag"/>
+</attribute>
+<attribute>
+<srcPos sline="143" eline="143" spos="0" epos="0"/>
+<jmpPos sline="211" eline="211" spos="0" epos="0"/>
+<text info="Signature: (Ljava/util/Map&lt;Ljava/lang/String;Ljava/lang/String;&gt;;)V" aType="SignatureTag"/>
+</attribute>
+</attributes>

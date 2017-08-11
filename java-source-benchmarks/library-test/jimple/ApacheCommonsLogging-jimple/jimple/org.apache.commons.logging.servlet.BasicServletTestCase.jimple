@@ -1,0 +1,83 @@
+public class org.apache.commons.logging.servlet.BasicServletTestCase extends junit.framework.TestCase
+{
+
+    public void <init>()
+    {
+        org.apache.commons.logging.servlet.BasicServletTestCase r0;
+
+        r0 := @this: org.apache.commons.logging.servlet.BasicServletTestCase;
+
+        specialinvoke r0.<junit.framework.TestCase: void <init>()>();
+
+        return;
+    }
+
+    public static junit.framework.Test suite() throws java.lang.Exception
+    {
+        java.lang.Class r3, $r5, $r9;
+        org.apache.commons.logging.PathableClassLoader $r4, $r7, $r8;
+        java.lang.ClassLoader $r6;
+        java.lang.String $r10;
+        org.apache.commons.logging.PathableTestSuite $r11;
+
+        $r4 = new org.apache.commons.logging.PathableClassLoader;
+
+        specialinvoke $r4.<org.apache.commons.logging.PathableClassLoader: void <init>(java.lang.ClassLoader)>(null);
+
+        $r5 = class "junit/framework/Test";
+
+        $r6 = virtualinvoke $r5.<java.lang.Class: java.lang.ClassLoader getClassLoader()>();
+
+        virtualinvoke $r4.<org.apache.commons.logging.PathableClassLoader: void useExplicitLoader(java.lang.String,java.lang.ClassLoader)>("junit.", $r6);
+
+        virtualinvoke $r4.<org.apache.commons.logging.PathableClassLoader: void addLogicalLib(java.lang.String)>("commons-logging");
+
+        virtualinvoke $r4.<org.apache.commons.logging.PathableClassLoader: void addLogicalLib(java.lang.String)>("servlet-api");
+
+        $r7 = new org.apache.commons.logging.PathableClassLoader;
+
+        specialinvoke $r7.<org.apache.commons.logging.PathableClassLoader: void <init>(java.lang.ClassLoader)>($r4);
+
+        virtualinvoke $r7.<org.apache.commons.logging.PathableClassLoader: void setParentFirst(boolean)>(0);
+
+        virtualinvoke $r7.<org.apache.commons.logging.PathableClassLoader: void addLogicalLib(java.lang.String)>("commons-logging");
+
+        virtualinvoke $r7.<org.apache.commons.logging.PathableClassLoader: void addLogicalLib(java.lang.String)>("testclasses");
+
+        $r8 = new org.apache.commons.logging.PathableClassLoader;
+
+        specialinvoke $r8.<org.apache.commons.logging.PathableClassLoader: void <init>(java.lang.ClassLoader)>($r7);
+
+        virtualinvoke $r8.<org.apache.commons.logging.PathableClassLoader: void setParentFirst(boolean)>(0);
+
+        virtualinvoke $r8.<org.apache.commons.logging.PathableClassLoader: void addLogicalLib(java.lang.String)>("commons-logging");
+
+        $r9 = class "org/apache/commons/logging/servlet/BasicServletTestCase";
+
+        $r10 = virtualinvoke $r9.<java.lang.Class: java.lang.String getName()>();
+
+        r3 = virtualinvoke $r7.<org.apache.commons.logging.PathableClassLoader: java.lang.Class loadClass(java.lang.String)>($r10);
+
+        $r11 = new org.apache.commons.logging.PathableTestSuite;
+
+        specialinvoke $r11.<org.apache.commons.logging.PathableTestSuite: void <init>(java.lang.Class,java.lang.ClassLoader)>(r3, $r8);
+
+        return $r11;
+    }
+
+    public void testBasics()
+    {
+        org.apache.commons.logging.servlet.BasicServletTestCase r0;
+        org.apache.commons.logging.impl.ServletContextCleaner $r2;
+
+        r0 := @this: org.apache.commons.logging.servlet.BasicServletTestCase;
+
+        $r2 = new org.apache.commons.logging.impl.ServletContextCleaner;
+
+        specialinvoke $r2.<org.apache.commons.logging.impl.ServletContextCleaner: void <init>()>();
+
+        virtualinvoke $r2.<org.apache.commons.logging.impl.ServletContextCleaner: void contextDestroyed(javax.servlet.ServletContextEvent)>(null);
+
+        return;
+    }
+}

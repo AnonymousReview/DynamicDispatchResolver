@@ -1,0 +1,46 @@
+public class org.slf4j.Differentiator extends java.lang.Object
+{
+    static java.util.Random random;
+
+    static void <clinit>()
+    {
+        java.util.Random $r0;
+        long $l0;
+
+        $r0 = new java.util.Random;
+
+        $l0 = staticinvoke <java.lang.System: long currentTimeMillis()>();
+
+        specialinvoke $r0.<java.util.Random: void <init>(long)>($l0);
+
+        <org.slf4j.Differentiator: java.util.Random random> = $r0;
+
+        return;
+    }
+
+    public void <init>()
+    {
+        org.slf4j.Differentiator r0;
+
+        r0 := @this: org.slf4j.Differentiator;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static short getDiffentiator()
+    {
+        java.util.Random $r0;
+        int $i0;
+        short $s1;
+
+        $r0 = <org.slf4j.Differentiator: java.util.Random random>;
+
+        $i0 = virtualinvoke $r0.<java.util.Random: int nextInt(int)>(32767);
+
+        $s1 = (short) $i0;
+
+        return $s1;
+    }
+}

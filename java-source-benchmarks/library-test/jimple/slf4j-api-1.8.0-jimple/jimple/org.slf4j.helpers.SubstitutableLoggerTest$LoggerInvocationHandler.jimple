@@ -1,0 +1,95 @@
+class org.slf4j.helpers.SubstitutableLoggerTest$LoggerInvocationHandler extends java.lang.Object implements java.lang.reflect.InvocationHandler
+{
+    private final java.util.Set invokedMethodSignatures;
+    final org.slf4j.helpers.SubstitutableLoggerTest this$0;
+
+    private void <init>(org.slf4j.helpers.SubstitutableLoggerTest)
+    {
+        org.slf4j.helpers.SubstitutableLoggerTest$LoggerInvocationHandler r0;
+        org.slf4j.helpers.SubstitutableLoggerTest r1;
+        java.util.HashSet $r2;
+
+        r0 := @this: org.slf4j.helpers.SubstitutableLoggerTest$LoggerInvocationHandler;
+
+        r1 := @parameter0: org.slf4j.helpers.SubstitutableLoggerTest;
+
+        r0.<org.slf4j.helpers.SubstitutableLoggerTest$LoggerInvocationHandler: org.slf4j.helpers.SubstitutableLoggerTest this$0> = r1;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r2 = new java.util.HashSet;
+
+        specialinvoke $r2.<java.util.HashSet: void <init>()>();
+
+        r0.<org.slf4j.helpers.SubstitutableLoggerTest$LoggerInvocationHandler: java.util.Set invokedMethodSignatures> = $r2;
+
+        return;
+    }
+
+    public java.lang.Object invoke(java.lang.Object, java.lang.reflect.Method, java.lang.Object[]) throws java.lang.Throwable
+    {
+        org.slf4j.helpers.SubstitutableLoggerTest$LoggerInvocationHandler r0;
+        java.lang.Object r1;
+        java.lang.reflect.Method r2;
+        java.lang.Object[] r3;
+        java.util.Set $r4;
+        java.lang.String $r5, $r6;
+        boolean $z1;
+        java.lang.Boolean $r7;
+
+        r0 := @this: org.slf4j.helpers.SubstitutableLoggerTest$LoggerInvocationHandler;
+
+        r1 := @parameter0: java.lang.Object;
+
+        r2 := @parameter1: java.lang.reflect.Method;
+
+        r3 := @parameter2: java.lang.Object[];
+
+        $r4 = r0.<org.slf4j.helpers.SubstitutableLoggerTest$LoggerInvocationHandler: java.util.Set invokedMethodSignatures>;
+
+        $r5 = staticinvoke <org.slf4j.helpers.SubstitutableLoggerTest: java.lang.String access$0(java.lang.reflect.Method)>(r2);
+
+        interfaceinvoke $r4.<java.util.Set: boolean add(java.lang.Object)>($r5);
+
+        $r6 = virtualinvoke r2.<java.lang.reflect.Method: java.lang.String getName()>();
+
+        $z1 = virtualinvoke $r6.<java.lang.String: boolean startsWith(java.lang.String)>("is");
+
+        if $z1 == 0 goto label1;
+
+        $r7 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>(1);
+
+        return $r7;
+
+     label1:
+        return null;
+    }
+
+    public java.util.Set getInvokedMethodSignatures()
+    {
+        org.slf4j.helpers.SubstitutableLoggerTest$LoggerInvocationHandler r0;
+        java.util.Set $r1;
+
+        r0 := @this: org.slf4j.helpers.SubstitutableLoggerTest$LoggerInvocationHandler;
+
+        $r1 = r0.<org.slf4j.helpers.SubstitutableLoggerTest$LoggerInvocationHandler: java.util.Set invokedMethodSignatures>;
+
+        return $r1;
+    }
+
+    void <init>(org.slf4j.helpers.SubstitutableLoggerTest, org.slf4j.helpers.SubstitutableLoggerTest$LoggerInvocationHandler)
+    {
+        org.slf4j.helpers.SubstitutableLoggerTest$LoggerInvocationHandler r0, r2;
+        org.slf4j.helpers.SubstitutableLoggerTest r1;
+
+        r0 := @this: org.slf4j.helpers.SubstitutableLoggerTest$LoggerInvocationHandler;
+
+        r1 := @parameter0: org.slf4j.helpers.SubstitutableLoggerTest;
+
+        r2 := @parameter1: org.slf4j.helpers.SubstitutableLoggerTest$LoggerInvocationHandler;
+
+        specialinvoke r0.<org.slf4j.helpers.SubstitutableLoggerTest$LoggerInvocationHandler: void <init>(org.slf4j.helpers.SubstitutableLoggerTest)>(r1);
+
+        return;
+    }
+}

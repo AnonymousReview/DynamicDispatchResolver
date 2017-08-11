@@ -1,0 +1,110 @@
+public class org.apache.log4j.xml.DOMTestCase$CustomErrorHandler extends java.lang.Object implements org.apache.log4j.spi.ErrorHandler
+{
+
+    public void <init>()
+    {
+        org.apache.log4j.xml.DOMTestCase$CustomErrorHandler r0;
+
+        r0 := @this: org.apache.log4j.xml.DOMTestCase$CustomErrorHandler;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void activateOptions()
+    {
+        org.apache.log4j.xml.DOMTestCase$CustomErrorHandler r0;
+
+        r0 := @this: org.apache.log4j.xml.DOMTestCase$CustomErrorHandler;
+
+        return;
+    }
+
+    public void setLogger(org.apache.log4j.Logger)
+    {
+        org.apache.log4j.xml.DOMTestCase$CustomErrorHandler r0;
+        org.apache.log4j.Logger r1;
+
+        r0 := @this: org.apache.log4j.xml.DOMTestCase$CustomErrorHandler;
+
+        r1 := @parameter0: org.apache.log4j.Logger;
+
+        return;
+    }
+
+    public void error(java.lang.String, java.lang.Exception, int)
+    {
+        org.apache.log4j.xml.DOMTestCase$CustomErrorHandler r0;
+        java.lang.String r1;
+        java.lang.Exception r2;
+        int i0;
+
+        r0 := @this: org.apache.log4j.xml.DOMTestCase$CustomErrorHandler;
+
+        r1 := @parameter0: java.lang.String;
+
+        r2 := @parameter1: java.lang.Exception;
+
+        i0 := @parameter2: int;
+
+        return;
+    }
+
+    public void error(java.lang.String)
+    {
+        org.apache.log4j.xml.DOMTestCase$CustomErrorHandler r0;
+        java.lang.String r1;
+
+        r0 := @this: org.apache.log4j.xml.DOMTestCase$CustomErrorHandler;
+
+        r1 := @parameter0: java.lang.String;
+
+        return;
+    }
+
+    public void error(java.lang.String, java.lang.Exception, int, org.apache.log4j.spi.LoggingEvent)
+    {
+        org.apache.log4j.xml.DOMTestCase$CustomErrorHandler r0;
+        java.lang.String r1;
+        java.lang.Exception r2;
+        int i0;
+        org.apache.log4j.spi.LoggingEvent r3;
+
+        r0 := @this: org.apache.log4j.xml.DOMTestCase$CustomErrorHandler;
+
+        r1 := @parameter0: java.lang.String;
+
+        r2 := @parameter1: java.lang.Exception;
+
+        i0 := @parameter2: int;
+
+        r3 := @parameter3: org.apache.log4j.spi.LoggingEvent;
+
+        return;
+    }
+
+    public void setAppender(org.apache.log4j.Appender)
+    {
+        org.apache.log4j.xml.DOMTestCase$CustomErrorHandler r0;
+        org.apache.log4j.Appender r1;
+
+        r0 := @this: org.apache.log4j.xml.DOMTestCase$CustomErrorHandler;
+
+        r1 := @parameter0: org.apache.log4j.Appender;
+
+        return;
+    }
+
+    public void setBackupAppender(org.apache.log4j.Appender)
+    {
+        org.apache.log4j.xml.DOMTestCase$CustomErrorHandler r0;
+        org.apache.log4j.Appender r1;
+
+        r0 := @this: org.apache.log4j.xml.DOMTestCase$CustomErrorHandler;
+
+        r1 := @parameter0: org.apache.log4j.Appender;
+
+        return;
+    }
+}

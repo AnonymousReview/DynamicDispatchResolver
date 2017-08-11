@@ -1,0 +1,97 @@
+public final class org.apache.log4j.PropertyConfiguratorTest$FixedWindowRollingPolicy extends org.apache.log4j.PropertyConfiguratorTest$RollingPolicy
+{
+    private java.lang.String activeFileName;
+    private java.lang.String fileNamePattern;
+    private int minIndex;
+
+    public void <init>()
+    {
+        org.apache.log4j.PropertyConfiguratorTest$FixedWindowRollingPolicy r0;
+
+        r0 := @this: org.apache.log4j.PropertyConfiguratorTest$FixedWindowRollingPolicy;
+
+        specialinvoke r0.<org.apache.log4j.PropertyConfiguratorTest$RollingPolicy: void <init>()>();
+
+        r0.<org.apache.log4j.PropertyConfiguratorTest$FixedWindowRollingPolicy: int minIndex> = -1;
+
+        return;
+    }
+
+    public java.lang.String getActiveFileName()
+    {
+        org.apache.log4j.PropertyConfiguratorTest$FixedWindowRollingPolicy r0;
+        java.lang.String $r1;
+
+        r0 := @this: org.apache.log4j.PropertyConfiguratorTest$FixedWindowRollingPolicy;
+
+        $r1 = r0.<org.apache.log4j.PropertyConfiguratorTest$FixedWindowRollingPolicy: java.lang.String activeFileName>;
+
+        return $r1;
+    }
+
+    public void setActiveFileName(java.lang.String)
+    {
+        org.apache.log4j.PropertyConfiguratorTest$FixedWindowRollingPolicy r0;
+        java.lang.String r1;
+
+        r0 := @this: org.apache.log4j.PropertyConfiguratorTest$FixedWindowRollingPolicy;
+
+        r1 := @parameter0: java.lang.String;
+
+        r0.<org.apache.log4j.PropertyConfiguratorTest$FixedWindowRollingPolicy: java.lang.String activeFileName> = r1;
+
+        return;
+    }
+
+    public java.lang.String getFileNamePattern()
+    {
+        org.apache.log4j.PropertyConfiguratorTest$FixedWindowRollingPolicy r0;
+        java.lang.String $r1;
+
+        r0 := @this: org.apache.log4j.PropertyConfiguratorTest$FixedWindowRollingPolicy;
+
+        $r1 = r0.<org.apache.log4j.PropertyConfiguratorTest$FixedWindowRollingPolicy: java.lang.String fileNamePattern>;
+
+        return $r1;
+    }
+
+    public void setFileNamePattern(java.lang.String)
+    {
+        org.apache.log4j.PropertyConfiguratorTest$FixedWindowRollingPolicy r0;
+        java.lang.String r1;
+
+        r0 := @this: org.apache.log4j.PropertyConfiguratorTest$FixedWindowRollingPolicy;
+
+        r1 := @parameter0: java.lang.String;
+
+        r0.<org.apache.log4j.PropertyConfiguratorTest$FixedWindowRollingPolicy: java.lang.String fileNamePattern> = r1;
+
+        return;
+    }
+
+    public int getMinIndex()
+    {
+        org.apache.log4j.PropertyConfiguratorTest$FixedWindowRollingPolicy r0;
+        int $i0;
+
+        r0 := @this: org.apache.log4j.PropertyConfiguratorTest$FixedWindowRollingPolicy;
+
+        $i0 = r0.<org.apache.log4j.PropertyConfiguratorTest$FixedWindowRollingPolicy: int minIndex>;
+
+        return $i0;
+    }
+
+    public void setMinIndex(int)
+    {
+        org.apache.log4j.PropertyConfiguratorTest$FixedWindowRollingPolicy r0;
+        int i0;
+
+        r0 := @this: org.apache.log4j.PropertyConfiguratorTest$FixedWindowRollingPolicy;
+
+        i0 := @parameter0: int;
+
+        r0.<org.apache.log4j.PropertyConfiguratorTest$FixedWindowRollingPolicy: int minIndex> = i0;
+
+        return;
+    }
+}

@@ -1,0 +1,17 @@
+public class org.apache.commons.logging.log4j.StandardTests$LogEvent extends java.lang.Object
+{
+    public java.lang.String msg;
+    public java.lang.String level;
+    public java.lang.Throwable throwable;
+
+    public void <init>()
+    {
+        org.apache.commons.logging.log4j.StandardTests$LogEvent r0;
+
+        r0 := @this: org.apache.commons.logging.log4j.StandardTests$LogEvent;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+}

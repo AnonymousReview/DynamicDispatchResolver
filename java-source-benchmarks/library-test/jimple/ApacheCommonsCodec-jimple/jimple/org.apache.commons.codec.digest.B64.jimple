@@ -1,0 +1,125 @@
+class org.apache.commons.codec.digest.B64 extends java.lang.Object
+{
+    static final java.lang.String B64T;
+
+    void <init>()
+    {
+        org.apache.commons.codec.digest.B64 r0;
+
+        r0 := @this: org.apache.commons.codec.digest.B64;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    static void b64from24bit(byte, byte, byte, int, java.lang.StringBuilder)
+    {
+        byte b0, b1, b2;
+        int i3, $i4, $i5, $i6, $i7, $i9, $i10, $i11, i13, i14;
+        java.lang.StringBuilder r0;
+        short $s8;
+        java.lang.String $r1;
+        char $c12;
+
+        b0 := @parameter0: byte;
+
+        b1 := @parameter1: byte;
+
+        b2 := @parameter2: byte;
+
+        i3 := @parameter3: int;
+
+        r0 := @parameter4: java.lang.StringBuilder;
+
+        $i4 = b0 << 16;
+
+        $i7 = $i4 & 16777215;
+
+        $i5 = b1 << 8;
+
+        $i6 = $i5 & 65535;
+
+        $i9 = $i7 | $i6;
+
+        $s8 = b2 & 255;
+
+        i13 = $i9 | $s8;
+
+        i14 = i3;
+
+        goto label2;
+
+     label1:
+        $r1 = "./0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+
+        $i11 = i13 & 63;
+
+        $c12 = virtualinvoke $r1.<java.lang.String: char charAt(int)>($i11);
+
+        virtualinvoke r0.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>($c12);
+
+        i13 = i13 >> 6;
+
+     label2:
+        $i10 = i14;
+
+        i14 = i14 + -1;
+
+        if $i10 > 0 goto label1;
+
+        return;
+    }
+
+    static java.lang.String getRandomSalt(int)
+    {
+        int i0, $i1, $i2, i4;
+        java.lang.StringBuilder $r1;
+        java.util.Random $r2;
+        java.lang.String $r3, $r4, $r6;
+        char $c3;
+
+        i0 := @parameter0: int;
+
+        $r1 = new java.lang.StringBuilder;
+
+        specialinvoke $r1.<java.lang.StringBuilder: void <init>()>();
+
+        i4 = 1;
+
+        goto label2;
+
+     label1:
+        $r3 = "./0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+
+        $r2 = new java.util.Random;
+
+        specialinvoke $r2.<java.util.Random: void <init>()>();
+
+        $r4 = "./0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+
+        $i1 = virtualinvoke $r4.<java.lang.String: int length()>();
+
+        $i2 = virtualinvoke $r2.<java.util.Random: int nextInt(int)>($i1);
+
+        $c3 = virtualinvoke $r3.<java.lang.String: char charAt(int)>($i2);
+
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>($c3);
+
+        i4 = i4 + 1;
+
+     label2:
+        if i4 <= i0 goto label1;
+
+        $r6 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $r6;
+    }
+
+    public static void <clinit>()
+    {
+        <org.apache.commons.codec.digest.B64: java.lang.String B64T> = "./0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+
+        return;
+    }
+}

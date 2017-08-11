@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<attributes>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="0" eline="0" spos="0" epos="0"/>
+<text info="[inner=org/apache/commons/io/input/ProxyReaderTest$CustomNullReader, outer=org/apache/commons/io/input/ProxyReaderTest, name=CustomNullReader,flags=10]" aType="InnerClassTag"/>
+<text info="soot.tagkit.InnerClassAttribute@51f9b589" aType="InnerClassAttribute"/>
+</attribute>
+</attributes>

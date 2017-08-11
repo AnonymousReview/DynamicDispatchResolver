@@ -1,0 +1,3474 @@
+public class org.apache.commons.io.IOUtils extends java.lang.Object
+{
+    public static final int EOF;
+    public static final char DIR_SEPARATOR_UNIX;
+    public static final char DIR_SEPARATOR_WINDOWS;
+    public static final char DIR_SEPARATOR;
+    public static final java.lang.String LINE_SEPARATOR_UNIX;
+    public static final java.lang.String LINE_SEPARATOR_WINDOWS;
+    public static final java.lang.String LINE_SEPARATOR;
+    private static final int DEFAULT_BUFFER_SIZE;
+    private static final int SKIP_BUFFER_SIZE;
+    private static char[] SKIP_CHAR_BUFFER;
+    private static byte[] SKIP_BYTE_BUFFER;
+
+    static void <clinit>()
+    {
+        char $c0;
+        org.apache.commons.io.output.StringBuilderWriter $r2;
+        java.io.PrintWriter $r3;
+        java.lang.String $r4;
+
+        <org.apache.commons.io.IOUtils: int SKIP_BUFFER_SIZE> = 2048;
+
+        <org.apache.commons.io.IOUtils: int DEFAULT_BUFFER_SIZE> = 4096;
+
+        <org.apache.commons.io.IOUtils: java.lang.String LINE_SEPARATOR_WINDOWS> = "\r\n";
+
+        <org.apache.commons.io.IOUtils: java.lang.String LINE_SEPARATOR_UNIX> = "\n";
+
+        <org.apache.commons.io.IOUtils: char DIR_SEPARATOR_WINDOWS> = 92;
+
+        <org.apache.commons.io.IOUtils: char DIR_SEPARATOR_UNIX> = 47;
+
+        <org.apache.commons.io.IOUtils: int EOF> = -1;
+
+        $c0 = <java.io.File: char separatorChar>;
+
+        <org.apache.commons.io.IOUtils: char DIR_SEPARATOR> = $c0;
+
+        $r2 = new org.apache.commons.io.output.StringBuilderWriter;
+
+        specialinvoke $r2.<org.apache.commons.io.output.StringBuilderWriter: void <init>(int)>(4);
+
+        $r3 = new java.io.PrintWriter;
+
+        specialinvoke $r3.<java.io.PrintWriter: void <init>(java.io.Writer)>($r2);
+
+        virtualinvoke $r3.<java.io.PrintWriter: void println()>();
+
+        $r4 = virtualinvoke $r2.<org.apache.commons.io.output.StringBuilderWriter: java.lang.String toString()>();
+
+        <org.apache.commons.io.IOUtils: java.lang.String LINE_SEPARATOR> = $r4;
+
+        virtualinvoke $r3.<java.io.PrintWriter: void close()>();
+
+        return;
+    }
+
+    public void <init>()
+    {
+        org.apache.commons.io.IOUtils r0;
+
+        r0 := @this: org.apache.commons.io.IOUtils;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static void close(java.net.URLConnection)
+    {
+        java.net.URLConnection r0;
+        boolean $z0;
+        java.net.HttpURLConnection $r1;
+
+        r0 := @parameter0: java.net.URLConnection;
+
+        $z0 = r0 instanceof java.net.HttpURLConnection;
+
+        if $z0 == 0 goto label1;
+
+        $r1 = (java.net.HttpURLConnection) r0;
+
+        virtualinvoke $r1.<java.net.HttpURLConnection: void disconnect()>();
+
+     label1:
+        return;
+    }
+
+    public static void closeQuietly(java.io.Reader)
+    {
+        java.io.Reader r0;
+
+        r0 := @parameter0: java.io.Reader;
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.Closeable)>(r0);
+
+        return;
+    }
+
+    public static void closeQuietly(java.io.Writer)
+    {
+        java.io.Writer r0;
+
+        r0 := @parameter0: java.io.Writer;
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.Closeable)>(r0);
+
+        return;
+    }
+
+    public static void closeQuietly(java.io.InputStream)
+    {
+        java.io.InputStream r0;
+
+        r0 := @parameter0: java.io.InputStream;
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.Closeable)>(r0);
+
+        return;
+    }
+
+    public static void closeQuietly(java.io.OutputStream)
+    {
+        java.io.OutputStream r0;
+
+        r0 := @parameter0: java.io.OutputStream;
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.Closeable)>(r0);
+
+        return;
+    }
+
+    public static void closeQuietly(java.io.Closeable)
+    {
+        java.io.Closeable r0;
+        java.io.IOException $r2;
+
+        r0 := @parameter0: java.io.Closeable;
+
+     label1:
+        if r0 == null goto label4;
+
+        interfaceinvoke r0.<java.io.Closeable: void close()>();
+
+     label2:
+        goto label4;
+
+     label3:
+        $r2 := @caughtexception;
+
+     label4:
+        return;
+
+        catch java.io.IOException from label1 to label2 with label3;
+    }
+
+    public static transient void closeQuietly(java.io.Closeable[])
+    {
+        java.io.Closeable[] r0;
+        java.io.Closeable r1;
+        int i0, i1;
+
+        r0 := @parameter0: java.io.Closeable[];
+
+        if r0 != null goto label1;
+
+        return;
+
+     label1:
+        i0 = lengthof r0;
+
+        i1 = 0;
+
+        goto label3;
+
+     label2:
+        r1 = r0[i1];
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.Closeable)>(r1);
+
+        i1 = i1 + 1;
+
+     label3:
+        if i1 < i0 goto label2;
+
+        return;
+    }
+
+    public static void closeQuietly(java.net.Socket)
+    {
+        java.net.Socket r0;
+        java.io.IOException $r2;
+
+        r0 := @parameter0: java.net.Socket;
+
+        if r0 == null goto label4;
+
+     label1:
+        virtualinvoke r0.<java.net.Socket: void close()>();
+
+     label2:
+        goto label4;
+
+     label3:
+        $r2 := @caughtexception;
+
+     label4:
+        return;
+
+        catch java.io.IOException from label1 to label2 with label3;
+    }
+
+    public static void closeQuietly(java.nio.channels.Selector)
+    {
+        java.nio.channels.Selector r0;
+        java.io.IOException $r2;
+
+        r0 := @parameter0: java.nio.channels.Selector;
+
+        if r0 == null goto label4;
+
+     label1:
+        virtualinvoke r0.<java.nio.channels.Selector: void close()>();
+
+     label2:
+        goto label4;
+
+     label3:
+        $r2 := @caughtexception;
+
+     label4:
+        return;
+
+        catch java.io.IOException from label1 to label2 with label3;
+    }
+
+    public static void closeQuietly(java.net.ServerSocket)
+    {
+        java.net.ServerSocket r0;
+        java.io.IOException $r2;
+
+        r0 := @parameter0: java.net.ServerSocket;
+
+        if r0 == null goto label4;
+
+     label1:
+        virtualinvoke r0.<java.net.ServerSocket: void close()>();
+
+     label2:
+        goto label4;
+
+     label3:
+        $r2 := @caughtexception;
+
+     label4:
+        return;
+
+        catch java.io.IOException from label1 to label2 with label3;
+    }
+
+    public static java.io.InputStream toBufferedInputStream(java.io.InputStream) throws java.io.IOException
+    {
+        java.io.InputStream r0, $r1;
+
+        r0 := @parameter0: java.io.InputStream;
+
+        $r1 = staticinvoke <org.apache.commons.io.output.ByteArrayOutputStream: java.io.InputStream toBufferedInputStream(java.io.InputStream)>(r0);
+
+        return $r1;
+    }
+
+    public static java.io.InputStream toBufferedInputStream(java.io.InputStream, int) throws java.io.IOException
+    {
+        java.io.InputStream r0, $r1;
+        int i0;
+
+        r0 := @parameter0: java.io.InputStream;
+
+        i0 := @parameter1: int;
+
+        $r1 = staticinvoke <org.apache.commons.io.output.ByteArrayOutputStream: java.io.InputStream toBufferedInputStream(java.io.InputStream,int)>(r0, i0);
+
+        return $r1;
+    }
+
+    public static java.io.BufferedReader toBufferedReader(java.io.Reader)
+    {
+        java.io.Reader r0;
+        boolean $z0;
+        java.io.BufferedReader $r1;
+
+        r0 := @parameter0: java.io.Reader;
+
+        $z0 = r0 instanceof java.io.BufferedReader;
+
+        if $z0 == 0 goto label1;
+
+        $r1 = (java.io.BufferedReader) r0;
+
+        goto label2;
+
+     label1:
+        $r1 = new java.io.BufferedReader;
+
+        specialinvoke $r1.<java.io.BufferedReader: void <init>(java.io.Reader)>(r0);
+
+     label2:
+        return $r1;
+    }
+
+    public static java.io.BufferedReader toBufferedReader(java.io.Reader, int)
+    {
+        java.io.Reader r0;
+        int i0;
+        boolean $z0;
+        java.io.BufferedReader $r1;
+
+        r0 := @parameter0: java.io.Reader;
+
+        i0 := @parameter1: int;
+
+        $z0 = r0 instanceof java.io.BufferedReader;
+
+        if $z0 == 0 goto label1;
+
+        $r1 = (java.io.BufferedReader) r0;
+
+        goto label2;
+
+     label1:
+        $r1 = new java.io.BufferedReader;
+
+        specialinvoke $r1.<java.io.BufferedReader: void <init>(java.io.Reader,int)>(r0, i0);
+
+     label2:
+        return $r1;
+    }
+
+    public static java.io.BufferedReader buffer(java.io.Reader)
+    {
+        java.io.Reader r0;
+        boolean $z0;
+        java.io.BufferedReader $r1;
+
+        r0 := @parameter0: java.io.Reader;
+
+        $z0 = r0 instanceof java.io.BufferedReader;
+
+        if $z0 == 0 goto label1;
+
+        $r1 = (java.io.BufferedReader) r0;
+
+        goto label2;
+
+     label1:
+        $r1 = new java.io.BufferedReader;
+
+        specialinvoke $r1.<java.io.BufferedReader: void <init>(java.io.Reader)>(r0);
+
+     label2:
+        return $r1;
+    }
+
+    public static java.io.BufferedReader buffer(java.io.Reader, int)
+    {
+        java.io.Reader r0;
+        int i0;
+        boolean $z0;
+        java.io.BufferedReader $r1;
+
+        r0 := @parameter0: java.io.Reader;
+
+        i0 := @parameter1: int;
+
+        $z0 = r0 instanceof java.io.BufferedReader;
+
+        if $z0 == 0 goto label1;
+
+        $r1 = (java.io.BufferedReader) r0;
+
+        goto label2;
+
+     label1:
+        $r1 = new java.io.BufferedReader;
+
+        specialinvoke $r1.<java.io.BufferedReader: void <init>(java.io.Reader,int)>(r0, i0);
+
+     label2:
+        return $r1;
+    }
+
+    public static java.io.BufferedWriter buffer(java.io.Writer)
+    {
+        java.io.Writer r0;
+        boolean $z0;
+        java.io.BufferedWriter $r1;
+
+        r0 := @parameter0: java.io.Writer;
+
+        $z0 = r0 instanceof java.io.BufferedWriter;
+
+        if $z0 == 0 goto label1;
+
+        $r1 = (java.io.BufferedWriter) r0;
+
+        goto label2;
+
+     label1:
+        $r1 = new java.io.BufferedWriter;
+
+        specialinvoke $r1.<java.io.BufferedWriter: void <init>(java.io.Writer)>(r0);
+
+     label2:
+        return $r1;
+    }
+
+    public static java.io.BufferedWriter buffer(java.io.Writer, int)
+    {
+        java.io.Writer r0;
+        int i0;
+        boolean $z0;
+        java.io.BufferedWriter $r1;
+
+        r0 := @parameter0: java.io.Writer;
+
+        i0 := @parameter1: int;
+
+        $z0 = r0 instanceof java.io.BufferedWriter;
+
+        if $z0 == 0 goto label1;
+
+        $r1 = (java.io.BufferedWriter) r0;
+
+        goto label2;
+
+     label1:
+        $r1 = new java.io.BufferedWriter;
+
+        specialinvoke $r1.<java.io.BufferedWriter: void <init>(java.io.Writer,int)>(r0, i0);
+
+     label2:
+        return $r1;
+    }
+
+    public static java.io.BufferedOutputStream buffer(java.io.OutputStream)
+    {
+        java.io.OutputStream r0;
+        boolean $z0;
+        java.lang.NullPointerException $r1;
+        java.io.BufferedOutputStream $r2;
+
+        r0 := @parameter0: java.io.OutputStream;
+
+        if r0 != null goto label1;
+
+        $r1 = new java.lang.NullPointerException;
+
+        specialinvoke $r1.<java.lang.NullPointerException: void <init>()>();
+
+        throw $r1;
+
+     label1:
+        $z0 = r0 instanceof java.io.BufferedOutputStream;
+
+        if $z0 == 0 goto label2;
+
+        $r2 = (java.io.BufferedOutputStream) r0;
+
+        goto label3;
+
+     label2:
+        $r2 = new java.io.BufferedOutputStream;
+
+        specialinvoke $r2.<java.io.BufferedOutputStream: void <init>(java.io.OutputStream)>(r0);
+
+     label3:
+        return $r2;
+    }
+
+    public static java.io.BufferedOutputStream buffer(java.io.OutputStream, int)
+    {
+        java.io.OutputStream r0;
+        int i0;
+        boolean $z0;
+        java.lang.NullPointerException $r1;
+        java.io.BufferedOutputStream $r2;
+
+        r0 := @parameter0: java.io.OutputStream;
+
+        i0 := @parameter1: int;
+
+        if r0 != null goto label1;
+
+        $r1 = new java.lang.NullPointerException;
+
+        specialinvoke $r1.<java.lang.NullPointerException: void <init>()>();
+
+        throw $r1;
+
+     label1:
+        $z0 = r0 instanceof java.io.BufferedOutputStream;
+
+        if $z0 == 0 goto label2;
+
+        $r2 = (java.io.BufferedOutputStream) r0;
+
+        goto label3;
+
+     label2:
+        $r2 = new java.io.BufferedOutputStream;
+
+        specialinvoke $r2.<java.io.BufferedOutputStream: void <init>(java.io.OutputStream,int)>(r0, i0);
+
+     label3:
+        return $r2;
+    }
+
+    public static java.io.BufferedInputStream buffer(java.io.InputStream)
+    {
+        java.io.InputStream r0;
+        boolean $z0;
+        java.lang.NullPointerException $r1;
+        java.io.BufferedInputStream $r2;
+
+        r0 := @parameter0: java.io.InputStream;
+
+        if r0 != null goto label1;
+
+        $r1 = new java.lang.NullPointerException;
+
+        specialinvoke $r1.<java.lang.NullPointerException: void <init>()>();
+
+        throw $r1;
+
+     label1:
+        $z0 = r0 instanceof java.io.BufferedInputStream;
+
+        if $z0 == 0 goto label2;
+
+        $r2 = (java.io.BufferedInputStream) r0;
+
+        goto label3;
+
+     label2:
+        $r2 = new java.io.BufferedInputStream;
+
+        specialinvoke $r2.<java.io.BufferedInputStream: void <init>(java.io.InputStream)>(r0);
+
+     label3:
+        return $r2;
+    }
+
+    public static java.io.BufferedInputStream buffer(java.io.InputStream, int)
+    {
+        java.io.InputStream r0;
+        int i0;
+        boolean $z0;
+        java.lang.NullPointerException $r1;
+        java.io.BufferedInputStream $r2;
+
+        r0 := @parameter0: java.io.InputStream;
+
+        i0 := @parameter1: int;
+
+        if r0 != null goto label1;
+
+        $r1 = new java.lang.NullPointerException;
+
+        specialinvoke $r1.<java.lang.NullPointerException: void <init>()>();
+
+        throw $r1;
+
+     label1:
+        $z0 = r0 instanceof java.io.BufferedInputStream;
+
+        if $z0 == 0 goto label2;
+
+        $r2 = (java.io.BufferedInputStream) r0;
+
+        goto label3;
+
+     label2:
+        $r2 = new java.io.BufferedInputStream;
+
+        specialinvoke $r2.<java.io.BufferedInputStream: void <init>(java.io.InputStream,int)>(r0, i0);
+
+     label3:
+        return $r2;
+    }
+
+    public static byte[] toByteArray(java.io.InputStream) throws java.io.IOException
+    {
+        java.io.InputStream r0;
+        org.apache.commons.io.output.ByteArrayOutputStream $r2;
+        byte[] $r3;
+
+        r0 := @parameter0: java.io.InputStream;
+
+        $r2 = new org.apache.commons.io.output.ByteArrayOutputStream;
+
+        specialinvoke $r2.<org.apache.commons.io.output.ByteArrayOutputStream: void <init>()>();
+
+        staticinvoke <org.apache.commons.io.IOUtils: int copy(java.io.InputStream,java.io.OutputStream)>(r0, $r2);
+
+        $r3 = virtualinvoke $r2.<org.apache.commons.io.output.ByteArrayOutputStream: byte[] toByteArray()>();
+
+        return $r3;
+    }
+
+    public static byte[] toByteArray(java.io.InputStream, long) throws java.io.IOException
+    {
+        java.io.InputStream r0;
+        long l0;
+        byte $b1;
+        int $i2;
+        byte[] $r1;
+        java.lang.IllegalArgumentException $r2;
+        java.lang.StringBuilder $r3, $r4;
+        java.lang.String $r5;
+
+        r0 := @parameter0: java.io.InputStream;
+
+        l0 := @parameter1: long;
+
+        $b1 = l0 cmp 2147483647L;
+
+        if $b1 <= 0 goto label1;
+
+        $r2 = new java.lang.IllegalArgumentException;
+
+        $r3 = new java.lang.StringBuilder;
+
+        specialinvoke $r3.<java.lang.StringBuilder: void <init>(java.lang.String)>("Size cannot be greater than Integer max value: ");
+
+        $r4 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(long)>(l0);
+
+        $r5 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r2.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>($r5);
+
+        throw $r2;
+
+     label1:
+        $i2 = (int) l0;
+
+        $r1 = staticinvoke <org.apache.commons.io.IOUtils: byte[] toByteArray(java.io.InputStream,int)>(r0, $i2);
+
+        return $r1;
+    }
+
+    public static byte[] toByteArray(java.io.InputStream, int) throws java.io.IOException
+    {
+        java.io.InputStream r0;
+        int i0, $i2, $i3, i4;
+        byte[] r1, $r8;
+        java.io.IOException $r2;
+        java.lang.StringBuilder $r3, $r4, $r5, $r6, $r10, $r11;
+        java.lang.String $r7, $r12;
+        java.lang.IllegalArgumentException $r9;
+
+        r0 := @parameter0: java.io.InputStream;
+
+        i0 := @parameter1: int;
+
+        if i0 >= 0 goto label1;
+
+        $r9 = new java.lang.IllegalArgumentException;
+
+        $r10 = new java.lang.StringBuilder;
+
+        specialinvoke $r10.<java.lang.StringBuilder: void <init>(java.lang.String)>("Size must be equal or greater than zero: ");
+
+        $r11 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i0);
+
+        $r12 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r9.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>($r12);
+
+        throw $r9;
+
+     label1:
+        if i0 != 0 goto label2;
+
+        $r8 = newarray (byte)[0];
+
+        return $r8;
+
+     label2:
+        r1 = newarray (byte)[i0];
+
+        i4 = 0;
+
+        goto label4;
+
+     label3:
+        i4 = i4 + $i3;
+
+     label4:
+        if i4 >= i0 goto label5;
+
+        $i2 = i0 - i4;
+
+        $i3 = virtualinvoke r0.<java.io.InputStream: int read(byte[],int,int)>(r1, i4, $i2);
+
+        if $i3 != -1 goto label3;
+
+     label5:
+        if i4 == i0 goto label6;
+
+        $r2 = new java.io.IOException;
+
+        $r3 = new java.lang.StringBuilder;
+
+        specialinvoke $r3.<java.lang.StringBuilder: void <init>(java.lang.String)>("Unexpected readed size. current: ");
+
+        $r4 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i4);
+
+        $r5 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", excepted: ");
+
+        $r6 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i0);
+
+        $r7 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r2.<java.io.IOException: void <init>(java.lang.String)>($r7);
+
+        throw $r2;
+
+     label6:
+        return r1;
+    }
+
+    public static byte[] toByteArray(java.io.Reader) throws java.io.IOException
+    {
+        java.io.Reader r0;
+        java.nio.charset.Charset $r1;
+        byte[] $r2;
+
+        r0 := @parameter0: java.io.Reader;
+
+        $r1 = staticinvoke <java.nio.charset.Charset: java.nio.charset.Charset defaultCharset()>();
+
+        $r2 = staticinvoke <org.apache.commons.io.IOUtils: byte[] toByteArray(java.io.Reader,java.nio.charset.Charset)>(r0, $r1);
+
+        return $r2;
+    }
+
+    public static byte[] toByteArray(java.io.Reader, java.nio.charset.Charset) throws java.io.IOException
+    {
+        java.io.Reader r0;
+        java.nio.charset.Charset r1;
+        org.apache.commons.io.output.ByteArrayOutputStream $r3;
+        byte[] $r4;
+
+        r0 := @parameter0: java.io.Reader;
+
+        r1 := @parameter1: java.nio.charset.Charset;
+
+        $r3 = new org.apache.commons.io.output.ByteArrayOutputStream;
+
+        specialinvoke $r3.<org.apache.commons.io.output.ByteArrayOutputStream: void <init>()>();
+
+        staticinvoke <org.apache.commons.io.IOUtils: void copy(java.io.Reader,java.io.OutputStream,java.nio.charset.Charset)>(r0, $r3, r1);
+
+        $r4 = virtualinvoke $r3.<org.apache.commons.io.output.ByteArrayOutputStream: byte[] toByteArray()>();
+
+        return $r4;
+    }
+
+    public static byte[] toByteArray(java.io.Reader, java.lang.String) throws java.io.IOException
+    {
+        java.io.Reader r0;
+        java.lang.String r1;
+        java.nio.charset.Charset $r2;
+        byte[] $r3;
+
+        r0 := @parameter0: java.io.Reader;
+
+        r1 := @parameter1: java.lang.String;
+
+        $r2 = staticinvoke <org.apache.commons.io.Charsets: java.nio.charset.Charset toCharset(java.lang.String)>(r1);
+
+        $r3 = staticinvoke <org.apache.commons.io.IOUtils: byte[] toByteArray(java.io.Reader,java.nio.charset.Charset)>(r0, $r2);
+
+        return $r3;
+    }
+
+    public static byte[] toByteArray(java.lang.String) throws java.io.IOException
+    {
+        java.lang.String r0;
+        java.nio.charset.Charset $r1;
+        byte[] $r2;
+
+        r0 := @parameter0: java.lang.String;
+
+        $r1 = staticinvoke <java.nio.charset.Charset: java.nio.charset.Charset defaultCharset()>();
+
+        $r2 = virtualinvoke r0.<java.lang.String: byte[] getBytes(java.nio.charset.Charset)>($r1);
+
+        return $r2;
+    }
+
+    public static byte[] toByteArray(java.net.URI) throws java.io.IOException
+    {
+        java.net.URI r0;
+        java.net.URL $r1;
+        byte[] $r2;
+
+        r0 := @parameter0: java.net.URI;
+
+        $r1 = virtualinvoke r0.<java.net.URI: java.net.URL toURL()>();
+
+        $r2 = staticinvoke <org.apache.commons.io.IOUtils: byte[] toByteArray(java.net.URL)>($r1);
+
+        return $r2;
+    }
+
+    public static byte[] toByteArray(java.net.URL) throws java.io.IOException
+    {
+        java.net.URL r0;
+        java.net.URLConnection r1;
+        byte[] r3;
+        java.lang.Throwable $r4;
+
+        r0 := @parameter0: java.net.URL;
+
+        r1 = virtualinvoke r0.<java.net.URL: java.net.URLConnection openConnection()>();
+
+     label1:
+        r3 = staticinvoke <org.apache.commons.io.IOUtils: byte[] toByteArray(java.net.URLConnection)>(r1);
+
+     label2:
+        staticinvoke <org.apache.commons.io.IOUtils: void close(java.net.URLConnection)>(r1);
+
+        return r3;
+
+     label3:
+        $r4 := @caughtexception;
+
+        staticinvoke <org.apache.commons.io.IOUtils: void close(java.net.URLConnection)>(r1);
+
+        throw $r4;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+    }
+
+    public static byte[] toByteArray(java.net.URLConnection) throws java.io.IOException
+    {
+        java.net.URLConnection r0;
+        java.io.InputStream r1;
+        byte[] r3;
+        java.lang.Throwable $r4;
+
+        r0 := @parameter0: java.net.URLConnection;
+
+        r1 = virtualinvoke r0.<java.net.URLConnection: java.io.InputStream getInputStream()>();
+
+     label1:
+        r3 = staticinvoke <org.apache.commons.io.IOUtils: byte[] toByteArray(java.io.InputStream)>(r1);
+
+     label2:
+        virtualinvoke r1.<java.io.InputStream: void close()>();
+
+        return r3;
+
+     label3:
+        $r4 := @caughtexception;
+
+        virtualinvoke r1.<java.io.InputStream: void close()>();
+
+        throw $r4;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+    }
+
+    public static char[] toCharArray(java.io.InputStream) throws java.io.IOException
+    {
+        java.io.InputStream r0;
+        java.nio.charset.Charset $r1;
+        char[] $r2;
+
+        r0 := @parameter0: java.io.InputStream;
+
+        $r1 = staticinvoke <java.nio.charset.Charset: java.nio.charset.Charset defaultCharset()>();
+
+        $r2 = staticinvoke <org.apache.commons.io.IOUtils: char[] toCharArray(java.io.InputStream,java.nio.charset.Charset)>(r0, $r1);
+
+        return $r2;
+    }
+
+    public static char[] toCharArray(java.io.InputStream, java.nio.charset.Charset) throws java.io.IOException
+    {
+        java.io.InputStream r0;
+        java.nio.charset.Charset r1;
+        java.io.CharArrayWriter $r3;
+        char[] $r4;
+
+        r0 := @parameter0: java.io.InputStream;
+
+        r1 := @parameter1: java.nio.charset.Charset;
+
+        $r3 = new java.io.CharArrayWriter;
+
+        specialinvoke $r3.<java.io.CharArrayWriter: void <init>()>();
+
+        staticinvoke <org.apache.commons.io.IOUtils: void copy(java.io.InputStream,java.io.Writer,java.nio.charset.Charset)>(r0, $r3, r1);
+
+        $r4 = virtualinvoke $r3.<java.io.CharArrayWriter: char[] toCharArray()>();
+
+        return $r4;
+    }
+
+    public static char[] toCharArray(java.io.InputStream, java.lang.String) throws java.io.IOException
+    {
+        java.io.InputStream r0;
+        java.lang.String r1;
+        java.nio.charset.Charset $r2;
+        char[] $r3;
+
+        r0 := @parameter0: java.io.InputStream;
+
+        r1 := @parameter1: java.lang.String;
+
+        $r2 = staticinvoke <org.apache.commons.io.Charsets: java.nio.charset.Charset toCharset(java.lang.String)>(r1);
+
+        $r3 = staticinvoke <org.apache.commons.io.IOUtils: char[] toCharArray(java.io.InputStream,java.nio.charset.Charset)>(r0, $r2);
+
+        return $r3;
+    }
+
+    public static char[] toCharArray(java.io.Reader) throws java.io.IOException
+    {
+        java.io.Reader r0;
+        java.io.CharArrayWriter $r2;
+        char[] $r3;
+
+        r0 := @parameter0: java.io.Reader;
+
+        $r2 = new java.io.CharArrayWriter;
+
+        specialinvoke $r2.<java.io.CharArrayWriter: void <init>()>();
+
+        staticinvoke <org.apache.commons.io.IOUtils: int copy(java.io.Reader,java.io.Writer)>(r0, $r2);
+
+        $r3 = virtualinvoke $r2.<java.io.CharArrayWriter: char[] toCharArray()>();
+
+        return $r3;
+    }
+
+    public static java.lang.String toString(java.io.InputStream) throws java.io.IOException
+    {
+        java.io.InputStream r0;
+        java.nio.charset.Charset $r1;
+        java.lang.String $r2;
+
+        r0 := @parameter0: java.io.InputStream;
+
+        $r1 = staticinvoke <java.nio.charset.Charset: java.nio.charset.Charset defaultCharset()>();
+
+        $r2 = staticinvoke <org.apache.commons.io.IOUtils: java.lang.String toString(java.io.InputStream,java.nio.charset.Charset)>(r0, $r1);
+
+        return $r2;
+    }
+
+    public static java.lang.String toString(java.io.InputStream, java.nio.charset.Charset) throws java.io.IOException
+    {
+        java.io.InputStream r0;
+        java.nio.charset.Charset r1;
+        org.apache.commons.io.output.StringBuilderWriter $r3;
+        java.lang.String $r4;
+
+        r0 := @parameter0: java.io.InputStream;
+
+        r1 := @parameter1: java.nio.charset.Charset;
+
+        $r3 = new org.apache.commons.io.output.StringBuilderWriter;
+
+        specialinvoke $r3.<org.apache.commons.io.output.StringBuilderWriter: void <init>()>();
+
+        staticinvoke <org.apache.commons.io.IOUtils: void copy(java.io.InputStream,java.io.Writer,java.nio.charset.Charset)>(r0, $r3, r1);
+
+        $r4 = virtualinvoke $r3.<org.apache.commons.io.output.StringBuilderWriter: java.lang.String toString()>();
+
+        return $r4;
+    }
+
+    public static java.lang.String toString(java.io.InputStream, java.lang.String) throws java.io.IOException
+    {
+        java.io.InputStream r0;
+        java.lang.String r1, $r3;
+        java.nio.charset.Charset $r2;
+
+        r0 := @parameter0: java.io.InputStream;
+
+        r1 := @parameter1: java.lang.String;
+
+        $r2 = staticinvoke <org.apache.commons.io.Charsets: java.nio.charset.Charset toCharset(java.lang.String)>(r1);
+
+        $r3 = staticinvoke <org.apache.commons.io.IOUtils: java.lang.String toString(java.io.InputStream,java.nio.charset.Charset)>(r0, $r2);
+
+        return $r3;
+    }
+
+    public static java.lang.String toString(java.io.Reader) throws java.io.IOException
+    {
+        java.io.Reader r0;
+        org.apache.commons.io.output.StringBuilderWriter $r2;
+        java.lang.String $r3;
+
+        r0 := @parameter0: java.io.Reader;
+
+        $r2 = new org.apache.commons.io.output.StringBuilderWriter;
+
+        specialinvoke $r2.<org.apache.commons.io.output.StringBuilderWriter: void <init>()>();
+
+        staticinvoke <org.apache.commons.io.IOUtils: int copy(java.io.Reader,java.io.Writer)>(r0, $r2);
+
+        $r3 = virtualinvoke $r2.<org.apache.commons.io.output.StringBuilderWriter: java.lang.String toString()>();
+
+        return $r3;
+    }
+
+    public static java.lang.String toString(java.net.URI) throws java.io.IOException
+    {
+        java.net.URI r0;
+        java.nio.charset.Charset $r1;
+        java.lang.String $r2;
+
+        r0 := @parameter0: java.net.URI;
+
+        $r1 = staticinvoke <java.nio.charset.Charset: java.nio.charset.Charset defaultCharset()>();
+
+        $r2 = staticinvoke <org.apache.commons.io.IOUtils: java.lang.String toString(java.net.URI,java.nio.charset.Charset)>(r0, $r1);
+
+        return $r2;
+    }
+
+    public static java.lang.String toString(java.net.URI, java.nio.charset.Charset) throws java.io.IOException
+    {
+        java.net.URI r0;
+        java.nio.charset.Charset r1, $r3;
+        java.net.URL $r2;
+        java.lang.String $r4;
+
+        r0 := @parameter0: java.net.URI;
+
+        r1 := @parameter1: java.nio.charset.Charset;
+
+        $r2 = virtualinvoke r0.<java.net.URI: java.net.URL toURL()>();
+
+        $r3 = staticinvoke <org.apache.commons.io.Charsets: java.nio.charset.Charset toCharset(java.nio.charset.Charset)>(r1);
+
+        $r4 = staticinvoke <org.apache.commons.io.IOUtils: java.lang.String toString(java.net.URL,java.nio.charset.Charset)>($r2, $r3);
+
+        return $r4;
+    }
+
+    public static java.lang.String toString(java.net.URI, java.lang.String) throws java.io.IOException
+    {
+        java.net.URI r0;
+        java.lang.String r1, $r3;
+        java.nio.charset.Charset $r2;
+
+        r0 := @parameter0: java.net.URI;
+
+        r1 := @parameter1: java.lang.String;
+
+        $r2 = staticinvoke <org.apache.commons.io.Charsets: java.nio.charset.Charset toCharset(java.lang.String)>(r1);
+
+        $r3 = staticinvoke <org.apache.commons.io.IOUtils: java.lang.String toString(java.net.URI,java.nio.charset.Charset)>(r0, $r2);
+
+        return $r3;
+    }
+
+    public static java.lang.String toString(java.net.URL) throws java.io.IOException
+    {
+        java.net.URL r0;
+        java.nio.charset.Charset $r1;
+        java.lang.String $r2;
+
+        r0 := @parameter0: java.net.URL;
+
+        $r1 = staticinvoke <java.nio.charset.Charset: java.nio.charset.Charset defaultCharset()>();
+
+        $r2 = staticinvoke <org.apache.commons.io.IOUtils: java.lang.String toString(java.net.URL,java.nio.charset.Charset)>(r0, $r1);
+
+        return $r2;
+    }
+
+    public static java.lang.String toString(java.net.URL, java.nio.charset.Charset) throws java.io.IOException
+    {
+        java.net.URL r0;
+        java.nio.charset.Charset r1;
+        java.io.InputStream r2;
+        java.lang.String r4;
+        java.lang.Throwable $r5;
+
+        r0 := @parameter0: java.net.URL;
+
+        r1 := @parameter1: java.nio.charset.Charset;
+
+        r2 = virtualinvoke r0.<java.net.URL: java.io.InputStream openStream()>();
+
+     label1:
+        r4 = staticinvoke <org.apache.commons.io.IOUtils: java.lang.String toString(java.io.InputStream,java.nio.charset.Charset)>(r2, r1);
+
+     label2:
+        virtualinvoke r2.<java.io.InputStream: void close()>();
+
+        return r4;
+
+     label3:
+        $r5 := @caughtexception;
+
+        virtualinvoke r2.<java.io.InputStream: void close()>();
+
+        throw $r5;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+    }
+
+    public static java.lang.String toString(java.net.URL, java.lang.String) throws java.io.IOException
+    {
+        java.net.URL r0;
+        java.lang.String r1, $r3;
+        java.nio.charset.Charset $r2;
+
+        r0 := @parameter0: java.net.URL;
+
+        r1 := @parameter1: java.lang.String;
+
+        $r2 = staticinvoke <org.apache.commons.io.Charsets: java.nio.charset.Charset toCharset(java.lang.String)>(r1);
+
+        $r3 = staticinvoke <org.apache.commons.io.IOUtils: java.lang.String toString(java.net.URL,java.nio.charset.Charset)>(r0, $r2);
+
+        return $r3;
+    }
+
+    public static java.lang.String toString(byte[]) throws java.io.IOException
+    {
+        byte[] r0;
+        java.lang.String $r1;
+        java.nio.charset.Charset $r2;
+
+        r0 := @parameter0: byte[];
+
+        $r1 = new java.lang.String;
+
+        $r2 = staticinvoke <java.nio.charset.Charset: java.nio.charset.Charset defaultCharset()>();
+
+        specialinvoke $r1.<java.lang.String: void <init>(byte[],java.nio.charset.Charset)>(r0, $r2);
+
+        return $r1;
+    }
+
+    public static java.lang.String toString(byte[], java.lang.String) throws java.io.IOException
+    {
+        byte[] r0;
+        java.lang.String r1, $r2;
+        java.nio.charset.Charset $r3;
+
+        r0 := @parameter0: byte[];
+
+        r1 := @parameter1: java.lang.String;
+
+        $r2 = new java.lang.String;
+
+        $r3 = staticinvoke <org.apache.commons.io.Charsets: java.nio.charset.Charset toCharset(java.lang.String)>(r1);
+
+        specialinvoke $r2.<java.lang.String: void <init>(byte[],java.nio.charset.Charset)>(r0, $r3);
+
+        return $r2;
+    }
+
+    public static java.util.List readLines(java.io.InputStream) throws java.io.IOException
+    {
+        java.io.InputStream r0;
+        java.nio.charset.Charset $r1;
+        java.util.List $r2;
+
+        r0 := @parameter0: java.io.InputStream;
+
+        $r1 = staticinvoke <java.nio.charset.Charset: java.nio.charset.Charset defaultCharset()>();
+
+        $r2 = staticinvoke <org.apache.commons.io.IOUtils: java.util.List readLines(java.io.InputStream,java.nio.charset.Charset)>(r0, $r1);
+
+        return $r2;
+    }
+
+    public static java.util.List readLines(java.io.InputStream, java.nio.charset.Charset) throws java.io.IOException
+    {
+        java.io.InputStream r0;
+        java.nio.charset.Charset r1, $r4;
+        java.io.InputStreamReader $r3;
+        java.util.List $r5;
+
+        r0 := @parameter0: java.io.InputStream;
+
+        r1 := @parameter1: java.nio.charset.Charset;
+
+        $r3 = new java.io.InputStreamReader;
+
+        $r4 = staticinvoke <org.apache.commons.io.Charsets: java.nio.charset.Charset toCharset(java.nio.charset.Charset)>(r1);
+
+        specialinvoke $r3.<java.io.InputStreamReader: void <init>(java.io.InputStream,java.nio.charset.Charset)>(r0, $r4);
+
+        $r5 = staticinvoke <org.apache.commons.io.IOUtils: java.util.List readLines(java.io.Reader)>($r3);
+
+        return $r5;
+    }
+
+    public static java.util.List readLines(java.io.InputStream, java.lang.String) throws java.io.IOException
+    {
+        java.io.InputStream r0;
+        java.lang.String r1;
+        java.nio.charset.Charset $r2;
+        java.util.List $r3;
+
+        r0 := @parameter0: java.io.InputStream;
+
+        r1 := @parameter1: java.lang.String;
+
+        $r2 = staticinvoke <org.apache.commons.io.Charsets: java.nio.charset.Charset toCharset(java.lang.String)>(r1);
+
+        $r3 = staticinvoke <org.apache.commons.io.IOUtils: java.util.List readLines(java.io.InputStream,java.nio.charset.Charset)>(r0, $r2);
+
+        return $r3;
+    }
+
+    public static java.util.List readLines(java.io.Reader) throws java.io.IOException
+    {
+        java.io.Reader r0;
+        java.io.BufferedReader r1;
+        java.util.ArrayList $r3;
+        java.lang.String r4;
+
+        r0 := @parameter0: java.io.Reader;
+
+        r1 = staticinvoke <org.apache.commons.io.IOUtils: java.io.BufferedReader toBufferedReader(java.io.Reader)>(r0);
+
+        $r3 = new java.util.ArrayList;
+
+        specialinvoke $r3.<java.util.ArrayList: void <init>()>();
+
+        r4 = virtualinvoke r1.<java.io.BufferedReader: java.lang.String readLine()>();
+
+        goto label2;
+
+     label1:
+        interfaceinvoke $r3.<java.util.List: boolean add(java.lang.Object)>(r4);
+
+        r4 = virtualinvoke r1.<java.io.BufferedReader: java.lang.String readLine()>();
+
+     label2:
+        if r4 != null goto label1;
+
+        return $r3;
+    }
+
+    public static org.apache.commons.io.LineIterator lineIterator(java.io.Reader)
+    {
+        java.io.Reader r0;
+        org.apache.commons.io.LineIterator $r1;
+
+        r0 := @parameter0: java.io.Reader;
+
+        $r1 = new org.apache.commons.io.LineIterator;
+
+        specialinvoke $r1.<org.apache.commons.io.LineIterator: void <init>(java.io.Reader)>(r0);
+
+        return $r1;
+    }
+
+    public static org.apache.commons.io.LineIterator lineIterator(java.io.InputStream, java.nio.charset.Charset) throws java.io.IOException
+    {
+        java.io.InputStream r0;
+        java.nio.charset.Charset r1, $r4;
+        org.apache.commons.io.LineIterator $r2;
+        java.io.InputStreamReader $r3;
+
+        r0 := @parameter0: java.io.InputStream;
+
+        r1 := @parameter1: java.nio.charset.Charset;
+
+        $r2 = new org.apache.commons.io.LineIterator;
+
+        $r3 = new java.io.InputStreamReader;
+
+        $r4 = staticinvoke <org.apache.commons.io.Charsets: java.nio.charset.Charset toCharset(java.nio.charset.Charset)>(r1);
+
+        specialinvoke $r3.<java.io.InputStreamReader: void <init>(java.io.InputStream,java.nio.charset.Charset)>(r0, $r4);
+
+        specialinvoke $r2.<org.apache.commons.io.LineIterator: void <init>(java.io.Reader)>($r3);
+
+        return $r2;
+    }
+
+    public static org.apache.commons.io.LineIterator lineIterator(java.io.InputStream, java.lang.String) throws java.io.IOException
+    {
+        java.io.InputStream r0;
+        java.lang.String r1;
+        java.nio.charset.Charset $r2;
+        org.apache.commons.io.LineIterator $r3;
+
+        r0 := @parameter0: java.io.InputStream;
+
+        r1 := @parameter1: java.lang.String;
+
+        $r2 = staticinvoke <org.apache.commons.io.Charsets: java.nio.charset.Charset toCharset(java.lang.String)>(r1);
+
+        $r3 = staticinvoke <org.apache.commons.io.IOUtils: org.apache.commons.io.LineIterator lineIterator(java.io.InputStream,java.nio.charset.Charset)>(r0, $r2);
+
+        return $r3;
+    }
+
+    public static java.io.InputStream toInputStream(java.lang.CharSequence)
+    {
+        java.lang.CharSequence r0;
+        java.nio.charset.Charset $r1;
+        java.io.InputStream $r2;
+
+        r0 := @parameter0: java.lang.CharSequence;
+
+        $r1 = staticinvoke <java.nio.charset.Charset: java.nio.charset.Charset defaultCharset()>();
+
+        $r2 = staticinvoke <org.apache.commons.io.IOUtils: java.io.InputStream toInputStream(java.lang.CharSequence,java.nio.charset.Charset)>(r0, $r1);
+
+        return $r2;
+    }
+
+    public static java.io.InputStream toInputStream(java.lang.CharSequence, java.nio.charset.Charset)
+    {
+        java.lang.CharSequence r0;
+        java.nio.charset.Charset r1;
+        java.lang.String $r2;
+        java.io.InputStream $r3;
+
+        r0 := @parameter0: java.lang.CharSequence;
+
+        r1 := @parameter1: java.nio.charset.Charset;
+
+        $r2 = interfaceinvoke r0.<java.lang.CharSequence: java.lang.String toString()>();
+
+        $r3 = staticinvoke <org.apache.commons.io.IOUtils: java.io.InputStream toInputStream(java.lang.String,java.nio.charset.Charset)>($r2, r1);
+
+        return $r3;
+    }
+
+    public static java.io.InputStream toInputStream(java.lang.CharSequence, java.lang.String) throws java.io.IOException
+    {
+        java.lang.CharSequence r0;
+        java.lang.String r1;
+        java.nio.charset.Charset $r2;
+        java.io.InputStream $r3;
+
+        r0 := @parameter0: java.lang.CharSequence;
+
+        r1 := @parameter1: java.lang.String;
+
+        $r2 = staticinvoke <org.apache.commons.io.Charsets: java.nio.charset.Charset toCharset(java.lang.String)>(r1);
+
+        $r3 = staticinvoke <org.apache.commons.io.IOUtils: java.io.InputStream toInputStream(java.lang.CharSequence,java.nio.charset.Charset)>(r0, $r2);
+
+        return $r3;
+    }
+
+    public static java.io.InputStream toInputStream(java.lang.String)
+    {
+        java.lang.String r0;
+        java.nio.charset.Charset $r1;
+        java.io.InputStream $r2;
+
+        r0 := @parameter0: java.lang.String;
+
+        $r1 = staticinvoke <java.nio.charset.Charset: java.nio.charset.Charset defaultCharset()>();
+
+        $r2 = staticinvoke <org.apache.commons.io.IOUtils: java.io.InputStream toInputStream(java.lang.String,java.nio.charset.Charset)>(r0, $r1);
+
+        return $r2;
+    }
+
+    public static java.io.InputStream toInputStream(java.lang.String, java.nio.charset.Charset)
+    {
+        java.lang.String r0;
+        java.nio.charset.Charset r1, $r3;
+        java.io.ByteArrayInputStream $r2;
+        byte[] $r4;
+
+        r0 := @parameter0: java.lang.String;
+
+        r1 := @parameter1: java.nio.charset.Charset;
+
+        $r2 = new java.io.ByteArrayInputStream;
+
+        $r3 = staticinvoke <org.apache.commons.io.Charsets: java.nio.charset.Charset toCharset(java.nio.charset.Charset)>(r1);
+
+        $r4 = virtualinvoke r0.<java.lang.String: byte[] getBytes(java.nio.charset.Charset)>($r3);
+
+        specialinvoke $r2.<java.io.ByteArrayInputStream: void <init>(byte[])>($r4);
+
+        return $r2;
+    }
+
+    public static java.io.InputStream toInputStream(java.lang.String, java.lang.String) throws java.io.IOException
+    {
+        java.lang.String r0, r1;
+        byte[] r2;
+        java.nio.charset.Charset $r3;
+        java.io.ByteArrayInputStream $r4;
+
+        r0 := @parameter0: java.lang.String;
+
+        r1 := @parameter1: java.lang.String;
+
+        $r3 = staticinvoke <org.apache.commons.io.Charsets: java.nio.charset.Charset toCharset(java.lang.String)>(r1);
+
+        r2 = virtualinvoke r0.<java.lang.String: byte[] getBytes(java.nio.charset.Charset)>($r3);
+
+        $r4 = new java.io.ByteArrayInputStream;
+
+        specialinvoke $r4.<java.io.ByteArrayInputStream: void <init>(byte[])>(r2);
+
+        return $r4;
+    }
+
+    public static void write(byte[], java.io.OutputStream) throws java.io.IOException
+    {
+        byte[] r0;
+        java.io.OutputStream r1;
+
+        r0 := @parameter0: byte[];
+
+        r1 := @parameter1: java.io.OutputStream;
+
+        if r0 == null goto label1;
+
+        virtualinvoke r1.<java.io.OutputStream: void write(byte[])>(r0);
+
+     label1:
+        return;
+    }
+
+    public static void writeChunked(byte[], java.io.OutputStream) throws java.io.IOException
+    {
+        byte[] r0;
+        java.io.OutputStream r1;
+        int i0, i1, i2;
+
+        r0 := @parameter0: byte[];
+
+        r1 := @parameter1: java.io.OutputStream;
+
+        if r0 == null goto label3;
+
+        i1 = lengthof r0;
+
+        i2 = 0;
+
+        goto label2;
+
+     label1:
+        i0 = staticinvoke <java.lang.Math: int min(int,int)>(i1, 4096);
+
+        virtualinvoke r1.<java.io.OutputStream: void write(byte[],int,int)>(r0, i2, i0);
+
+        i1 = i1 - i0;
+
+        i2 = i2 + i0;
+
+     label2:
+        if i1 > 0 goto label1;
+
+     label3:
+        return;
+    }
+
+    public static void write(byte[], java.io.Writer) throws java.io.IOException
+    {
+        byte[] r0;
+        java.io.Writer r1;
+        java.nio.charset.Charset $r2;
+
+        r0 := @parameter0: byte[];
+
+        r1 := @parameter1: java.io.Writer;
+
+        $r2 = staticinvoke <java.nio.charset.Charset: java.nio.charset.Charset defaultCharset()>();
+
+        staticinvoke <org.apache.commons.io.IOUtils: void write(byte[],java.io.Writer,java.nio.charset.Charset)>(r0, r1, $r2);
+
+        return;
+    }
+
+    public static void write(byte[], java.io.Writer, java.nio.charset.Charset) throws java.io.IOException
+    {
+        byte[] r0;
+        java.io.Writer r1;
+        java.nio.charset.Charset r2, $r4;
+        java.lang.String $r3;
+
+        r0 := @parameter0: byte[];
+
+        r1 := @parameter1: java.io.Writer;
+
+        r2 := @parameter2: java.nio.charset.Charset;
+
+        if r0 == null goto label1;
+
+        $r3 = new java.lang.String;
+
+        $r4 = staticinvoke <org.apache.commons.io.Charsets: java.nio.charset.Charset toCharset(java.nio.charset.Charset)>(r2);
+
+        specialinvoke $r3.<java.lang.String: void <init>(byte[],java.nio.charset.Charset)>(r0, $r4);
+
+        virtualinvoke r1.<java.io.Writer: void write(java.lang.String)>($r3);
+
+     label1:
+        return;
+    }
+
+    public static void write(byte[], java.io.Writer, java.lang.String) throws java.io.IOException
+    {
+        byte[] r0;
+        java.io.Writer r1;
+        java.lang.String r2;
+        java.nio.charset.Charset $r3;
+
+        r0 := @parameter0: byte[];
+
+        r1 := @parameter1: java.io.Writer;
+
+        r2 := @parameter2: java.lang.String;
+
+        $r3 = staticinvoke <org.apache.commons.io.Charsets: java.nio.charset.Charset toCharset(java.lang.String)>(r2);
+
+        staticinvoke <org.apache.commons.io.IOUtils: void write(byte[],java.io.Writer,java.nio.charset.Charset)>(r0, r1, $r3);
+
+        return;
+    }
+
+    public static void write(char[], java.io.Writer) throws java.io.IOException
+    {
+        char[] r0;
+        java.io.Writer r1;
+
+        r0 := @parameter0: char[];
+
+        r1 := @parameter1: java.io.Writer;
+
+        if r0 == null goto label1;
+
+        virtualinvoke r1.<java.io.Writer: void write(char[])>(r0);
+
+     label1:
+        return;
+    }
+
+    public static void writeChunked(char[], java.io.Writer) throws java.io.IOException
+    {
+        char[] r0;
+        java.io.Writer r1;
+        int i0, i1, i2;
+
+        r0 := @parameter0: char[];
+
+        r1 := @parameter1: java.io.Writer;
+
+        if r0 == null goto label3;
+
+        i1 = lengthof r0;
+
+        i2 = 0;
+
+        goto label2;
+
+     label1:
+        i0 = staticinvoke <java.lang.Math: int min(int,int)>(i1, 4096);
+
+        virtualinvoke r1.<java.io.Writer: void write(char[],int,int)>(r0, i2, i0);
+
+        i1 = i1 - i0;
+
+        i2 = i2 + i0;
+
+     label2:
+        if i1 > 0 goto label1;
+
+     label3:
+        return;
+    }
+
+    public static void write(char[], java.io.OutputStream) throws java.io.IOException
+    {
+        char[] r0;
+        java.io.OutputStream r1;
+        java.nio.charset.Charset $r2;
+
+        r0 := @parameter0: char[];
+
+        r1 := @parameter1: java.io.OutputStream;
+
+        $r2 = staticinvoke <java.nio.charset.Charset: java.nio.charset.Charset defaultCharset()>();
+
+        staticinvoke <org.apache.commons.io.IOUtils: void write(char[],java.io.OutputStream,java.nio.charset.Charset)>(r0, r1, $r2);
+
+        return;
+    }
+
+    public static void write(char[], java.io.OutputStream, java.nio.charset.Charset) throws java.io.IOException
+    {
+        char[] r0;
+        java.io.OutputStream r1;
+        java.nio.charset.Charset r2, $r4;
+        java.lang.String $r3;
+        byte[] $r5;
+
+        r0 := @parameter0: char[];
+
+        r1 := @parameter1: java.io.OutputStream;
+
+        r2 := @parameter2: java.nio.charset.Charset;
+
+        if r0 == null goto label1;
+
+        $r3 = new java.lang.String;
+
+        specialinvoke $r3.<java.lang.String: void <init>(char[])>(r0);
+
+        $r4 = staticinvoke <org.apache.commons.io.Charsets: java.nio.charset.Charset toCharset(java.nio.charset.Charset)>(r2);
+
+        $r5 = virtualinvoke $r3.<java.lang.String: byte[] getBytes(java.nio.charset.Charset)>($r4);
+
+        virtualinvoke r1.<java.io.OutputStream: void write(byte[])>($r5);
+
+     label1:
+        return;
+    }
+
+    public static void write(char[], java.io.OutputStream, java.lang.String) throws java.io.IOException
+    {
+        char[] r0;
+        java.io.OutputStream r1;
+        java.lang.String r2;
+        java.nio.charset.Charset $r3;
+
+        r0 := @parameter0: char[];
+
+        r1 := @parameter1: java.io.OutputStream;
+
+        r2 := @parameter2: java.lang.String;
+
+        $r3 = staticinvoke <org.apache.commons.io.Charsets: java.nio.charset.Charset toCharset(java.lang.String)>(r2);
+
+        staticinvoke <org.apache.commons.io.IOUtils: void write(char[],java.io.OutputStream,java.nio.charset.Charset)>(r0, r1, $r3);
+
+        return;
+    }
+
+    public static void write(java.lang.CharSequence, java.io.Writer) throws java.io.IOException
+    {
+        java.lang.CharSequence r0;
+        java.io.Writer r1;
+        java.lang.String $r2;
+
+        r0 := @parameter0: java.lang.CharSequence;
+
+        r1 := @parameter1: java.io.Writer;
+
+        if r0 == null goto label1;
+
+        $r2 = interfaceinvoke r0.<java.lang.CharSequence: java.lang.String toString()>();
+
+        staticinvoke <org.apache.commons.io.IOUtils: void write(java.lang.String,java.io.Writer)>($r2, r1);
+
+     label1:
+        return;
+    }
+
+    public static void write(java.lang.CharSequence, java.io.OutputStream) throws java.io.IOException
+    {
+        java.lang.CharSequence r0;
+        java.io.OutputStream r1;
+        java.nio.charset.Charset $r2;
+
+        r0 := @parameter0: java.lang.CharSequence;
+
+        r1 := @parameter1: java.io.OutputStream;
+
+        $r2 = staticinvoke <java.nio.charset.Charset: java.nio.charset.Charset defaultCharset()>();
+
+        staticinvoke <org.apache.commons.io.IOUtils: void write(java.lang.CharSequence,java.io.OutputStream,java.nio.charset.Charset)>(r0, r1, $r2);
+
+        return;
+    }
+
+    public static void write(java.lang.CharSequence, java.io.OutputStream, java.nio.charset.Charset) throws java.io.IOException
+    {
+        java.lang.CharSequence r0;
+        java.io.OutputStream r1;
+        java.nio.charset.Charset r2;
+        java.lang.String $r3;
+
+        r0 := @parameter0: java.lang.CharSequence;
+
+        r1 := @parameter1: java.io.OutputStream;
+
+        r2 := @parameter2: java.nio.charset.Charset;
+
+        if r0 == null goto label1;
+
+        $r3 = interfaceinvoke r0.<java.lang.CharSequence: java.lang.String toString()>();
+
+        staticinvoke <org.apache.commons.io.IOUtils: void write(java.lang.String,java.io.OutputStream,java.nio.charset.Charset)>($r3, r1, r2);
+
+     label1:
+        return;
+    }
+
+    public static void write(java.lang.CharSequence, java.io.OutputStream, java.lang.String) throws java.io.IOException
+    {
+        java.lang.CharSequence r0;
+        java.io.OutputStream r1;
+        java.lang.String r2;
+        java.nio.charset.Charset $r3;
+
+        r0 := @parameter0: java.lang.CharSequence;
+
+        r1 := @parameter1: java.io.OutputStream;
+
+        r2 := @parameter2: java.lang.String;
+
+        $r3 = staticinvoke <org.apache.commons.io.Charsets: java.nio.charset.Charset toCharset(java.lang.String)>(r2);
+
+        staticinvoke <org.apache.commons.io.IOUtils: void write(java.lang.CharSequence,java.io.OutputStream,java.nio.charset.Charset)>(r0, r1, $r3);
+
+        return;
+    }
+
+    public static void write(java.lang.String, java.io.Writer) throws java.io.IOException
+    {
+        java.lang.String r0;
+        java.io.Writer r1;
+
+        r0 := @parameter0: java.lang.String;
+
+        r1 := @parameter1: java.io.Writer;
+
+        if r0 == null goto label1;
+
+        virtualinvoke r1.<java.io.Writer: void write(java.lang.String)>(r0);
+
+     label1:
+        return;
+    }
+
+    public static void write(java.lang.String, java.io.OutputStream) throws java.io.IOException
+    {
+        java.lang.String r0;
+        java.io.OutputStream r1;
+        java.nio.charset.Charset $r2;
+
+        r0 := @parameter0: java.lang.String;
+
+        r1 := @parameter1: java.io.OutputStream;
+
+        $r2 = staticinvoke <java.nio.charset.Charset: java.nio.charset.Charset defaultCharset()>();
+
+        staticinvoke <org.apache.commons.io.IOUtils: void write(java.lang.String,java.io.OutputStream,java.nio.charset.Charset)>(r0, r1, $r2);
+
+        return;
+    }
+
+    public static void write(java.lang.String, java.io.OutputStream, java.nio.charset.Charset) throws java.io.IOException
+    {
+        java.lang.String r0;
+        java.io.OutputStream r1;
+        java.nio.charset.Charset r2, $r3;
+        byte[] $r4;
+
+        r0 := @parameter0: java.lang.String;
+
+        r1 := @parameter1: java.io.OutputStream;
+
+        r2 := @parameter2: java.nio.charset.Charset;
+
+        if r0 == null goto label1;
+
+        $r3 = staticinvoke <org.apache.commons.io.Charsets: java.nio.charset.Charset toCharset(java.nio.charset.Charset)>(r2);
+
+        $r4 = virtualinvoke r0.<java.lang.String: byte[] getBytes(java.nio.charset.Charset)>($r3);
+
+        virtualinvoke r1.<java.io.OutputStream: void write(byte[])>($r4);
+
+     label1:
+        return;
+    }
+
+    public static void write(java.lang.String, java.io.OutputStream, java.lang.String) throws java.io.IOException
+    {
+        java.lang.String r0, r2;
+        java.io.OutputStream r1;
+        java.nio.charset.Charset $r3;
+
+        r0 := @parameter0: java.lang.String;
+
+        r1 := @parameter1: java.io.OutputStream;
+
+        r2 := @parameter2: java.lang.String;
+
+        $r3 = staticinvoke <org.apache.commons.io.Charsets: java.nio.charset.Charset toCharset(java.lang.String)>(r2);
+
+        staticinvoke <org.apache.commons.io.IOUtils: void write(java.lang.String,java.io.OutputStream,java.nio.charset.Charset)>(r0, r1, $r3);
+
+        return;
+    }
+
+    public static void write(java.lang.StringBuffer, java.io.Writer) throws java.io.IOException
+    {
+        java.lang.StringBuffer r0;
+        java.io.Writer r1;
+        java.lang.String $r2;
+
+        r0 := @parameter0: java.lang.StringBuffer;
+
+        r1 := @parameter1: java.io.Writer;
+
+        if r0 == null goto label1;
+
+        $r2 = virtualinvoke r0.<java.lang.StringBuffer: java.lang.String toString()>();
+
+        virtualinvoke r1.<java.io.Writer: void write(java.lang.String)>($r2);
+
+     label1:
+        return;
+    }
+
+    public static void write(java.lang.StringBuffer, java.io.OutputStream) throws java.io.IOException
+    {
+        java.lang.StringBuffer r0;
+        java.io.OutputStream r1;
+
+        r0 := @parameter0: java.lang.StringBuffer;
+
+        r1 := @parameter1: java.io.OutputStream;
+
+        staticinvoke <org.apache.commons.io.IOUtils: void write(java.lang.StringBuffer,java.io.OutputStream,java.lang.String)>(r0, r1, null);
+
+        return;
+    }
+
+    public static void write(java.lang.StringBuffer, java.io.OutputStream, java.lang.String) throws java.io.IOException
+    {
+        java.lang.StringBuffer r0;
+        java.io.OutputStream r1;
+        java.lang.String r2, $r3;
+        java.nio.charset.Charset $r4;
+        byte[] $r5;
+
+        r0 := @parameter0: java.lang.StringBuffer;
+
+        r1 := @parameter1: java.io.OutputStream;
+
+        r2 := @parameter2: java.lang.String;
+
+        if r0 == null goto label1;
+
+        $r3 = virtualinvoke r0.<java.lang.StringBuffer: java.lang.String toString()>();
+
+        $r4 = staticinvoke <org.apache.commons.io.Charsets: java.nio.charset.Charset toCharset(java.lang.String)>(r2);
+
+        $r5 = virtualinvoke $r3.<java.lang.String: byte[] getBytes(java.nio.charset.Charset)>($r4);
+
+        virtualinvoke r1.<java.io.OutputStream: void write(byte[])>($r5);
+
+     label1:
+        return;
+    }
+
+    public static void writeLines(java.util.Collection, java.lang.String, java.io.OutputStream) throws java.io.IOException
+    {
+        java.util.Collection r0;
+        java.lang.String r1;
+        java.io.OutputStream r2;
+        java.nio.charset.Charset $r3;
+
+        r0 := @parameter0: java.util.Collection;
+
+        r1 := @parameter1: java.lang.String;
+
+        r2 := @parameter2: java.io.OutputStream;
+
+        $r3 = staticinvoke <java.nio.charset.Charset: java.nio.charset.Charset defaultCharset()>();
+
+        staticinvoke <org.apache.commons.io.IOUtils: void writeLines(java.util.Collection,java.lang.String,java.io.OutputStream,java.nio.charset.Charset)>(r0, r1, r2, $r3);
+
+        return;
+    }
+
+    public static void writeLines(java.util.Collection, java.lang.String, java.io.OutputStream, java.nio.charset.Charset) throws java.io.IOException
+    {
+        java.util.Collection r0;
+        java.io.OutputStream r1;
+        java.nio.charset.Charset r2, r3;
+        java.lang.Object r4;
+        java.util.Iterator r5;
+        byte[] $r6, $r8;
+        java.lang.String $r7, r9;
+        boolean $z0;
+
+        r0 := @parameter0: java.util.Collection;
+
+        r9 := @parameter1: java.lang.String;
+
+        r1 := @parameter2: java.io.OutputStream;
+
+        r2 := @parameter3: java.nio.charset.Charset;
+
+        if r0 != null goto label1;
+
+        return;
+
+     label1:
+        if r9 != null goto label2;
+
+        r9 = <org.apache.commons.io.IOUtils: java.lang.String LINE_SEPARATOR>;
+
+     label2:
+        r3 = staticinvoke <org.apache.commons.io.Charsets: java.nio.charset.Charset toCharset(java.nio.charset.Charset)>(r2);
+
+        r5 = interfaceinvoke r0.<java.util.Collection: java.util.Iterator iterator()>();
+
+        goto label5;
+
+     label3:
+        r4 = interfaceinvoke r5.<java.util.Iterator: java.lang.Object next()>();
+
+        if r4 == null goto label4;
+
+        $r7 = virtualinvoke r4.<java.lang.Object: java.lang.String toString()>();
+
+        $r8 = virtualinvoke $r7.<java.lang.String: byte[] getBytes(java.nio.charset.Charset)>(r3);
+
+        virtualinvoke r1.<java.io.OutputStream: void write(byte[])>($r8);
+
+     label4:
+        $r6 = virtualinvoke r9.<java.lang.String: byte[] getBytes(java.nio.charset.Charset)>(r3);
+
+        virtualinvoke r1.<java.io.OutputStream: void write(byte[])>($r6);
+
+     label5:
+        $z0 = interfaceinvoke r5.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 != 0 goto label3;
+
+        return;
+    }
+
+    public static void writeLines(java.util.Collection, java.lang.String, java.io.OutputStream, java.lang.String) throws java.io.IOException
+    {
+        java.util.Collection r0;
+        java.lang.String r1, r3;
+        java.io.OutputStream r2;
+        java.nio.charset.Charset $r4;
+
+        r0 := @parameter0: java.util.Collection;
+
+        r1 := @parameter1: java.lang.String;
+
+        r2 := @parameter2: java.io.OutputStream;
+
+        r3 := @parameter3: java.lang.String;
+
+        $r4 = staticinvoke <org.apache.commons.io.Charsets: java.nio.charset.Charset toCharset(java.lang.String)>(r3);
+
+        staticinvoke <org.apache.commons.io.IOUtils: void writeLines(java.util.Collection,java.lang.String,java.io.OutputStream,java.nio.charset.Charset)>(r0, r1, r2, $r4);
+
+        return;
+    }
+
+    public static void writeLines(java.util.Collection, java.lang.String, java.io.Writer) throws java.io.IOException
+    {
+        java.util.Collection r0;
+        java.io.Writer r1;
+        java.lang.Object r2;
+        java.util.Iterator r3;
+        java.lang.String $r4, r5;
+        boolean $z0;
+
+        r0 := @parameter0: java.util.Collection;
+
+        r5 := @parameter1: java.lang.String;
+
+        r1 := @parameter2: java.io.Writer;
+
+        if r0 != null goto label1;
+
+        return;
+
+     label1:
+        if r5 != null goto label2;
+
+        r5 = <org.apache.commons.io.IOUtils: java.lang.String LINE_SEPARATOR>;
+
+     label2:
+        r3 = interfaceinvoke r0.<java.util.Collection: java.util.Iterator iterator()>();
+
+        goto label5;
+
+     label3:
+        r2 = interfaceinvoke r3.<java.util.Iterator: java.lang.Object next()>();
+
+        if r2 == null goto label4;
+
+        $r4 = virtualinvoke r2.<java.lang.Object: java.lang.String toString()>();
+
+        virtualinvoke r1.<java.io.Writer: void write(java.lang.String)>($r4);
+
+     label4:
+        virtualinvoke r1.<java.io.Writer: void write(java.lang.String)>(r5);
+
+     label5:
+        $z0 = interfaceinvoke r3.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 != 0 goto label3;
+
+        return;
+    }
+
+    public static int copy(java.io.InputStream, java.io.OutputStream) throws java.io.IOException
+    {
+        java.io.InputStream r0;
+        java.io.OutputStream r1;
+        long l0;
+        byte $b1;
+        int $i2;
+
+        r0 := @parameter0: java.io.InputStream;
+
+        r1 := @parameter1: java.io.OutputStream;
+
+        l0 = staticinvoke <org.apache.commons.io.IOUtils: long copyLarge(java.io.InputStream,java.io.OutputStream)>(r0, r1);
+
+        $b1 = l0 cmp 2147483647L;
+
+        if $b1 <= 0 goto label1;
+
+        return -1;
+
+     label1:
+        $i2 = (int) l0;
+
+        return $i2;
+    }
+
+    public static long copy(java.io.InputStream, java.io.OutputStream, int) throws java.io.IOException
+    {
+        java.io.InputStream r0;
+        java.io.OutputStream r1;
+        int i0;
+        byte[] $r2;
+        long $l1;
+
+        r0 := @parameter0: java.io.InputStream;
+
+        r1 := @parameter1: java.io.OutputStream;
+
+        i0 := @parameter2: int;
+
+        $r2 = newarray (byte)[i0];
+
+        $l1 = staticinvoke <org.apache.commons.io.IOUtils: long copyLarge(java.io.InputStream,java.io.OutputStream,byte[])>(r0, r1, $r2);
+
+        return $l1;
+    }
+
+    public static long copyLarge(java.io.InputStream, java.io.OutputStream) throws java.io.IOException
+    {
+        java.io.InputStream r0;
+        java.io.OutputStream r1;
+        long $l0;
+
+        r0 := @parameter0: java.io.InputStream;
+
+        r1 := @parameter1: java.io.OutputStream;
+
+        $l0 = staticinvoke <org.apache.commons.io.IOUtils: long copy(java.io.InputStream,java.io.OutputStream,int)>(r0, r1, 4096);
+
+        return $l0;
+    }
+
+    public static long copyLarge(java.io.InputStream, java.io.OutputStream, byte[]) throws java.io.IOException
+    {
+        java.io.InputStream r0;
+        java.io.OutputStream r1;
+        byte[] r2;
+        int $i1;
+        long $l2, l3;
+
+        r0 := @parameter0: java.io.InputStream;
+
+        r1 := @parameter1: java.io.OutputStream;
+
+        r2 := @parameter2: byte[];
+
+        l3 = 0L;
+
+        goto label2;
+
+     label1:
+        virtualinvoke r1.<java.io.OutputStream: void write(byte[],int,int)>(r2, 0, $i1);
+
+        $l2 = (long) $i1;
+
+        l3 = l3 + $l2;
+
+     label2:
+        $i1 = virtualinvoke r0.<java.io.InputStream: int read(byte[])>(r2);
+
+        if -1 != $i1 goto label1;
+
+        return l3;
+    }
+
+    public static long copyLarge(java.io.InputStream, java.io.OutputStream, long, long) throws java.io.IOException
+    {
+        java.io.InputStream r0;
+        java.io.OutputStream r1;
+        long l0, l1, $l2;
+        byte[] $r2;
+
+        r0 := @parameter0: java.io.InputStream;
+
+        r1 := @parameter1: java.io.OutputStream;
+
+        l0 := @parameter2: long;
+
+        l1 := @parameter3: long;
+
+        $r2 = newarray (byte)[4096];
+
+        $l2 = staticinvoke <org.apache.commons.io.IOUtils: long copyLarge(java.io.InputStream,java.io.OutputStream,long,long,byte[])>(r0, r1, l0, l1, $r2);
+
+        return $l2;
+    }
+
+    public static long copyLarge(java.io.InputStream, java.io.OutputStream, long, long, byte[]) throws java.io.IOException
+    {
+        java.io.InputStream r0;
+        java.io.OutputStream r1;
+        long l0, l1, $l8, $l10, $l11, $l12, $l13, l16;
+        byte[] r2;
+        int i2, $i7, i15;
+        byte $b4, $b5, $b6, $b9, $b14;
+
+        r0 := @parameter0: java.io.InputStream;
+
+        r1 := @parameter1: java.io.OutputStream;
+
+        l0 := @parameter2: long;
+
+        l1 := @parameter3: long;
+
+        r2 := @parameter4: byte[];
+
+        $b4 = l0 cmp 0L;
+
+        if $b4 <= 0 goto label1;
+
+        staticinvoke <org.apache.commons.io.IOUtils: void skipFully(java.io.InputStream,long)>(r0, l0);
+
+     label1:
+        $b5 = l1 cmp 0L;
+
+        if $b5 != 0 goto label2;
+
+        return 0L;
+
+     label2:
+        i2 = lengthof r2;
+
+        i15 = i2;
+
+        $b6 = l1 cmp 0L;
+
+        if $b6 <= 0 goto label3;
+
+        $l13 = (long) i2;
+
+        $b14 = l1 cmp $l13;
+
+        if $b14 >= 0 goto label3;
+
+        i15 = (int) l1;
+
+     label3:
+        l16 = 0L;
+
+        goto label5;
+
+     label4:
+        virtualinvoke r1.<java.io.OutputStream: void write(byte[],int,int)>(r2, 0, $i7);
+
+        $l8 = (long) $i7;
+
+        l16 = l16 + $l8;
+
+        $b9 = l1 cmp 0L;
+
+        if $b9 <= 0 goto label5;
+
+        $l11 = l1 - l16;
+
+        $l10 = (long) i2;
+
+        $l12 = staticinvoke <java.lang.Math: long min(long,long)>($l11, $l10);
+
+        i15 = (int) $l12;
+
+     label5:
+        if i15 <= 0 goto label6;
+
+        $i7 = virtualinvoke r0.<java.io.InputStream: int read(byte[],int,int)>(r2, 0, i15);
+
+        if -1 != $i7 goto label4;
+
+     label6:
+        return l16;
+    }
+
+    public static void copy(java.io.InputStream, java.io.Writer) throws java.io.IOException
+    {
+        java.io.InputStream r0;
+        java.io.Writer r1;
+        java.nio.charset.Charset $r2;
+
+        r0 := @parameter0: java.io.InputStream;
+
+        r1 := @parameter1: java.io.Writer;
+
+        $r2 = staticinvoke <java.nio.charset.Charset: java.nio.charset.Charset defaultCharset()>();
+
+        staticinvoke <org.apache.commons.io.IOUtils: void copy(java.io.InputStream,java.io.Writer,java.nio.charset.Charset)>(r0, r1, $r2);
+
+        return;
+    }
+
+    public static void copy(java.io.InputStream, java.io.Writer, java.nio.charset.Charset) throws java.io.IOException
+    {
+        java.io.InputStream r0;
+        java.io.Writer r1;
+        java.nio.charset.Charset r2, $r5;
+        java.io.InputStreamReader $r4;
+
+        r0 := @parameter0: java.io.InputStream;
+
+        r1 := @parameter1: java.io.Writer;
+
+        r2 := @parameter2: java.nio.charset.Charset;
+
+        $r4 = new java.io.InputStreamReader;
+
+        $r5 = staticinvoke <org.apache.commons.io.Charsets: java.nio.charset.Charset toCharset(java.nio.charset.Charset)>(r2);
+
+        specialinvoke $r4.<java.io.InputStreamReader: void <init>(java.io.InputStream,java.nio.charset.Charset)>(r0, $r5);
+
+        staticinvoke <org.apache.commons.io.IOUtils: int copy(java.io.Reader,java.io.Writer)>($r4, r1);
+
+        return;
+    }
+
+    public static void copy(java.io.InputStream, java.io.Writer, java.lang.String) throws java.io.IOException
+    {
+        java.io.InputStream r0;
+        java.io.Writer r1;
+        java.lang.String r2;
+        java.nio.charset.Charset $r3;
+
+        r0 := @parameter0: java.io.InputStream;
+
+        r1 := @parameter1: java.io.Writer;
+
+        r2 := @parameter2: java.lang.String;
+
+        $r3 = staticinvoke <org.apache.commons.io.Charsets: java.nio.charset.Charset toCharset(java.lang.String)>(r2);
+
+        staticinvoke <org.apache.commons.io.IOUtils: void copy(java.io.InputStream,java.io.Writer,java.nio.charset.Charset)>(r0, r1, $r3);
+
+        return;
+    }
+
+    public static int copy(java.io.Reader, java.io.Writer) throws java.io.IOException
+    {
+        java.io.Reader r0;
+        java.io.Writer r1;
+        long l0;
+        byte $b1;
+        int $i2;
+
+        r0 := @parameter0: java.io.Reader;
+
+        r1 := @parameter1: java.io.Writer;
+
+        l0 = staticinvoke <org.apache.commons.io.IOUtils: long copyLarge(java.io.Reader,java.io.Writer)>(r0, r1);
+
+        $b1 = l0 cmp 2147483647L;
+
+        if $b1 <= 0 goto label1;
+
+        return -1;
+
+     label1:
+        $i2 = (int) l0;
+
+        return $i2;
+    }
+
+    public static long copyLarge(java.io.Reader, java.io.Writer) throws java.io.IOException
+    {
+        java.io.Reader r0;
+        java.io.Writer r1;
+        char[] $r2;
+        long $l0;
+
+        r0 := @parameter0: java.io.Reader;
+
+        r1 := @parameter1: java.io.Writer;
+
+        $r2 = newarray (char)[4096];
+
+        $l0 = staticinvoke <org.apache.commons.io.IOUtils: long copyLarge(java.io.Reader,java.io.Writer,char[])>(r0, r1, $r2);
+
+        return $l0;
+    }
+
+    public static long copyLarge(java.io.Reader, java.io.Writer, char[]) throws java.io.IOException
+    {
+        java.io.Reader r0;
+        java.io.Writer r1;
+        char[] r2;
+        int $i1;
+        long $l2, l3;
+
+        r0 := @parameter0: java.io.Reader;
+
+        r1 := @parameter1: java.io.Writer;
+
+        r2 := @parameter2: char[];
+
+        l3 = 0L;
+
+        goto label2;
+
+     label1:
+        virtualinvoke r1.<java.io.Writer: void write(char[],int,int)>(r2, 0, $i1);
+
+        $l2 = (long) $i1;
+
+        l3 = l3 + $l2;
+
+     label2:
+        $i1 = virtualinvoke r0.<java.io.Reader: int read(char[])>(r2);
+
+        if -1 != $i1 goto label1;
+
+        return l3;
+    }
+
+    public static long copyLarge(java.io.Reader, java.io.Writer, long, long) throws java.io.IOException
+    {
+        java.io.Reader r0;
+        java.io.Writer r1;
+        long l0, l1, $l2;
+        char[] $r2;
+
+        r0 := @parameter0: java.io.Reader;
+
+        r1 := @parameter1: java.io.Writer;
+
+        l0 := @parameter2: long;
+
+        l1 := @parameter3: long;
+
+        $r2 = newarray (char)[4096];
+
+        $l2 = staticinvoke <org.apache.commons.io.IOUtils: long copyLarge(java.io.Reader,java.io.Writer,long,long,char[])>(r0, r1, l0, l1, $r2);
+
+        return $l2;
+    }
+
+    public static long copyLarge(java.io.Reader, java.io.Writer, long, long, char[]) throws java.io.IOException
+    {
+        java.io.Reader r0;
+        java.io.Writer r1;
+        long l0, l1, $l7, $l10, $l11, $l12, $l14, l17;
+        char[] r2;
+        byte $b3, $b4, $b5, $b8, $b15;
+        int $i6, $i9, $i13, i16;
+
+        r0 := @parameter0: java.io.Reader;
+
+        r1 := @parameter1: java.io.Writer;
+
+        l0 := @parameter2: long;
+
+        l1 := @parameter3: long;
+
+        r2 := @parameter4: char[];
+
+        $b3 = l0 cmp 0L;
+
+        if $b3 <= 0 goto label1;
+
+        staticinvoke <org.apache.commons.io.IOUtils: void skipFully(java.io.Reader,long)>(r0, l0);
+
+     label1:
+        $b4 = l1 cmp 0L;
+
+        if $b4 != 0 goto label2;
+
+        return 0L;
+
+     label2:
+        i16 = lengthof r2;
+
+        $b5 = l1 cmp 0L;
+
+        if $b5 <= 0 goto label3;
+
+        $i13 = lengthof r2;
+
+        $l14 = (long) $i13;
+
+        $b15 = l1 cmp $l14;
+
+        if $b15 >= 0 goto label3;
+
+        i16 = (int) l1;
+
+     label3:
+        l17 = 0L;
+
+        goto label5;
+
+     label4:
+        virtualinvoke r1.<java.io.Writer: void write(char[],int,int)>(r2, 0, $i6);
+
+        $l7 = (long) $i6;
+
+        l17 = l17 + $l7;
+
+        $b8 = l1 cmp 0L;
+
+        if $b8 <= 0 goto label5;
+
+        $l11 = l1 - l17;
+
+        $i9 = lengthof r2;
+
+        $l10 = (long) $i9;
+
+        $l12 = staticinvoke <java.lang.Math: long min(long,long)>($l11, $l10);
+
+        i16 = (int) $l12;
+
+     label5:
+        if i16 <= 0 goto label6;
+
+        $i6 = virtualinvoke r0.<java.io.Reader: int read(char[],int,int)>(r2, 0, i16);
+
+        if -1 != $i6 goto label4;
+
+     label6:
+        return l17;
+    }
+
+    public static void copy(java.io.Reader, java.io.OutputStream) throws java.io.IOException
+    {
+        java.io.Reader r0;
+        java.io.OutputStream r1;
+        java.nio.charset.Charset $r2;
+
+        r0 := @parameter0: java.io.Reader;
+
+        r1 := @parameter1: java.io.OutputStream;
+
+        $r2 = staticinvoke <java.nio.charset.Charset: java.nio.charset.Charset defaultCharset()>();
+
+        staticinvoke <org.apache.commons.io.IOUtils: void copy(java.io.Reader,java.io.OutputStream,java.nio.charset.Charset)>(r0, r1, $r2);
+
+        return;
+    }
+
+    public static void copy(java.io.Reader, java.io.OutputStream, java.nio.charset.Charset) throws java.io.IOException
+    {
+        java.io.Reader r0;
+        java.io.OutputStream r1;
+        java.nio.charset.Charset r2, $r5;
+        java.io.OutputStreamWriter $r4;
+
+        r0 := @parameter0: java.io.Reader;
+
+        r1 := @parameter1: java.io.OutputStream;
+
+        r2 := @parameter2: java.nio.charset.Charset;
+
+        $r4 = new java.io.OutputStreamWriter;
+
+        $r5 = staticinvoke <org.apache.commons.io.Charsets: java.nio.charset.Charset toCharset(java.nio.charset.Charset)>(r2);
+
+        specialinvoke $r4.<java.io.OutputStreamWriter: void <init>(java.io.OutputStream,java.nio.charset.Charset)>(r1, $r5);
+
+        staticinvoke <org.apache.commons.io.IOUtils: int copy(java.io.Reader,java.io.Writer)>(r0, $r4);
+
+        virtualinvoke $r4.<java.io.OutputStreamWriter: void flush()>();
+
+        return;
+    }
+
+    public static void copy(java.io.Reader, java.io.OutputStream, java.lang.String) throws java.io.IOException
+    {
+        java.io.Reader r0;
+        java.io.OutputStream r1;
+        java.lang.String r2;
+        java.nio.charset.Charset $r3;
+
+        r0 := @parameter0: java.io.Reader;
+
+        r1 := @parameter1: java.io.OutputStream;
+
+        r2 := @parameter2: java.lang.String;
+
+        $r3 = staticinvoke <org.apache.commons.io.Charsets: java.nio.charset.Charset toCharset(java.lang.String)>(r2);
+
+        staticinvoke <org.apache.commons.io.IOUtils: void copy(java.io.Reader,java.io.OutputStream,java.nio.charset.Charset)>(r0, r1, $r3);
+
+        return;
+    }
+
+    public static boolean contentEquals(java.io.InputStream, java.io.InputStream) throws java.io.IOException
+    {
+        boolean $z0, $z1;
+        java.io.BufferedInputStream $r0, $r1;
+        java.io.InputStream r2, r3;
+        int i0, i1, i2;
+
+        r2 := @parameter0: java.io.InputStream;
+
+        r3 := @parameter1: java.io.InputStream;
+
+        if r2 != r3 goto label1;
+
+        return 1;
+
+     label1:
+        $z0 = r2 instanceof java.io.BufferedInputStream;
+
+        if $z0 != 0 goto label2;
+
+        $r1 = new java.io.BufferedInputStream;
+
+        specialinvoke $r1.<java.io.BufferedInputStream: void <init>(java.io.InputStream)>(r2);
+
+        r2 = $r1;
+
+     label2:
+        $z1 = r3 instanceof java.io.BufferedInputStream;
+
+        if $z1 != 0 goto label3;
+
+        $r0 = new java.io.BufferedInputStream;
+
+        specialinvoke $r0.<java.io.BufferedInputStream: void <init>(java.io.InputStream)>(r3);
+
+        r3 = $r0;
+
+     label3:
+        i0 = virtualinvoke r2.<java.io.InputStream: int read()>();
+
+        goto label6;
+
+     label4:
+        i1 = virtualinvoke r3.<java.io.InputStream: int read()>();
+
+        if i0 == i1 goto label5;
+
+        return 0;
+
+     label5:
+        i0 = virtualinvoke r2.<java.io.InputStream: int read()>();
+
+     label6:
+        if -1 != i0 goto label4;
+
+        i2 = virtualinvoke r3.<java.io.InputStream: int read()>();
+
+        if i2 != -1 goto label7;
+
+        return 1;
+
+     label7:
+        return 0;
+    }
+
+    public static boolean contentEquals(java.io.Reader, java.io.Reader) throws java.io.IOException
+    {
+        java.io.Reader r0, r1;
+        java.io.BufferedReader r2, r3;
+        int i0, i1, i2;
+
+        r0 := @parameter0: java.io.Reader;
+
+        r1 := @parameter1: java.io.Reader;
+
+        if r0 != r1 goto label1;
+
+        return 1;
+
+     label1:
+        r2 = staticinvoke <org.apache.commons.io.IOUtils: java.io.BufferedReader toBufferedReader(java.io.Reader)>(r0);
+
+        r3 = staticinvoke <org.apache.commons.io.IOUtils: java.io.BufferedReader toBufferedReader(java.io.Reader)>(r1);
+
+        i0 = virtualinvoke r2.<java.io.Reader: int read()>();
+
+        goto label4;
+
+     label2:
+        i1 = virtualinvoke r3.<java.io.Reader: int read()>();
+
+        if i0 == i1 goto label3;
+
+        return 0;
+
+     label3:
+        i0 = virtualinvoke r2.<java.io.Reader: int read()>();
+
+     label4:
+        if -1 != i0 goto label2;
+
+        i2 = virtualinvoke r3.<java.io.Reader: int read()>();
+
+        if i2 != -1 goto label5;
+
+        return 1;
+
+     label5:
+        return 0;
+    }
+
+    public static boolean contentEqualsIgnoreEOL(java.io.Reader, java.io.Reader) throws java.io.IOException
+    {
+        java.io.Reader r0, r1;
+        java.io.BufferedReader r2, r3;
+        boolean $z0, $z1;
+        java.lang.String r4, r5;
+
+        r0 := @parameter0: java.io.Reader;
+
+        r1 := @parameter1: java.io.Reader;
+
+        if r0 != r1 goto label1;
+
+        return 1;
+
+     label1:
+        r2 = staticinvoke <org.apache.commons.io.IOUtils: java.io.BufferedReader toBufferedReader(java.io.Reader)>(r0);
+
+        r3 = staticinvoke <org.apache.commons.io.IOUtils: java.io.BufferedReader toBufferedReader(java.io.Reader)>(r1);
+
+        r4 = virtualinvoke r2.<java.io.BufferedReader: java.lang.String readLine()>();
+
+        r5 = virtualinvoke r3.<java.io.BufferedReader: java.lang.String readLine()>();
+
+        goto label3;
+
+     label2:
+        r4 = virtualinvoke r2.<java.io.BufferedReader: java.lang.String readLine()>();
+
+        r5 = virtualinvoke r3.<java.io.BufferedReader: java.lang.String readLine()>();
+
+     label3:
+        if r4 == null goto label4;
+
+        if r5 == null goto label4;
+
+        $z0 = virtualinvoke r4.<java.lang.String: boolean equals(java.lang.Object)>(r5);
+
+        if $z0 != 0 goto label2;
+
+     label4:
+        if r4 != null goto label6;
+
+        if r5 != null goto label5;
+
+        $z1 = 1;
+
+        goto label7;
+
+     label5:
+        $z1 = 0;
+
+        goto label7;
+
+     label6:
+        $z1 = virtualinvoke r4.<java.lang.String: boolean equals(java.lang.Object)>(r5);
+
+     label7:
+        return $z1;
+    }
+
+    public static long skip(java.io.InputStream, long) throws java.io.IOException
+    {
+        java.io.InputStream r0;
+        long l0, l1, $l4, $l8, l9;
+        byte $b2, $b3, $b7;
+        byte[] $r1, $r2, $r3;
+        int $i5, $i6;
+        java.lang.IllegalArgumentException $r4;
+        java.lang.StringBuilder $r5, $r6;
+        java.lang.String $r7;
+
+        r0 := @parameter0: java.io.InputStream;
+
+        l0 := @parameter1: long;
+
+        $b2 = l0 cmp 0L;
+
+        if $b2 >= 0 goto label1;
+
+        $r4 = new java.lang.IllegalArgumentException;
+
+        $r5 = new java.lang.StringBuilder;
+
+        specialinvoke $r5.<java.lang.StringBuilder: void <init>(java.lang.String)>("Skip count must be non-negative, actual: ");
+
+        $r6 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(long)>(l0);
+
+        $r7 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r4.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>($r7);
+
+        throw $r4;
+
+     label1:
+        $r1 = <org.apache.commons.io.IOUtils: byte[] SKIP_BYTE_BUFFER>;
+
+        if $r1 != null goto label2;
+
+        $r3 = newarray (byte)[2048];
+
+        <org.apache.commons.io.IOUtils: byte[] SKIP_BYTE_BUFFER> = $r3;
+
+     label2:
+        l9 = l0;
+
+        goto label5;
+
+     label3:
+        $r2 = <org.apache.commons.io.IOUtils: byte[] SKIP_BYTE_BUFFER>;
+
+        $l4 = staticinvoke <java.lang.Math: long min(long,long)>(l9, 2048L);
+
+        $i5 = (int) $l4;
+
+        $i6 = virtualinvoke r0.<java.io.InputStream: int read(byte[],int,int)>($r2, 0, $i5);
+
+        l1 = (long) $i6;
+
+        $b7 = l1 cmp 0L;
+
+        if $b7 >= 0 goto label4;
+
+        goto label6;
+
+     label4:
+        l9 = l9 - l1;
+
+     label5:
+        $b3 = l9 cmp 0L;
+
+        if $b3 > 0 goto label3;
+
+     label6:
+        $l8 = l0 - l9;
+
+        return $l8;
+    }
+
+    public static long skip(java.nio.channels.ReadableByteChannel, long) throws java.io.IOException
+    {
+        java.nio.channels.ReadableByteChannel r0;
+        long l0, $l3, $l6, $l8, $l9, l10;
+        java.nio.ByteBuffer r1;
+        int i1, $i4, $i7;
+        byte $b2, $b5;
+        java.lang.IllegalArgumentException $r4;
+        java.lang.StringBuilder $r5, $r6;
+        java.lang.String $r7;
+
+        r0 := @parameter0: java.nio.channels.ReadableByteChannel;
+
+        l0 := @parameter1: long;
+
+        $b2 = l0 cmp 0L;
+
+        if $b2 >= 0 goto label1;
+
+        $r4 = new java.lang.IllegalArgumentException;
+
+        $r5 = new java.lang.StringBuilder;
+
+        specialinvoke $r5.<java.lang.StringBuilder: void <init>(java.lang.String)>("Skip count must be non-negative, actual: ");
+
+        $r6 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(long)>(l0);
+
+        $r7 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r4.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>($r7);
+
+        throw $r4;
+
+     label1:
+        $l3 = staticinvoke <java.lang.Math: long min(long,long)>(l0, 2048L);
+
+        $i4 = (int) $l3;
+
+        r1 = staticinvoke <java.nio.ByteBuffer: java.nio.ByteBuffer allocate(int)>($i4);
+
+        l10 = l0;
+
+        goto label4;
+
+     label2:
+        virtualinvoke r1.<java.nio.ByteBuffer: java.nio.Buffer position(int)>(0);
+
+        $l6 = staticinvoke <java.lang.Math: long min(long,long)>(l10, 2048L);
+
+        $i7 = (int) $l6;
+
+        virtualinvoke r1.<java.nio.ByteBuffer: java.nio.Buffer limit(int)>($i7);
+
+        i1 = interfaceinvoke r0.<java.nio.channels.ReadableByteChannel: int read(java.nio.ByteBuffer)>(r1);
+
+        if i1 != -1 goto label3;
+
+        goto label5;
+
+     label3:
+        $l8 = (long) i1;
+
+        l10 = l10 - $l8;
+
+     label4:
+        $b5 = l10 cmp 0L;
+
+        if $b5 > 0 goto label2;
+
+     label5:
+        $l9 = l0 - l10;
+
+        return $l9;
+    }
+
+    public static long skip(java.io.Reader, long) throws java.io.IOException
+    {
+        java.io.Reader r0;
+        long l0, l1, $l4, $l8, l9;
+        byte $b2, $b3, $b7;
+        char[] $r1, $r2, $r3;
+        int $i5, $i6;
+        java.lang.IllegalArgumentException $r4;
+        java.lang.StringBuilder $r5, $r6;
+        java.lang.String $r7;
+
+        r0 := @parameter0: java.io.Reader;
+
+        l0 := @parameter1: long;
+
+        $b2 = l0 cmp 0L;
+
+        if $b2 >= 0 goto label1;
+
+        $r4 = new java.lang.IllegalArgumentException;
+
+        $r5 = new java.lang.StringBuilder;
+
+        specialinvoke $r5.<java.lang.StringBuilder: void <init>(java.lang.String)>("Skip count must be non-negative, actual: ");
+
+        $r6 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(long)>(l0);
+
+        $r7 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r4.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>($r7);
+
+        throw $r4;
+
+     label1:
+        $r1 = <org.apache.commons.io.IOUtils: char[] SKIP_CHAR_BUFFER>;
+
+        if $r1 != null goto label2;
+
+        $r3 = newarray (char)[2048];
+
+        <org.apache.commons.io.IOUtils: char[] SKIP_CHAR_BUFFER> = $r3;
+
+     label2:
+        l9 = l0;
+
+        goto label5;
+
+     label3:
+        $r2 = <org.apache.commons.io.IOUtils: char[] SKIP_CHAR_BUFFER>;
+
+        $l4 = staticinvoke <java.lang.Math: long min(long,long)>(l9, 2048L);
+
+        $i5 = (int) $l4;
+
+        $i6 = virtualinvoke r0.<java.io.Reader: int read(char[],int,int)>($r2, 0, $i5);
+
+        l1 = (long) $i6;
+
+        $b7 = l1 cmp 0L;
+
+        if $b7 >= 0 goto label4;
+
+        goto label6;
+
+     label4:
+        l9 = l9 - l1;
+
+     label5:
+        $b3 = l9 cmp 0L;
+
+        if $b3 > 0 goto label3;
+
+     label6:
+        $l8 = l0 - l9;
+
+        return $l8;
+    }
+
+    public static void skipFully(java.io.InputStream, long) throws java.io.IOException
+    {
+        java.io.InputStream r0;
+        long l0, l1;
+        byte $b2, $b3;
+        java.io.EOFException $r1;
+        java.lang.StringBuilder $r2, $r3, $r4, $r5, $r8, $r9;
+        java.lang.String $r6, $r10;
+        java.lang.IllegalArgumentException $r7;
+
+        r0 := @parameter0: java.io.InputStream;
+
+        l0 := @parameter1: long;
+
+        $b2 = l0 cmp 0L;
+
+        if $b2 >= 0 goto label1;
+
+        $r7 = new java.lang.IllegalArgumentException;
+
+        $r8 = new java.lang.StringBuilder;
+
+        specialinvoke $r8.<java.lang.StringBuilder: void <init>(java.lang.String)>("Bytes to skip must not be negative: ");
+
+        $r9 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(long)>(l0);
+
+        $r10 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r7.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>($r10);
+
+        throw $r7;
+
+     label1:
+        l1 = staticinvoke <org.apache.commons.io.IOUtils: long skip(java.io.InputStream,long)>(r0, l0);
+
+        $b3 = l1 cmp l0;
+
+        if $b3 == 0 goto label2;
+
+        $r1 = new java.io.EOFException;
+
+        $r2 = new java.lang.StringBuilder;
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>(java.lang.String)>("Bytes to skip: ");
+
+        $r3 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(long)>(l0);
+
+        $r4 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" actual: ");
+
+        $r5 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(long)>(l1);
+
+        $r6 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r1.<java.io.EOFException: void <init>(java.lang.String)>($r6);
+
+        throw $r1;
+
+     label2:
+        return;
+    }
+
+    public static void skipFully(java.nio.channels.ReadableByteChannel, long) throws java.io.IOException
+    {
+        java.nio.channels.ReadableByteChannel r0;
+        long l0, l1;
+        byte $b2, $b3;
+        java.io.EOFException $r1;
+        java.lang.StringBuilder $r2, $r3, $r4, $r5, $r8, $r9;
+        java.lang.String $r6, $r10;
+        java.lang.IllegalArgumentException $r7;
+
+        r0 := @parameter0: java.nio.channels.ReadableByteChannel;
+
+        l0 := @parameter1: long;
+
+        $b2 = l0 cmp 0L;
+
+        if $b2 >= 0 goto label1;
+
+        $r7 = new java.lang.IllegalArgumentException;
+
+        $r8 = new java.lang.StringBuilder;
+
+        specialinvoke $r8.<java.lang.StringBuilder: void <init>(java.lang.String)>("Bytes to skip must not be negative: ");
+
+        $r9 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(long)>(l0);
+
+        $r10 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r7.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>($r10);
+
+        throw $r7;
+
+     label1:
+        l1 = staticinvoke <org.apache.commons.io.IOUtils: long skip(java.nio.channels.ReadableByteChannel,long)>(r0, l0);
+
+        $b3 = l1 cmp l0;
+
+        if $b3 == 0 goto label2;
+
+        $r1 = new java.io.EOFException;
+
+        $r2 = new java.lang.StringBuilder;
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>(java.lang.String)>("Bytes to skip: ");
+
+        $r3 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(long)>(l0);
+
+        $r4 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" actual: ");
+
+        $r5 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(long)>(l1);
+
+        $r6 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r1.<java.io.EOFException: void <init>(java.lang.String)>($r6);
+
+        throw $r1;
+
+     label2:
+        return;
+    }
+
+    public static void skipFully(java.io.Reader, long) throws java.io.IOException
+    {
+        java.io.Reader r0;
+        long l0, l1;
+        byte $b2;
+        java.io.EOFException $r1;
+        java.lang.StringBuilder $r2, $r3, $r4, $r5;
+        java.lang.String $r6;
+
+        r0 := @parameter0: java.io.Reader;
+
+        l0 := @parameter1: long;
+
+        l1 = staticinvoke <org.apache.commons.io.IOUtils: long skip(java.io.Reader,long)>(r0, l0);
+
+        $b2 = l1 cmp l0;
+
+        if $b2 == 0 goto label1;
+
+        $r1 = new java.io.EOFException;
+
+        $r2 = new java.lang.StringBuilder;
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>(java.lang.String)>("Chars to skip: ");
+
+        $r3 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(long)>(l0);
+
+        $r4 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" actual: ");
+
+        $r5 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(long)>(l1);
+
+        $r6 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r1.<java.io.EOFException: void <init>(java.lang.String)>($r6);
+
+        throw $r1;
+
+     label1:
+        return;
+    }
+
+    public static int read(java.io.Reader, char[], int, int) throws java.io.IOException
+    {
+        java.io.Reader r0;
+        char[] r1;
+        int i0, i1, i2, i3, $i4, $i5, i6;
+        java.lang.IllegalArgumentException $r2;
+        java.lang.StringBuilder $r3, $r4;
+        java.lang.String $r5;
+
+        r0 := @parameter0: java.io.Reader;
+
+        r1 := @parameter1: char[];
+
+        i0 := @parameter2: int;
+
+        i1 := @parameter3: int;
+
+        if i1 >= 0 goto label1;
+
+        $r2 = new java.lang.IllegalArgumentException;
+
+        $r3 = new java.lang.StringBuilder;
+
+        specialinvoke $r3.<java.lang.StringBuilder: void <init>(java.lang.String)>("Length must not be negative: ");
+
+        $r4 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i1);
+
+        $r5 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r2.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>($r5);
+
+        throw $r2;
+
+     label1:
+        i6 = i1;
+
+        goto label4;
+
+     label2:
+        i2 = i1 - i6;
+
+        $i4 = i0 + i2;
+
+        i3 = virtualinvoke r0.<java.io.Reader: int read(char[],int,int)>(r1, $i4, i6);
+
+        if -1 != i3 goto label3;
+
+        goto label5;
+
+     label3:
+        i6 = i6 - i3;
+
+     label4:
+        if i6 > 0 goto label2;
+
+     label5:
+        $i5 = i1 - i6;
+
+        return $i5;
+    }
+
+    public static int read(java.io.Reader, char[]) throws java.io.IOException
+    {
+        java.io.Reader r0;
+        char[] r1;
+        int $i0, $i1;
+
+        r0 := @parameter0: java.io.Reader;
+
+        r1 := @parameter1: char[];
+
+        $i0 = lengthof r1;
+
+        $i1 = staticinvoke <org.apache.commons.io.IOUtils: int read(java.io.Reader,char[],int,int)>(r0, r1, 0, $i0);
+
+        return $i1;
+    }
+
+    public static int read(java.io.InputStream, byte[], int, int) throws java.io.IOException
+    {
+        java.io.InputStream r0;
+        byte[] r1;
+        int i0, i1, i2, i3, $i4, $i5, i6;
+        java.lang.IllegalArgumentException $r2;
+        java.lang.StringBuilder $r3, $r4;
+        java.lang.String $r5;
+
+        r0 := @parameter0: java.io.InputStream;
+
+        r1 := @parameter1: byte[];
+
+        i0 := @parameter2: int;
+
+        i1 := @parameter3: int;
+
+        if i1 >= 0 goto label1;
+
+        $r2 = new java.lang.IllegalArgumentException;
+
+        $r3 = new java.lang.StringBuilder;
+
+        specialinvoke $r3.<java.lang.StringBuilder: void <init>(java.lang.String)>("Length must not be negative: ");
+
+        $r4 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i1);
+
+        $r5 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r2.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>($r5);
+
+        throw $r2;
+
+     label1:
+        i6 = i1;
+
+        goto label4;
+
+     label2:
+        i2 = i1 - i6;
+
+        $i4 = i0 + i2;
+
+        i3 = virtualinvoke r0.<java.io.InputStream: int read(byte[],int,int)>(r1, $i4, i6);
+
+        if -1 != i3 goto label3;
+
+        goto label5;
+
+     label3:
+        i6 = i6 - i3;
+
+     label4:
+        if i6 > 0 goto label2;
+
+     label5:
+        $i5 = i1 - i6;
+
+        return $i5;
+    }
+
+    public static int read(java.io.InputStream, byte[]) throws java.io.IOException
+    {
+        java.io.InputStream r0;
+        byte[] r1;
+        int $i0, $i1;
+
+        r0 := @parameter0: java.io.InputStream;
+
+        r1 := @parameter1: byte[];
+
+        $i0 = lengthof r1;
+
+        $i1 = staticinvoke <org.apache.commons.io.IOUtils: int read(java.io.InputStream,byte[],int,int)>(r0, r1, 0, $i0);
+
+        return $i1;
+    }
+
+    public static int read(java.nio.channels.ReadableByteChannel, java.nio.ByteBuffer) throws java.io.IOException
+    {
+        java.nio.channels.ReadableByteChannel r0;
+        java.nio.ByteBuffer r1;
+        int i0, i1, $i2, $i3, $i4;
+
+        r0 := @parameter0: java.nio.channels.ReadableByteChannel;
+
+        r1 := @parameter1: java.nio.ByteBuffer;
+
+        i0 = virtualinvoke r1.<java.nio.ByteBuffer: int remaining()>();
+
+        goto label2;
+
+     label1:
+        i1 = interfaceinvoke r0.<java.nio.channels.ReadableByteChannel: int read(java.nio.ByteBuffer)>(r1);
+
+        if -1 != i1 goto label2;
+
+        goto label3;
+
+     label2:
+        $i2 = virtualinvoke r1.<java.nio.ByteBuffer: int remaining()>();
+
+        if $i2 > 0 goto label1;
+
+     label3:
+        $i3 = virtualinvoke r1.<java.nio.ByteBuffer: int remaining()>();
+
+        $i4 = i0 - $i3;
+
+        return $i4;
+    }
+
+    public static void readFully(java.io.Reader, char[], int, int) throws java.io.IOException
+    {
+        java.io.Reader r0;
+        char[] r1;
+        int i0, i1, i2;
+        java.io.EOFException $r2;
+        java.lang.StringBuilder $r3, $r4, $r5, $r6;
+        java.lang.String $r7;
+
+        r0 := @parameter0: java.io.Reader;
+
+        r1 := @parameter1: char[];
+
+        i0 := @parameter2: int;
+
+        i1 := @parameter3: int;
+
+        i2 = staticinvoke <org.apache.commons.io.IOUtils: int read(java.io.Reader,char[],int,int)>(r0, r1, i0, i1);
+
+        if i2 == i1 goto label1;
+
+        $r2 = new java.io.EOFException;
+
+        $r3 = new java.lang.StringBuilder;
+
+        specialinvoke $r3.<java.lang.StringBuilder: void <init>(java.lang.String)>("Length to read: ");
+
+        $r4 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i1);
+
+        $r5 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" actual: ");
+
+        $r6 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i2);
+
+        $r7 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r2.<java.io.EOFException: void <init>(java.lang.String)>($r7);
+
+        throw $r2;
+
+     label1:
+        return;
+    }
+
+    public static void readFully(java.io.Reader, char[]) throws java.io.IOException
+    {
+        java.io.Reader r0;
+        char[] r1;
+        int $i0;
+
+        r0 := @parameter0: java.io.Reader;
+
+        r1 := @parameter1: char[];
+
+        $i0 = lengthof r1;
+
+        staticinvoke <org.apache.commons.io.IOUtils: void readFully(java.io.Reader,char[],int,int)>(r0, r1, 0, $i0);
+
+        return;
+    }
+
+    public static void readFully(java.io.InputStream, byte[], int, int) throws java.io.IOException
+    {
+        java.io.InputStream r0;
+        byte[] r1;
+        int i0, i1, i2;
+        java.io.EOFException $r2;
+        java.lang.StringBuilder $r3, $r4, $r5, $r6;
+        java.lang.String $r7;
+
+        r0 := @parameter0: java.io.InputStream;
+
+        r1 := @parameter1: byte[];
+
+        i0 := @parameter2: int;
+
+        i1 := @parameter3: int;
+
+        i2 = staticinvoke <org.apache.commons.io.IOUtils: int read(java.io.InputStream,byte[],int,int)>(r0, r1, i0, i1);
+
+        if i2 == i1 goto label1;
+
+        $r2 = new java.io.EOFException;
+
+        $r3 = new java.lang.StringBuilder;
+
+        specialinvoke $r3.<java.lang.StringBuilder: void <init>(java.lang.String)>("Length to read: ");
+
+        $r4 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i1);
+
+        $r5 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" actual: ");
+
+        $r6 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i2);
+
+        $r7 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r2.<java.io.EOFException: void <init>(java.lang.String)>($r7);
+
+        throw $r2;
+
+     label1:
+        return;
+    }
+
+    public static void readFully(java.io.InputStream, byte[]) throws java.io.IOException
+    {
+        java.io.InputStream r0;
+        byte[] r1;
+        int $i0;
+
+        r0 := @parameter0: java.io.InputStream;
+
+        r1 := @parameter1: byte[];
+
+        $i0 = lengthof r1;
+
+        staticinvoke <org.apache.commons.io.IOUtils: void readFully(java.io.InputStream,byte[],int,int)>(r0, r1, 0, $i0);
+
+        return;
+    }
+
+    public static byte[] readFully(java.io.InputStream, int) throws java.io.IOException
+    {
+        java.io.InputStream r0;
+        int i0, $i1;
+        byte[] r1;
+
+        r0 := @parameter0: java.io.InputStream;
+
+        i0 := @parameter1: int;
+
+        r1 = newarray (byte)[i0];
+
+        $i1 = lengthof r1;
+
+        staticinvoke <org.apache.commons.io.IOUtils: void readFully(java.io.InputStream,byte[],int,int)>(r0, r1, 0, $i1);
+
+        return r1;
+    }
+
+    public static void readFully(java.nio.channels.ReadableByteChannel, java.nio.ByteBuffer) throws java.io.IOException
+    {
+        java.nio.channels.ReadableByteChannel r0;
+        java.nio.ByteBuffer r1;
+        int i0, i1;
+        java.io.EOFException $r2;
+        java.lang.StringBuilder $r3, $r4, $r5, $r6;
+        java.lang.String $r7;
+
+        r0 := @parameter0: java.nio.channels.ReadableByteChannel;
+
+        r1 := @parameter1: java.nio.ByteBuffer;
+
+        i0 = virtualinvoke r1.<java.nio.ByteBuffer: int remaining()>();
+
+        i1 = staticinvoke <org.apache.commons.io.IOUtils: int read(java.nio.channels.ReadableByteChannel,java.nio.ByteBuffer)>(r0, r1);
+
+        if i1 == i0 goto label1;
+
+        $r2 = new java.io.EOFException;
+
+        $r3 = new java.lang.StringBuilder;
+
+        specialinvoke $r3.<java.lang.StringBuilder: void <init>(java.lang.String)>("Length to read: ");
+
+        $r4 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i0);
+
+        $r5 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" actual: ");
+
+        $r6 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i1);
+
+        $r7 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r2.<java.io.EOFException: void <init>(java.lang.String)>($r7);
+
+        throw $r2;
+
+     label1:
+        return;
+    }
+}

@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<attributes>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="0" eline="0" spos="0" epos="0"/>
+<text info="[inner=org/apache/commons/io/serialization/ValidatingObjectInputStreamTest$1, outer=null, name=null,flags=0]" aType="InnerClassTag"/>
+<text info="[inner=org/apache/commons/io/serialization/ValidatingObjectInputStreamTest$1CustomVOIS, outer=null, name=CustomVOIS,flags=0]" aType="InnerClassTag"/>
+<text info="soot.tagkit.InnerClassAttribute@2c8bfa72" aType="InnerClassAttribute"/>
+</attribute>
+<attribute>
+<srcPos sline="50" eline="50" spos="0" epos="0"/>
+<jmpPos sline="31" eline="31" spos="0" epos="0"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation type: Lorg/junit/Before; without elements
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+<attribute>
+<srcPos sline="65" eline="65" spos="0" epos="0"/>
+<jmpPos sline="113" eline="113" spos="0" epos="0"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation: type: Lorg/junit/Test; num elems: 1 elems: 
+Annotation Element: kind: c name: expected decription: Ljava/io/InvalidClassException;
+
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+<attribute>
+<srcPos sline="72" eline="72" spos="0" epos="0"/>
+<jmpPos sline="138" eline="138" spos="0" epos="0"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation type: Lorg/junit/Test; without elements
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+<attribute>
+<srcPos sline="83" eline="83" spos="0" epos="0"/>
+<jmpPos sline="198" eline="198" spos="0" epos="0"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation type: Lorg/junit/Test; without elements
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+<attribute>
+<srcPos sline="91" eline="91" spos="0" epos="0"/>
+<jmpPos sline="227" eline="227" spos="0" epos="0"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation: type: Lorg/junit/Test; num elems: 1 elems: 
+Annotation Element: kind: c name: expected decription: Ljava/io/InvalidClassException;
+
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+<attribute>
+<srcPos sline="100" eline="100" spos="0" epos="0"/>
+<jmpPos sline="263" eline="263" spos="0" epos="0"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation type: Lorg/junit/Test; without elements
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+<attribute>
+<srcPos sline="108" eline="108" spos="0" epos="0"/>
+<jmpPos sline="292" eline="292" spos="0" epos="0"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation: type: Lorg/junit/Test; num elems: 1 elems: 
+Annotation Element: kind: c name: expected decription: Ljava/io/InvalidClassException;
+
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+<attribute>
+<srcPos sline="117" eline="117" spos="0" epos="0"/>
+<jmpPos sline="328" eline="328" spos="0" epos="0"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation type: Lorg/junit/Test; without elements
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+<attribute>
+<srcPos sline="125" eline="125" spos="0" epos="0"/>
+<jmpPos sline="359" eline="359" spos="0" epos="0"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation: type: Lorg/junit/Test; num elems: 1 elems: 
+Annotation Element: kind: c name: expected decription: Ljava/io/InvalidClassException;
+
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+<attribute>
+<srcPos sline="134" eline="134" spos="0" epos="0"/>
+<jmpPos sline="397" eline="397" spos="0" epos="0"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation: type: Lorg/junit/Test; num elems: 1 elems: 
+Annotation Element: kind: c name: expected decription: Ljava/io/InvalidClassException;
+
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+<attribute>
+<srcPos sline="142" eline="142" spos="0" epos="0"/>
+<jmpPos sline="428" eline="428" spos="0" epos="0"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation type: Lorg/junit/Test; without elements
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+<attribute>
+<srcPos sline="150" eline="150" spos="0" epos="0"/>
+<jmpPos sline="459" eline="459" spos="0" epos="0"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation type: Lorg/junit/Test; without elements
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+<attribute>
+<srcPos sline="158" eline="158" spos="0" epos="0"/>
+<jmpPos sline="492" eline="492" spos="0" epos="0"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation type: Lorg/junit/Test; without elements
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+<attribute>
+<srcPos sline="166" eline="166" spos="0" epos="0"/>
+<jmpPos sline="525" eline="525" spos="0" epos="0"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation type: Lorg/junit/Test; without elements
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+<attribute>
+<srcPos sline="174" eline="174" spos="0" epos="0"/>
+<jmpPos sline="558" eline="558" spos="0" epos="0"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation type: Lorg/junit/Test; without elements
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+<attribute>
+<srcPos sline="182" eline="182" spos="0" epos="0"/>
+<jmpPos sline="591" eline="591" spos="0" epos="0"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation: type: Lorg/junit/Test; num elems: 1 elems: 
+Annotation Element: kind: c name: expected decription: Ljava/io/InvalidClassException;
+
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+<attribute>
+<srcPos sline="191" eline="191" spos="0" epos="0"/>
+<jmpPos sline="630" eline="630" spos="0" epos="0"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation: type: Lorg/junit/Test; num elems: 1 elems: 
+Annotation Element: kind: c name: expected decription: Ljava/io/InvalidClassException;
+
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+<attribute>
+<srcPos sline="200" eline="200" spos="0" epos="0"/>
+<jmpPos sline="669" eline="669" spos="0" epos="0"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation: type: Lorg/junit/Test; num elems: 1 elems: 
+Annotation Element: kind: c name: expected decription: Ljava/io/InvalidClassException;
+
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+<attribute>
+<srcPos sline="219" eline="219" spos="0" epos="0"/>
+<jmpPos sline="700" eline="700" spos="0" epos="0"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation: type: Lorg/junit/Test; num elems: 1 elems: 
+Annotation Element: kind: c name: expected decription: Ljava/lang/RuntimeException;
+
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+</attributes>

@@ -1,0 +1,425 @@
+public abstract class org.apache.log4j.jmx.AbstractDynamicMBean extends java.lang.Object implements javax.management.DynamicMBean, javax.management.MBeanRegistration
+{
+    java.lang.String dClassName;
+    javax.management.MBeanServer server;
+    private final java.util.Vector mbeanList;
+
+    public void <init>()
+    {
+        org.apache.log4j.jmx.AbstractDynamicMBean r0;
+        java.util.Vector $r1;
+
+        r0 := @this: org.apache.log4j.jmx.AbstractDynamicMBean;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r1 = new java.util.Vector;
+
+        specialinvoke $r1.<java.util.Vector: void <init>()>();
+
+        r0.<org.apache.log4j.jmx.AbstractDynamicMBean: java.util.Vector mbeanList> = $r1;
+
+        return;
+    }
+
+    protected static java.lang.String getAppenderName(org.apache.log4j.Appender)
+    {
+        org.apache.log4j.Appender r0;
+        java.lang.String $r1, r2;
+        int $i0;
+
+        r0 := @parameter0: org.apache.log4j.Appender;
+
+        r2 = interfaceinvoke r0.<org.apache.log4j.Appender: java.lang.String getName()>();
+
+        if r2 == null goto label1;
+
+        $r1 = virtualinvoke r2.<java.lang.String: java.lang.String trim()>();
+
+        $i0 = virtualinvoke $r1.<java.lang.String: int length()>();
+
+        if $i0 != 0 goto label2;
+
+     label1:
+        r2 = virtualinvoke r0.<java.lang.Object: java.lang.String toString()>();
+
+     label2:
+        return r2;
+    }
+
+    public javax.management.AttributeList getAttributes(java.lang.String[])
+    {
+        org.apache.log4j.jmx.AbstractDynamicMBean r0;
+        java.lang.String[] r1;
+        javax.management.AttributeList $r3;
+        int $i0, i1, $i2;
+        java.lang.String $r4, $r6, $r10, $r12;
+        javax.management.Attribute $r5;
+        javax.management.RuntimeOperationsException $r7;
+        java.lang.IllegalArgumentException $r8;
+        java.lang.StringBuilder $r9, $r11;
+        java.lang.RuntimeException $r13;
+        javax.management.JMException $r14;
+        java.lang.Object r15;
+
+        r0 := @this: org.apache.log4j.jmx.AbstractDynamicMBean;
+
+        r1 := @parameter0: java.lang.String[];
+
+        if r1 != null goto label1;
+
+        $r7 = new javax.management.RuntimeOperationsException;
+
+        $r8 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r8.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("attributeNames[] cannot be null");
+
+        $r9 = new java.lang.StringBuilder;
+
+        specialinvoke $r9.<java.lang.StringBuilder: void <init>(java.lang.String)>("Cannot invoke a getter of ");
+
+        $r10 = r0.<org.apache.log4j.jmx.AbstractDynamicMBean: java.lang.String dClassName>;
+
+        $r11 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r10);
+
+        $r12 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r7.<javax.management.RuntimeOperationsException: void <init>(java.lang.RuntimeException,java.lang.String)>($r8, $r12);
+
+        throw $r7;
+
+     label1:
+        $r3 = new javax.management.AttributeList;
+
+        specialinvoke $r3.<javax.management.AttributeList: void <init>()>();
+
+        $i0 = lengthof r1;
+
+        if $i0 != 0 goto label2;
+
+        return $r3;
+
+     label2:
+        i1 = 0;
+
+        goto label8;
+
+     label3:
+        $r4 = r1[i1];
+
+        r15 = virtualinvoke r0.<org.apache.log4j.jmx.AbstractDynamicMBean: java.lang.Object getAttribute(java.lang.String)>($r4);
+
+        $r5 = new javax.management.Attribute;
+
+        $r6 = r1[i1];
+
+        specialinvoke $r5.<javax.management.Attribute: void <init>(java.lang.String,java.lang.Object)>($r6, r15);
+
+        virtualinvoke $r3.<javax.management.AttributeList: void add(javax.management.Attribute)>($r5);
+
+     label4:
+        goto label7;
+
+     label5:
+        $r14 := @caughtexception;
+
+        virtualinvoke $r14.<javax.management.JMException: void printStackTrace()>();
+
+        goto label7;
+
+     label6:
+        $r13 := @caughtexception;
+
+        virtualinvoke $r13.<java.lang.RuntimeException: void printStackTrace()>();
+
+     label7:
+        i1 = i1 + 1;
+
+     label8:
+        $i2 = lengthof r1;
+
+        if i1 < $i2 goto label3;
+
+        return $r3;
+
+        catch javax.management.JMException from label3 to label4 with label5;
+        catch java.lang.RuntimeException from label3 to label4 with label6;
+    }
+
+    public javax.management.AttributeList setAttributes(javax.management.AttributeList)
+    {
+        org.apache.log4j.jmx.AbstractDynamicMBean r0;
+        javax.management.AttributeList r1, $r6;
+        java.util.Iterator r3;
+        javax.management.Attribute r4, $r8;
+        java.lang.Object r5, $r7;
+        boolean $z0, $z1;
+        javax.management.RuntimeOperationsException $r9;
+        java.lang.IllegalArgumentException $r10;
+        java.lang.StringBuilder $r11, $r13;
+        java.lang.String $r12, $r14, r17;
+        javax.management.JMException $r15;
+        java.lang.RuntimeException $r16;
+
+        r0 := @this: org.apache.log4j.jmx.AbstractDynamicMBean;
+
+        r1 := @parameter0: javax.management.AttributeList;
+
+        if r1 != null goto label1;
+
+        $r9 = new javax.management.RuntimeOperationsException;
+
+        $r10 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r10.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("AttributeList attributes cannot be null");
+
+        $r11 = new java.lang.StringBuilder;
+
+        specialinvoke $r11.<java.lang.StringBuilder: void <init>(java.lang.String)>("Cannot invoke a setter of ");
+
+        $r12 = r0.<org.apache.log4j.jmx.AbstractDynamicMBean: java.lang.String dClassName>;
+
+        $r13 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r12);
+
+        $r14 = virtualinvoke $r13.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r9.<javax.management.RuntimeOperationsException: void <init>(java.lang.RuntimeException,java.lang.String)>($r10, $r14);
+
+        throw $r9;
+
+     label1:
+        $r6 = new javax.management.AttributeList;
+
+        specialinvoke $r6.<javax.management.AttributeList: void <init>()>();
+
+        $z0 = virtualinvoke r1.<javax.management.AttributeList: boolean isEmpty()>();
+
+        if $z0 == 0 goto label2;
+
+        return $r6;
+
+     label2:
+        r3 = virtualinvoke r1.<javax.management.AttributeList: java.util.Iterator iterator()>();
+
+        goto label8;
+
+     label3:
+        $r7 = interfaceinvoke r3.<java.util.Iterator: java.lang.Object next()>();
+
+        r4 = (javax.management.Attribute) $r7;
+
+     label4:
+        virtualinvoke r0.<org.apache.log4j.jmx.AbstractDynamicMBean: void setAttribute(javax.management.Attribute)>(r4);
+
+        r17 = virtualinvoke r4.<javax.management.Attribute: java.lang.String getName()>();
+
+        r5 = virtualinvoke r0.<org.apache.log4j.jmx.AbstractDynamicMBean: java.lang.Object getAttribute(java.lang.String)>(r17);
+
+        $r8 = new javax.management.Attribute;
+
+        specialinvoke $r8.<javax.management.Attribute: void <init>(java.lang.String,java.lang.Object)>(r17, r5);
+
+        virtualinvoke $r6.<javax.management.AttributeList: void add(javax.management.Attribute)>($r8);
+
+     label5:
+        goto label8;
+
+     label6:
+        $r15 := @caughtexception;
+
+        virtualinvoke $r15.<javax.management.JMException: void printStackTrace()>();
+
+        goto label8;
+
+     label7:
+        $r16 := @caughtexception;
+
+        virtualinvoke $r16.<java.lang.RuntimeException: void printStackTrace()>();
+
+     label8:
+        $z1 = interfaceinvoke r3.<java.util.Iterator: boolean hasNext()>();
+
+        if $z1 != 0 goto label3;
+
+        return $r6;
+
+        catch javax.management.JMException from label4 to label5 with label6;
+        catch java.lang.RuntimeException from label4 to label5 with label7;
+    }
+
+    protected abstract org.apache.log4j.Logger getLogger();
+
+    public void postDeregister()
+    {
+        org.apache.log4j.jmx.AbstractDynamicMBean r0;
+        org.apache.log4j.Logger $r1;
+
+        r0 := @this: org.apache.log4j.jmx.AbstractDynamicMBean;
+
+        $r1 = virtualinvoke r0.<org.apache.log4j.jmx.AbstractDynamicMBean: org.apache.log4j.Logger getLogger()>();
+
+        virtualinvoke $r1.<org.apache.log4j.Logger: void debug(java.lang.Object)>("postDeregister is called.");
+
+        return;
+    }
+
+    public void postRegister(java.lang.Boolean)
+    {
+        org.apache.log4j.jmx.AbstractDynamicMBean r0;
+        java.lang.Boolean r1;
+
+        r0 := @this: org.apache.log4j.jmx.AbstractDynamicMBean;
+
+        r1 := @parameter0: java.lang.Boolean;
+
+        return;
+    }
+
+    public javax.management.ObjectName preRegister(javax.management.MBeanServer, javax.management.ObjectName)
+    {
+        org.apache.log4j.jmx.AbstractDynamicMBean r0;
+        javax.management.MBeanServer r1;
+        javax.management.ObjectName r2;
+        org.apache.log4j.Logger $r3;
+        java.lang.StringBuilder $r4, $r5, $r6, $r7;
+        java.lang.String $r8;
+
+        r0 := @this: org.apache.log4j.jmx.AbstractDynamicMBean;
+
+        r1 := @parameter0: javax.management.MBeanServer;
+
+        r2 := @parameter1: javax.management.ObjectName;
+
+        $r3 = virtualinvoke r0.<org.apache.log4j.jmx.AbstractDynamicMBean: org.apache.log4j.Logger getLogger()>();
+
+        $r4 = new java.lang.StringBuilder;
+
+        specialinvoke $r4.<java.lang.StringBuilder: void <init>(java.lang.String)>("preRegister called. Server=");
+
+        $r5 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(r1);
+
+        $r6 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", name=");
+
+        $r7 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(r2);
+
+        $r8 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r3.<org.apache.log4j.Logger: void debug(java.lang.Object)>($r8);
+
+        r0.<org.apache.log4j.jmx.AbstractDynamicMBean: javax.management.MBeanServer server> = r1;
+
+        return r2;
+    }
+
+    protected void registerMBean(java.lang.Object, javax.management.ObjectName) throws javax.management.InstanceAlreadyExistsException, javax.management.MBeanRegistrationException, javax.management.NotCompliantMBeanException
+    {
+        org.apache.log4j.jmx.AbstractDynamicMBean r0;
+        java.lang.Object r1;
+        javax.management.ObjectName r2;
+        javax.management.MBeanServer $r3;
+        java.util.Vector $r5;
+
+        r0 := @this: org.apache.log4j.jmx.AbstractDynamicMBean;
+
+        r1 := @parameter0: java.lang.Object;
+
+        r2 := @parameter1: javax.management.ObjectName;
+
+        $r3 = r0.<org.apache.log4j.jmx.AbstractDynamicMBean: javax.management.MBeanServer server>;
+
+        interfaceinvoke $r3.<javax.management.MBeanServer: javax.management.ObjectInstance registerMBean(java.lang.Object,javax.management.ObjectName)>(r1, r2);
+
+        $r5 = r0.<org.apache.log4j.jmx.AbstractDynamicMBean: java.util.Vector mbeanList>;
+
+        virtualinvoke $r5.<java.util.Vector: boolean add(java.lang.Object)>(r2);
+
+        return;
+    }
+
+    public void preDeregister()
+    {
+        org.apache.log4j.jmx.AbstractDynamicMBean r0;
+        java.util.Enumeration r1;
+        javax.management.ObjectName r2;
+        org.apache.log4j.Logger $r3, $r8, $r14;
+        java.util.Vector $r4;
+        java.lang.Object $r5;
+        javax.management.MBeanServer $r6;
+        javax.management.MBeanRegistrationException $r7;
+        java.lang.StringBuilder $r9, $r11, $r15, $r17;
+        java.lang.String $r10, $r12, $r16, $r18;
+        javax.management.InstanceNotFoundException $r13;
+        boolean $z0;
+
+        r0 := @this: org.apache.log4j.jmx.AbstractDynamicMBean;
+
+        $r3 = virtualinvoke r0.<org.apache.log4j.jmx.AbstractDynamicMBean: org.apache.log4j.Logger getLogger()>();
+
+        virtualinvoke $r3.<org.apache.log4j.Logger: void debug(java.lang.Object)>("preDeregister called.");
+
+        $r4 = r0.<org.apache.log4j.jmx.AbstractDynamicMBean: java.util.Vector mbeanList>;
+
+        r1 = virtualinvoke $r4.<java.util.Vector: java.util.Enumeration elements()>();
+
+        goto label6;
+
+     label1:
+        $r5 = interfaceinvoke r1.<java.util.Enumeration: java.lang.Object nextElement()>();
+
+        r2 = (javax.management.ObjectName) $r5;
+
+     label2:
+        $r6 = r0.<org.apache.log4j.jmx.AbstractDynamicMBean: javax.management.MBeanServer server>;
+
+        interfaceinvoke $r6.<javax.management.MBeanServer: void unregisterMBean(javax.management.ObjectName)>(r2);
+
+     label3:
+        goto label6;
+
+     label4:
+        $r13 := @caughtexception;
+
+        $r14 = virtualinvoke r0.<org.apache.log4j.jmx.AbstractDynamicMBean: org.apache.log4j.Logger getLogger()>();
+
+        $r15 = new java.lang.StringBuilder;
+
+        specialinvoke $r15.<java.lang.StringBuilder: void <init>(java.lang.String)>("Missing MBean ");
+
+        $r16 = virtualinvoke r2.<javax.management.ObjectName: java.lang.String getCanonicalName()>();
+
+        $r17 = virtualinvoke $r15.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r16);
+
+        $r18 = virtualinvoke $r17.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r14.<org.apache.log4j.Logger: void warn(java.lang.Object)>($r18);
+
+        goto label6;
+
+     label5:
+        $r7 := @caughtexception;
+
+        $r8 = virtualinvoke r0.<org.apache.log4j.jmx.AbstractDynamicMBean: org.apache.log4j.Logger getLogger()>();
+
+        $r9 = new java.lang.StringBuilder;
+
+        specialinvoke $r9.<java.lang.StringBuilder: void <init>(java.lang.String)>("Failed unregistering ");
+
+        $r10 = virtualinvoke r2.<javax.management.ObjectName: java.lang.String getCanonicalName()>();
+
+        $r11 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r10);
+
+        $r12 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r8.<org.apache.log4j.Logger: void warn(java.lang.Object)>($r12);
+
+     label6:
+        $z0 = interfaceinvoke r1.<java.util.Enumeration: boolean hasMoreElements()>();
+
+        if $z0 != 0 goto label1;
+
+        return;
+
+        catch javax.management.InstanceNotFoundException from label2 to label3 with label4;
+        catch javax.management.MBeanRegistrationException from label2 to label3 with label5;
+    }
+}

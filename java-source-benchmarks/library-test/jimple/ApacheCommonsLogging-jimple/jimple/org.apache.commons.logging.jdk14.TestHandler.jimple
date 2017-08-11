@@ -1,0 +1,77 @@
+public class org.apache.commons.logging.jdk14.TestHandler extends java.util.logging.Handler
+{
+    private final java.util.List records;
+
+    public void <init>()
+    {
+        org.apache.commons.logging.jdk14.TestHandler r0;
+        java.util.ArrayList $r1;
+
+        r0 := @this: org.apache.commons.logging.jdk14.TestHandler;
+
+        specialinvoke r0.<java.util.logging.Handler: void <init>()>();
+
+        $r1 = new java.util.ArrayList;
+
+        specialinvoke $r1.<java.util.ArrayList: void <init>()>();
+
+        r0.<org.apache.commons.logging.jdk14.TestHandler: java.util.List records> = $r1;
+
+        return;
+    }
+
+    public java.util.Iterator records()
+    {
+        org.apache.commons.logging.jdk14.TestHandler r0;
+        java.util.List $r1;
+        java.util.Iterator $r2;
+
+        r0 := @this: org.apache.commons.logging.jdk14.TestHandler;
+
+        $r1 = r0.<org.apache.commons.logging.jdk14.TestHandler: java.util.List records>;
+
+        $r2 = interfaceinvoke $r1.<java.util.List: java.util.Iterator iterator()>();
+
+        return $r2;
+    }
+
+    public void close()
+    {
+        org.apache.commons.logging.jdk14.TestHandler r0;
+
+        r0 := @this: org.apache.commons.logging.jdk14.TestHandler;
+
+        return;
+    }
+
+    public void flush()
+    {
+        org.apache.commons.logging.jdk14.TestHandler r0;
+        java.util.List $r1;
+
+        r0 := @this: org.apache.commons.logging.jdk14.TestHandler;
+
+        $r1 = r0.<org.apache.commons.logging.jdk14.TestHandler: java.util.List records>;
+
+        interfaceinvoke $r1.<java.util.List: void clear()>();
+
+        return;
+    }
+
+    public void publish(java.util.logging.LogRecord)
+    {
+        org.apache.commons.logging.jdk14.TestHandler r0;
+        java.util.logging.LogRecord r1;
+        java.util.List $r2;
+
+        r0 := @this: org.apache.commons.logging.jdk14.TestHandler;
+
+        r1 := @parameter0: java.util.logging.LogRecord;
+
+        $r2 = r0.<org.apache.commons.logging.jdk14.TestHandler: java.util.List records>;
+
+        interfaceinvoke $r2.<java.util.List: boolean add(java.lang.Object)>(r1);
+
+        return;
+    }
+}

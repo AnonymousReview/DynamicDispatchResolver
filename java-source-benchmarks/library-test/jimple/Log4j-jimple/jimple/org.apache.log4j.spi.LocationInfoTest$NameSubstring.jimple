@@ -1,0 +1,36 @@
+class org.apache.log4j.spi.LocationInfoTest$NameSubstring extends java.lang.Object
+{
+
+    private void <init>()
+    {
+        org.apache.log4j.spi.LocationInfoTest$NameSubstring r0;
+
+        r0 := @this: org.apache.log4j.spi.LocationInfoTest$NameSubstring;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static org.apache.log4j.spi.LocationInfo getInfo()
+    {
+        org.apache.log4j.spi.LocationInfo $r0;
+        java.lang.Throwable $r1;
+        java.lang.Class $r2;
+        java.lang.String $r3;
+
+        $r0 = new org.apache.log4j.spi.LocationInfo;
+
+        $r1 = new java.lang.Throwable;
+
+        specialinvoke $r1.<java.lang.Throwable: void <init>()>();
+
+        $r2 = class "org/apache/log4j/spi/LocationInfoTest$NameSubstring";
+
+        $r3 = virtualinvoke $r2.<java.lang.Class: java.lang.String getName()>();
+
+        specialinvoke $r0.<org.apache.log4j.spi.LocationInfo: void <init>(java.lang.Throwable,java.lang.String)>($r1, $r3);
+
+        return $r0;
+    }
+}

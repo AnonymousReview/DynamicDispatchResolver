@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<attributes>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="3" eline="3" spos="0" epos="0"/>
+<text info="Signature: Ljava/util/List&lt;Lorg/apache/commons/io/serialization/ClassNameMatcher;&gt;;" aType="SignatureTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="4" eline="4" spos="0" epos="0"/>
+<text info="Signature: Ljava/util/List&lt;Lorg/apache/commons/io/serialization/ClassNameMatcher;&gt;;" aType="SignatureTag"/>
+</attribute>
+<attribute>
+<srcPos sline="99" eline="99" spos="0" epos="0"/>
+<jmpPos sline="130" eline="130" spos="0" epos="0"/>
+<text info="Signature: (Ljava/io/ObjectStreamClass;)Ljava/lang/Class&lt;*&gt;;" aType="SignatureTag"/>
+</attribute>
+<attribute>
+<srcPos sline="111" eline="111" spos="0" epos="0"/>
+<jmpPos sline="150" eline="150" spos="0" epos="0"/>
+<text info="Signature: ([Ljava/lang/Class&lt;*&gt;;)Lorg/apache/commons/io/serialization/ValidatingObjectInputStream;" aType="SignatureTag"/>
+</attribute>
+<attribute>
+<srcPos sline="125" eline="125" spos="0" epos="0"/>
+<jmpPos sline="196" eline="196" spos="0" epos="0"/>
+<text info="Signature: ([Ljava/lang/Class&lt;*&gt;;)Lorg/apache/commons/io/serialization/ValidatingObjectInputStream;" aType="SignatureTag"/>
+</attribute>
+</attributes>

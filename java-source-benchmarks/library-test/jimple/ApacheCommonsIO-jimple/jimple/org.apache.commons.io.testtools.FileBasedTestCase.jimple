@@ -1,0 +1,41 @@
+public abstract class org.apache.commons.io.testtools.FileBasedTestCase extends java.lang.Object
+{
+    private static volatile java.io.File testDir;
+
+    public void <init>()
+    {
+        org.apache.commons.io.testtools.FileBasedTestCase r0;
+
+        r0 := @this: org.apache.commons.io.testtools.FileBasedTestCase;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static java.io.File getTestDirectory()
+    {
+        java.io.File $r0, $r1, $r2, $r3, $r4;
+
+        $r0 = <org.apache.commons.io.testtools.FileBasedTestCase: java.io.File testDir>;
+
+        if $r0 != null goto label1;
+
+        $r3 = new java.io.File;
+
+        specialinvoke $r3.<java.io.File: void <init>(java.lang.String)>("test/io/");
+
+        $r4 = virtualinvoke $r3.<java.io.File: java.io.File getAbsoluteFile()>();
+
+        <org.apache.commons.io.testtools.FileBasedTestCase: java.io.File testDir> = $r4;
+
+     label1:
+        $r1 = <org.apache.commons.io.testtools.FileBasedTestCase: java.io.File testDir>;
+
+        virtualinvoke $r1.<java.io.File: boolean mkdirs()>();
+
+        $r2 = <org.apache.commons.io.testtools.FileBasedTestCase: java.io.File testDir>;
+
+        return $r2;
+    }
+}

@@ -1,0 +1,41 @@
+class org.apache.commons.io.output.TeeOutputStreamTest$RecordCloseByteArrayOutputStream extends java.io.ByteArrayOutputStream
+{
+    boolean closed;
+
+    private void <init>()
+    {
+        org.apache.commons.io.output.TeeOutputStreamTest$RecordCloseByteArrayOutputStream r0;
+
+        r0 := @this: org.apache.commons.io.output.TeeOutputStreamTest$RecordCloseByteArrayOutputStream;
+
+        specialinvoke r0.<java.io.ByteArrayOutputStream: void <init>()>();
+
+        return;
+    }
+
+    public void close() throws java.io.IOException
+    {
+        org.apache.commons.io.output.TeeOutputStreamTest$RecordCloseByteArrayOutputStream r0;
+
+        r0 := @this: org.apache.commons.io.output.TeeOutputStreamTest$RecordCloseByteArrayOutputStream;
+
+        specialinvoke r0.<java.io.ByteArrayOutputStream: void close()>();
+
+        r0.<org.apache.commons.io.output.TeeOutputStreamTest$RecordCloseByteArrayOutputStream: boolean closed> = 1;
+
+        return;
+    }
+
+    void <init>(org.apache.commons.io.output.TeeOutputStreamTest$RecordCloseByteArrayOutputStream)
+    {
+        org.apache.commons.io.output.TeeOutputStreamTest$RecordCloseByteArrayOutputStream r0, r1;
+
+        r0 := @this: org.apache.commons.io.output.TeeOutputStreamTest$RecordCloseByteArrayOutputStream;
+
+        r1 := @parameter0: org.apache.commons.io.output.TeeOutputStreamTest$RecordCloseByteArrayOutputStream;
+
+        specialinvoke r0.<org.apache.commons.io.output.TeeOutputStreamTest$RecordCloseByteArrayOutputStream: void <init>()>();
+
+        return;
+    }
+}

@@ -1,0 +1,954 @@
+public class org.apache.log4j.helpers.PatternParser extends java.lang.Object
+{
+    private static final char ESCAPE_CHAR;
+    private static final int LITERAL_STATE;
+    private static final int CONVERTER_STATE;
+    private static final int DOT_STATE;
+    private static final int MIN_STATE;
+    private static final int MAX_STATE;
+    static final int FULL_LOCATION_CONVERTER;
+    static final int METHOD_LOCATION_CONVERTER;
+    static final int CLASS_LOCATION_CONVERTER;
+    static final int LINE_LOCATION_CONVERTER;
+    static final int FILE_LOCATION_CONVERTER;
+    static final int RELATIVE_TIME_CONVERTER;
+    static final int THREAD_CONVERTER;
+    static final int LEVEL_CONVERTER;
+    static final int NDC_CONVERTER;
+    static final int MESSAGE_CONVERTER;
+    int state;
+    protected java.lang.StringBuffer currentLiteral;
+    protected int patternLength;
+    protected int i;
+    org.apache.log4j.helpers.PatternConverter head;
+    org.apache.log4j.helpers.PatternConverter tail;
+    protected org.apache.log4j.helpers.FormattingInfo formattingInfo;
+    protected java.lang.String pattern;
+
+    public void <init>(java.lang.String)
+    {
+        org.apache.log4j.helpers.PatternParser r0;
+        java.lang.String r1;
+        java.lang.StringBuffer $r2;
+        org.apache.log4j.helpers.FormattingInfo $r3;
+        int $i0;
+
+        r0 := @this: org.apache.log4j.helpers.PatternParser;
+
+        r1 := @parameter0: java.lang.String;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r2 = new java.lang.StringBuffer;
+
+        specialinvoke $r2.<java.lang.StringBuffer: void <init>(int)>(32);
+
+        r0.<org.apache.log4j.helpers.PatternParser: java.lang.StringBuffer currentLiteral> = $r2;
+
+        $r3 = new org.apache.log4j.helpers.FormattingInfo;
+
+        specialinvoke $r3.<org.apache.log4j.helpers.FormattingInfo: void <init>()>();
+
+        r0.<org.apache.log4j.helpers.PatternParser: org.apache.log4j.helpers.FormattingInfo formattingInfo> = $r3;
+
+        r0.<org.apache.log4j.helpers.PatternParser: java.lang.String pattern> = r1;
+
+        $i0 = virtualinvoke r1.<java.lang.String: int length()>();
+
+        r0.<org.apache.log4j.helpers.PatternParser: int patternLength> = $i0;
+
+        r0.<org.apache.log4j.helpers.PatternParser: int state> = 0;
+
+        return;
+    }
+
+    private void addToList(org.apache.log4j.helpers.PatternConverter)
+    {
+        org.apache.log4j.helpers.PatternParser r0;
+        org.apache.log4j.helpers.PatternConverter r1, $r2, $r3;
+
+        r0 := @this: org.apache.log4j.helpers.PatternParser;
+
+        r1 := @parameter0: org.apache.log4j.helpers.PatternConverter;
+
+        $r2 = r0.<org.apache.log4j.helpers.PatternParser: org.apache.log4j.helpers.PatternConverter head>;
+
+        if $r2 != null goto label1;
+
+        r0.<org.apache.log4j.helpers.PatternParser: org.apache.log4j.helpers.PatternConverter tail> = r1;
+
+        r0.<org.apache.log4j.helpers.PatternParser: org.apache.log4j.helpers.PatternConverter head> = r1;
+
+        goto label2;
+
+     label1:
+        $r3 = r0.<org.apache.log4j.helpers.PatternParser: org.apache.log4j.helpers.PatternConverter tail>;
+
+        $r3.<org.apache.log4j.helpers.PatternConverter: org.apache.log4j.helpers.PatternConverter next> = r1;
+
+        r0.<org.apache.log4j.helpers.PatternParser: org.apache.log4j.helpers.PatternConverter tail> = r1;
+
+     label2:
+        return;
+    }
+
+    protected java.lang.String extractOption()
+    {
+        org.apache.log4j.helpers.PatternParser r0;
+        int i0, $i1, $i2, $i3, $i5, $i6, $i7, $i8, $i9;
+        java.lang.String r1, $r2, $r3, $r4;
+        char $c4;
+
+        r0 := @this: org.apache.log4j.helpers.PatternParser;
+
+        $i2 = r0.<org.apache.log4j.helpers.PatternParser: int i>;
+
+        $i1 = r0.<org.apache.log4j.helpers.PatternParser: int patternLength>;
+
+        if $i2 >= $i1 goto label1;
+
+        $r2 = r0.<org.apache.log4j.helpers.PatternParser: java.lang.String pattern>;
+
+        $i3 = r0.<org.apache.log4j.helpers.PatternParser: int i>;
+
+        $c4 = virtualinvoke $r2.<java.lang.String: char charAt(int)>($i3);
+
+        if $c4 != 123 goto label1;
+
+        $r3 = r0.<org.apache.log4j.helpers.PatternParser: java.lang.String pattern>;
+
+        $i5 = r0.<org.apache.log4j.helpers.PatternParser: int i>;
+
+        i0 = virtualinvoke $r3.<java.lang.String: int indexOf(int,int)>(125, $i5);
+
+        $i6 = r0.<org.apache.log4j.helpers.PatternParser: int i>;
+
+        if i0 <= $i6 goto label1;
+
+        $r4 = r0.<org.apache.log4j.helpers.PatternParser: java.lang.String pattern>;
+
+        $i7 = r0.<org.apache.log4j.helpers.PatternParser: int i>;
+
+        $i8 = $i7 + 1;
+
+        r1 = virtualinvoke $r4.<java.lang.String: java.lang.String substring(int,int)>($i8, i0);
+
+        $i9 = i0 + 1;
+
+        r0.<org.apache.log4j.helpers.PatternParser: int i> = $i9;
+
+        return r1;
+
+     label1:
+        return null;
+    }
+
+    protected int extractPrecisionOption()
+    {
+        org.apache.log4j.helpers.PatternParser r0;
+        java.lang.String r1, $r6, $r11;
+        java.lang.StringBuilder $r3, $r4, $r5, $r8, $r9, $r10;
+        java.lang.NumberFormatException $r7;
+        int i0;
+
+        r0 := @this: org.apache.log4j.helpers.PatternParser;
+
+        r1 = virtualinvoke r0.<org.apache.log4j.helpers.PatternParser: java.lang.String extractOption()>();
+
+        i0 = 0;
+
+        if r1 == null goto label4;
+
+     label1:
+        i0 = staticinvoke <java.lang.Integer: int parseInt(java.lang.String)>(r1);
+
+        if i0 > 0 goto label4;
+
+        $r3 = new java.lang.StringBuilder;
+
+        specialinvoke $r3.<java.lang.StringBuilder: void <init>(java.lang.String)>("Precision option (");
+
+        $r4 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r1);
+
+        $r5 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(") isn\'t a positive integer.");
+
+        $r6 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.apache.log4j.helpers.LogLog: void error(java.lang.String)>($r6);
+
+        i0 = 0;
+
+     label2:
+        goto label4;
+
+     label3:
+        $r7 := @caughtexception;
+
+        $r8 = new java.lang.StringBuilder;
+
+        specialinvoke $r8.<java.lang.StringBuilder: void <init>(java.lang.String)>("Category option \"");
+
+        $r9 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r1);
+
+        $r10 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\" not a decimal integer.");
+
+        $r11 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.apache.log4j.helpers.LogLog: void error(java.lang.String,java.lang.Throwable)>($r11, $r7);
+
+     label4:
+        return i0;
+
+        catch java.lang.NumberFormatException from label1 to label2 with label3;
+    }
+
+    public org.apache.log4j.helpers.PatternConverter parse()
+    {
+        org.apache.log4j.helpers.PatternParser r0;
+        char c0, $c7;
+        int $i1, $i2, $i3, $i4, $i5, $i6, $i8, $i9, $i10, $i11, $i12, $i13, $i14, $i15, $i16, $i17, $i18, $i19, $i20, $i21, $i22, $i23, $i24, $i25, $i26;
+        java.lang.String $r1, $r4, $r5, $r17, $r35, $r45;
+        java.lang.StringBuffer $r2, $r6, $r8, $r10, $r11, $r12, $r16, $r18, $r20, $r24, $r28, $r37, $r41, $r44;
+        org.apache.log4j.helpers.FormattingInfo $r14, $r22, $r23, $r26, $r27, $r36, $r39, $r40;
+        org.apache.log4j.helpers.PatternParser$LiteralPatternConverter $r15, $r43;
+        java.lang.StringBuilder $r30, $r31, $r32, $r33, $r34;
+        org.apache.log4j.helpers.PatternConverter $r42;
+
+        r0 := @this: org.apache.log4j.helpers.PatternParser;
+
+        r0.<org.apache.log4j.helpers.PatternParser: int i> = 0;
+
+        goto label21;
+
+     label01:
+        $r1 = r0.<org.apache.log4j.helpers.PatternParser: java.lang.String pattern>;
+
+        $i1 = r0.<org.apache.log4j.helpers.PatternParser: int i>;
+
+        $i2 = $i1 + 1;
+
+        r0.<org.apache.log4j.helpers.PatternParser: int i> = $i2;
+
+        c0 = virtualinvoke $r1.<java.lang.String: char charAt(int)>($i1);
+
+        $i3 = r0.<org.apache.log4j.helpers.PatternParser: int state>;
+
+        tableswitch($i3)
+        {
+            case 0: goto label02;
+            case 1: goto label09;
+            case 2: goto label21;
+            case 3: goto label17;
+            case 4: goto label14;
+            case 5: goto label19;
+            default: goto label21;
+        };
+
+     label02:
+        $i5 = r0.<org.apache.log4j.helpers.PatternParser: int i>;
+
+        $i4 = r0.<org.apache.log4j.helpers.PatternParser: int patternLength>;
+
+        if $i5 != $i4 goto label03;
+
+        $r18 = r0.<org.apache.log4j.helpers.PatternParser: java.lang.StringBuffer currentLiteral>;
+
+        virtualinvoke $r18.<java.lang.StringBuffer: java.lang.StringBuffer append(char)>(c0);
+
+        goto label21;
+
+     label03:
+        if c0 != 37 goto label08;
+
+        $r4 = r0.<org.apache.log4j.helpers.PatternParser: java.lang.String pattern>;
+
+        $i6 = r0.<org.apache.log4j.helpers.PatternParser: int i>;
+
+        $c7 = virtualinvoke $r4.<java.lang.String: char charAt(int)>($i6);
+
+        lookupswitch($c7)
+        {
+            case 37: goto label04;
+            case 110: goto label05;
+            default: goto label06;
+        };
+
+     label04:
+        $r8 = r0.<org.apache.log4j.helpers.PatternParser: java.lang.StringBuffer currentLiteral>;
+
+        virtualinvoke $r8.<java.lang.StringBuffer: java.lang.StringBuffer append(char)>(c0);
+
+        $i10 = r0.<org.apache.log4j.helpers.PatternParser: int i>;
+
+        $i11 = $i10 + 1;
+
+        r0.<org.apache.log4j.helpers.PatternParser: int i> = $i11;
+
+        goto label21;
+
+     label05:
+        $r6 = r0.<org.apache.log4j.helpers.PatternParser: java.lang.StringBuffer currentLiteral>;
+
+        $r5 = <org.apache.log4j.Layout: java.lang.String LINE_SEP>;
+
+        virtualinvoke $r6.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>($r5);
+
+        $i8 = r0.<org.apache.log4j.helpers.PatternParser: int i>;
+
+        $i9 = $i8 + 1;
+
+        r0.<org.apache.log4j.helpers.PatternParser: int i> = $i9;
+
+        goto label21;
+
+     label06:
+        $r10 = r0.<org.apache.log4j.helpers.PatternParser: java.lang.StringBuffer currentLiteral>;
+
+        $i12 = virtualinvoke $r10.<java.lang.StringBuffer: int length()>();
+
+        if $i12 == 0 goto label07;
+
+        $r15 = new org.apache.log4j.helpers.PatternParser$LiteralPatternConverter;
+
+        $r16 = r0.<org.apache.log4j.helpers.PatternParser: java.lang.StringBuffer currentLiteral>;
+
+        $r17 = virtualinvoke $r16.<java.lang.StringBuffer: java.lang.String toString()>();
+
+        specialinvoke $r15.<org.apache.log4j.helpers.PatternParser$LiteralPatternConverter: void <init>(java.lang.String)>($r17);
+
+        specialinvoke r0.<org.apache.log4j.helpers.PatternParser: void addToList(org.apache.log4j.helpers.PatternConverter)>($r15);
+
+     label07:
+        $r11 = r0.<org.apache.log4j.helpers.PatternParser: java.lang.StringBuffer currentLiteral>;
+
+        virtualinvoke $r11.<java.lang.StringBuffer: void setLength(int)>(0);
+
+        $r12 = r0.<org.apache.log4j.helpers.PatternParser: java.lang.StringBuffer currentLiteral>;
+
+        virtualinvoke $r12.<java.lang.StringBuffer: java.lang.StringBuffer append(char)>(c0);
+
+        r0.<org.apache.log4j.helpers.PatternParser: int state> = 1;
+
+        $r14 = r0.<org.apache.log4j.helpers.PatternParser: org.apache.log4j.helpers.FormattingInfo formattingInfo>;
+
+        virtualinvoke $r14.<org.apache.log4j.helpers.FormattingInfo: void reset()>();
+
+        goto label21;
+
+     label08:
+        $r2 = r0.<org.apache.log4j.helpers.PatternParser: java.lang.StringBuffer currentLiteral>;
+
+        virtualinvoke $r2.<java.lang.StringBuffer: java.lang.StringBuffer append(char)>(c0);
+
+        goto label21;
+
+     label09:
+        $r37 = r0.<org.apache.log4j.helpers.PatternParser: java.lang.StringBuffer currentLiteral>;
+
+        virtualinvoke $r37.<java.lang.StringBuffer: java.lang.StringBuffer append(char)>(c0);
+
+        tableswitch(c0)
+        {
+            case 45: goto label10;
+            case 46: goto label11;
+            default: goto label12;
+        };
+
+     label10:
+        $r39 = r0.<org.apache.log4j.helpers.PatternParser: org.apache.log4j.helpers.FormattingInfo formattingInfo>;
+
+        $r39.<org.apache.log4j.helpers.FormattingInfo: boolean leftAlign> = 1;
+
+        goto label21;
+
+     label11:
+        r0.<org.apache.log4j.helpers.PatternParser: int state> = 3;
+
+        goto label21;
+
+     label12:
+        if c0 < 48 goto label13;
+
+        if c0 > 57 goto label13;
+
+        $r40 = r0.<org.apache.log4j.helpers.PatternParser: org.apache.log4j.helpers.FormattingInfo formattingInfo>;
+
+        $i23 = c0 - 48;
+
+        $r40.<org.apache.log4j.helpers.FormattingInfo: int min> = $i23;
+
+        r0.<org.apache.log4j.helpers.PatternParser: int state> = 4;
+
+        goto label21;
+
+     label13:
+        virtualinvoke r0.<org.apache.log4j.helpers.PatternParser: void finalizeConverter(char)>(c0);
+
+        goto label21;
+
+     label14:
+        $r24 = r0.<org.apache.log4j.helpers.PatternParser: java.lang.StringBuffer currentLiteral>;
+
+        virtualinvoke $r24.<java.lang.StringBuffer: java.lang.StringBuffer append(char)>(c0);
+
+        if c0 < 48 goto label15;
+
+        if c0 > 57 goto label15;
+
+        $r27 = r0.<org.apache.log4j.helpers.PatternParser: org.apache.log4j.helpers.FormattingInfo formattingInfo>;
+
+        $r26 = r0.<org.apache.log4j.helpers.PatternParser: org.apache.log4j.helpers.FormattingInfo formattingInfo>;
+
+        $i17 = $r26.<org.apache.log4j.helpers.FormattingInfo: int min>;
+
+        $i19 = $i17 * 10;
+
+        $i18 = c0 - 48;
+
+        $i20 = $i19 + $i18;
+
+        $r27.<org.apache.log4j.helpers.FormattingInfo: int min> = $i20;
+
+        goto label21;
+
+     label15:
+        if c0 != 46 goto label16;
+
+        r0.<org.apache.log4j.helpers.PatternParser: int state> = 3;
+
+        goto label21;
+
+     label16:
+        virtualinvoke r0.<org.apache.log4j.helpers.PatternParser: void finalizeConverter(char)>(c0);
+
+        goto label21;
+
+     label17:
+        $r28 = r0.<org.apache.log4j.helpers.PatternParser: java.lang.StringBuffer currentLiteral>;
+
+        virtualinvoke $r28.<java.lang.StringBuffer: java.lang.StringBuffer append(char)>(c0);
+
+        if c0 < 48 goto label18;
+
+        if c0 > 57 goto label18;
+
+        $r36 = r0.<org.apache.log4j.helpers.PatternParser: org.apache.log4j.helpers.FormattingInfo formattingInfo>;
+
+        $i22 = c0 - 48;
+
+        $r36.<org.apache.log4j.helpers.FormattingInfo: int max> = $i22;
+
+        r0.<org.apache.log4j.helpers.PatternParser: int state> = 5;
+
+        goto label21;
+
+     label18:
+        $r30 = new java.lang.StringBuilder;
+
+        specialinvoke $r30.<java.lang.StringBuilder: void <init>(java.lang.String)>("Error occured in position ");
+
+        $i21 = r0.<org.apache.log4j.helpers.PatternParser: int i>;
+
+        $r31 = virtualinvoke $r30.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i21);
+
+        $r32 = virtualinvoke $r31.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(".\n Was expecting digit, instead got char \"");
+
+        $r33 = virtualinvoke $r32.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(c0);
+
+        $r34 = virtualinvoke $r33.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\".");
+
+        $r35 = virtualinvoke $r34.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.apache.log4j.helpers.LogLog: void error(java.lang.String)>($r35);
+
+        r0.<org.apache.log4j.helpers.PatternParser: int state> = 0;
+
+        goto label21;
+
+     label19:
+        $r20 = r0.<org.apache.log4j.helpers.PatternParser: java.lang.StringBuffer currentLiteral>;
+
+        virtualinvoke $r20.<java.lang.StringBuffer: java.lang.StringBuffer append(char)>(c0);
+
+        if c0 < 48 goto label20;
+
+        if c0 > 57 goto label20;
+
+        $r23 = r0.<org.apache.log4j.helpers.PatternParser: org.apache.log4j.helpers.FormattingInfo formattingInfo>;
+
+        $r22 = r0.<org.apache.log4j.helpers.PatternParser: org.apache.log4j.helpers.FormattingInfo formattingInfo>;
+
+        $i13 = $r22.<org.apache.log4j.helpers.FormattingInfo: int max>;
+
+        $i15 = $i13 * 10;
+
+        $i14 = c0 - 48;
+
+        $i16 = $i15 + $i14;
+
+        $r23.<org.apache.log4j.helpers.FormattingInfo: int max> = $i16;
+
+        goto label21;
+
+     label20:
+        virtualinvoke r0.<org.apache.log4j.helpers.PatternParser: void finalizeConverter(char)>(c0);
+
+        r0.<org.apache.log4j.helpers.PatternParser: int state> = 0;
+
+     label21:
+        $i25 = r0.<org.apache.log4j.helpers.PatternParser: int i>;
+
+        $i26 = r0.<org.apache.log4j.helpers.PatternParser: int patternLength>;
+
+        if $i25 < $i26 goto label01;
+
+        $r41 = r0.<org.apache.log4j.helpers.PatternParser: java.lang.StringBuffer currentLiteral>;
+
+        $i24 = virtualinvoke $r41.<java.lang.StringBuffer: int length()>();
+
+        if $i24 == 0 goto label22;
+
+        $r43 = new org.apache.log4j.helpers.PatternParser$LiteralPatternConverter;
+
+        $r44 = r0.<org.apache.log4j.helpers.PatternParser: java.lang.StringBuffer currentLiteral>;
+
+        $r45 = virtualinvoke $r44.<java.lang.StringBuffer: java.lang.String toString()>();
+
+        specialinvoke $r43.<org.apache.log4j.helpers.PatternParser$LiteralPatternConverter: void <init>(java.lang.String)>($r45);
+
+        specialinvoke r0.<org.apache.log4j.helpers.PatternParser: void addToList(org.apache.log4j.helpers.PatternConverter)>($r43);
+
+     label22:
+        $r42 = r0.<org.apache.log4j.helpers.PatternParser: org.apache.log4j.helpers.PatternConverter head>;
+
+        return $r42;
+    }
+
+    protected void finalizeConverter(char)
+    {
+        org.apache.log4j.helpers.PatternParser r0;
+        char c0;
+        java.lang.String r1, $r47, $r50, $r55, r58, r64;
+        org.apache.log4j.helpers.PatternParser$BasicPatternConverter $r2, $r5, $r8, $r11, $r14;
+        org.apache.log4j.helpers.FormattingInfo $r3, $r6, $r9, $r12, $r15, $r18, $r25, $r28, $r31, $r34, $r37, $r40, $r62;
+        java.lang.StringBuffer $r4, $r7, $r10, $r13, $r16, $r19, $r26, $r29, $r32, $r35, $r38, $r41, $r49, $r51, $r63;
+        org.apache.log4j.helpers.PatternParser$LocationPatternConverter $r17, $r30, $r33, $r36;
+        boolean $z0, $z1, $z2;
+        java.text.SimpleDateFormat $r20;
+        org.apache.log4j.helpers.DateTimeDateFormat $r21;
+        org.apache.log4j.helpers.AbsoluteTimeDateFormat $r22;
+        org.apache.log4j.helpers.ISO8601DateFormat $r23;
+        org.apache.log4j.helpers.PatternParser$CategoryPatternConverter $r24;
+        int $i1, $i2, $i3;
+        org.apache.log4j.helpers.PatternParser$MDCPatternConverter $r27;
+        org.apache.log4j.helpers.PatternParser$ClassNamePatternConverter $r39;
+        java.lang.StringBuilder $r42, $r43, $r44, $r45, $r46, $r53, $r54;
+        org.apache.log4j.helpers.PatternParser$LiteralPatternConverter $r48;
+        java.lang.IllegalArgumentException $r52;
+        java.lang.Object $r56;
+        org.apache.log4j.helpers.PatternConverter r57;
+        java.text.DateFormat r59;
+        org.apache.log4j.helpers.PatternParser$DatePatternConverter $r61;
+
+        r0 := @this: org.apache.log4j.helpers.PatternParser;
+
+        c0 := @parameter0: char;
+
+        lookupswitch(c0)
+        {
+            case 67: goto label02;
+            case 70: goto label11;
+            case 76: goto label13;
+            case 77: goto label15;
+            case 88: goto label20;
+            case 99: goto label01;
+            case 100: goto label03;
+            case 108: goto label12;
+            case 109: goto label14;
+            case 112: goto label16;
+            case 114: goto label17;
+            case 116: goto label18;
+            case 120: goto label19;
+            default: goto label21;
+        };
+
+     label01:
+        $r24 = new org.apache.log4j.helpers.PatternParser$CategoryPatternConverter;
+
+        $r25 = r0.<org.apache.log4j.helpers.PatternParser: org.apache.log4j.helpers.FormattingInfo formattingInfo>;
+
+        $i1 = virtualinvoke r0.<org.apache.log4j.helpers.PatternParser: int extractPrecisionOption()>();
+
+        specialinvoke $r24.<org.apache.log4j.helpers.PatternParser$CategoryPatternConverter: void <init>(org.apache.log4j.helpers.PatternParser,org.apache.log4j.helpers.FormattingInfo,int)>(r0, $r25, $i1);
+
+        r57 = $r24;
+
+        $r26 = r0.<org.apache.log4j.helpers.PatternParser: java.lang.StringBuffer currentLiteral>;
+
+        virtualinvoke $r26.<java.lang.StringBuffer: void setLength(int)>(0);
+
+        goto label22;
+
+     label02:
+        $r39 = new org.apache.log4j.helpers.PatternParser$ClassNamePatternConverter;
+
+        $r40 = r0.<org.apache.log4j.helpers.PatternParser: org.apache.log4j.helpers.FormattingInfo formattingInfo>;
+
+        $i2 = virtualinvoke r0.<org.apache.log4j.helpers.PatternParser: int extractPrecisionOption()>();
+
+        specialinvoke $r39.<org.apache.log4j.helpers.PatternParser$ClassNamePatternConverter: void <init>(org.apache.log4j.helpers.PatternParser,org.apache.log4j.helpers.FormattingInfo,int)>(r0, $r40, $i2);
+
+        r57 = $r39;
+
+        $r41 = r0.<org.apache.log4j.helpers.PatternParser: java.lang.StringBuffer currentLiteral>;
+
+        virtualinvoke $r41.<java.lang.StringBuffer: void setLength(int)>(0);
+
+        goto label22;
+
+     label03:
+        r58 = "ISO8601";
+
+        r1 = virtualinvoke r0.<org.apache.log4j.helpers.PatternParser: java.lang.String extractOption()>();
+
+        if r1 == null goto label04;
+
+        r58 = r1;
+
+     label04:
+        $z0 = virtualinvoke r58.<java.lang.String: boolean equalsIgnoreCase(java.lang.String)>("ISO8601");
+
+        if $z0 == 0 goto label05;
+
+        $r23 = new org.apache.log4j.helpers.ISO8601DateFormat;
+
+        specialinvoke $r23.<org.apache.log4j.helpers.ISO8601DateFormat: void <init>()>();
+
+        r59 = $r23;
+
+        goto label10;
+
+     label05:
+        $z1 = virtualinvoke r58.<java.lang.String: boolean equalsIgnoreCase(java.lang.String)>("ABSOLUTE");
+
+        if $z1 == 0 goto label06;
+
+        $r22 = new org.apache.log4j.helpers.AbsoluteTimeDateFormat;
+
+        specialinvoke $r22.<org.apache.log4j.helpers.AbsoluteTimeDateFormat: void <init>()>();
+
+        r59 = $r22;
+
+        goto label10;
+
+     label06:
+        $z2 = virtualinvoke r58.<java.lang.String: boolean equalsIgnoreCase(java.lang.String)>("DATE");
+
+        if $z2 == 0 goto label07;
+
+        $r21 = new org.apache.log4j.helpers.DateTimeDateFormat;
+
+        specialinvoke $r21.<org.apache.log4j.helpers.DateTimeDateFormat: void <init>()>();
+
+        r59 = $r21;
+
+        goto label10;
+
+     label07:
+        $r20 = new java.text.SimpleDateFormat;
+
+        specialinvoke $r20.<java.text.SimpleDateFormat: void <init>(java.lang.String)>(r58);
+
+        r59 = $r20;
+
+     label08:
+        goto label10;
+
+     label09:
+        $r52 := @caughtexception;
+
+        $r53 = new java.lang.StringBuilder;
+
+        specialinvoke $r53.<java.lang.StringBuilder: void <init>(java.lang.String)>("Could not instantiate SimpleDateFormat with ");
+
+        $r54 = virtualinvoke $r53.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r58);
+
+        $r55 = virtualinvoke $r54.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.apache.log4j.helpers.LogLog: void error(java.lang.String,java.lang.Throwable)>($r55, $r52);
+
+        $r56 = staticinvoke <org.apache.log4j.helpers.OptionConverter: java.lang.Object instantiateByClassName(java.lang.String,java.lang.Class,java.lang.Object)>("org.apache.log4j.helpers.ISO8601DateFormat", class "java/text/DateFormat", null);
+
+        r59 = (java.text.DateFormat) $r56;
+
+     label10:
+        $r61 = new org.apache.log4j.helpers.PatternParser$DatePatternConverter;
+
+        $r62 = r0.<org.apache.log4j.helpers.PatternParser: org.apache.log4j.helpers.FormattingInfo formattingInfo>;
+
+        specialinvoke $r61.<org.apache.log4j.helpers.PatternParser$DatePatternConverter: void <init>(org.apache.log4j.helpers.FormattingInfo,java.text.DateFormat)>($r62, r59);
+
+        r57 = $r61;
+
+        $r63 = r0.<org.apache.log4j.helpers.PatternParser: java.lang.StringBuffer currentLiteral>;
+
+        virtualinvoke $r63.<java.lang.StringBuffer: void setLength(int)>(0);
+
+        goto label22;
+
+     label11:
+        $r36 = new org.apache.log4j.helpers.PatternParser$LocationPatternConverter;
+
+        $r37 = r0.<org.apache.log4j.helpers.PatternParser: org.apache.log4j.helpers.FormattingInfo formattingInfo>;
+
+        specialinvoke $r36.<org.apache.log4j.helpers.PatternParser$LocationPatternConverter: void <init>(org.apache.log4j.helpers.PatternParser,org.apache.log4j.helpers.FormattingInfo,int)>(r0, $r37, 1004);
+
+        r57 = $r36;
+
+        $r38 = r0.<org.apache.log4j.helpers.PatternParser: java.lang.StringBuffer currentLiteral>;
+
+        virtualinvoke $r38.<java.lang.StringBuffer: void setLength(int)>(0);
+
+        goto label22;
+
+     label12:
+        $r17 = new org.apache.log4j.helpers.PatternParser$LocationPatternConverter;
+
+        $r18 = r0.<org.apache.log4j.helpers.PatternParser: org.apache.log4j.helpers.FormattingInfo formattingInfo>;
+
+        specialinvoke $r17.<org.apache.log4j.helpers.PatternParser$LocationPatternConverter: void <init>(org.apache.log4j.helpers.PatternParser,org.apache.log4j.helpers.FormattingInfo,int)>(r0, $r18, 1000);
+
+        r57 = $r17;
+
+        $r19 = r0.<org.apache.log4j.helpers.PatternParser: java.lang.StringBuffer currentLiteral>;
+
+        virtualinvoke $r19.<java.lang.StringBuffer: void setLength(int)>(0);
+
+        goto label22;
+
+     label13:
+        $r33 = new org.apache.log4j.helpers.PatternParser$LocationPatternConverter;
+
+        $r34 = r0.<org.apache.log4j.helpers.PatternParser: org.apache.log4j.helpers.FormattingInfo formattingInfo>;
+
+        specialinvoke $r33.<org.apache.log4j.helpers.PatternParser$LocationPatternConverter: void <init>(org.apache.log4j.helpers.PatternParser,org.apache.log4j.helpers.FormattingInfo,int)>(r0, $r34, 1003);
+
+        r57 = $r33;
+
+        $r35 = r0.<org.apache.log4j.helpers.PatternParser: java.lang.StringBuffer currentLiteral>;
+
+        virtualinvoke $r35.<java.lang.StringBuffer: void setLength(int)>(0);
+
+        goto label22;
+
+     label14:
+        $r14 = new org.apache.log4j.helpers.PatternParser$BasicPatternConverter;
+
+        $r15 = r0.<org.apache.log4j.helpers.PatternParser: org.apache.log4j.helpers.FormattingInfo formattingInfo>;
+
+        specialinvoke $r14.<org.apache.log4j.helpers.PatternParser$BasicPatternConverter: void <init>(org.apache.log4j.helpers.FormattingInfo,int)>($r15, 2004);
+
+        r57 = $r14;
+
+        $r16 = r0.<org.apache.log4j.helpers.PatternParser: java.lang.StringBuffer currentLiteral>;
+
+        virtualinvoke $r16.<java.lang.StringBuffer: void setLength(int)>(0);
+
+        goto label22;
+
+     label15:
+        $r30 = new org.apache.log4j.helpers.PatternParser$LocationPatternConverter;
+
+        $r31 = r0.<org.apache.log4j.helpers.PatternParser: org.apache.log4j.helpers.FormattingInfo formattingInfo>;
+
+        specialinvoke $r30.<org.apache.log4j.helpers.PatternParser$LocationPatternConverter: void <init>(org.apache.log4j.helpers.PatternParser,org.apache.log4j.helpers.FormattingInfo,int)>(r0, $r31, 1001);
+
+        r57 = $r30;
+
+        $r32 = r0.<org.apache.log4j.helpers.PatternParser: java.lang.StringBuffer currentLiteral>;
+
+        virtualinvoke $r32.<java.lang.StringBuffer: void setLength(int)>(0);
+
+        goto label22;
+
+     label16:
+        $r11 = new org.apache.log4j.helpers.PatternParser$BasicPatternConverter;
+
+        $r12 = r0.<org.apache.log4j.helpers.PatternParser: org.apache.log4j.helpers.FormattingInfo formattingInfo>;
+
+        specialinvoke $r11.<org.apache.log4j.helpers.PatternParser$BasicPatternConverter: void <init>(org.apache.log4j.helpers.FormattingInfo,int)>($r12, 2002);
+
+        r57 = $r11;
+
+        $r13 = r0.<org.apache.log4j.helpers.PatternParser: java.lang.StringBuffer currentLiteral>;
+
+        virtualinvoke $r13.<java.lang.StringBuffer: void setLength(int)>(0);
+
+        goto label22;
+
+     label17:
+        $r8 = new org.apache.log4j.helpers.PatternParser$BasicPatternConverter;
+
+        $r9 = r0.<org.apache.log4j.helpers.PatternParser: org.apache.log4j.helpers.FormattingInfo formattingInfo>;
+
+        specialinvoke $r8.<org.apache.log4j.helpers.PatternParser$BasicPatternConverter: void <init>(org.apache.log4j.helpers.FormattingInfo,int)>($r9, 2000);
+
+        r57 = $r8;
+
+        $r10 = r0.<org.apache.log4j.helpers.PatternParser: java.lang.StringBuffer currentLiteral>;
+
+        virtualinvoke $r10.<java.lang.StringBuffer: void setLength(int)>(0);
+
+        goto label22;
+
+     label18:
+        $r5 = new org.apache.log4j.helpers.PatternParser$BasicPatternConverter;
+
+        $r6 = r0.<org.apache.log4j.helpers.PatternParser: org.apache.log4j.helpers.FormattingInfo formattingInfo>;
+
+        specialinvoke $r5.<org.apache.log4j.helpers.PatternParser$BasicPatternConverter: void <init>(org.apache.log4j.helpers.FormattingInfo,int)>($r6, 2001);
+
+        r57 = $r5;
+
+        $r7 = r0.<org.apache.log4j.helpers.PatternParser: java.lang.StringBuffer currentLiteral>;
+
+        virtualinvoke $r7.<java.lang.StringBuffer: void setLength(int)>(0);
+
+        goto label22;
+
+     label19:
+        $r2 = new org.apache.log4j.helpers.PatternParser$BasicPatternConverter;
+
+        $r3 = r0.<org.apache.log4j.helpers.PatternParser: org.apache.log4j.helpers.FormattingInfo formattingInfo>;
+
+        specialinvoke $r2.<org.apache.log4j.helpers.PatternParser$BasicPatternConverter: void <init>(org.apache.log4j.helpers.FormattingInfo,int)>($r3, 2003);
+
+        r57 = $r2;
+
+        $r4 = r0.<org.apache.log4j.helpers.PatternParser: java.lang.StringBuffer currentLiteral>;
+
+        virtualinvoke $r4.<java.lang.StringBuffer: void setLength(int)>(0);
+
+        goto label22;
+
+     label20:
+        r64 = virtualinvoke r0.<org.apache.log4j.helpers.PatternParser: java.lang.String extractOption()>();
+
+        $r27 = new org.apache.log4j.helpers.PatternParser$MDCPatternConverter;
+
+        $r28 = r0.<org.apache.log4j.helpers.PatternParser: org.apache.log4j.helpers.FormattingInfo formattingInfo>;
+
+        specialinvoke $r27.<org.apache.log4j.helpers.PatternParser$MDCPatternConverter: void <init>(org.apache.log4j.helpers.FormattingInfo,java.lang.String)>($r28, r64);
+
+        r57 = $r27;
+
+        $r29 = r0.<org.apache.log4j.helpers.PatternParser: java.lang.StringBuffer currentLiteral>;
+
+        virtualinvoke $r29.<java.lang.StringBuffer: void setLength(int)>(0);
+
+        goto label22;
+
+     label21:
+        $r42 = new java.lang.StringBuilder;
+
+        specialinvoke $r42.<java.lang.StringBuilder: void <init>(java.lang.String)>("Unexpected char [");
+
+        $r43 = virtualinvoke $r42.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(c0);
+
+        $r44 = virtualinvoke $r43.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("] at position ");
+
+        $i3 = r0.<org.apache.log4j.helpers.PatternParser: int i>;
+
+        $r45 = virtualinvoke $r44.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i3);
+
+        $r46 = virtualinvoke $r45.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" in conversion patterrn.");
+
+        $r47 = virtualinvoke $r46.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.apache.log4j.helpers.LogLog: void error(java.lang.String)>($r47);
+
+        $r48 = new org.apache.log4j.helpers.PatternParser$LiteralPatternConverter;
+
+        $r49 = r0.<org.apache.log4j.helpers.PatternParser: java.lang.StringBuffer currentLiteral>;
+
+        $r50 = virtualinvoke $r49.<java.lang.StringBuffer: java.lang.String toString()>();
+
+        specialinvoke $r48.<org.apache.log4j.helpers.PatternParser$LiteralPatternConverter: void <init>(java.lang.String)>($r50);
+
+        r57 = $r48;
+
+        $r51 = r0.<org.apache.log4j.helpers.PatternParser: java.lang.StringBuffer currentLiteral>;
+
+        virtualinvoke $r51.<java.lang.StringBuffer: void setLength(int)>(0);
+
+     label22:
+        virtualinvoke r0.<org.apache.log4j.helpers.PatternParser: void addConverter(org.apache.log4j.helpers.PatternConverter)>(r57);
+
+        return;
+
+        catch java.lang.IllegalArgumentException from label07 to label08 with label09;
+    }
+
+    protected void addConverter(org.apache.log4j.helpers.PatternConverter)
+    {
+        org.apache.log4j.helpers.PatternParser r0;
+        org.apache.log4j.helpers.PatternConverter r1;
+        java.lang.StringBuffer $r2;
+        org.apache.log4j.helpers.FormattingInfo $r3;
+
+        r0 := @this: org.apache.log4j.helpers.PatternParser;
+
+        r1 := @parameter0: org.apache.log4j.helpers.PatternConverter;
+
+        $r2 = r0.<org.apache.log4j.helpers.PatternParser: java.lang.StringBuffer currentLiteral>;
+
+        virtualinvoke $r2.<java.lang.StringBuffer: void setLength(int)>(0);
+
+        specialinvoke r0.<org.apache.log4j.helpers.PatternParser: void addToList(org.apache.log4j.helpers.PatternConverter)>(r1);
+
+        r0.<org.apache.log4j.helpers.PatternParser: int state> = 0;
+
+        $r3 = r0.<org.apache.log4j.helpers.PatternParser: org.apache.log4j.helpers.FormattingInfo formattingInfo>;
+
+        virtualinvoke $r3.<org.apache.log4j.helpers.FormattingInfo: void reset()>();
+
+        return;
+    }
+
+    public static void <clinit>()
+    {
+        <org.apache.log4j.helpers.PatternParser: int MESSAGE_CONVERTER> = 2004;
+
+        <org.apache.log4j.helpers.PatternParser: int NDC_CONVERTER> = 2003;
+
+        <org.apache.log4j.helpers.PatternParser: int LEVEL_CONVERTER> = 2002;
+
+        <org.apache.log4j.helpers.PatternParser: int THREAD_CONVERTER> = 2001;
+
+        <org.apache.log4j.helpers.PatternParser: int RELATIVE_TIME_CONVERTER> = 2000;
+
+        <org.apache.log4j.helpers.PatternParser: int FILE_LOCATION_CONVERTER> = 1004;
+
+        <org.apache.log4j.helpers.PatternParser: int LINE_LOCATION_CONVERTER> = 1003;
+
+        <org.apache.log4j.helpers.PatternParser: int CLASS_LOCATION_CONVERTER> = 1002;
+
+        <org.apache.log4j.helpers.PatternParser: int METHOD_LOCATION_CONVERTER> = 1001;
+
+        <org.apache.log4j.helpers.PatternParser: int FULL_LOCATION_CONVERTER> = 1000;
+
+        <org.apache.log4j.helpers.PatternParser: int MAX_STATE> = 5;
+
+        <org.apache.log4j.helpers.PatternParser: int MIN_STATE> = 4;
+
+        <org.apache.log4j.helpers.PatternParser: int DOT_STATE> = 3;
+
+        <org.apache.log4j.helpers.PatternParser: int CONVERTER_STATE> = 1;
+
+        <org.apache.log4j.helpers.PatternParser: int LITERAL_STATE> = 0;
+
+        <org.apache.log4j.helpers.PatternParser: char ESCAPE_CHAR> = 37;
+
+        return;
+    }
+}

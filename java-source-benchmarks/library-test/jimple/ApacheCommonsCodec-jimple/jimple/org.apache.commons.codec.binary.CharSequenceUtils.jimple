@@ -1,0 +1,106 @@
+public class org.apache.commons.codec.binary.CharSequenceUtils extends java.lang.Object
+{
+
+    public void <init>()
+    {
+        org.apache.commons.codec.binary.CharSequenceUtils r0;
+
+        r0 := @this: org.apache.commons.codec.binary.CharSequenceUtils;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    static boolean regionMatches(java.lang.CharSequence, boolean, int, java.lang.CharSequence, int, int)
+    {
+        java.lang.CharSequence r0, r1;
+        boolean z0, $z1, $z2, $z3;
+        int i0, i1, i2, $i5, $i6, i11, i12, i13, $i14;
+        char c3, c4, $c7, $c8, $c9, $c10;
+        java.lang.String $r2, $r3;
+
+        r0 := @parameter0: java.lang.CharSequence;
+
+        z0 := @parameter1: boolean;
+
+        i0 := @parameter2: int;
+
+        r1 := @parameter3: java.lang.CharSequence;
+
+        i1 := @parameter4: int;
+
+        i2 := @parameter5: int;
+
+        $z1 = r0 instanceof java.lang.String;
+
+        if $z1 == 0 goto label1;
+
+        $z2 = r1 instanceof java.lang.String;
+
+        if $z2 == 0 goto label1;
+
+        $r3 = (java.lang.String) r0;
+
+        $r2 = (java.lang.String) r1;
+
+        $z3 = virtualinvoke $r3.<java.lang.String: boolean regionMatches(boolean,int,java.lang.String,int,int)>(z0, i0, $r2, i1, i2);
+
+        return $z3;
+
+     label1:
+        i11 = i0;
+
+        i12 = i1;
+
+        i13 = i2;
+
+        goto label5;
+
+     label2:
+        $i5 = i11;
+
+        i11 = i11 + 1;
+
+        c3 = interfaceinvoke r0.<java.lang.CharSequence: char charAt(int)>($i5);
+
+        $i6 = i12;
+
+        i12 = i12 + 1;
+
+        c4 = interfaceinvoke r1.<java.lang.CharSequence: char charAt(int)>($i6);
+
+        if c3 != c4 goto label3;
+
+        goto label5;
+
+     label3:
+        if z0 != 0 goto label4;
+
+        return 0;
+
+     label4:
+        $c7 = staticinvoke <java.lang.Character: char toUpperCase(char)>(c3);
+
+        $c8 = staticinvoke <java.lang.Character: char toUpperCase(char)>(c4);
+
+        if $c7 == $c8 goto label5;
+
+        $c9 = staticinvoke <java.lang.Character: char toLowerCase(char)>(c3);
+
+        $c10 = staticinvoke <java.lang.Character: char toLowerCase(char)>(c4);
+
+        if $c9 == $c10 goto label5;
+
+        return 0;
+
+     label5:
+        $i14 = i13;
+
+        i13 = i13 + -1;
+
+        if $i14 > 0 goto label2;
+
+        return 1;
+    }
+}

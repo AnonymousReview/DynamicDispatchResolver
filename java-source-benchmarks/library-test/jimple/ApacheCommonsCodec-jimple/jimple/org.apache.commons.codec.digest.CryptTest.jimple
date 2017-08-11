@@ -1,0 +1,91 @@
+public class org.apache.commons.codec.digest.CryptTest extends java.lang.Object
+{
+
+    public void <init>()
+    {
+        org.apache.commons.codec.digest.CryptTest r0;
+
+        r0 := @this: org.apache.commons.codec.digest.CryptTest;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void testCrypt()
+    {
+        org.apache.commons.codec.digest.CryptTest r0;
+        org.apache.commons.codec.digest.Crypt $r1;
+
+        r0 := @this: org.apache.commons.codec.digest.CryptTest;
+
+        $r1 = new org.apache.commons.codec.digest.Crypt;
+
+        specialinvoke $r1.<org.apache.commons.codec.digest.Crypt: void <init>()>();
+
+        staticinvoke <org.junit.Assert: void assertNotNull(java.lang.Object)>($r1);
+
+        return;
+    }
+
+    public void testDefaultCryptVariant()
+    {
+        org.apache.commons.codec.digest.CryptTest r0;
+        java.lang.String $r1, $r2;
+        boolean $z0, $z1;
+
+        r0 := @this: org.apache.commons.codec.digest.CryptTest;
+
+        $r1 = staticinvoke <org.apache.commons.codec.digest.Crypt: java.lang.String crypt(java.lang.String)>("secret");
+
+        $z0 = virtualinvoke $r1.<java.lang.String: boolean startsWith(java.lang.String)>("$6$");
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z0);
+
+        $r2 = staticinvoke <org.apache.commons.codec.digest.Crypt: java.lang.String crypt(java.lang.String,java.lang.String)>("secret", null);
+
+        $z1 = virtualinvoke $r2.<java.lang.String: boolean startsWith(java.lang.String)>("$6$");
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z1);
+
+        return;
+    }
+
+    public void testCryptWithBytes()
+    {
+        org.apache.commons.codec.digest.CryptTest r0;
+        java.lang.String r2, $r4;
+        byte[] $r3;
+
+        r0 := @this: org.apache.commons.codec.digest.CryptTest;
+
+        $r3 = newarray (byte)[4];
+
+        $r3[0] = 98;
+
+        $r3[1] = 121;
+
+        $r3[2] = 116;
+
+        $r3[3] = 101;
+
+        r2 = staticinvoke <org.apache.commons.codec.digest.Crypt: java.lang.String crypt(byte[])>($r3);
+
+        $r4 = staticinvoke <org.apache.commons.codec.digest.Crypt: java.lang.String crypt(java.lang.String,java.lang.String)>("byte", r2);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>(r2, $r4);
+
+        return;
+    }
+
+    public void testCryptWithEmptySalt()
+    {
+        org.apache.commons.codec.digest.CryptTest r0;
+
+        r0 := @this: org.apache.commons.codec.digest.CryptTest;
+
+        staticinvoke <org.apache.commons.codec.digest.Crypt: java.lang.String crypt(java.lang.String,java.lang.String)>("secret", "");
+
+        return;
+    }
+}

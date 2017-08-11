@@ -1,0 +1,421 @@
+public class org.apache.commons.io.output.StringBuilderWriterTest extends java.lang.Object
+{
+    private static final char[] FOOBAR_CHARS;
+
+    static void <clinit>()
+    {
+        char[] $r0;
+
+        $r0 = newarray (char)[6];
+
+        $r0[0] = 70;
+
+        $r0[1] = 111;
+
+        $r0[2] = 111;
+
+        $r0[3] = 66;
+
+        $r0[4] = 97;
+
+        $r0[5] = 114;
+
+        <org.apache.commons.io.output.StringBuilderWriterTest: char[] FOOBAR_CHARS> = $r0;
+
+        return;
+    }
+
+    public void <init>()
+    {
+        org.apache.commons.io.output.StringBuilderWriterTest r0;
+
+        r0 := @this: org.apache.commons.io.output.StringBuilderWriterTest;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void testAppendConstructCapacity() throws java.io.IOException
+    {
+        org.apache.commons.io.output.StringBuilderWriterTest r0;
+        org.apache.commons.io.output.StringBuilderWriter $r2;
+        java.lang.String $r4;
+
+        r0 := @this: org.apache.commons.io.output.StringBuilderWriterTest;
+
+        $r2 = new org.apache.commons.io.output.StringBuilderWriter;
+
+        specialinvoke $r2.<org.apache.commons.io.output.StringBuilderWriter: void <init>(int)>(100);
+
+        virtualinvoke $r2.<java.io.Writer: java.io.Writer append(java.lang.CharSequence)>("Foo");
+
+        $r4 = virtualinvoke $r2.<java.lang.Object: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("Foo", $r4);
+
+        virtualinvoke $r2.<java.io.Writer: void close()>();
+
+        return;
+    }
+
+    public void testAppendConstructStringBuilder()
+    {
+        org.apache.commons.io.output.StringBuilderWriterTest r0;
+        java.lang.StringBuilder $r3, $r7;
+        org.apache.commons.io.output.StringBuilderWriter $r4;
+        java.lang.String $r6;
+
+        r0 := @this: org.apache.commons.io.output.StringBuilderWriterTest;
+
+        $r3 = new java.lang.StringBuilder;
+
+        specialinvoke $r3.<java.lang.StringBuilder: void <init>(java.lang.String)>("Foo");
+
+        $r4 = new org.apache.commons.io.output.StringBuilderWriter;
+
+        specialinvoke $r4.<org.apache.commons.io.output.StringBuilderWriter: void <init>(java.lang.StringBuilder)>($r3);
+
+        virtualinvoke $r4.<org.apache.commons.io.output.StringBuilderWriter: java.io.Writer append(java.lang.CharSequence)>("Bar");
+
+        $r6 = virtualinvoke $r4.<org.apache.commons.io.output.StringBuilderWriter: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("FooBar", $r6);
+
+        $r7 = virtualinvoke $r4.<org.apache.commons.io.output.StringBuilderWriter: java.lang.StringBuilder getBuilder()>();
+
+        staticinvoke <org.junit.Assert: void assertSame(java.lang.Object,java.lang.Object)>($r3, $r7);
+
+        virtualinvoke $r4.<org.apache.commons.io.output.StringBuilderWriter: void close()>();
+
+        return;
+    }
+
+    public void testAppendConstructNull() throws java.io.IOException
+    {
+        org.apache.commons.io.output.StringBuilderWriterTest r0;
+        org.apache.commons.io.output.StringBuilderWriter $r2;
+        java.lang.String $r4;
+
+        r0 := @this: org.apache.commons.io.output.StringBuilderWriterTest;
+
+        $r2 = new org.apache.commons.io.output.StringBuilderWriter;
+
+        specialinvoke $r2.<org.apache.commons.io.output.StringBuilderWriter: void <init>(java.lang.StringBuilder)>(null);
+
+        virtualinvoke $r2.<java.io.Writer: java.io.Writer append(java.lang.CharSequence)>("Foo");
+
+        $r4 = virtualinvoke $r2.<java.lang.Object: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("Foo", $r4);
+
+        virtualinvoke $r2.<java.io.Writer: void close()>();
+
+        return;
+    }
+
+    public void testAppendChar() throws java.io.IOException
+    {
+        org.apache.commons.io.output.StringBuilderWriterTest r0;
+        org.apache.commons.io.output.StringBuilderWriter $r2;
+        java.io.Writer $r3, $r4;
+        java.lang.String $r6;
+
+        r0 := @this: org.apache.commons.io.output.StringBuilderWriterTest;
+
+        $r2 = new org.apache.commons.io.output.StringBuilderWriter;
+
+        specialinvoke $r2.<org.apache.commons.io.output.StringBuilderWriter: void <init>()>();
+
+        $r3 = virtualinvoke $r2.<java.io.Writer: java.io.Writer append(char)>(70);
+
+        $r4 = virtualinvoke $r3.<java.io.Writer: java.io.Writer append(char)>(111);
+
+        virtualinvoke $r4.<java.io.Writer: java.io.Writer append(char)>(111);
+
+        $r6 = virtualinvoke $r2.<java.lang.Object: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("Foo", $r6);
+
+        virtualinvoke $r2.<java.io.Writer: void close()>();
+
+        return;
+    }
+
+    public void testAppendCharSequence() throws java.io.IOException
+    {
+        org.apache.commons.io.output.StringBuilderWriterTest r0;
+        org.apache.commons.io.output.StringBuilderWriter $r2;
+        java.io.Writer $r3;
+        java.lang.String $r5;
+
+        r0 := @this: org.apache.commons.io.output.StringBuilderWriterTest;
+
+        $r2 = new org.apache.commons.io.output.StringBuilderWriter;
+
+        specialinvoke $r2.<org.apache.commons.io.output.StringBuilderWriter: void <init>()>();
+
+        $r3 = virtualinvoke $r2.<java.io.Writer: java.io.Writer append(java.lang.CharSequence)>("Foo");
+
+        virtualinvoke $r3.<java.io.Writer: java.io.Writer append(java.lang.CharSequence)>("Bar");
+
+        $r5 = virtualinvoke $r2.<java.lang.Object: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("FooBar", $r5);
+
+        virtualinvoke $r2.<java.io.Writer: void close()>();
+
+        return;
+    }
+
+    public void testAppendCharSequencePortion() throws java.io.IOException
+    {
+        org.apache.commons.io.output.StringBuilderWriterTest r0;
+        org.apache.commons.io.output.StringBuilderWriter $r2;
+        java.io.Writer $r3;
+        java.lang.StringBuffer $r4;
+        java.lang.String $r6;
+
+        r0 := @this: org.apache.commons.io.output.StringBuilderWriterTest;
+
+        $r2 = new org.apache.commons.io.output.StringBuilderWriter;
+
+        specialinvoke $r2.<org.apache.commons.io.output.StringBuilderWriter: void <init>()>();
+
+        $r3 = virtualinvoke $r2.<java.io.Writer: java.io.Writer append(java.lang.CharSequence,int,int)>("FooBar", 3, 6);
+
+        $r4 = new java.lang.StringBuffer;
+
+        specialinvoke $r4.<java.lang.StringBuffer: void <init>(java.lang.String)>("FooBar");
+
+        virtualinvoke $r3.<java.io.Writer: java.io.Writer append(java.lang.CharSequence,int,int)>($r4, 0, 3);
+
+        $r6 = virtualinvoke $r2.<java.lang.Object: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("BarFoo", $r6);
+
+        virtualinvoke $r2.<java.io.Writer: void close()>();
+
+        return;
+    }
+
+    public void testClose()
+    {
+        org.apache.commons.io.output.StringBuilderWriterTest r0;
+        org.apache.commons.io.output.StringBuilderWriter $r3;
+        java.lang.String $r6, $r10;
+        java.lang.Throwable $r7;
+        java.lang.StringBuilder $r8, $r9;
+
+        r0 := @this: org.apache.commons.io.output.StringBuilderWriterTest;
+
+        $r3 = new org.apache.commons.io.output.StringBuilderWriter;
+
+        specialinvoke $r3.<org.apache.commons.io.output.StringBuilderWriter: void <init>()>();
+
+     label1:
+        virtualinvoke $r3.<java.io.Writer: java.io.Writer append(java.lang.CharSequence)>("Foo");
+
+        virtualinvoke $r3.<java.io.Writer: void close()>();
+
+        virtualinvoke $r3.<java.io.Writer: java.io.Writer append(java.lang.CharSequence)>("Bar");
+
+     label2:
+        goto label4;
+
+     label3:
+        $r7 := @caughtexception;
+
+        $r8 = new java.lang.StringBuilder;
+
+        specialinvoke $r8.<java.lang.StringBuilder: void <init>(java.lang.String)>("Threw: ");
+
+        $r9 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r7);
+
+        $r10 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>($r10);
+
+     label4:
+        $r6 = virtualinvoke $r3.<java.lang.Object: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("FooBar", $r6);
+
+        return;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+    }
+
+    public void testWriteChar() throws java.io.IOException
+    {
+        org.apache.commons.io.output.StringBuilderWriterTest r0;
+        org.apache.commons.io.output.StringBuilderWriter $r2;
+        java.lang.String $r3, $r4, $r5;
+
+        r0 := @this: org.apache.commons.io.output.StringBuilderWriterTest;
+
+        $r2 = new org.apache.commons.io.output.StringBuilderWriter;
+
+        specialinvoke $r2.<org.apache.commons.io.output.StringBuilderWriter: void <init>()>();
+
+        virtualinvoke $r2.<java.io.Writer: void write(int)>(70);
+
+        $r3 = virtualinvoke $r2.<java.lang.Object: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("F", $r3);
+
+        virtualinvoke $r2.<java.io.Writer: void write(int)>(111);
+
+        $r4 = virtualinvoke $r2.<java.lang.Object: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("Fo", $r4);
+
+        virtualinvoke $r2.<java.io.Writer: void write(int)>(111);
+
+        $r5 = virtualinvoke $r2.<java.lang.Object: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("Foo", $r5);
+
+        virtualinvoke $r2.<java.io.Writer: void close()>();
+
+        return;
+    }
+
+    public void testWriteCharArray() throws java.io.IOException
+    {
+        org.apache.commons.io.output.StringBuilderWriterTest r0;
+        org.apache.commons.io.output.StringBuilderWriter $r2;
+        char[] $r3, $r5;
+        java.lang.String $r4, $r6;
+
+        r0 := @this: org.apache.commons.io.output.StringBuilderWriterTest;
+
+        $r2 = new org.apache.commons.io.output.StringBuilderWriter;
+
+        specialinvoke $r2.<org.apache.commons.io.output.StringBuilderWriter: void <init>()>();
+
+        $r3 = newarray (char)[3];
+
+        $r3[0] = 70;
+
+        $r3[1] = 111;
+
+        $r3[2] = 111;
+
+        virtualinvoke $r2.<java.io.Writer: void write(char[])>($r3);
+
+        $r4 = virtualinvoke $r2.<java.lang.Object: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("Foo", $r4);
+
+        $r5 = newarray (char)[3];
+
+        $r5[0] = 66;
+
+        $r5[1] = 97;
+
+        $r5[2] = 114;
+
+        virtualinvoke $r2.<java.io.Writer: void write(char[])>($r5);
+
+        $r6 = virtualinvoke $r2.<java.lang.Object: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("FooBar", $r6);
+
+        virtualinvoke $r2.<java.io.Writer: void close()>();
+
+        return;
+    }
+
+    public void testWriteCharArrayPortion() throws java.io.IOException
+    {
+        org.apache.commons.io.output.StringBuilderWriterTest r0;
+        org.apache.commons.io.output.StringBuilderWriter $r2;
+        char[] $r3, $r5;
+        java.lang.String $r4, $r6;
+
+        r0 := @this: org.apache.commons.io.output.StringBuilderWriterTest;
+
+        $r2 = new org.apache.commons.io.output.StringBuilderWriter;
+
+        specialinvoke $r2.<org.apache.commons.io.output.StringBuilderWriter: void <init>()>();
+
+        $r3 = <org.apache.commons.io.output.StringBuilderWriterTest: char[] FOOBAR_CHARS>;
+
+        virtualinvoke $r2.<java.io.Writer: void write(char[],int,int)>($r3, 3, 3);
+
+        $r4 = virtualinvoke $r2.<java.lang.Object: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("Bar", $r4);
+
+        $r5 = <org.apache.commons.io.output.StringBuilderWriterTest: char[] FOOBAR_CHARS>;
+
+        virtualinvoke $r2.<java.io.Writer: void write(char[],int,int)>($r5, 0, 3);
+
+        $r6 = virtualinvoke $r2.<java.lang.Object: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("BarFoo", $r6);
+
+        virtualinvoke $r2.<java.io.Writer: void close()>();
+
+        return;
+    }
+
+    public void testWriteString() throws java.io.IOException
+    {
+        org.apache.commons.io.output.StringBuilderWriterTest r0;
+        org.apache.commons.io.output.StringBuilderWriter $r2;
+        java.lang.String $r3, $r4;
+
+        r0 := @this: org.apache.commons.io.output.StringBuilderWriterTest;
+
+        $r2 = new org.apache.commons.io.output.StringBuilderWriter;
+
+        specialinvoke $r2.<org.apache.commons.io.output.StringBuilderWriter: void <init>()>();
+
+        virtualinvoke $r2.<java.io.Writer: void write(java.lang.String)>("Foo");
+
+        $r3 = virtualinvoke $r2.<java.lang.Object: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("Foo", $r3);
+
+        virtualinvoke $r2.<java.io.Writer: void write(java.lang.String)>("Bar");
+
+        $r4 = virtualinvoke $r2.<java.lang.Object: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("FooBar", $r4);
+
+        virtualinvoke $r2.<java.io.Writer: void close()>();
+
+        return;
+    }
+
+    public void testWriteStringPortion() throws java.io.IOException
+    {
+        org.apache.commons.io.output.StringBuilderWriterTest r0;
+        org.apache.commons.io.output.StringBuilderWriter $r2;
+        java.lang.String $r3, $r4;
+
+        r0 := @this: org.apache.commons.io.output.StringBuilderWriterTest;
+
+        $r2 = new org.apache.commons.io.output.StringBuilderWriter;
+
+        specialinvoke $r2.<org.apache.commons.io.output.StringBuilderWriter: void <init>()>();
+
+        virtualinvoke $r2.<java.io.Writer: void write(java.lang.String,int,int)>("FooBar", 3, 3);
+
+        $r3 = virtualinvoke $r2.<java.lang.Object: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("Bar", $r3);
+
+        virtualinvoke $r2.<java.io.Writer: void write(java.lang.String,int,int)>("FooBar", 0, 3);
+
+        $r4 = virtualinvoke $r2.<java.lang.Object: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("BarFoo", $r4);
+
+        virtualinvoke $r2.<java.io.Writer: void close()>();
+
+        return;
+    }
+}

@@ -1,0 +1,91 @@
+public class org.apache.log4j.xml.Log4jEntityResolver extends java.lang.Object implements org.xml.sax.EntityResolver
+{
+    private static final java.lang.String PUBLIC_ID;
+
+    public void <init>()
+    {
+        org.apache.log4j.xml.Log4jEntityResolver r0;
+
+        r0 := @this: org.apache.log4j.xml.Log4jEntityResolver;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public org.xml.sax.InputSource resolveEntity(java.lang.String, java.lang.String)
+    {
+        org.apache.log4j.xml.Log4jEntityResolver r0;
+        java.lang.String r1, r2, $r9, $r12;
+        java.lang.Class r3;
+        boolean $z0, $z1;
+        org.xml.sax.InputSource $r4;
+        java.lang.StringBuilder $r5, $r7, $r8;
+        java.lang.ClassLoader $r6;
+        java.io.ByteArrayInputStream $r10;
+        byte[] $r11;
+        java.io.InputStream r13;
+
+        r0 := @this: org.apache.log4j.xml.Log4jEntityResolver;
+
+        r1 := @parameter0: java.lang.String;
+
+        r2 := @parameter1: java.lang.String;
+
+        $z0 = virtualinvoke r2.<java.lang.String: boolean endsWith(java.lang.String)>("log4j.dtd");
+
+        if $z0 != 0 goto label1;
+
+        $r12 = "-//APACHE//DTD LOG4J 1.2//EN";
+
+        $z1 = virtualinvoke $r12.<java.lang.String: boolean equals(java.lang.Object)>(r1);
+
+        if $z1 == 0 goto label3;
+
+     label1:
+        r3 = virtualinvoke r0.<java.lang.Object: java.lang.Class getClass()>();
+
+        r13 = virtualinvoke r3.<java.lang.Class: java.io.InputStream getResourceAsStream(java.lang.String)>("/org/apache/log4j/xml/log4j.dtd");
+
+        if r13 != null goto label2;
+
+        $r5 = new java.lang.StringBuilder;
+
+        specialinvoke $r5.<java.lang.StringBuilder: void <init>(java.lang.String)>("Could not find [log4j.dtd] using [");
+
+        $r6 = virtualinvoke r3.<java.lang.Class: java.lang.ClassLoader getClassLoader()>();
+
+        $r7 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r6);
+
+        $r8 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("] class loader, parsed without DTD.");
+
+        $r9 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.apache.log4j.helpers.LogLog: void warn(java.lang.String)>($r9);
+
+        $r10 = new java.io.ByteArrayInputStream;
+
+        $r11 = newarray (byte)[0];
+
+        specialinvoke $r10.<java.io.ByteArrayInputStream: void <init>(byte[])>($r11);
+
+        r13 = $r10;
+
+     label2:
+        $r4 = new org.xml.sax.InputSource;
+
+        specialinvoke $r4.<org.xml.sax.InputSource: void <init>(java.io.InputStream)>(r13);
+
+        return $r4;
+
+     label3:
+        return null;
+    }
+
+    public static void <clinit>()
+    {
+        <org.apache.log4j.xml.Log4jEntityResolver: java.lang.String PUBLIC_ID> = "-//APACHE//DTD LOG4J 1.2//EN";
+
+        return;
+    }
+}

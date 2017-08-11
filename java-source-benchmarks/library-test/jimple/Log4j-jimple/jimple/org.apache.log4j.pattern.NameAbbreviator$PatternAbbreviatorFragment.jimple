@@ -1,0 +1,79 @@
+class org.apache.log4j.pattern.NameAbbreviator$PatternAbbreviatorFragment extends java.lang.Object
+{
+    private final int charCount;
+    private final char ellipsis;
+
+    public void <init>(int, char)
+    {
+        org.apache.log4j.pattern.NameAbbreviator$PatternAbbreviatorFragment r0;
+        int i0;
+        char c1;
+
+        r0 := @this: org.apache.log4j.pattern.NameAbbreviator$PatternAbbreviatorFragment;
+
+        i0 := @parameter0: int;
+
+        c1 := @parameter1: char;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<org.apache.log4j.pattern.NameAbbreviator$PatternAbbreviatorFragment: int charCount> = i0;
+
+        r0.<org.apache.log4j.pattern.NameAbbreviator$PatternAbbreviatorFragment: char ellipsis> = c1;
+
+        return;
+    }
+
+    public int abbreviate(java.lang.StringBuffer, int)
+    {
+        org.apache.log4j.pattern.NameAbbreviator$PatternAbbreviatorFragment r0;
+        java.lang.StringBuffer r1;
+        int i0, $i1, $i2, $i3, $i4, $i5, i8;
+        java.lang.String $r2;
+        char $c6, $c7;
+
+        r0 := @this: org.apache.log4j.pattern.NameAbbreviator$PatternAbbreviatorFragment;
+
+        r1 := @parameter0: java.lang.StringBuffer;
+
+        i0 := @parameter1: int;
+
+        $r2 = virtualinvoke r1.<java.lang.StringBuffer: java.lang.String toString()>();
+
+        i8 = virtualinvoke $r2.<java.lang.String: int indexOf(java.lang.String,int)>(".", i0);
+
+        if i8 == -1 goto label2;
+
+        $i2 = i8 - i0;
+
+        $i1 = r0.<org.apache.log4j.pattern.NameAbbreviator$PatternAbbreviatorFragment: int charCount>;
+
+        if $i2 <= $i1 goto label1;
+
+        $i3 = r0.<org.apache.log4j.pattern.NameAbbreviator$PatternAbbreviatorFragment: int charCount>;
+
+        $i4 = i0 + $i3;
+
+        virtualinvoke r1.<java.lang.StringBuffer: java.lang.StringBuffer delete(int,int)>($i4, i8);
+
+        $i5 = r0.<org.apache.log4j.pattern.NameAbbreviator$PatternAbbreviatorFragment: int charCount>;
+
+        i8 = i0 + $i5;
+
+        $c6 = r0.<org.apache.log4j.pattern.NameAbbreviator$PatternAbbreviatorFragment: char ellipsis>;
+
+        if $c6 == 0 goto label1;
+
+        $c7 = r0.<org.apache.log4j.pattern.NameAbbreviator$PatternAbbreviatorFragment: char ellipsis>;
+
+        virtualinvoke r1.<java.lang.StringBuffer: java.lang.StringBuffer insert(int,char)>(i8, $c7);
+
+        i8 = i8 + 1;
+
+     label1:
+        i8 = i8 + 1;
+
+     label2:
+        return i8;
+    }
+}

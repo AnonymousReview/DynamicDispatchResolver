@@ -1,0 +1,31 @@
+public class org.apache.log4j.customLogger.XLogger$XFactory extends java.lang.Object implements org.apache.log4j.spi.LoggerFactory
+{
+
+    public void <init>()
+    {
+        org.apache.log4j.customLogger.XLogger$XFactory r0;
+
+        r0 := @this: org.apache.log4j.customLogger.XLogger$XFactory;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public org.apache.log4j.Logger makeNewLoggerInstance(java.lang.String)
+    {
+        org.apache.log4j.customLogger.XLogger$XFactory r0;
+        java.lang.String r1;
+        org.apache.log4j.customLogger.XLogger $r2;
+
+        r0 := @this: org.apache.log4j.customLogger.XLogger$XFactory;
+
+        r1 := @parameter0: java.lang.String;
+
+        $r2 = new org.apache.log4j.customLogger.XLogger;
+
+        specialinvoke $r2.<org.apache.log4j.customLogger.XLogger: void <init>(java.lang.String)>(r1);
+
+        return $r2;
+    }
+}

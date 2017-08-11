@@ -1,0 +1,165 @@
+public class org.slf4j.helpers.SubstituteLoggerFactoryTest extends java.lang.Object
+{
+    private org.slf4j.helpers.SubstituteLoggerFactory factory;
+
+    public void <init>()
+    {
+        org.slf4j.helpers.SubstituteLoggerFactoryTest r0;
+        org.slf4j.helpers.SubstituteLoggerFactory $r1;
+
+        r0 := @this: org.slf4j.helpers.SubstituteLoggerFactoryTest;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r1 = new org.slf4j.helpers.SubstituteLoggerFactory;
+
+        specialinvoke $r1.<org.slf4j.helpers.SubstituteLoggerFactory: void <init>()>();
+
+        r0.<org.slf4j.helpers.SubstituteLoggerFactoryTest: org.slf4j.helpers.SubstituteLoggerFactory factory> = $r1;
+
+        return;
+    }
+
+    public void testFactory()
+    {
+        org.slf4j.helpers.SubstituteLoggerFactoryTest r0;
+        org.slf4j.Logger r1, r2;
+        org.slf4j.helpers.SubstituteLoggerFactory $r3, $r4;
+        boolean $z0;
+
+        r0 := @this: org.slf4j.helpers.SubstituteLoggerFactoryTest;
+
+        $r3 = r0.<org.slf4j.helpers.SubstituteLoggerFactoryTest: org.slf4j.helpers.SubstituteLoggerFactory factory>;
+
+        r1 = virtualinvoke $r3.<org.slf4j.helpers.SubstituteLoggerFactory: org.slf4j.Logger getLogger(java.lang.String)>("foo");
+
+        staticinvoke <org.junit.Assert: void assertNotNull(java.lang.Object)>(r1);
+
+        $r4 = r0.<org.slf4j.helpers.SubstituteLoggerFactoryTest: org.slf4j.helpers.SubstituteLoggerFactory factory>;
+
+        r2 = virtualinvoke $r4.<org.slf4j.helpers.SubstituteLoggerFactory: org.slf4j.Logger getLogger(java.lang.String)>("foo");
+
+        if r1 != r2 goto label1;
+
+        $z0 = 1;
+
+        goto label2;
+
+     label1:
+        $z0 = 0;
+
+     label2:
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>("Loggers with same name must be same", $z0);
+
+        return;
+    }
+
+    public void testLoggerNameList()
+    {
+        org.slf4j.helpers.SubstituteLoggerFactoryTest r0;
+        org.slf4j.helpers.SubstituteLoggerFactory $r3, $r5, $r11;
+        java.util.HashSet $r7, $r10;
+        java.lang.String[] $r8;
+        java.util.List $r9, $r12;
+
+        r0 := @this: org.slf4j.helpers.SubstituteLoggerFactoryTest;
+
+        $r3 = r0.<org.slf4j.helpers.SubstituteLoggerFactoryTest: org.slf4j.helpers.SubstituteLoggerFactory factory>;
+
+        virtualinvoke $r3.<org.slf4j.helpers.SubstituteLoggerFactory: org.slf4j.Logger getLogger(java.lang.String)>("foo1");
+
+        $r5 = r0.<org.slf4j.helpers.SubstituteLoggerFactoryTest: org.slf4j.helpers.SubstituteLoggerFactory factory>;
+
+        virtualinvoke $r5.<org.slf4j.helpers.SubstituteLoggerFactory: org.slf4j.Logger getLogger(java.lang.String)>("foo2");
+
+        $r7 = new java.util.HashSet;
+
+        $r8 = newarray (java.lang.String)[2];
+
+        $r8[0] = "foo1";
+
+        $r8[1] = "foo2";
+
+        $r9 = staticinvoke <java.util.Arrays: java.util.List asList(java.lang.Object[])>($r8);
+
+        specialinvoke $r7.<java.util.HashSet: void <init>(java.util.Collection)>($r9);
+
+        $r10 = new java.util.HashSet;
+
+        $r11 = r0.<org.slf4j.helpers.SubstituteLoggerFactoryTest: org.slf4j.helpers.SubstituteLoggerFactory factory>;
+
+        $r12 = virtualinvoke $r11.<org.slf4j.helpers.SubstituteLoggerFactory: java.util.List getLoggerNames()>();
+
+        specialinvoke $r10.<java.util.HashSet: void <init>(java.util.Collection)>($r12);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r7, $r10);
+
+        return;
+    }
+
+    public void testLoggers()
+    {
+        org.slf4j.helpers.SubstituteLoggerFactoryTest r0;
+        org.slf4j.helpers.SubstituteLogger r3;
+        java.util.Iterator r4;
+        org.slf4j.helpers.SubstituteLoggerFactory $r5, $r7, $r13;
+        java.util.HashSet $r9, $r12;
+        java.lang.String[] $r10;
+        java.util.List $r11, $r14;
+        boolean $z0;
+        java.lang.Object $r15;
+        java.lang.String $r16;
+
+        r0 := @this: org.slf4j.helpers.SubstituteLoggerFactoryTest;
+
+        $r5 = r0.<org.slf4j.helpers.SubstituteLoggerFactoryTest: org.slf4j.helpers.SubstituteLoggerFactory factory>;
+
+        virtualinvoke $r5.<org.slf4j.helpers.SubstituteLoggerFactory: org.slf4j.Logger getLogger(java.lang.String)>("foo1");
+
+        $r7 = r0.<org.slf4j.helpers.SubstituteLoggerFactoryTest: org.slf4j.helpers.SubstituteLoggerFactory factory>;
+
+        virtualinvoke $r7.<org.slf4j.helpers.SubstituteLoggerFactory: org.slf4j.Logger getLogger(java.lang.String)>("foo2");
+
+        $r9 = new java.util.HashSet;
+
+        $r10 = newarray (java.lang.String)[2];
+
+        $r10[0] = "foo1";
+
+        $r10[1] = "foo2";
+
+        $r11 = staticinvoke <java.util.Arrays: java.util.List asList(java.lang.Object[])>($r10);
+
+        specialinvoke $r9.<java.util.HashSet: void <init>(java.util.Collection)>($r11);
+
+        $r12 = new java.util.HashSet;
+
+        specialinvoke $r12.<java.util.HashSet: void <init>()>();
+
+        $r13 = r0.<org.slf4j.helpers.SubstituteLoggerFactoryTest: org.slf4j.helpers.SubstituteLoggerFactory factory>;
+
+        $r14 = virtualinvoke $r13.<org.slf4j.helpers.SubstituteLoggerFactory: java.util.List getLoggers()>();
+
+        r4 = interfaceinvoke $r14.<java.util.List: java.util.Iterator iterator()>();
+
+        goto label2;
+
+     label1:
+        $r15 = interfaceinvoke r4.<java.util.Iterator: java.lang.Object next()>();
+
+        r3 = (org.slf4j.helpers.SubstituteLogger) $r15;
+
+        $r16 = virtualinvoke r3.<org.slf4j.helpers.SubstituteLogger: java.lang.String getName()>();
+
+        interfaceinvoke $r12.<java.util.Set: boolean add(java.lang.Object)>($r16);
+
+     label2:
+        $z0 = interfaceinvoke r4.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 != 0 goto label1;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r9, $r12);
+
+        return;
+    }
+}

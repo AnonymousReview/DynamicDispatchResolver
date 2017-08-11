@@ -1,0 +1,45 @@
+final class org.apache.log4j.spi.ThrowableInformationTest$StringThrowable extends java.lang.Throwable
+{
+    private static final long serialVersionUID;
+    private final java.lang.String stackTrace;
+
+    public void <init>(java.lang.String)
+    {
+        org.apache.log4j.spi.ThrowableInformationTest$StringThrowable r0;
+        java.lang.String r1;
+
+        r0 := @this: org.apache.log4j.spi.ThrowableInformationTest$StringThrowable;
+
+        r1 := @parameter0: java.lang.String;
+
+        specialinvoke r0.<java.lang.Throwable: void <init>()>();
+
+        r0.<org.apache.log4j.spi.ThrowableInformationTest$StringThrowable: java.lang.String stackTrace> = r1;
+
+        return;
+    }
+
+    public void printStackTrace(java.io.PrintWriter)
+    {
+        org.apache.log4j.spi.ThrowableInformationTest$StringThrowable r0;
+        java.io.PrintWriter r1;
+        java.lang.String $r2;
+
+        r0 := @this: org.apache.log4j.spi.ThrowableInformationTest$StringThrowable;
+
+        r1 := @parameter0: java.io.PrintWriter;
+
+        $r2 = r0.<org.apache.log4j.spi.ThrowableInformationTest$StringThrowable: java.lang.String stackTrace>;
+
+        virtualinvoke r1.<java.io.PrintWriter: void print(java.lang.String)>($r2);
+
+        return;
+    }
+
+    public static void <clinit>()
+    {
+        <org.apache.log4j.spi.ThrowableInformationTest$StringThrowable: long serialVersionUID> = 1L;
+
+        return;
+    }
+}

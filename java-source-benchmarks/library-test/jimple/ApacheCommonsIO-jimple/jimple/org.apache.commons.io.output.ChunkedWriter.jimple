@@ -1,0 +1,95 @@
+public class org.apache.commons.io.output.ChunkedWriter extends java.io.FilterWriter
+{
+    private static final int DEFAULT_CHUNK_SIZE;
+    private final int chunkSize;
+
+    public void <init>(java.io.Writer, int)
+    {
+        org.apache.commons.io.output.ChunkedWriter r0;
+        java.io.Writer r1;
+        int i0;
+        java.lang.IllegalArgumentException $r2;
+
+        r0 := @this: org.apache.commons.io.output.ChunkedWriter;
+
+        r1 := @parameter0: java.io.Writer;
+
+        i0 := @parameter1: int;
+
+        specialinvoke r0.<java.io.FilterWriter: void <init>(java.io.Writer)>(r1);
+
+        if i0 > 0 goto label1;
+
+        $r2 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r2.<java.lang.IllegalArgumentException: void <init>()>();
+
+        throw $r2;
+
+     label1:
+        r0.<org.apache.commons.io.output.ChunkedWriter: int chunkSize> = i0;
+
+        return;
+    }
+
+    public void <init>(java.io.Writer)
+    {
+        org.apache.commons.io.output.ChunkedWriter r0;
+        java.io.Writer r1;
+
+        r0 := @this: org.apache.commons.io.output.ChunkedWriter;
+
+        r1 := @parameter0: java.io.Writer;
+
+        specialinvoke r0.<org.apache.commons.io.output.ChunkedWriter: void <init>(java.io.Writer,int)>(r1, 4096);
+
+        return;
+    }
+
+    public void write(char[], int, int) throws java.io.IOException
+    {
+        org.apache.commons.io.output.ChunkedWriter r0;
+        char[] r1;
+        int i0, i1, i2, $i3, i4, i5;
+        java.io.Writer $r2;
+
+        r0 := @this: org.apache.commons.io.output.ChunkedWriter;
+
+        r1 := @parameter0: char[];
+
+        i0 := @parameter1: int;
+
+        i1 := @parameter2: int;
+
+        i4 = i1;
+
+        i5 = i0;
+
+        goto label2;
+
+     label1:
+        $i3 = r0.<org.apache.commons.io.output.ChunkedWriter: int chunkSize>;
+
+        i2 = staticinvoke <java.lang.Math: int min(int,int)>(i4, $i3);
+
+        $r2 = r0.<org.apache.commons.io.output.ChunkedWriter: java.io.Writer out>;
+
+        virtualinvoke $r2.<java.io.Writer: void write(char[],int,int)>(r1, i5, i2);
+
+        i4 = i4 - i2;
+
+        i5 = i5 + i2;
+
+     label2:
+        if i4 > 0 goto label1;
+
+        return;
+    }
+
+    public static void <clinit>()
+    {
+        <org.apache.commons.io.output.ChunkedWriter: int DEFAULT_CHUNK_SIZE> = 4096;
+
+        return;
+    }
+}

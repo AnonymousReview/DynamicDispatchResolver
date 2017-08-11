@@ -1,0 +1,199 @@
+public class org.apache.log4j.rewrite.PropertyRewritePolicy extends java.lang.Object implements org.apache.log4j.rewrite.RewritePolicy
+{
+    private java.util.Map properties;
+
+    public void <init>()
+    {
+        org.apache.log4j.rewrite.PropertyRewritePolicy r0;
+        java.util.Map $r1;
+
+        r0 := @this: org.apache.log4j.rewrite.PropertyRewritePolicy;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r1 = <java.util.Collections: java.util.Map EMPTY_MAP>;
+
+        r0.<org.apache.log4j.rewrite.PropertyRewritePolicy: java.util.Map properties> = $r1;
+
+        return;
+    }
+
+    public void setProperties(java.lang.String)
+    {
+        org.apache.log4j.rewrite.PropertyRewritePolicy r0;
+        java.lang.String r1, $r7, $r9, $r10, $r12, $r13;
+        java.util.HashMap $r4;
+        java.util.StringTokenizer $r5, $r6;
+        boolean $z0;
+        java.lang.Object $r8, $r11;
+        java.lang.Throwable $r16;
+
+        r0 := @this: org.apache.log4j.rewrite.PropertyRewritePolicy;
+
+        r1 := @parameter0: java.lang.String;
+
+        $r4 = new java.util.HashMap;
+
+        specialinvoke $r4.<java.util.HashMap: void <init>()>();
+
+        $r5 = new java.util.StringTokenizer;
+
+        specialinvoke $r5.<java.util.StringTokenizer: void <init>(java.lang.String,java.lang.String)>(r1, ",");
+
+        goto label2;
+
+     label1:
+        $r6 = new java.util.StringTokenizer;
+
+        $r7 = virtualinvoke $r5.<java.util.StringTokenizer: java.lang.String nextToken()>();
+
+        specialinvoke $r6.<java.util.StringTokenizer: void <init>(java.lang.String,java.lang.String)>($r7, "=");
+
+        $r8 = virtualinvoke $r6.<java.util.StringTokenizer: java.lang.Object nextElement()>();
+
+        $r9 = virtualinvoke $r8.<java.lang.Object: java.lang.String toString()>();
+
+        $r10 = virtualinvoke $r9.<java.lang.String: java.lang.String trim()>();
+
+        $r11 = virtualinvoke $r6.<java.util.StringTokenizer: java.lang.Object nextElement()>();
+
+        $r12 = virtualinvoke $r11.<java.lang.Object: java.lang.String toString()>();
+
+        $r13 = virtualinvoke $r12.<java.lang.String: java.lang.String trim()>();
+
+        interfaceinvoke $r4.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>($r10, $r13);
+
+     label2:
+        $z0 = virtualinvoke $r5.<java.util.StringTokenizer: boolean hasMoreTokens()>();
+
+        if $z0 != 0 goto label1;
+
+        entermonitor r0;
+
+     label3:
+        r0.<org.apache.log4j.rewrite.PropertyRewritePolicy: java.util.Map properties> = $r4;
+
+        exitmonitor r0;
+
+     label4:
+        goto label7;
+
+     label5:
+        $r16 := @caughtexception;
+
+        exitmonitor r0;
+
+     label6:
+        throw $r16;
+
+     label7:
+        return;
+
+        catch java.lang.Throwable from label3 to label4 with label5;
+        catch java.lang.Throwable from label5 to label6 with label5;
+    }
+
+    public org.apache.log4j.spi.LoggingEvent rewrite(org.apache.log4j.spi.LoggingEvent)
+    {
+        org.apache.log4j.rewrite.PropertyRewritePolicy r0;
+        org.apache.log4j.spi.LoggingEvent r1, $r15;
+        java.util.Iterator r3;
+        java.util.Map$Entry r4;
+        java.util.Map $r5, $r7, $r8;
+        boolean $z0, $z1, $z2;
+        java.util.HashMap $r6;
+        java.util.Set $r9;
+        java.lang.Object $r10, $r11, $r12, $r13, $r20;
+        java.lang.String $r16, $r18, $r21, $r23;
+        org.apache.log4j.Category $r17, $r25;
+        long $l0;
+        org.apache.log4j.Level $r19;
+        org.apache.log4j.spi.ThrowableInformation $r22;
+        org.apache.log4j.spi.LocationInfo $r24;
+
+        r0 := @this: org.apache.log4j.rewrite.PropertyRewritePolicy;
+
+        r1 := @parameter0: org.apache.log4j.spi.LoggingEvent;
+
+        $r5 = r0.<org.apache.log4j.rewrite.PropertyRewritePolicy: java.util.Map properties>;
+
+        $z0 = interfaceinvoke $r5.<java.util.Map: boolean isEmpty()>();
+
+        if $z0 != 0 goto label5;
+
+        $r6 = new java.util.HashMap;
+
+        $r7 = virtualinvoke r1.<org.apache.log4j.spi.LoggingEvent: java.util.Map getProperties()>();
+
+        specialinvoke $r6.<java.util.HashMap: void <init>(java.util.Map)>($r7);
+
+        $r8 = r0.<org.apache.log4j.rewrite.PropertyRewritePolicy: java.util.Map properties>;
+
+        $r9 = interfaceinvoke $r8.<java.util.Map: java.util.Set entrySet()>();
+
+        r3 = interfaceinvoke $r9.<java.util.Set: java.util.Iterator iterator()>();
+
+        goto label2;
+
+     label1:
+        $r10 = interfaceinvoke r3.<java.util.Iterator: java.lang.Object next()>();
+
+        r4 = (java.util.Map$Entry) $r10;
+
+        $r11 = interfaceinvoke r4.<java.util.Map$Entry: java.lang.Object getKey()>();
+
+        $z1 = interfaceinvoke $r6.<java.util.Map: boolean containsKey(java.lang.Object)>($r11);
+
+        if $z1 != 0 goto label2;
+
+        $r12 = interfaceinvoke r4.<java.util.Map$Entry: java.lang.Object getKey()>();
+
+        $r13 = interfaceinvoke r4.<java.util.Map$Entry: java.lang.Object getValue()>();
+
+        interfaceinvoke $r6.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>($r12, $r13);
+
+     label2:
+        $z2 = interfaceinvoke r3.<java.util.Iterator: boolean hasNext()>();
+
+        if $z2 != 0 goto label1;
+
+        $r15 = new org.apache.log4j.spi.LoggingEvent;
+
+        $r16 = virtualinvoke r1.<org.apache.log4j.spi.LoggingEvent: java.lang.String getFQNOfLoggerClass()>();
+
+        $r17 = virtualinvoke r1.<org.apache.log4j.spi.LoggingEvent: org.apache.log4j.Category getLogger()>();
+
+        if $r17 == null goto label3;
+
+        $r25 = virtualinvoke r1.<org.apache.log4j.spi.LoggingEvent: org.apache.log4j.Category getLogger()>();
+
+        goto label4;
+
+     label3:
+        $r18 = virtualinvoke r1.<org.apache.log4j.spi.LoggingEvent: java.lang.String getLoggerName()>();
+
+        $r25 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getLogger(java.lang.String)>($r18);
+
+     label4:
+        $l0 = virtualinvoke r1.<org.apache.log4j.spi.LoggingEvent: long getTimeStamp()>();
+
+        $r19 = virtualinvoke r1.<org.apache.log4j.spi.LoggingEvent: org.apache.log4j.Level getLevel()>();
+
+        $r20 = virtualinvoke r1.<org.apache.log4j.spi.LoggingEvent: java.lang.Object getMessage()>();
+
+        $r21 = virtualinvoke r1.<org.apache.log4j.spi.LoggingEvent: java.lang.String getThreadName()>();
+
+        $r22 = virtualinvoke r1.<org.apache.log4j.spi.LoggingEvent: org.apache.log4j.spi.ThrowableInformation getThrowableInformation()>();
+
+        $r23 = virtualinvoke r1.<org.apache.log4j.spi.LoggingEvent: java.lang.String getNDC()>();
+
+        $r24 = virtualinvoke r1.<org.apache.log4j.spi.LoggingEvent: org.apache.log4j.spi.LocationInfo getLocationInformation()>();
+
+        specialinvoke $r15.<org.apache.log4j.spi.LoggingEvent: void <init>(java.lang.String,org.apache.log4j.Category,long,org.apache.log4j.Level,java.lang.Object,java.lang.String,org.apache.log4j.spi.ThrowableInformation,java.lang.String,org.apache.log4j.spi.LocationInfo,java.util.Map)>($r16, $r25, $l0, $r19, $r20, $r21, $r22, $r23, $r24, $r6);
+
+        return $r15;
+
+     label5:
+        return r1;
+    }
+}

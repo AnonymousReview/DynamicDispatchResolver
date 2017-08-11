@@ -1,0 +1,264 @@
+public class org.apache.log4j.jmx.Agent extends java.lang.Object
+{
+    static org.apache.log4j.Logger log;
+
+    static void <clinit>()
+    {
+        org.apache.log4j.Logger $r0;
+
+        $r0 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getLogger(java.lang.Class)>(class "org/apache/log4j/jmx/Agent");
+
+        <org.apache.log4j.jmx.Agent: org.apache.log4j.Logger log> = $r0;
+
+        return;
+    }
+
+    public void <init>()
+    {
+        org.apache.log4j.jmx.Agent r0;
+
+        r0 := @this: org.apache.log4j.jmx.Agent;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    private static java.lang.Object createServer()
+    {
+        java.lang.Class $r0;
+        java.lang.IllegalAccessException $r1;
+        java.lang.RuntimeException $r2, $r5, $r8;
+        java.lang.String $r3, $r6, $r9;
+        java.lang.InstantiationException $r4;
+        java.lang.ClassNotFoundException $r7;
+        java.lang.Object r10;
+
+     label1:
+        $r0 = staticinvoke <java.lang.Class: java.lang.Class forName(java.lang.String)>("com.sun.jdmk.comm.HtmlAdapterServer");
+
+        r10 = virtualinvoke $r0.<java.lang.Class: java.lang.Object newInstance()>();
+
+     label2:
+        goto label6;
+
+     label3:
+        $r7 := @caughtexception;
+
+        $r8 = new java.lang.RuntimeException;
+
+        $r9 = virtualinvoke $r7.<java.lang.ClassNotFoundException: java.lang.String toString()>();
+
+        specialinvoke $r8.<java.lang.RuntimeException: void <init>(java.lang.String)>($r9);
+
+        throw $r8;
+
+     label4:
+        $r4 := @caughtexception;
+
+        $r5 = new java.lang.RuntimeException;
+
+        $r6 = virtualinvoke $r4.<java.lang.InstantiationException: java.lang.String toString()>();
+
+        specialinvoke $r5.<java.lang.RuntimeException: void <init>(java.lang.String)>($r6);
+
+        throw $r5;
+
+     label5:
+        $r1 := @caughtexception;
+
+        $r2 = new java.lang.RuntimeException;
+
+        $r3 = virtualinvoke $r1.<java.lang.IllegalAccessException: java.lang.String toString()>();
+
+        specialinvoke $r2.<java.lang.RuntimeException: void <init>(java.lang.String)>($r3);
+
+        throw $r2;
+
+     label6:
+        return r10;
+
+        catch java.lang.ClassNotFoundException from label1 to label2 with label3;
+        catch java.lang.InstantiationException from label1 to label2 with label4;
+        catch java.lang.IllegalAccessException from label1 to label2 with label5;
+    }
+
+    private static void startServer(java.lang.Object)
+    {
+        java.lang.Object r0;
+        java.lang.Throwable r1;
+        java.lang.Class $r2;
+        java.lang.Class[] $r3;
+        java.lang.reflect.Method $r4;
+        java.lang.Object[] $r5;
+        java.lang.IllegalAccessException $r7;
+        java.lang.RuntimeException $r8, $r11, $r13, $r15, $r18;
+        java.lang.String $r9, $r16, $r19;
+        java.lang.reflect.InvocationTargetException $r10;
+        boolean $z0, $z1, $z2;
+        java.lang.Thread $r12;
+        java.lang.NoSuchMethodException $r14;
+
+        r0 := @parameter0: java.lang.Object;
+
+     label01:
+        $r2 = virtualinvoke r0.<java.lang.Object: java.lang.Class getClass()>();
+
+        $r3 = newarray (java.lang.Class)[0];
+
+        $r4 = virtualinvoke $r2.<java.lang.Class: java.lang.reflect.Method getMethod(java.lang.String,java.lang.Class[])>("start", $r3);
+
+        $r5 = newarray (java.lang.Object)[0];
+
+        virtualinvoke $r4.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>(r0, $r5);
+
+     label02:
+        goto label10;
+
+     label03:
+        $r10 := @caughtexception;
+
+        r1 = virtualinvoke $r10.<java.lang.reflect.InvocationTargetException: java.lang.Throwable getTargetException()>();
+
+        $z0 = r1 instanceof java.lang.RuntimeException;
+
+        if $z0 == 0 goto label04;
+
+        $r13 = (java.lang.RuntimeException) r1;
+
+        throw $r13;
+
+     label04:
+        if r1 == null goto label07;
+
+        $z1 = r1 instanceof java.lang.InterruptedException;
+
+        if $z1 != 0 goto label05;
+
+        $z2 = r1 instanceof java.io.InterruptedIOException;
+
+        if $z2 == 0 goto label06;
+
+     label05:
+        $r12 = staticinvoke <java.lang.Thread: java.lang.Thread currentThread()>();
+
+        virtualinvoke $r12.<java.lang.Thread: void interrupt()>();
+
+     label06:
+        $r18 = new java.lang.RuntimeException;
+
+        $r19 = virtualinvoke r1.<java.lang.Throwable: java.lang.String toString()>();
+
+        specialinvoke $r18.<java.lang.RuntimeException: void <init>(java.lang.String)>($r19);
+
+        throw $r18;
+
+     label07:
+        $r11 = new java.lang.RuntimeException;
+
+        specialinvoke $r11.<java.lang.RuntimeException: void <init>()>();
+
+        throw $r11;
+
+     label08:
+        $r14 := @caughtexception;
+
+        $r15 = new java.lang.RuntimeException;
+
+        $r16 = virtualinvoke $r14.<java.lang.NoSuchMethodException: java.lang.String toString()>();
+
+        specialinvoke $r15.<java.lang.RuntimeException: void <init>(java.lang.String)>($r16);
+
+        throw $r15;
+
+     label09:
+        $r7 := @caughtexception;
+
+        $r8 = new java.lang.RuntimeException;
+
+        $r9 = virtualinvoke $r7.<java.lang.IllegalAccessException: java.lang.String toString()>();
+
+        specialinvoke $r8.<java.lang.RuntimeException: void <init>(java.lang.String)>($r9);
+
+        throw $r8;
+
+     label10:
+        return;
+
+        catch java.lang.reflect.InvocationTargetException from label01 to label02 with label03;
+        catch java.lang.NoSuchMethodException from label01 to label02 with label08;
+        catch java.lang.IllegalAccessException from label01 to label02 with label09;
+    }
+
+    public void start()
+    {
+        org.apache.log4j.jmx.Agent r0;
+        javax.management.MBeanServer r1;
+        java.lang.Object r2;
+        org.apache.log4j.Logger $r3, $r6, $r11, $r13;
+        javax.management.ObjectName $r4, $r8;
+        org.apache.log4j.jmx.HierarchyDynamicMBean $r7;
+        javax.management.JMException $r10;
+        java.lang.RuntimeException $r12;
+
+        r0 := @this: org.apache.log4j.jmx.Agent;
+
+        r1 = staticinvoke <javax.management.MBeanServerFactory: javax.management.MBeanServer createMBeanServer()>();
+
+        r2 = staticinvoke <org.apache.log4j.jmx.Agent: java.lang.Object createServer()>();
+
+     label1:
+        $r3 = <org.apache.log4j.jmx.Agent: org.apache.log4j.Logger log>;
+
+        virtualinvoke $r3.<org.apache.log4j.Logger: void info(java.lang.Object)>("Registering HtmlAdaptorServer instance.");
+
+        $r4 = new javax.management.ObjectName;
+
+        specialinvoke $r4.<javax.management.ObjectName: void <init>(java.lang.String)>("Adaptor:name=html,port=8082");
+
+        interfaceinvoke r1.<javax.management.MBeanServer: javax.management.ObjectInstance registerMBean(java.lang.Object,javax.management.ObjectName)>(r2, $r4);
+
+        $r6 = <org.apache.log4j.jmx.Agent: org.apache.log4j.Logger log>;
+
+        virtualinvoke $r6.<org.apache.log4j.Logger: void info(java.lang.Object)>("Registering HierarchyDynamicMBean instance.");
+
+        $r7 = new org.apache.log4j.jmx.HierarchyDynamicMBean;
+
+        specialinvoke $r7.<org.apache.log4j.jmx.HierarchyDynamicMBean: void <init>()>();
+
+        $r8 = new javax.management.ObjectName;
+
+        specialinvoke $r8.<javax.management.ObjectName: void <init>(java.lang.String)>("log4j:hiearchy=default");
+
+        interfaceinvoke r1.<javax.management.MBeanServer: javax.management.ObjectInstance registerMBean(java.lang.Object,javax.management.ObjectName)>($r7, $r8);
+
+     label2:
+        goto label5;
+
+     label3:
+        $r10 := @caughtexception;
+
+        $r11 = <org.apache.log4j.jmx.Agent: org.apache.log4j.Logger log>;
+
+        virtualinvoke $r11.<org.apache.log4j.Logger: void error(java.lang.Object,java.lang.Throwable)>("Problem while registering MBeans instances.", $r10);
+
+        return;
+
+     label4:
+        $r12 := @caughtexception;
+
+        $r13 = <org.apache.log4j.jmx.Agent: org.apache.log4j.Logger log>;
+
+        virtualinvoke $r13.<org.apache.log4j.Logger: void error(java.lang.Object,java.lang.Throwable)>("Problem while registering MBeans instances.", $r12);
+
+        return;
+
+     label5:
+        staticinvoke <org.apache.log4j.jmx.Agent: void startServer(java.lang.Object)>(r2);
+
+        return;
+
+        catch javax.management.JMException from label1 to label2 with label3;
+        catch java.lang.RuntimeException from label1 to label2 with label4;
+    }
+}

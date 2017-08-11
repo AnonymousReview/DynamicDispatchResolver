@@ -1,0 +1,513 @@
+public class org.apache.commons.io.FileUtilsListFilesTestCase extends org.apache.commons.io.testtools.FileBasedTestCase
+{
+
+    public void <init>()
+    {
+        org.apache.commons.io.FileUtilsListFilesTestCase r0;
+
+        r0 := @this: org.apache.commons.io.FileUtilsListFilesTestCase;
+
+        specialinvoke r0.<org.apache.commons.io.testtools.FileBasedTestCase: void <init>()>();
+
+        return;
+    }
+
+    private java.io.File getLocalTestDirectory()
+    {
+        org.apache.commons.io.FileUtilsListFilesTestCase r0;
+        java.io.File $r1, $r2;
+
+        r0 := @this: org.apache.commons.io.FileUtilsListFilesTestCase;
+
+        $r1 = new java.io.File;
+
+        $r2 = staticinvoke <org.apache.commons.io.FileUtilsListFilesTestCase: java.io.File getTestDirectory()>();
+
+        specialinvoke $r1.<java.io.File: void <init>(java.io.File,java.lang.String)>($r2, "list-files");
+
+        return $r1;
+    }
+
+    public void setUp() throws java.lang.Exception
+    {
+        org.apache.commons.io.FileUtilsListFilesTestCase r0;
+        boolean $z0;
+        java.io.File $r1, $r2, $r3, $r4, $r5, $r6, $r7, $r8, $r9, $r10, $r11, r12, r21;
+
+        r0 := @this: org.apache.commons.io.FileUtilsListFilesTestCase;
+
+        r12 = specialinvoke r0.<org.apache.commons.io.FileUtilsListFilesTestCase: java.io.File getLocalTestDirectory()>();
+
+        $z0 = virtualinvoke r12.<java.io.File: boolean exists()>();
+
+        if $z0 == 0 goto label1;
+
+        staticinvoke <org.apache.commons.io.FileUtils: void deleteDirectory(java.io.File)>(r12);
+
+     label1:
+        virtualinvoke r12.<java.io.File: boolean mkdirs()>();
+
+        $r1 = new java.io.File;
+
+        specialinvoke $r1.<java.io.File: void <init>(java.io.File,java.lang.String)>(r12, "dummy-build.xml");
+
+        staticinvoke <org.apache.commons.io.FileUtils: void touch(java.io.File)>($r1);
+
+        $r2 = new java.io.File;
+
+        specialinvoke $r2.<java.io.File: void <init>(java.io.File,java.lang.String)>(r12, "README");
+
+        staticinvoke <org.apache.commons.io.FileUtils: void touch(java.io.File)>($r2);
+
+        $r3 = new java.io.File;
+
+        specialinvoke $r3.<java.io.File: void <init>(java.io.File,java.lang.String)>(r12, "subdir1");
+
+        virtualinvoke $r3.<java.io.File: boolean mkdirs()>();
+
+        $r4 = new java.io.File;
+
+        specialinvoke $r4.<java.io.File: void <init>(java.io.File,java.lang.String)>($r3, "dummy-build.xml");
+
+        staticinvoke <org.apache.commons.io.FileUtils: void touch(java.io.File)>($r4);
+
+        $r5 = new java.io.File;
+
+        specialinvoke $r5.<java.io.File: void <init>(java.io.File,java.lang.String)>($r3, "dummy-readme.txt");
+
+        staticinvoke <org.apache.commons.io.FileUtils: void touch(java.io.File)>($r5);
+
+        $r6 = new java.io.File;
+
+        specialinvoke $r6.<java.io.File: void <init>(java.io.File,java.lang.String)>($r3, "subsubdir1");
+
+        virtualinvoke $r6.<java.io.File: boolean mkdirs()>();
+
+        $r7 = new java.io.File;
+
+        specialinvoke $r7.<java.io.File: void <init>(java.io.File,java.lang.String)>($r6, "dummy-file.txt");
+
+        staticinvoke <org.apache.commons.io.FileUtils: void touch(java.io.File)>($r7);
+
+        $r8 = new java.io.File;
+
+        specialinvoke $r8.<java.io.File: void <init>(java.io.File,java.lang.String)>($r6, "dummy-index.html");
+
+        staticinvoke <org.apache.commons.io.FileUtils: void touch(java.io.File)>($r8);
+
+        r21 = virtualinvoke $r6.<java.io.File: java.io.File getParentFile()>();
+
+        $r9 = new java.io.File;
+
+        specialinvoke $r9.<java.io.File: void <init>(java.io.File,java.lang.String)>(r21, "CVS");
+
+        virtualinvoke $r9.<java.io.File: boolean mkdirs()>();
+
+        $r10 = new java.io.File;
+
+        specialinvoke $r10.<java.io.File: void <init>(java.io.File,java.lang.String)>($r9, "Entries");
+
+        staticinvoke <org.apache.commons.io.FileUtils: void touch(java.io.File)>($r10);
+
+        $r11 = new java.io.File;
+
+        specialinvoke $r11.<java.io.File: void <init>(java.io.File,java.lang.String)>($r9, "Repository");
+
+        staticinvoke <org.apache.commons.io.FileUtils: void touch(java.io.File)>($r11);
+
+        return;
+    }
+
+    public void tearDown() throws java.lang.Exception
+    {
+        org.apache.commons.io.FileUtilsListFilesTestCase r0;
+        java.io.File r1;
+
+        r0 := @this: org.apache.commons.io.FileUtilsListFilesTestCase;
+
+        r1 = specialinvoke r0.<org.apache.commons.io.FileUtilsListFilesTestCase: java.io.File getLocalTestDirectory()>();
+
+        staticinvoke <org.apache.commons.io.FileUtils: void deleteDirectory(java.io.File)>(r1);
+
+        return;
+    }
+
+    private java.util.Collection filesToFilenames(java.util.Collection)
+    {
+        org.apache.commons.io.FileUtilsListFilesTestCase r0;
+        java.util.Collection r1;
+        java.io.File r3;
+        java.util.Iterator r4;
+        java.util.ArrayList $r5;
+        int $i0;
+        boolean $z0;
+        java.lang.Object $r6;
+        java.lang.String $r7;
+
+        r0 := @this: org.apache.commons.io.FileUtilsListFilesTestCase;
+
+        r1 := @parameter0: java.util.Collection;
+
+        $r5 = new java.util.ArrayList;
+
+        $i0 = interfaceinvoke r1.<java.util.Collection: int size()>();
+
+        specialinvoke $r5.<java.util.ArrayList: void <init>(int)>($i0);
+
+        r4 = interfaceinvoke r1.<java.util.Collection: java.util.Iterator iterator()>();
+
+        goto label2;
+
+     label1:
+        $r6 = interfaceinvoke r4.<java.util.Iterator: java.lang.Object next()>();
+
+        r3 = (java.io.File) $r6;
+
+        $r7 = virtualinvoke r3.<java.io.File: java.lang.String getName()>();
+
+        interfaceinvoke $r5.<java.util.Collection: boolean add(java.lang.Object)>($r7);
+
+     label2:
+        $z0 = interfaceinvoke r4.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 != 0 goto label1;
+
+        return $r5;
+    }
+
+    private java.util.Collection filesToFilenames(java.util.Iterator)
+    {
+        org.apache.commons.io.FileUtilsListFilesTestCase r0;
+        java.util.Iterator r1;
+        java.util.ArrayList $r3;
+        boolean $z0;
+        java.lang.Object $r4;
+        java.io.File $r5;
+        java.lang.String $r6;
+
+        r0 := @this: org.apache.commons.io.FileUtilsListFilesTestCase;
+
+        r1 := @parameter0: java.util.Iterator;
+
+        $r3 = new java.util.ArrayList;
+
+        specialinvoke $r3.<java.util.ArrayList: void <init>()>();
+
+        goto label2;
+
+     label1:
+        $r4 = interfaceinvoke r1.<java.util.Iterator: java.lang.Object next()>();
+
+        $r5 = (java.io.File) $r4;
+
+        $r6 = virtualinvoke $r5.<java.io.File: java.lang.String getName()>();
+
+        interfaceinvoke $r3.<java.util.Collection: boolean add(java.lang.Object)>($r6);
+
+     label2:
+        $z0 = interfaceinvoke r1.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 != 0 goto label1;
+
+        return $r3;
+    }
+
+    public void testIterateFilesByExtension() throws java.lang.Exception
+    {
+        org.apache.commons.io.FileUtilsListFilesTestCase r0;
+        java.lang.String[] $r2;
+        java.io.File $r3, $r4, $r5;
+        int $i0, $i2, $i4;
+        long $l1, $l3, $l5;
+        boolean $z0, $z1, $z2, $z3, $z4, $z5, $z6, $z7;
+        java.util.Iterator r6, r8, r10;
+        java.util.Collection r7, r9, r11;
+
+        r0 := @this: org.apache.commons.io.FileUtilsListFilesTestCase;
+
+        $r2 = newarray (java.lang.String)[2];
+
+        $r2[0] = "xml";
+
+        $r2[1] = "txt";
+
+        $r3 = specialinvoke r0.<org.apache.commons.io.FileUtilsListFilesTestCase: java.io.File getLocalTestDirectory()>();
+
+        r6 = staticinvoke <org.apache.commons.io.FileUtils: java.util.Iterator iterateFiles(java.io.File,java.lang.String[],boolean)>($r3, $r2, 0);
+
+        r7 = specialinvoke r0.<org.apache.commons.io.FileUtilsListFilesTestCase: java.util.Collection filesToFilenames(java.util.Iterator)>(r6);
+
+        $i0 = interfaceinvoke r7.<java.util.Collection: int size()>();
+
+        $l1 = (long) $i0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(1L, $l1);
+
+        $z0 = interfaceinvoke r7.<java.util.Collection: boolean contains(java.lang.Object)>("dummy-build.xml");
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z0);
+
+        $z1 = interfaceinvoke r7.<java.util.Collection: boolean contains(java.lang.Object)>("README");
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z1);
+
+        $z2 = interfaceinvoke r7.<java.util.Collection: boolean contains(java.lang.Object)>("dummy-file.txt");
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z2);
+
+        $r4 = specialinvoke r0.<org.apache.commons.io.FileUtilsListFilesTestCase: java.io.File getLocalTestDirectory()>();
+
+        r8 = staticinvoke <org.apache.commons.io.FileUtils: java.util.Iterator iterateFiles(java.io.File,java.lang.String[],boolean)>($r4, $r2, 1);
+
+        r9 = specialinvoke r0.<org.apache.commons.io.FileUtilsListFilesTestCase: java.util.Collection filesToFilenames(java.util.Iterator)>(r8);
+
+        $i2 = interfaceinvoke r9.<java.util.Collection: int size()>();
+
+        $l3 = (long) $i2;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(4L, $l3);
+
+        $z3 = interfaceinvoke r9.<java.util.Collection: boolean contains(java.lang.Object)>("dummy-file.txt");
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z3);
+
+        $z4 = interfaceinvoke r9.<java.util.Collection: boolean contains(java.lang.Object)>("dummy-index.html");
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z4);
+
+        $r5 = specialinvoke r0.<org.apache.commons.io.FileUtilsListFilesTestCase: java.io.File getLocalTestDirectory()>();
+
+        r10 = staticinvoke <org.apache.commons.io.FileUtils: java.util.Iterator iterateFiles(java.io.File,java.lang.String[],boolean)>($r5, null, 0);
+
+        r11 = specialinvoke r0.<org.apache.commons.io.FileUtilsListFilesTestCase: java.util.Collection filesToFilenames(java.util.Iterator)>(r10);
+
+        $i4 = interfaceinvoke r11.<java.util.Collection: int size()>();
+
+        $l5 = (long) $i4;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(2L, $l5);
+
+        $z5 = interfaceinvoke r11.<java.util.Collection: boolean contains(java.lang.Object)>("dummy-build.xml");
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z5);
+
+        $z6 = interfaceinvoke r11.<java.util.Collection: boolean contains(java.lang.Object)>("README");
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z6);
+
+        $z7 = interfaceinvoke r11.<java.util.Collection: boolean contains(java.lang.Object)>("dummy-file.txt");
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z7);
+
+        return;
+    }
+
+    public void testListFilesByExtension() throws java.lang.Exception
+    {
+        org.apache.commons.io.FileUtilsListFilesTestCase r0;
+        java.lang.String[] $r2;
+        java.io.File $r3, $r4, $r5;
+        int $i0, $i2, $i4;
+        long $l1, $l3, $l5;
+        boolean $z0, $z1, $z2, $z3, $z4, $z5, $z6, $z7;
+        java.util.Collection r6, r7, r8, r9, r10, r11;
+
+        r0 := @this: org.apache.commons.io.FileUtilsListFilesTestCase;
+
+        $r2 = newarray (java.lang.String)[2];
+
+        $r2[0] = "xml";
+
+        $r2[1] = "txt";
+
+        $r3 = specialinvoke r0.<org.apache.commons.io.FileUtilsListFilesTestCase: java.io.File getLocalTestDirectory()>();
+
+        r6 = staticinvoke <org.apache.commons.io.FileUtils: java.util.Collection listFiles(java.io.File,java.lang.String[],boolean)>($r3, $r2, 0);
+
+        $i0 = interfaceinvoke r6.<java.util.Collection: int size()>();
+
+        $l1 = (long) $i0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(1L, $l1);
+
+        r7 = specialinvoke r0.<org.apache.commons.io.FileUtilsListFilesTestCase: java.util.Collection filesToFilenames(java.util.Collection)>(r6);
+
+        $z0 = interfaceinvoke r7.<java.util.Collection: boolean contains(java.lang.Object)>("dummy-build.xml");
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z0);
+
+        $z1 = interfaceinvoke r7.<java.util.Collection: boolean contains(java.lang.Object)>("README");
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z1);
+
+        $z2 = interfaceinvoke r7.<java.util.Collection: boolean contains(java.lang.Object)>("dummy-file.txt");
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z2);
+
+        $r4 = specialinvoke r0.<org.apache.commons.io.FileUtilsListFilesTestCase: java.io.File getLocalTestDirectory()>();
+
+        r8 = staticinvoke <org.apache.commons.io.FileUtils: java.util.Collection listFiles(java.io.File,java.lang.String[],boolean)>($r4, $r2, 1);
+
+        r9 = specialinvoke r0.<org.apache.commons.io.FileUtilsListFilesTestCase: java.util.Collection filesToFilenames(java.util.Collection)>(r8);
+
+        $i2 = interfaceinvoke r9.<java.util.Collection: int size()>();
+
+        $l3 = (long) $i2;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(4L, $l3);
+
+        $z3 = interfaceinvoke r9.<java.util.Collection: boolean contains(java.lang.Object)>("dummy-file.txt");
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z3);
+
+        $z4 = interfaceinvoke r9.<java.util.Collection: boolean contains(java.lang.Object)>("dummy-index.html");
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z4);
+
+        $r5 = specialinvoke r0.<org.apache.commons.io.FileUtilsListFilesTestCase: java.io.File getLocalTestDirectory()>();
+
+        r10 = staticinvoke <org.apache.commons.io.FileUtils: java.util.Collection listFiles(java.io.File,java.lang.String[],boolean)>($r5, null, 0);
+
+        $i4 = interfaceinvoke r10.<java.util.Collection: int size()>();
+
+        $l5 = (long) $i4;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(2L, $l5);
+
+        r11 = specialinvoke r0.<org.apache.commons.io.FileUtilsListFilesTestCase: java.util.Collection filesToFilenames(java.util.Collection)>(r10);
+
+        $z5 = interfaceinvoke r11.<java.util.Collection: boolean contains(java.lang.Object)>("dummy-build.xml");
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z5);
+
+        $z6 = interfaceinvoke r11.<java.util.Collection: boolean contains(java.lang.Object)>("README");
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z6);
+
+        $z7 = interfaceinvoke r11.<java.util.Collection: boolean contains(java.lang.Object)>("dummy-file.txt");
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z7);
+
+        return;
+    }
+
+    public void testListFiles() throws java.lang.Exception
+    {
+        org.apache.commons.io.FileUtilsListFilesTestCase r0;
+        java.io.File $r2, $r4, $r5, $r6, $r7;
+        boolean $z0, $z1, $z2, $z3, $z4, $z5, $z6, $z7, $z8, $z9, $z10, $z11;
+        org.apache.commons.io.filefilter.IOFileFilter $r3, r10, r13, r14, r17, r18, r21, r22, r23;
+        java.lang.NullPointerException $r9;
+        java.util.Collection r11, r12, r15, r16, r19, r20, r24, r25;
+
+        r0 := @this: org.apache.commons.io.FileUtilsListFilesTestCase;
+
+        r10 = staticinvoke <org.apache.commons.io.filefilter.FileFilterUtils: org.apache.commons.io.filefilter.IOFileFilter trueFileFilter()>();
+
+        $r2 = specialinvoke r0.<org.apache.commons.io.FileUtilsListFilesTestCase: java.io.File getLocalTestDirectory()>();
+
+        r11 = staticinvoke <org.apache.commons.io.FileUtils: java.util.Collection listFiles(java.io.File,org.apache.commons.io.filefilter.IOFileFilter,org.apache.commons.io.filefilter.IOFileFilter)>($r2, r10, null);
+
+        r12 = specialinvoke r0.<org.apache.commons.io.FileUtilsListFilesTestCase: java.util.Collection filesToFilenames(java.util.Collection)>(r11);
+
+        $z0 = interfaceinvoke r12.<java.util.Collection: boolean contains(java.lang.Object)>("dummy-build.xml");
+
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>("\'dummy-build.xml\' is missing", $z0);
+
+        $z1 = interfaceinvoke r12.<java.util.Collection: boolean contains(java.lang.Object)>("dummy-index.html");
+
+        staticinvoke <org.junit.Assert: void assertFalse(java.lang.String,boolean)>("\'dummy-index.html\' shouldn\'t be found", $z1);
+
+        $z2 = interfaceinvoke r12.<java.util.Collection: boolean contains(java.lang.Object)>("Entries");
+
+        staticinvoke <org.junit.Assert: void assertFalse(java.lang.String,boolean)>("\'Entries\' shouldn\'t be found", $z2);
+
+        r13 = staticinvoke <org.apache.commons.io.filefilter.FileFilterUtils: org.apache.commons.io.filefilter.IOFileFilter trueFileFilter()>();
+
+        $r3 = staticinvoke <org.apache.commons.io.filefilter.FileFilterUtils: org.apache.commons.io.filefilter.IOFileFilter nameFileFilter(java.lang.String)>("CVS");
+
+        r14 = staticinvoke <org.apache.commons.io.filefilter.FileFilterUtils: org.apache.commons.io.filefilter.IOFileFilter notFileFilter(org.apache.commons.io.filefilter.IOFileFilter)>($r3);
+
+        $r4 = specialinvoke r0.<org.apache.commons.io.FileUtilsListFilesTestCase: java.io.File getLocalTestDirectory()>();
+
+        r15 = staticinvoke <org.apache.commons.io.FileUtils: java.util.Collection listFiles(java.io.File,org.apache.commons.io.filefilter.IOFileFilter,org.apache.commons.io.filefilter.IOFileFilter)>($r4, r13, r14);
+
+        r16 = specialinvoke r0.<org.apache.commons.io.FileUtilsListFilesTestCase: java.util.Collection filesToFilenames(java.util.Collection)>(r15);
+
+        $z3 = interfaceinvoke r16.<java.util.Collection: boolean contains(java.lang.Object)>("dummy-build.xml");
+
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>("\'dummy-build.xml\' is missing", $z3);
+
+        $z4 = interfaceinvoke r16.<java.util.Collection: boolean contains(java.lang.Object)>("dummy-index.html");
+
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>("\'dummy-index.html\' is missing", $z4);
+
+        $z5 = interfaceinvoke r16.<java.util.Collection: boolean contains(java.lang.Object)>("Entries");
+
+        staticinvoke <org.junit.Assert: void assertFalse(java.lang.String,boolean)>("\'Entries\' shouldn\'t be found", $z5);
+
+        r17 = staticinvoke <org.apache.commons.io.filefilter.FileFilterUtils: org.apache.commons.io.filefilter.IOFileFilter trueFileFilter()>();
+
+        r18 = staticinvoke <org.apache.commons.io.filefilter.FileFilterUtils: org.apache.commons.io.filefilter.IOFileFilter makeCVSAware(org.apache.commons.io.filefilter.IOFileFilter)>(null);
+
+        $r5 = specialinvoke r0.<org.apache.commons.io.FileUtilsListFilesTestCase: java.io.File getLocalTestDirectory()>();
+
+        r19 = staticinvoke <org.apache.commons.io.FileUtils: java.util.Collection listFiles(java.io.File,org.apache.commons.io.filefilter.IOFileFilter,org.apache.commons.io.filefilter.IOFileFilter)>($r5, r17, r18);
+
+        r20 = specialinvoke r0.<org.apache.commons.io.FileUtilsListFilesTestCase: java.util.Collection filesToFilenames(java.util.Collection)>(r19);
+
+        $z6 = interfaceinvoke r20.<java.util.Collection: boolean contains(java.lang.Object)>("dummy-build.xml");
+
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>("\'dummy-build.xml\' is missing", $z6);
+
+        $z7 = interfaceinvoke r20.<java.util.Collection: boolean contains(java.lang.Object)>("dummy-index.html");
+
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>("\'dummy-index.html\' is missing", $z7);
+
+        $z8 = interfaceinvoke r20.<java.util.Collection: boolean contains(java.lang.Object)>("Entries");
+
+        staticinvoke <org.junit.Assert: void assertFalse(java.lang.String,boolean)>("\'Entries\' shouldn\'t be found", $z8);
+
+        r21 = staticinvoke <org.apache.commons.io.filefilter.FileFilterUtils: org.apache.commons.io.filefilter.IOFileFilter trueFileFilter()>();
+
+        r22 = staticinvoke <org.apache.commons.io.filefilter.FileFilterUtils: org.apache.commons.io.filefilter.IOFileFilter prefixFileFilter(java.lang.String)>("sub");
+
+        r23 = staticinvoke <org.apache.commons.io.filefilter.FileFilterUtils: org.apache.commons.io.filefilter.IOFileFilter makeCVSAware(org.apache.commons.io.filefilter.IOFileFilter)>(r22);
+
+        $r6 = specialinvoke r0.<org.apache.commons.io.FileUtilsListFilesTestCase: java.io.File getLocalTestDirectory()>();
+
+        r24 = staticinvoke <org.apache.commons.io.FileUtils: java.util.Collection listFiles(java.io.File,org.apache.commons.io.filefilter.IOFileFilter,org.apache.commons.io.filefilter.IOFileFilter)>($r6, r21, r23);
+
+        r25 = specialinvoke r0.<org.apache.commons.io.FileUtilsListFilesTestCase: java.util.Collection filesToFilenames(java.util.Collection)>(r24);
+
+        $z9 = interfaceinvoke r25.<java.util.Collection: boolean contains(java.lang.Object)>("dummy-build.xml");
+
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>("\'dummy-build.xml\' is missing", $z9);
+
+        $z10 = interfaceinvoke r25.<java.util.Collection: boolean contains(java.lang.Object)>("dummy-index.html");
+
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>("\'dummy-index.html\' is missing", $z10);
+
+        $z11 = interfaceinvoke r25.<java.util.Collection: boolean contains(java.lang.Object)>("Entries");
+
+        staticinvoke <org.junit.Assert: void assertFalse(java.lang.String,boolean)>("\'Entries\' shouldn\'t be found", $z11);
+
+     label1:
+        $r7 = specialinvoke r0.<org.apache.commons.io.FileUtilsListFilesTestCase: java.io.File getLocalTestDirectory()>();
+
+        staticinvoke <org.apache.commons.io.FileUtils: java.util.Collection listFiles(java.io.File,org.apache.commons.io.filefilter.IOFileFilter,org.apache.commons.io.filefilter.IOFileFilter)>($r7, null, null);
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("Expected error about null parameter");
+
+     label2:
+        goto label4;
+
+     label3:
+        $r9 := @caughtexception;
+
+     label4:
+        return;
+
+        catch java.lang.NullPointerException from label1 to label2 with label3;
+    }
+}

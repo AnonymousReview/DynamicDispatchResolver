@@ -1,0 +1,35 @@
+class org.apache.commons.io.FileSystemUtilsTestCase$1 extends org.apache.commons.io.FileSystemUtils
+{
+    final org.apache.commons.io.FileSystemUtilsTestCase this$0;
+
+    void <init>(org.apache.commons.io.FileSystemUtilsTestCase)
+    {
+        org.apache.commons.io.FileSystemUtilsTestCase$1 r0;
+        org.apache.commons.io.FileSystemUtilsTestCase r1;
+
+        r0 := @this: org.apache.commons.io.FileSystemUtilsTestCase$1;
+
+        r1 := @parameter0: org.apache.commons.io.FileSystemUtilsTestCase;
+
+        r0.<org.apache.commons.io.FileSystemUtilsTestCase$1: org.apache.commons.io.FileSystemUtilsTestCase this$0> = r1;
+
+        specialinvoke r0.<org.apache.commons.io.FileSystemUtils: void <init>()>();
+
+        return;
+    }
+
+    protected long freeSpaceWindows(java.lang.String, long) throws java.io.IOException
+    {
+        org.apache.commons.io.FileSystemUtilsTestCase$1 r0;
+        java.lang.String r1;
+        long l0;
+
+        r0 := @this: org.apache.commons.io.FileSystemUtilsTestCase$1;
+
+        r1 := @parameter0: java.lang.String;
+
+        l0 := @parameter1: long;
+
+        return 12345L;
+    }
+}

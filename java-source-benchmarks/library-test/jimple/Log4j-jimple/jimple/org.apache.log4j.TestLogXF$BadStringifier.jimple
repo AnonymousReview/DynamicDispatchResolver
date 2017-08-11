@@ -1,0 +1,42 @@
+class org.apache.log4j.TestLogXF$BadStringifier extends java.lang.Object
+{
+    public static org.apache.log4j.TestLogXF$BadStringifier INSTANCE;
+
+    static void <clinit>()
+    {
+        org.apache.log4j.TestLogXF$BadStringifier $r0;
+
+        $r0 = new org.apache.log4j.TestLogXF$BadStringifier;
+
+        specialinvoke $r0.<org.apache.log4j.TestLogXF$BadStringifier: void <init>()>();
+
+        <org.apache.log4j.TestLogXF$BadStringifier: org.apache.log4j.TestLogXF$BadStringifier INSTANCE> = $r0;
+
+        return;
+    }
+
+    private void <init>()
+    {
+        org.apache.log4j.TestLogXF$BadStringifier r0;
+
+        r0 := @this: org.apache.log4j.TestLogXF$BadStringifier;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public java.lang.String toString()
+    {
+        org.apache.log4j.TestLogXF$BadStringifier r0;
+        java.lang.NullPointerException $r1;
+
+        r0 := @this: org.apache.log4j.TestLogXF$BadStringifier;
+
+        $r1 = new java.lang.NullPointerException;
+
+        specialinvoke $r1.<java.lang.NullPointerException: void <init>()>();
+
+        throw $r1;
+    }
+}

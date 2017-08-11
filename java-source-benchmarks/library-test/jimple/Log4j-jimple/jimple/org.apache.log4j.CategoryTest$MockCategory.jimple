@@ -1,0 +1,46 @@
+class org.apache.log4j.CategoryTest$MockCategory extends org.apache.log4j.Logger
+{
+
+    public void <init>(java.lang.String)
+    {
+        org.apache.log4j.CategoryTest$MockCategory r0;
+        java.lang.String r1;
+        org.apache.log4j.Hierarchy $r2;
+
+        r0 := @this: org.apache.log4j.CategoryTest$MockCategory;
+
+        r1 := @parameter0: java.lang.String;
+
+        specialinvoke r0.<org.apache.log4j.Logger: void <init>(java.lang.String)>(r1);
+
+        $r2 = new org.apache.log4j.Hierarchy;
+
+        specialinvoke $r2.<org.apache.log4j.Hierarchy: void <init>(org.apache.log4j.Logger)>(r0);
+
+        r0.<org.apache.log4j.CategoryTest$MockCategory: org.apache.log4j.spi.LoggerRepository repository> = $r2;
+
+        return;
+    }
+
+    public void info(java.lang.String)
+    {
+        org.apache.log4j.CategoryTest$MockCategory r0;
+        java.lang.String r1, $r4;
+        org.apache.log4j.Level r2;
+        java.lang.Class $r3;
+
+        r0 := @this: org.apache.log4j.CategoryTest$MockCategory;
+
+        r1 := @parameter0: java.lang.String;
+
+        r2 = <org.apache.log4j.Level: org.apache.log4j.Level INFO>;
+
+        $r3 = class "org/apache/log4j/CategoryTest$MockCategory";
+
+        $r4 = virtualinvoke $r3.<java.lang.Class: java.lang.String toString()>();
+
+        virtualinvoke r0.<org.apache.log4j.CategoryTest$MockCategory: void forcedLog(java.lang.String,org.apache.log4j.Priority,java.lang.Object,java.lang.Throwable)>($r4, r2, r1, null);
+
+        return;
+    }
+}

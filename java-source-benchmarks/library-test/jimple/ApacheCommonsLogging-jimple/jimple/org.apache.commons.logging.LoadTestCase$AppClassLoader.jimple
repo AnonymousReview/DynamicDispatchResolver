@@ -1,0 +1,178 @@
+class org.apache.commons.logging.LoadTestCase$AppClassLoader extends java.lang.ClassLoader
+{
+    java.util.Map classes;
+
+    void <init>(java.lang.ClassLoader)
+    {
+        org.apache.commons.logging.LoadTestCase$AppClassLoader r0;
+        java.lang.ClassLoader r1;
+        java.util.HashMap $r2;
+
+        r0 := @this: org.apache.commons.logging.LoadTestCase$AppClassLoader;
+
+        r1 := @parameter0: java.lang.ClassLoader;
+
+        specialinvoke r0.<java.lang.ClassLoader: void <init>(java.lang.ClassLoader)>(r1);
+
+        $r2 = new java.util.HashMap;
+
+        specialinvoke $r2.<java.util.HashMap: void <init>()>();
+
+        r0.<org.apache.commons.logging.LoadTestCase$AppClassLoader: java.util.Map classes> = $r2;
+
+        return;
+    }
+
+    private java.lang.Class def(java.lang.String) throws java.lang.ClassNotFoundException
+    {
+        org.apache.commons.logging.LoadTestCase$AppClassLoader r0;
+        java.lang.String r1, r2, $r10, $r11, $r19, $r21, $r23;
+        java.io.InputStream r3;
+        byte[] r5;
+        java.util.Map $r6, $r14;
+        java.lang.Object $r7;
+        java.lang.Class $r8, r24, r26;
+        java.lang.StringBuilder $r9, $r12, $r18, $r20, $r22;
+        java.io.ByteArrayOutputStream $r13;
+        int $i0, $i1, $i2;
+        java.io.IOException $r16;
+        java.lang.ClassNotFoundException $r17;
+        java.lang.ClassLoader r25;
+
+        r0 := @this: org.apache.commons.logging.LoadTestCase$AppClassLoader;
+
+        r1 := @parameter0: java.lang.String;
+
+        $r6 = r0.<org.apache.commons.logging.LoadTestCase$AppClassLoader: java.util.Map classes>;
+
+        $r7 = interfaceinvoke $r6.<java.util.Map: java.lang.Object get(java.lang.Object)>(r1);
+
+        r24 = (java.lang.Class) $r7;
+
+        if r24 == null goto label1;
+
+        return r24;
+
+     label1:
+        $r8 = virtualinvoke r0.<java.lang.Object: java.lang.Class getClass()>();
+
+        r25 = virtualinvoke $r8.<java.lang.Class: java.lang.ClassLoader getClassLoader()>();
+
+        $r9 = new java.lang.StringBuilder;
+
+        $r10 = virtualinvoke r1.<java.lang.String: java.lang.String replace(char,char)>(46, 47);
+
+        $r11 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r10);
+
+        specialinvoke $r9.<java.lang.StringBuilder: void <init>(java.lang.String)>($r11);
+
+        $r12 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(".class");
+
+        r2 = virtualinvoke $r12.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        r3 = virtualinvoke r25.<java.lang.ClassLoader: java.io.InputStream getResourceAsStream(java.lang.String)>(r2);
+
+        $r13 = new java.io.ByteArrayOutputStream;
+
+        specialinvoke $r13.<java.io.ByteArrayOutputStream: void <init>()>();
+
+        goto label3;
+
+     label2:
+        $i1 = virtualinvoke r3.<java.io.InputStream: int read()>();
+
+        virtualinvoke $r13.<java.io.ByteArrayOutputStream: void write(int)>($i1);
+
+     label3:
+        $i0 = virtualinvoke r3.<java.io.InputStream: int available()>();
+
+        if $i0 > 0 goto label2;
+
+        r5 = virtualinvoke $r13.<java.io.ByteArrayOutputStream: byte[] toByteArray()>();
+
+        $i2 = lengthof r5;
+
+        r26 = specialinvoke r0.<java.lang.ClassLoader: java.lang.Class defineClass(java.lang.String,byte[],int,int)>(r1, r5, 0, $i2);
+
+        $r14 = r0.<org.apache.commons.logging.LoadTestCase$AppClassLoader: java.util.Map classes>;
+
+        interfaceinvoke $r14.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>(r1, r26);
+
+     label4:
+        return r26;
+
+     label5:
+        $r16 := @caughtexception;
+
+        $r17 = new java.lang.ClassNotFoundException;
+
+        $r18 = new java.lang.StringBuilder;
+
+        $r19 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>(r1);
+
+        specialinvoke $r18.<java.lang.StringBuilder: void <init>(java.lang.String)>($r19);
+
+        $r20 = virtualinvoke $r18.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" caused by ");
+
+        $r21 = virtualinvoke $r16.<java.io.IOException: java.lang.String getMessage()>();
+
+        $r22 = virtualinvoke $r20.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r21);
+
+        $r23 = virtualinvoke $r22.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r17.<java.lang.ClassNotFoundException: void <init>(java.lang.String)>($r23);
+
+        throw $r17;
+
+        catch java.io.IOException from label1 to label4 with label5;
+    }
+
+    public java.lang.Class loadClass(java.lang.String) throws java.lang.ClassNotFoundException
+    {
+        org.apache.commons.logging.LoadTestCase$AppClassLoader r0;
+        java.lang.String r1, $r3;
+        java.lang.String[] $r2, $r6;
+        boolean $z0;
+        int $i0, i1, $i2;
+        java.lang.Class $r4, $r5;
+
+        r0 := @this: org.apache.commons.logging.LoadTestCase$AppClassLoader;
+
+        r1 := @parameter0: java.lang.String;
+
+        i1 = 0;
+
+        goto label3;
+
+     label1:
+        $r2 = staticinvoke <org.apache.commons.logging.LoadTestCase: java.lang.String[] access$0()>();
+
+        $r3 = $r2[i1];
+
+        $z0 = virtualinvoke r1.<java.lang.String: boolean startsWith(java.lang.String)>($r3);
+
+        if $z0 == 0 goto label2;
+
+        $i0 = virtualinvoke r1.<java.lang.String: int indexOf(java.lang.String)>("Exception");
+
+        if $i0 != -1 goto label2;
+
+        $r4 = specialinvoke r0.<org.apache.commons.logging.LoadTestCase$AppClassLoader: java.lang.Class def(java.lang.String)>(r1);
+
+        return $r4;
+
+     label2:
+        i1 = i1 + 1;
+
+     label3:
+        $r6 = staticinvoke <org.apache.commons.logging.LoadTestCase: java.lang.String[] access$0()>();
+
+        $i2 = lengthof $r6;
+
+        if i1 < $i2 goto label1;
+
+        $r5 = specialinvoke r0.<java.lang.ClassLoader: java.lang.Class loadClass(java.lang.String)>(r1);
+
+        return $r5;
+    }
+}

@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<attributes>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="3" eline="3" spos="0" epos="0"/>
+<text info="ConstantValue: -1" aType="IntegerConstantValueTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="4" eline="4" spos="0" epos="0"/>
+<text info="ConstantValue: 47" aType="IntegerConstantValueTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="5" eline="5" spos="0" epos="0"/>
+<text info="ConstantValue: 92" aType="IntegerConstantValueTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="7" eline="7" spos="0" epos="0"/>
+<text info="ConstantValue: 
+" aType="StringConstantValueTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="8" eline="8" spos="0" epos="0"/>
+<text info="ConstantValue: 
+" aType="StringConstantValueTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="10" eline="10" spos="0" epos="0"/>
+<text info="ConstantValue: 4096" aType="IntegerConstantValueTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="11" eline="11" spos="0" epos="0"/>
+<text info="ConstantValue: 2048" aType="IntegerConstantValueTag"/>
+</attribute>
+<attribute>
+<srcPos sline="803" eline="803" spos="0" epos="0"/>
+<jmpPos sline="733" eline="733" spos="0" epos="0"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation type: Ljava/lang/Deprecated; without elements
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+<attribute>
+<srcPos sline="865" eline="865" spos="0" epos="0"/>
+<jmpPos sline="788" eline="788" spos="0" epos="0"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation type: Ljava/lang/Deprecated; without elements
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+<attribute>
+<srcPos sline="936" eline="936" spos="0" epos="0"/>
+<jmpPos sline="876" eline="876" spos="0" epos="0"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation type: Ljava/lang/Deprecated; without elements
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+<attribute>
+<srcPos sline="1020" eline="1020" spos="0" epos="0"/>
+<jmpPos sline="950" eline="950" spos="0" epos="0"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation type: Ljava/lang/Deprecated; without elements
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+<attribute>
+<srcPos sline="1096" eline="1096" spos="0" epos="0"/>
+<jmpPos sline="1023" eline="1023" spos="0" epos="0"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation type: Ljava/lang/Deprecated; without elements
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+<attribute>
+<srcPos sline="1139" eline="1139" spos="0" epos="0"/>
+<jmpPos sline="1075" eline="1075" spos="0" epos="0"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation type: Ljava/lang/Deprecated; without elements
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+<attribute>
+<srcPos sline="1189" eline="1189" spos="0" epos="0"/>
+<jmpPos sline="1139" eline="1139" spos="0" epos="0"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation type: Ljava/lang/Deprecated; without elements
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+<attribute>
+<srcPos sline="1228" eline="1228" spos="0" epos="0"/>
+<jmpPos sline="1175" eline="1175" spos="0" epos="0"/>
+<text info="Signature: (Ljava/io/InputStream;)Ljava/util/List&lt;Ljava/lang/String;&gt;;" aType="SignatureTag"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation type: Ljava/lang/Deprecated; without elements
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+<attribute>
+<srcPos sline="1246" eline="1246" spos="0" epos="0"/>
+<jmpPos sline="1190" eline="1190" spos="0" epos="0"/>
+<text info="Signature: (Ljava/io/InputStream;Ljava/nio/charset/Charset;)Ljava/util/List&lt;Ljava/lang/String;&gt;;" aType="SignatureTag"/>
+</attribute>
+<attribute>
+<srcPos sline="1271" eline="1271" spos="0" epos="0"/>
+<jmpPos sline="1212" eline="1212" spos="0" epos="0"/>
+<text info="Signature: (Ljava/io/InputStream;Ljava/lang/String;)Ljava/util/List&lt;Ljava/lang/String;&gt;;" aType="SignatureTag"/>
+</attribute>
+<attribute>
+<srcPos sline="1288" eline="1288" spos="0" epos="0"/>
+<jmpPos sline="1230" eline="1230" spos="0" epos="0"/>
+<text info="Signature: (Ljava/io/Reader;)Ljava/util/List&lt;Ljava/lang/String;&gt;;" aType="SignatureTag"/>
+</attribute>
+<attribute>
+<srcPos sline="1416" eline="1416" spos="0" epos="0"/>
+<jmpPos sline="1316" eline="1316" spos="0" epos="0"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation type: Ljava/lang/Deprecated; without elements
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+<attribute>
+<srcPos sline="1465" eline="1465" spos="0" epos="0"/>
+<jmpPos sline="1367" eline="1367" spos="0" epos="0"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation type: Ljava/lang/Deprecated; without elements
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+<attribute>
+<srcPos sline="1564" eline="1564" spos="0" epos="0"/>
+<jmpPos sline="1477" eline="1477" spos="0" epos="0"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation type: Ljava/lang/Deprecated; without elements
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+<attribute>
+<srcPos sline="1673" eline="1673" spos="0" epos="0"/>
+<jmpPos sline="1592" eline="1592" spos="0" epos="0"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation type: Ljava/lang/Deprecated; without elements
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+<attribute>
+<srcPos sline="1757" eline="1757" spos="0" epos="0"/>
+<jmpPos sline="1679" eline="1679" spos="0" epos="0"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation type: Ljava/lang/Deprecated; without elements
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+<attribute>
+<srcPos sline="1838" eline="1838" spos="0" epos="0"/>
+<jmpPos sline="1756" eline="1756" spos="0" epos="0"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation type: Ljava/lang/Deprecated; without elements
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+<attribute>
+<srcPos sline="1899" eline="1899" spos="0" epos="0"/>
+<jmpPos sline="1817" eline="1817" spos="0" epos="0"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation type: Ljava/lang/Deprecated; without elements
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+<attribute>
+<srcPos sline="1921" eline="1921" spos="0" epos="0"/>
+<jmpPos sline="1837" eline="1837" spos="0" epos="0"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation type: Ljava/lang/Deprecated; without elements
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+<attribute>
+<srcPos sline="1946" eline="1946" spos="0" epos="0"/>
+<jmpPos sline="1851" eline="1851" spos="0" epos="0"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation type: Ljava/lang/Deprecated; without elements
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+<attribute>
+<srcPos sline="1970" eline="1970" spos="0" epos="0"/>
+<jmpPos sline="1879" eline="1879" spos="0" epos="0"/>
+<text info="Signature: (Ljava/util/Collection&lt;*&gt;;Ljava/lang/String;Ljava/io/OutputStream;)V" aType="SignatureTag"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation type: Ljava/lang/Deprecated; without elements
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+<attribute>
+<srcPos sline="1988" eline="1988" spos="0" epos="0"/>
+<jmpPos sline="1899" eline="1899" spos="0" epos="0"/>
+<text info="Signature: (Ljava/util/Collection&lt;*&gt;;Ljava/lang/String;Ljava/io/OutputStream;Ljava/nio/charset/Charset;)V" aType="SignatureTag"/>
+</attribute>
+<attribute>
+<srcPos sline="2024" eline="2024" spos="0" epos="0"/>
+<jmpPos sline="1958" eline="1958" spos="0" epos="0"/>
+<text info="Signature: (Ljava/util/Collection&lt;*&gt;;Ljava/lang/String;Ljava/io/OutputStream;Ljava/lang/String;)V" aType="SignatureTag"/>
+</attribute>
+<attribute>
+<srcPos sline="2040" eline="2040" spos="0" epos="0"/>
+<jmpPos sline="1980" eline="1980" spos="0" epos="0"/>
+<text info="Signature: (Ljava/util/Collection&lt;*&gt;;Ljava/lang/String;Ljava/io/Writer;)V" aType="SignatureTag"/>
+</attribute>
+<attribute>
+<srcPos sline="2250" eline="2250" spos="0" epos="0"/>
+<jmpPos sline="2230" eline="2230" spos="0" epos="0"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation type: Ljava/lang/Deprecated; without elements
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+<attribute>
+<srcPos sline="2467" eline="2467" spos="0" epos="0"/>
+<jmpPos sline="2476" eline="2476" spos="0" epos="0"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation type: Ljava/lang/Deprecated; without elements
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+</attributes>

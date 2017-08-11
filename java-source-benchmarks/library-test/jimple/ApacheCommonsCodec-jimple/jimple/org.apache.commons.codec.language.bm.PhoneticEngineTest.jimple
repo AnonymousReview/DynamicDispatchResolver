@@ -1,0 +1,366 @@
+public class org.apache.commons.codec.language.bm.PhoneticEngineTest extends java.lang.Object
+{
+    private static final java.lang.Integer TEN;
+    private final boolean concat;
+    private final java.lang.String name;
+    private final org.apache.commons.codec.language.bm.NameType nameType;
+    private final java.lang.String phoneticExpected;
+    private final org.apache.commons.codec.language.bm.RuleType ruleType;
+    private final int maxPhonemes;
+
+    static void <clinit>()
+    {
+        java.lang.Integer $r0;
+
+        $r0 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(10);
+
+        <org.apache.commons.codec.language.bm.PhoneticEngineTest: java.lang.Integer TEN> = $r0;
+
+        return;
+    }
+
+    public static java.util.List data()
+    {
+        java.lang.Object[][] $r0;
+        java.lang.Object[] $r1, $r6, $r11, $r16, $r21, $r26, $r31, $r36;
+        org.apache.commons.codec.language.bm.NameType $r2, $r7, $r12, $r17, $r22, $r27, $r32, $r37;
+        org.apache.commons.codec.language.bm.RuleType $r3, $r8, $r13, $r18, $r23, $r28, $r33, $r38;
+        java.lang.Boolean $r4, $r9, $r14, $r19, $r24, $r29, $r34, $r39;
+        java.lang.Integer $r5, $r10, $r15, $r20, $r25, $r30, $r35, $r40;
+        java.util.List $r41;
+
+        $r0 = newarray (java.lang.Object[])[8];
+
+        $r1 = newarray (java.lang.Object)[6];
+
+        $r1[0] = "Renault";
+
+        $r1[1] = "rinD|rinDlt|rina|rinalt|rino|rinolt|rinu|rinult";
+
+        $r2 = <org.apache.commons.codec.language.bm.NameType: org.apache.commons.codec.language.bm.NameType GENERIC>;
+
+        $r1[2] = $r2;
+
+        $r3 = <org.apache.commons.codec.language.bm.RuleType: org.apache.commons.codec.language.bm.RuleType APPROX>;
+
+        $r1[3] = $r3;
+
+        $r4 = <java.lang.Boolean: java.lang.Boolean TRUE>;
+
+        $r1[4] = $r4;
+
+        $r5 = <org.apache.commons.codec.language.bm.PhoneticEngineTest: java.lang.Integer TEN>;
+
+        $r1[5] = $r5;
+
+        $r0[0] = $r1;
+
+        $r6 = newarray (java.lang.Object)[6];
+
+        $r6[0] = "Renault";
+
+        $r6[1] = "rYnDlt|rYnalt|rYnult|rinDlt|rinalt|rinolt|rinult";
+
+        $r7 = <org.apache.commons.codec.language.bm.NameType: org.apache.commons.codec.language.bm.NameType ASHKENAZI>;
+
+        $r6[2] = $r7;
+
+        $r8 = <org.apache.commons.codec.language.bm.RuleType: org.apache.commons.codec.language.bm.RuleType APPROX>;
+
+        $r6[3] = $r8;
+
+        $r9 = <java.lang.Boolean: java.lang.Boolean TRUE>;
+
+        $r6[4] = $r9;
+
+        $r10 = <org.apache.commons.codec.language.bm.PhoneticEngineTest: java.lang.Integer TEN>;
+
+        $r6[5] = $r10;
+
+        $r0[1] = $r6;
+
+        $r11 = newarray (java.lang.Object)[6];
+
+        $r11[0] = "Renault";
+
+        $r11[1] = "rinDlt";
+
+        $r12 = <org.apache.commons.codec.language.bm.NameType: org.apache.commons.codec.language.bm.NameType ASHKENAZI>;
+
+        $r11[2] = $r12;
+
+        $r13 = <org.apache.commons.codec.language.bm.RuleType: org.apache.commons.codec.language.bm.RuleType APPROX>;
+
+        $r11[3] = $r13;
+
+        $r14 = <java.lang.Boolean: java.lang.Boolean TRUE>;
+
+        $r11[4] = $r14;
+
+        $r15 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(1);
+
+        $r11[5] = $r15;
+
+        $r0[2] = $r11;
+
+        $r16 = newarray (java.lang.Object)[6];
+
+        $r16[0] = "Renault";
+
+        $r16[1] = "rinDlt";
+
+        $r17 = <org.apache.commons.codec.language.bm.NameType: org.apache.commons.codec.language.bm.NameType SEPHARDIC>;
+
+        $r16[2] = $r17;
+
+        $r18 = <org.apache.commons.codec.language.bm.RuleType: org.apache.commons.codec.language.bm.RuleType APPROX>;
+
+        $r16[3] = $r18;
+
+        $r19 = <java.lang.Boolean: java.lang.Boolean TRUE>;
+
+        $r16[4] = $r19;
+
+        $r20 = <org.apache.commons.codec.language.bm.PhoneticEngineTest: java.lang.Integer TEN>;
+
+        $r16[5] = $r20;
+
+        $r0[3] = $r16;
+
+        $r21 = newarray (java.lang.Object)[6];
+
+        $r21[0] = "SntJohn-Smith";
+
+        $r21[1] = "sntjonsmit";
+
+        $r22 = <org.apache.commons.codec.language.bm.NameType: org.apache.commons.codec.language.bm.NameType GENERIC>;
+
+        $r21[2] = $r22;
+
+        $r23 = <org.apache.commons.codec.language.bm.RuleType: org.apache.commons.codec.language.bm.RuleType EXACT>;
+
+        $r21[3] = $r23;
+
+        $r24 = <java.lang.Boolean: java.lang.Boolean TRUE>;
+
+        $r21[4] = $r24;
+
+        $r25 = <org.apache.commons.codec.language.bm.PhoneticEngineTest: java.lang.Integer TEN>;
+
+        $r21[5] = $r25;
+
+        $r0[4] = $r21;
+
+        $r26 = newarray (java.lang.Object)[6];
+
+        $r26[0] = "d\'ortley";
+
+        $r26[1] = "(ortlaj|ortlej)-(dortlaj|dortlej)";
+
+        $r27 = <org.apache.commons.codec.language.bm.NameType: org.apache.commons.codec.language.bm.NameType GENERIC>;
+
+        $r26[2] = $r27;
+
+        $r28 = <org.apache.commons.codec.language.bm.RuleType: org.apache.commons.codec.language.bm.RuleType EXACT>;
+
+        $r26[3] = $r28;
+
+        $r29 = <java.lang.Boolean: java.lang.Boolean TRUE>;
+
+        $r26[4] = $r29;
+
+        $r30 = <org.apache.commons.codec.language.bm.PhoneticEngineTest: java.lang.Integer TEN>;
+
+        $r26[5] = $r30;
+
+        $r0[5] = $r26;
+
+        $r31 = newarray (java.lang.Object)[6];
+
+        $r31[0] = "van helsing";
+
+        $r31[1] = "(elSink|elsink|helSink|helsink|helzink|xelsink)-(banhelsink|fanhelsink|fanhelzink|vanhelsink|vanhelzink|vanjelsink)";
+
+        $r32 = <org.apache.commons.codec.language.bm.NameType: org.apache.commons.codec.language.bm.NameType GENERIC>;
+
+        $r31[2] = $r32;
+
+        $r33 = <org.apache.commons.codec.language.bm.RuleType: org.apache.commons.codec.language.bm.RuleType EXACT>;
+
+        $r31[3] = $r33;
+
+        $r34 = <java.lang.Boolean: java.lang.Boolean FALSE>;
+
+        $r31[4] = $r34;
+
+        $r35 = <org.apache.commons.codec.language.bm.PhoneticEngineTest: java.lang.Integer TEN>;
+
+        $r31[5] = $r35;
+
+        $r0[6] = $r31;
+
+        $r36 = newarray (java.lang.Object)[6];
+
+        $r36[0] = "Judenburg";
+
+        $r36[1] = "iudnbYrk|iudnbirk|iudnburk|xudnbirk|xudnburk|zudnbirk|zudnburk";
+
+        $r37 = <org.apache.commons.codec.language.bm.NameType: org.apache.commons.codec.language.bm.NameType GENERIC>;
+
+        $r36[2] = $r37;
+
+        $r38 = <org.apache.commons.codec.language.bm.RuleType: org.apache.commons.codec.language.bm.RuleType APPROX>;
+
+        $r36[3] = $r38;
+
+        $r39 = <java.lang.Boolean: java.lang.Boolean TRUE>;
+
+        $r36[4] = $r39;
+
+        $r40 = <org.apache.commons.codec.language.bm.PhoneticEngineTest: java.lang.Integer TEN>;
+
+        $r36[5] = $r40;
+
+        $r0[7] = $r36;
+
+        $r41 = staticinvoke <java.util.Arrays: java.util.List asList(java.lang.Object[])>($r0);
+
+        return $r41;
+    }
+
+    public void <init>(java.lang.String, java.lang.String, org.apache.commons.codec.language.bm.NameType, org.apache.commons.codec.language.bm.RuleType, boolean, int)
+    {
+        org.apache.commons.codec.language.bm.PhoneticEngineTest r0;
+        java.lang.String r1, r2;
+        org.apache.commons.codec.language.bm.NameType r3;
+        org.apache.commons.codec.language.bm.RuleType r4;
+        boolean z0;
+        int i0;
+
+        r0 := @this: org.apache.commons.codec.language.bm.PhoneticEngineTest;
+
+        r1 := @parameter0: java.lang.String;
+
+        r2 := @parameter1: java.lang.String;
+
+        r3 := @parameter2: org.apache.commons.codec.language.bm.NameType;
+
+        r4 := @parameter3: org.apache.commons.codec.language.bm.RuleType;
+
+        z0 := @parameter4: boolean;
+
+        i0 := @parameter5: int;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<org.apache.commons.codec.language.bm.PhoneticEngineTest: java.lang.String name> = r1;
+
+        r0.<org.apache.commons.codec.language.bm.PhoneticEngineTest: java.lang.String phoneticExpected> = r2;
+
+        r0.<org.apache.commons.codec.language.bm.PhoneticEngineTest: org.apache.commons.codec.language.bm.NameType nameType> = r3;
+
+        r0.<org.apache.commons.codec.language.bm.PhoneticEngineTest: org.apache.commons.codec.language.bm.RuleType ruleType> = r4;
+
+        r0.<org.apache.commons.codec.language.bm.PhoneticEngineTest: boolean concat> = z0;
+
+        r0.<org.apache.commons.codec.language.bm.PhoneticEngineTest: int maxPhonemes> = i0;
+
+        return;
+    }
+
+    public void testEncode()
+    {
+        org.apache.commons.codec.language.bm.PhoneticEngineTest r0;
+        java.lang.String r2, r3, $r9, $r10;
+        int i0, $i1, $i2, $i3, $i4, $i5, i6;
+        java.lang.String[] r5, r11, r12;
+        org.apache.commons.codec.language.bm.PhoneticEngine $r6;
+        boolean $z0, $z1, $z2, $z3;
+        org.apache.commons.codec.language.bm.RuleType $r7;
+        org.apache.commons.codec.language.bm.NameType $r8;
+
+        r0 := @this: org.apache.commons.codec.language.bm.PhoneticEngineTest;
+
+        $r6 = new org.apache.commons.codec.language.bm.PhoneticEngine;
+
+        $r8 = r0.<org.apache.commons.codec.language.bm.PhoneticEngineTest: org.apache.commons.codec.language.bm.NameType nameType>;
+
+        $r7 = r0.<org.apache.commons.codec.language.bm.PhoneticEngineTest: org.apache.commons.codec.language.bm.RuleType ruleType>;
+
+        $z0 = r0.<org.apache.commons.codec.language.bm.PhoneticEngineTest: boolean concat>;
+
+        $i1 = r0.<org.apache.commons.codec.language.bm.PhoneticEngineTest: int maxPhonemes>;
+
+        specialinvoke $r6.<org.apache.commons.codec.language.bm.PhoneticEngine: void <init>(org.apache.commons.codec.language.bm.NameType,org.apache.commons.codec.language.bm.RuleType,boolean,int)>($r8, $r7, $z0, $i1);
+
+        $r9 = r0.<org.apache.commons.codec.language.bm.PhoneticEngineTest: java.lang.String name>;
+
+        r2 = virtualinvoke $r6.<org.apache.commons.codec.language.bm.PhoneticEngine: java.lang.String encode(java.lang.String)>($r9);
+
+        $r10 = r0.<org.apache.commons.codec.language.bm.PhoneticEngineTest: java.lang.String phoneticExpected>;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,java.lang.Object,java.lang.Object)>("phoneme incorrect", $r10, r2);
+
+        $z1 = r0.<org.apache.commons.codec.language.bm.PhoneticEngineTest: boolean concat>;
+
+        if $z1 == 0 goto label3;
+
+        r11 = virtualinvoke r2.<java.lang.String: java.lang.String[] split(java.lang.String)>("\\|");
+
+        $i5 = lengthof r11;
+
+        $i4 = r0.<org.apache.commons.codec.language.bm.PhoneticEngineTest: int maxPhonemes>;
+
+        if $i5 > $i4 goto label1;
+
+        $z2 = 1;
+
+        goto label2;
+
+     label1:
+        $z2 = 0;
+
+     label2:
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z2);
+
+        goto label8;
+
+     label3:
+        r12 = virtualinvoke r2.<java.lang.String: java.lang.String[] split(java.lang.String)>("-");
+
+        i0 = lengthof r12;
+
+        i6 = 0;
+
+        goto label7;
+
+     label4:
+        r3 = r12[i6];
+
+        r5 = virtualinvoke r3.<java.lang.String: java.lang.String[] split(java.lang.String)>("\\|");
+
+        $i3 = lengthof r5;
+
+        $i2 = r0.<org.apache.commons.codec.language.bm.PhoneticEngineTest: int maxPhonemes>;
+
+        if $i3 > $i2 goto label5;
+
+        $z3 = 1;
+
+        goto label6;
+
+     label5:
+        $z3 = 0;
+
+     label6:
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z3);
+
+        i6 = i6 + 1;
+
+     label7:
+        if i6 < i0 goto label4;
+
+     label8:
+        return;
+    }
+}

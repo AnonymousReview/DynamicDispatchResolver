@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<attributes>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="0" eline="0" spos="0" epos="0"/>
+<text info="[inner=org/apache/commons/io/DirectoryWalker$CancelException, outer=org/apache/commons/io/DirectoryWalker, name=CancelException,flags=9]" aType="InnerClassTag"/>
+<text info="[inner=org/apache/commons/io/DirectoryWalkerTestCaseJava4$TestCancelWalker, outer=org/apache/commons/io/DirectoryWalkerTestCaseJava4, name=TestCancelWalker,flags=8]" aType="InnerClassTag"/>
+<text info="[inner=org/apache/commons/io/DirectoryWalkerTestCaseJava4$TestFalseFileFinder, outer=org/apache/commons/io/DirectoryWalkerTestCaseJava4, name=TestFalseFileFinder,flags=10]" aType="InnerClassTag"/>
+<text info="[inner=org/apache/commons/io/DirectoryWalkerTestCaseJava4$TestFileFinder, outer=org/apache/commons/io/DirectoryWalkerTestCaseJava4, name=TestFileFinder,flags=10]" aType="InnerClassTag"/>
+<text info="[inner=org/apache/commons/io/DirectoryWalkerTestCaseJava4$TestMultiThreadCancelWalker, outer=org/apache/commons/io/DirectoryWalkerTestCaseJava4, name=TestMultiThreadCancelWalker,flags=8]" aType="InnerClassTag"/>
+<text info="soot.tagkit.InnerClassAttribute@228e72bc" aType="InnerClassAttribute"/>
+</attribute>
+<attribute>
+<srcPos sline="80" eline="80" spos="0" epos="0"/>
+<jmpPos sline="219" eline="219" spos="0" epos="0"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation type: Lorg/junit/Test; without elements
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+<attribute>
+<srcPos sline="93" eline="93" spos="0" epos="0"/>
+<jmpPos sline="290" eline="290" spos="0" epos="0"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation type: Lorg/junit/Test; without elements
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+<attribute>
+<srcPos sline="103" eline="103" spos="0" epos="0"/>
+<jmpPos sline="328" eline="328" spos="0" epos="0"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation type: Lorg/junit/Test; without elements
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+<attribute>
+<srcPos sline="114" eline="114" spos="0" epos="0"/>
+<jmpPos sline="372" eline="372" spos="0" epos="0"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation type: Lorg/junit/Test; without elements
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+<attribute>
+<srcPos sline="127" eline="127" spos="0" epos="0"/>
+<jmpPos sline="428" eline="428" spos="0" epos="0"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation type: Lorg/junit/Test; without elements
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+<attribute>
+<srcPos sline="139" eline="139" spos="0" epos="0"/>
+<jmpPos sline="489" eline="489" spos="0" epos="0"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation type: Lorg/junit/Test; without elements
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+<attribute>
+<srcPos sline="151" eline="151" spos="0" epos="0"/>
+<jmpPos sline="552" eline="552" spos="0" epos="0"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation type: Lorg/junit/Test; without elements
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+<attribute>
+<srcPos sline="163" eline="163" spos="0" epos="0"/>
+<jmpPos sline="615" eline="615" spos="0" epos="0"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation type: Lorg/junit/Test; without elements
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+<attribute>
+<srcPos sline="175" eline="175" spos="0" epos="0"/>
+<jmpPos sline="668" eline="668" spos="0" epos="0"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation type: Lorg/junit/Test; without elements
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+<attribute>
+<srcPos sline="187" eline="187" spos="0" epos="0"/>
+<jmpPos sline="719" eline="719" spos="0" epos="0"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation type: Lorg/junit/Test; without elements
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+<attribute>
+<srcPos sline="199" eline="199" spos="0" epos="0"/>
+<jmpPos sline="756" eline="756" spos="0" epos="0"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation type: Lorg/junit/Test; without elements
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+<attribute>
+<srcPos sline="218" eline="218" spos="0" epos="0"/>
+<jmpPos sline="810" eline="810" spos="0" epos="0"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation type: Lorg/junit/Test; without elements
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+<attribute>
+<srcPos sline="238" eline="238" spos="0" epos="0"/>
+<jmpPos sline="896" eline="896" spos="0" epos="0"/>
+<text info="Signature: (Ljava/util/Collection&lt;Ljava/io/File;&gt;;)Ljava/util/List;" aType="SignatureTag"/>
+</attribute>
+<attribute>
+<srcPos sline="251" eline="251" spos="0" epos="0"/>
+<jmpPos sline="940" eline="940" spos="0" epos="0"/>
+<text info="Signature: (Ljava/util/Collection&lt;Ljava/io/File;&gt;;)Ljava/util/List;" aType="SignatureTag"/>
+</attribute>
+<attribute>
+<srcPos sline="282" eline="282" spos="0" epos="0"/>
+<jmpPos sline="1024" eline="1024" spos="0" epos="0"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation type: Lorg/junit/Test; without elements
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+<attribute>
+<srcPos sline="319" eline="319" spos="0" epos="0"/>
+<jmpPos sline="1243" eline="1243" spos="0" epos="0"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation type: Lorg/junit/Test; without elements
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+</attributes>

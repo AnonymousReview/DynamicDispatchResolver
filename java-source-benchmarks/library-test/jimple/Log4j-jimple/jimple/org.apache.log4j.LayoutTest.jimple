@@ -1,0 +1,213 @@
+public class org.apache.log4j.LayoutTest extends junit.framework.TestCase
+{
+    private final java.lang.String contentType;
+    private final boolean ignoresThrowable;
+    private final java.lang.String header;
+    private final java.lang.String footer;
+
+    public void <init>(java.lang.String)
+    {
+        org.apache.log4j.LayoutTest r0;
+        java.lang.String r1;
+
+        r0 := @this: org.apache.log4j.LayoutTest;
+
+        r1 := @parameter0: java.lang.String;
+
+        specialinvoke r0.<junit.framework.TestCase: void <init>(java.lang.String)>(r1);
+
+        r0.<org.apache.log4j.LayoutTest: java.lang.String contentType> = "text/plain";
+
+        r0.<org.apache.log4j.LayoutTest: boolean ignoresThrowable> = 1;
+
+        r0.<org.apache.log4j.LayoutTest: java.lang.String header> = null;
+
+        r0.<org.apache.log4j.LayoutTest: java.lang.String footer> = null;
+
+        return;
+    }
+
+    protected void <init>(java.lang.String, java.lang.String, boolean, java.lang.String, java.lang.String)
+    {
+        org.apache.log4j.LayoutTest r0;
+        java.lang.String r1, r2, r3, r4;
+        boolean z0;
+
+        r0 := @this: org.apache.log4j.LayoutTest;
+
+        r1 := @parameter0: java.lang.String;
+
+        r2 := @parameter1: java.lang.String;
+
+        z0 := @parameter2: boolean;
+
+        r3 := @parameter3: java.lang.String;
+
+        r4 := @parameter4: java.lang.String;
+
+        specialinvoke r0.<junit.framework.TestCase: void <init>(java.lang.String)>(r1);
+
+        r0.<org.apache.log4j.LayoutTest: java.lang.String contentType> = r2;
+
+        r0.<org.apache.log4j.LayoutTest: boolean ignoresThrowable> = z0;
+
+        r0.<org.apache.log4j.LayoutTest: java.lang.String header> = r3;
+
+        r0.<org.apache.log4j.LayoutTest: java.lang.String footer> = r4;
+
+        return;
+    }
+
+    public void testLineSep()
+    {
+        org.apache.log4j.LayoutTest r0;
+        java.lang.String $r1, $r2;
+
+        r0 := @this: org.apache.log4j.LayoutTest;
+
+        $r1 = staticinvoke <java.lang.System: java.lang.String getProperty(java.lang.String)>("line.separator");
+
+        $r2 = <org.apache.log4j.Layout: java.lang.String LINE_SEP>;
+
+        staticinvoke <org.apache.log4j.LayoutTest: void assertEquals(java.lang.String,java.lang.String)>($r1, $r2);
+
+        return;
+    }
+
+    public void testLineSepLen()
+    {
+        org.apache.log4j.LayoutTest r0;
+        java.lang.String $r1;
+        int $i0, $i1;
+
+        r0 := @this: org.apache.log4j.LayoutTest;
+
+        $r1 = <org.apache.log4j.Layout: java.lang.String LINE_SEP>;
+
+        $i0 = virtualinvoke $r1.<java.lang.String: int length()>();
+
+        $i1 = <org.apache.log4j.Layout: int LINE_SEP_LEN>;
+
+        staticinvoke <org.apache.log4j.LayoutTest: void assertEquals(int,int)>($i0, $i1);
+
+        return;
+    }
+
+    protected org.apache.log4j.Layout createLayout()
+    {
+        org.apache.log4j.LayoutTest r0;
+        org.apache.log4j.LayoutTest$MockLayout $r1;
+
+        r0 := @this: org.apache.log4j.LayoutTest;
+
+        $r1 = new org.apache.log4j.LayoutTest$MockLayout;
+
+        specialinvoke $r1.<org.apache.log4j.LayoutTest$MockLayout: void <init>(org.apache.log4j.LayoutTest$MockLayout)>(null);
+
+        return $r1;
+    }
+
+    public void testGetContentType()
+    {
+        org.apache.log4j.LayoutTest r0;
+        java.lang.String $r1, $r3;
+        org.apache.log4j.Layout $r2;
+
+        r0 := @this: org.apache.log4j.LayoutTest;
+
+        $r1 = r0.<org.apache.log4j.LayoutTest: java.lang.String contentType>;
+
+        $r2 = virtualinvoke r0.<org.apache.log4j.LayoutTest: org.apache.log4j.Layout createLayout()>();
+
+        $r3 = virtualinvoke $r2.<org.apache.log4j.Layout: java.lang.String getContentType()>();
+
+        staticinvoke <org.apache.log4j.LayoutTest: void assertEquals(java.lang.String,java.lang.String)>($r1, $r3);
+
+        return;
+    }
+
+    public void testIgnoresThrowable()
+    {
+        org.apache.log4j.LayoutTest r0;
+        boolean $z0, $z1;
+        org.apache.log4j.Layout $r1;
+
+        r0 := @this: org.apache.log4j.LayoutTest;
+
+        $z0 = r0.<org.apache.log4j.LayoutTest: boolean ignoresThrowable>;
+
+        $r1 = virtualinvoke r0.<org.apache.log4j.LayoutTest: org.apache.log4j.Layout createLayout()>();
+
+        $z1 = virtualinvoke $r1.<org.apache.log4j.Layout: boolean ignoresThrowable()>();
+
+        staticinvoke <org.apache.log4j.LayoutTest: void assertEquals(boolean,boolean)>($z0, $z1);
+
+        return;
+    }
+
+    public void testGetHeader()
+    {
+        org.apache.log4j.LayoutTest r0;
+        java.lang.String $r1, $r3;
+        org.apache.log4j.Layout $r2;
+
+        r0 := @this: org.apache.log4j.LayoutTest;
+
+        $r1 = r0.<org.apache.log4j.LayoutTest: java.lang.String header>;
+
+        $r2 = virtualinvoke r0.<org.apache.log4j.LayoutTest: org.apache.log4j.Layout createLayout()>();
+
+        $r3 = virtualinvoke $r2.<org.apache.log4j.Layout: java.lang.String getHeader()>();
+
+        staticinvoke <org.apache.log4j.LayoutTest: void assertEquals(java.lang.String,java.lang.String)>($r1, $r3);
+
+        return;
+    }
+
+    public void testGetFooter()
+    {
+        org.apache.log4j.LayoutTest r0;
+        java.lang.String $r1, $r3;
+        org.apache.log4j.Layout $r2;
+
+        r0 := @this: org.apache.log4j.LayoutTest;
+
+        $r1 = r0.<org.apache.log4j.LayoutTest: java.lang.String footer>;
+
+        $r2 = virtualinvoke r0.<org.apache.log4j.LayoutTest: org.apache.log4j.Layout createLayout()>();
+
+        $r3 = virtualinvoke $r2.<org.apache.log4j.Layout: java.lang.String getFooter()>();
+
+        staticinvoke <org.apache.log4j.LayoutTest: void assertEquals(java.lang.String,java.lang.String)>($r1, $r3);
+
+        return;
+    }
+
+    public void testFormat() throws java.lang.Exception
+    {
+        org.apache.log4j.LayoutTest r0;
+        org.apache.log4j.Logger r1;
+        java.lang.String r3;
+        org.apache.log4j.spi.LoggingEvent $r4;
+        org.apache.log4j.Level $r5;
+        org.apache.log4j.Layout $r6;
+
+        r0 := @this: org.apache.log4j.LayoutTest;
+
+        r1 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getLogger(java.lang.String)>("org.apache.log4j.LayoutTest");
+
+        $r4 = new org.apache.log4j.spi.LoggingEvent;
+
+        $r5 = <org.apache.log4j.Level: org.apache.log4j.Level INFO>;
+
+        specialinvoke $r4.<org.apache.log4j.spi.LoggingEvent: void <init>(java.lang.String,org.apache.log4j.Category,org.apache.log4j.Priority,java.lang.Object,java.lang.Throwable)>("org.apache.log4j.Logger", r1, $r5, "Hello, World", null);
+
+        $r6 = virtualinvoke r0.<org.apache.log4j.LayoutTest: org.apache.log4j.Layout createLayout()>();
+
+        r3 = virtualinvoke $r6.<org.apache.log4j.Layout: java.lang.String format(org.apache.log4j.spi.LoggingEvent)>($r4);
+
+        staticinvoke <org.apache.log4j.LayoutTest: void assertEquals(java.lang.String,java.lang.String)>("Mock", r3);
+
+        return;
+    }
+}

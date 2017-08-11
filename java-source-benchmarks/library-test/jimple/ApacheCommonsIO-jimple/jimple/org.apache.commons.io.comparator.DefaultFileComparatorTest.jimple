@@ -1,0 +1,60 @@
+public class org.apache.commons.io.comparator.DefaultFileComparatorTest extends org.apache.commons.io.comparator.ComparatorAbstractTestCase
+{
+
+    public void <init>()
+    {
+        org.apache.commons.io.comparator.DefaultFileComparatorTest r0;
+
+        r0 := @this: org.apache.commons.io.comparator.DefaultFileComparatorTest;
+
+        specialinvoke r0.<org.apache.commons.io.comparator.ComparatorAbstractTestCase: void <init>()>();
+
+        return;
+    }
+
+    public void setUp() throws java.lang.Exception
+    {
+        org.apache.commons.io.comparator.DefaultFileComparatorTest r0;
+        java.util.Comparator $r1, $r3;
+        org.apache.commons.io.comparator.AbstractFileComparator $r2;
+        java.io.File $r4, $r5, $r6, $r7;
+
+        r0 := @this: org.apache.commons.io.comparator.DefaultFileComparatorTest;
+
+        $r1 = <org.apache.commons.io.comparator.DefaultFileComparator: java.util.Comparator DEFAULT_COMPARATOR>;
+
+        $r2 = (org.apache.commons.io.comparator.AbstractFileComparator) $r1;
+
+        r0.<org.apache.commons.io.comparator.DefaultFileComparatorTest: org.apache.commons.io.comparator.AbstractFileComparator comparator> = $r2;
+
+        $r3 = <org.apache.commons.io.comparator.DefaultFileComparator: java.util.Comparator DEFAULT_REVERSE>;
+
+        r0.<org.apache.commons.io.comparator.DefaultFileComparatorTest: java.util.Comparator reverse> = $r3;
+
+        $r4 = new java.io.File;
+
+        specialinvoke $r4.<java.io.File: void <init>(java.lang.String)>("foo");
+
+        r0.<org.apache.commons.io.comparator.DefaultFileComparatorTest: java.io.File equalFile1> = $r4;
+
+        $r5 = new java.io.File;
+
+        specialinvoke $r5.<java.io.File: void <init>(java.lang.String)>("foo");
+
+        r0.<org.apache.commons.io.comparator.DefaultFileComparatorTest: java.io.File equalFile2> = $r5;
+
+        $r6 = new java.io.File;
+
+        specialinvoke $r6.<java.io.File: void <init>(java.lang.String)>("abc");
+
+        r0.<org.apache.commons.io.comparator.DefaultFileComparatorTest: java.io.File lessFile> = $r6;
+
+        $r7 = new java.io.File;
+
+        specialinvoke $r7.<java.io.File: void <init>(java.lang.String)>("xyz");
+
+        r0.<org.apache.commons.io.comparator.DefaultFileComparatorTest: java.io.File moreFile> = $r7;
+
+        return;
+    }
+}

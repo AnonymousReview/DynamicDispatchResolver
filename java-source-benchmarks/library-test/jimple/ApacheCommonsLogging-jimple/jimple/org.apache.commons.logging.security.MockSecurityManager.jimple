@@ -1,0 +1,378 @@
+public class org.apache.commons.logging.security.MockSecurityManager extends java.lang.SecurityManager
+{
+    private final java.security.Permissions permissions;
+    private static final java.security.Permission setSecurityManagerPerm;
+    private int untrustedCodeCount;
+
+    static void <clinit>()
+    {
+        java.lang.RuntimePermission $r0;
+
+        $r0 = new java.lang.RuntimePermission;
+
+        specialinvoke $r0.<java.lang.RuntimePermission: void <init>(java.lang.String)>("setSecurityManager");
+
+        <org.apache.commons.logging.security.MockSecurityManager: java.security.Permission setSecurityManagerPerm> = $r0;
+
+        return;
+    }
+
+    public void <init>()
+    {
+        org.apache.commons.logging.security.MockSecurityManager r0;
+        java.security.Permissions $r1, $r3;
+        java.security.Permission $r2;
+
+        r0 := @this: org.apache.commons.logging.security.MockSecurityManager;
+
+        specialinvoke r0.<java.lang.SecurityManager: void <init>()>();
+
+        $r1 = new java.security.Permissions;
+
+        specialinvoke $r1.<java.security.Permissions: void <init>()>();
+
+        r0.<org.apache.commons.logging.security.MockSecurityManager: java.security.Permissions permissions> = $r1;
+
+        r0.<org.apache.commons.logging.security.MockSecurityManager: int untrustedCodeCount> = 0;
+
+        $r3 = r0.<org.apache.commons.logging.security.MockSecurityManager: java.security.Permissions permissions>;
+
+        $r2 = <org.apache.commons.logging.security.MockSecurityManager: java.security.Permission setSecurityManagerPerm>;
+
+        virtualinvoke $r3.<java.security.Permissions: void add(java.security.Permission)>($r2);
+
+        return;
+    }
+
+    public void addPermission(java.security.Permission)
+    {
+        org.apache.commons.logging.security.MockSecurityManager r0;
+        java.security.Permission r1;
+        java.security.Permissions $r2;
+
+        r0 := @this: org.apache.commons.logging.security.MockSecurityManager;
+
+        r1 := @parameter0: java.security.Permission;
+
+        $r2 = r0.<org.apache.commons.logging.security.MockSecurityManager: java.security.Permissions permissions>;
+
+        virtualinvoke $r2.<java.security.Permissions: void add(java.security.Permission)>(r1);
+
+        return;
+    }
+
+    public int getUntrustedCodeCount()
+    {
+        org.apache.commons.logging.security.MockSecurityManager r0;
+        int $i0;
+
+        r0 := @this: org.apache.commons.logging.security.MockSecurityManager;
+
+        $i0 = r0.<org.apache.commons.logging.security.MockSecurityManager: int untrustedCodeCount>;
+
+        return $i0;
+    }
+
+    public void checkPermission(java.security.Permission) throws java.lang.SecurityException
+    {
+        org.apache.commons.logging.security.MockSecurityManager r0;
+        java.security.Permission r1, $r4;
+        java.lang.StackTraceElement[] r2;
+        java.lang.String r3, $r11, $r20, $r24, $r29, $r36, $r43, $r51, $r58, $r64, $r66, $r67;
+        boolean $z0, $z1, $z2, $z3, $z4, $z5, $z6, $z7, $z8, $z9, $z10, $z11, $z12, $z13, $z14, $z15;
+        java.lang.StringBuilder $r5, $r8, $r9, $r10, $r15, $r17, $r18, $r21, $r22, $r25, $r26, $r28, $r30, $r33, $r34, $r35, $r38, $r40, $r41, $r42, $r45, $r48, $r49, $r50, $r53, $r55, $r56, $r57;
+        java.io.PrintStream $r6, $r16, $r31, $r46, $r59, $r60, $r62;
+        java.lang.Class $r7, $r32, $r39, $r47, $r54;
+        java.lang.Exception $r12;
+        java.lang.StackTraceElement $r14, $r19, $r23, $r27, $r63, $r65;
+        int $i0, $i1, $i2, i3, $i4;
+        java.lang.SecurityException $r37, $r52, $r61;
+        java.security.Permissions $r44;
+        java.io.FilePermission r68;
+
+        r0 := @this: org.apache.commons.logging.security.MockSecurityManager;
+
+        r1 := @parameter0: java.security.Permission;
+
+        $r4 = <org.apache.commons.logging.security.MockSecurityManager: java.security.Permission setSecurityManagerPerm>;
+
+        $z0 = virtualinvoke $r4.<java.security.Permission: boolean implies(java.security.Permission)>(r1);
+
+        if $z0 == 0 goto label01;
+
+        return;
+
+     label01:
+        $z1 = r1 instanceof java.io.FilePermission;
+
+        if $z1 == 0 goto label02;
+
+        r68 = (java.io.FilePermission) r1;
+
+        $r67 = virtualinvoke r68.<java.io.FilePermission: java.lang.String getActions()>();
+
+        $z15 = virtualinvoke $r67.<java.lang.String: boolean equals(java.lang.Object)>("read");
+
+        if $z15 == 0 goto label02;
+
+        return;
+
+     label02:
+        $r6 = <java.lang.System: java.io.PrintStream out>;
+
+        $r5 = new java.lang.StringBuilder;
+
+        specialinvoke $r5.<java.lang.StringBuilder: void <init>(java.lang.String)>("\n\ntesting permission:");
+
+        $r7 = virtualinvoke r1.<java.lang.Object: java.lang.Class getClass()>();
+
+        $r8 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r7);
+
+        $r9 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(":");
+
+        $r10 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(r1);
+
+        $r11 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r6.<java.io.PrintStream: void println(java.lang.String)>($r11);
+
+        $r12 = new java.lang.Exception;
+
+        specialinvoke $r12.<java.lang.Exception: void <init>()>();
+
+        virtualinvoke $r12.<java.lang.Exception: java.lang.Throwable fillInStackTrace()>();
+
+        r2 = virtualinvoke $r12.<java.lang.Exception: java.lang.StackTraceElement[] getStackTrace()>();
+
+        i3 = 1;
+
+        goto label11;
+
+     label03:
+        $r14 = r2[i3];
+
+        r3 = virtualinvoke $r14.<java.lang.StackTraceElement: java.lang.String getClassName()>();
+
+        $r16 = <java.lang.System: java.io.PrintStream out>;
+
+        $r15 = new java.lang.StringBuilder;
+
+        specialinvoke $r15.<java.lang.StringBuilder: void <init>()>();
+
+        $r17 = virtualinvoke $r15.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i3);
+
+        $r18 = virtualinvoke $r17.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(":");
+
+        $r19 = r2[i3];
+
+        $r20 = virtualinvoke $r19.<java.lang.StackTraceElement: java.lang.String getClassName()>();
+
+        $r21 = virtualinvoke $r18.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r20);
+
+        $r22 = virtualinvoke $r21.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(".");
+
+        $r23 = r2[i3];
+
+        $r24 = virtualinvoke $r23.<java.lang.StackTraceElement: java.lang.String getMethodName()>();
+
+        $r25 = virtualinvoke $r22.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r24);
+
+        $r26 = virtualinvoke $r25.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(":");
+
+        $r27 = r2[i3];
+
+        $i0 = virtualinvoke $r27.<java.lang.StackTraceElement: int getLineNumber()>();
+
+        $r28 = virtualinvoke $r26.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        $r29 = virtualinvoke $r28.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r16.<java.io.PrintStream: void println(java.lang.String)>($r29);
+
+        $z2 = virtualinvoke r3.<java.lang.String: boolean equals(java.lang.Object)>("java.util.logging.Handler");
+
+        if $z2 == 0 goto label04;
+
+        $r65 = r2[i3];
+
+        $r66 = virtualinvoke $r65.<java.lang.StackTraceElement: java.lang.String getMethodName()>();
+
+        $z14 = virtualinvoke $r66.<java.lang.String: boolean equals(java.lang.Object)>("setLevel");
+
+        if $z14 == 0 goto label04;
+
+        return;
+
+     label04:
+        $z3 = virtualinvoke r3.<java.lang.String: boolean equals(java.lang.Object)>("java.util.logging.Level");
+
+        if $z3 == 0 goto label05;
+
+        $r63 = r2[i3];
+
+        $r64 = virtualinvoke $r63.<java.lang.StackTraceElement: java.lang.String getMethodName()>();
+
+        $z13 = virtualinvoke $r64.<java.lang.String: boolean equals(java.lang.Object)>("getLocalizedLevelName");
+
+        if $z13 == 0 goto label05;
+
+        return;
+
+     label05:
+        $z4 = virtualinvoke r3.<java.lang.String: boolean equals(java.lang.Object)>("java.security.AccessController");
+
+        if $z4 == 0 goto label06;
+
+        $r62 = <java.lang.System: java.io.PrintStream out>;
+
+        virtualinvoke $r62.<java.io.PrintStream: void println(java.lang.String)>("Access controller found: returning");
+
+        return;
+
+     label06:
+        $z5 = virtualinvoke r3.<java.lang.String: boolean startsWith(java.lang.String)>("java.");
+
+        if $z5 != 0 goto label10;
+
+        $z6 = virtualinvoke r3.<java.lang.String: boolean startsWith(java.lang.String)>("javax.");
+
+        if $z6 != 0 goto label10;
+
+        $z7 = virtualinvoke r3.<java.lang.String: boolean startsWith(java.lang.String)>("junit.");
+
+        if $z7 != 0 goto label10;
+
+        $z8 = virtualinvoke r3.<java.lang.String: boolean startsWith(java.lang.String)>("org.apache.tools.ant.");
+
+        if $z8 != 0 goto label10;
+
+        $z9 = virtualinvoke r3.<java.lang.String: boolean startsWith(java.lang.String)>("sun.");
+
+        if $z9 != 0 goto label10;
+
+        $z10 = virtualinvoke r3.<java.lang.String: boolean startsWith(java.lang.String)>("org.apache.commons.logging.security");
+
+        if $z10 == 0 goto label07;
+
+        $i1 = r0.<org.apache.commons.logging.security.MockSecurityManager: int untrustedCodeCount>;
+
+        $i2 = $i1 + 1;
+
+        r0.<org.apache.commons.logging.security.MockSecurityManager: int untrustedCodeCount> = $i2;
+
+        $r60 = <java.lang.System: java.io.PrintStream out>;
+
+        virtualinvoke $r60.<java.io.PrintStream: void println(java.lang.String)>("Untrusted code [testcase] found");
+
+        $r61 = new java.lang.SecurityException;
+
+        specialinvoke $r61.<java.lang.SecurityException: void <init>(java.lang.String)>("Untrusted code [testcase] found");
+
+        throw $r61;
+
+     label07:
+        $z11 = virtualinvoke r3.<java.lang.String: boolean startsWith(java.lang.String)>("org.apache.commons.logging.");
+
+        if $z11 == 0 goto label09;
+
+        $r44 = r0.<org.apache.commons.logging.security.MockSecurityManager: java.security.Permissions permissions>;
+
+        $z12 = virtualinvoke $r44.<java.security.Permissions: boolean implies(java.security.Permission)>(r1);
+
+        if $z12 == 0 goto label08;
+
+        $r59 = <java.lang.System: java.io.PrintStream out>;
+
+        virtualinvoke $r59.<java.io.PrintStream: void println(java.lang.String)>("Permission in allowed set for JCL class");
+
+        goto label10;
+
+     label08:
+        $r46 = <java.lang.System: java.io.PrintStream out>;
+
+        $r45 = new java.lang.StringBuilder;
+
+        specialinvoke $r45.<java.lang.StringBuilder: void <init>(java.lang.String)>("Permission refused:");
+
+        $r47 = virtualinvoke r1.<java.lang.Object: java.lang.Class getClass()>();
+
+        $r48 = virtualinvoke $r45.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r47);
+
+        $r49 = virtualinvoke $r48.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(":");
+
+        $r50 = virtualinvoke $r49.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(r1);
+
+        $r51 = virtualinvoke $r50.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r46.<java.io.PrintStream: void println(java.lang.String)>($r51);
+
+        $r52 = new java.lang.SecurityException;
+
+        $r53 = new java.lang.StringBuilder;
+
+        specialinvoke $r53.<java.lang.StringBuilder: void <init>(java.lang.String)>("Permission refused:");
+
+        $r54 = virtualinvoke r1.<java.lang.Object: java.lang.Class getClass()>();
+
+        $r55 = virtualinvoke $r53.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r54);
+
+        $r56 = virtualinvoke $r55.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(":");
+
+        $r57 = virtualinvoke $r56.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(r1);
+
+        $r58 = virtualinvoke $r57.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r52.<java.lang.SecurityException: void <init>(java.lang.String)>($r58);
+
+        throw $r52;
+
+     label09:
+        $r31 = <java.lang.System: java.io.PrintStream out>;
+
+        $r30 = new java.lang.StringBuilder;
+
+        specialinvoke $r30.<java.lang.StringBuilder: void <init>(java.lang.String)>("Unexpected code: permission refused:");
+
+        $r32 = virtualinvoke r1.<java.lang.Object: java.lang.Class getClass()>();
+
+        $r33 = virtualinvoke $r30.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r32);
+
+        $r34 = virtualinvoke $r33.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(":");
+
+        $r35 = virtualinvoke $r34.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(r1);
+
+        $r36 = virtualinvoke $r35.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r31.<java.io.PrintStream: void println(java.lang.String)>($r36);
+
+        $r37 = new java.lang.SecurityException;
+
+        $r38 = new java.lang.StringBuilder;
+
+        specialinvoke $r38.<java.lang.StringBuilder: void <init>(java.lang.String)>("Unexpected code: permission refused:");
+
+        $r39 = virtualinvoke r1.<java.lang.Object: java.lang.Class getClass()>();
+
+        $r40 = virtualinvoke $r38.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r39);
+
+        $r41 = virtualinvoke $r40.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(":");
+
+        $r42 = virtualinvoke $r41.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(r1);
+
+        $r43 = virtualinvoke $r42.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r37.<java.lang.SecurityException: void <init>(java.lang.String)>($r43);
+
+        throw $r37;
+
+     label10:
+        i3 = i3 + 1;
+
+     label11:
+        $i4 = lengthof r2;
+
+        if i3 < $i4 goto label03;
+
+        return;
+    }
+}

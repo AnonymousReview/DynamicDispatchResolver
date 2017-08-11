@@ -1,0 +1,77 @@
+public class org.apache.commons.io.input.compatibility.XmlStreamReaderUtilitiesCompatibilityTest extends org.apache.commons.io.input.XmlStreamReaderUtilitiesTest
+{
+
+    public void <init>()
+    {
+        org.apache.commons.io.input.compatibility.XmlStreamReaderUtilitiesCompatibilityTest r0;
+
+        r0 := @this: org.apache.commons.io.input.compatibility.XmlStreamReaderUtilitiesCompatibilityTest;
+
+        specialinvoke r0.<org.apache.commons.io.input.XmlStreamReaderUtilitiesTest: void <init>()>();
+
+        return;
+    }
+
+    protected java.lang.String calculateRawEncoding(java.lang.String, java.lang.String, java.lang.String, java.lang.String) throws java.io.IOException
+    {
+        org.apache.commons.io.input.compatibility.XmlStreamReaderUtilitiesCompatibilityTest r0;
+        java.lang.String r1, r2, r3, r4, r6;
+        org.apache.commons.io.input.compatibility.XmlStreamReaderUtilitiesCompatibilityTest$MockXmlStreamReader $r7;
+
+        r0 := @this: org.apache.commons.io.input.compatibility.XmlStreamReaderUtilitiesCompatibilityTest;
+
+        r1 := @parameter0: java.lang.String;
+
+        r2 := @parameter1: java.lang.String;
+
+        r3 := @parameter2: java.lang.String;
+
+        r4 := @parameter3: java.lang.String;
+
+        $r7 = new org.apache.commons.io.input.compatibility.XmlStreamReaderUtilitiesCompatibilityTest$MockXmlStreamReader;
+
+        specialinvoke $r7.<org.apache.commons.io.input.compatibility.XmlStreamReaderUtilitiesCompatibilityTest$MockXmlStreamReader: void <init>(java.lang.String)>(r4);
+
+        r6 = virtualinvoke $r7.<org.apache.commons.io.input.compatibility.XmlStreamReaderUtilitiesCompatibilityTest$MockXmlStreamReader: java.lang.String calculateRawEncoding(java.lang.String,java.lang.String,java.lang.String,java.io.InputStream)>(r1, r2, r3, null);
+
+        virtualinvoke $r7.<org.apache.commons.io.input.compatibility.XmlStreamReaderUtilitiesCompatibilityTest$MockXmlStreamReader: void close()>();
+
+        return r6;
+    }
+
+    protected java.lang.String calculateHttpEncoding(java.lang.String, java.lang.String, java.lang.String, java.lang.String, boolean, java.lang.String) throws java.io.IOException
+    {
+        org.apache.commons.io.input.compatibility.XmlStreamReaderUtilitiesCompatibilityTest r0;
+        java.lang.String r1, r2, r3, r4, r5, r7, $r9, $r10;
+        boolean z0;
+        org.apache.commons.io.input.compatibility.XmlStreamReaderUtilitiesCompatibilityTest$MockXmlStreamReader $r8;
+
+        r0 := @this: org.apache.commons.io.input.compatibility.XmlStreamReaderUtilitiesCompatibilityTest;
+
+        r1 := @parameter0: java.lang.String;
+
+        r2 := @parameter1: java.lang.String;
+
+        r3 := @parameter2: java.lang.String;
+
+        r4 := @parameter3: java.lang.String;
+
+        z0 := @parameter4: boolean;
+
+        r5 := @parameter5: java.lang.String;
+
+        $r8 = new org.apache.commons.io.input.compatibility.XmlStreamReaderUtilitiesCompatibilityTest$MockXmlStreamReader;
+
+        specialinvoke $r8.<org.apache.commons.io.input.compatibility.XmlStreamReaderUtilitiesCompatibilityTest$MockXmlStreamReader: void <init>(java.lang.String)>(r5);
+
+        $r9 = staticinvoke <org.apache.commons.io.input.compatibility.XmlStreamReader: java.lang.String getContentTypeMime(java.lang.String)>(r1);
+
+        $r10 = staticinvoke <org.apache.commons.io.input.compatibility.XmlStreamReader: java.lang.String getContentTypeEncoding(java.lang.String)>(r1);
+
+        r7 = virtualinvoke $r8.<org.apache.commons.io.input.compatibility.XmlStreamReaderUtilitiesCompatibilityTest$MockXmlStreamReader: java.lang.String calculateHttpEncoding(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.io.InputStream,boolean)>($r9, $r10, r2, r3, r4, null, z0);
+
+        virtualinvoke $r8.<org.apache.commons.io.input.compatibility.XmlStreamReaderUtilitiesCompatibilityTest$MockXmlStreamReader: void close()>();
+
+        return r7;
+    }
+}

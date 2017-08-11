@@ -1,0 +1,25 @@
+final class org.apache.log4j.xml.XMLLayoutTest$ProblemLevel extends org.apache.log4j.Level
+{
+    private static final long serialVersionUID;
+
+    public void <init>(java.lang.String)
+    {
+        org.apache.log4j.xml.XMLLayoutTest$ProblemLevel r0;
+        java.lang.String r1;
+
+        r0 := @this: org.apache.log4j.xml.XMLLayoutTest$ProblemLevel;
+
+        r1 := @parameter0: java.lang.String;
+
+        specialinvoke r0.<org.apache.log4j.Level: void <init>(int,java.lang.String,int)>(6000, r1, 6);
+
+        return;
+    }
+
+    public static void <clinit>()
+    {
+        <org.apache.log4j.xml.XMLLayoutTest$ProblemLevel: long serialVersionUID> = 1L;
+
+        return;
+    }
+}

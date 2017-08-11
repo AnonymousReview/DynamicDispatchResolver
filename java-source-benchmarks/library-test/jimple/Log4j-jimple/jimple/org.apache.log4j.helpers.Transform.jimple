@@ -1,0 +1,199 @@
+public class org.apache.log4j.helpers.Transform extends java.lang.Object
+{
+    private static final java.lang.String CDATA_START;
+    private static final java.lang.String CDATA_END;
+    private static final java.lang.String CDATA_PSEUDO_END;
+    private static final java.lang.String CDATA_EMBEDED_END;
+    private static final int CDATA_END_LEN;
+
+    static void <clinit>()
+    {
+        java.lang.String $r0;
+        int $i0;
+
+        <org.apache.log4j.helpers.Transform: java.lang.String CDATA_EMBEDED_END> = "]]>]]&gt;<![CDATA[";
+
+        <org.apache.log4j.helpers.Transform: java.lang.String CDATA_PSEUDO_END> = "]]&gt;";
+
+        <org.apache.log4j.helpers.Transform: java.lang.String CDATA_END> = "]]>";
+
+        <org.apache.log4j.helpers.Transform: java.lang.String CDATA_START> = "<![CDATA[";
+
+        $r0 = "]]>";
+
+        $i0 = virtualinvoke $r0.<java.lang.String: int length()>();
+
+        <org.apache.log4j.helpers.Transform: int CDATA_END_LEN> = $i0;
+
+        return;
+    }
+
+    public void <init>()
+    {
+        org.apache.log4j.helpers.Transform r0;
+
+        r0 := @this: org.apache.log4j.helpers.Transform;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static java.lang.String escapeTags(java.lang.String)
+    {
+        java.lang.String r0, $r8;
+        int i0, $i1, $i2, $i3, $i4, $i5, $i6, $i7, i9;
+        java.lang.StringBuffer $r9;
+        char c10;
+
+        r0 := @parameter0: java.lang.String;
+
+        if r0 == null goto label01;
+
+        $i1 = virtualinvoke r0.<java.lang.String: int length()>();
+
+        if $i1 == 0 goto label01;
+
+        $i2 = virtualinvoke r0.<java.lang.String: int indexOf(int)>(34);
+
+        if $i2 != -1 goto label02;
+
+        $i3 = virtualinvoke r0.<java.lang.String: int indexOf(int)>(38);
+
+        if $i3 != -1 goto label02;
+
+        $i4 = virtualinvoke r0.<java.lang.String: int indexOf(int)>(60);
+
+        if $i4 != -1 goto label02;
+
+        $i5 = virtualinvoke r0.<java.lang.String: int indexOf(int)>(62);
+
+        if $i5 != -1 goto label02;
+
+     label01:
+        return r0;
+
+     label02:
+        $r9 = new java.lang.StringBuffer;
+
+        $i6 = virtualinvoke r0.<java.lang.String: int length()>();
+
+        $i7 = $i6 + 6;
+
+        specialinvoke $r9.<java.lang.StringBuffer: void <init>(int)>($i7);
+
+        i0 = virtualinvoke r0.<java.lang.String: int length()>();
+
+        i9 = 0;
+
+        goto label10;
+
+     label03:
+        c10 = virtualinvoke r0.<java.lang.String: char charAt(int)>(i9);
+
+        if c10 <= 62 goto label04;
+
+        virtualinvoke $r9.<java.lang.StringBuffer: java.lang.StringBuffer append(char)>(c10);
+
+        goto label09;
+
+     label04:
+        if c10 != 60 goto label05;
+
+        virtualinvoke $r9.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>("&lt;");
+
+        goto label09;
+
+     label05:
+        if c10 != 62 goto label06;
+
+        virtualinvoke $r9.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>("&gt;");
+
+        goto label09;
+
+     label06:
+        if c10 != 38 goto label07;
+
+        virtualinvoke $r9.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>("&amp;");
+
+        goto label09;
+
+     label07:
+        if c10 != 34 goto label08;
+
+        virtualinvoke $r9.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>("&quot;");
+
+        goto label09;
+
+     label08:
+        virtualinvoke $r9.<java.lang.StringBuffer: java.lang.StringBuffer append(char)>(c10);
+
+     label09:
+        i9 = i9 + 1;
+
+     label10:
+        if i9 < i0 goto label03;
+
+        $r8 = virtualinvoke $r9.<java.lang.StringBuffer: java.lang.String toString()>();
+
+        return $r8;
+    }
+
+    public static void appendEscapingCDATA(java.lang.StringBuffer, java.lang.String)
+    {
+        java.lang.StringBuffer r0;
+        java.lang.String r1, $r2, $r5;
+        int $i0, $i1, i2, i3;
+
+        r0 := @parameter0: java.lang.StringBuffer;
+
+        r1 := @parameter1: java.lang.String;
+
+        if r1 == null goto label5;
+
+        i2 = virtualinvoke r1.<java.lang.String: int indexOf(java.lang.String)>("]]>");
+
+        if i2 >= 0 goto label1;
+
+        virtualinvoke r0.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>(r1);
+
+        goto label5;
+
+     label1:
+        i3 = 0;
+
+        goto label4;
+
+     label2:
+        $r2 = virtualinvoke r1.<java.lang.String: java.lang.String substring(int,int)>(i3, i2);
+
+        virtualinvoke r0.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>($r2);
+
+        virtualinvoke r0.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>("]]>]]&gt;<![CDATA[");
+
+        $i0 = <org.apache.log4j.helpers.Transform: int CDATA_END_LEN>;
+
+        i3 = i2 + $i0;
+
+        $i1 = virtualinvoke r1.<java.lang.String: int length()>();
+
+        if i3 >= $i1 goto label3;
+
+        i2 = virtualinvoke r1.<java.lang.String: int indexOf(java.lang.String,int)>("]]>", i3);
+
+        goto label4;
+
+     label3:
+        return;
+
+     label4:
+        if i2 > -1 goto label2;
+
+        $r5 = virtualinvoke r1.<java.lang.String: java.lang.String substring(int)>(i3);
+
+        virtualinvoke r0.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>($r5);
+
+     label5:
+        return;
+    }
+}

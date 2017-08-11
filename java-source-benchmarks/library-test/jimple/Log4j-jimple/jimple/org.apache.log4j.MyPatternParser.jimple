@@ -1,0 +1,55 @@
+public class org.apache.log4j.MyPatternParser extends org.apache.log4j.helpers.PatternParser
+{
+    int counter;
+
+    public void <init>(java.lang.String)
+    {
+        org.apache.log4j.MyPatternParser r0;
+        java.lang.String r1;
+
+        r0 := @this: org.apache.log4j.MyPatternParser;
+
+        r1 := @parameter0: java.lang.String;
+
+        specialinvoke r0.<org.apache.log4j.helpers.PatternParser: void <init>(java.lang.String)>(r1);
+
+        r0.<org.apache.log4j.MyPatternParser: int counter> = 0;
+
+        return;
+    }
+
+    public void finalizeConverter(char)
+    {
+        org.apache.log4j.MyPatternParser r0;
+        char c0;
+        org.apache.log4j.MyPatternParser$UserDirPatternConverter $r1;
+        org.apache.log4j.helpers.FormattingInfo $r2;
+        java.lang.StringBuffer $r3;
+
+        r0 := @this: org.apache.log4j.MyPatternParser;
+
+        c0 := @parameter0: char;
+
+        if c0 != 35 goto label1;
+
+        $r1 = new org.apache.log4j.MyPatternParser$UserDirPatternConverter;
+
+        $r2 = r0.<org.apache.log4j.MyPatternParser: org.apache.log4j.helpers.FormattingInfo formattingInfo>;
+
+        specialinvoke $r1.<org.apache.log4j.MyPatternParser$UserDirPatternConverter: void <init>(org.apache.log4j.MyPatternParser,org.apache.log4j.helpers.FormattingInfo)>(r0, $r2);
+
+        virtualinvoke r0.<org.apache.log4j.MyPatternParser: void addConverter(org.apache.log4j.helpers.PatternConverter)>($r1);
+
+        $r3 = r0.<org.apache.log4j.MyPatternParser: java.lang.StringBuffer currentLiteral>;
+
+        virtualinvoke $r3.<java.lang.StringBuffer: void setLength(int)>(0);
+
+        goto label2;
+
+     label1:
+        specialinvoke r0.<org.apache.log4j.helpers.PatternParser: void finalizeConverter(char)>(c0);
+
+     label2:
+        return;
+    }
+}

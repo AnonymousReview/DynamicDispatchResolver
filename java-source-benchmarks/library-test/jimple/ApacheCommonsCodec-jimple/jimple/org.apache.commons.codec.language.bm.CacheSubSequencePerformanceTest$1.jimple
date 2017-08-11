@@ -1,0 +1,110 @@
+class org.apache.commons.codec.language.bm.CacheSubSequencePerformanceTest$1 extends java.lang.Object implements java.lang.CharSequence
+{
+    final org.apache.commons.codec.language.bm.CacheSubSequencePerformanceTest this$0;
+    private final java.lang.CharSequence val$cached;
+    private final java.lang.CharSequence[][] val$cache;
+
+    void <init>(org.apache.commons.codec.language.bm.CacheSubSequencePerformanceTest, java.lang.CharSequence, java.lang.CharSequence[][])
+    {
+        org.apache.commons.codec.language.bm.CacheSubSequencePerformanceTest$1 r0;
+        org.apache.commons.codec.language.bm.CacheSubSequencePerformanceTest r1;
+        java.lang.CharSequence r2;
+        java.lang.CharSequence[][] r3;
+
+        r0 := @this: org.apache.commons.codec.language.bm.CacheSubSequencePerformanceTest$1;
+
+        r1 := @parameter0: org.apache.commons.codec.language.bm.CacheSubSequencePerformanceTest;
+
+        r2 := @parameter1: java.lang.CharSequence;
+
+        r3 := @parameter2: java.lang.CharSequence[][];
+
+        r0.<org.apache.commons.codec.language.bm.CacheSubSequencePerformanceTest$1: org.apache.commons.codec.language.bm.CacheSubSequencePerformanceTest this$0> = r1;
+
+        r0.<org.apache.commons.codec.language.bm.CacheSubSequencePerformanceTest$1: java.lang.CharSequence val$cached> = r2;
+
+        r0.<org.apache.commons.codec.language.bm.CacheSubSequencePerformanceTest$1: java.lang.CharSequence[][] val$cache> = r3;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public char charAt(int)
+    {
+        org.apache.commons.codec.language.bm.CacheSubSequencePerformanceTest$1 r0;
+        int i0;
+        java.lang.CharSequence $r1;
+        char $c1;
+
+        r0 := @this: org.apache.commons.codec.language.bm.CacheSubSequencePerformanceTest$1;
+
+        i0 := @parameter0: int;
+
+        $r1 = r0.<org.apache.commons.codec.language.bm.CacheSubSequencePerformanceTest$1: java.lang.CharSequence val$cached>;
+
+        $c1 = interfaceinvoke $r1.<java.lang.CharSequence: char charAt(int)>(i0);
+
+        return $c1;
+    }
+
+    public int length()
+    {
+        org.apache.commons.codec.language.bm.CacheSubSequencePerformanceTest$1 r0;
+        java.lang.CharSequence $r1;
+        int $i0;
+
+        r0 := @this: org.apache.commons.codec.language.bm.CacheSubSequencePerformanceTest$1;
+
+        $r1 = r0.<org.apache.commons.codec.language.bm.CacheSubSequencePerformanceTest$1: java.lang.CharSequence val$cached>;
+
+        $i0 = interfaceinvoke $r1.<java.lang.CharSequence: int length()>();
+
+        return $i0;
+    }
+
+    public java.lang.CharSequence subSequence(int, int)
+    {
+        org.apache.commons.codec.language.bm.CacheSubSequencePerformanceTest$1 r0;
+        int i0, i1, $i2, $i3;
+        java.lang.CharSequence[][] $r1, $r4;
+        java.lang.CharSequence[] $r2, $r5;
+        java.lang.CharSequence $r3, r6;
+
+        r0 := @this: org.apache.commons.codec.language.bm.CacheSubSequencePerformanceTest$1;
+
+        i0 := @parameter0: int;
+
+        i1 := @parameter1: int;
+
+        if i0 != i1 goto label1;
+
+        return "";
+
+     label1:
+        $r1 = r0.<org.apache.commons.codec.language.bm.CacheSubSequencePerformanceTest$1: java.lang.CharSequence[][] val$cache>;
+
+        $r2 = $r1[i0];
+
+        $i2 = i1 - 1;
+
+        r6 = $r2[$i2];
+
+        if r6 != null goto label2;
+
+        $r3 = r0.<org.apache.commons.codec.language.bm.CacheSubSequencePerformanceTest$1: java.lang.CharSequence val$cached>;
+
+        r6 = interfaceinvoke $r3.<java.lang.CharSequence: java.lang.CharSequence subSequence(int,int)>(i0, i1);
+
+        $r4 = r0.<org.apache.commons.codec.language.bm.CacheSubSequencePerformanceTest$1: java.lang.CharSequence[][] val$cache>;
+
+        $r5 = $r4[i0];
+
+        $i3 = i1 - 1;
+
+        $r5[$i3] = r6;
+
+     label2:
+        return r6;
+    }
+}

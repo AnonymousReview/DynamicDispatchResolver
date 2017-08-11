@@ -1,0 +1,98 @@
+public class org.apache.commons.io.SelectorAdapter extends java.nio.channels.Selector
+{
+
+    public void <init>()
+    {
+        org.apache.commons.io.SelectorAdapter r0;
+
+        r0 := @this: org.apache.commons.io.SelectorAdapter;
+
+        specialinvoke r0.<java.nio.channels.Selector: void <init>()>();
+
+        return;
+    }
+
+    public boolean isOpen()
+    {
+        org.apache.commons.io.SelectorAdapter r0;
+
+        r0 := @this: org.apache.commons.io.SelectorAdapter;
+
+        return 0;
+    }
+
+    public java.nio.channels.spi.SelectorProvider provider()
+    {
+        org.apache.commons.io.SelectorAdapter r0;
+
+        r0 := @this: org.apache.commons.io.SelectorAdapter;
+
+        return null;
+    }
+
+    public java.util.Set keys()
+    {
+        org.apache.commons.io.SelectorAdapter r0;
+
+        r0 := @this: org.apache.commons.io.SelectorAdapter;
+
+        return null;
+    }
+
+    public java.util.Set selectedKeys()
+    {
+        org.apache.commons.io.SelectorAdapter r0;
+
+        r0 := @this: org.apache.commons.io.SelectorAdapter;
+
+        return null;
+    }
+
+    public int selectNow() throws java.io.IOException
+    {
+        org.apache.commons.io.SelectorAdapter r0;
+
+        r0 := @this: org.apache.commons.io.SelectorAdapter;
+
+        return 0;
+    }
+
+    public int select(long) throws java.io.IOException
+    {
+        org.apache.commons.io.SelectorAdapter r0;
+        long l0;
+
+        r0 := @this: org.apache.commons.io.SelectorAdapter;
+
+        l0 := @parameter0: long;
+
+        return 0;
+    }
+
+    public int select() throws java.io.IOException
+    {
+        org.apache.commons.io.SelectorAdapter r0;
+
+        r0 := @this: org.apache.commons.io.SelectorAdapter;
+
+        return 0;
+    }
+
+    public java.nio.channels.Selector wakeup()
+    {
+        org.apache.commons.io.SelectorAdapter r0;
+
+        r0 := @this: org.apache.commons.io.SelectorAdapter;
+
+        return null;
+    }
+
+    public void close() throws java.io.IOException
+    {
+        org.apache.commons.io.SelectorAdapter r0;
+
+        r0 := @this: org.apache.commons.io.SelectorAdapter;
+
+        return;
+    }
+}

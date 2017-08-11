@@ -1,0 +1,938 @@
+public class org.apache.commons.io.HexDumpTest extends java.lang.Object
+{
+
+    public void <init>()
+    {
+        org.apache.commons.io.HexDumpTest r0;
+
+        r0 := @this: org.apache.commons.io.HexDumpTest;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    private char toHex(int)
+    {
+        org.apache.commons.io.HexDumpTest r0;
+        int i0, $i1;
+        char[] $r2;
+        char $c2;
+
+        r0 := @this: org.apache.commons.io.HexDumpTest;
+
+        i0 := @parameter0: int;
+
+        $r2 = newarray (char)[16];
+
+        $r2[0] = 48;
+
+        $r2[1] = 49;
+
+        $r2[2] = 50;
+
+        $r2[3] = 51;
+
+        $r2[4] = 52;
+
+        $r2[5] = 53;
+
+        $r2[6] = 54;
+
+        $r2[7] = 55;
+
+        $r2[8] = 56;
+
+        $r2[9] = 57;
+
+        $r2[10] = 65;
+
+        $r2[11] = 66;
+
+        $r2[12] = 67;
+
+        $r2[13] = 68;
+
+        $r2[14] = 69;
+
+        $r2[15] = 70;
+
+        $i1 = i0 % 16;
+
+        $c2 = $r2[$i1];
+
+        return $c2;
+    }
+
+    public void testDump() throws java.io.IOException
+    {
+        org.apache.commons.io.HexDumpTest r0;
+        byte[] r1, $r6, $r8, $r17, $r19, $r28, $r30, $r39, $r41, r52, r53, r55, r56, r58, r59, r61, r62;
+        byte $b0, $b7, $b9, $b11, $b16, $b23, $b24, $b33, $b35, $b37, $b42, $b49, $b50, $b59, $b61, $b63, $b68, $b75, $b76, $b87, $b92, $b94, $b99, $b106, $b107;
+        org.apache.commons.io.output.ByteArrayOutputStream $r2, $r13, $r24, $r35, $r46, $r47;
+        java.lang.String $r3, $r4, $r5, $r7, $r12, $r14, $r15, $r16, $r18, $r23, $r25, $r26, $r27, $r29, $r34, $r36, $r37, $r38, $r40, $r45;
+        int $i1, $i2, $i3, $i4, $i5, $i12, $i13, $i14, $i17, $i18, $i19, $i22, $i27, $i28, $i29, $i30, $i31, $i38, $i39, $i40, $i43, $i44, $i45, $i48, $i53, $i54, $i55, $i56, $i57, $i64, $i65, $i66, $i69, $i70, $i71, $i74, $i79, $i80, $i81, $i82, $i83, $i84, $i85, $i88, $i89, $i90, $i95, $i96, $i97, $i100, $i101, $i102, $i105, $i110, i111, i112, i113, i114, i115, i116, i117, i118, i119, i120, i121, i122, i123, i124, i125, i126, i127, i128, i129, i130, i131, i132, i133, i134, i135, i136, i137, i138, i139, i140, i141, i142, i143, i144, i145, i146, i147, i148, i149, i150, i151, i152, i153, i154, i155, i156, i157, i158, i159, i160, i161, i162, i163, i164, i165, i166, i167, i168, i169, i170, i171, i172, i173, i174, i175, i176, i177, i178;
+        char $c6, $c8, $c10, $c15, $c32, $c34, $c36, $c41, $c58, $c60, $c62, $c67, $c86, $c91, $c93, $c98;
+        long $l20, $l21, $l25, $l26, $l46, $l47, $l51, $l52, $l72, $l73, $l77, $l78, $l103, $l104, $l108, $l109;
+        java.lang.StringBuilder $r9, $r10, $r11, $r20, $r21, $r22, $r31, $r32, $r33, $r42, $r43, $r44;
+        java.lang.ArrayIndexOutOfBoundsException $r48, $r49;
+        java.lang.IllegalArgumentException $r50;
+
+        r0 := @this: org.apache.commons.io.HexDumpTest;
+
+        r1 = newarray (byte)[256];
+
+        i111 = 0;
+
+        goto label02;
+
+     label01:
+        $b0 = (byte) i111;
+
+        r1[i111] = $b0;
+
+        i111 = i111 + 1;
+
+     label02:
+        if i111 < 256 goto label01;
+
+        $r2 = new org.apache.commons.io.output.ByteArrayOutputStream;
+
+        specialinvoke $r2.<org.apache.commons.io.output.ByteArrayOutputStream: void <init>()>();
+
+        staticinvoke <org.apache.commons.io.HexDump: void dump(byte[],long,java.io.OutputStream,int)>(r1, 0L, $r2, 0);
+
+        $r3 = <org.apache.commons.io.HexDump: java.lang.String EOL>;
+
+        $i1 = virtualinvoke $r3.<java.lang.String: int length()>();
+
+        $i2 = 73 + $i1;
+
+        $i3 = 16 * $i2;
+
+        r52 = newarray (byte)[$i3];
+
+        i112 = 0;
+
+        goto label08;
+
+     label03:
+        $r4 = <org.apache.commons.io.HexDump: java.lang.String EOL>;
+
+        $i4 = virtualinvoke $r4.<java.lang.String: int length()>();
+
+        $i5 = 73 + $i4;
+
+        i113 = $i5 * i112;
+
+        i114 = i113 + 1;
+
+        r52[i113] = 48;
+
+        i115 = i114 + 1;
+
+        r52[i114] = 48;
+
+        i116 = i115 + 1;
+
+        r52[i115] = 48;
+
+        i117 = i116 + 1;
+
+        r52[i116] = 48;
+
+        i118 = i117 + 1;
+
+        r52[i117] = 48;
+
+        i119 = i118 + 1;
+
+        r52[i118] = 48;
+
+        i120 = i119 + 1;
+
+        $c6 = specialinvoke r0.<org.apache.commons.io.HexDumpTest: char toHex(int)>(i112);
+
+        $b7 = (byte) $c6;
+
+        r52[i119] = $b7;
+
+        i121 = i120 + 1;
+
+        r52[i120] = 48;
+
+        i122 = i121 + 1;
+
+        r52[i121] = 32;
+
+        i123 = 0;
+
+        goto label05;
+
+     label04:
+        i124 = i122 + 1;
+
+        $c8 = specialinvoke r0.<org.apache.commons.io.HexDumpTest: char toHex(int)>(i112);
+
+        $b9 = (byte) $c8;
+
+        r52[i122] = $b9;
+
+        i125 = i124 + 1;
+
+        $c10 = specialinvoke r0.<org.apache.commons.io.HexDumpTest: char toHex(int)>(i123);
+
+        $b11 = (byte) $c10;
+
+        r52[i124] = $b11;
+
+        i122 = i125 + 1;
+
+        r52[i125] = 32;
+
+        i123 = i123 + 1;
+
+     label05:
+        if i123 < 16 goto label04;
+
+        i126 = 0;
+
+        goto label07;
+
+     label06:
+        $i12 = i122;
+
+        i122 = i122 + 1;
+
+        $i13 = i112 * 16;
+
+        $i14 = $i13 + i126;
+
+        $c15 = specialinvoke r0.<org.apache.commons.io.HexDumpTest: char toAscii(int)>($i14);
+
+        $b16 = (byte) $c15;
+
+        r52[$i12] = $b16;
+
+        i126 = i126 + 1;
+
+     label07:
+        if i126 < 16 goto label06;
+
+        $r5 = <org.apache.commons.io.HexDump: java.lang.String EOL>;
+
+        $r6 = virtualinvoke $r5.<java.lang.String: byte[] getBytes()>();
+
+        $r7 = <org.apache.commons.io.HexDump: java.lang.String EOL>;
+
+        $r8 = virtualinvoke $r7.<java.lang.String: byte[] getBytes()>();
+
+        $i17 = lengthof $r8;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>($r6, 0, r52, i122, $i17);
+
+        i112 = i112 + 1;
+
+     label08:
+        if i112 < 16 goto label03;
+
+        r53 = virtualinvoke $r2.<org.apache.commons.io.output.ByteArrayOutputStream: byte[] toByteArray()>();
+
+        $i18 = lengthof r52;
+
+        $l21 = (long) $i18;
+
+        $i19 = lengthof r53;
+
+        $l20 = (long) $i19;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("array size mismatch", $l21, $l20);
+
+        i127 = 0;
+
+        goto label10;
+
+     label09:
+        $r9 = new java.lang.StringBuilder;
+
+        specialinvoke $r9.<java.lang.StringBuilder: void <init>(java.lang.String)>("array[ ");
+
+        $r10 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i127);
+
+        $r11 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("] mismatch");
+
+        $r12 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $b23 = r52[i127];
+
+        $l26 = (long) $b23;
+
+        $b24 = r53[i127];
+
+        $l25 = (long) $b24;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>($r12, $l26, $l25);
+
+        i127 = i127 + 1;
+
+     label10:
+        $i22 = lengthof r52;
+
+        if i127 < $i22 goto label09;
+
+        $r13 = new org.apache.commons.io.output.ByteArrayOutputStream;
+
+        specialinvoke $r13.<org.apache.commons.io.output.ByteArrayOutputStream: void <init>()>();
+
+        staticinvoke <org.apache.commons.io.HexDump: void dump(byte[],long,java.io.OutputStream,int)>(r1, 268435456L, $r13, 0);
+
+        $r14 = <org.apache.commons.io.HexDump: java.lang.String EOL>;
+
+        $i27 = virtualinvoke $r14.<java.lang.String: int length()>();
+
+        $i28 = 73 + $i27;
+
+        $i29 = 16 * $i28;
+
+        r55 = newarray (byte)[$i29];
+
+        i128 = 0;
+
+        goto label16;
+
+     label11:
+        $r15 = <org.apache.commons.io.HexDump: java.lang.String EOL>;
+
+        $i30 = virtualinvoke $r15.<java.lang.String: int length()>();
+
+        $i31 = 73 + $i30;
+
+        i129 = $i31 * i128;
+
+        i130 = i129 + 1;
+
+        r55[i129] = 49;
+
+        i131 = i130 + 1;
+
+        r55[i130] = 48;
+
+        i132 = i131 + 1;
+
+        r55[i131] = 48;
+
+        i133 = i132 + 1;
+
+        r55[i132] = 48;
+
+        i134 = i133 + 1;
+
+        r55[i133] = 48;
+
+        i135 = i134 + 1;
+
+        r55[i134] = 48;
+
+        i136 = i135 + 1;
+
+        $c32 = specialinvoke r0.<org.apache.commons.io.HexDumpTest: char toHex(int)>(i128);
+
+        $b33 = (byte) $c32;
+
+        r55[i135] = $b33;
+
+        i137 = i136 + 1;
+
+        r55[i136] = 48;
+
+        i138 = i137 + 1;
+
+        r55[i137] = 32;
+
+        i139 = 0;
+
+        goto label13;
+
+     label12:
+        i140 = i138 + 1;
+
+        $c34 = specialinvoke r0.<org.apache.commons.io.HexDumpTest: char toHex(int)>(i128);
+
+        $b35 = (byte) $c34;
+
+        r55[i138] = $b35;
+
+        i141 = i140 + 1;
+
+        $c36 = specialinvoke r0.<org.apache.commons.io.HexDumpTest: char toHex(int)>(i139);
+
+        $b37 = (byte) $c36;
+
+        r55[i140] = $b37;
+
+        i138 = i141 + 1;
+
+        r55[i141] = 32;
+
+        i139 = i139 + 1;
+
+     label13:
+        if i139 < 16 goto label12;
+
+        i142 = 0;
+
+        goto label15;
+
+     label14:
+        $i38 = i138;
+
+        i138 = i138 + 1;
+
+        $i39 = i128 * 16;
+
+        $i40 = $i39 + i142;
+
+        $c41 = specialinvoke r0.<org.apache.commons.io.HexDumpTest: char toAscii(int)>($i40);
+
+        $b42 = (byte) $c41;
+
+        r55[$i38] = $b42;
+
+        i142 = i142 + 1;
+
+     label15:
+        if i142 < 16 goto label14;
+
+        $r16 = <org.apache.commons.io.HexDump: java.lang.String EOL>;
+
+        $r17 = virtualinvoke $r16.<java.lang.String: byte[] getBytes()>();
+
+        $r18 = <org.apache.commons.io.HexDump: java.lang.String EOL>;
+
+        $r19 = virtualinvoke $r18.<java.lang.String: byte[] getBytes()>();
+
+        $i43 = lengthof $r19;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>($r17, 0, r55, i138, $i43);
+
+        i128 = i128 + 1;
+
+     label16:
+        if i128 < 16 goto label11;
+
+        r56 = virtualinvoke $r13.<org.apache.commons.io.output.ByteArrayOutputStream: byte[] toByteArray()>();
+
+        $i44 = lengthof r55;
+
+        $l47 = (long) $i44;
+
+        $i45 = lengthof r56;
+
+        $l46 = (long) $i45;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("array size mismatch", $l47, $l46);
+
+        i143 = 0;
+
+        goto label18;
+
+     label17:
+        $r20 = new java.lang.StringBuilder;
+
+        specialinvoke $r20.<java.lang.StringBuilder: void <init>(java.lang.String)>("array[ ");
+
+        $r21 = virtualinvoke $r20.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i143);
+
+        $r22 = virtualinvoke $r21.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("] mismatch");
+
+        $r23 = virtualinvoke $r22.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $b49 = r55[i143];
+
+        $l52 = (long) $b49;
+
+        $b50 = r56[i143];
+
+        $l51 = (long) $b50;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>($r23, $l52, $l51);
+
+        i143 = i143 + 1;
+
+     label18:
+        $i48 = lengthof r55;
+
+        if i143 < $i48 goto label17;
+
+        $r24 = new org.apache.commons.io.output.ByteArrayOutputStream;
+
+        specialinvoke $r24.<org.apache.commons.io.output.ByteArrayOutputStream: void <init>()>();
+
+        staticinvoke <org.apache.commons.io.HexDump: void dump(byte[],long,java.io.OutputStream,int)>(r1, -16777216L, $r24, 0);
+
+        $r25 = <org.apache.commons.io.HexDump: java.lang.String EOL>;
+
+        $i53 = virtualinvoke $r25.<java.lang.String: int length()>();
+
+        $i54 = 73 + $i53;
+
+        $i55 = 16 * $i54;
+
+        r58 = newarray (byte)[$i55];
+
+        i144 = 0;
+
+        goto label24;
+
+     label19:
+        $r26 = <org.apache.commons.io.HexDump: java.lang.String EOL>;
+
+        $i56 = virtualinvoke $r26.<java.lang.String: int length()>();
+
+        $i57 = 73 + $i56;
+
+        i145 = $i57 * i144;
+
+        i146 = i145 + 1;
+
+        r58[i145] = 70;
+
+        i147 = i146 + 1;
+
+        r58[i146] = 70;
+
+        i148 = i147 + 1;
+
+        r58[i147] = 48;
+
+        i149 = i148 + 1;
+
+        r58[i148] = 48;
+
+        i150 = i149 + 1;
+
+        r58[i149] = 48;
+
+        i151 = i150 + 1;
+
+        r58[i150] = 48;
+
+        i152 = i151 + 1;
+
+        $c58 = specialinvoke r0.<org.apache.commons.io.HexDumpTest: char toHex(int)>(i144);
+
+        $b59 = (byte) $c58;
+
+        r58[i151] = $b59;
+
+        i153 = i152 + 1;
+
+        r58[i152] = 48;
+
+        i154 = i153 + 1;
+
+        r58[i153] = 32;
+
+        i155 = 0;
+
+        goto label21;
+
+     label20:
+        i156 = i154 + 1;
+
+        $c60 = specialinvoke r0.<org.apache.commons.io.HexDumpTest: char toHex(int)>(i144);
+
+        $b61 = (byte) $c60;
+
+        r58[i154] = $b61;
+
+        i157 = i156 + 1;
+
+        $c62 = specialinvoke r0.<org.apache.commons.io.HexDumpTest: char toHex(int)>(i155);
+
+        $b63 = (byte) $c62;
+
+        r58[i156] = $b63;
+
+        i154 = i157 + 1;
+
+        r58[i157] = 32;
+
+        i155 = i155 + 1;
+
+     label21:
+        if i155 < 16 goto label20;
+
+        i158 = 0;
+
+        goto label23;
+
+     label22:
+        $i64 = i154;
+
+        i154 = i154 + 1;
+
+        $i65 = i144 * 16;
+
+        $i66 = $i65 + i158;
+
+        $c67 = specialinvoke r0.<org.apache.commons.io.HexDumpTest: char toAscii(int)>($i66);
+
+        $b68 = (byte) $c67;
+
+        r58[$i64] = $b68;
+
+        i158 = i158 + 1;
+
+     label23:
+        if i158 < 16 goto label22;
+
+        $r27 = <org.apache.commons.io.HexDump: java.lang.String EOL>;
+
+        $r28 = virtualinvoke $r27.<java.lang.String: byte[] getBytes()>();
+
+        $r29 = <org.apache.commons.io.HexDump: java.lang.String EOL>;
+
+        $r30 = virtualinvoke $r29.<java.lang.String: byte[] getBytes()>();
+
+        $i69 = lengthof $r30;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>($r28, 0, r58, i154, $i69);
+
+        i144 = i144 + 1;
+
+     label24:
+        if i144 < 16 goto label19;
+
+        r59 = virtualinvoke $r24.<org.apache.commons.io.output.ByteArrayOutputStream: byte[] toByteArray()>();
+
+        $i70 = lengthof r58;
+
+        $l73 = (long) $i70;
+
+        $i71 = lengthof r59;
+
+        $l72 = (long) $i71;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("array size mismatch", $l73, $l72);
+
+        i159 = 0;
+
+        goto label26;
+
+     label25:
+        $r31 = new java.lang.StringBuilder;
+
+        specialinvoke $r31.<java.lang.StringBuilder: void <init>(java.lang.String)>("array[ ");
+
+        $r32 = virtualinvoke $r31.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i159);
+
+        $r33 = virtualinvoke $r32.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("] mismatch");
+
+        $r34 = virtualinvoke $r33.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $b75 = r58[i159];
+
+        $l78 = (long) $b75;
+
+        $b76 = r59[i159];
+
+        $l77 = (long) $b76;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>($r34, $l78, $l77);
+
+        i159 = i159 + 1;
+
+     label26:
+        $i74 = lengthof r58;
+
+        if i159 < $i74 goto label25;
+
+        $r35 = new org.apache.commons.io.output.ByteArrayOutputStream;
+
+        specialinvoke $r35.<org.apache.commons.io.output.ByteArrayOutputStream: void <init>()>();
+
+        staticinvoke <org.apache.commons.io.HexDump: void dump(byte[],long,java.io.OutputStream,int)>(r1, 268435456L, $r35, 129);
+
+        $r36 = <org.apache.commons.io.HexDump: java.lang.String EOL>;
+
+        $i79 = virtualinvoke $r36.<java.lang.String: int length()>();
+
+        $i80 = 73 + $i79;
+
+        $i81 = 8 * $i80;
+
+        $i82 = $i81 - 1;
+
+        r61 = newarray (byte)[$i82];
+
+        i160 = 0;
+
+        goto label35;
+
+     label27:
+        $r37 = <org.apache.commons.io.HexDump: java.lang.String EOL>;
+
+        $i83 = virtualinvoke $r37.<java.lang.String: int length()>();
+
+        $i84 = 73 + $i83;
+
+        i161 = $i84 * i160;
+
+        i162 = i161 + 1;
+
+        r61[i161] = 49;
+
+        i163 = i162 + 1;
+
+        r61[i162] = 48;
+
+        i164 = i163 + 1;
+
+        r61[i163] = 48;
+
+        i165 = i164 + 1;
+
+        r61[i164] = 48;
+
+        i166 = i165 + 1;
+
+        r61[i165] = 48;
+
+        i167 = i166 + 1;
+
+        r61[i166] = 48;
+
+        i168 = i167 + 1;
+
+        $i85 = i160 + 8;
+
+        $c86 = specialinvoke r0.<org.apache.commons.io.HexDumpTest: char toHex(int)>($i85);
+
+        $b87 = (byte) $c86;
+
+        r61[i167] = $b87;
+
+        i169 = i168 + 1;
+
+        r61[i168] = 49;
+
+        i170 = i169 + 1;
+
+        r61[i169] = 32;
+
+        i171 = 0;
+
+        goto label31;
+
+     label28:
+        $i88 = i160 * 16;
+
+        $i89 = 129 + $i88;
+
+        i172 = $i89 + i171;
+
+        if i172 >= 256 goto label29;
+
+        i173 = i170 + 1;
+
+        $i90 = i172 / 16;
+
+        $c91 = specialinvoke r0.<org.apache.commons.io.HexDumpTest: char toHex(int)>($i90);
+
+        $b92 = (byte) $c91;
+
+        r61[i170] = $b92;
+
+        i174 = i173 + 1;
+
+        $c93 = specialinvoke r0.<org.apache.commons.io.HexDumpTest: char toHex(int)>(i172);
+
+        $b94 = (byte) $c93;
+
+        r61[i173] = $b94;
+
+        goto label30;
+
+     label29:
+        i175 = i170 + 1;
+
+        r61[i170] = 32;
+
+        i174 = i175 + 1;
+
+        r61[i175] = 32;
+
+     label30:
+        i170 = i174 + 1;
+
+        r61[i174] = 32;
+
+        i171 = i171 + 1;
+
+     label31:
+        if i171 < 16 goto label28;
+
+        i176 = 0;
+
+        goto label34;
+
+     label32:
+        $i95 = i160 * 16;
+
+        $i96 = 129 + $i95;
+
+        i177 = $i96 + i176;
+
+        if i177 >= 256 goto label33;
+
+        $i97 = i170;
+
+        i170 = i170 + 1;
+
+        $c98 = specialinvoke r0.<org.apache.commons.io.HexDumpTest: char toAscii(int)>(i177);
+
+        $b99 = (byte) $c98;
+
+        r61[$i97] = $b99;
+
+     label33:
+        i176 = i176 + 1;
+
+     label34:
+        if i176 < 16 goto label32;
+
+        $r38 = <org.apache.commons.io.HexDump: java.lang.String EOL>;
+
+        $r39 = virtualinvoke $r38.<java.lang.String: byte[] getBytes()>();
+
+        $r40 = <org.apache.commons.io.HexDump: java.lang.String EOL>;
+
+        $r41 = virtualinvoke $r40.<java.lang.String: byte[] getBytes()>();
+
+        $i100 = lengthof $r41;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>($r39, 0, r61, i170, $i100);
+
+        i160 = i160 + 1;
+
+     label35:
+        if i160 < 8 goto label27;
+
+        r62 = virtualinvoke $r35.<org.apache.commons.io.output.ByteArrayOutputStream: byte[] toByteArray()>();
+
+        $i101 = lengthof r61;
+
+        $l104 = (long) $i101;
+
+        $i102 = lengthof r62;
+
+        $l103 = (long) $i102;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("array size mismatch", $l104, $l103);
+
+        i178 = 0;
+
+        goto label37;
+
+     label36:
+        $r42 = new java.lang.StringBuilder;
+
+        specialinvoke $r42.<java.lang.StringBuilder: void <init>(java.lang.String)>("array[ ");
+
+        $r43 = virtualinvoke $r42.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i178);
+
+        $r44 = virtualinvoke $r43.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("] mismatch");
+
+        $r45 = virtualinvoke $r44.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $b106 = r61[i178];
+
+        $l109 = (long) $b106;
+
+        $b107 = r62[i178];
+
+        $l108 = (long) $b107;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>($r45, $l109, $l108);
+
+        i178 = i178 + 1;
+
+     label37:
+        $i105 = lengthof r61;
+
+        if i178 < $i105 goto label36;
+
+     label38:
+        $r46 = new org.apache.commons.io.output.ByteArrayOutputStream;
+
+        specialinvoke $r46.<org.apache.commons.io.output.ByteArrayOutputStream: void <init>()>();
+
+        staticinvoke <org.apache.commons.io.HexDump: void dump(byte[],long,java.io.OutputStream,int)>(r1, 268435456L, $r46, -1);
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("should have caught ArrayIndexOutOfBoundsException on negative index");
+
+     label39:
+        goto label41;
+
+     label40:
+        $r49 := @caughtexception;
+
+     label41:
+        $r47 = new org.apache.commons.io.output.ByteArrayOutputStream;
+
+        specialinvoke $r47.<org.apache.commons.io.output.ByteArrayOutputStream: void <init>()>();
+
+        $i110 = lengthof r1;
+
+        staticinvoke <org.apache.commons.io.HexDump: void dump(byte[],long,java.io.OutputStream,int)>(r1, 268435456L, $r47, $i110);
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("should have caught ArrayIndexOutOfBoundsException on large index");
+
+     label42:
+        goto label44;
+
+     label43:
+        $r48 := @caughtexception;
+
+     label44:
+        staticinvoke <org.apache.commons.io.HexDump: void dump(byte[],long,java.io.OutputStream,int)>(r1, 268435456L, null, 0);
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("should have caught IllegalArgumentException on negative index");
+
+     label45:
+        goto label47;
+
+     label46:
+        $r50 := @caughtexception;
+
+     label47:
+        return;
+
+        catch java.lang.ArrayIndexOutOfBoundsException from label38 to label39 with label40;
+        catch java.lang.ArrayIndexOutOfBoundsException from label41 to label42 with label43;
+        catch java.lang.IllegalArgumentException from label44 to label45 with label46;
+    }
+
+    private char toAscii(int)
+    {
+        org.apache.commons.io.HexDumpTest r0;
+        int i0;
+        char c1;
+
+        r0 := @this: org.apache.commons.io.HexDumpTest;
+
+        i0 := @parameter0: int;
+
+        c1 = 46;
+
+        if i0 < 32 goto label1;
+
+        if i0 > 126 goto label1;
+
+        c1 = (char) i0;
+
+     label1:
+        return c1;
+    }
+}

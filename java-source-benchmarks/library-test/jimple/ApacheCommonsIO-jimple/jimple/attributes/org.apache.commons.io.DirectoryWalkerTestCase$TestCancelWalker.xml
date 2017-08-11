@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<attributes>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="0" eline="0" spos="0" epos="0"/>
+<text info="Signature: Lorg/apache/commons/io/DirectoryWalker&lt;Ljava/io/File;&gt;;" aType="SignatureTag"/>
+<text info="[inner=org/apache/commons/io/DirectoryWalker$CancelException, outer=org/apache/commons/io/DirectoryWalker, name=CancelException,flags=9]" aType="InnerClassTag"/>
+<text info="[inner=org/apache/commons/io/DirectoryWalkerTestCase$TestCancelWalker, outer=org/apache/commons/io/DirectoryWalkerTestCase, name=TestCancelWalker,flags=8]" aType="InnerClassTag"/>
+<text info="soot.tagkit.InnerClassAttribute@36227d83" aType="InnerClassAttribute"/>
+</attribute>
+<attribute>
+<srcPos sline="450" eline="450" spos="0" epos="0"/>
+<jmpPos sline="27" eline="27" spos="0" epos="0"/>
+<text info="Signature: (Ljava/io/File;)Ljava/util/List&lt;Ljava/io/File;&gt;;" aType="SignatureTag"/>
+</attribute>
+<attribute>
+<srcPos sline="458" eline="458" spos="0" epos="0"/>
+<jmpPos sline="46" eline="46" spos="0" epos="0"/>
+<text info="Signature: (Ljava/io/File;ILjava/util/Collection&lt;Ljava/io/File;&gt;;)V" aType="SignatureTag"/>
+</attribute>
+<attribute>
+<srcPos sline="467" eline="467" spos="0" epos="0"/>
+<jmpPos sline="84" eline="84" spos="0" epos="0"/>
+<text info="Signature: (Ljava/io/File;ILjava/util/Collection&lt;Ljava/io/File;&gt;;)V" aType="SignatureTag"/>
+</attribute>
+<attribute>
+<srcPos sline="477" eline="477" spos="0" epos="0"/>
+<jmpPos sline="122" eline="122" spos="0" epos="0"/>
+<text info="Signature: (Ljava/io/File;Ljava/util/Collection&lt;Ljava/io/File;&gt;;Lorg/apache/commons/io/DirectoryWalker$CancelException;)V" aType="SignatureTag"/>
+</attribute>
+</attributes>

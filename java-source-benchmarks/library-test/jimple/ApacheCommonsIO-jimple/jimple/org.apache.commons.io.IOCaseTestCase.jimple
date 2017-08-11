@@ -1,0 +1,1637 @@
+public class org.apache.commons.io.IOCaseTestCase extends org.apache.commons.io.testtools.FileBasedTestCase
+{
+    private static final boolean WINDOWS;
+
+    static void <clinit>()
+    {
+        char $c0;
+        boolean $z0;
+
+        $c0 = <java.io.File: char separatorChar>;
+
+        if $c0 != 92 goto label1;
+
+        $z0 = 1;
+
+        goto label2;
+
+     label1:
+        $z0 = 0;
+
+     label2:
+        <org.apache.commons.io.IOCaseTestCase: boolean WINDOWS> = $z0;
+
+        return;
+    }
+
+    public void <init>()
+    {
+        org.apache.commons.io.IOCaseTestCase r0;
+
+        r0 := @this: org.apache.commons.io.IOCaseTestCase;
+
+        specialinvoke r0.<org.apache.commons.io.testtools.FileBasedTestCase: void <init>()>();
+
+        return;
+    }
+
+    public void test_forName() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOCaseTestCase r0;
+        org.apache.commons.io.IOCase $r1, $r2, $r3, $r4, $r5, $r6;
+        java.lang.IllegalArgumentException $r9, $r10;
+
+        r0 := @this: org.apache.commons.io.IOCaseTestCase;
+
+        $r1 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $r2 = staticinvoke <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase forName(java.lang.String)>("Sensitive");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r1, $r2);
+
+        $r3 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase INSENSITIVE>;
+
+        $r4 = staticinvoke <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase forName(java.lang.String)>("Insensitive");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r3, $r4);
+
+        $r5 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SYSTEM>;
+
+        $r6 = staticinvoke <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase forName(java.lang.String)>("System");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r5, $r6);
+
+     label1:
+        staticinvoke <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase forName(java.lang.String)>("Blah");
+
+        staticinvoke <org.junit.Assert: void fail()>();
+
+     label2:
+        goto label4;
+
+     label3:
+        $r10 := @caughtexception;
+
+     label4:
+        staticinvoke <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase forName(java.lang.String)>(null);
+
+        staticinvoke <org.junit.Assert: void fail()>();
+
+     label5:
+        goto label7;
+
+     label6:
+        $r9 := @caughtexception;
+
+     label7:
+        return;
+
+        catch java.lang.IllegalArgumentException from label1 to label2 with label3;
+        catch java.lang.IllegalArgumentException from label4 to label5 with label6;
+    }
+
+    public void test_serialization() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOCaseTestCase r0;
+        org.apache.commons.io.IOCase $r1, $r2, $r3, $r4, $r5, $r6, $r7, $r8, $r9;
+
+        r0 := @this: org.apache.commons.io.IOCaseTestCase;
+
+        $r2 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $r1 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $r3 = specialinvoke r0.<org.apache.commons.io.IOCaseTestCase: org.apache.commons.io.IOCase serialize(org.apache.commons.io.IOCase)>($r1);
+
+        staticinvoke <org.junit.Assert: void assertSame(java.lang.Object,java.lang.Object)>($r2, $r3);
+
+        $r5 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase INSENSITIVE>;
+
+        $r4 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase INSENSITIVE>;
+
+        $r6 = specialinvoke r0.<org.apache.commons.io.IOCaseTestCase: org.apache.commons.io.IOCase serialize(org.apache.commons.io.IOCase)>($r4);
+
+        staticinvoke <org.junit.Assert: void assertSame(java.lang.Object,java.lang.Object)>($r5, $r6);
+
+        $r8 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SYSTEM>;
+
+        $r7 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SYSTEM>;
+
+        $r9 = specialinvoke r0.<org.apache.commons.io.IOCaseTestCase: org.apache.commons.io.IOCase serialize(org.apache.commons.io.IOCase)>($r7);
+
+        staticinvoke <org.junit.Assert: void assertSame(java.lang.Object,java.lang.Object)>($r8, $r9);
+
+        return;
+    }
+
+    public void test_getName() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOCaseTestCase r0;
+        org.apache.commons.io.IOCase $r1, $r3, $r5;
+        java.lang.String $r2, $r4, $r6;
+
+        r0 := @this: org.apache.commons.io.IOCaseTestCase;
+
+        $r1 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $r2 = virtualinvoke $r1.<org.apache.commons.io.IOCase: java.lang.String getName()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("Sensitive", $r2);
+
+        $r3 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase INSENSITIVE>;
+
+        $r4 = virtualinvoke $r3.<org.apache.commons.io.IOCase: java.lang.String getName()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("Insensitive", $r4);
+
+        $r5 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SYSTEM>;
+
+        $r6 = virtualinvoke $r5.<org.apache.commons.io.IOCase: java.lang.String getName()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("System", $r6);
+
+        return;
+    }
+
+    public void test_toString() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOCaseTestCase r0;
+        org.apache.commons.io.IOCase $r1, $r3, $r5;
+        java.lang.String $r2, $r4, $r6;
+
+        r0 := @this: org.apache.commons.io.IOCaseTestCase;
+
+        $r1 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $r2 = virtualinvoke $r1.<org.apache.commons.io.IOCase: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("Sensitive", $r2);
+
+        $r3 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase INSENSITIVE>;
+
+        $r4 = virtualinvoke $r3.<org.apache.commons.io.IOCase: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("Insensitive", $r4);
+
+        $r5 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SYSTEM>;
+
+        $r6 = virtualinvoke $r5.<org.apache.commons.io.IOCase: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("System", $r6);
+
+        return;
+    }
+
+    public void test_isCaseSensitive() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOCaseTestCase r0;
+        org.apache.commons.io.IOCase $r1, $r2, $r4;
+        boolean $z0, $z1, $z2, $z3, $z4;
+        java.lang.Boolean $r3, $r5;
+
+        r0 := @this: org.apache.commons.io.IOCaseTestCase;
+
+        $r1 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $z0 = virtualinvoke $r1.<org.apache.commons.io.IOCase: boolean isCaseSensitive()>();
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z0);
+
+        $r2 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase INSENSITIVE>;
+
+        $z1 = virtualinvoke $r2.<org.apache.commons.io.IOCase: boolean isCaseSensitive()>();
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z1);
+
+        $z2 = <org.apache.commons.io.IOCaseTestCase: boolean WINDOWS>;
+
+        if $z2 == 0 goto label1;
+
+        $z4 = 0;
+
+        goto label2;
+
+     label1:
+        $z4 = 1;
+
+     label2:
+        $r3 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($z4);
+
+        $r4 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SYSTEM>;
+
+        $z3 = virtualinvoke $r4.<org.apache.commons.io.IOCase: boolean isCaseSensitive()>();
+
+        $r5 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($z3);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r3, $r5);
+
+        return;
+    }
+
+    public void test_checkCompare_functionality() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOCaseTestCase r0;
+        org.apache.commons.io.IOCase $r1, $r2, $r3, $r4, $r5, $r6, $r7, $r8, $r9;
+        int $i0, $i1, $i2, $i3, $i4, $i6;
+        long $l5, $l7;
+        java.lang.NullPointerException $r10, $r11, $r12;
+        boolean $z0, $z1, $z2, $z3;
+
+        r0 := @this: org.apache.commons.io.IOCaseTestCase;
+
+        $r1 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $i0 = virtualinvoke $r1.<org.apache.commons.io.IOCase: int checkCompareTo(java.lang.String,java.lang.String)>("ABC", "");
+
+        if $i0 <= 0 goto label01;
+
+        $z0 = 1;
+
+        goto label02;
+
+     label01:
+        $z0 = 0;
+
+     label02:
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z0);
+
+        $r2 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $i1 = virtualinvoke $r2.<org.apache.commons.io.IOCase: int checkCompareTo(java.lang.String,java.lang.String)>("", "ABC");
+
+        if $i1 >= 0 goto label03;
+
+        $z1 = 1;
+
+        goto label04;
+
+     label03:
+        $z1 = 0;
+
+     label04:
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z1);
+
+        $r3 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $i2 = virtualinvoke $r3.<org.apache.commons.io.IOCase: int checkCompareTo(java.lang.String,java.lang.String)>("ABC", "DEF");
+
+        if $i2 >= 0 goto label05;
+
+        $z2 = 1;
+
+        goto label06;
+
+     label05:
+        $z2 = 0;
+
+     label06:
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z2);
+
+        $r4 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $i3 = virtualinvoke $r4.<org.apache.commons.io.IOCase: int checkCompareTo(java.lang.String,java.lang.String)>("DEF", "ABC");
+
+        if $i3 <= 0 goto label07;
+
+        $z3 = 1;
+
+        goto label08;
+
+     label07:
+        $z3 = 0;
+
+     label08:
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z3);
+
+        $r5 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $i4 = virtualinvoke $r5.<org.apache.commons.io.IOCase: int checkCompareTo(java.lang.String,java.lang.String)>("ABC", "ABC");
+
+        $l5 = (long) $i4;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(0L, $l5);
+
+        $r6 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $i6 = virtualinvoke $r6.<org.apache.commons.io.IOCase: int checkCompareTo(java.lang.String,java.lang.String)>("", "");
+
+        $l7 = (long) $i6;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(0L, $l7);
+
+     label09:
+        $r7 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        virtualinvoke $r7.<org.apache.commons.io.IOCase: int checkCompareTo(java.lang.String,java.lang.String)>("ABC", null);
+
+        staticinvoke <org.junit.Assert: void fail()>();
+
+     label10:
+        goto label12;
+
+     label11:
+        $r12 := @caughtexception;
+
+     label12:
+        $r8 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        virtualinvoke $r8.<org.apache.commons.io.IOCase: int checkCompareTo(java.lang.String,java.lang.String)>(null, "ABC");
+
+        staticinvoke <org.junit.Assert: void fail()>();
+
+     label13:
+        goto label15;
+
+     label14:
+        $r11 := @caughtexception;
+
+     label15:
+        $r9 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        virtualinvoke $r9.<org.apache.commons.io.IOCase: int checkCompareTo(java.lang.String,java.lang.String)>(null, null);
+
+        staticinvoke <org.junit.Assert: void fail()>();
+
+     label16:
+        goto label18;
+
+     label17:
+        $r10 := @caughtexception;
+
+     label18:
+        return;
+
+        catch java.lang.NullPointerException from label09 to label10 with label11;
+        catch java.lang.NullPointerException from label12 to label13 with label14;
+        catch java.lang.NullPointerException from label15 to label16 with label17;
+    }
+
+    public void test_checkCompare_case() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOCaseTestCase r0;
+        org.apache.commons.io.IOCase $r1, $r2, $r3, $r4, $r5, $r6, $r7, $r9, $r12;
+        int $i0, $i2, $i3, $i4, $i6, $i8, $i10, $i12, $i13;
+        long $l1, $l5, $l7, $l9, $l11;
+        boolean $z0, $z1, $z2, $z3, $z4, $z5;
+        java.lang.Boolean $r8, $r10, $r11, $r13;
+
+        r0 := @this: org.apache.commons.io.IOCaseTestCase;
+
+        $r1 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $i0 = virtualinvoke $r1.<org.apache.commons.io.IOCase: int checkCompareTo(java.lang.String,java.lang.String)>("ABC", "ABC");
+
+        $l1 = (long) $i0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(0L, $l1);
+
+        $r2 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $i2 = virtualinvoke $r2.<org.apache.commons.io.IOCase: int checkCompareTo(java.lang.String,java.lang.String)>("ABC", "abc");
+
+        if $i2 >= 0 goto label1;
+
+        $z2 = 1;
+
+        goto label2;
+
+     label1:
+        $z2 = 0;
+
+     label2:
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z2);
+
+        $r3 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $i3 = virtualinvoke $r3.<org.apache.commons.io.IOCase: int checkCompareTo(java.lang.String,java.lang.String)>("abc", "ABC");
+
+        if $i3 <= 0 goto label3;
+
+        $z3 = 1;
+
+        goto label4;
+
+     label3:
+        $z3 = 0;
+
+     label4:
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z3);
+
+        $r4 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase INSENSITIVE>;
+
+        $i4 = virtualinvoke $r4.<org.apache.commons.io.IOCase: int checkCompareTo(java.lang.String,java.lang.String)>("ABC", "ABC");
+
+        $l5 = (long) $i4;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(0L, $l5);
+
+        $r5 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase INSENSITIVE>;
+
+        $i6 = virtualinvoke $r5.<org.apache.commons.io.IOCase: int checkCompareTo(java.lang.String,java.lang.String)>("ABC", "abc");
+
+        $l7 = (long) $i6;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(0L, $l7);
+
+        $r6 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase INSENSITIVE>;
+
+        $i8 = virtualinvoke $r6.<org.apache.commons.io.IOCase: int checkCompareTo(java.lang.String,java.lang.String)>("abc", "ABC");
+
+        $l9 = (long) $i8;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(0L, $l9);
+
+        $r7 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SYSTEM>;
+
+        $i10 = virtualinvoke $r7.<org.apache.commons.io.IOCase: int checkCompareTo(java.lang.String,java.lang.String)>("ABC", "ABC");
+
+        $l11 = (long) $i10;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(0L, $l11);
+
+        $z0 = <org.apache.commons.io.IOCaseTestCase: boolean WINDOWS>;
+
+        $r8 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($z0);
+
+        $r9 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SYSTEM>;
+
+        $i12 = virtualinvoke $r9.<org.apache.commons.io.IOCase: int checkCompareTo(java.lang.String,java.lang.String)>("ABC", "abc");
+
+        if $i12 != 0 goto label5;
+
+        $z4 = 1;
+
+        goto label6;
+
+     label5:
+        $z4 = 0;
+
+     label6:
+        $r10 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($z4);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r8, $r10);
+
+        $z1 = <org.apache.commons.io.IOCaseTestCase: boolean WINDOWS>;
+
+        $r11 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($z1);
+
+        $r12 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SYSTEM>;
+
+        $i13 = virtualinvoke $r12.<org.apache.commons.io.IOCase: int checkCompareTo(java.lang.String,java.lang.String)>("abc", "ABC");
+
+        if $i13 != 0 goto label7;
+
+        $z5 = 1;
+
+        goto label8;
+
+     label7:
+        $z5 = 0;
+
+     label8:
+        $r13 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($z5);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r11, $r13);
+
+        return;
+    }
+
+    public void test_checkEquals_functionality() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOCaseTestCase r0;
+        org.apache.commons.io.IOCase $r1, $r2, $r3, $r4, $r5, $r6, $r7, $r8, $r9, $r10, $r11, $r12;
+        boolean $z0, $z1, $z2, $z3, $z4, $z5, $z6, $z7, $z8;
+        java.lang.NullPointerException $r13, $r14, $r15;
+
+        r0 := @this: org.apache.commons.io.IOCaseTestCase;
+
+        $r1 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $z0 = virtualinvoke $r1.<org.apache.commons.io.IOCase: boolean checkEquals(java.lang.String,java.lang.String)>("ABC", "");
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z0);
+
+        $r2 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $z1 = virtualinvoke $r2.<org.apache.commons.io.IOCase: boolean checkEquals(java.lang.String,java.lang.String)>("ABC", "A");
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z1);
+
+        $r3 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $z2 = virtualinvoke $r3.<org.apache.commons.io.IOCase: boolean checkEquals(java.lang.String,java.lang.String)>("ABC", "AB");
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z2);
+
+        $r4 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $z3 = virtualinvoke $r4.<org.apache.commons.io.IOCase: boolean checkEquals(java.lang.String,java.lang.String)>("ABC", "ABC");
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z3);
+
+        $r5 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $z4 = virtualinvoke $r5.<org.apache.commons.io.IOCase: boolean checkEquals(java.lang.String,java.lang.String)>("ABC", "BC");
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z4);
+
+        $r6 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $z5 = virtualinvoke $r6.<org.apache.commons.io.IOCase: boolean checkEquals(java.lang.String,java.lang.String)>("ABC", "C");
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z5);
+
+        $r7 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $z6 = virtualinvoke $r7.<org.apache.commons.io.IOCase: boolean checkEquals(java.lang.String,java.lang.String)>("ABC", "ABCD");
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z6);
+
+        $r8 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $z7 = virtualinvoke $r8.<org.apache.commons.io.IOCase: boolean checkEquals(java.lang.String,java.lang.String)>("", "ABC");
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z7);
+
+        $r9 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $z8 = virtualinvoke $r9.<org.apache.commons.io.IOCase: boolean checkEquals(java.lang.String,java.lang.String)>("", "");
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z8);
+
+     label01:
+        $r10 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        virtualinvoke $r10.<org.apache.commons.io.IOCase: boolean checkEquals(java.lang.String,java.lang.String)>("ABC", null);
+
+        staticinvoke <org.junit.Assert: void fail()>();
+
+     label02:
+        goto label04;
+
+     label03:
+        $r15 := @caughtexception;
+
+     label04:
+        $r11 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        virtualinvoke $r11.<org.apache.commons.io.IOCase: boolean checkEquals(java.lang.String,java.lang.String)>(null, "ABC");
+
+        staticinvoke <org.junit.Assert: void fail()>();
+
+     label05:
+        goto label07;
+
+     label06:
+        $r14 := @caughtexception;
+
+     label07:
+        $r12 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        virtualinvoke $r12.<org.apache.commons.io.IOCase: boolean checkEquals(java.lang.String,java.lang.String)>(null, null);
+
+        staticinvoke <org.junit.Assert: void fail()>();
+
+     label08:
+        goto label10;
+
+     label09:
+        $r13 := @caughtexception;
+
+     label10:
+        return;
+
+        catch java.lang.NullPointerException from label01 to label02 with label03;
+        catch java.lang.NullPointerException from label04 to label05 with label06;
+        catch java.lang.NullPointerException from label07 to label08 with label09;
+    }
+
+    public void test_checkEquals_case() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOCaseTestCase r0;
+        org.apache.commons.io.IOCase $r1, $r2, $r3, $r4, $r5, $r7;
+        boolean $z0, $z1, $z2, $z3, $z4, $z5, $z6;
+        java.lang.Boolean $r6, $r8;
+
+        r0 := @this: org.apache.commons.io.IOCaseTestCase;
+
+        $r1 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $z0 = virtualinvoke $r1.<org.apache.commons.io.IOCase: boolean checkEquals(java.lang.String,java.lang.String)>("ABC", "ABC");
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z0);
+
+        $r2 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $z1 = virtualinvoke $r2.<org.apache.commons.io.IOCase: boolean checkEquals(java.lang.String,java.lang.String)>("ABC", "Abc");
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z1);
+
+        $r3 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase INSENSITIVE>;
+
+        $z2 = virtualinvoke $r3.<org.apache.commons.io.IOCase: boolean checkEquals(java.lang.String,java.lang.String)>("ABC", "ABC");
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z2);
+
+        $r4 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase INSENSITIVE>;
+
+        $z3 = virtualinvoke $r4.<org.apache.commons.io.IOCase: boolean checkEquals(java.lang.String,java.lang.String)>("ABC", "Abc");
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z3);
+
+        $r5 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SYSTEM>;
+
+        $z4 = virtualinvoke $r5.<org.apache.commons.io.IOCase: boolean checkEquals(java.lang.String,java.lang.String)>("ABC", "ABC");
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z4);
+
+        $z5 = <org.apache.commons.io.IOCaseTestCase: boolean WINDOWS>;
+
+        $r6 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($z5);
+
+        $r7 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SYSTEM>;
+
+        $z6 = virtualinvoke $r7.<org.apache.commons.io.IOCase: boolean checkEquals(java.lang.String,java.lang.String)>("ABC", "Abc");
+
+        $r8 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($z6);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r6, $r8);
+
+        return;
+    }
+
+    public void test_checkStartsWith_functionality() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOCaseTestCase r0;
+        org.apache.commons.io.IOCase $r1, $r2, $r3, $r4, $r5, $r6, $r7, $r8, $r9, $r10, $r11, $r12;
+        boolean $z0, $z1, $z2, $z3, $z4, $z5, $z6, $z7, $z8;
+        java.lang.NullPointerException $r13, $r14, $r15;
+
+        r0 := @this: org.apache.commons.io.IOCaseTestCase;
+
+        $r1 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $z0 = virtualinvoke $r1.<org.apache.commons.io.IOCase: boolean checkStartsWith(java.lang.String,java.lang.String)>("ABC", "");
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z0);
+
+        $r2 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $z1 = virtualinvoke $r2.<org.apache.commons.io.IOCase: boolean checkStartsWith(java.lang.String,java.lang.String)>("ABC", "A");
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z1);
+
+        $r3 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $z2 = virtualinvoke $r3.<org.apache.commons.io.IOCase: boolean checkStartsWith(java.lang.String,java.lang.String)>("ABC", "AB");
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z2);
+
+        $r4 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $z3 = virtualinvoke $r4.<org.apache.commons.io.IOCase: boolean checkStartsWith(java.lang.String,java.lang.String)>("ABC", "ABC");
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z3);
+
+        $r5 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $z4 = virtualinvoke $r5.<org.apache.commons.io.IOCase: boolean checkStartsWith(java.lang.String,java.lang.String)>("ABC", "BC");
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z4);
+
+        $r6 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $z5 = virtualinvoke $r6.<org.apache.commons.io.IOCase: boolean checkStartsWith(java.lang.String,java.lang.String)>("ABC", "C");
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z5);
+
+        $r7 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $z6 = virtualinvoke $r7.<org.apache.commons.io.IOCase: boolean checkStartsWith(java.lang.String,java.lang.String)>("ABC", "ABCD");
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z6);
+
+        $r8 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $z7 = virtualinvoke $r8.<org.apache.commons.io.IOCase: boolean checkStartsWith(java.lang.String,java.lang.String)>("", "ABC");
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z7);
+
+        $r9 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $z8 = virtualinvoke $r9.<org.apache.commons.io.IOCase: boolean checkStartsWith(java.lang.String,java.lang.String)>("", "");
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z8);
+
+     label01:
+        $r10 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        virtualinvoke $r10.<org.apache.commons.io.IOCase: boolean checkStartsWith(java.lang.String,java.lang.String)>("ABC", null);
+
+        staticinvoke <org.junit.Assert: void fail()>();
+
+     label02:
+        goto label04;
+
+     label03:
+        $r14 := @caughtexception;
+
+     label04:
+        $r11 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        virtualinvoke $r11.<org.apache.commons.io.IOCase: boolean checkStartsWith(java.lang.String,java.lang.String)>(null, "ABC");
+
+        staticinvoke <org.junit.Assert: void fail()>();
+
+     label05:
+        goto label07;
+
+     label06:
+        $r15 := @caughtexception;
+
+     label07:
+        $r12 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        virtualinvoke $r12.<org.apache.commons.io.IOCase: boolean checkStartsWith(java.lang.String,java.lang.String)>(null, null);
+
+        staticinvoke <org.junit.Assert: void fail()>();
+
+     label08:
+        goto label10;
+
+     label09:
+        $r13 := @caughtexception;
+
+     label10:
+        return;
+
+        catch java.lang.NullPointerException from label01 to label02 with label03;
+        catch java.lang.NullPointerException from label04 to label05 with label06;
+        catch java.lang.NullPointerException from label07 to label08 with label09;
+    }
+
+    public void test_checkStartsWith_case() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOCaseTestCase r0;
+        org.apache.commons.io.IOCase $r1, $r2, $r3, $r4, $r5, $r7;
+        boolean $z0, $z1, $z2, $z3, $z4, $z5, $z6;
+        java.lang.Boolean $r6, $r8;
+
+        r0 := @this: org.apache.commons.io.IOCaseTestCase;
+
+        $r1 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $z0 = virtualinvoke $r1.<org.apache.commons.io.IOCase: boolean checkStartsWith(java.lang.String,java.lang.String)>("ABC", "AB");
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z0);
+
+        $r2 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $z1 = virtualinvoke $r2.<org.apache.commons.io.IOCase: boolean checkStartsWith(java.lang.String,java.lang.String)>("ABC", "Ab");
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z1);
+
+        $r3 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase INSENSITIVE>;
+
+        $z2 = virtualinvoke $r3.<org.apache.commons.io.IOCase: boolean checkStartsWith(java.lang.String,java.lang.String)>("ABC", "AB");
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z2);
+
+        $r4 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase INSENSITIVE>;
+
+        $z3 = virtualinvoke $r4.<org.apache.commons.io.IOCase: boolean checkStartsWith(java.lang.String,java.lang.String)>("ABC", "Ab");
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z3);
+
+        $r5 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SYSTEM>;
+
+        $z4 = virtualinvoke $r5.<org.apache.commons.io.IOCase: boolean checkStartsWith(java.lang.String,java.lang.String)>("ABC", "AB");
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z4);
+
+        $z5 = <org.apache.commons.io.IOCaseTestCase: boolean WINDOWS>;
+
+        $r6 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($z5);
+
+        $r7 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SYSTEM>;
+
+        $z6 = virtualinvoke $r7.<org.apache.commons.io.IOCase: boolean checkStartsWith(java.lang.String,java.lang.String)>("ABC", "Ab");
+
+        $r8 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($z6);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r6, $r8);
+
+        return;
+    }
+
+    public void test_checkEndsWith_functionality() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOCaseTestCase r0;
+        org.apache.commons.io.IOCase $r1, $r2, $r3, $r4, $r5, $r6, $r7, $r8, $r9, $r10, $r11, $r12;
+        boolean $z0, $z1, $z2, $z3, $z4, $z5, $z6, $z7, $z8;
+        java.lang.NullPointerException $r13, $r14, $r15;
+
+        r0 := @this: org.apache.commons.io.IOCaseTestCase;
+
+        $r1 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $z0 = virtualinvoke $r1.<org.apache.commons.io.IOCase: boolean checkEndsWith(java.lang.String,java.lang.String)>("ABC", "");
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z0);
+
+        $r2 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $z1 = virtualinvoke $r2.<org.apache.commons.io.IOCase: boolean checkEndsWith(java.lang.String,java.lang.String)>("ABC", "A");
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z1);
+
+        $r3 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $z2 = virtualinvoke $r3.<org.apache.commons.io.IOCase: boolean checkEndsWith(java.lang.String,java.lang.String)>("ABC", "AB");
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z2);
+
+        $r4 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $z3 = virtualinvoke $r4.<org.apache.commons.io.IOCase: boolean checkEndsWith(java.lang.String,java.lang.String)>("ABC", "ABC");
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z3);
+
+        $r5 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $z4 = virtualinvoke $r5.<org.apache.commons.io.IOCase: boolean checkEndsWith(java.lang.String,java.lang.String)>("ABC", "BC");
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z4);
+
+        $r6 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $z5 = virtualinvoke $r6.<org.apache.commons.io.IOCase: boolean checkEndsWith(java.lang.String,java.lang.String)>("ABC", "C");
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z5);
+
+        $r7 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $z6 = virtualinvoke $r7.<org.apache.commons.io.IOCase: boolean checkEndsWith(java.lang.String,java.lang.String)>("ABC", "ABCD");
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z6);
+
+        $r8 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $z7 = virtualinvoke $r8.<org.apache.commons.io.IOCase: boolean checkEndsWith(java.lang.String,java.lang.String)>("", "ABC");
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z7);
+
+        $r9 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $z8 = virtualinvoke $r9.<org.apache.commons.io.IOCase: boolean checkEndsWith(java.lang.String,java.lang.String)>("", "");
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z8);
+
+     label01:
+        $r10 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        virtualinvoke $r10.<org.apache.commons.io.IOCase: boolean checkEndsWith(java.lang.String,java.lang.String)>("ABC", null);
+
+        staticinvoke <org.junit.Assert: void fail()>();
+
+     label02:
+        goto label04;
+
+     label03:
+        $r13 := @caughtexception;
+
+     label04:
+        $r11 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        virtualinvoke $r11.<org.apache.commons.io.IOCase: boolean checkEndsWith(java.lang.String,java.lang.String)>(null, "ABC");
+
+        staticinvoke <org.junit.Assert: void fail()>();
+
+     label05:
+        goto label07;
+
+     label06:
+        $r15 := @caughtexception;
+
+     label07:
+        $r12 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        virtualinvoke $r12.<org.apache.commons.io.IOCase: boolean checkEndsWith(java.lang.String,java.lang.String)>(null, null);
+
+        staticinvoke <org.junit.Assert: void fail()>();
+
+     label08:
+        goto label10;
+
+     label09:
+        $r14 := @caughtexception;
+
+     label10:
+        return;
+
+        catch java.lang.NullPointerException from label01 to label02 with label03;
+        catch java.lang.NullPointerException from label04 to label05 with label06;
+        catch java.lang.NullPointerException from label07 to label08 with label09;
+    }
+
+    public void test_checkEndsWith_case() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOCaseTestCase r0;
+        org.apache.commons.io.IOCase $r1, $r2, $r3, $r4, $r5, $r7;
+        boolean $z0, $z1, $z2, $z3, $z4, $z5, $z6;
+        java.lang.Boolean $r6, $r8;
+
+        r0 := @this: org.apache.commons.io.IOCaseTestCase;
+
+        $r1 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $z0 = virtualinvoke $r1.<org.apache.commons.io.IOCase: boolean checkEndsWith(java.lang.String,java.lang.String)>("ABC", "BC");
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z0);
+
+        $r2 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $z1 = virtualinvoke $r2.<org.apache.commons.io.IOCase: boolean checkEndsWith(java.lang.String,java.lang.String)>("ABC", "Bc");
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z1);
+
+        $r3 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase INSENSITIVE>;
+
+        $z2 = virtualinvoke $r3.<org.apache.commons.io.IOCase: boolean checkEndsWith(java.lang.String,java.lang.String)>("ABC", "BC");
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z2);
+
+        $r4 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase INSENSITIVE>;
+
+        $z3 = virtualinvoke $r4.<org.apache.commons.io.IOCase: boolean checkEndsWith(java.lang.String,java.lang.String)>("ABC", "Bc");
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z3);
+
+        $r5 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SYSTEM>;
+
+        $z4 = virtualinvoke $r5.<org.apache.commons.io.IOCase: boolean checkEndsWith(java.lang.String,java.lang.String)>("ABC", "BC");
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z4);
+
+        $z5 = <org.apache.commons.io.IOCaseTestCase: boolean WINDOWS>;
+
+        $r6 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($z5);
+
+        $r7 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SYSTEM>;
+
+        $z6 = virtualinvoke $r7.<org.apache.commons.io.IOCase: boolean checkEndsWith(java.lang.String,java.lang.String)>("ABC", "Bc");
+
+        $r8 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($z6);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r6, $r8);
+
+        return;
+    }
+
+    public void test_checkIndexOf_functionality() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOCaseTestCase r0;
+        org.apache.commons.io.IOCase $r1, $r2, $r3, $r4, $r5, $r6, $r7, $r8, $r9, $r10, $r11, $r12, $r13, $r14, $r15, $r16, $r17, $r18, $r19, $r20, $r21, $r22, $r23, $r24, $r25, $r26, $r27, $r28, $r29;
+        int $i0, $i2, $i4, $i6, $i8, $i10, $i12, $i14, $i16, $i18, $i20, $i22, $i24, $i26, $i28, $i30, $i32, $i34, $i36, $i38, $i40, $i42, $i44, $i46, $i48, $i50;
+        long $l1, $l3, $l5, $l7, $l9, $l11, $l13, $l15, $l17, $l19, $l21, $l23, $l25, $l27, $l29, $l31, $l33, $l35, $l37, $l39, $l41, $l43, $l45, $l47, $l49, $l51;
+        java.lang.NullPointerException $r30, $r31, $r32;
+
+        r0 := @this: org.apache.commons.io.IOCaseTestCase;
+
+        $r1 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $i0 = virtualinvoke $r1.<org.apache.commons.io.IOCase: int checkIndexOf(java.lang.String,int,java.lang.String)>("ABCDEFGHIJ", 0, "A");
+
+        $l1 = (long) $i0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(0L, $l1);
+
+        $r2 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $i2 = virtualinvoke $r2.<org.apache.commons.io.IOCase: int checkIndexOf(java.lang.String,int,java.lang.String)>("ABCDEFGHIJ", 1, "A");
+
+        $l3 = (long) $i2;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(-1L, $l3);
+
+        $r3 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $i4 = virtualinvoke $r3.<org.apache.commons.io.IOCase: int checkIndexOf(java.lang.String,int,java.lang.String)>("ABCDEFGHIJ", 0, "AB");
+
+        $l5 = (long) $i4;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(0L, $l5);
+
+        $r4 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $i6 = virtualinvoke $r4.<org.apache.commons.io.IOCase: int checkIndexOf(java.lang.String,int,java.lang.String)>("ABCDEFGHIJ", 1, "AB");
+
+        $l7 = (long) $i6;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(-1L, $l7);
+
+        $r5 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $i8 = virtualinvoke $r5.<org.apache.commons.io.IOCase: int checkIndexOf(java.lang.String,int,java.lang.String)>("ABCDEFGHIJ", 0, "ABC");
+
+        $l9 = (long) $i8;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(0L, $l9);
+
+        $r6 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $i10 = virtualinvoke $r6.<org.apache.commons.io.IOCase: int checkIndexOf(java.lang.String,int,java.lang.String)>("ABCDEFGHIJ", 1, "ABC");
+
+        $l11 = (long) $i10;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(-1L, $l11);
+
+        $r7 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $i12 = virtualinvoke $r7.<org.apache.commons.io.IOCase: int checkIndexOf(java.lang.String,int,java.lang.String)>("ABCDEFGHIJ", 0, "D");
+
+        $l13 = (long) $i12;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(3L, $l13);
+
+        $r8 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $i14 = virtualinvoke $r8.<org.apache.commons.io.IOCase: int checkIndexOf(java.lang.String,int,java.lang.String)>("ABCDEFGHIJ", 3, "D");
+
+        $l15 = (long) $i14;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(3L, $l15);
+
+        $r9 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $i16 = virtualinvoke $r9.<org.apache.commons.io.IOCase: int checkIndexOf(java.lang.String,int,java.lang.String)>("ABCDEFGHIJ", 4, "D");
+
+        $l17 = (long) $i16;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(-1L, $l17);
+
+        $r10 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $i18 = virtualinvoke $r10.<org.apache.commons.io.IOCase: int checkIndexOf(java.lang.String,int,java.lang.String)>("ABCDEFGHIJ", 0, "DE");
+
+        $l19 = (long) $i18;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(3L, $l19);
+
+        $r11 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $i20 = virtualinvoke $r11.<org.apache.commons.io.IOCase: int checkIndexOf(java.lang.String,int,java.lang.String)>("ABCDEFGHIJ", 3, "DE");
+
+        $l21 = (long) $i20;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(3L, $l21);
+
+        $r12 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $i22 = virtualinvoke $r12.<org.apache.commons.io.IOCase: int checkIndexOf(java.lang.String,int,java.lang.String)>("ABCDEFGHIJ", 4, "DE");
+
+        $l23 = (long) $i22;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(-1L, $l23);
+
+        $r13 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $i24 = virtualinvoke $r13.<org.apache.commons.io.IOCase: int checkIndexOf(java.lang.String,int,java.lang.String)>("ABCDEFGHIJ", 0, "DEF");
+
+        $l25 = (long) $i24;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(3L, $l25);
+
+        $r14 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $i26 = virtualinvoke $r14.<org.apache.commons.io.IOCase: int checkIndexOf(java.lang.String,int,java.lang.String)>("ABCDEFGHIJ", 3, "DEF");
+
+        $l27 = (long) $i26;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(3L, $l27);
+
+        $r15 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $i28 = virtualinvoke $r15.<org.apache.commons.io.IOCase: int checkIndexOf(java.lang.String,int,java.lang.String)>("ABCDEFGHIJ", 4, "DEF");
+
+        $l29 = (long) $i28;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(-1L, $l29);
+
+        $r16 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $i30 = virtualinvoke $r16.<org.apache.commons.io.IOCase: int checkIndexOf(java.lang.String,int,java.lang.String)>("ABCDEFGHIJ", 0, "J");
+
+        $l31 = (long) $i30;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(9L, $l31);
+
+        $r17 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $i32 = virtualinvoke $r17.<org.apache.commons.io.IOCase: int checkIndexOf(java.lang.String,int,java.lang.String)>("ABCDEFGHIJ", 8, "J");
+
+        $l33 = (long) $i32;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(9L, $l33);
+
+        $r18 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $i34 = virtualinvoke $r18.<org.apache.commons.io.IOCase: int checkIndexOf(java.lang.String,int,java.lang.String)>("ABCDEFGHIJ", 9, "J");
+
+        $l35 = (long) $i34;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(9L, $l35);
+
+        $r19 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $i36 = virtualinvoke $r19.<org.apache.commons.io.IOCase: int checkIndexOf(java.lang.String,int,java.lang.String)>("ABCDEFGHIJ", 0, "IJ");
+
+        $l37 = (long) $i36;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(8L, $l37);
+
+        $r20 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $i38 = virtualinvoke $r20.<org.apache.commons.io.IOCase: int checkIndexOf(java.lang.String,int,java.lang.String)>("ABCDEFGHIJ", 8, "IJ");
+
+        $l39 = (long) $i38;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(8L, $l39);
+
+        $r21 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $i40 = virtualinvoke $r21.<org.apache.commons.io.IOCase: int checkIndexOf(java.lang.String,int,java.lang.String)>("ABCDEFGHIJ", 9, "IJ");
+
+        $l41 = (long) $i40;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(-1L, $l41);
+
+        $r22 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $i42 = virtualinvoke $r22.<org.apache.commons.io.IOCase: int checkIndexOf(java.lang.String,int,java.lang.String)>("ABCDEFGHIJ", 6, "HIJ");
+
+        $l43 = (long) $i42;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(7L, $l43);
+
+        $r23 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $i44 = virtualinvoke $r23.<org.apache.commons.io.IOCase: int checkIndexOf(java.lang.String,int,java.lang.String)>("ABCDEFGHIJ", 7, "HIJ");
+
+        $l45 = (long) $i44;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(7L, $l45);
+
+        $r24 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $i46 = virtualinvoke $r24.<org.apache.commons.io.IOCase: int checkIndexOf(java.lang.String,int,java.lang.String)>("ABCDEFGHIJ", 8, "HIJ");
+
+        $l47 = (long) $i46;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(-1L, $l47);
+
+        $r25 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $i48 = virtualinvoke $r25.<org.apache.commons.io.IOCase: int checkIndexOf(java.lang.String,int,java.lang.String)>("ABCDEFGHIJ", 0, "DED");
+
+        $l49 = (long) $i48;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(-1L, $l49);
+
+        $r26 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $i50 = virtualinvoke $r26.<org.apache.commons.io.IOCase: int checkIndexOf(java.lang.String,int,java.lang.String)>("DEF", 0, "ABCDEFGHIJ");
+
+        $l51 = (long) $i50;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(-1L, $l51);
+
+     label01:
+        $r27 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        virtualinvoke $r27.<org.apache.commons.io.IOCase: int checkIndexOf(java.lang.String,int,java.lang.String)>("ABC", 0, null);
+
+        staticinvoke <org.junit.Assert: void fail()>();
+
+     label02:
+        goto label04;
+
+     label03:
+        $r32 := @caughtexception;
+
+     label04:
+        $r28 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        virtualinvoke $r28.<org.apache.commons.io.IOCase: int checkIndexOf(java.lang.String,int,java.lang.String)>(null, 0, "ABC");
+
+        staticinvoke <org.junit.Assert: void fail()>();
+
+     label05:
+        goto label07;
+
+     label06:
+        $r31 := @caughtexception;
+
+     label07:
+        $r29 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        virtualinvoke $r29.<org.apache.commons.io.IOCase: int checkIndexOf(java.lang.String,int,java.lang.String)>(null, 0, null);
+
+        staticinvoke <org.junit.Assert: void fail()>();
+
+     label08:
+        goto label10;
+
+     label09:
+        $r30 := @caughtexception;
+
+     label10:
+        return;
+
+        catch java.lang.NullPointerException from label01 to label02 with label03;
+        catch java.lang.NullPointerException from label04 to label05 with label06;
+        catch java.lang.NullPointerException from label07 to label08 with label09;
+    }
+
+    public void test_checkIndexOf_case() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOCaseTestCase r0;
+        org.apache.commons.io.IOCase $r1, $r2, $r3, $r4, $r5, $r6;
+        int $i0, $i2, $i4, $i6, $i8, $i11;
+        long $l1, $l3, $l5, $l7, $l9, $l10, $l12;
+        boolean $z0;
+        byte $b13;
+
+        r0 := @this: org.apache.commons.io.IOCaseTestCase;
+
+        $r1 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $i0 = virtualinvoke $r1.<org.apache.commons.io.IOCase: int checkIndexOf(java.lang.String,int,java.lang.String)>("ABC", 0, "BC");
+
+        $l1 = (long) $i0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(1L, $l1);
+
+        $r2 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $i2 = virtualinvoke $r2.<org.apache.commons.io.IOCase: int checkIndexOf(java.lang.String,int,java.lang.String)>("ABC", 0, "Bc");
+
+        $l3 = (long) $i2;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(-1L, $l3);
+
+        $r3 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase INSENSITIVE>;
+
+        $i4 = virtualinvoke $r3.<org.apache.commons.io.IOCase: int checkIndexOf(java.lang.String,int,java.lang.String)>("ABC", 0, "BC");
+
+        $l5 = (long) $i4;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(1L, $l5);
+
+        $r4 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase INSENSITIVE>;
+
+        $i6 = virtualinvoke $r4.<org.apache.commons.io.IOCase: int checkIndexOf(java.lang.String,int,java.lang.String)>("ABC", 0, "Bc");
+
+        $l7 = (long) $i6;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(1L, $l7);
+
+        $r5 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SYSTEM>;
+
+        $i8 = virtualinvoke $r5.<org.apache.commons.io.IOCase: int checkIndexOf(java.lang.String,int,java.lang.String)>("ABC", 0, "BC");
+
+        $l9 = (long) $i8;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(1L, $l9);
+
+        $z0 = <org.apache.commons.io.IOCaseTestCase: boolean WINDOWS>;
+
+        if $z0 == 0 goto label1;
+
+        $b13 = 1;
+
+        goto label2;
+
+     label1:
+        $b13 = -1;
+
+     label2:
+        $l10 = (long) $b13;
+
+        $r6 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SYSTEM>;
+
+        $i11 = virtualinvoke $r6.<org.apache.commons.io.IOCase: int checkIndexOf(java.lang.String,int,java.lang.String)>("ABC", 0, "Bc");
+
+        $l12 = (long) $i11;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>($l10, $l12);
+
+        return;
+    }
+
+    public void test_checkRegionMatches_functionality() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOCaseTestCase r0;
+        org.apache.commons.io.IOCase $r1, $r2, $r3, $r4, $r5, $r6, $r7, $r8, $r9, $r10, $r11, $r12, $r13, $r14, $r15, $r16, $r17, $r18, $r19, $r20, $r21, $r22, $r23, $r24;
+        boolean $z0, $z1, $z2, $z3, $z4, $z5, $z6, $z7, $z8, $z9, $z10, $z11, $z12, $z13, $z14, $z15, $z16, $z17;
+        java.lang.NullPointerException $r25, $r26, $r27, $r28, $r29, $r30;
+
+        r0 := @this: org.apache.commons.io.IOCaseTestCase;
+
+        $r1 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $z0 = virtualinvoke $r1.<org.apache.commons.io.IOCase: boolean checkRegionMatches(java.lang.String,int,java.lang.String)>("ABC", 0, "");
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z0);
+
+        $r2 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $z1 = virtualinvoke $r2.<org.apache.commons.io.IOCase: boolean checkRegionMatches(java.lang.String,int,java.lang.String)>("ABC", 0, "A");
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z1);
+
+        $r3 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $z2 = virtualinvoke $r3.<org.apache.commons.io.IOCase: boolean checkRegionMatches(java.lang.String,int,java.lang.String)>("ABC", 0, "AB");
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z2);
+
+        $r4 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $z3 = virtualinvoke $r4.<org.apache.commons.io.IOCase: boolean checkRegionMatches(java.lang.String,int,java.lang.String)>("ABC", 0, "ABC");
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z3);
+
+        $r5 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $z4 = virtualinvoke $r5.<org.apache.commons.io.IOCase: boolean checkRegionMatches(java.lang.String,int,java.lang.String)>("ABC", 0, "BC");
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z4);
+
+        $r6 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $z5 = virtualinvoke $r6.<org.apache.commons.io.IOCase: boolean checkRegionMatches(java.lang.String,int,java.lang.String)>("ABC", 0, "C");
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z5);
+
+        $r7 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $z6 = virtualinvoke $r7.<org.apache.commons.io.IOCase: boolean checkRegionMatches(java.lang.String,int,java.lang.String)>("ABC", 0, "ABCD");
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z6);
+
+        $r8 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $z7 = virtualinvoke $r8.<org.apache.commons.io.IOCase: boolean checkRegionMatches(java.lang.String,int,java.lang.String)>("", 0, "ABC");
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z7);
+
+        $r9 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $z8 = virtualinvoke $r9.<org.apache.commons.io.IOCase: boolean checkRegionMatches(java.lang.String,int,java.lang.String)>("", 0, "");
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z8);
+
+        $r10 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $z9 = virtualinvoke $r10.<org.apache.commons.io.IOCase: boolean checkRegionMatches(java.lang.String,int,java.lang.String)>("ABC", 1, "");
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z9);
+
+        $r11 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $z10 = virtualinvoke $r11.<org.apache.commons.io.IOCase: boolean checkRegionMatches(java.lang.String,int,java.lang.String)>("ABC", 1, "A");
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z10);
+
+        $r12 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $z11 = virtualinvoke $r12.<org.apache.commons.io.IOCase: boolean checkRegionMatches(java.lang.String,int,java.lang.String)>("ABC", 1, "AB");
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z11);
+
+        $r13 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $z12 = virtualinvoke $r13.<org.apache.commons.io.IOCase: boolean checkRegionMatches(java.lang.String,int,java.lang.String)>("ABC", 1, "ABC");
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z12);
+
+        $r14 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $z13 = virtualinvoke $r14.<org.apache.commons.io.IOCase: boolean checkRegionMatches(java.lang.String,int,java.lang.String)>("ABC", 1, "BC");
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z13);
+
+        $r15 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $z14 = virtualinvoke $r15.<org.apache.commons.io.IOCase: boolean checkRegionMatches(java.lang.String,int,java.lang.String)>("ABC", 1, "C");
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z14);
+
+        $r16 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $z15 = virtualinvoke $r16.<org.apache.commons.io.IOCase: boolean checkRegionMatches(java.lang.String,int,java.lang.String)>("ABC", 1, "ABCD");
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z15);
+
+        $r17 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $z16 = virtualinvoke $r17.<org.apache.commons.io.IOCase: boolean checkRegionMatches(java.lang.String,int,java.lang.String)>("", 1, "ABC");
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z16);
+
+        $r18 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $z17 = virtualinvoke $r18.<org.apache.commons.io.IOCase: boolean checkRegionMatches(java.lang.String,int,java.lang.String)>("", 1, "");
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z17);
+
+     label01:
+        $r19 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        virtualinvoke $r19.<org.apache.commons.io.IOCase: boolean checkRegionMatches(java.lang.String,int,java.lang.String)>("ABC", 0, null);
+
+        staticinvoke <org.junit.Assert: void fail()>();
+
+     label02:
+        goto label04;
+
+     label03:
+        $r29 := @caughtexception;
+
+     label04:
+        $r20 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        virtualinvoke $r20.<org.apache.commons.io.IOCase: boolean checkRegionMatches(java.lang.String,int,java.lang.String)>(null, 0, "ABC");
+
+        staticinvoke <org.junit.Assert: void fail()>();
+
+     label05:
+        goto label07;
+
+     label06:
+        $r25 := @caughtexception;
+
+     label07:
+        $r21 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        virtualinvoke $r21.<org.apache.commons.io.IOCase: boolean checkRegionMatches(java.lang.String,int,java.lang.String)>(null, 0, null);
+
+        staticinvoke <org.junit.Assert: void fail()>();
+
+     label08:
+        goto label10;
+
+     label09:
+        $r28 := @caughtexception;
+
+     label10:
+        $r22 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        virtualinvoke $r22.<org.apache.commons.io.IOCase: boolean checkRegionMatches(java.lang.String,int,java.lang.String)>("ABC", 1, null);
+
+        staticinvoke <org.junit.Assert: void fail()>();
+
+     label11:
+        goto label13;
+
+     label12:
+        $r30 := @caughtexception;
+
+     label13:
+        $r23 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        virtualinvoke $r23.<org.apache.commons.io.IOCase: boolean checkRegionMatches(java.lang.String,int,java.lang.String)>(null, 1, "ABC");
+
+        staticinvoke <org.junit.Assert: void fail()>();
+
+     label14:
+        goto label16;
+
+     label15:
+        $r27 := @caughtexception;
+
+     label16:
+        $r24 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        virtualinvoke $r24.<org.apache.commons.io.IOCase: boolean checkRegionMatches(java.lang.String,int,java.lang.String)>(null, 1, null);
+
+        staticinvoke <org.junit.Assert: void fail()>();
+
+     label17:
+        goto label19;
+
+     label18:
+        $r26 := @caughtexception;
+
+     label19:
+        return;
+
+        catch java.lang.NullPointerException from label01 to label02 with label03;
+        catch java.lang.NullPointerException from label04 to label05 with label06;
+        catch java.lang.NullPointerException from label07 to label08 with label09;
+        catch java.lang.NullPointerException from label10 to label11 with label12;
+        catch java.lang.NullPointerException from label13 to label14 with label15;
+        catch java.lang.NullPointerException from label16 to label17 with label18;
+    }
+
+    public void test_checkRegionMatches_case() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOCaseTestCase r0;
+        org.apache.commons.io.IOCase $r1, $r2, $r3, $r4, $r5, $r7;
+        boolean $z0, $z1, $z2, $z3, $z4, $z5, $z6;
+        java.lang.Boolean $r6, $r8;
+
+        r0 := @this: org.apache.commons.io.IOCaseTestCase;
+
+        $r1 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $z0 = virtualinvoke $r1.<org.apache.commons.io.IOCase: boolean checkRegionMatches(java.lang.String,int,java.lang.String)>("ABC", 0, "AB");
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z0);
+
+        $r2 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $z1 = virtualinvoke $r2.<org.apache.commons.io.IOCase: boolean checkRegionMatches(java.lang.String,int,java.lang.String)>("ABC", 0, "Ab");
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z1);
+
+        $r3 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase INSENSITIVE>;
+
+        $z2 = virtualinvoke $r3.<org.apache.commons.io.IOCase: boolean checkRegionMatches(java.lang.String,int,java.lang.String)>("ABC", 0, "AB");
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z2);
+
+        $r4 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase INSENSITIVE>;
+
+        $z3 = virtualinvoke $r4.<org.apache.commons.io.IOCase: boolean checkRegionMatches(java.lang.String,int,java.lang.String)>("ABC", 0, "Ab");
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z3);
+
+        $r5 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SYSTEM>;
+
+        $z4 = virtualinvoke $r5.<org.apache.commons.io.IOCase: boolean checkRegionMatches(java.lang.String,int,java.lang.String)>("ABC", 0, "AB");
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z4);
+
+        $z5 = <org.apache.commons.io.IOCaseTestCase: boolean WINDOWS>;
+
+        $r6 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($z5);
+
+        $r7 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SYSTEM>;
+
+        $z6 = virtualinvoke $r7.<org.apache.commons.io.IOCase: boolean checkRegionMatches(java.lang.String,int,java.lang.String)>("ABC", 0, "Ab");
+
+        $r8 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($z6);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r6, $r8);
+
+        return;
+    }
+
+    private org.apache.commons.io.IOCase serialize(org.apache.commons.io.IOCase) throws java.lang.Exception
+    {
+        org.apache.commons.io.IOCaseTestCase r0;
+        org.apache.commons.io.IOCase r1, $r12;
+        java.io.ByteArrayOutputStream $r6;
+        java.io.ObjectOutputStream $r7;
+        java.io.ByteArrayInputStream $r8;
+        byte[] $r9;
+        java.io.ObjectInputStream $r10;
+        java.lang.Object $r11;
+
+        r0 := @this: org.apache.commons.io.IOCaseTestCase;
+
+        r1 := @parameter0: org.apache.commons.io.IOCase;
+
+        $r6 = new java.io.ByteArrayOutputStream;
+
+        specialinvoke $r6.<java.io.ByteArrayOutputStream: void <init>()>();
+
+        $r7 = new java.io.ObjectOutputStream;
+
+        specialinvoke $r7.<java.io.ObjectOutputStream: void <init>(java.io.OutputStream)>($r6);
+
+        virtualinvoke $r7.<java.io.ObjectOutputStream: void writeObject(java.lang.Object)>(r1);
+
+        virtualinvoke $r7.<java.io.ObjectOutputStream: void flush()>();
+
+        virtualinvoke $r7.<java.io.ObjectOutputStream: void close()>();
+
+        $r8 = new java.io.ByteArrayInputStream;
+
+        $r9 = virtualinvoke $r6.<java.io.ByteArrayOutputStream: byte[] toByteArray()>();
+
+        specialinvoke $r8.<java.io.ByteArrayInputStream: void <init>(byte[])>($r9);
+
+        $r10 = new java.io.ObjectInputStream;
+
+        specialinvoke $r10.<java.io.ObjectInputStream: void <init>(java.io.InputStream)>($r8);
+
+        $r11 = virtualinvoke $r10.<java.io.ObjectInputStream: java.lang.Object readObject()>();
+
+        $r12 = (org.apache.commons.io.IOCase) $r11;
+
+        return $r12;
+    }
+}

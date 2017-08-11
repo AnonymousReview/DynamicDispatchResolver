@@ -1,0 +1,585 @@
+public class org.apache.log4j.WriterAppender extends org.apache.log4j.AppenderSkeleton
+{
+    protected boolean immediateFlush;
+    protected java.lang.String encoding;
+    protected org.apache.log4j.helpers.QuietWriter qw;
+
+    public void <init>()
+    {
+        org.apache.log4j.WriterAppender r0;
+
+        r0 := @this: org.apache.log4j.WriterAppender;
+
+        specialinvoke r0.<org.apache.log4j.AppenderSkeleton: void <init>()>();
+
+        r0.<org.apache.log4j.WriterAppender: boolean immediateFlush> = 1;
+
+        return;
+    }
+
+    public void <init>(org.apache.log4j.Layout, java.io.OutputStream)
+    {
+        org.apache.log4j.WriterAppender r0;
+        org.apache.log4j.Layout r1;
+        java.io.OutputStream r2;
+        java.io.OutputStreamWriter $r3;
+
+        r0 := @this: org.apache.log4j.WriterAppender;
+
+        r1 := @parameter0: org.apache.log4j.Layout;
+
+        r2 := @parameter1: java.io.OutputStream;
+
+        $r3 = new java.io.OutputStreamWriter;
+
+        specialinvoke $r3.<java.io.OutputStreamWriter: void <init>(java.io.OutputStream)>(r2);
+
+        specialinvoke r0.<org.apache.log4j.WriterAppender: void <init>(org.apache.log4j.Layout,java.io.Writer)>(r1, $r3);
+
+        return;
+    }
+
+    public void <init>(org.apache.log4j.Layout, java.io.Writer)
+    {
+        org.apache.log4j.WriterAppender r0;
+        org.apache.log4j.Layout r1;
+        java.io.Writer r2;
+
+        r0 := @this: org.apache.log4j.WriterAppender;
+
+        r1 := @parameter0: org.apache.log4j.Layout;
+
+        r2 := @parameter1: java.io.Writer;
+
+        specialinvoke r0.<org.apache.log4j.AppenderSkeleton: void <init>()>();
+
+        r0.<org.apache.log4j.WriterAppender: boolean immediateFlush> = 1;
+
+        r0.<org.apache.log4j.WriterAppender: org.apache.log4j.Layout layout> = r1;
+
+        virtualinvoke r0.<org.apache.log4j.WriterAppender: void setWriter(java.io.Writer)>(r2);
+
+        return;
+    }
+
+    public void setImmediateFlush(boolean)
+    {
+        org.apache.log4j.WriterAppender r0;
+        boolean z0;
+
+        r0 := @this: org.apache.log4j.WriterAppender;
+
+        z0 := @parameter0: boolean;
+
+        r0.<org.apache.log4j.WriterAppender: boolean immediateFlush> = z0;
+
+        return;
+    }
+
+    public boolean getImmediateFlush()
+    {
+        org.apache.log4j.WriterAppender r0;
+        boolean $z0;
+
+        r0 := @this: org.apache.log4j.WriterAppender;
+
+        $z0 = r0.<org.apache.log4j.WriterAppender: boolean immediateFlush>;
+
+        return $z0;
+    }
+
+    public void activateOptions()
+    {
+        org.apache.log4j.WriterAppender r0;
+
+        r0 := @this: org.apache.log4j.WriterAppender;
+
+        return;
+    }
+
+    public void append(org.apache.log4j.spi.LoggingEvent)
+    {
+        org.apache.log4j.WriterAppender r0;
+        org.apache.log4j.spi.LoggingEvent r1;
+        boolean $z0;
+
+        r0 := @this: org.apache.log4j.WriterAppender;
+
+        r1 := @parameter0: org.apache.log4j.spi.LoggingEvent;
+
+        $z0 = virtualinvoke r0.<org.apache.log4j.WriterAppender: boolean checkEntryConditions()>();
+
+        if $z0 != 0 goto label1;
+
+        return;
+
+     label1:
+        virtualinvoke r0.<org.apache.log4j.WriterAppender: void subAppend(org.apache.log4j.spi.LoggingEvent)>(r1);
+
+        return;
+    }
+
+    protected boolean checkEntryConditions()
+    {
+        org.apache.log4j.WriterAppender r0;
+        boolean $z0;
+        org.apache.log4j.helpers.QuietWriter $r1;
+        org.apache.log4j.Layout $r2;
+        java.lang.StringBuilder $r3, $r6, $r7, $r9, $r12, $r13;
+        org.apache.log4j.spi.ErrorHandler $r4, $r10;
+        java.lang.String $r5, $r8, $r11, $r14;
+
+        r0 := @this: org.apache.log4j.WriterAppender;
+
+        $z0 = r0.<org.apache.log4j.WriterAppender: boolean closed>;
+
+        if $z0 == 0 goto label1;
+
+        staticinvoke <org.apache.log4j.helpers.LogLog: void warn(java.lang.String)>("Not allowed to write to a closed appender.");
+
+        return 0;
+
+     label1:
+        $r1 = r0.<org.apache.log4j.WriterAppender: org.apache.log4j.helpers.QuietWriter qw>;
+
+        if $r1 != null goto label2;
+
+        $r10 = r0.<org.apache.log4j.WriterAppender: org.apache.log4j.spi.ErrorHandler errorHandler>;
+
+        $r9 = new java.lang.StringBuilder;
+
+        specialinvoke $r9.<java.lang.StringBuilder: void <init>(java.lang.String)>("No output stream or file set for the appender named [");
+
+        $r11 = r0.<org.apache.log4j.WriterAppender: java.lang.String name>;
+
+        $r12 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r11);
+
+        $r13 = virtualinvoke $r12.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("].");
+
+        $r14 = virtualinvoke $r13.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        interfaceinvoke $r10.<org.apache.log4j.spi.ErrorHandler: void error(java.lang.String)>($r14);
+
+        return 0;
+
+     label2:
+        $r2 = r0.<org.apache.log4j.WriterAppender: org.apache.log4j.Layout layout>;
+
+        if $r2 != null goto label3;
+
+        $r4 = r0.<org.apache.log4j.WriterAppender: org.apache.log4j.spi.ErrorHandler errorHandler>;
+
+        $r3 = new java.lang.StringBuilder;
+
+        specialinvoke $r3.<java.lang.StringBuilder: void <init>(java.lang.String)>("No layout set for the appender named [");
+
+        $r5 = r0.<org.apache.log4j.WriterAppender: java.lang.String name>;
+
+        $r6 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r5);
+
+        $r7 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("].");
+
+        $r8 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        interfaceinvoke $r4.<org.apache.log4j.spi.ErrorHandler: void error(java.lang.String)>($r8);
+
+        return 0;
+
+     label3:
+        return 1;
+    }
+
+    public synchronized void close()
+    {
+        org.apache.log4j.WriterAppender r0;
+        boolean $z0;
+
+        r0 := @this: org.apache.log4j.WriterAppender;
+
+        $z0 = r0.<org.apache.log4j.WriterAppender: boolean closed>;
+
+        if $z0 == 0 goto label1;
+
+        return;
+
+     label1:
+        r0.<org.apache.log4j.WriterAppender: boolean closed> = 1;
+
+        virtualinvoke r0.<org.apache.log4j.WriterAppender: void writeFooter()>();
+
+        virtualinvoke r0.<org.apache.log4j.WriterAppender: void reset()>();
+
+        return;
+    }
+
+    protected void closeWriter()
+    {
+        org.apache.log4j.WriterAppender r0;
+        org.apache.log4j.helpers.QuietWriter $r2, $r3, $r6;
+        java.io.IOException $r4;
+        boolean $z0;
+        java.lang.StringBuilder $r5, $r7;
+        java.lang.String $r8;
+        java.lang.Thread $r9;
+
+        r0 := @this: org.apache.log4j.WriterAppender;
+
+        $r2 = r0.<org.apache.log4j.WriterAppender: org.apache.log4j.helpers.QuietWriter qw>;
+
+        if $r2 == null goto label5;
+
+     label1:
+        $r3 = r0.<org.apache.log4j.WriterAppender: org.apache.log4j.helpers.QuietWriter qw>;
+
+        virtualinvoke $r3.<org.apache.log4j.helpers.QuietWriter: void close()>();
+
+     label2:
+        goto label5;
+
+     label3:
+        $r4 := @caughtexception;
+
+        $z0 = $r4 instanceof java.io.InterruptedIOException;
+
+        if $z0 == 0 goto label4;
+
+        $r9 = staticinvoke <java.lang.Thread: java.lang.Thread currentThread()>();
+
+        virtualinvoke $r9.<java.lang.Thread: void interrupt()>();
+
+     label4:
+        $r5 = new java.lang.StringBuilder;
+
+        specialinvoke $r5.<java.lang.StringBuilder: void <init>(java.lang.String)>("Could not close ");
+
+        $r6 = r0.<org.apache.log4j.WriterAppender: org.apache.log4j.helpers.QuietWriter qw>;
+
+        $r7 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r6);
+
+        $r8 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.apache.log4j.helpers.LogLog: void error(java.lang.String,java.lang.Throwable)>($r8, $r4);
+
+     label5:
+        return;
+
+        catch java.io.IOException from label1 to label2 with label3;
+    }
+
+    protected java.io.OutputStreamWriter createWriter(java.io.OutputStream)
+    {
+        org.apache.log4j.WriterAppender r0;
+        java.io.OutputStream r1;
+        java.lang.String r2;
+        java.io.OutputStreamWriter $r4, $r5, r8;
+        java.io.IOException $r6;
+        boolean $z0;
+        java.lang.Thread $r7;
+
+        r0 := @this: org.apache.log4j.WriterAppender;
+
+        r1 := @parameter0: java.io.OutputStream;
+
+        r8 = null;
+
+        r2 = virtualinvoke r0.<org.apache.log4j.WriterAppender: java.lang.String getEncoding()>();
+
+        if r2 == null goto label5;
+
+     label1:
+        $r5 = new java.io.OutputStreamWriter;
+
+        specialinvoke $r5.<java.io.OutputStreamWriter: void <init>(java.io.OutputStream,java.lang.String)>(r1, r2);
+
+        r8 = $r5;
+
+     label2:
+        goto label5;
+
+     label3:
+        $r6 := @caughtexception;
+
+        $z0 = $r6 instanceof java.io.InterruptedIOException;
+
+        if $z0 == 0 goto label4;
+
+        $r7 = staticinvoke <java.lang.Thread: java.lang.Thread currentThread()>();
+
+        virtualinvoke $r7.<java.lang.Thread: void interrupt()>();
+
+     label4:
+        staticinvoke <org.apache.log4j.helpers.LogLog: void warn(java.lang.String)>("Error initializing output writer.");
+
+        staticinvoke <org.apache.log4j.helpers.LogLog: void warn(java.lang.String)>("Unsupported encoding?");
+
+     label5:
+        if r8 != null goto label6;
+
+        $r4 = new java.io.OutputStreamWriter;
+
+        specialinvoke $r4.<java.io.OutputStreamWriter: void <init>(java.io.OutputStream)>(r1);
+
+        r8 = $r4;
+
+     label6:
+        return r8;
+
+        catch java.io.IOException from label1 to label2 with label3;
+    }
+
+    public java.lang.String getEncoding()
+    {
+        org.apache.log4j.WriterAppender r0;
+        java.lang.String $r1;
+
+        r0 := @this: org.apache.log4j.WriterAppender;
+
+        $r1 = r0.<org.apache.log4j.WriterAppender: java.lang.String encoding>;
+
+        return $r1;
+    }
+
+    public void setEncoding(java.lang.String)
+    {
+        org.apache.log4j.WriterAppender r0;
+        java.lang.String r1;
+
+        r0 := @this: org.apache.log4j.WriterAppender;
+
+        r1 := @parameter0: java.lang.String;
+
+        r0.<org.apache.log4j.WriterAppender: java.lang.String encoding> = r1;
+
+        return;
+    }
+
+    public synchronized void setErrorHandler(org.apache.log4j.spi.ErrorHandler)
+    {
+        org.apache.log4j.WriterAppender r0;
+        org.apache.log4j.spi.ErrorHandler r1;
+        org.apache.log4j.helpers.QuietWriter $r2, $r3;
+
+        r0 := @this: org.apache.log4j.WriterAppender;
+
+        r1 := @parameter0: org.apache.log4j.spi.ErrorHandler;
+
+        if r1 != null goto label1;
+
+        staticinvoke <org.apache.log4j.helpers.LogLog: void warn(java.lang.String)>("You have tried to set a null error-handler.");
+
+        goto label2;
+
+     label1:
+        r0.<org.apache.log4j.WriterAppender: org.apache.log4j.spi.ErrorHandler errorHandler> = r1;
+
+        $r2 = r0.<org.apache.log4j.WriterAppender: org.apache.log4j.helpers.QuietWriter qw>;
+
+        if $r2 == null goto label2;
+
+        $r3 = r0.<org.apache.log4j.WriterAppender: org.apache.log4j.helpers.QuietWriter qw>;
+
+        virtualinvoke $r3.<org.apache.log4j.helpers.QuietWriter: void setErrorHandler(org.apache.log4j.spi.ErrorHandler)>(r1);
+
+     label2:
+        return;
+    }
+
+    public synchronized void setWriter(java.io.Writer)
+    {
+        org.apache.log4j.WriterAppender r0;
+        java.io.Writer r1;
+        org.apache.log4j.helpers.QuietWriter $r2;
+        org.apache.log4j.spi.ErrorHandler $r3;
+
+        r0 := @this: org.apache.log4j.WriterAppender;
+
+        r1 := @parameter0: java.io.Writer;
+
+        virtualinvoke r0.<org.apache.log4j.WriterAppender: void reset()>();
+
+        $r2 = new org.apache.log4j.helpers.QuietWriter;
+
+        $r3 = r0.<org.apache.log4j.WriterAppender: org.apache.log4j.spi.ErrorHandler errorHandler>;
+
+        specialinvoke $r2.<org.apache.log4j.helpers.QuietWriter: void <init>(java.io.Writer,org.apache.log4j.spi.ErrorHandler)>(r1, $r3);
+
+        r0.<org.apache.log4j.WriterAppender: org.apache.log4j.helpers.QuietWriter qw> = $r2;
+
+        virtualinvoke r0.<org.apache.log4j.WriterAppender: void writeHeader()>();
+
+        return;
+    }
+
+    protected void subAppend(org.apache.log4j.spi.LoggingEvent)
+    {
+        org.apache.log4j.WriterAppender r0;
+        org.apache.log4j.spi.LoggingEvent r1;
+        java.lang.String[] r2;
+        int i0, i1;
+        org.apache.log4j.Layout $r3, $r6;
+        org.apache.log4j.helpers.QuietWriter $r4, $r7, $r9, $r11;
+        java.lang.String $r5, $r8, $r10;
+        boolean $z0, $z1;
+
+        r0 := @this: org.apache.log4j.WriterAppender;
+
+        r1 := @parameter0: org.apache.log4j.spi.LoggingEvent;
+
+        $r4 = r0.<org.apache.log4j.WriterAppender: org.apache.log4j.helpers.QuietWriter qw>;
+
+        $r3 = r0.<org.apache.log4j.WriterAppender: org.apache.log4j.Layout layout>;
+
+        $r5 = virtualinvoke $r3.<org.apache.log4j.Layout: java.lang.String format(org.apache.log4j.spi.LoggingEvent)>(r1);
+
+        virtualinvoke $r4.<org.apache.log4j.helpers.QuietWriter: void write(java.lang.String)>($r5);
+
+        $r6 = r0.<org.apache.log4j.WriterAppender: org.apache.log4j.Layout layout>;
+
+        $z0 = virtualinvoke $r6.<org.apache.log4j.Layout: boolean ignoresThrowable()>();
+
+        if $z0 == 0 goto label3;
+
+        r2 = virtualinvoke r1.<org.apache.log4j.spi.LoggingEvent: java.lang.String[] getThrowableStrRep()>();
+
+        if r2 == null goto label3;
+
+        i0 = lengthof r2;
+
+        i1 = 0;
+
+        goto label2;
+
+     label1:
+        $r9 = r0.<org.apache.log4j.WriterAppender: org.apache.log4j.helpers.QuietWriter qw>;
+
+        $r8 = r2[i1];
+
+        virtualinvoke $r9.<org.apache.log4j.helpers.QuietWriter: void write(java.lang.String)>($r8);
+
+        $r11 = r0.<org.apache.log4j.WriterAppender: org.apache.log4j.helpers.QuietWriter qw>;
+
+        $r10 = <org.apache.log4j.Layout: java.lang.String LINE_SEP>;
+
+        virtualinvoke $r11.<org.apache.log4j.helpers.QuietWriter: void write(java.lang.String)>($r10);
+
+        i1 = i1 + 1;
+
+     label2:
+        if i1 < i0 goto label1;
+
+     label3:
+        $z1 = virtualinvoke r0.<org.apache.log4j.WriterAppender: boolean shouldFlush(org.apache.log4j.spi.LoggingEvent)>(r1);
+
+        if $z1 == 0 goto label4;
+
+        $r7 = r0.<org.apache.log4j.WriterAppender: org.apache.log4j.helpers.QuietWriter qw>;
+
+        virtualinvoke $r7.<org.apache.log4j.helpers.QuietWriter: void flush()>();
+
+     label4:
+        return;
+    }
+
+    public boolean requiresLayout()
+    {
+        org.apache.log4j.WriterAppender r0;
+
+        r0 := @this: org.apache.log4j.WriterAppender;
+
+        return 1;
+    }
+
+    protected void reset()
+    {
+        org.apache.log4j.WriterAppender r0;
+
+        r0 := @this: org.apache.log4j.WriterAppender;
+
+        virtualinvoke r0.<org.apache.log4j.WriterAppender: void closeWriter()>();
+
+        r0.<org.apache.log4j.WriterAppender: org.apache.log4j.helpers.QuietWriter qw> = null;
+
+        return;
+    }
+
+    protected void writeFooter()
+    {
+        org.apache.log4j.WriterAppender r0;
+        java.lang.String r1;
+        org.apache.log4j.Layout $r2, $r3;
+        org.apache.log4j.helpers.QuietWriter $r4, $r5, $r6;
+
+        r0 := @this: org.apache.log4j.WriterAppender;
+
+        $r2 = r0.<org.apache.log4j.WriterAppender: org.apache.log4j.Layout layout>;
+
+        if $r2 == null goto label1;
+
+        $r3 = r0.<org.apache.log4j.WriterAppender: org.apache.log4j.Layout layout>;
+
+        r1 = virtualinvoke $r3.<org.apache.log4j.Layout: java.lang.String getFooter()>();
+
+        if r1 == null goto label1;
+
+        $r4 = r0.<org.apache.log4j.WriterAppender: org.apache.log4j.helpers.QuietWriter qw>;
+
+        if $r4 == null goto label1;
+
+        $r5 = r0.<org.apache.log4j.WriterAppender: org.apache.log4j.helpers.QuietWriter qw>;
+
+        virtualinvoke $r5.<org.apache.log4j.helpers.QuietWriter: void write(java.lang.String)>(r1);
+
+        $r6 = r0.<org.apache.log4j.WriterAppender: org.apache.log4j.helpers.QuietWriter qw>;
+
+        virtualinvoke $r6.<org.apache.log4j.helpers.QuietWriter: void flush()>();
+
+     label1:
+        return;
+    }
+
+    protected void writeHeader()
+    {
+        org.apache.log4j.WriterAppender r0;
+        java.lang.String r1;
+        org.apache.log4j.Layout $r2, $r3;
+        org.apache.log4j.helpers.QuietWriter $r4, $r5;
+
+        r0 := @this: org.apache.log4j.WriterAppender;
+
+        $r2 = r0.<org.apache.log4j.WriterAppender: org.apache.log4j.Layout layout>;
+
+        if $r2 == null goto label1;
+
+        $r3 = r0.<org.apache.log4j.WriterAppender: org.apache.log4j.Layout layout>;
+
+        r1 = virtualinvoke $r3.<org.apache.log4j.Layout: java.lang.String getHeader()>();
+
+        if r1 == null goto label1;
+
+        $r4 = r0.<org.apache.log4j.WriterAppender: org.apache.log4j.helpers.QuietWriter qw>;
+
+        if $r4 == null goto label1;
+
+        $r5 = r0.<org.apache.log4j.WriterAppender: org.apache.log4j.helpers.QuietWriter qw>;
+
+        virtualinvoke $r5.<org.apache.log4j.helpers.QuietWriter: void write(java.lang.String)>(r1);
+
+     label1:
+        return;
+    }
+
+    protected boolean shouldFlush(org.apache.log4j.spi.LoggingEvent)
+    {
+        org.apache.log4j.WriterAppender r0;
+        org.apache.log4j.spi.LoggingEvent r1;
+        boolean $z0;
+
+        r0 := @this: org.apache.log4j.WriterAppender;
+
+        r1 := @parameter0: org.apache.log4j.spi.LoggingEvent;
+
+        $z0 = r0.<org.apache.log4j.WriterAppender: boolean immediateFlush>;
+
+        return $z0;
+    }
+}

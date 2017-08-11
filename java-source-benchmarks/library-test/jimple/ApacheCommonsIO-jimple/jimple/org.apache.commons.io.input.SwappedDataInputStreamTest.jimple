@@ -1,0 +1,402 @@
+public class org.apache.commons.io.input.SwappedDataInputStreamTest extends java.lang.Object
+{
+    private org.apache.commons.io.input.SwappedDataInputStream sdis;
+    private byte[] bytes;
+
+    public void <init>()
+    {
+        org.apache.commons.io.input.SwappedDataInputStreamTest r0;
+
+        r0 := @this: org.apache.commons.io.input.SwappedDataInputStreamTest;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void setUp()
+    {
+        org.apache.commons.io.input.SwappedDataInputStreamTest r0;
+        byte[] $r2, $r4;
+        java.io.ByteArrayInputStream $r3;
+        org.apache.commons.io.input.SwappedDataInputStream $r5;
+
+        r0 := @this: org.apache.commons.io.input.SwappedDataInputStreamTest;
+
+        $r2 = newarray (byte)[8];
+
+        $r2[0] = 1;
+
+        $r2[1] = 2;
+
+        $r2[2] = 3;
+
+        $r2[3] = 4;
+
+        $r2[4] = 5;
+
+        $r2[5] = 6;
+
+        $r2[6] = 7;
+
+        $r2[7] = 8;
+
+        r0.<org.apache.commons.io.input.SwappedDataInputStreamTest: byte[] bytes> = $r2;
+
+        $r3 = new java.io.ByteArrayInputStream;
+
+        $r4 = r0.<org.apache.commons.io.input.SwappedDataInputStreamTest: byte[] bytes>;
+
+        specialinvoke $r3.<java.io.ByteArrayInputStream: void <init>(byte[])>($r4);
+
+        $r5 = new org.apache.commons.io.input.SwappedDataInputStream;
+
+        specialinvoke $r5.<org.apache.commons.io.input.SwappedDataInputStream: void <init>(java.io.InputStream)>($r3);
+
+        r0.<org.apache.commons.io.input.SwappedDataInputStreamTest: org.apache.commons.io.input.SwappedDataInputStream sdis> = $r5;
+
+        return;
+    }
+
+    public void tearDown()
+    {
+        org.apache.commons.io.input.SwappedDataInputStreamTest r0;
+
+        r0 := @this: org.apache.commons.io.input.SwappedDataInputStreamTest;
+
+        r0.<org.apache.commons.io.input.SwappedDataInputStreamTest: org.apache.commons.io.input.SwappedDataInputStream sdis> = null;
+
+        return;
+    }
+
+    public void testReadBoolean() throws java.io.IOException
+    {
+        org.apache.commons.io.input.SwappedDataInputStreamTest r0;
+        byte[] $r3, $r5;
+        java.io.ByteArrayInputStream $r4;
+        org.apache.commons.io.input.SwappedDataInputStream $r6;
+        java.lang.Boolean $r7, $r8, $r9, $r10, $r11, $r12;
+        boolean $z0, $z1, $z2;
+
+        r0 := @this: org.apache.commons.io.input.SwappedDataInputStreamTest;
+
+        $r3 = newarray (byte)[3];
+
+        $r3[1] = 1;
+
+        $r3[2] = 2;
+
+        r0.<org.apache.commons.io.input.SwappedDataInputStreamTest: byte[] bytes> = $r3;
+
+        $r4 = new java.io.ByteArrayInputStream;
+
+        $r5 = r0.<org.apache.commons.io.input.SwappedDataInputStreamTest: byte[] bytes>;
+
+        specialinvoke $r4.<java.io.ByteArrayInputStream: void <init>(byte[])>($r5);
+
+        $r6 = new org.apache.commons.io.input.SwappedDataInputStream;
+
+        specialinvoke $r6.<org.apache.commons.io.input.SwappedDataInputStream: void <init>(java.io.InputStream)>($r4);
+
+        $r7 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>(0);
+
+        $z0 = virtualinvoke $r6.<org.apache.commons.io.input.SwappedDataInputStream: boolean readBoolean()>();
+
+        $r8 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($z0);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r7, $r8);
+
+        $r9 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>(1);
+
+        $z1 = virtualinvoke $r6.<org.apache.commons.io.input.SwappedDataInputStream: boolean readBoolean()>();
+
+        $r10 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($z1);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r9, $r10);
+
+        $r11 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>(1);
+
+        $z2 = virtualinvoke $r6.<org.apache.commons.io.input.SwappedDataInputStream: boolean readBoolean()>();
+
+        $r12 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($z2);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r11, $r12);
+
+        virtualinvoke $r6.<org.apache.commons.io.input.SwappedDataInputStream: void close()>();
+
+        return;
+    }
+
+    public void testReadByte() throws java.io.IOException
+    {
+        org.apache.commons.io.input.SwappedDataInputStreamTest r0;
+        org.apache.commons.io.input.SwappedDataInputStream $r1;
+        byte $b0;
+        long $l1;
+
+        r0 := @this: org.apache.commons.io.input.SwappedDataInputStreamTest;
+
+        $r1 = r0.<org.apache.commons.io.input.SwappedDataInputStreamTest: org.apache.commons.io.input.SwappedDataInputStream sdis>;
+
+        $b0 = virtualinvoke $r1.<org.apache.commons.io.input.SwappedDataInputStream: byte readByte()>();
+
+        $l1 = (long) $b0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(1L, $l1);
+
+        return;
+    }
+
+    public void testReadChar() throws java.io.IOException
+    {
+        org.apache.commons.io.input.SwappedDataInputStreamTest r0;
+        org.apache.commons.io.input.SwappedDataInputStream $r1;
+        char $c0;
+        long $l1;
+
+        r0 := @this: org.apache.commons.io.input.SwappedDataInputStreamTest;
+
+        $r1 = r0.<org.apache.commons.io.input.SwappedDataInputStreamTest: org.apache.commons.io.input.SwappedDataInputStream sdis>;
+
+        $c0 = virtualinvoke $r1.<org.apache.commons.io.input.SwappedDataInputStream: char readChar()>();
+
+        $l1 = (long) $c0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(513L, $l1);
+
+        return;
+    }
+
+    public void testReadDouble() throws java.io.IOException
+    {
+        org.apache.commons.io.input.SwappedDataInputStreamTest r0;
+        double $d0, $d1;
+        org.apache.commons.io.input.SwappedDataInputStream $r1;
+
+        r0 := @this: org.apache.commons.io.input.SwappedDataInputStreamTest;
+
+        $d0 = staticinvoke <java.lang.Double: double longBitsToDouble(long)>(578437695752307201L);
+
+        $r1 = r0.<org.apache.commons.io.input.SwappedDataInputStreamTest: org.apache.commons.io.input.SwappedDataInputStream sdis>;
+
+        $d1 = virtualinvoke $r1.<org.apache.commons.io.input.SwappedDataInputStream: double readDouble()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(double,double,double)>($d0, $d1, 0.0);
+
+        return;
+    }
+
+    public void testReadFloat() throws java.io.IOException
+    {
+        org.apache.commons.io.input.SwappedDataInputStreamTest r0;
+        float $f0, $f1;
+        org.apache.commons.io.input.SwappedDataInputStream $r1;
+
+        r0 := @this: org.apache.commons.io.input.SwappedDataInputStreamTest;
+
+        $f0 = staticinvoke <java.lang.Float: float intBitsToFloat(int)>(67305985);
+
+        $r1 = r0.<org.apache.commons.io.input.SwappedDataInputStreamTest: org.apache.commons.io.input.SwappedDataInputStream sdis>;
+
+        $f1 = virtualinvoke $r1.<org.apache.commons.io.input.SwappedDataInputStream: float readFloat()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(float,float,float)>($f0, $f1, 0.0F);
+
+        return;
+    }
+
+    public void testReadFully() throws java.io.IOException
+    {
+        org.apache.commons.io.input.SwappedDataInputStreamTest r0;
+        byte[] r1, $r3;
+        org.apache.commons.io.input.SwappedDataInputStream $r2;
+        byte $b0, $b1;
+        long $l2, $l3;
+        int i4;
+
+        r0 := @this: org.apache.commons.io.input.SwappedDataInputStreamTest;
+
+        r1 = newarray (byte)[8];
+
+        $r2 = r0.<org.apache.commons.io.input.SwappedDataInputStreamTest: org.apache.commons.io.input.SwappedDataInputStream sdis>;
+
+        virtualinvoke $r2.<org.apache.commons.io.input.SwappedDataInputStream: void readFully(byte[])>(r1);
+
+        i4 = 0;
+
+        goto label2;
+
+     label1:
+        $r3 = r0.<org.apache.commons.io.input.SwappedDataInputStreamTest: byte[] bytes>;
+
+        $b0 = $r3[i4];
+
+        $l3 = (long) $b0;
+
+        $b1 = r1[i4];
+
+        $l2 = (long) $b1;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>($l3, $l2);
+
+        i4 = i4 + 1;
+
+     label2:
+        if i4 < 8 goto label1;
+
+        return;
+    }
+
+    public void testReadInt() throws java.io.IOException
+    {
+        org.apache.commons.io.input.SwappedDataInputStreamTest r0;
+        org.apache.commons.io.input.SwappedDataInputStream $r1;
+        int $i0;
+        long $l1;
+
+        r0 := @this: org.apache.commons.io.input.SwappedDataInputStreamTest;
+
+        $r1 = r0.<org.apache.commons.io.input.SwappedDataInputStreamTest: org.apache.commons.io.input.SwappedDataInputStream sdis>;
+
+        $i0 = virtualinvoke $r1.<org.apache.commons.io.input.SwappedDataInputStream: int readInt()>();
+
+        $l1 = (long) $i0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(67305985L, $l1);
+
+        return;
+    }
+
+    public void testReadLine() throws java.io.IOException
+    {
+        org.apache.commons.io.input.SwappedDataInputStreamTest r0;
+        org.apache.commons.io.input.SwappedDataInputStream $r1;
+
+        r0 := @this: org.apache.commons.io.input.SwappedDataInputStreamTest;
+
+        $r1 = r0.<org.apache.commons.io.input.SwappedDataInputStreamTest: org.apache.commons.io.input.SwappedDataInputStream sdis>;
+
+        virtualinvoke $r1.<org.apache.commons.io.input.SwappedDataInputStream: java.lang.String readLine()>();
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("readLine should be unsupported. ");
+
+        return;
+    }
+
+    public void testReadLong() throws java.io.IOException
+    {
+        org.apache.commons.io.input.SwappedDataInputStreamTest r0;
+        org.apache.commons.io.input.SwappedDataInputStream $r1;
+        long $l0;
+
+        r0 := @this: org.apache.commons.io.input.SwappedDataInputStreamTest;
+
+        $r1 = r0.<org.apache.commons.io.input.SwappedDataInputStreamTest: org.apache.commons.io.input.SwappedDataInputStream sdis>;
+
+        $l0 = virtualinvoke $r1.<org.apache.commons.io.input.SwappedDataInputStream: long readLong()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(578437695752307201L, $l0);
+
+        return;
+    }
+
+    public void testReadShort() throws java.io.IOException
+    {
+        org.apache.commons.io.input.SwappedDataInputStreamTest r0;
+        org.apache.commons.io.input.SwappedDataInputStream $r1;
+        short $s0;
+        long $l1;
+
+        r0 := @this: org.apache.commons.io.input.SwappedDataInputStreamTest;
+
+        $r1 = r0.<org.apache.commons.io.input.SwappedDataInputStreamTest: org.apache.commons.io.input.SwappedDataInputStream sdis>;
+
+        $s0 = virtualinvoke $r1.<org.apache.commons.io.input.SwappedDataInputStream: short readShort()>();
+
+        $l1 = (long) $s0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(513L, $l1);
+
+        return;
+    }
+
+    public void testReadUnsignedByte() throws java.io.IOException
+    {
+        org.apache.commons.io.input.SwappedDataInputStreamTest r0;
+        org.apache.commons.io.input.SwappedDataInputStream $r1;
+        int $i0;
+        long $l1;
+
+        r0 := @this: org.apache.commons.io.input.SwappedDataInputStreamTest;
+
+        $r1 = r0.<org.apache.commons.io.input.SwappedDataInputStreamTest: org.apache.commons.io.input.SwappedDataInputStream sdis>;
+
+        $i0 = virtualinvoke $r1.<org.apache.commons.io.input.SwappedDataInputStream: int readUnsignedByte()>();
+
+        $l1 = (long) $i0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(1L, $l1);
+
+        return;
+    }
+
+    public void testReadUnsignedShort() throws java.io.IOException
+    {
+        org.apache.commons.io.input.SwappedDataInputStreamTest r0;
+        org.apache.commons.io.input.SwappedDataInputStream $r1;
+        int $i0;
+        long $l1;
+
+        r0 := @this: org.apache.commons.io.input.SwappedDataInputStreamTest;
+
+        $r1 = r0.<org.apache.commons.io.input.SwappedDataInputStreamTest: org.apache.commons.io.input.SwappedDataInputStream sdis>;
+
+        $i0 = virtualinvoke $r1.<org.apache.commons.io.input.SwappedDataInputStream: int readUnsignedShort()>();
+
+        $l1 = (long) $i0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(513L, $l1);
+
+        return;
+    }
+
+    public void testReadUTF() throws java.io.IOException
+    {
+        org.apache.commons.io.input.SwappedDataInputStreamTest r0;
+        org.apache.commons.io.input.SwappedDataInputStream $r1;
+
+        r0 := @this: org.apache.commons.io.input.SwappedDataInputStreamTest;
+
+        $r1 = r0.<org.apache.commons.io.input.SwappedDataInputStreamTest: org.apache.commons.io.input.SwappedDataInputStream sdis>;
+
+        virtualinvoke $r1.<org.apache.commons.io.input.SwappedDataInputStream: java.lang.String readUTF()>();
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("readUTF should be unsupported. ");
+
+        return;
+    }
+
+    public void testSkipBytes() throws java.io.IOException
+    {
+        org.apache.commons.io.input.SwappedDataInputStreamTest r0;
+        org.apache.commons.io.input.SwappedDataInputStream $r1, $r2;
+        int $i1;
+        long $l2;
+
+        r0 := @this: org.apache.commons.io.input.SwappedDataInputStreamTest;
+
+        $r1 = r0.<org.apache.commons.io.input.SwappedDataInputStreamTest: org.apache.commons.io.input.SwappedDataInputStream sdis>;
+
+        virtualinvoke $r1.<org.apache.commons.io.input.SwappedDataInputStream: int skipBytes(int)>(4);
+
+        $r2 = r0.<org.apache.commons.io.input.SwappedDataInputStreamTest: org.apache.commons.io.input.SwappedDataInputStream sdis>;
+
+        $i1 = virtualinvoke $r2.<org.apache.commons.io.input.SwappedDataInputStream: int readInt()>();
+
+        $l2 = (long) $i1;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(134678021L, $l2);
+
+        return;
+    }
+}

@@ -1,0 +1,76 @@
+public class org.apache.commons.io.input.compatibility.XmlStreamReaderException extends org.apache.commons.io.input.XmlStreamReaderException
+{
+    private static final long serialVersionUID;
+    private final java.io.InputStream is;
+
+    public void <init>(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.io.InputStream)
+    {
+        org.apache.commons.io.input.compatibility.XmlStreamReaderException r0;
+        java.lang.String r1, r2, r3, r4;
+        java.io.InputStream r5;
+
+        r0 := @this: org.apache.commons.io.input.compatibility.XmlStreamReaderException;
+
+        r1 := @parameter0: java.lang.String;
+
+        r2 := @parameter1: java.lang.String;
+
+        r3 := @parameter2: java.lang.String;
+
+        r4 := @parameter3: java.lang.String;
+
+        r5 := @parameter4: java.io.InputStream;
+
+        specialinvoke r0.<org.apache.commons.io.input.compatibility.XmlStreamReaderException: void <init>(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.io.InputStream)>(r1, null, null, r2, r3, r4, r5);
+
+        return;
+    }
+
+    public void <init>(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.io.InputStream)
+    {
+        org.apache.commons.io.input.compatibility.XmlStreamReaderException r0;
+        java.lang.String r1, r2, r3, r4, r5, r6;
+        java.io.InputStream r7;
+
+        r0 := @this: org.apache.commons.io.input.compatibility.XmlStreamReaderException;
+
+        r1 := @parameter0: java.lang.String;
+
+        r2 := @parameter1: java.lang.String;
+
+        r3 := @parameter2: java.lang.String;
+
+        r4 := @parameter3: java.lang.String;
+
+        r5 := @parameter4: java.lang.String;
+
+        r6 := @parameter5: java.lang.String;
+
+        r7 := @parameter6: java.io.InputStream;
+
+        specialinvoke r0.<org.apache.commons.io.input.XmlStreamReaderException: void <init>(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)>(r1, r2, r3, r4, r5, r6);
+
+        r0.<org.apache.commons.io.input.compatibility.XmlStreamReaderException: java.io.InputStream is> = r7;
+
+        return;
+    }
+
+    public java.io.InputStream getInputStream()
+    {
+        org.apache.commons.io.input.compatibility.XmlStreamReaderException r0;
+        java.io.InputStream $r1;
+
+        r0 := @this: org.apache.commons.io.input.compatibility.XmlStreamReaderException;
+
+        $r1 = r0.<org.apache.commons.io.input.compatibility.XmlStreamReaderException: java.io.InputStream is>;
+
+        return $r1;
+    }
+
+    public static void <clinit>()
+    {
+        <org.apache.commons.io.input.compatibility.XmlStreamReaderException: long serialVersionUID> = 1L;
+
+        return;
+    }
+}

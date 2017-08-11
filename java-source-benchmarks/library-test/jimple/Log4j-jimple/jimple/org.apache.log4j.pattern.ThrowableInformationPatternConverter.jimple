@@ -1,0 +1,160 @@
+public class org.apache.log4j.pattern.ThrowableInformationPatternConverter extends org.apache.log4j.pattern.LoggingEventPatternConverter
+{
+    private int maxLines;
+
+    private void <init>(java.lang.String[])
+    {
+        org.apache.log4j.pattern.ThrowableInformationPatternConverter r0;
+        java.lang.String[] r1;
+        int $i0, $i1;
+        java.lang.String $r3, $r4, $r5, $r6, $r7;
+        boolean $z0, $z1;
+        java.lang.NumberFormatException $r8;
+
+        r0 := @this: org.apache.log4j.pattern.ThrowableInformationPatternConverter;
+
+        r1 := @parameter0: java.lang.String[];
+
+        specialinvoke r0.<org.apache.log4j.pattern.LoggingEventPatternConverter: void <init>(java.lang.String,java.lang.String)>("Throwable", "throwable");
+
+        r0.<org.apache.log4j.pattern.ThrowableInformationPatternConverter: int maxLines> = 2147483647;
+
+        if r1 == null goto label5;
+
+        $i0 = lengthof r1;
+
+        if $i0 <= 0 goto label5;
+
+        $r4 = "none";
+
+        $r3 = r1[0];
+
+        $z0 = virtualinvoke $r4.<java.lang.String: boolean equals(java.lang.Object)>($r3);
+
+        if $z0 == 0 goto label1;
+
+        r0.<org.apache.log4j.pattern.ThrowableInformationPatternConverter: int maxLines> = 0;
+
+        goto label5;
+
+     label1:
+        $r6 = "short";
+
+        $r5 = r1[0];
+
+        $z1 = virtualinvoke $r6.<java.lang.String: boolean equals(java.lang.Object)>($r5);
+
+        if $z1 == 0 goto label2;
+
+        r0.<org.apache.log4j.pattern.ThrowableInformationPatternConverter: int maxLines> = 1;
+
+        goto label5;
+
+     label2:
+        $r7 = r1[0];
+
+        $i1 = staticinvoke <java.lang.Integer: int parseInt(java.lang.String)>($r7);
+
+        r0.<org.apache.log4j.pattern.ThrowableInformationPatternConverter: int maxLines> = $i1;
+
+     label3:
+        goto label5;
+
+     label4:
+        $r8 := @caughtexception;
+
+     label5:
+        return;
+
+        catch java.lang.NumberFormatException from label2 to label3 with label4;
+    }
+
+    public static org.apache.log4j.pattern.ThrowableInformationPatternConverter newInstance(java.lang.String[])
+    {
+        java.lang.String[] r0;
+        org.apache.log4j.pattern.ThrowableInformationPatternConverter $r1;
+
+        r0 := @parameter0: java.lang.String[];
+
+        $r1 = new org.apache.log4j.pattern.ThrowableInformationPatternConverter;
+
+        specialinvoke $r1.<org.apache.log4j.pattern.ThrowableInformationPatternConverter: void <init>(java.lang.String[])>(r0);
+
+        return $r1;
+    }
+
+    public void format(org.apache.log4j.spi.LoggingEvent, java.lang.StringBuffer)
+    {
+        org.apache.log4j.pattern.ThrowableInformationPatternConverter r0;
+        org.apache.log4j.spi.LoggingEvent r1;
+        java.lang.StringBuffer r2, $r6;
+        org.apache.log4j.spi.ThrowableInformation r3;
+        java.lang.String[] r4;
+        java.lang.String r5;
+        int $i0, $i1, $i2, $i3, i4, i5;
+
+        r0 := @this: org.apache.log4j.pattern.ThrowableInformationPatternConverter;
+
+        r1 := @parameter0: org.apache.log4j.spi.LoggingEvent;
+
+        r2 := @parameter1: java.lang.StringBuffer;
+
+        $i0 = r0.<org.apache.log4j.pattern.ThrowableInformationPatternConverter: int maxLines>;
+
+        if $i0 == 0 goto label5;
+
+        r3 = virtualinvoke r1.<org.apache.log4j.spi.LoggingEvent: org.apache.log4j.spi.ThrowableInformation getThrowableInformation()>();
+
+        if r3 == null goto label5;
+
+        r4 = virtualinvoke r3.<org.apache.log4j.spi.ThrowableInformation: java.lang.String[] getThrowableStrRep()>();
+
+        i4 = lengthof r4;
+
+        $i1 = r0.<org.apache.log4j.pattern.ThrowableInformationPatternConverter: int maxLines>;
+
+        if $i1 >= 0 goto label1;
+
+        $i3 = r0.<org.apache.log4j.pattern.ThrowableInformationPatternConverter: int maxLines>;
+
+        i4 = i4 + $i3;
+
+        goto label2;
+
+     label1:
+        $i2 = r0.<org.apache.log4j.pattern.ThrowableInformationPatternConverter: int maxLines>;
+
+        if i4 <= $i2 goto label2;
+
+        i4 = r0.<org.apache.log4j.pattern.ThrowableInformationPatternConverter: int maxLines>;
+
+     label2:
+        i5 = 0;
+
+        goto label4;
+
+     label3:
+        r5 = r4[i5];
+
+        $r6 = virtualinvoke r2.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>(r5);
+
+        virtualinvoke $r6.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>("\n");
+
+        i5 = i5 + 1;
+
+     label4:
+        if i5 < i4 goto label3;
+
+     label5:
+        return;
+    }
+
+    public boolean handlesThrowable()
+    {
+        org.apache.log4j.pattern.ThrowableInformationPatternConverter r0;
+
+        r0 := @this: org.apache.log4j.pattern.ThrowableInformationPatternConverter;
+
+        return 1;
+    }
+}

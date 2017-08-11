@@ -1,0 +1,34 @@
+public final class org.apache.log4j.pattern.BridgePatternParser extends org.apache.log4j.helpers.PatternParser
+{
+
+    public void <init>(java.lang.String)
+    {
+        org.apache.log4j.pattern.BridgePatternParser r0;
+        java.lang.String r1;
+
+        r0 := @this: org.apache.log4j.pattern.BridgePatternParser;
+
+        r1 := @parameter0: java.lang.String;
+
+        specialinvoke r0.<org.apache.log4j.helpers.PatternParser: void <init>(java.lang.String)>(r1);
+
+        return;
+    }
+
+    public org.apache.log4j.helpers.PatternConverter parse()
+    {
+        org.apache.log4j.pattern.BridgePatternParser r0;
+        org.apache.log4j.pattern.BridgePatternConverter $r1;
+        java.lang.String $r2;
+
+        r0 := @this: org.apache.log4j.pattern.BridgePatternParser;
+
+        $r1 = new org.apache.log4j.pattern.BridgePatternConverter;
+
+        $r2 = r0.<org.apache.log4j.pattern.BridgePatternParser: java.lang.String pattern>;
+
+        specialinvoke $r1.<org.apache.log4j.pattern.BridgePatternConverter: void <init>(java.lang.String)>($r2);
+
+        return $r1;
+    }
+}

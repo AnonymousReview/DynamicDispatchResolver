@@ -1,0 +1,62 @@
+public class org.apache.commons.logging.jdk14.CustomConfigFullTestCase extends org.apache.commons.logging.jdk14.CustomConfigTestCase
+{
+
+    public void <init>(java.lang.String)
+    {
+        org.apache.commons.logging.jdk14.CustomConfigFullTestCase r0;
+        java.lang.String r1;
+
+        r0 := @this: org.apache.commons.logging.jdk14.CustomConfigFullTestCase;
+
+        r1 := @parameter0: java.lang.String;
+
+        specialinvoke r0.<org.apache.commons.logging.jdk14.CustomConfigTestCase: void <init>(java.lang.String)>(r1);
+
+        return;
+    }
+
+    public static junit.framework.Test suite() throws java.lang.Exception
+    {
+        java.lang.ClassLoader r1, $r6;
+        java.lang.Class r3, $r5, $r8;
+        org.apache.commons.logging.PathableClassLoader $r4, $r7;
+        java.lang.String $r9;
+        org.apache.commons.logging.PathableTestSuite $r10;
+
+        $r4 = new org.apache.commons.logging.PathableClassLoader;
+
+        specialinvoke $r4.<org.apache.commons.logging.PathableClassLoader: void <init>(java.lang.ClassLoader)>(null);
+
+        $r5 = class "junit/framework/Test";
+
+        $r6 = virtualinvoke $r5.<java.lang.Class: java.lang.ClassLoader getClassLoader()>();
+
+        virtualinvoke $r4.<org.apache.commons.logging.PathableClassLoader: void useExplicitLoader(java.lang.String,java.lang.ClassLoader)>("junit.", $r6);
+
+        r1 = staticinvoke <java.lang.ClassLoader: java.lang.ClassLoader getSystemClassLoader()>();
+
+        staticinvoke <org.apache.commons.logging.jdk14.CustomConfigFullTestCase: void loadTestHandler(java.lang.String,java.lang.ClassLoader)>("org.apache.commons.logging.jdk14.TestHandler", r1);
+
+        virtualinvoke $r4.<org.apache.commons.logging.PathableClassLoader: void useExplicitLoader(java.lang.String,java.lang.ClassLoader)>("org.apache.commons.logging.jdk14.TestHandler", r1);
+
+        virtualinvoke $r4.<org.apache.commons.logging.PathableClassLoader: void addLogicalLib(java.lang.String)>("commons-logging");
+
+        $r7 = new org.apache.commons.logging.PathableClassLoader;
+
+        specialinvoke $r7.<org.apache.commons.logging.PathableClassLoader: void <init>(java.lang.ClassLoader)>($r4);
+
+        virtualinvoke $r7.<org.apache.commons.logging.PathableClassLoader: void addLogicalLib(java.lang.String)>("testclasses");
+
+        $r8 = class "org/apache/commons/logging/jdk14/CustomConfigFullTestCase";
+
+        $r9 = virtualinvoke $r8.<java.lang.Class: java.lang.String getName()>();
+
+        r3 = virtualinvoke $r7.<org.apache.commons.logging.PathableClassLoader: java.lang.Class loadClass(java.lang.String)>($r9);
+
+        $r10 = new org.apache.commons.logging.PathableTestSuite;
+
+        specialinvoke $r10.<org.apache.commons.logging.PathableTestSuite: void <init>(java.lang.Class,java.lang.ClassLoader)>(r3, $r7);
+
+        return $r10;
+    }
+}

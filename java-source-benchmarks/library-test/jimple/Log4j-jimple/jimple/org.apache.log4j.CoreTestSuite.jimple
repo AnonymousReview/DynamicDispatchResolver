@@ -1,0 +1,83 @@
+public class org.apache.log4j.CoreTestSuite extends java.lang.Object
+{
+
+    public void <init>()
+    {
+        org.apache.log4j.CoreTestSuite r0;
+
+        r0 := @this: org.apache.log4j.CoreTestSuite;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static junit.framework.Test suite()
+    {
+        junit.framework.TestSuite $r1;
+
+        $r1 = new junit.framework.TestSuite;
+
+        specialinvoke $r1.<junit.framework.TestSuite: void <init>()>();
+
+        virtualinvoke $r1.<junit.framework.TestSuite: void addTestSuite(java.lang.Class)>(class "org/apache/log4j/spi/LoggingEventTest");
+
+        virtualinvoke $r1.<junit.framework.TestSuite: void addTestSuite(java.lang.Class)>(class "org/apache/log4j/LevelTest");
+
+        virtualinvoke $r1.<junit.framework.TestSuite: void addTestSuite(java.lang.Class)>(class "org/apache/log4j/PriorityTest");
+
+        virtualinvoke $r1.<junit.framework.TestSuite: void addTestSuite(java.lang.Class)>(class "org/apache/log4j/CategoryTest");
+
+        virtualinvoke $r1.<junit.framework.TestSuite: void addTestSuite(java.lang.Class)>(class "org/apache/log4j/FileAppenderTest");
+
+        virtualinvoke $r1.<junit.framework.TestSuite: void addTestSuite(java.lang.Class)>(class "org/apache/log4j/LogManagerTest");
+
+        virtualinvoke $r1.<junit.framework.TestSuite: void addTestSuite(java.lang.Class)>(class "org/apache/log4j/helpers/LogLogTest");
+
+        virtualinvoke $r1.<junit.framework.TestSuite: void addTestSuite(java.lang.Class)>(class "org/apache/log4j/LayoutTest");
+
+        virtualinvoke $r1.<junit.framework.TestSuite: void addTestSuite(java.lang.Class)>(class "org/apache/log4j/helpers/DateLayoutTest");
+
+        virtualinvoke $r1.<junit.framework.TestSuite: void addTestSuite(java.lang.Class)>(class "org/apache/log4j/TTCCLayoutTest");
+
+        virtualinvoke $r1.<junit.framework.TestSuite: void addTestSuite(java.lang.Class)>(class "org/apache/log4j/xml/XMLLayoutTest");
+
+        virtualinvoke $r1.<junit.framework.TestSuite: void addTestSuite(java.lang.Class)>(class "org/apache/log4j/HTMLLayoutTest");
+
+        virtualinvoke $r1.<junit.framework.TestSuite: void addTestSuite(java.lang.Class)>(class "org/apache/log4j/PatternLayoutTest");
+
+        virtualinvoke $r1.<junit.framework.TestSuite: void addTestSuite(java.lang.Class)>(class "org/apache/log4j/spi/LoggingEventTest");
+
+        virtualinvoke $r1.<junit.framework.TestSuite: void addTestSuite(java.lang.Class)>(class "org/apache/log4j/spi/ThrowableInformationTest");
+
+        virtualinvoke $r1.<junit.framework.TestSuite: void addTestSuite(java.lang.Class)>(class "org/apache/log4j/spi/LocationInfoTest");
+
+        virtualinvoke $r1.<junit.framework.TestSuite: void addTestSuite(java.lang.Class)>(class "org/apache/log4j/PropertyConfiguratorTest");
+
+        virtualinvoke $r1.<junit.framework.TestSuite: void addTestSuite(java.lang.Class)>(class "org/apache/log4j/net/SMTPAppenderTest");
+
+        virtualinvoke $r1.<junit.framework.TestSuite: void addTestSuite(java.lang.Class)>(class "org/apache/log4j/net/TelnetAppenderTest");
+
+        virtualinvoke $r1.<junit.framework.TestSuite: void addTestSuite(java.lang.Class)>(class "org/apache/log4j/DefaultThrowableRendererTest");
+
+        virtualinvoke $r1.<junit.framework.TestSuite: void addTestSuite(java.lang.Class)>(class "org/apache/log4j/EnhancedThrowableRendererTest");
+
+        virtualinvoke $r1.<junit.framework.TestSuite: void addTestSuite(java.lang.Class)>(class "org/apache/log4j/TestLogXF");
+
+        virtualinvoke $r1.<junit.framework.TestSuite: void addTestSuite(java.lang.Class)>(class "org/apache/log4j/TestLogMF");
+
+        virtualinvoke $r1.<junit.framework.TestSuite: void addTestSuite(java.lang.Class)>(class "org/apache/log4j/TestLogSF");
+
+        virtualinvoke $r1.<junit.framework.TestSuite: void addTestSuite(java.lang.Class)>(class "org/apache/log4j/pattern/CachedDateFormatTest");
+
+        virtualinvoke $r1.<junit.framework.TestSuite: void addTestSuite(java.lang.Class)>(class "org/apache/log4j/pattern/FormattingInfoTest");
+
+        virtualinvoke $r1.<junit.framework.TestSuite: void addTestSuite(java.lang.Class)>(class "org/apache/log4j/pattern/NameAbbreviatorTest");
+
+        virtualinvoke $r1.<junit.framework.TestSuite: void addTestSuite(java.lang.Class)>(class "org/apache/log4j/pattern/PatternParserTest");
+
+        virtualinvoke $r1.<junit.framework.TestSuite: void addTestSuite(java.lang.Class)>(class "org/apache/log4j/helpers/UtilLoggingLevelTest");
+
+        return $r1;
+    }
+}

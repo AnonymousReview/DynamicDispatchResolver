@@ -1,0 +1,87 @@
+public class org.apache.commons.io.serialization.WildcardClassNameMatcherTest extends java.lang.Object
+{
+
+    public void <init>()
+    {
+        org.apache.commons.io.serialization.WildcardClassNameMatcherTest r0;
+
+        r0 := @this: org.apache.commons.io.serialization.WildcardClassNameMatcherTest;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void noPattern()
+    {
+        org.apache.commons.io.serialization.WildcardClassNameMatcherTest r0;
+        org.apache.commons.io.serialization.WildcardClassNameMatcher $r2;
+        boolean $z0, $z1, $z2;
+
+        r0 := @this: org.apache.commons.io.serialization.WildcardClassNameMatcherTest;
+
+        $r2 = new org.apache.commons.io.serialization.WildcardClassNameMatcher;
+
+        specialinvoke $r2.<org.apache.commons.io.serialization.WildcardClassNameMatcher: void <init>(java.lang.String)>("org.foo");
+
+        $z0 = interfaceinvoke $r2.<org.apache.commons.io.serialization.ClassNameMatcher: boolean matches(java.lang.String)>("org.foo");
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z0);
+
+        $z1 = interfaceinvoke $r2.<org.apache.commons.io.serialization.ClassNameMatcher: boolean matches(java.lang.String)>("org.foo.and.more");
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z1);
+
+        $z2 = interfaceinvoke $r2.<org.apache.commons.io.serialization.ClassNameMatcher: boolean matches(java.lang.String)>("org_foo");
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z2);
+
+        return;
+    }
+
+    public void star()
+    {
+        org.apache.commons.io.serialization.WildcardClassNameMatcherTest r0;
+        org.apache.commons.io.serialization.WildcardClassNameMatcher $r2;
+        boolean $z0, $z1;
+
+        r0 := @this: org.apache.commons.io.serialization.WildcardClassNameMatcherTest;
+
+        $r2 = new org.apache.commons.io.serialization.WildcardClassNameMatcher;
+
+        specialinvoke $r2.<org.apache.commons.io.serialization.WildcardClassNameMatcher: void <init>(java.lang.String)>("org*");
+
+        $z0 = interfaceinvoke $r2.<org.apache.commons.io.serialization.ClassNameMatcher: boolean matches(java.lang.String)>("org.foo.should.match");
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z0);
+
+        $z1 = interfaceinvoke $r2.<org.apache.commons.io.serialization.ClassNameMatcher: boolean matches(java.lang.String)>("bar.should.not.match");
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z1);
+
+        return;
+    }
+
+    public void starAndQuestionMark()
+    {
+        org.apache.commons.io.serialization.WildcardClassNameMatcherTest r0;
+        org.apache.commons.io.serialization.WildcardClassNameMatcher $r2;
+        boolean $z0, $z1;
+
+        r0 := @this: org.apache.commons.io.serialization.WildcardClassNameMatcherTest;
+
+        $r2 = new org.apache.commons.io.serialization.WildcardClassNameMatcher;
+
+        specialinvoke $r2.<org.apache.commons.io.serialization.WildcardClassNameMatcher: void <init>(java.lang.String)>("org?apache?something*");
+
+        $z0 = interfaceinvoke $r2.<org.apache.commons.io.serialization.ClassNameMatcher: boolean matches(java.lang.String)>("org.apache_something.more");
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z0);
+
+        $z1 = interfaceinvoke $r2.<org.apache.commons.io.serialization.ClassNameMatcher: boolean matches(java.lang.String)>("org..apache_something.more");
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z1);
+
+        return;
+    }
+}

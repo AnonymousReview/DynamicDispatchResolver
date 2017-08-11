@@ -1,0 +1,205 @@
+public class org.apache.log4j.TTCCLayoutTest extends org.apache.log4j.helpers.DateLayoutTest
+{
+
+    public void <init>(java.lang.String)
+    {
+        org.apache.log4j.TTCCLayoutTest r0;
+        java.lang.String r1;
+
+        r0 := @this: org.apache.log4j.TTCCLayoutTest;
+
+        r1 := @parameter0: java.lang.String;
+
+        specialinvoke r0.<org.apache.log4j.helpers.DateLayoutTest: void <init>(java.lang.String,java.lang.String,boolean,java.lang.String,java.lang.String)>(r1, "text/plain", 1, null, null);
+
+        return;
+    }
+
+    protected org.apache.log4j.Layout createLayout()
+    {
+        org.apache.log4j.TTCCLayoutTest r0;
+        org.apache.log4j.TTCCLayout $r1;
+
+        r0 := @this: org.apache.log4j.TTCCLayoutTest;
+
+        $r1 = new org.apache.log4j.TTCCLayout;
+
+        specialinvoke $r1.<org.apache.log4j.TTCCLayout: void <init>()>();
+
+        return $r1;
+    }
+
+    public void testFormat()
+    {
+        org.apache.log4j.TTCCLayoutTest r0;
+        org.apache.log4j.Logger r1;
+        org.apache.log4j.TTCCLayout r3;
+        java.lang.String r4, $r12, $r16, $r19, $r26, $r28;
+        org.apache.log4j.spi.LoggingEvent $r6;
+        org.apache.log4j.Level $r7, $r15;
+        org.apache.log4j.Layout $r8;
+        java.lang.StringBuffer $r10;
+        java.lang.Object $r24;
+
+        r0 := @this: org.apache.log4j.TTCCLayoutTest;
+
+        staticinvoke <org.apache.log4j.NDC: void clear()>();
+
+        staticinvoke <org.apache.log4j.NDC: void push(java.lang.String)>("NDC goes here");
+
+        r1 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getLogger(java.lang.String)>("org.apache.log4j.LayoutTest");
+
+        $r6 = new org.apache.log4j.spi.LoggingEvent;
+
+        $r7 = <org.apache.log4j.Level: org.apache.log4j.Level INFO>;
+
+        specialinvoke $r6.<org.apache.log4j.spi.LoggingEvent: void <init>(java.lang.String,org.apache.log4j.Category,org.apache.log4j.Priority,java.lang.Object,java.lang.Throwable)>("org.apache.log4j.Logger", r1, $r7, "Hello, World", null);
+
+        $r8 = virtualinvoke r0.<org.apache.log4j.TTCCLayoutTest: org.apache.log4j.Layout createLayout()>();
+
+        r3 = (org.apache.log4j.TTCCLayout) $r8;
+
+        r4 = virtualinvoke r3.<org.apache.log4j.TTCCLayout: java.lang.String format(org.apache.log4j.spi.LoggingEvent)>($r6);
+
+        staticinvoke <org.apache.log4j.NDC: java.lang.String pop()>();
+
+        $r10 = new java.lang.StringBuffer;
+
+        specialinvoke $r10.<java.lang.StringBuffer: void <init>(int)>(100);
+
+        virtualinvoke r3.<org.apache.log4j.TTCCLayout: void dateFormat(java.lang.StringBuffer,org.apache.log4j.spi.LoggingEvent)>($r10, $r6);
+
+        virtualinvoke $r10.<java.lang.StringBuffer: java.lang.StringBuffer append(char)>(91);
+
+        $r12 = virtualinvoke $r6.<org.apache.log4j.spi.LoggingEvent: java.lang.String getThreadName()>();
+
+        virtualinvoke $r10.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>($r12);
+
+        virtualinvoke $r10.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>("] ");
+
+        $r15 = virtualinvoke $r6.<org.apache.log4j.spi.LoggingEvent: org.apache.log4j.Level getLevel()>();
+
+        $r16 = virtualinvoke $r15.<org.apache.log4j.Level: java.lang.String toString()>();
+
+        virtualinvoke $r10.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>($r16);
+
+        virtualinvoke $r10.<java.lang.StringBuffer: java.lang.StringBuffer append(char)>(32);
+
+        $r19 = virtualinvoke $r6.<org.apache.log4j.spi.LoggingEvent: java.lang.String getLoggerName()>();
+
+        virtualinvoke $r10.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>($r19);
+
+        virtualinvoke $r10.<java.lang.StringBuffer: java.lang.StringBuffer append(char)>(32);
+
+        virtualinvoke $r10.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>("NDC goes here");
+
+        virtualinvoke $r10.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>(" - ");
+
+        $r24 = virtualinvoke $r6.<org.apache.log4j.spi.LoggingEvent: java.lang.Object getMessage()>();
+
+        virtualinvoke $r10.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>($r24);
+
+        $r26 = staticinvoke <java.lang.System: java.lang.String getProperty(java.lang.String)>("line.separator");
+
+        virtualinvoke $r10.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>($r26);
+
+        $r28 = virtualinvoke $r10.<java.lang.StringBuffer: java.lang.String toString()>();
+
+        staticinvoke <org.apache.log4j.TTCCLayoutTest: void assertEquals(java.lang.String,java.lang.String)>($r28, r4);
+
+        return;
+    }
+
+    public void testGetSetThreadPrinting()
+    {
+        org.apache.log4j.TTCCLayoutTest r0;
+        org.apache.log4j.TTCCLayout $r2;
+        boolean $z0, $z1, $z2;
+
+        r0 := @this: org.apache.log4j.TTCCLayoutTest;
+
+        $r2 = new org.apache.log4j.TTCCLayout;
+
+        specialinvoke $r2.<org.apache.log4j.TTCCLayout: void <init>()>();
+
+        $z0 = virtualinvoke $r2.<org.apache.log4j.TTCCLayout: boolean getThreadPrinting()>();
+
+        staticinvoke <org.apache.log4j.TTCCLayoutTest: void assertEquals(boolean,boolean)>(1, $z0);
+
+        virtualinvoke $r2.<org.apache.log4j.TTCCLayout: void setThreadPrinting(boolean)>(0);
+
+        $z1 = virtualinvoke $r2.<org.apache.log4j.TTCCLayout: boolean getThreadPrinting()>();
+
+        staticinvoke <org.apache.log4j.TTCCLayoutTest: void assertEquals(boolean,boolean)>(0, $z1);
+
+        virtualinvoke $r2.<org.apache.log4j.TTCCLayout: void setThreadPrinting(boolean)>(1);
+
+        $z2 = virtualinvoke $r2.<org.apache.log4j.TTCCLayout: boolean getThreadPrinting()>();
+
+        staticinvoke <org.apache.log4j.TTCCLayoutTest: void assertEquals(boolean,boolean)>(1, $z2);
+
+        return;
+    }
+
+    public void testGetSetCategoryPrefixing()
+    {
+        org.apache.log4j.TTCCLayoutTest r0;
+        org.apache.log4j.TTCCLayout $r2;
+        boolean $z0, $z1, $z2;
+
+        r0 := @this: org.apache.log4j.TTCCLayoutTest;
+
+        $r2 = new org.apache.log4j.TTCCLayout;
+
+        specialinvoke $r2.<org.apache.log4j.TTCCLayout: void <init>()>();
+
+        $z0 = virtualinvoke $r2.<org.apache.log4j.TTCCLayout: boolean getCategoryPrefixing()>();
+
+        staticinvoke <org.apache.log4j.TTCCLayoutTest: void assertEquals(boolean,boolean)>(1, $z0);
+
+        virtualinvoke $r2.<org.apache.log4j.TTCCLayout: void setCategoryPrefixing(boolean)>(0);
+
+        $z1 = virtualinvoke $r2.<org.apache.log4j.TTCCLayout: boolean getCategoryPrefixing()>();
+
+        staticinvoke <org.apache.log4j.TTCCLayoutTest: void assertEquals(boolean,boolean)>(0, $z1);
+
+        virtualinvoke $r2.<org.apache.log4j.TTCCLayout: void setCategoryPrefixing(boolean)>(1);
+
+        $z2 = virtualinvoke $r2.<org.apache.log4j.TTCCLayout: boolean getCategoryPrefixing()>();
+
+        staticinvoke <org.apache.log4j.TTCCLayoutTest: void assertEquals(boolean,boolean)>(1, $z2);
+
+        return;
+    }
+
+    public void testGetSetContextPrinting()
+    {
+        org.apache.log4j.TTCCLayoutTest r0;
+        org.apache.log4j.TTCCLayout $r2;
+        boolean $z0, $z1, $z2;
+
+        r0 := @this: org.apache.log4j.TTCCLayoutTest;
+
+        $r2 = new org.apache.log4j.TTCCLayout;
+
+        specialinvoke $r2.<org.apache.log4j.TTCCLayout: void <init>()>();
+
+        $z0 = virtualinvoke $r2.<org.apache.log4j.TTCCLayout: boolean getContextPrinting()>();
+
+        staticinvoke <org.apache.log4j.TTCCLayoutTest: void assertEquals(boolean,boolean)>(1, $z0);
+
+        virtualinvoke $r2.<org.apache.log4j.TTCCLayout: void setContextPrinting(boolean)>(0);
+
+        $z1 = virtualinvoke $r2.<org.apache.log4j.TTCCLayout: boolean getContextPrinting()>();
+
+        staticinvoke <org.apache.log4j.TTCCLayoutTest: void assertEquals(boolean,boolean)>(0, $z1);
+
+        virtualinvoke $r2.<org.apache.log4j.TTCCLayout: void setContextPrinting(boolean)>(1);
+
+        $z2 = virtualinvoke $r2.<org.apache.log4j.TTCCLayout: boolean getContextPrinting()>();
+
+        staticinvoke <org.apache.log4j.TTCCLayoutTest: void assertEquals(boolean,boolean)>(1, $z2);
+
+        return;
+    }
+}

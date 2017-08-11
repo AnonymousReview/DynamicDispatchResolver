@@ -1,0 +1,165 @@
+public class org.apache.commons.codec.StringEncoderComparatorTest extends java.lang.Object
+{
+
+    public void <init>()
+    {
+        org.apache.commons.codec.StringEncoderComparatorTest r0;
+
+        r0 := @this: org.apache.commons.codec.StringEncoderComparatorTest;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void testComparatorWithSoundex() throws java.lang.Exception
+    {
+        org.apache.commons.codec.StringEncoderComparatorTest r0;
+        org.apache.commons.codec.StringEncoderComparator $r2;
+        org.apache.commons.codec.language.Soundex $r3;
+        int $i0;
+        boolean $z0;
+
+        r0 := @this: org.apache.commons.codec.StringEncoderComparatorTest;
+
+        $r2 = new org.apache.commons.codec.StringEncoderComparator;
+
+        $r3 = new org.apache.commons.codec.language.Soundex;
+
+        specialinvoke $r3.<org.apache.commons.codec.language.Soundex: void <init>()>();
+
+        specialinvoke $r2.<org.apache.commons.codec.StringEncoderComparator: void <init>(org.apache.commons.codec.StringEncoder)>($r3);
+
+        $i0 = virtualinvoke $r2.<org.apache.commons.codec.StringEncoderComparator: int compare(java.lang.Object,java.lang.Object)>("O\'Brien", "O\'Brian");
+
+        if $i0 != 0 goto label1;
+
+        $z0 = 1;
+
+        goto label2;
+
+     label1:
+        $z0 = 0;
+
+     label2:
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>("O\'Brien and O\'Brian didn\'t come out with the same Soundex, something must be wrong here", $z0);
+
+        return;
+    }
+
+    public void testComparatorWithDoubleMetaphone() throws java.lang.Exception
+    {
+        org.apache.commons.codec.StringEncoderComparatorTest r0;
+        java.util.List r3;
+        java.lang.String[] r5, $r8, $r9, $r10;
+        org.apache.commons.codec.StringEncoderComparator $r6;
+        org.apache.commons.codec.language.DoubleMetaphone $r7;
+        java.lang.Object[] $r11;
+        int $i0, i1;
+        java.lang.StringBuilder $r12, $r13;
+        java.lang.String $r14, $r15, $r16;
+
+        r0 := @this: org.apache.commons.codec.StringEncoderComparatorTest;
+
+        $r6 = new org.apache.commons.codec.StringEncoderComparator;
+
+        $r7 = new org.apache.commons.codec.language.DoubleMetaphone;
+
+        specialinvoke $r7.<org.apache.commons.codec.language.DoubleMetaphone: void <init>()>();
+
+        specialinvoke $r6.<org.apache.commons.codec.StringEncoderComparator: void <init>(org.apache.commons.codec.StringEncoder)>($r7);
+
+        $r8 = newarray (java.lang.String)[4];
+
+        $r8[0] = "Jordan";
+
+        $r8[1] = "Sosa";
+
+        $r8[2] = "Prior";
+
+        $r8[3] = "Pryor";
+
+        r3 = staticinvoke <java.util.Arrays: java.util.List asList(java.lang.Object[])>($r8);
+
+        $r9 = newarray (java.lang.String)[4];
+
+        $r9[0] = "Jordan";
+
+        $r9[1] = "Prior";
+
+        $r9[2] = "Pryor";
+
+        $r9[3] = "Sosa";
+
+        staticinvoke <java.util.Collections: void sort(java.util.List,java.util.Comparator)>(r3, $r6);
+
+        $r10 = newarray (java.lang.String)[0];
+
+        $r11 = interfaceinvoke r3.<java.util.List: java.lang.Object[] toArray(java.lang.Object[])>($r10);
+
+        r5 = (java.lang.String[]) $r11;
+
+        i1 = 0;
+
+        goto label2;
+
+     label1:
+        $r12 = new java.lang.StringBuilder;
+
+        specialinvoke $r12.<java.lang.StringBuilder: void <init>(java.lang.String)>("Result Array not Equal to Control Array at index: ");
+
+        $r13 = virtualinvoke $r12.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i1);
+
+        $r14 = virtualinvoke $r13.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r16 = $r9[i1];
+
+        $r15 = r5[i1];
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,java.lang.Object,java.lang.Object)>($r14, $r16, $r15);
+
+        i1 = i1 + 1;
+
+     label2:
+        $i0 = lengthof r5;
+
+        if i1 < $i0 goto label1;
+
+        return;
+    }
+
+    public void testComparatorWithDoubleMetaphoneAndInvalidInput() throws java.lang.Exception
+    {
+        org.apache.commons.codec.StringEncoderComparatorTest r0;
+        int i0;
+        org.apache.commons.codec.StringEncoderComparator $r2;
+        org.apache.commons.codec.language.DoubleMetaphone $r3;
+        java.lang.Double $r4;
+        java.lang.Long $r5;
+        long $l1;
+
+        r0 := @this: org.apache.commons.codec.StringEncoderComparatorTest;
+
+        $r2 = new org.apache.commons.codec.StringEncoderComparator;
+
+        $r3 = new org.apache.commons.codec.language.DoubleMetaphone;
+
+        specialinvoke $r3.<org.apache.commons.codec.language.DoubleMetaphone: void <init>()>();
+
+        specialinvoke $r2.<org.apache.commons.codec.StringEncoderComparator: void <init>(org.apache.commons.codec.StringEncoder)>($r3);
+
+        $r4 = new java.lang.Double;
+
+        specialinvoke $r4.<java.lang.Double: void <init>(double)>(3.0);
+
+        $r5 = staticinvoke <java.lang.Long: java.lang.Long valueOf(long)>(3L);
+
+        i0 = virtualinvoke $r2.<org.apache.commons.codec.StringEncoderComparator: int compare(java.lang.Object,java.lang.Object)>($r4, $r5);
+
+        $l1 = (long) i0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("Trying to compare objects that make no sense to the underlying encoder should return a zero compare code", 0L, $l1);
+
+        return;
+    }
+}

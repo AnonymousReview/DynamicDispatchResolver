@@ -1,0 +1,433 @@
+public class org.apache.commons.codec.digest.Md5Crypt extends java.lang.Object
+{
+    static final java.lang.String APR1_PREFIX;
+    private static final int BLOCKSIZE;
+    static final java.lang.String MD5_PREFIX;
+    private static final int ROUNDS;
+
+    public void <init>()
+    {
+        org.apache.commons.codec.digest.Md5Crypt r0;
+
+        r0 := @this: org.apache.commons.codec.digest.Md5Crypt;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static java.lang.String apr1Crypt(byte[])
+    {
+        byte[] r0;
+        java.lang.StringBuilder $r1, $r3;
+        java.lang.String $r2, $r4, $r5;
+
+        r0 := @parameter0: byte[];
+
+        $r1 = new java.lang.StringBuilder;
+
+        specialinvoke $r1.<java.lang.StringBuilder: void <init>(java.lang.String)>("$apr1$");
+
+        $r2 = staticinvoke <org.apache.commons.codec.digest.B64: java.lang.String getRandomSalt(int)>(8);
+
+        $r3 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        $r4 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r5 = staticinvoke <org.apache.commons.codec.digest.Md5Crypt: java.lang.String apr1Crypt(byte[],java.lang.String)>(r0, $r4);
+
+        return $r5;
+    }
+
+    public static java.lang.String apr1Crypt(byte[], java.lang.String)
+    {
+        byte[] r0;
+        boolean $z0;
+        java.lang.StringBuilder $r1, $r2;
+        java.lang.String r3, $r4;
+
+        r0 := @parameter0: byte[];
+
+        r3 := @parameter1: java.lang.String;
+
+        if r3 == null goto label1;
+
+        $z0 = virtualinvoke r3.<java.lang.String: boolean startsWith(java.lang.String)>("$apr1$");
+
+        if $z0 != 0 goto label1;
+
+        $r1 = new java.lang.StringBuilder;
+
+        specialinvoke $r1.<java.lang.StringBuilder: void <init>(java.lang.String)>("$apr1$");
+
+        $r2 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r3);
+
+        r3 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+     label1:
+        $r4 = staticinvoke <org.apache.commons.codec.digest.Md5Crypt: java.lang.String md5Crypt(byte[],java.lang.String,java.lang.String)>(r0, r3, "$apr1$");
+
+        return $r4;
+    }
+
+    public static java.lang.String apr1Crypt(java.lang.String)
+    {
+        java.lang.String r0, $r3;
+        java.nio.charset.Charset $r1;
+        byte[] $r2;
+
+        r0 := @parameter0: java.lang.String;
+
+        $r1 = <org.apache.commons.codec.Charsets: java.nio.charset.Charset UTF_8>;
+
+        $r2 = virtualinvoke r0.<java.lang.String: byte[] getBytes(java.nio.charset.Charset)>($r1);
+
+        $r3 = staticinvoke <org.apache.commons.codec.digest.Md5Crypt: java.lang.String apr1Crypt(byte[])>($r2);
+
+        return $r3;
+    }
+
+    public static java.lang.String apr1Crypt(java.lang.String, java.lang.String)
+    {
+        java.lang.String r0, r1, $r4;
+        java.nio.charset.Charset $r2;
+        byte[] $r3;
+
+        r0 := @parameter0: java.lang.String;
+
+        r1 := @parameter1: java.lang.String;
+
+        $r2 = <org.apache.commons.codec.Charsets: java.nio.charset.Charset UTF_8>;
+
+        $r3 = virtualinvoke r0.<java.lang.String: byte[] getBytes(java.nio.charset.Charset)>($r2);
+
+        $r4 = staticinvoke <org.apache.commons.codec.digest.Md5Crypt: java.lang.String apr1Crypt(byte[],java.lang.String)>($r3, r1);
+
+        return $r4;
+    }
+
+    public static java.lang.String md5Crypt(byte[])
+    {
+        byte[] r0;
+        java.lang.StringBuilder $r1, $r3;
+        java.lang.String $r2, $r4, $r5;
+
+        r0 := @parameter0: byte[];
+
+        $r1 = new java.lang.StringBuilder;
+
+        specialinvoke $r1.<java.lang.StringBuilder: void <init>(java.lang.String)>("$1$");
+
+        $r2 = staticinvoke <org.apache.commons.codec.digest.B64: java.lang.String getRandomSalt(int)>(8);
+
+        $r3 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        $r4 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r5 = staticinvoke <org.apache.commons.codec.digest.Md5Crypt: java.lang.String md5Crypt(byte[],java.lang.String)>(r0, $r4);
+
+        return $r5;
+    }
+
+    public static java.lang.String md5Crypt(byte[], java.lang.String)
+    {
+        byte[] r0;
+        java.lang.String r1, $r2;
+
+        r0 := @parameter0: byte[];
+
+        r1 := @parameter1: java.lang.String;
+
+        $r2 = staticinvoke <org.apache.commons.codec.digest.Md5Crypt: java.lang.String md5Crypt(byte[],java.lang.String,java.lang.String)>(r0, r1, "$1$");
+
+        return $r2;
+    }
+
+    public static java.lang.String md5Crypt(byte[], java.lang.String, java.lang.String)
+    {
+        byte[] r0, $r15, r28, r31, r32;
+        java.lang.String r1, r2, $r5, $r8, $r12, $r20, $r23, $r24, r25;
+        int i0, $i2, $i5, $i6, $i7, $i8, i25, $i26, i27, i28;
+        java.lang.StringBuilder $r4, $r6, $r7, $r10, $r11, $r18, $r19, $r21, $r22;
+        java.lang.IllegalArgumentException $r9;
+        boolean $z1;
+        java.nio.charset.Charset $r13, $r14;
+        byte $b3, $b4, $b9, $b10, $b11, $b12, $b13, $b14, $b15, $b16, $b17, $b18, $b19, $b20, $b21, $b22, $b23, $b24;
+        java.util.regex.Pattern r26;
+        java.util.regex.Matcher r27;
+        java.security.MessageDigest r29, r30;
+
+        r0 := @parameter0: byte[];
+
+        r1 := @parameter1: java.lang.String;
+
+        r2 := @parameter2: java.lang.String;
+
+        i0 = lengthof r0;
+
+        if r1 != null goto label01;
+
+        r25 = staticinvoke <org.apache.commons.codec.digest.B64: java.lang.String getRandomSalt(int)>(8);
+
+        goto label04;
+
+     label01:
+        $r4 = new java.lang.StringBuilder;
+
+        specialinvoke $r4.<java.lang.StringBuilder: void <init>(java.lang.String)>("^");
+
+        $r5 = virtualinvoke r2.<java.lang.String: java.lang.String replace(java.lang.CharSequence,java.lang.CharSequence)>("$", "\\$");
+
+        $r6 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r5);
+
+        $r7 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("([\\.\\/a-zA-Z0-9]{1,8}).*");
+
+        $r8 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        r26 = staticinvoke <java.util.regex.Pattern: java.util.regex.Pattern compile(java.lang.String)>($r8);
+
+        r27 = virtualinvoke r26.<java.util.regex.Pattern: java.util.regex.Matcher matcher(java.lang.CharSequence)>(r1);
+
+        if r27 == null goto label02;
+
+        $z1 = virtualinvoke r27.<java.util.regex.Matcher: boolean find()>();
+
+        if $z1 != 0 goto label03;
+
+     label02:
+        $r9 = new java.lang.IllegalArgumentException;
+
+        $r10 = new java.lang.StringBuilder;
+
+        specialinvoke $r10.<java.lang.StringBuilder: void <init>(java.lang.String)>("Invalid salt value: ");
+
+        $r11 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r1);
+
+        $r12 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r9.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>($r12);
+
+        throw $r9;
+
+     label03:
+        r25 = virtualinvoke r27.<java.util.regex.Matcher: java.lang.String group(int)>(1);
+
+     label04:
+        $r13 = <org.apache.commons.codec.Charsets: java.nio.charset.Charset UTF_8>;
+
+        r28 = virtualinvoke r25.<java.lang.String: byte[] getBytes(java.nio.charset.Charset)>($r13);
+
+        r29 = staticinvoke <org.apache.commons.codec.digest.DigestUtils: java.security.MessageDigest getMd5Digest()>();
+
+        virtualinvoke r29.<java.security.MessageDigest: void update(byte[])>(r0);
+
+        $r14 = <org.apache.commons.codec.Charsets: java.nio.charset.Charset UTF_8>;
+
+        $r15 = virtualinvoke r2.<java.lang.String: byte[] getBytes(java.nio.charset.Charset)>($r14);
+
+        virtualinvoke r29.<java.security.MessageDigest: void update(byte[])>($r15);
+
+        virtualinvoke r29.<java.security.MessageDigest: void update(byte[])>(r28);
+
+        r30 = staticinvoke <org.apache.commons.codec.digest.DigestUtils: java.security.MessageDigest getMd5Digest()>();
+
+        virtualinvoke r30.<java.security.MessageDigest: void update(byte[])>(r0);
+
+        virtualinvoke r30.<java.security.MessageDigest: void update(byte[])>(r28);
+
+        virtualinvoke r30.<java.security.MessageDigest: void update(byte[])>(r0);
+
+        r31 = virtualinvoke r30.<java.security.MessageDigest: byte[] digest()>();
+
+        i25 = i0;
+
+        goto label08;
+
+     label05:
+        if i25 <= 16 goto label06;
+
+        $i26 = 16;
+
+        goto label07;
+
+     label06:
+        $i26 = i25;
+
+     label07:
+        virtualinvoke r29.<java.security.MessageDigest: void update(byte[],int,int)>(r31, 0, $i26);
+
+        i25 = i25 + -16;
+
+     label08:
+        if i25 > 0 goto label05;
+
+        staticinvoke <java.util.Arrays: void fill(byte[],byte)>(r31, 0);
+
+        i27 = i0;
+
+        goto label12;
+
+     label09:
+        $i2 = i27 & 1;
+
+        if $i2 != 1 goto label10;
+
+        $b4 = r31[0];
+
+        virtualinvoke r29.<java.security.MessageDigest: void update(byte)>($b4);
+
+        goto label11;
+
+     label10:
+        $b3 = r0[0];
+
+        virtualinvoke r29.<java.security.MessageDigest: void update(byte)>($b3);
+
+     label11:
+        i27 = i27 >> 1;
+
+     label12:
+        if i27 > 0 goto label09;
+
+        $r18 = new java.lang.StringBuilder;
+
+        $r19 = new java.lang.StringBuilder;
+
+        $r20 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>(r2);
+
+        specialinvoke $r19.<java.lang.StringBuilder: void <init>(java.lang.String)>($r20);
+
+        $r21 = virtualinvoke $r19.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r25);
+
+        $r22 = virtualinvoke $r21.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("$");
+
+        $r23 = virtualinvoke $r22.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r18.<java.lang.StringBuilder: void <init>(java.lang.String)>($r23);
+
+        r32 = virtualinvoke r29.<java.security.MessageDigest: byte[] digest()>();
+
+        i28 = 0;
+
+        goto label20;
+
+     label13:
+        r30 = staticinvoke <org.apache.commons.codec.digest.DigestUtils: java.security.MessageDigest getMd5Digest()>();
+
+        $i5 = i28 & 1;
+
+        if $i5 == 0 goto label14;
+
+        virtualinvoke r30.<java.security.MessageDigest: void update(byte[])>(r0);
+
+        goto label15;
+
+     label14:
+        virtualinvoke r30.<java.security.MessageDigest: void update(byte[],int,int)>(r32, 0, 16);
+
+     label15:
+        $i6 = i28 % 3;
+
+        if $i6 == 0 goto label16;
+
+        virtualinvoke r30.<java.security.MessageDigest: void update(byte[])>(r28);
+
+     label16:
+        $i7 = i28 % 7;
+
+        if $i7 == 0 goto label17;
+
+        virtualinvoke r30.<java.security.MessageDigest: void update(byte[])>(r0);
+
+     label17:
+        $i8 = i28 & 1;
+
+        if $i8 == 0 goto label18;
+
+        virtualinvoke r30.<java.security.MessageDigest: void update(byte[],int,int)>(r32, 0, 16);
+
+        goto label19;
+
+     label18:
+        virtualinvoke r30.<java.security.MessageDigest: void update(byte[])>(r0);
+
+     label19:
+        r32 = virtualinvoke r30.<java.security.MessageDigest: byte[] digest()>();
+
+        i28 = i28 + 1;
+
+     label20:
+        if i28 < 1000 goto label13;
+
+        $b11 = r32[0];
+
+        $b10 = r32[6];
+
+        $b9 = r32[12];
+
+        staticinvoke <org.apache.commons.codec.digest.B64: void b64from24bit(byte,byte,byte,int,java.lang.StringBuilder)>($b11, $b10, $b9, 4, $r18);
+
+        $b14 = r32[1];
+
+        $b13 = r32[7];
+
+        $b12 = r32[13];
+
+        staticinvoke <org.apache.commons.codec.digest.B64: void b64from24bit(byte,byte,byte,int,java.lang.StringBuilder)>($b14, $b13, $b12, 4, $r18);
+
+        $b17 = r32[2];
+
+        $b16 = r32[8];
+
+        $b15 = r32[14];
+
+        staticinvoke <org.apache.commons.codec.digest.B64: void b64from24bit(byte,byte,byte,int,java.lang.StringBuilder)>($b17, $b16, $b15, 4, $r18);
+
+        $b20 = r32[3];
+
+        $b19 = r32[9];
+
+        $b18 = r32[15];
+
+        staticinvoke <org.apache.commons.codec.digest.B64: void b64from24bit(byte,byte,byte,int,java.lang.StringBuilder)>($b20, $b19, $b18, 4, $r18);
+
+        $b23 = r32[4];
+
+        $b22 = r32[10];
+
+        $b21 = r32[5];
+
+        staticinvoke <org.apache.commons.codec.digest.B64: void b64from24bit(byte,byte,byte,int,java.lang.StringBuilder)>($b23, $b22, $b21, 4, $r18);
+
+        $b24 = r32[11];
+
+        staticinvoke <org.apache.commons.codec.digest.B64: void b64from24bit(byte,byte,byte,int,java.lang.StringBuilder)>(0, 0, $b24, 2, $r18);
+
+        virtualinvoke r29.<java.security.MessageDigest: void reset()>();
+
+        virtualinvoke r30.<java.security.MessageDigest: void reset()>();
+
+        staticinvoke <java.util.Arrays: void fill(byte[],byte)>(r0, 0);
+
+        staticinvoke <java.util.Arrays: void fill(byte[],byte)>(r28, 0);
+
+        staticinvoke <java.util.Arrays: void fill(byte[],byte)>(r32, 0);
+
+        $r24 = virtualinvoke $r18.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $r24;
+    }
+
+    public static void <clinit>()
+    {
+        <org.apache.commons.codec.digest.Md5Crypt: int ROUNDS> = 1000;
+
+        <org.apache.commons.codec.digest.Md5Crypt: java.lang.String MD5_PREFIX> = "$1$";
+
+        <org.apache.commons.codec.digest.Md5Crypt: int BLOCKSIZE> = 16;
+
+        <org.apache.commons.codec.digest.Md5Crypt: java.lang.String APR1_PREFIX> = "$apr1$";
+
+        return;
+    }
+}

@@ -1,0 +1,36 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Toolbox Commons
+Bundle-SymbolicName: com.anonymous.open.commons;singleton:=true
+Bundle-Version: 3.1.0.qualifier
+Bundle-Vendor: EnSoft Corp.
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Require-Bundle: 
+ org.eclipse.ui;visibility:=reexport,
+ org.eclipse.core.runtime;visibility:=reexport,
+ org.eclipse.core.resources;visibility:=reexport,
+ org.eclipse.core.filesystem;visibility:=reexport,
+ org.eclipse.swt;visibility:=reexport,
+ org.eclipse.ui.ide;visibility:=reexport,
+ com.ensoftcorp.atlas.core;bundle-version="3.1.0";visibility:=reexport,
+ com.ensoftcorp.atlas.ui;bundle-version="3.1.0";visibility:=reexport,
+ org.apache.commons.io;bundle-version="2.2.0";visibility:=reexport,
+ org.apache.commons.lang3;bundle-version="3.1.0";visibility:=reexport,
+ org.jgrapht;bundle-version="1.0.1"
+Bundle-ActivationPolicy: lazy
+Bundle-ClassPath: .
+Export-Package: com.anonymous.open.commons.algorithms,
+ com.anonymous.open.commons.analysis,
+ com.anonymous.open.commons.analyzers,
+ com.anonymous.open.commons.codemap,
+ com.anonymous.open.commons.filters,
+ com.anonymous.open.commons.filters.rootset,
+ com.anonymous.open.commons.highlighter,
+ com.anonymous.open.commons.language,
+ com.anonymous.open.commons.preferences,
+ com.anonymous.open.commons.sandbox,
+ com.anonymous.open.commons.subsystems,
+ com.anonymous.open.commons.ui.components,
+ com.anonymous.open.commons.utilities,
+ com.anonymous.open.commons.xcsg
+Bundle-Activator: com.anonymous.open.commons.Activator

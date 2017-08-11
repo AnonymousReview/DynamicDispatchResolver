@@ -1,0 +1,1411 @@
+public class org.apache.log4j.net.SyslogAppenderTest extends junit.framework.TestCase
+{
+
+    public void <init>(java.lang.String)
+    {
+        org.apache.log4j.net.SyslogAppenderTest r0;
+        java.lang.String r1;
+
+        r0 := @this: org.apache.log4j.net.SyslogAppenderTest;
+
+        r1 := @parameter0: java.lang.String;
+
+        specialinvoke r0.<junit.framework.TestCase: void <init>(java.lang.String)>(r1);
+
+        return;
+    }
+
+    public void tearDown()
+    {
+        org.apache.log4j.net.SyslogAppenderTest r0;
+
+        r0 := @this: org.apache.log4j.net.SyslogAppenderTest;
+
+        staticinvoke <org.apache.log4j.LogManager: void resetConfiguration()>();
+
+        return;
+    }
+
+    public void testDefaultConstructor()
+    {
+        org.apache.log4j.net.SyslogAppenderTest r0;
+        org.apache.log4j.net.SyslogAppender $r2;
+        java.lang.String $r3, $r5;
+        boolean $z0, $z1;
+        org.apache.log4j.Layout $r4;
+
+        r0 := @this: org.apache.log4j.net.SyslogAppenderTest;
+
+        $r2 = new org.apache.log4j.net.SyslogAppender;
+
+        specialinvoke $r2.<org.apache.log4j.net.SyslogAppender: void <init>()>();
+
+        $r3 = virtualinvoke $r2.<org.apache.log4j.net.SyslogAppender: java.lang.String getFacility()>();
+
+        staticinvoke <org.apache.log4j.net.SyslogAppenderTest: void assertEquals(java.lang.String,java.lang.String)>("user", $r3);
+
+        $z0 = virtualinvoke $r2.<org.apache.log4j.net.SyslogAppender: boolean getFacilityPrinting()>();
+
+        staticinvoke <org.apache.log4j.net.SyslogAppenderTest: void assertEquals(boolean,boolean)>(0, $z0);
+
+        $r4 = virtualinvoke $r2.<org.apache.log4j.net.SyslogAppender: org.apache.log4j.Layout getLayout()>();
+
+        staticinvoke <org.apache.log4j.net.SyslogAppenderTest: void assertNull(java.lang.Object)>($r4);
+
+        $r5 = virtualinvoke $r2.<org.apache.log4j.net.SyslogAppender: java.lang.String getSyslogHost()>();
+
+        staticinvoke <org.apache.log4j.net.SyslogAppenderTest: void assertNull(java.lang.Object)>($r5);
+
+        $z1 = virtualinvoke $r2.<org.apache.log4j.net.SyslogAppender: boolean requiresLayout()>();
+
+        staticinvoke <org.apache.log4j.net.SyslogAppenderTest: void assertTrue(boolean)>($z1);
+
+        return;
+    }
+
+    public void testTwoParamConstructor()
+    {
+        org.apache.log4j.net.SyslogAppenderTest r0;
+        org.apache.log4j.PatternLayout $r3;
+        org.apache.log4j.net.SyslogAppender $r4;
+        java.lang.String $r5, $r7;
+        boolean $z0, $z1;
+        org.apache.log4j.Layout $r6;
+
+        r0 := @this: org.apache.log4j.net.SyslogAppenderTest;
+
+        $r3 = new org.apache.log4j.PatternLayout;
+
+        specialinvoke $r3.<org.apache.log4j.PatternLayout: void <init>()>();
+
+        $r4 = new org.apache.log4j.net.SyslogAppender;
+
+        specialinvoke $r4.<org.apache.log4j.net.SyslogAppender: void <init>(org.apache.log4j.Layout,int)>($r3, 24);
+
+        $r5 = virtualinvoke $r4.<org.apache.log4j.net.SyslogAppender: java.lang.String getFacility()>();
+
+        staticinvoke <org.apache.log4j.net.SyslogAppenderTest: void assertEquals(java.lang.String,java.lang.String)>("daemon", $r5);
+
+        $z0 = virtualinvoke $r4.<org.apache.log4j.net.SyslogAppender: boolean getFacilityPrinting()>();
+
+        staticinvoke <org.apache.log4j.net.SyslogAppenderTest: void assertEquals(boolean,boolean)>(0, $z0);
+
+        $r6 = virtualinvoke $r4.<org.apache.log4j.net.SyslogAppender: org.apache.log4j.Layout getLayout()>();
+
+        staticinvoke <org.apache.log4j.net.SyslogAppenderTest: void assertEquals(java.lang.Object,java.lang.Object)>($r3, $r6);
+
+        $r7 = virtualinvoke $r4.<org.apache.log4j.net.SyslogAppender: java.lang.String getSyslogHost()>();
+
+        staticinvoke <org.apache.log4j.net.SyslogAppenderTest: void assertNull(java.lang.Object)>($r7);
+
+        $z1 = virtualinvoke $r4.<org.apache.log4j.net.SyslogAppender: boolean requiresLayout()>();
+
+        staticinvoke <org.apache.log4j.net.SyslogAppenderTest: void assertTrue(boolean)>($z1);
+
+        return;
+    }
+
+    public void testTwoParamConstructorBadFacility()
+    {
+        org.apache.log4j.net.SyslogAppenderTest r0;
+        org.apache.log4j.PatternLayout $r3;
+        org.apache.log4j.net.SyslogAppender $r4;
+        java.lang.String $r5, $r7;
+        boolean $z0, $z1;
+        org.apache.log4j.Layout $r6;
+
+        r0 := @this: org.apache.log4j.net.SyslogAppenderTest;
+
+        $r3 = new org.apache.log4j.PatternLayout;
+
+        specialinvoke $r3.<org.apache.log4j.PatternLayout: void <init>()>();
+
+        $r4 = new org.apache.log4j.net.SyslogAppender;
+
+        specialinvoke $r4.<org.apache.log4j.net.SyslogAppender: void <init>(org.apache.log4j.Layout,int)>($r3, 25);
+
+        $r5 = virtualinvoke $r4.<org.apache.log4j.net.SyslogAppender: java.lang.String getFacility()>();
+
+        staticinvoke <org.apache.log4j.net.SyslogAppenderTest: void assertEquals(java.lang.String,java.lang.String)>("user", $r5);
+
+        $z0 = virtualinvoke $r4.<org.apache.log4j.net.SyslogAppender: boolean getFacilityPrinting()>();
+
+        staticinvoke <org.apache.log4j.net.SyslogAppenderTest: void assertEquals(boolean,boolean)>(0, $z0);
+
+        $r6 = virtualinvoke $r4.<org.apache.log4j.net.SyslogAppender: org.apache.log4j.Layout getLayout()>();
+
+        staticinvoke <org.apache.log4j.net.SyslogAppenderTest: void assertEquals(java.lang.Object,java.lang.Object)>($r3, $r6);
+
+        $r7 = virtualinvoke $r4.<org.apache.log4j.net.SyslogAppender: java.lang.String getSyslogHost()>();
+
+        staticinvoke <org.apache.log4j.net.SyslogAppenderTest: void assertNull(java.lang.Object)>($r7);
+
+        $z1 = virtualinvoke $r4.<org.apache.log4j.net.SyslogAppender: boolean requiresLayout()>();
+
+        staticinvoke <org.apache.log4j.net.SyslogAppenderTest: void assertTrue(boolean)>($z1);
+
+        return;
+    }
+
+    public void testThreeParamConstructor()
+    {
+        org.apache.log4j.net.SyslogAppenderTest r0;
+        org.apache.log4j.PatternLayout $r3;
+        org.apache.log4j.net.SyslogAppender $r4;
+        java.lang.String $r5, $r7;
+        boolean $z0, $z1;
+        org.apache.log4j.Layout $r6;
+
+        r0 := @this: org.apache.log4j.net.SyslogAppenderTest;
+
+        $r3 = new org.apache.log4j.PatternLayout;
+
+        specialinvoke $r3.<org.apache.log4j.PatternLayout: void <init>()>();
+
+        $r4 = new org.apache.log4j.net.SyslogAppender;
+
+        specialinvoke $r4.<org.apache.log4j.net.SyslogAppender: void <init>(org.apache.log4j.Layout,java.lang.String,int)>($r3, "syslog.example.org", 24);
+
+        $r5 = virtualinvoke $r4.<org.apache.log4j.net.SyslogAppender: java.lang.String getFacility()>();
+
+        staticinvoke <org.apache.log4j.net.SyslogAppenderTest: void assertEquals(java.lang.String,java.lang.String)>("daemon", $r5);
+
+        $z0 = virtualinvoke $r4.<org.apache.log4j.net.SyslogAppender: boolean getFacilityPrinting()>();
+
+        staticinvoke <org.apache.log4j.net.SyslogAppenderTest: void assertEquals(boolean,boolean)>(0, $z0);
+
+        $r6 = virtualinvoke $r4.<org.apache.log4j.net.SyslogAppender: org.apache.log4j.Layout getLayout()>();
+
+        staticinvoke <org.apache.log4j.net.SyslogAppenderTest: void assertEquals(java.lang.Object,java.lang.Object)>($r3, $r6);
+
+        $r7 = virtualinvoke $r4.<org.apache.log4j.net.SyslogAppender: java.lang.String getSyslogHost()>();
+
+        staticinvoke <org.apache.log4j.net.SyslogAppenderTest: void assertEquals(java.lang.String,java.lang.String)>("syslog.example.org", $r7);
+
+        $z1 = virtualinvoke $r4.<org.apache.log4j.net.SyslogAppender: boolean requiresLayout()>();
+
+        staticinvoke <org.apache.log4j.net.SyslogAppenderTest: void assertTrue(boolean)>($z1);
+
+        return;
+    }
+
+    public void testGetFacilityString()
+    {
+        org.apache.log4j.net.SyslogAppenderTest r0;
+        java.lang.StringBuffer $r3;
+        int $i0, $i1, i2, i3;
+        java.lang.String $r4, $r7, $r10;
+
+        r0 := @this: org.apache.log4j.net.SyslogAppenderTest;
+
+        $r3 = new java.lang.StringBuffer;
+
+        specialinvoke $r3.<java.lang.StringBuffer: void <init>()>();
+
+        i2 = 0;
+
+        goto label2;
+
+     label1:
+        $i0 = i2 << 3;
+
+        $r4 = staticinvoke <org.apache.log4j.net.SyslogAppender: java.lang.String getFacilityString(int)>($i0);
+
+        virtualinvoke $r3.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>($r4);
+
+        virtualinvoke $r3.<java.lang.StringBuffer: java.lang.StringBuffer append(char)>(32);
+
+        i2 = i2 + 1;
+
+     label2:
+        if i2 <= 11 goto label1;
+
+        i3 = 16;
+
+        goto label4;
+
+     label3:
+        $i1 = i3 << 3;
+
+        $r7 = staticinvoke <org.apache.log4j.net.SyslogAppender: java.lang.String getFacilityString(int)>($i1);
+
+        virtualinvoke $r3.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>($r7);
+
+        virtualinvoke $r3.<java.lang.StringBuffer: java.lang.StringBuffer append(char)>(32);
+
+        i3 = i3 + 1;
+
+     label4:
+        if i3 <= 23 goto label3;
+
+        $r10 = virtualinvoke $r3.<java.lang.StringBuffer: java.lang.String toString()>();
+
+        staticinvoke <org.apache.log4j.net.SyslogAppenderTest: void assertEquals(java.lang.String,java.lang.String)>("kern user mail daemon auth syslog lpr news uucp cron authpriv ftp local0 local1 local2 local3 local4 local5 local6 local7 ", $r10);
+
+        return;
+    }
+
+    public void testGetFacilityStringUnexpected()
+    {
+        org.apache.log4j.net.SyslogAppenderTest r0;
+        java.lang.String $r1, $r2;
+
+        r0 := @this: org.apache.log4j.net.SyslogAppenderTest;
+
+        $r1 = staticinvoke <org.apache.log4j.net.SyslogAppender: java.lang.String getFacilityString(int)>(1);
+
+        staticinvoke <org.apache.log4j.net.SyslogAppenderTest: void assertNull(java.lang.Object)>($r1);
+
+        $r2 = staticinvoke <org.apache.log4j.net.SyslogAppender: java.lang.String getFacilityString(int)>(96);
+
+        staticinvoke <org.apache.log4j.net.SyslogAppenderTest: void assertNull(java.lang.Object)>($r2);
+
+        return;
+    }
+
+    public void testGetFacilityBogus()
+    {
+        org.apache.log4j.net.SyslogAppenderTest r0;
+        int $i0;
+
+        r0 := @this: org.apache.log4j.net.SyslogAppenderTest;
+
+        $i0 = staticinvoke <org.apache.log4j.net.SyslogAppender: int getFacility(java.lang.String)>("bogus");
+
+        staticinvoke <org.apache.log4j.net.SyslogAppenderTest: void assertEquals(int,int)>(-1, $i0);
+
+        return;
+    }
+
+    public void testGetFacilityNull()
+    {
+        org.apache.log4j.net.SyslogAppenderTest r0;
+        int $i0;
+
+        r0 := @this: org.apache.log4j.net.SyslogAppenderTest;
+
+        $i0 = staticinvoke <org.apache.log4j.net.SyslogAppender: int getFacility(java.lang.String)>(null);
+
+        staticinvoke <org.apache.log4j.net.SyslogAppenderTest: void assertEquals(int,int)>(-1, $i0);
+
+        return;
+    }
+
+    public void testGetFacilitySystemNames()
+    {
+        org.apache.log4j.net.SyslogAppenderTest r0;
+        java.lang.String[] $r2;
+        java.lang.String $r3;
+        int $i0, $i1, i2;
+
+        r0 := @this: org.apache.log4j.net.SyslogAppenderTest;
+
+        $r2 = newarray (java.lang.String)[12];
+
+        $r2[0] = "kErn";
+
+        $r2[1] = "usEr";
+
+        $r2[2] = "MaIL";
+
+        $r2[3] = "daemOn";
+
+        $r2[4] = "auTh";
+
+        $r2[5] = "syslOg";
+
+        $r2[6] = "lPr";
+
+        $r2[7] = "newS";
+
+        $r2[8] = "Uucp";
+
+        $r2[9] = "croN";
+
+        $r2[10] = "authprIv";
+
+        $r2[11] = "ftP";
+
+        i2 = 0;
+
+        goto label2;
+
+     label1:
+        $i0 = i2 << 3;
+
+        $r3 = $r2[i2];
+
+        $i1 = staticinvoke <org.apache.log4j.net.SyslogAppender: int getFacility(java.lang.String)>($r3);
+
+        staticinvoke <org.apache.log4j.net.SyslogAppenderTest: void assertEquals(int,int)>($i0, $i1);
+
+        i2 = i2 + 1;
+
+     label2:
+        if i2 <= 11 goto label1;
+
+        return;
+    }
+
+    public void testGetFacilityLocalNames()
+    {
+        org.apache.log4j.net.SyslogAppenderTest r0;
+        java.lang.String[] $r2;
+        int $i0, $i1, $i2, i3;
+        java.lang.String $r3;
+
+        r0 := @this: org.apache.log4j.net.SyslogAppenderTest;
+
+        $r2 = newarray (java.lang.String)[8];
+
+        $r2[0] = "lOcal0";
+
+        $r2[1] = "LOCAL1";
+
+        $r2[2] = "loCal2";
+
+        $r2[3] = "locAl3";
+
+        $r2[4] = "locaL4";
+
+        $r2[5] = "local5";
+
+        $r2[6] = "LOCal6";
+
+        $r2[7] = "loCAL7";
+
+        i3 = 0;
+
+        goto label2;
+
+     label1:
+        $i0 = 16 + i3;
+
+        $i1 = $i0 << 3;
+
+        $r3 = $r2[i3];
+
+        $i2 = staticinvoke <org.apache.log4j.net.SyslogAppender: int getFacility(java.lang.String)>($r3);
+
+        staticinvoke <org.apache.log4j.net.SyslogAppenderTest: void assertEquals(int,int)>($i1, $i2);
+
+        i3 = i3 + 1;
+
+     label2:
+        if i3 <= 7 goto label1;
+
+        return;
+    }
+
+    public void testSetFacilityPrinting()
+    {
+        org.apache.log4j.net.SyslogAppenderTest r0;
+        org.apache.log4j.net.SyslogAppender $r2;
+        boolean $z0, $z1, $z2;
+
+        r0 := @this: org.apache.log4j.net.SyslogAppenderTest;
+
+        $r2 = new org.apache.log4j.net.SyslogAppender;
+
+        specialinvoke $r2.<org.apache.log4j.net.SyslogAppender: void <init>()>();
+
+        $z0 = virtualinvoke $r2.<org.apache.log4j.net.SyslogAppender: boolean getFacilityPrinting()>();
+
+        staticinvoke <org.apache.log4j.net.SyslogAppenderTest: void assertFalse(boolean)>($z0);
+
+        virtualinvoke $r2.<org.apache.log4j.net.SyslogAppender: void setFacilityPrinting(boolean)>(1);
+
+        $z1 = virtualinvoke $r2.<org.apache.log4j.net.SyslogAppender: boolean getFacilityPrinting()>();
+
+        staticinvoke <org.apache.log4j.net.SyslogAppenderTest: void assertTrue(boolean)>($z1);
+
+        virtualinvoke $r2.<org.apache.log4j.net.SyslogAppender: void setFacilityPrinting(boolean)>(0);
+
+        $z2 = virtualinvoke $r2.<org.apache.log4j.net.SyslogAppender: boolean getFacilityPrinting()>();
+
+        staticinvoke <org.apache.log4j.net.SyslogAppenderTest: void assertFalse(boolean)>($z2);
+
+        return;
+    }
+
+    public void testConstants()
+    {
+        org.apache.log4j.net.SyslogAppenderTest r0;
+
+        r0 := @this: org.apache.log4j.net.SyslogAppenderTest;
+
+        staticinvoke <org.apache.log4j.net.SyslogAppenderTest: void assertEquals(int,int)>(0, 0);
+
+        staticinvoke <org.apache.log4j.net.SyslogAppenderTest: void assertEquals(int,int)>(8, 8);
+
+        staticinvoke <org.apache.log4j.net.SyslogAppenderTest: void assertEquals(int,int)>(16, 16);
+
+        staticinvoke <org.apache.log4j.net.SyslogAppenderTest: void assertEquals(int,int)>(24, 24);
+
+        staticinvoke <org.apache.log4j.net.SyslogAppenderTest: void assertEquals(int,int)>(32, 32);
+
+        staticinvoke <org.apache.log4j.net.SyslogAppenderTest: void assertEquals(int,int)>(40, 40);
+
+        staticinvoke <org.apache.log4j.net.SyslogAppenderTest: void assertEquals(int,int)>(48, 48);
+
+        staticinvoke <org.apache.log4j.net.SyslogAppenderTest: void assertEquals(int,int)>(56, 56);
+
+        staticinvoke <org.apache.log4j.net.SyslogAppenderTest: void assertEquals(int,int)>(64, 64);
+
+        staticinvoke <org.apache.log4j.net.SyslogAppenderTest: void assertEquals(int,int)>(72, 72);
+
+        staticinvoke <org.apache.log4j.net.SyslogAppenderTest: void assertEquals(int,int)>(80, 80);
+
+        staticinvoke <org.apache.log4j.net.SyslogAppenderTest: void assertEquals(int,int)>(88, 88);
+
+        staticinvoke <org.apache.log4j.net.SyslogAppenderTest: void assertEquals(int,int)>(128, 128);
+
+        staticinvoke <org.apache.log4j.net.SyslogAppenderTest: void assertEquals(int,int)>(136, 136);
+
+        staticinvoke <org.apache.log4j.net.SyslogAppenderTest: void assertEquals(int,int)>(144, 144);
+
+        staticinvoke <org.apache.log4j.net.SyslogAppenderTest: void assertEquals(int,int)>(152, 152);
+
+        staticinvoke <org.apache.log4j.net.SyslogAppenderTest: void assertEquals(int,int)>(160, 160);
+
+        staticinvoke <org.apache.log4j.net.SyslogAppenderTest: void assertEquals(int,int)>(168, 168);
+
+        staticinvoke <org.apache.log4j.net.SyslogAppenderTest: void assertEquals(int,int)>(176, 176);
+
+        staticinvoke <org.apache.log4j.net.SyslogAppenderTest: void assertEquals(int,int)>(184, 184);
+
+        return;
+    }
+
+    public void testSetFacilityKern()
+    {
+        org.apache.log4j.net.SyslogAppenderTest r0;
+        org.apache.log4j.net.SyslogAppender $r2;
+        java.lang.String $r3;
+
+        r0 := @this: org.apache.log4j.net.SyslogAppenderTest;
+
+        $r2 = new org.apache.log4j.net.SyslogAppender;
+
+        specialinvoke $r2.<org.apache.log4j.net.SyslogAppender: void <init>()>();
+
+        virtualinvoke $r2.<org.apache.log4j.net.SyslogAppender: void setFacility(java.lang.String)>("kern");
+
+        virtualinvoke $r2.<org.apache.log4j.net.SyslogAppender: void setFacility(java.lang.String)>(null);
+
+        $r3 = virtualinvoke $r2.<org.apache.log4j.net.SyslogAppender: java.lang.String getFacility()>();
+
+        staticinvoke <org.apache.log4j.net.SyslogAppenderTest: void assertEquals(java.lang.String,java.lang.String)>("kern", $r3);
+
+        return;
+    }
+
+    public void testSetFacilityNull()
+    {
+        org.apache.log4j.net.SyslogAppenderTest r0;
+        org.apache.log4j.net.SyslogAppender $r2;
+        java.lang.String $r3;
+
+        r0 := @this: org.apache.log4j.net.SyslogAppenderTest;
+
+        $r2 = new org.apache.log4j.net.SyslogAppender;
+
+        specialinvoke $r2.<org.apache.log4j.net.SyslogAppender: void <init>()>();
+
+        virtualinvoke $r2.<org.apache.log4j.net.SyslogAppender: void setFacility(java.lang.String)>("kern");
+
+        virtualinvoke $r2.<org.apache.log4j.net.SyslogAppender: void setFacility(java.lang.String)>(null);
+
+        $r3 = virtualinvoke $r2.<org.apache.log4j.net.SyslogAppender: java.lang.String getFacility()>();
+
+        staticinvoke <org.apache.log4j.net.SyslogAppenderTest: void assertEquals(java.lang.String,java.lang.String)>("kern", $r3);
+
+        return;
+    }
+
+    public void testSetFacilityBogus()
+    {
+        org.apache.log4j.net.SyslogAppenderTest r0;
+        org.apache.log4j.net.SyslogAppender $r2;
+        java.lang.String $r3;
+
+        r0 := @this: org.apache.log4j.net.SyslogAppenderTest;
+
+        $r2 = new org.apache.log4j.net.SyslogAppender;
+
+        specialinvoke $r2.<org.apache.log4j.net.SyslogAppender: void <init>()>();
+
+        virtualinvoke $r2.<org.apache.log4j.net.SyslogAppender: void setFacility(java.lang.String)>("kern");
+
+        virtualinvoke $r2.<org.apache.log4j.net.SyslogAppender: void setFacility(java.lang.String)>("bogus");
+
+        $r3 = virtualinvoke $r2.<org.apache.log4j.net.SyslogAppender: java.lang.String getFacility()>();
+
+        staticinvoke <org.apache.log4j.net.SyslogAppenderTest: void assertEquals(java.lang.String,java.lang.String)>("user", $r3);
+
+        return;
+    }
+
+    public void testSetFacilityAfterActivation()
+    {
+        org.apache.log4j.net.SyslogAppenderTest r0;
+        org.apache.log4j.net.SyslogAppender $r3;
+        org.apache.log4j.Level $r4;
+        org.apache.log4j.PatternLayout $r5;
+        org.apache.log4j.VectorErrorHandler $r6;
+        java.lang.String $r7;
+
+        r0 := @this: org.apache.log4j.net.SyslogAppenderTest;
+
+        $r3 = new org.apache.log4j.net.SyslogAppender;
+
+        specialinvoke $r3.<org.apache.log4j.net.SyslogAppender: void <init>()>();
+
+        virtualinvoke $r3.<org.apache.log4j.net.SyslogAppender: void setName(java.lang.String)>("foo");
+
+        $r4 = <org.apache.log4j.Level: org.apache.log4j.Level INFO>;
+
+        virtualinvoke $r3.<org.apache.log4j.net.SyslogAppender: void setThreshold(org.apache.log4j.Priority)>($r4);
+
+        virtualinvoke $r3.<org.apache.log4j.net.SyslogAppender: void setSyslogHost(java.lang.String)>("localhost");
+
+        virtualinvoke $r3.<org.apache.log4j.net.SyslogAppender: void setFacility(java.lang.String)>("user");
+
+        $r5 = new org.apache.log4j.PatternLayout;
+
+        specialinvoke $r5.<org.apache.log4j.PatternLayout: void <init>(java.lang.String)>("%m%n");
+
+        virtualinvoke $r3.<org.apache.log4j.net.SyslogAppender: void setLayout(org.apache.log4j.Layout)>($r5);
+
+        $r6 = new org.apache.log4j.VectorErrorHandler;
+
+        specialinvoke $r6.<org.apache.log4j.VectorErrorHandler: void <init>()>();
+
+        virtualinvoke $r3.<org.apache.log4j.net.SyslogAppender: void setErrorHandler(org.apache.log4j.spi.ErrorHandler)>($r6);
+
+        virtualinvoke $r3.<org.apache.log4j.net.SyslogAppender: void activateOptions()>();
+
+        virtualinvoke $r3.<org.apache.log4j.net.SyslogAppender: void setFacility(java.lang.String)>("kern");
+
+        $r7 = virtualinvoke $r3.<org.apache.log4j.net.SyslogAppender: java.lang.String getFacility()>();
+
+        staticinvoke <org.apache.log4j.net.SyslogAppenderTest: void assertEquals(java.lang.String,java.lang.String)>("kern", $r7);
+
+        return;
+    }
+
+    public void testAppendBelowThreshold()
+    {
+        org.apache.log4j.net.SyslogAppenderTest r0;
+        org.apache.log4j.Logger r2;
+        org.apache.log4j.net.SyslogAppender $r3;
+        org.apache.log4j.Level $r4;
+
+        r0 := @this: org.apache.log4j.net.SyslogAppenderTest;
+
+        $r3 = new org.apache.log4j.net.SyslogAppender;
+
+        specialinvoke $r3.<org.apache.log4j.net.SyslogAppender: void <init>()>();
+
+        $r4 = <org.apache.log4j.Level: org.apache.log4j.Level ERROR>;
+
+        virtualinvoke $r3.<org.apache.log4j.net.SyslogAppender: void setThreshold(org.apache.log4j.Priority)>($r4);
+
+        virtualinvoke $r3.<org.apache.log4j.net.SyslogAppender: void activateOptions()>();
+
+        r2 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getRootLogger()>();
+
+        virtualinvoke r2.<org.apache.log4j.Logger: void addAppender(org.apache.log4j.Appender)>($r3);
+
+        virtualinvoke r2.<org.apache.log4j.Logger: void info(java.lang.Object)>("Should not be logged by SyslogAppenderTest.testAppendBelowThreshold.");
+
+        return;
+    }
+
+    public void testAppendNoHost()
+    {
+        org.apache.log4j.net.SyslogAppenderTest r0;
+        org.apache.log4j.Logger r3;
+        org.apache.log4j.net.SyslogAppender $r4;
+        org.apache.log4j.Level $r5;
+        org.apache.log4j.VectorErrorHandler $r6;
+        org.apache.log4j.PatternLayout $r7;
+        int $i0;
+        java.lang.String $r8;
+
+        r0 := @this: org.apache.log4j.net.SyslogAppenderTest;
+
+        $r4 = new org.apache.log4j.net.SyslogAppender;
+
+        specialinvoke $r4.<org.apache.log4j.net.SyslogAppender: void <init>()>();
+
+        virtualinvoke $r4.<org.apache.log4j.net.SyslogAppender: void setName(java.lang.String)>("foo");
+
+        $r5 = <org.apache.log4j.Level: org.apache.log4j.Level INFO>;
+
+        virtualinvoke $r4.<org.apache.log4j.net.SyslogAppender: void setThreshold(org.apache.log4j.Priority)>($r5);
+
+        $r6 = new org.apache.log4j.VectorErrorHandler;
+
+        specialinvoke $r6.<org.apache.log4j.VectorErrorHandler: void <init>()>();
+
+        virtualinvoke $r4.<org.apache.log4j.net.SyslogAppender: void setErrorHandler(org.apache.log4j.spi.ErrorHandler)>($r6);
+
+        $r7 = new org.apache.log4j.PatternLayout;
+
+        specialinvoke $r7.<org.apache.log4j.PatternLayout: void <init>(java.lang.String)>("%m%n");
+
+        virtualinvoke $r4.<org.apache.log4j.net.SyslogAppender: void setLayout(org.apache.log4j.Layout)>($r7);
+
+        virtualinvoke $r4.<org.apache.log4j.net.SyslogAppender: void activateOptions()>();
+
+        r3 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getRootLogger()>();
+
+        virtualinvoke r3.<org.apache.log4j.Logger: void addAppender(org.apache.log4j.Appender)>($r4);
+
+        virtualinvoke r3.<org.apache.log4j.Logger: void info(java.lang.Object)>("Should not be logged by SyslogAppenderTest.testAppendNoHost.");
+
+        $i0 = virtualinvoke $r6.<org.apache.log4j.VectorErrorHandler: int size()>();
+
+        staticinvoke <org.apache.log4j.net.SyslogAppenderTest: void assertEquals(int,int)>(1, $i0);
+
+        $r8 = virtualinvoke $r6.<org.apache.log4j.VectorErrorHandler: java.lang.String getMessage(int)>(0);
+
+        staticinvoke <org.apache.log4j.net.SyslogAppenderTest: void assertEquals(java.lang.String,java.lang.String)>("No syslog host is set for SyslogAppedender named \"foo\".", $r8);
+
+        return;
+    }
+
+    public void testAppend()
+    {
+        org.apache.log4j.net.SyslogAppenderTest r0;
+        org.apache.log4j.Logger r4;
+        org.apache.log4j.net.SyslogAppender $r6;
+        org.apache.log4j.Level $r7;
+        org.apache.log4j.PatternLayout $r8;
+        org.apache.log4j.VectorErrorHandler $r9;
+        org.apache.log4j.AsyncAppender $r10;
+        java.lang.Exception $r11;
+        int $i0;
+
+        r0 := @this: org.apache.log4j.net.SyslogAppenderTest;
+
+        $r6 = new org.apache.log4j.net.SyslogAppender;
+
+        specialinvoke $r6.<org.apache.log4j.net.SyslogAppender: void <init>()>();
+
+        virtualinvoke $r6.<org.apache.log4j.net.SyslogAppender: void setName(java.lang.String)>("foo");
+
+        $r7 = <org.apache.log4j.Level: org.apache.log4j.Level INFO>;
+
+        virtualinvoke $r6.<org.apache.log4j.net.SyslogAppender: void setThreshold(org.apache.log4j.Priority)>($r7);
+
+        virtualinvoke $r6.<org.apache.log4j.net.SyslogAppender: void setSyslogHost(java.lang.String)>("localhost");
+
+        virtualinvoke $r6.<org.apache.log4j.net.SyslogAppender: void setFacility(java.lang.String)>("user");
+
+        $r8 = new org.apache.log4j.PatternLayout;
+
+        specialinvoke $r8.<org.apache.log4j.PatternLayout: void <init>(java.lang.String)>("%m%n");
+
+        virtualinvoke $r6.<org.apache.log4j.net.SyslogAppender: void setLayout(org.apache.log4j.Layout)>($r8);
+
+        $r9 = new org.apache.log4j.VectorErrorHandler;
+
+        specialinvoke $r9.<org.apache.log4j.VectorErrorHandler: void <init>()>();
+
+        virtualinvoke $r6.<org.apache.log4j.net.SyslogAppender: void setErrorHandler(org.apache.log4j.spi.ErrorHandler)>($r9);
+
+        virtualinvoke $r6.<org.apache.log4j.net.SyslogAppender: void activateOptions()>();
+
+        $r10 = new org.apache.log4j.AsyncAppender;
+
+        specialinvoke $r10.<org.apache.log4j.AsyncAppender: void <init>()>();
+
+        virtualinvoke $r10.<org.apache.log4j.AsyncAppender: void addAppender(org.apache.log4j.Appender)>($r6);
+
+        virtualinvoke $r10.<org.apache.log4j.AsyncAppender: void activateOptions()>();
+
+        r4 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getRootLogger()>();
+
+        virtualinvoke r4.<org.apache.log4j.Logger: void addAppender(org.apache.log4j.Appender)>($r10);
+
+        $r11 = new java.lang.Exception;
+
+        specialinvoke $r11.<java.lang.Exception: void <init>(java.lang.String)>("Expected exception from SyslogAppenderTest.testAppend");
+
+        virtualinvoke r4.<org.apache.log4j.Logger: void info(java.lang.Object,java.lang.Throwable)>("Expected message from log4j unit test SyslogAppenderTest.testAppend.", $r11);
+
+        $i0 = virtualinvoke $r9.<org.apache.log4j.VectorErrorHandler: int size()>();
+
+        staticinvoke <org.apache.log4j.net.SyslogAppenderTest: void assertEquals(int,int)>(0, $i0);
+
+        return;
+    }
+
+    public void testIPv6()
+    {
+        org.apache.log4j.net.SyslogAppenderTest r0;
+        org.apache.log4j.net.SyslogAppender $r2;
+
+        r0 := @this: org.apache.log4j.net.SyslogAppenderTest;
+
+        $r2 = new org.apache.log4j.net.SyslogAppender;
+
+        specialinvoke $r2.<org.apache.log4j.net.SyslogAppender: void <init>()>();
+
+        virtualinvoke $r2.<org.apache.log4j.net.SyslogAppender: void setSyslogHost(java.lang.String)>("::1");
+
+        return;
+    }
+
+    public void testIPv6InBrackets()
+    {
+        org.apache.log4j.net.SyslogAppenderTest r0;
+        org.apache.log4j.net.SyslogAppender $r2;
+
+        r0 := @this: org.apache.log4j.net.SyslogAppenderTest;
+
+        $r2 = new org.apache.log4j.net.SyslogAppender;
+
+        specialinvoke $r2.<org.apache.log4j.net.SyslogAppender: void <init>()>();
+
+        virtualinvoke $r2.<org.apache.log4j.net.SyslogAppender: void setSyslogHost(java.lang.String)>("[::1]");
+
+        return;
+    }
+
+    public void testIPv6AndPort()
+    {
+        org.apache.log4j.net.SyslogAppenderTest r0;
+        org.apache.log4j.net.SyslogAppender $r2;
+
+        r0 := @this: org.apache.log4j.net.SyslogAppenderTest;
+
+        $r2 = new org.apache.log4j.net.SyslogAppender;
+
+        specialinvoke $r2.<org.apache.log4j.net.SyslogAppender: void <init>()>();
+
+        virtualinvoke $r2.<org.apache.log4j.net.SyslogAppender: void setSyslogHost(java.lang.String)>("[::1]:1514");
+
+        return;
+    }
+
+    public void testHostNameAndPort()
+    {
+        org.apache.log4j.net.SyslogAppenderTest r0;
+        org.apache.log4j.net.SyslogAppender $r2;
+
+        r0 := @this: org.apache.log4j.net.SyslogAppenderTest;
+
+        $r2 = new org.apache.log4j.net.SyslogAppender;
+
+        specialinvoke $r2.<org.apache.log4j.net.SyslogAppender: void <init>()>();
+
+        virtualinvoke $r2.<org.apache.log4j.net.SyslogAppender: void setSyslogHost(java.lang.String)>("localhost:1514");
+
+        return;
+    }
+
+    public void testIPv4AndPort()
+    {
+        org.apache.log4j.net.SyslogAppenderTest r0;
+        org.apache.log4j.net.SyslogAppender $r2;
+
+        r0 := @this: org.apache.log4j.net.SyslogAppenderTest;
+
+        $r2 = new org.apache.log4j.net.SyslogAppender;
+
+        specialinvoke $r2.<org.apache.log4j.net.SyslogAppender: void <init>()>();
+
+        virtualinvoke $r2.<org.apache.log4j.net.SyslogAppender: void setSyslogHost(java.lang.String)>("127.0.0.1:1514");
+
+        return;
+    }
+
+    private static java.lang.String[] log(boolean, java.lang.String, java.lang.Exception, int) throws java.lang.Exception
+    {
+        boolean z0;
+        java.lang.String r0, $r13, $r16;
+        java.lang.Exception r1;
+        int i0, $i1, $i2, $i3, i4;
+        org.apache.log4j.Logger r5;
+        java.lang.String[] r6;
+        byte[] r7, $r17;
+        java.net.DatagramSocket $r9;
+        org.apache.log4j.net.SyslogAppender $r10;
+        java.lang.StringBuilder $r11, $r12;
+        org.apache.log4j.PatternLayout $r14;
+        java.net.DatagramPacket $r15;
+
+        z0 := @parameter0: boolean;
+
+        r0 := @parameter1: java.lang.String;
+
+        r1 := @parameter2: java.lang.Exception;
+
+        i0 := @parameter3: int;
+
+        $r9 = new java.net.DatagramSocket;
+
+        specialinvoke $r9.<java.net.DatagramSocket: void <init>()>();
+
+        virtualinvoke $r9.<java.net.DatagramSocket: void setSoTimeout(int)>(2000);
+
+        $r10 = new org.apache.log4j.net.SyslogAppender;
+
+        specialinvoke $r10.<org.apache.log4j.net.SyslogAppender: void <init>()>();
+
+        $r11 = new java.lang.StringBuilder;
+
+        specialinvoke $r11.<java.lang.StringBuilder: void <init>(java.lang.String)>("localhost:");
+
+        $i1 = virtualinvoke $r9.<java.net.DatagramSocket: int getLocalPort()>();
+
+        $r12 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i1);
+
+        $r13 = virtualinvoke $r12.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r10.<org.apache.log4j.net.SyslogAppender: void setSyslogHost(java.lang.String)>($r13);
+
+        virtualinvoke $r10.<org.apache.log4j.net.SyslogAppender: void setName(java.lang.String)>("name");
+
+        virtualinvoke $r10.<org.apache.log4j.net.SyslogAppender: void setHeader(boolean)>(z0);
+
+        $r14 = new org.apache.log4j.PatternLayout;
+
+        specialinvoke $r14.<org.apache.log4j.PatternLayout: void <init>(java.lang.String)>("%m");
+
+        virtualinvoke $r10.<org.apache.log4j.net.SyslogAppender: void setLayout(org.apache.log4j.Layout)>($r14);
+
+        virtualinvoke $r10.<org.apache.log4j.net.SyslogAppender: void activateOptions()>();
+
+        r5 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getRootLogger()>();
+
+        virtualinvoke r5.<org.apache.log4j.Logger: void addAppender(org.apache.log4j.Appender)>($r10);
+
+        if r1 != null goto label1;
+
+        virtualinvoke r5.<org.apache.log4j.Logger: void info(java.lang.Object)>(r0);
+
+        goto label2;
+
+     label1:
+        virtualinvoke r5.<org.apache.log4j.Logger: void error(java.lang.Object,java.lang.Throwable)>(r0, r1);
+
+     label2:
+        virtualinvoke $r10.<org.apache.log4j.net.SyslogAppender: void close()>();
+
+        r6 = newarray (java.lang.String)[i0];
+
+        r7 = newarray (byte)[1000];
+
+        i4 = 0;
+
+        goto label4;
+
+     label3:
+        $r15 = new java.net.DatagramPacket;
+
+        $i2 = lengthof r7;
+
+        specialinvoke $r15.<java.net.DatagramPacket: void <init>(byte[],int,int)>(r7, 0, $i2);
+
+        virtualinvoke $r9.<java.net.DatagramSocket: void receive(java.net.DatagramPacket)>($r15);
+
+        $r16 = new java.lang.String;
+
+        $r17 = virtualinvoke $r15.<java.net.DatagramPacket: byte[] getData()>();
+
+        $i3 = virtualinvoke $r15.<java.net.DatagramPacket: int getLength()>();
+
+        specialinvoke $r16.<java.lang.String: void <init>(byte[],int,int)>($r17, 0, $i3);
+
+        r6[i4] = $r16;
+
+        i4 = i4 + 1;
+
+     label4:
+        if i4 < i0 goto label3;
+
+        virtualinvoke $r9.<java.net.DatagramSocket: void close()>();
+
+        return r6;
+    }
+
+    public void testActualLogging() throws java.lang.Exception
+    {
+        org.apache.log4j.net.SyslogAppenderTest r0;
+        java.lang.String r1, $r5, $r6;
+        java.lang.String[] $r3;
+        java.util.StringTokenizer $r4;
+
+        r0 := @this: org.apache.log4j.net.SyslogAppenderTest;
+
+        $r3 = staticinvoke <org.apache.log4j.net.SyslogAppenderTest: java.lang.String[] log(boolean,java.lang.String,java.lang.Exception,int)>(0, "greetings", null, 1);
+
+        r1 = $r3[0];
+
+        $r4 = new java.util.StringTokenizer;
+
+        specialinvoke $r4.<java.util.StringTokenizer: void <init>(java.lang.String,java.lang.String)>(r1, "<>() ");
+
+        $r5 = virtualinvoke $r4.<java.util.StringTokenizer: java.lang.String nextToken()>();
+
+        staticinvoke <org.apache.log4j.net.SyslogAppenderTest: void assertEquals(java.lang.String,java.lang.String)>("14", $r5);
+
+        $r6 = virtualinvoke $r4.<java.util.StringTokenizer: java.lang.String nextToken()>();
+
+        staticinvoke <org.apache.log4j.net.SyslogAppenderTest: void assertEquals(java.lang.String,java.lang.String)>("greetings", $r6);
+
+        return;
+    }
+
+    public void testBadTabbing() throws java.lang.Exception
+    {
+        org.apache.log4j.net.SyslogAppenderTest r0;
+        java.lang.String[] r1;
+        org.apache.log4j.net.SyslogAppenderTest$MishandledException $r3;
+        java.util.StringTokenizer $r4;
+        java.lang.String $r5, $r6, $r7, $r8, $r9, $r10, $r11, $r12;
+
+        r0 := @this: org.apache.log4j.net.SyslogAppenderTest;
+
+        $r3 = new org.apache.log4j.net.SyslogAppenderTest$MishandledException;
+
+        specialinvoke $r3.<org.apache.log4j.net.SyslogAppenderTest$MishandledException: void <init>()>();
+
+        r1 = staticinvoke <org.apache.log4j.net.SyslogAppenderTest: java.lang.String[] log(boolean,java.lang.String,java.lang.Exception,int)>(0, "greetings", $r3, 6);
+
+        $r4 = new java.util.StringTokenizer;
+
+        $r5 = r1[0];
+
+        specialinvoke $r4.<java.util.StringTokenizer: void <init>(java.lang.String,java.lang.String)>($r5, "<>() ");
+
+        $r6 = virtualinvoke $r4.<java.util.StringTokenizer: java.lang.String nextToken()>();
+
+        staticinvoke <org.apache.log4j.net.SyslogAppenderTest: void assertEquals(java.lang.String,java.lang.String)>("11", $r6);
+
+        $r7 = virtualinvoke $r4.<java.util.StringTokenizer: java.lang.String nextToken()>();
+
+        staticinvoke <org.apache.log4j.net.SyslogAppenderTest: void assertEquals(java.lang.String,java.lang.String)>("greetings", $r7);
+
+        $r8 = r1[1];
+
+        staticinvoke <org.apache.log4j.net.SyslogAppenderTest: void assertEquals(java.lang.String,java.lang.String)>("<11>Mishandled stack trace follows:", $r8);
+
+        $r9 = r1[2];
+
+        staticinvoke <org.apache.log4j.net.SyslogAppenderTest: void assertEquals(java.lang.String,java.lang.String)>("<11>", $r9);
+
+        $r10 = r1[3];
+
+        staticinvoke <org.apache.log4j.net.SyslogAppenderTest: void assertEquals(java.lang.String,java.lang.String)>("<11>No tab here", $r10);
+
+        $r11 = r1[4];
+
+        staticinvoke <org.apache.log4j.net.SyslogAppenderTest: void assertEquals(java.lang.String,java.lang.String)>("<11>    tab here", $r11);
+
+        $r12 = r1[5];
+
+        staticinvoke <org.apache.log4j.net.SyslogAppenderTest: void assertEquals(java.lang.String,java.lang.String)>("<11>    ", $r12);
+
+        return;
+    }
+
+    public void testHeaderLogging() throws java.lang.Exception
+    {
+        org.apache.log4j.net.SyslogAppenderTest r0;
+        java.lang.String r1, r3, $r9;
+        java.util.Calendar r5;
+        int i0, i1, i2, $i3, $i4, i6;
+        java.util.Date $r6, $r8, r14, r15, r16;
+        java.lang.String[] $r7;
+        java.text.SimpleDateFormat $r10;
+        java.util.Locale $r11, $r12;
+        char $c5;
+        boolean $z0, $z1;
+
+        r0 := @this: org.apache.log4j.net.SyslogAppenderTest;
+
+        $r6 = new java.util.Date;
+
+        specialinvoke $r6.<java.util.Date: void <init>()>();
+
+        $r7 = staticinvoke <org.apache.log4j.net.SyslogAppenderTest: java.lang.String[] log(boolean,java.lang.String,java.lang.Exception,int)>(1, "greetings", null, 1);
+
+        r1 = $r7[0];
+
+        $r8 = new java.util.Date;
+
+        specialinvoke $r8.<java.util.Date: void <init>()>();
+
+        $r9 = virtualinvoke r1.<java.lang.String: java.lang.String substring(int,int)>(0, 4);
+
+        staticinvoke <org.apache.log4j.net.SyslogAppenderTest: void assertEquals(java.lang.String,java.lang.String)>("<14>", $r9);
+
+        r3 = virtualinvoke r1.<java.lang.String: java.lang.String substring(int,int)>(4, 20);
+
+        $r10 = new java.text.SimpleDateFormat;
+
+        $r11 = <java.util.Locale: java.util.Locale ENGLISH>;
+
+        specialinvoke $r10.<java.text.SimpleDateFormat: void <init>(java.lang.String,java.util.Locale)>("MMM dd HH:mm:ss ", $r11);
+
+        r14 = virtualinvoke $r10.<java.text.SimpleDateFormat: java.util.Date parse(java.lang.String)>(r3);
+
+        $r12 = <java.util.Locale: java.util.Locale ENGLISH>;
+
+        r5 = staticinvoke <java.util.Calendar: java.util.Calendar getInstance(java.util.Locale)>($r12);
+
+        virtualinvoke r5.<java.util.Calendar: void setTime(java.util.Date)>(r14);
+
+        i0 = virtualinvoke r5.<java.util.Calendar: int get(int)>(2);
+
+        i1 = virtualinvoke r5.<java.util.Calendar: int get(int)>(5);
+
+        if i1 >= 10 goto label1;
+
+        $c5 = virtualinvoke r3.<java.lang.String: char charAt(int)>(4);
+
+        staticinvoke <org.apache.log4j.net.SyslogAppenderTest: void assertEquals(char,char)>(32, $c5);
+
+     label1:
+        virtualinvoke r5.<java.util.Calendar: void setTime(java.util.Date)>($r6);
+
+        i2 = virtualinvoke r5.<java.util.Calendar: int get(int)>(2);
+
+        virtualinvoke r5.<java.util.Calendar: void set(int,int)>(14, 0);
+
+        r15 = virtualinvoke r5.<java.util.Calendar: java.util.Date getTime()>();
+
+        if i2 != i0 goto label2;
+
+        i6 = virtualinvoke r5.<java.util.Calendar: int get(int)>(1);
+
+        goto label3;
+
+     label2:
+        virtualinvoke r5.<java.util.Calendar: void setTime(java.util.Date)>($r8);
+
+        i6 = virtualinvoke r5.<java.util.Calendar: int get(int)>(1);
+
+     label3:
+        virtualinvoke r5.<java.util.Calendar: void setTime(java.util.Date)>(r14);
+
+        virtualinvoke r5.<java.util.Calendar: void set(int,int)>(1, i6);
+
+        r16 = virtualinvoke r5.<java.util.Calendar: java.util.Date getTime()>();
+
+        $i3 = virtualinvoke r16.<java.util.Date: int compareTo(java.util.Date)>(r15);
+
+        if $i3 < 0 goto label4;
+
+        $z0 = 1;
+
+        goto label5;
+
+     label4:
+        $z0 = 0;
+
+     label5:
+        staticinvoke <org.apache.log4j.net.SyslogAppenderTest: void assertTrue(boolean)>($z0);
+
+        $i4 = virtualinvoke r16.<java.util.Date: int compareTo(java.util.Date)>($r8);
+
+        if $i4 > 0 goto label6;
+
+        $z1 = 1;
+
+        goto label7;
+
+     label6:
+        $z1 = 0;
+
+     label7:
+        staticinvoke <org.apache.log4j.net.SyslogAppenderTest: void assertTrue(boolean)>($z1);
+
+        return;
+    }
+
+    public void testLayoutHeader() throws java.lang.Exception
+    {
+        org.apache.log4j.net.SyslogAppenderTest r0;
+        org.apache.log4j.Logger r4;
+        java.lang.String[] r5;
+        byte[] r6, $r16;
+        java.net.DatagramSocket $r8;
+        org.apache.log4j.net.SyslogAppender $r9;
+        java.lang.StringBuilder $r10, $r11;
+        int $i0, $i1, $i2, i3;
+        java.lang.String $r12, $r15, $r17, $r18, $r19, $r20;
+        org.apache.log4j.HTMLLayout $r13;
+        java.net.DatagramPacket $r14;
+
+        r0 := @this: org.apache.log4j.net.SyslogAppenderTest;
+
+        $r8 = new java.net.DatagramSocket;
+
+        specialinvoke $r8.<java.net.DatagramSocket: void <init>()>();
+
+        virtualinvoke $r8.<java.net.DatagramSocket: void setSoTimeout(int)>(2000);
+
+        $r9 = new org.apache.log4j.net.SyslogAppender;
+
+        specialinvoke $r9.<org.apache.log4j.net.SyslogAppender: void <init>()>();
+
+        $r10 = new java.lang.StringBuilder;
+
+        specialinvoke $r10.<java.lang.StringBuilder: void <init>(java.lang.String)>("localhost:");
+
+        $i0 = virtualinvoke $r8.<java.net.DatagramSocket: int getLocalPort()>();
+
+        $r11 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        $r12 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r9.<org.apache.log4j.net.SyslogAppender: void setSyslogHost(java.lang.String)>($r12);
+
+        virtualinvoke $r9.<org.apache.log4j.net.SyslogAppender: void setName(java.lang.String)>("name");
+
+        virtualinvoke $r9.<org.apache.log4j.net.SyslogAppender: void setHeader(boolean)>(0);
+
+        $r13 = new org.apache.log4j.HTMLLayout;
+
+        specialinvoke $r13.<org.apache.log4j.HTMLLayout: void <init>()>();
+
+        virtualinvoke $r9.<org.apache.log4j.net.SyslogAppender: void setLayout(org.apache.log4j.Layout)>($r13);
+
+        virtualinvoke $r9.<org.apache.log4j.net.SyslogAppender: void activateOptions()>();
+
+        r4 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getRootLogger()>();
+
+        virtualinvoke r4.<org.apache.log4j.Logger: void addAppender(org.apache.log4j.Appender)>($r9);
+
+        virtualinvoke r4.<org.apache.log4j.Logger: void info(java.lang.Object)>("Hello, World");
+
+        virtualinvoke $r9.<org.apache.log4j.net.SyslogAppender: void close()>();
+
+        r5 = newarray (java.lang.String)[3];
+
+        r6 = newarray (byte)[1000];
+
+        i3 = 0;
+
+        goto label2;
+
+     label1:
+        $r14 = new java.net.DatagramPacket;
+
+        $i1 = lengthof r6;
+
+        specialinvoke $r14.<java.net.DatagramPacket: void <init>(byte[],int,int)>(r6, 0, $i1);
+
+        virtualinvoke $r8.<java.net.DatagramSocket: void receive(java.net.DatagramPacket)>($r14);
+
+        $r15 = new java.lang.String;
+
+        $r16 = virtualinvoke $r14.<java.net.DatagramPacket: byte[] getData()>();
+
+        $i2 = virtualinvoke $r14.<java.net.DatagramPacket: int getLength()>();
+
+        specialinvoke $r15.<java.lang.String: void <init>(byte[],int,int)>($r16, 0, $i2);
+
+        r5[i3] = $r15;
+
+        i3 = i3 + 1;
+
+     label2:
+        if i3 < 3 goto label1;
+
+        virtualinvoke $r8.<java.net.DatagramSocket: void close()>();
+
+        $r17 = r5[0];
+
+        $r18 = virtualinvoke $r17.<java.lang.String: java.lang.String substring(int,int)>(0, 13);
+
+        staticinvoke <org.apache.log4j.net.SyslogAppenderTest: void assertEquals(java.lang.String,java.lang.String)>("<14><!DOCTYPE", $r18);
+
+        $r19 = r5[2];
+
+        $r20 = virtualinvoke $r19.<java.lang.String: java.lang.String substring(int,int)>(0, 12);
+
+        staticinvoke <org.apache.log4j.net.SyslogAppenderTest: void assertEquals(java.lang.String,java.lang.String)>("<14></table>", $r20);
+
+        return;
+    }
+
+    public void testBigPackets() throws java.lang.Exception
+    {
+        org.apache.log4j.net.SyslogAppenderTest r0;
+        org.apache.log4j.Logger r4;
+        java.lang.String r6, $r13, $r18, $r21, $r23, $r24, $r25, $r27;
+        java.lang.String[] r7;
+        byte[] r8, $r19;
+        java.net.DatagramSocket $r9;
+        org.apache.log4j.net.SyslogAppender $r10;
+        java.lang.StringBuilder $r11, $r12;
+        int $i0, $i1, $i2, $i3, $i4, $i5, $i6, $i7, $i8, $i9, $i10, i11, i12;
+        org.apache.log4j.PatternLayout $r14;
+        java.lang.StringBuffer $r15, $r20;
+        java.net.DatagramPacket $r17;
+        boolean $z0;
+
+        r0 := @this: org.apache.log4j.net.SyslogAppenderTest;
+
+        $r9 = new java.net.DatagramSocket;
+
+        specialinvoke $r9.<java.net.DatagramSocket: void <init>()>();
+
+        virtualinvoke $r9.<java.net.DatagramSocket: void setSoTimeout(int)>(2000);
+
+        $r10 = new org.apache.log4j.net.SyslogAppender;
+
+        specialinvoke $r10.<org.apache.log4j.net.SyslogAppender: void <init>()>();
+
+        $r11 = new java.lang.StringBuilder;
+
+        specialinvoke $r11.<java.lang.StringBuilder: void <init>(java.lang.String)>("localhost:");
+
+        $i0 = virtualinvoke $r9.<java.net.DatagramSocket: int getLocalPort()>();
+
+        $r12 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        $r13 = virtualinvoke $r12.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r10.<org.apache.log4j.net.SyslogAppender: void setSyslogHost(java.lang.String)>($r13);
+
+        virtualinvoke $r10.<org.apache.log4j.net.SyslogAppender: void setName(java.lang.String)>("name");
+
+        virtualinvoke $r10.<org.apache.log4j.net.SyslogAppender: void setHeader(boolean)>(0);
+
+        $r14 = new org.apache.log4j.PatternLayout;
+
+        specialinvoke $r14.<org.apache.log4j.PatternLayout: void <init>(java.lang.String)>("%m");
+
+        virtualinvoke $r10.<org.apache.log4j.net.SyslogAppender: void setLayout(org.apache.log4j.Layout)>($r14);
+
+        virtualinvoke $r10.<org.apache.log4j.net.SyslogAppender: void activateOptions()>();
+
+        r4 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getRootLogger()>();
+
+        virtualinvoke r4.<org.apache.log4j.Logger: void addAppender(org.apache.log4j.Appender)>($r10);
+
+        $r15 = new java.lang.StringBuffer;
+
+        specialinvoke $r15.<java.lang.StringBuffer: void <init>()>();
+
+        goto label2;
+
+     label1:
+        virtualinvoke $r15.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>("0123456789");
+
+     label2:
+        $i1 = virtualinvoke $r15.<java.lang.StringBuffer: int length()>();
+
+        if $i1 < 8000 goto label1;
+
+        r6 = virtualinvoke $r15.<java.lang.StringBuffer: java.lang.String toString()>();
+
+        virtualinvoke r4.<org.apache.log4j.Logger: void info(java.lang.Object)>(r6);
+
+        virtualinvoke $r10.<org.apache.log4j.net.SyslogAppender: void close()>();
+
+        r7 = newarray (java.lang.String)[8];
+
+        r8 = newarray (byte)[1200];
+
+        i11 = 0;
+
+        goto label6;
+
+     label3:
+        $r17 = new java.net.DatagramPacket;
+
+        $i2 = lengthof r8;
+
+        specialinvoke $r17.<java.net.DatagramPacket: void <init>(byte[],int,int)>(r8, 0, $i2);
+
+        virtualinvoke $r9.<java.net.DatagramSocket: void receive(java.net.DatagramPacket)>($r17);
+
+        $i3 = virtualinvoke $r17.<java.net.DatagramPacket: int getLength()>();
+
+        if $i3 > 1024 goto label4;
+
+        $z0 = 1;
+
+        goto label5;
+
+     label4:
+        $z0 = 0;
+
+     label5:
+        staticinvoke <org.apache.log4j.net.SyslogAppenderTest: void assertTrue(boolean)>($z0);
+
+        $r18 = new java.lang.String;
+
+        $r19 = virtualinvoke $r17.<java.net.DatagramPacket: byte[] getData()>();
+
+        $i4 = virtualinvoke $r17.<java.net.DatagramPacket: int getLength()>();
+
+        specialinvoke $r18.<java.lang.String: void <init>(byte[],int,int)>($r19, 0, $i4);
+
+        r7[i11] = $r18;
+
+        i11 = i11 + 1;
+
+     label6:
+        if i11 < 8 goto label3;
+
+        virtualinvoke $r9.<java.net.DatagramSocket: void close()>();
+
+        $r20 = new java.lang.StringBuffer;
+
+        $r21 = r7[0];
+
+        specialinvoke $r20.<java.lang.StringBuffer: void <init>(java.lang.String)>($r21);
+
+        virtualinvoke $r20.<java.lang.StringBuffer: java.lang.StringBuffer delete(int,int)>(0, 4);
+
+        i12 = 1;
+
+        goto label8;
+
+     label7:
+        $i5 = virtualinvoke $r20.<java.lang.StringBuffer: int length()>();
+
+        $i6 = $i5 - 3;
+
+        virtualinvoke $r20.<java.lang.StringBuffer: void setLength(int)>($i6);
+
+        $r24 = r7[i12];
+
+        $r23 = r7[i12];
+
+        $i7 = virtualinvoke $r23.<java.lang.String: int indexOf(java.lang.String)>("...");
+
+        $i8 = $i7 + 3;
+
+        $r25 = virtualinvoke $r24.<java.lang.String: java.lang.String substring(int)>($i8);
+
+        virtualinvoke $r20.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>($r25);
+
+        i12 = i12 + 1;
+
+     label8:
+        if i12 < 8 goto label7;
+
+        $i9 = virtualinvoke r6.<java.lang.String: int length()>();
+
+        $i10 = virtualinvoke $r20.<java.lang.StringBuffer: int length()>();
+
+        staticinvoke <org.apache.log4j.net.SyslogAppenderTest: void assertEquals(int,int)>($i9, $i10);
+
+        $r27 = virtualinvoke $r20.<java.lang.StringBuffer: java.lang.String toString()>();
+
+        staticinvoke <org.apache.log4j.net.SyslogAppenderTest: void assertEquals(java.lang.String,java.lang.String)>(r6, $r27);
+
+        return;
+    }
+}

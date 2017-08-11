@@ -1,0 +1,126 @@
+public class org.apache.log4j.util.Transformer extends java.lang.Object
+{
+
+    public void <init>()
+    {
+        org.apache.log4j.util.Transformer r0;
+
+        r0 := @this: org.apache.log4j.util.Transformer;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static void transform(java.lang.String, java.lang.String, org.apache.log4j.util.Filter[]) throws java.io.IOException, org.apache.log4j.util.UnexpectedFormatException
+    {
+        java.lang.String r0, r1, r10, $r11;
+        org.apache.log4j.util.Filter[] r2;
+        java.io.BufferedReader $r5;
+        java.io.FileReader $r6;
+        java.io.PrintStream $r7;
+        java.io.FileOutputStream $r8;
+        int $i0, i1;
+        org.apache.log4j.util.Filter $r9;
+
+        r0 := @parameter0: java.lang.String;
+
+        r1 := @parameter1: java.lang.String;
+
+        r2 := @parameter2: org.apache.log4j.util.Filter[];
+
+        $r5 = new java.io.BufferedReader;
+
+        $r6 = new java.io.FileReader;
+
+        specialinvoke $r6.<java.io.FileReader: void <init>(java.lang.String)>(r0);
+
+        specialinvoke $r5.<java.io.BufferedReader: void <init>(java.io.Reader)>($r6);
+
+        $r7 = new java.io.PrintStream;
+
+        $r8 = new java.io.FileOutputStream;
+
+        specialinvoke $r8.<java.io.FileOutputStream: void <init>(java.lang.String,boolean)>(r1, 0);
+
+        specialinvoke $r7.<java.io.PrintStream: void <init>(java.io.OutputStream)>($r8);
+
+        goto label4;
+
+     label1:
+        i1 = 0;
+
+        goto label3;
+
+     label2:
+        $r9 = r2[i1];
+
+        r10 = interfaceinvoke $r9.<org.apache.log4j.util.Filter: java.lang.String filter(java.lang.String)>(r10);
+
+        i1 = i1 + 1;
+
+     label3:
+        $i0 = lengthof r2;
+
+        if i1 < $i0 goto label2;
+
+        if r10 == null goto label4;
+
+        virtualinvoke $r7.<java.io.PrintStream: void println(java.lang.String)>(r10);
+
+     label4:
+        $r11 = virtualinvoke $r5.<java.io.BufferedReader: java.lang.String readLine()>();
+
+        r10 = $r11;
+
+        if $r11 != null goto label1;
+
+        return;
+    }
+
+    public static void transform(java.lang.String, java.lang.String, org.apache.log4j.util.Filter) throws java.io.IOException, org.apache.log4j.util.UnexpectedFormatException
+    {
+        java.lang.String r0, r1, $r9, r10;
+        org.apache.log4j.util.Filter r2;
+        java.io.BufferedReader $r5;
+        java.io.FileReader $r6;
+        java.io.PrintStream $r7;
+        java.io.FileOutputStream $r8;
+
+        r0 := @parameter0: java.lang.String;
+
+        r1 := @parameter1: java.lang.String;
+
+        r2 := @parameter2: org.apache.log4j.util.Filter;
+
+        $r5 = new java.io.BufferedReader;
+
+        $r6 = new java.io.FileReader;
+
+        specialinvoke $r6.<java.io.FileReader: void <init>(java.lang.String)>(r0);
+
+        specialinvoke $r5.<java.io.BufferedReader: void <init>(java.io.Reader)>($r6);
+
+        $r7 = new java.io.PrintStream;
+
+        $r8 = new java.io.FileOutputStream;
+
+        specialinvoke $r8.<java.io.FileOutputStream: void <init>(java.lang.String)>(r1);
+
+        specialinvoke $r7.<java.io.PrintStream: void <init>(java.io.OutputStream)>($r8);
+
+        goto label2;
+
+     label1:
+        r10 = interfaceinvoke r2.<org.apache.log4j.util.Filter: java.lang.String filter(java.lang.String)>($r9);
+
+        virtualinvoke $r7.<java.io.PrintStream: void println(java.lang.String)>(r10);
+
+     label2:
+        $r9 = virtualinvoke $r5.<java.io.BufferedReader: java.lang.String readLine()>();
+
+        if $r9 != null goto label1;
+
+        return;
+    }
+}

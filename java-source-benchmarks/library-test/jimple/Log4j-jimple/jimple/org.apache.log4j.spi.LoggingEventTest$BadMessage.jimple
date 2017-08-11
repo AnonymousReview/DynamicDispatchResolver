@@ -1,0 +1,28 @@
+class org.apache.log4j.spi.LoggingEventTest$BadMessage extends java.lang.Object
+{
+
+    public void <init>()
+    {
+        org.apache.log4j.spi.LoggingEventTest$BadMessage r0;
+
+        r0 := @this: org.apache.log4j.spi.LoggingEventTest$BadMessage;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public java.lang.String toString()
+    {
+        org.apache.log4j.spi.LoggingEventTest$BadMessage r0;
+        java.lang.RuntimeException $r1;
+
+        r0 := @this: org.apache.log4j.spi.LoggingEventTest$BadMessage;
+
+        $r1 = new java.lang.RuntimeException;
+
+        specialinvoke $r1.<java.lang.RuntimeException: void <init>()>();
+
+        throw $r1;
+    }
+}

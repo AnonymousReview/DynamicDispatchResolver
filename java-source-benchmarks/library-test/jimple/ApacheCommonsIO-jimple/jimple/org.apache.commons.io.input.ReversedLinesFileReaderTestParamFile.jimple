@@ -1,0 +1,339 @@
+public class org.apache.commons.io.input.ReversedLinesFileReaderTestParamFile extends java.lang.Object
+{
+    private org.apache.commons.io.input.ReversedLinesFileReader reversedLinesFileReader;
+    private java.io.BufferedReader bufferedReader;
+    private final java.lang.String fileName;
+    private final java.lang.String encoding;
+    private final int buffSize;
+
+    public static java.util.Collection blockSizes()
+    {
+        java.lang.Object[][] $r0;
+        java.lang.Object[] $r1, $r2, $r3, $r4, $r5, $r6, $r7, $r8, $r9, $r11, $r13, $r15, $r17, $r18, $r19, $r20, $r21;
+        java.lang.Integer $r10, $r12, $r14, $r16;
+        java.util.List $r22;
+
+        $r0 = newarray (java.lang.Object[])[17];
+
+        $r1 = newarray (java.lang.Object)[3];
+
+        $r1[0] = "test-file-20byteslength.bin";
+
+        $r1[1] = "ISO_8859_1";
+
+        $r0[0] = $r1;
+
+        $r2 = newarray (java.lang.Object)[3];
+
+        $r2[0] = "test-file-iso8859-1-shortlines-win-linebr.bin";
+
+        $r2[1] = "ISO_8859_1";
+
+        $r0[1] = $r2;
+
+        $r3 = newarray (java.lang.Object)[3];
+
+        $r3[0] = "test-file-iso8859-1.bin";
+
+        $r3[1] = "ISO_8859_1";
+
+        $r0[2] = $r3;
+
+        $r4 = newarray (java.lang.Object)[3];
+
+        $r4[0] = "test-file-shiftjis.bin";
+
+        $r4[1] = "Shift_JIS";
+
+        $r0[3] = $r4;
+
+        $r5 = newarray (java.lang.Object)[3];
+
+        $r5[0] = "test-file-utf16be.bin";
+
+        $r5[1] = "UTF-16BE";
+
+        $r0[4] = $r5;
+
+        $r6 = newarray (java.lang.Object)[3];
+
+        $r6[0] = "test-file-utf16le.bin";
+
+        $r6[1] = "UTF-16LE";
+
+        $r0[5] = $r6;
+
+        $r7 = newarray (java.lang.Object)[3];
+
+        $r7[0] = "test-file-utf8-cr-only.bin";
+
+        $r7[1] = "UTF-8";
+
+        $r0[6] = $r7;
+
+        $r8 = newarray (java.lang.Object)[3];
+
+        $r8[0] = "test-file-utf8-win-linebr.bin";
+
+        $r8[1] = "UTF-8";
+
+        $r0[7] = $r8;
+
+        $r9 = newarray (java.lang.Object)[3];
+
+        $r9[0] = "test-file-utf8-win-linebr.bin";
+
+        $r9[1] = "UTF-8";
+
+        $r10 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(1);
+
+        $r9[2] = $r10;
+
+        $r0[8] = $r9;
+
+        $r11 = newarray (java.lang.Object)[3];
+
+        $r11[0] = "test-file-utf8-win-linebr.bin";
+
+        $r11[1] = "UTF-8";
+
+        $r12 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(2);
+
+        $r11[2] = $r12;
+
+        $r0[9] = $r11;
+
+        $r13 = newarray (java.lang.Object)[3];
+
+        $r13[0] = "test-file-utf8-win-linebr.bin";
+
+        $r13[1] = "UTF-8";
+
+        $r14 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(3);
+
+        $r13[2] = $r14;
+
+        $r0[10] = $r13;
+
+        $r15 = newarray (java.lang.Object)[3];
+
+        $r15[0] = "test-file-utf8-win-linebr.bin";
+
+        $r15[1] = "UTF-8";
+
+        $r16 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(4);
+
+        $r15[2] = $r16;
+
+        $r0[11] = $r15;
+
+        $r17 = newarray (java.lang.Object)[3];
+
+        $r17[0] = "test-file-utf8.bin";
+
+        $r17[1] = "UTF-8";
+
+        $r0[12] = $r17;
+
+        $r18 = newarray (java.lang.Object)[3];
+
+        $r18[0] = "test-file-windows-31j.bin";
+
+        $r18[1] = "windows-31j";
+
+        $r0[13] = $r18;
+
+        $r19 = newarray (java.lang.Object)[3];
+
+        $r19[0] = "test-file-gbk.bin";
+
+        $r19[1] = "gbk";
+
+        $r0[14] = $r19;
+
+        $r20 = newarray (java.lang.Object)[3];
+
+        $r20[0] = "test-file-x-windows-949.bin";
+
+        $r20[1] = "x-windows-949";
+
+        $r0[15] = $r20;
+
+        $r21 = newarray (java.lang.Object)[3];
+
+        $r21[0] = "test-file-x-windows-950.bin";
+
+        $r21[1] = "x-windows-950";
+
+        $r0[16] = $r21;
+
+        $r22 = staticinvoke <java.util.Arrays: java.util.List asList(java.lang.Object[])>($r0);
+
+        return $r22;
+    }
+
+    public void <init>(java.lang.String, java.lang.String, java.lang.Integer)
+    {
+        org.apache.commons.io.input.ReversedLinesFileReaderTestParamFile r0;
+        java.lang.String r1, r2;
+        java.lang.Integer r3;
+        int $i0;
+
+        r0 := @this: org.apache.commons.io.input.ReversedLinesFileReaderTestParamFile;
+
+        r1 := @parameter0: java.lang.String;
+
+        r2 := @parameter1: java.lang.String;
+
+        r3 := @parameter2: java.lang.Integer;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<org.apache.commons.io.input.ReversedLinesFileReaderTestParamFile: java.lang.String fileName> = r1;
+
+        r0.<org.apache.commons.io.input.ReversedLinesFileReaderTestParamFile: java.lang.String encoding> = r2;
+
+        if r3 != null goto label1;
+
+        $i0 = 4096;
+
+        goto label2;
+
+     label1:
+        $i0 = virtualinvoke r3.<java.lang.Integer: int intValue()>();
+
+     label2:
+        r0.<org.apache.commons.io.input.ReversedLinesFileReaderTestParamFile: int buffSize> = $i0;
+
+        return;
+    }
+
+    public void testDataIntegrityWithBufferedReader() throws java.net.URISyntaxException, java.io.IOException
+    {
+        org.apache.commons.io.input.ReversedLinesFileReaderTestParamFile r0;
+        java.lang.String r3, $r6, $r8, $r10, $r15, $r17, $r19;
+        java.io.File $r4;
+        java.lang.StringBuilder $r5, $r7;
+        org.apache.commons.io.input.ReversedLinesFileReader $r9, $r18;
+        int $i0;
+        java.util.Stack $r11;
+        java.io.BufferedReader $r12, $r16;
+        java.io.InputStreamReader $r13;
+        java.io.FileInputStream $r14;
+        java.lang.Object $r20;
+
+        r0 := @this: org.apache.commons.io.input.ReversedLinesFileReaderTestParamFile;
+
+        $r4 = new java.io.File;
+
+        $r5 = new java.lang.StringBuilder;
+
+        specialinvoke $r5.<java.lang.StringBuilder: void <init>(java.lang.String)>("resources/");
+
+        $r6 = r0.<org.apache.commons.io.input.ReversedLinesFileReaderTestParamFile: java.lang.String fileName>;
+
+        $r7 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r6);
+
+        $r8 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r4.<java.io.File: void <init>(java.lang.String)>($r8);
+
+        $r9 = new org.apache.commons.io.input.ReversedLinesFileReader;
+
+        $i0 = r0.<org.apache.commons.io.input.ReversedLinesFileReaderTestParamFile: int buffSize>;
+
+        $r10 = r0.<org.apache.commons.io.input.ReversedLinesFileReaderTestParamFile: java.lang.String encoding>;
+
+        specialinvoke $r9.<org.apache.commons.io.input.ReversedLinesFileReader: void <init>(java.io.File,int,java.lang.String)>($r4, $i0, $r10);
+
+        r0.<org.apache.commons.io.input.ReversedLinesFileReaderTestParamFile: org.apache.commons.io.input.ReversedLinesFileReader reversedLinesFileReader> = $r9;
+
+        $r11 = new java.util.Stack;
+
+        specialinvoke $r11.<java.util.Stack: void <init>()>();
+
+        $r12 = new java.io.BufferedReader;
+
+        $r13 = new java.io.InputStreamReader;
+
+        $r14 = new java.io.FileInputStream;
+
+        specialinvoke $r14.<java.io.FileInputStream: void <init>(java.io.File)>($r4);
+
+        $r15 = r0.<org.apache.commons.io.input.ReversedLinesFileReaderTestParamFile: java.lang.String encoding>;
+
+        specialinvoke $r13.<java.io.InputStreamReader: void <init>(java.io.InputStream,java.lang.String)>($r14, $r15);
+
+        specialinvoke $r12.<java.io.BufferedReader: void <init>(java.io.Reader)>($r13);
+
+        r0.<org.apache.commons.io.input.ReversedLinesFileReaderTestParamFile: java.io.BufferedReader bufferedReader> = $r12;
+
+        goto label2;
+
+     label1:
+        virtualinvoke $r11.<java.util.Stack: java.lang.Object push(java.lang.Object)>($r17);
+
+     label2:
+        $r16 = r0.<org.apache.commons.io.input.ReversedLinesFileReaderTestParamFile: java.io.BufferedReader bufferedReader>;
+
+        $r17 = virtualinvoke $r16.<java.io.BufferedReader: java.lang.String readLine()>();
+
+        if $r17 != null goto label1;
+
+        goto label4;
+
+     label3:
+        $r20 = virtualinvoke $r11.<java.util.Stack: java.lang.Object pop()>();
+
+        r3 = (java.lang.String) $r20;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>(r3, $r19);
+
+     label4:
+        $r18 = r0.<org.apache.commons.io.input.ReversedLinesFileReaderTestParamFile: org.apache.commons.io.input.ReversedLinesFileReader reversedLinesFileReader>;
+
+        $r19 = virtualinvoke $r18.<org.apache.commons.io.input.ReversedLinesFileReader: java.lang.String readLine()>();
+
+        if $r19 != null goto label3;
+
+        return;
+    }
+
+    public void closeReader()
+    {
+        org.apache.commons.io.input.ReversedLinesFileReaderTestParamFile r0;
+        java.io.BufferedReader $r1;
+        org.apache.commons.io.input.ReversedLinesFileReader $r2;
+        java.lang.Exception $r3, $r4;
+
+        r0 := @this: org.apache.commons.io.input.ReversedLinesFileReaderTestParamFile;
+
+     label1:
+        $r1 = r0.<org.apache.commons.io.input.ReversedLinesFileReaderTestParamFile: java.io.BufferedReader bufferedReader>;
+
+        virtualinvoke $r1.<java.io.BufferedReader: void close()>();
+
+     label2:
+        goto label4;
+
+     label3:
+        $r3 := @caughtexception;
+
+     label4:
+        $r2 = r0.<org.apache.commons.io.input.ReversedLinesFileReaderTestParamFile: org.apache.commons.io.input.ReversedLinesFileReader reversedLinesFileReader>;
+
+        virtualinvoke $r2.<org.apache.commons.io.input.ReversedLinesFileReader: void close()>();
+
+     label5:
+        goto label7;
+
+     label6:
+        $r4 := @caughtexception;
+
+     label7:
+        return;
+
+        catch java.lang.Exception from label1 to label2 with label3;
+        catch java.lang.Exception from label4 to label5 with label6;
+    }
+}

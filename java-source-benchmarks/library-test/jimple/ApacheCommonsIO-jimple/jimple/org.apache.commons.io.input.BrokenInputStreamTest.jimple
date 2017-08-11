@@ -1,0 +1,237 @@
+public class org.apache.commons.io.input.BrokenInputStreamTest extends java.lang.Object
+{
+    private java.io.IOException exception;
+    private java.io.InputStream stream;
+
+    public void <init>()
+    {
+        org.apache.commons.io.input.BrokenInputStreamTest r0;
+
+        r0 := @this: org.apache.commons.io.input.BrokenInputStreamTest;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void setUp()
+    {
+        org.apache.commons.io.input.BrokenInputStreamTest r0;
+        java.io.IOException $r1, $r3;
+        org.apache.commons.io.input.BrokenInputStream $r2;
+
+        r0 := @this: org.apache.commons.io.input.BrokenInputStreamTest;
+
+        $r1 = new java.io.IOException;
+
+        specialinvoke $r1.<java.io.IOException: void <init>(java.lang.String)>("test exception");
+
+        r0.<org.apache.commons.io.input.BrokenInputStreamTest: java.io.IOException exception> = $r1;
+
+        $r2 = new org.apache.commons.io.input.BrokenInputStream;
+
+        $r3 = r0.<org.apache.commons.io.input.BrokenInputStreamTest: java.io.IOException exception>;
+
+        specialinvoke $r2.<org.apache.commons.io.input.BrokenInputStream: void <init>(java.io.IOException)>($r3);
+
+        r0.<org.apache.commons.io.input.BrokenInputStreamTest: java.io.InputStream stream> = $r2;
+
+        return;
+    }
+
+    public void testRead()
+    {
+        org.apache.commons.io.input.BrokenInputStreamTest r0;
+        java.io.InputStream $r1, $r3, $r5;
+        byte[] $r2, $r4;
+        java.io.IOException $r6, $r7, $r8, $r9, $r10, $r11;
+
+        r0 := @this: org.apache.commons.io.input.BrokenInputStreamTest;
+
+     label01:
+        $r1 = r0.<org.apache.commons.io.input.BrokenInputStreamTest: java.io.InputStream stream>;
+
+        virtualinvoke $r1.<java.io.InputStream: int read()>();
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("Expected exception not thrown.");
+
+     label02:
+        goto label04;
+
+     label03:
+        $r6 := @caughtexception;
+
+        $r7 = r0.<org.apache.commons.io.input.BrokenInputStreamTest: java.io.IOException exception>;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r7, $r6);
+
+     label04:
+        $r3 = r0.<org.apache.commons.io.input.BrokenInputStreamTest: java.io.InputStream stream>;
+
+        $r2 = newarray (byte)[1];
+
+        virtualinvoke $r3.<java.io.InputStream: int read(byte[])>($r2);
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("Expected exception not thrown.");
+
+     label05:
+        goto label07;
+
+     label06:
+        $r10 := @caughtexception;
+
+        $r11 = r0.<org.apache.commons.io.input.BrokenInputStreamTest: java.io.IOException exception>;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r11, $r10);
+
+     label07:
+        $r5 = r0.<org.apache.commons.io.input.BrokenInputStreamTest: java.io.InputStream stream>;
+
+        $r4 = newarray (byte)[1];
+
+        virtualinvoke $r5.<java.io.InputStream: int read(byte[],int,int)>($r4, 0, 1);
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("Expected exception not thrown.");
+
+     label08:
+        goto label10;
+
+     label09:
+        $r8 := @caughtexception;
+
+        $r9 = r0.<org.apache.commons.io.input.BrokenInputStreamTest: java.io.IOException exception>;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r9, $r8);
+
+     label10:
+        return;
+
+        catch java.io.IOException from label01 to label02 with label03;
+        catch java.io.IOException from label04 to label05 with label06;
+        catch java.io.IOException from label07 to label08 with label09;
+    }
+
+    public void testAvailable()
+    {
+        org.apache.commons.io.input.BrokenInputStreamTest r0;
+        java.io.InputStream $r2;
+        java.io.IOException $r3, $r4;
+
+        r0 := @this: org.apache.commons.io.input.BrokenInputStreamTest;
+
+     label1:
+        $r2 = r0.<org.apache.commons.io.input.BrokenInputStreamTest: java.io.InputStream stream>;
+
+        virtualinvoke $r2.<java.io.InputStream: int available()>();
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("Expected exception not thrown.");
+
+     label2:
+        goto label4;
+
+     label3:
+        $r3 := @caughtexception;
+
+        $r4 = r0.<org.apache.commons.io.input.BrokenInputStreamTest: java.io.IOException exception>;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r4, $r3);
+
+     label4:
+        return;
+
+        catch java.io.IOException from label1 to label2 with label3;
+    }
+
+    public void testSkip()
+    {
+        org.apache.commons.io.input.BrokenInputStreamTest r0;
+        java.io.InputStream $r2;
+        java.io.IOException $r3, $r4;
+
+        r0 := @this: org.apache.commons.io.input.BrokenInputStreamTest;
+
+     label1:
+        $r2 = r0.<org.apache.commons.io.input.BrokenInputStreamTest: java.io.InputStream stream>;
+
+        virtualinvoke $r2.<java.io.InputStream: long skip(long)>(1L);
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("Expected exception not thrown.");
+
+     label2:
+        goto label4;
+
+     label3:
+        $r3 := @caughtexception;
+
+        $r4 = r0.<org.apache.commons.io.input.BrokenInputStreamTest: java.io.IOException exception>;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r4, $r3);
+
+     label4:
+        return;
+
+        catch java.io.IOException from label1 to label2 with label3;
+    }
+
+    public void testReset()
+    {
+        org.apache.commons.io.input.BrokenInputStreamTest r0;
+        java.io.InputStream $r2;
+        java.io.IOException $r3, $r4;
+
+        r0 := @this: org.apache.commons.io.input.BrokenInputStreamTest;
+
+     label1:
+        $r2 = r0.<org.apache.commons.io.input.BrokenInputStreamTest: java.io.InputStream stream>;
+
+        virtualinvoke $r2.<java.io.InputStream: void reset()>();
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("Expected exception not thrown.");
+
+     label2:
+        goto label4;
+
+     label3:
+        $r3 := @caughtexception;
+
+        $r4 = r0.<org.apache.commons.io.input.BrokenInputStreamTest: java.io.IOException exception>;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r4, $r3);
+
+     label4:
+        return;
+
+        catch java.io.IOException from label1 to label2 with label3;
+    }
+
+    public void testClose()
+    {
+        org.apache.commons.io.input.BrokenInputStreamTest r0;
+        java.io.InputStream $r2;
+        java.io.IOException $r3, $r4;
+
+        r0 := @this: org.apache.commons.io.input.BrokenInputStreamTest;
+
+     label1:
+        $r2 = r0.<org.apache.commons.io.input.BrokenInputStreamTest: java.io.InputStream stream>;
+
+        virtualinvoke $r2.<java.io.InputStream: void close()>();
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("Expected exception not thrown.");
+
+     label2:
+        goto label4;
+
+     label3:
+        $r3 := @caughtexception;
+
+        $r4 = r0.<org.apache.commons.io.input.BrokenInputStreamTest: java.io.IOException exception>;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r4, $r3);
+
+     label4:
+        return;
+
+        catch java.io.IOException from label1 to label2 with label3;
+    }
+}

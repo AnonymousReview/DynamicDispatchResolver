@@ -1,0 +1,233 @@
+public class org.apache.commons.logging.tccl.custom.MyLog extends java.lang.Object implements org.apache.commons.logging.Log
+{
+
+    public void <init>(java.lang.String)
+    {
+        org.apache.commons.logging.tccl.custom.MyLog r0;
+        java.lang.String r1;
+
+        r0 := @this: org.apache.commons.logging.tccl.custom.MyLog;
+
+        r1 := @parameter0: java.lang.String;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public boolean isDebugEnabled()
+    {
+        org.apache.commons.logging.tccl.custom.MyLog r0;
+
+        r0 := @this: org.apache.commons.logging.tccl.custom.MyLog;
+
+        return 0;
+    }
+
+    public boolean isErrorEnabled()
+    {
+        org.apache.commons.logging.tccl.custom.MyLog r0;
+
+        r0 := @this: org.apache.commons.logging.tccl.custom.MyLog;
+
+        return 0;
+    }
+
+    public boolean isFatalEnabled()
+    {
+        org.apache.commons.logging.tccl.custom.MyLog r0;
+
+        r0 := @this: org.apache.commons.logging.tccl.custom.MyLog;
+
+        return 0;
+    }
+
+    public boolean isInfoEnabled()
+    {
+        org.apache.commons.logging.tccl.custom.MyLog r0;
+
+        r0 := @this: org.apache.commons.logging.tccl.custom.MyLog;
+
+        return 0;
+    }
+
+    public boolean isTraceEnabled()
+    {
+        org.apache.commons.logging.tccl.custom.MyLog r0;
+
+        r0 := @this: org.apache.commons.logging.tccl.custom.MyLog;
+
+        return 0;
+    }
+
+    public boolean isWarnEnabled()
+    {
+        org.apache.commons.logging.tccl.custom.MyLog r0;
+
+        r0 := @this: org.apache.commons.logging.tccl.custom.MyLog;
+
+        return 0;
+    }
+
+    public void trace(java.lang.Object)
+    {
+        org.apache.commons.logging.tccl.custom.MyLog r0;
+        java.lang.Object r1;
+
+        r0 := @this: org.apache.commons.logging.tccl.custom.MyLog;
+
+        r1 := @parameter0: java.lang.Object;
+
+        return;
+    }
+
+    public void trace(java.lang.Object, java.lang.Throwable)
+    {
+        org.apache.commons.logging.tccl.custom.MyLog r0;
+        java.lang.Object r1;
+        java.lang.Throwable r2;
+
+        r0 := @this: org.apache.commons.logging.tccl.custom.MyLog;
+
+        r1 := @parameter0: java.lang.Object;
+
+        r2 := @parameter1: java.lang.Throwable;
+
+        return;
+    }
+
+    public void debug(java.lang.Object)
+    {
+        org.apache.commons.logging.tccl.custom.MyLog r0;
+        java.lang.Object r1;
+
+        r0 := @this: org.apache.commons.logging.tccl.custom.MyLog;
+
+        r1 := @parameter0: java.lang.Object;
+
+        return;
+    }
+
+    public void debug(java.lang.Object, java.lang.Throwable)
+    {
+        org.apache.commons.logging.tccl.custom.MyLog r0;
+        java.lang.Object r1;
+        java.lang.Throwable r2;
+
+        r0 := @this: org.apache.commons.logging.tccl.custom.MyLog;
+
+        r1 := @parameter0: java.lang.Object;
+
+        r2 := @parameter1: java.lang.Throwable;
+
+        return;
+    }
+
+    public void info(java.lang.Object)
+    {
+        org.apache.commons.logging.tccl.custom.MyLog r0;
+        java.lang.Object r1;
+
+        r0 := @this: org.apache.commons.logging.tccl.custom.MyLog;
+
+        r1 := @parameter0: java.lang.Object;
+
+        return;
+    }
+
+    public void info(java.lang.Object, java.lang.Throwable)
+    {
+        org.apache.commons.logging.tccl.custom.MyLog r0;
+        java.lang.Object r1;
+        java.lang.Throwable r2;
+
+        r0 := @this: org.apache.commons.logging.tccl.custom.MyLog;
+
+        r1 := @parameter0: java.lang.Object;
+
+        r2 := @parameter1: java.lang.Throwable;
+
+        return;
+    }
+
+    public void warn(java.lang.Object)
+    {
+        org.apache.commons.logging.tccl.custom.MyLog r0;
+        java.lang.Object r1;
+
+        r0 := @this: org.apache.commons.logging.tccl.custom.MyLog;
+
+        r1 := @parameter0: java.lang.Object;
+
+        return;
+    }
+
+    public void warn(java.lang.Object, java.lang.Throwable)
+    {
+        org.apache.commons.logging.tccl.custom.MyLog r0;
+        java.lang.Object r1;
+        java.lang.Throwable r2;
+
+        r0 := @this: org.apache.commons.logging.tccl.custom.MyLog;
+
+        r1 := @parameter0: java.lang.Object;
+
+        r2 := @parameter1: java.lang.Throwable;
+
+        return;
+    }
+
+    public void error(java.lang.Object)
+    {
+        org.apache.commons.logging.tccl.custom.MyLog r0;
+        java.lang.Object r1;
+
+        r0 := @this: org.apache.commons.logging.tccl.custom.MyLog;
+
+        r1 := @parameter0: java.lang.Object;
+
+        return;
+    }
+
+    public void error(java.lang.Object, java.lang.Throwable)
+    {
+        org.apache.commons.logging.tccl.custom.MyLog r0;
+        java.lang.Object r1;
+        java.lang.Throwable r2;
+
+        r0 := @this: org.apache.commons.logging.tccl.custom.MyLog;
+
+        r1 := @parameter0: java.lang.Object;
+
+        r2 := @parameter1: java.lang.Throwable;
+
+        return;
+    }
+
+    public void fatal(java.lang.Object)
+    {
+        org.apache.commons.logging.tccl.custom.MyLog r0;
+        java.lang.Object r1;
+
+        r0 := @this: org.apache.commons.logging.tccl.custom.MyLog;
+
+        r1 := @parameter0: java.lang.Object;
+
+        return;
+    }
+
+    public void fatal(java.lang.Object, java.lang.Throwable)
+    {
+        org.apache.commons.logging.tccl.custom.MyLog r0;
+        java.lang.Object r1;
+        java.lang.Throwable r2;
+
+        r0 := @this: org.apache.commons.logging.tccl.custom.MyLog;
+
+        r1 := @parameter0: java.lang.Object;
+
+        r2 := @parameter1: java.lang.Throwable;
+
+        return;
+    }
+}

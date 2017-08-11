@@ -1,0 +1,512 @@
+class org.apache.commons.io.input.ReversedLinesFileReader$FilePart extends java.lang.Object
+{
+    private final long no;
+    private final byte[] data;
+    private byte[] leftOver;
+    private int currentLastBytePos;
+    final org.apache.commons.io.input.ReversedLinesFileReader this$0;
+
+    private void <init>(org.apache.commons.io.input.ReversedLinesFileReader, long, int, byte[]) throws java.io.IOException
+    {
+        org.apache.commons.io.input.ReversedLinesFileReader$FilePart r0;
+        org.apache.commons.io.input.ReversedLinesFileReader r1;
+        long l0, l3, $l5, $l7;
+        int i1, i2, i4, $i6, $i9, $i10, $i11, $i13;
+        byte[] r2, $r3, $r4, $r5, $r8;
+        byte $b8;
+        java.io.RandomAccessFile $r6, $r7;
+        java.lang.IllegalStateException $r9;
+
+        r0 := @this: org.apache.commons.io.input.ReversedLinesFileReader$FilePart;
+
+        r1 := @parameter0: org.apache.commons.io.input.ReversedLinesFileReader;
+
+        l0 := @parameter1: long;
+
+        i1 := @parameter2: int;
+
+        r2 := @parameter3: byte[];
+
+        r0.<org.apache.commons.io.input.ReversedLinesFileReader$FilePart: org.apache.commons.io.input.ReversedLinesFileReader this$0> = r1;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<org.apache.commons.io.input.ReversedLinesFileReader$FilePart: long no> = l0;
+
+        if r2 == null goto label1;
+
+        $i13 = lengthof r2;
+
+        goto label2;
+
+     label1:
+        $i13 = 0;
+
+     label2:
+        i2 = i1 + $i13;
+
+        $r3 = newarray (byte)[i2];
+
+        r0.<org.apache.commons.io.input.ReversedLinesFileReader$FilePart: byte[] data> = $r3;
+
+        $l5 = l0 - 1L;
+
+        $i6 = staticinvoke <org.apache.commons.io.input.ReversedLinesFileReader: int access$0(org.apache.commons.io.input.ReversedLinesFileReader)>(r1);
+
+        $l7 = (long) $i6;
+
+        l3 = $l5 * $l7;
+
+        $b8 = l0 cmp 0L;
+
+        if $b8 <= 0 goto label3;
+
+        $r6 = staticinvoke <org.apache.commons.io.input.ReversedLinesFileReader: java.io.RandomAccessFile access$1(org.apache.commons.io.input.ReversedLinesFileReader)>(r1);
+
+        virtualinvoke $r6.<java.io.RandomAccessFile: void seek(long)>(l3);
+
+        $r7 = staticinvoke <org.apache.commons.io.input.ReversedLinesFileReader: java.io.RandomAccessFile access$1(org.apache.commons.io.input.ReversedLinesFileReader)>(r1);
+
+        $r8 = r0.<org.apache.commons.io.input.ReversedLinesFileReader$FilePart: byte[] data>;
+
+        i4 = virtualinvoke $r7.<java.io.RandomAccessFile: int read(byte[],int,int)>($r8, 0, i1);
+
+        if i4 == i1 goto label3;
+
+        $r9 = new java.lang.IllegalStateException;
+
+        specialinvoke $r9.<java.lang.IllegalStateException: void <init>(java.lang.String)>("Count of requested bytes and actually read bytes don\'t match");
+
+        throw $r9;
+
+     label3:
+        if r2 == null goto label4;
+
+        $r5 = r0.<org.apache.commons.io.input.ReversedLinesFileReader$FilePart: byte[] data>;
+
+        $i11 = lengthof r2;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>(r2, 0, $r5, i1, $i11);
+
+     label4:
+        $r4 = r0.<org.apache.commons.io.input.ReversedLinesFileReader$FilePart: byte[] data>;
+
+        $i9 = lengthof $r4;
+
+        $i10 = $i9 - 1;
+
+        r0.<org.apache.commons.io.input.ReversedLinesFileReader$FilePart: int currentLastBytePos> = $i10;
+
+        r0.<org.apache.commons.io.input.ReversedLinesFileReader$FilePart: byte[] leftOver> = null;
+
+        return;
+    }
+
+    private org.apache.commons.io.input.ReversedLinesFileReader$FilePart rollOver() throws java.io.IOException
+    {
+        org.apache.commons.io.input.ReversedLinesFileReader$FilePart r0, $r10;
+        int $i0, $i5, $i6;
+        long $l1, $l3, $l4;
+        byte $b2;
+        byte[] $r1, $r6, $r13;
+        java.lang.IllegalStateException $r2, $r14;
+        java.lang.StringBuilder $r3, $r8, $r15, $r16;
+        java.lang.String $r4, $r9, $r17;
+        org.apache.commons.io.input.ReversedLinesFileReader $r5, $r11, $r12;
+        java.nio.charset.Charset $r7;
+
+        r0 := @this: org.apache.commons.io.input.ReversedLinesFileReader$FilePart;
+
+        $i0 = r0.<org.apache.commons.io.input.ReversedLinesFileReader$FilePart: int currentLastBytePos>;
+
+        if $i0 <= -1 goto label1;
+
+        $r14 = new java.lang.IllegalStateException;
+
+        $r15 = new java.lang.StringBuilder;
+
+        specialinvoke $r15.<java.lang.StringBuilder: void <init>(java.lang.String)>("Current currentLastCharPos unexpectedly positive... last readLine() should have returned something! currentLastCharPos=");
+
+        $i6 = r0.<org.apache.commons.io.input.ReversedLinesFileReader$FilePart: int currentLastBytePos>;
+
+        $r16 = virtualinvoke $r15.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i6);
+
+        $r17 = virtualinvoke $r16.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r14.<java.lang.IllegalStateException: void <init>(java.lang.String)>($r17);
+
+        throw $r14;
+
+     label1:
+        $l1 = r0.<org.apache.commons.io.input.ReversedLinesFileReader$FilePart: long no>;
+
+        $b2 = $l1 cmp 1L;
+
+        if $b2 <= 0 goto label2;
+
+        $r10 = new org.apache.commons.io.input.ReversedLinesFileReader$FilePart;
+
+        $r12 = r0.<org.apache.commons.io.input.ReversedLinesFileReader$FilePart: org.apache.commons.io.input.ReversedLinesFileReader this$0>;
+
+        $l3 = r0.<org.apache.commons.io.input.ReversedLinesFileReader$FilePart: long no>;
+
+        $l4 = $l3 - 1L;
+
+        $r11 = r0.<org.apache.commons.io.input.ReversedLinesFileReader$FilePart: org.apache.commons.io.input.ReversedLinesFileReader this$0>;
+
+        $i5 = staticinvoke <org.apache.commons.io.input.ReversedLinesFileReader: int access$0(org.apache.commons.io.input.ReversedLinesFileReader)>($r11);
+
+        $r13 = r0.<org.apache.commons.io.input.ReversedLinesFileReader$FilePart: byte[] leftOver>;
+
+        specialinvoke $r10.<org.apache.commons.io.input.ReversedLinesFileReader$FilePart: void <init>(org.apache.commons.io.input.ReversedLinesFileReader,long,int,byte[])>($r12, $l4, $i5, $r13);
+
+        return $r10;
+
+     label2:
+        $r1 = r0.<org.apache.commons.io.input.ReversedLinesFileReader$FilePart: byte[] leftOver>;
+
+        if $r1 == null goto label3;
+
+        $r2 = new java.lang.IllegalStateException;
+
+        $r3 = new java.lang.StringBuilder;
+
+        specialinvoke $r3.<java.lang.StringBuilder: void <init>(java.lang.String)>("Unexpected leftover of the last block: leftOverOfThisFilePart=");
+
+        $r4 = new java.lang.String;
+
+        $r6 = r0.<org.apache.commons.io.input.ReversedLinesFileReader$FilePart: byte[] leftOver>;
+
+        $r5 = r0.<org.apache.commons.io.input.ReversedLinesFileReader$FilePart: org.apache.commons.io.input.ReversedLinesFileReader this$0>;
+
+        $r7 = staticinvoke <org.apache.commons.io.input.ReversedLinesFileReader: java.nio.charset.Charset access$2(org.apache.commons.io.input.ReversedLinesFileReader)>($r5);
+
+        specialinvoke $r4.<java.lang.String: void <init>(byte[],java.nio.charset.Charset)>($r6, $r7);
+
+        $r8 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        $r9 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r2.<java.lang.IllegalStateException: void <init>(java.lang.String)>($r9);
+
+        throw $r2;
+
+     label3:
+        return null;
+    }
+
+    private java.lang.String readLine() throws java.io.IOException
+    {
+        org.apache.commons.io.input.ReversedLinesFileReader$FilePart r0;
+        boolean z0, $z1;
+        int i1, i2, $i5, $i6, $i7, $i8, $i9, $i10, i11;
+        byte[] r1, $r2, $r4, $r7, $r9;
+        long $l3;
+        byte $b4;
+        org.apache.commons.io.input.ReversedLinesFileReader $r3, $r6, $r11, $r17;
+        java.lang.String $r5, $r10, $r16, r18;
+        java.nio.charset.Charset $r8, $r12;
+        java.lang.IllegalStateException $r13;
+        java.lang.StringBuilder $r14, $r15;
+
+        r0 := @this: org.apache.commons.io.input.ReversedLinesFileReader$FilePart;
+
+        r18 = null;
+
+        $l3 = r0.<org.apache.commons.io.input.ReversedLinesFileReader$FilePart: long no>;
+
+        $b4 = $l3 cmp 1L;
+
+        if $b4 != 0 goto label1;
+
+        $z1 = 1;
+
+        goto label2;
+
+     label1:
+        $z1 = 0;
+
+     label2:
+        z0 = $z1;
+
+        i11 = r0.<org.apache.commons.io.input.ReversedLinesFileReader$FilePart: int currentLastBytePos>;
+
+        goto label7;
+
+     label3:
+        if z0 != 0 goto label4;
+
+        $r17 = r0.<org.apache.commons.io.input.ReversedLinesFileReader$FilePart: org.apache.commons.io.input.ReversedLinesFileReader this$0>;
+
+        $i10 = staticinvoke <org.apache.commons.io.input.ReversedLinesFileReader: int access$3(org.apache.commons.io.input.ReversedLinesFileReader)>($r17);
+
+        if i11 >= $i10 goto label4;
+
+        specialinvoke r0.<org.apache.commons.io.input.ReversedLinesFileReader$FilePart: void createLeftOver()>();
+
+        goto label8;
+
+     label4:
+        $r2 = r0.<org.apache.commons.io.input.ReversedLinesFileReader$FilePart: byte[] data>;
+
+        $i5 = specialinvoke r0.<org.apache.commons.io.input.ReversedLinesFileReader$FilePart: int getNewLineMatchByteCount(byte[],int)>($r2, i11);
+
+        if $i5 <= 0 goto label6;
+
+        i1 = i11 + 1;
+
+        $i7 = r0.<org.apache.commons.io.input.ReversedLinesFileReader$FilePart: int currentLastBytePos>;
+
+        $i8 = $i7 - i1;
+
+        i2 = $i8 + 1;
+
+        if i2 >= 0 goto label5;
+
+        $r13 = new java.lang.IllegalStateException;
+
+        $r14 = new java.lang.StringBuilder;
+
+        specialinvoke $r14.<java.lang.StringBuilder: void <init>(java.lang.String)>("Unexpected negative line length=");
+
+        $r15 = virtualinvoke $r14.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i2);
+
+        $r16 = virtualinvoke $r15.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r13.<java.lang.IllegalStateException: void <init>(java.lang.String)>($r16);
+
+        throw $r13;
+
+     label5:
+        r1 = newarray (byte)[i2];
+
+        $r9 = r0.<org.apache.commons.io.input.ReversedLinesFileReader$FilePart: byte[] data>;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>($r9, i1, r1, 0, i2);
+
+        $r10 = new java.lang.String;
+
+        $r11 = r0.<org.apache.commons.io.input.ReversedLinesFileReader$FilePart: org.apache.commons.io.input.ReversedLinesFileReader this$0>;
+
+        $r12 = staticinvoke <org.apache.commons.io.input.ReversedLinesFileReader: java.nio.charset.Charset access$2(org.apache.commons.io.input.ReversedLinesFileReader)>($r11);
+
+        specialinvoke $r10.<java.lang.String: void <init>(byte[],java.nio.charset.Charset)>(r1, $r12);
+
+        r18 = $r10;
+
+        $i9 = i11 - $i5;
+
+        r0.<org.apache.commons.io.input.ReversedLinesFileReader$FilePart: int currentLastBytePos> = $i9;
+
+        goto label8;
+
+     label6:
+        $r3 = r0.<org.apache.commons.io.input.ReversedLinesFileReader$FilePart: org.apache.commons.io.input.ReversedLinesFileReader this$0>;
+
+        $i6 = staticinvoke <org.apache.commons.io.input.ReversedLinesFileReader: int access$4(org.apache.commons.io.input.ReversedLinesFileReader)>($r3);
+
+        i11 = i11 - $i6;
+
+        if i11 >= 0 goto label7;
+
+        specialinvoke r0.<org.apache.commons.io.input.ReversedLinesFileReader$FilePart: void createLeftOver()>();
+
+        goto label8;
+
+     label7:
+        if i11 > -1 goto label3;
+
+     label8:
+        if z0 == 0 goto label9;
+
+        $r4 = r0.<org.apache.commons.io.input.ReversedLinesFileReader$FilePart: byte[] leftOver>;
+
+        if $r4 == null goto label9;
+
+        $r5 = new java.lang.String;
+
+        $r7 = r0.<org.apache.commons.io.input.ReversedLinesFileReader$FilePart: byte[] leftOver>;
+
+        $r6 = r0.<org.apache.commons.io.input.ReversedLinesFileReader$FilePart: org.apache.commons.io.input.ReversedLinesFileReader this$0>;
+
+        $r8 = staticinvoke <org.apache.commons.io.input.ReversedLinesFileReader: java.nio.charset.Charset access$2(org.apache.commons.io.input.ReversedLinesFileReader)>($r6);
+
+        specialinvoke $r5.<java.lang.String: void <init>(byte[],java.nio.charset.Charset)>($r7, $r8);
+
+        r18 = $r5;
+
+        r0.<org.apache.commons.io.input.ReversedLinesFileReader$FilePart: byte[] leftOver> = null;
+
+     label9:
+        return r18;
+    }
+
+    private void createLeftOver()
+    {
+        org.apache.commons.io.input.ReversedLinesFileReader$FilePart r0;
+        int i0, $i1;
+        byte[] $r1, $r2, $r3;
+
+        r0 := @this: org.apache.commons.io.input.ReversedLinesFileReader$FilePart;
+
+        $i1 = r0.<org.apache.commons.io.input.ReversedLinesFileReader$FilePart: int currentLastBytePos>;
+
+        i0 = $i1 + 1;
+
+        if i0 <= 0 goto label1;
+
+        $r1 = newarray (byte)[i0];
+
+        r0.<org.apache.commons.io.input.ReversedLinesFileReader$FilePart: byte[] leftOver> = $r1;
+
+        $r3 = r0.<org.apache.commons.io.input.ReversedLinesFileReader$FilePart: byte[] data>;
+
+        $r2 = r0.<org.apache.commons.io.input.ReversedLinesFileReader$FilePart: byte[] leftOver>;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>($r3, 0, $r2, 0, i0);
+
+        goto label2;
+
+     label1:
+        r0.<org.apache.commons.io.input.ReversedLinesFileReader$FilePart: byte[] leftOver> = null;
+
+     label2:
+        r0.<org.apache.commons.io.input.ReversedLinesFileReader$FilePart: int currentLastBytePos> = -1;
+
+        return;
+    }
+
+    private int getNewLineMatchByteCount(byte[], int)
+    {
+        org.apache.commons.io.input.ReversedLinesFileReader$FilePart r0;
+        byte[] r1, r2;
+        int i0, i1, i2, $i3, $i4, $i5, $i6, $i9, i10, i11;
+        org.apache.commons.io.input.ReversedLinesFileReader $r4;
+        byte[][] $r5;
+        byte $b7, $b8;
+        boolean z0, $z1, $z2;
+
+        r0 := @this: org.apache.commons.io.input.ReversedLinesFileReader$FilePart;
+
+        r1 := @parameter0: byte[];
+
+        i0 := @parameter1: int;
+
+        $r4 = r0.<org.apache.commons.io.input.ReversedLinesFileReader$FilePart: org.apache.commons.io.input.ReversedLinesFileReader this$0>;
+
+        $r5 = staticinvoke <org.apache.commons.io.input.ReversedLinesFileReader: byte[][] access$5(org.apache.commons.io.input.ReversedLinesFileReader)>($r4);
+
+        i1 = lengthof $r5;
+
+        i10 = 0;
+
+        goto label7;
+
+     label1:
+        r2 = $r5[i10];
+
+        z0 = 1;
+
+        $i3 = lengthof r2;
+
+        i11 = $i3 - 1;
+
+        goto label5;
+
+     label2:
+        $i6 = i0 + i11;
+
+        $i4 = lengthof r2;
+
+        $i5 = $i4 - 1;
+
+        i2 = $i6 - $i5;
+
+        $z1 = z0;
+
+        if i2 < 0 goto label3;
+
+        $b8 = r1[i2];
+
+        $b7 = r2[i11];
+
+        if $b8 != $b7 goto label3;
+
+        $z2 = 1;
+
+        goto label4;
+
+     label3:
+        $z2 = 0;
+
+     label4:
+        z0 = $z1 & $z2;
+
+        i11 = i11 + -1;
+
+     label5:
+        if i11 >= 0 goto label2;
+
+        if z0 == 0 goto label6;
+
+        $i9 = lengthof r2;
+
+        return $i9;
+
+     label6:
+        i10 = i10 + 1;
+
+     label7:
+        if i10 < i1 goto label1;
+
+        return 0;
+    }
+
+    void <init>(org.apache.commons.io.input.ReversedLinesFileReader, long, int, byte[], org.apache.commons.io.input.ReversedLinesFileReader$FilePart) throws java.io.IOException
+    {
+        org.apache.commons.io.input.ReversedLinesFileReader$FilePart r0, r3;
+        org.apache.commons.io.input.ReversedLinesFileReader r1;
+        long l0;
+        int i1;
+        byte[] r2;
+
+        r0 := @this: org.apache.commons.io.input.ReversedLinesFileReader$FilePart;
+
+        r1 := @parameter0: org.apache.commons.io.input.ReversedLinesFileReader;
+
+        l0 := @parameter1: long;
+
+        i1 := @parameter2: int;
+
+        r2 := @parameter3: byte[];
+
+        r3 := @parameter4: org.apache.commons.io.input.ReversedLinesFileReader$FilePart;
+
+        specialinvoke r0.<org.apache.commons.io.input.ReversedLinesFileReader$FilePart: void <init>(org.apache.commons.io.input.ReversedLinesFileReader,long,int,byte[])>(r1, l0, i1, r2);
+
+        return;
+    }
+
+    static java.lang.String access$1(org.apache.commons.io.input.ReversedLinesFileReader$FilePart) throws java.io.IOException
+    {
+        org.apache.commons.io.input.ReversedLinesFileReader$FilePart r0;
+        java.lang.String $r1;
+
+        r0 := @parameter0: org.apache.commons.io.input.ReversedLinesFileReader$FilePart;
+
+        $r1 = specialinvoke r0.<org.apache.commons.io.input.ReversedLinesFileReader$FilePart: java.lang.String readLine()>();
+
+        return $r1;
+    }
+
+    static org.apache.commons.io.input.ReversedLinesFileReader$FilePart access$2(org.apache.commons.io.input.ReversedLinesFileReader$FilePart) throws java.io.IOException
+    {
+        org.apache.commons.io.input.ReversedLinesFileReader$FilePart r0, $r1;
+
+        r0 := @parameter0: org.apache.commons.io.input.ReversedLinesFileReader$FilePart;
+
+        $r1 = specialinvoke r0.<org.apache.commons.io.input.ReversedLinesFileReader$FilePart: org.apache.commons.io.input.ReversedLinesFileReader$FilePart rollOver()>();
+
+        return $r1;
+    }
+}

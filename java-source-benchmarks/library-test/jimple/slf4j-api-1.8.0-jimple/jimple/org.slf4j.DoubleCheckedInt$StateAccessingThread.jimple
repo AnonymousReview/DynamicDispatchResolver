@@ -1,0 +1,55 @@
+class org.slf4j.DoubleCheckedInt$StateAccessingThread extends java.lang.Thread
+{
+    public int state;
+    final java.util.concurrent.CyclicBarrier barrier;
+
+    void <init>(java.util.concurrent.CyclicBarrier)
+    {
+        org.slf4j.DoubleCheckedInt$StateAccessingThread r0;
+        java.util.concurrent.CyclicBarrier r1;
+
+        r0 := @this: org.slf4j.DoubleCheckedInt$StateAccessingThread;
+
+        r1 := @parameter0: java.util.concurrent.CyclicBarrier;
+
+        specialinvoke r0.<java.lang.Thread: void <init>()>();
+
+        r0.<org.slf4j.DoubleCheckedInt$StateAccessingThread: int state> = -1;
+
+        r0.<org.slf4j.DoubleCheckedInt$StateAccessingThread: java.util.concurrent.CyclicBarrier barrier> = r1;
+
+        return;
+    }
+
+    public void run()
+    {
+        org.slf4j.DoubleCheckedInt$StateAccessingThread r0;
+        java.util.concurrent.CyclicBarrier $r2;
+        int $i1;
+        java.lang.Exception $r3;
+
+        r0 := @this: org.slf4j.DoubleCheckedInt$StateAccessingThread;
+
+     label1:
+        $r2 = r0.<org.slf4j.DoubleCheckedInt$StateAccessingThread: java.util.concurrent.CyclicBarrier barrier>;
+
+        virtualinvoke $r2.<java.util.concurrent.CyclicBarrier: int await()>();
+
+     label2:
+        goto label4;
+
+     label3:
+        $r3 := @caughtexception;
+
+        virtualinvoke $r3.<java.lang.Exception: void printStackTrace()>();
+
+     label4:
+        $i1 = staticinvoke <org.slf4j.DoubleCheckedInt: int getState()>();
+
+        r0.<org.slf4j.DoubleCheckedInt$StateAccessingThread: int state> = $i1;
+
+        return;
+
+        catch java.lang.Exception from label1 to label2 with label3;
+    }
+}

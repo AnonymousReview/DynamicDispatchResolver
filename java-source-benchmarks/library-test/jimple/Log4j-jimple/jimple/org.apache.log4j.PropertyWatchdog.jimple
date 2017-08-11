@@ -1,0 +1,39 @@
+class org.apache.log4j.PropertyWatchdog extends org.apache.log4j.helpers.FileWatchdog
+{
+
+    void <init>(java.lang.String)
+    {
+        org.apache.log4j.PropertyWatchdog r0;
+        java.lang.String r1;
+
+        r0 := @this: org.apache.log4j.PropertyWatchdog;
+
+        r1 := @parameter0: java.lang.String;
+
+        specialinvoke r0.<org.apache.log4j.helpers.FileWatchdog: void <init>(java.lang.String)>(r1);
+
+        return;
+    }
+
+    public void doOnChange()
+    {
+        org.apache.log4j.PropertyWatchdog r0;
+        org.apache.log4j.PropertyConfigurator $r1;
+        java.lang.String $r2;
+        org.apache.log4j.spi.LoggerRepository $r3;
+
+        r0 := @this: org.apache.log4j.PropertyWatchdog;
+
+        $r1 = new org.apache.log4j.PropertyConfigurator;
+
+        specialinvoke $r1.<org.apache.log4j.PropertyConfigurator: void <init>()>();
+
+        $r2 = r0.<org.apache.log4j.PropertyWatchdog: java.lang.String filename>;
+
+        $r3 = staticinvoke <org.apache.log4j.LogManager: org.apache.log4j.spi.LoggerRepository getLoggerRepository()>();
+
+        virtualinvoke $r1.<org.apache.log4j.PropertyConfigurator: void doConfigure(java.lang.String,org.apache.log4j.spi.LoggerRepository)>($r2, $r3);
+
+        return;
+    }
+}

@@ -1,0 +1,237 @@
+public class org.apache.log4j.util.SerializationTestHelper extends java.lang.Object
+{
+
+    private void <init>()
+    {
+        org.apache.log4j.util.SerializationTestHelper r0;
+
+        r0 := @this: org.apache.log4j.util.SerializationTestHelper;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static java.lang.Object serializeClone(java.lang.Object) throws java.io.IOException, java.lang.ClassNotFoundException
+    {
+        java.lang.Object r0, $r10;
+        java.io.ByteArrayOutputStream $r5;
+        java.io.ObjectOutputStream $r6;
+        java.io.ByteArrayInputStream $r7;
+        byte[] $r8;
+        java.io.ObjectInputStream $r9;
+
+        r0 := @parameter0: java.lang.Object;
+
+        $r5 = new java.io.ByteArrayOutputStream;
+
+        specialinvoke $r5.<java.io.ByteArrayOutputStream: void <init>()>();
+
+        $r6 = new java.io.ObjectOutputStream;
+
+        specialinvoke $r6.<java.io.ObjectOutputStream: void <init>(java.io.OutputStream)>($r5);
+
+        virtualinvoke $r6.<java.io.ObjectOutputStream: void writeObject(java.lang.Object)>(r0);
+
+        virtualinvoke $r6.<java.io.ObjectOutputStream: void close()>();
+
+        $r7 = new java.io.ByteArrayInputStream;
+
+        $r8 = virtualinvoke $r5.<java.io.ByteArrayOutputStream: byte[] toByteArray()>();
+
+        specialinvoke $r7.<java.io.ByteArrayInputStream: void <init>(byte[])>($r8);
+
+        $r9 = new java.io.ObjectInputStream;
+
+        specialinvoke $r9.<java.io.ObjectInputStream: void <init>(java.io.InputStream)>($r7);
+
+        $r10 = virtualinvoke $r9.<java.io.ObjectInputStream: java.lang.Object readObject()>();
+
+        return $r10;
+    }
+
+    public static java.lang.Object deserializeStream(java.lang.String) throws java.lang.Exception
+    {
+        java.lang.String r0;
+        java.io.FileInputStream $r3;
+        java.io.ObjectInputStream $r4;
+        java.lang.Object $r5;
+
+        r0 := @parameter0: java.lang.String;
+
+        $r3 = new java.io.FileInputStream;
+
+        specialinvoke $r3.<java.io.FileInputStream: void <init>(java.lang.String)>(r0);
+
+        $r4 = new java.io.ObjectInputStream;
+
+        specialinvoke $r4.<java.io.ObjectInputStream: void <init>(java.io.InputStream)>($r3);
+
+        $r5 = virtualinvoke $r4.<java.io.ObjectInputStream: java.lang.Object readObject()>();
+
+        return $r5;
+    }
+
+    public static void assertSerializationEquals(java.lang.String, java.lang.Object, int[], int) throws java.lang.Exception
+    {
+        java.lang.String r0;
+        java.lang.Object r1;
+        int[] r2;
+        int i0;
+        java.io.ByteArrayOutputStream $r5;
+        java.io.ObjectOutputStream $r6;
+        byte[] $r7;
+
+        r0 := @parameter0: java.lang.String;
+
+        r1 := @parameter1: java.lang.Object;
+
+        r2 := @parameter2: int[];
+
+        i0 := @parameter3: int;
+
+        $r5 = new java.io.ByteArrayOutputStream;
+
+        specialinvoke $r5.<java.io.ByteArrayOutputStream: void <init>()>();
+
+        $r6 = new java.io.ObjectOutputStream;
+
+        specialinvoke $r6.<java.io.ObjectOutputStream: void <init>(java.io.OutputStream)>($r5);
+
+        virtualinvoke $r6.<java.io.ObjectOutputStream: void writeObject(java.lang.Object)>(r1);
+
+        virtualinvoke $r6.<java.io.ObjectOutputStream: void close()>();
+
+        $r7 = virtualinvoke $r5.<java.io.ByteArrayOutputStream: byte[] toByteArray()>();
+
+        staticinvoke <org.apache.log4j.util.SerializationTestHelper: void assertStreamEquals(java.lang.String,byte[],int[],int)>(r0, $r7, r2, i0);
+
+        return;
+    }
+
+    public static void assertStreamEquals(java.lang.String, byte[], int[], int) throws java.io.IOException
+    {
+        java.lang.String r0, $r10, $r14;
+        byte[] r1, r4;
+        int[] r2;
+        int i0, i1, $i2, $i3, $i8, $i9, i10, i11, i12;
+        java.io.File $r6;
+        boolean $z0;
+        java.io.FileOutputStream $r7;
+        java.lang.StringBuilder $r8, $r9, $r12, $r13;
+        java.io.FileInputStream $r11;
+        byte $b4, $b5, $b6, $b7;
+
+        r0 := @parameter0: java.lang.String;
+
+        r1 := @parameter1: byte[];
+
+        r2 := @parameter2: int[];
+
+        i0 := @parameter3: int;
+
+        $r6 = new java.io.File;
+
+        specialinvoke $r6.<java.io.File: void <init>(java.lang.String)>(r0);
+
+        $z0 = virtualinvoke $r6.<java.io.File: boolean exists()>();
+
+        if $z0 == 0 goto label7;
+
+        i10 = 0;
+
+        $i2 = lengthof r1;
+
+        r4 = newarray (byte)[$i2];
+
+        $r11 = new java.io.FileInputStream;
+
+        specialinvoke $r11.<java.io.FileInputStream: void <init>(java.io.File)>($r6);
+
+        i1 = virtualinvoke $r11.<java.io.FileInputStream: int read(byte[])>(r4);
+
+        virtualinvoke $r11.<java.io.FileInputStream: void close()>();
+
+        if i1 >= i0 goto label1;
+
+        $i9 = lengthof r1;
+
+        staticinvoke <junit.framework.TestCase: void assertEquals(int,int)>(i1, $i9);
+
+     label1:
+        i11 = lengthof r1;
+
+        if i11 <= i0 goto label2;
+
+        i11 = i0;
+
+     label2:
+        i12 = 0;
+
+        goto label6;
+
+     label3:
+        $i3 = lengthof r2;
+
+        if i10 >= $i3 goto label4;
+
+        $i8 = r2[i10];
+
+        if $i8 != i12 goto label4;
+
+        i10 = i10 + 1;
+
+        goto label5;
+
+     label4:
+        $b5 = r4[i12];
+
+        $b4 = r1[i12];
+
+        if $b5 == $b4 goto label5;
+
+        $r12 = new java.lang.StringBuilder;
+
+        specialinvoke $r12.<java.lang.StringBuilder: void <init>(java.lang.String)>("Difference at offset ");
+
+        $r13 = virtualinvoke $r12.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i12);
+
+        $r14 = virtualinvoke $r13.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $b7 = r4[i12];
+
+        $b6 = r1[i12];
+
+        staticinvoke <junit.framework.TestCase: void assertEquals(java.lang.String,byte,byte)>($r14, $b7, $b6);
+
+     label5:
+        i12 = i12 + 1;
+
+     label6:
+        if i12 < i11 goto label3;
+
+        goto label8;
+
+     label7:
+        $r7 = new java.io.FileOutputStream;
+
+        specialinvoke $r7.<java.io.FileOutputStream: void <init>(java.io.File)>($r6);
+
+        virtualinvoke $r7.<java.io.FileOutputStream: void write(byte[])>(r1);
+
+        virtualinvoke $r7.<java.io.FileOutputStream: void close()>();
+
+        $r8 = new java.lang.StringBuilder;
+
+        specialinvoke $r8.<java.lang.StringBuilder: void <init>(java.lang.String)>("Writing witness file ");
+
+        $r9 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r0);
+
+        $r10 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <junit.framework.TestCase: void fail(java.lang.String)>($r10);
+
+     label8:
+        return;
+    }
+}

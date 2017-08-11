@@ -1,0 +1,456 @@
+public class org.apache.log4j.helpers.DateLayoutTest extends org.apache.log4j.LayoutTest
+{
+
+    public void <init>(java.lang.String)
+    {
+        org.apache.log4j.helpers.DateLayoutTest r0;
+        java.lang.String r1;
+
+        r0 := @this: org.apache.log4j.helpers.DateLayoutTest;
+
+        r1 := @parameter0: java.lang.String;
+
+        specialinvoke r0.<org.apache.log4j.LayoutTest: void <init>(java.lang.String)>(r1);
+
+        return;
+    }
+
+    protected void <init>(java.lang.String, java.lang.String, boolean, java.lang.String, java.lang.String)
+    {
+        org.apache.log4j.helpers.DateLayoutTest r0;
+        java.lang.String r1, r2, r3, r4;
+        boolean z0;
+
+        r0 := @this: org.apache.log4j.helpers.DateLayoutTest;
+
+        r1 := @parameter0: java.lang.String;
+
+        r2 := @parameter1: java.lang.String;
+
+        z0 := @parameter2: boolean;
+
+        r3 := @parameter3: java.lang.String;
+
+        r4 := @parameter4: java.lang.String;
+
+        specialinvoke r0.<org.apache.log4j.LayoutTest: void <init>(java.lang.String,java.lang.String,boolean,java.lang.String,java.lang.String)>(r1, r2, z0, r3, r4);
+
+        return;
+    }
+
+    protected org.apache.log4j.Layout createLayout()
+    {
+        org.apache.log4j.helpers.DateLayoutTest r0;
+        org.apache.log4j.helpers.DateLayoutTest$MockLayout $r1;
+
+        r0 := @this: org.apache.log4j.helpers.DateLayoutTest;
+
+        $r1 = new org.apache.log4j.helpers.DateLayoutTest$MockLayout;
+
+        specialinvoke $r1.<org.apache.log4j.helpers.DateLayoutTest$MockLayout: void <init>()>();
+
+        return $r1;
+    }
+
+    public void testNullDateFormat()
+    {
+        org.apache.log4j.helpers.DateLayoutTest r0;
+
+        r0 := @this: org.apache.log4j.helpers.DateLayoutTest;
+
+        staticinvoke <org.apache.log4j.helpers.DateLayoutTest: void assertEquals(java.lang.String,java.lang.String)>("NULL", "NULL");
+
+        return;
+    }
+
+    public void testRelativeTimeDateFormat()
+    {
+        org.apache.log4j.helpers.DateLayoutTest r0;
+
+        r0 := @this: org.apache.log4j.helpers.DateLayoutTest;
+
+        staticinvoke <org.apache.log4j.helpers.DateLayoutTest: void assertEquals(java.lang.String,java.lang.String)>("RELATIVE", "RELATIVE");
+
+        return;
+    }
+
+    public void testDateFormatOption()
+    {
+        org.apache.log4j.helpers.DateLayoutTest r0;
+
+        r0 := @this: org.apache.log4j.helpers.DateLayoutTest;
+
+        staticinvoke <org.apache.log4j.helpers.DateLayoutTest: void assertEquals(java.lang.String,java.lang.String)>("DateFormat", "DateFormat");
+
+        return;
+    }
+
+    public void testTimeZoneOption()
+    {
+        org.apache.log4j.helpers.DateLayoutTest r0;
+
+        r0 := @this: org.apache.log4j.helpers.DateLayoutTest;
+
+        staticinvoke <org.apache.log4j.helpers.DateLayoutTest: void assertEquals(java.lang.String,java.lang.String)>("TimeZone", "TimeZone");
+
+        return;
+    }
+
+    public void testGetOptionStrings()
+    {
+        org.apache.log4j.helpers.DateLayoutTest r0;
+        java.lang.String[] r1;
+        org.apache.log4j.Layout $r2;
+        org.apache.log4j.helpers.DateLayout $r3;
+        int $i0;
+
+        r0 := @this: org.apache.log4j.helpers.DateLayoutTest;
+
+        $r2 = virtualinvoke r0.<org.apache.log4j.helpers.DateLayoutTest: org.apache.log4j.Layout createLayout()>();
+
+        $r3 = (org.apache.log4j.helpers.DateLayout) $r2;
+
+        r1 = virtualinvoke $r3.<org.apache.log4j.helpers.DateLayout: java.lang.String[] getOptionStrings()>();
+
+        $i0 = lengthof r1;
+
+        staticinvoke <org.apache.log4j.helpers.DateLayoutTest: void assertEquals(int,int)>(2, $i0);
+
+        return;
+    }
+
+    public void testSetOptionDateFormat()
+    {
+        org.apache.log4j.helpers.DateLayoutTest r0;
+        org.apache.log4j.helpers.DateLayout r1;
+        org.apache.log4j.Layout $r2;
+        java.lang.String $r3;
+
+        r0 := @this: org.apache.log4j.helpers.DateLayoutTest;
+
+        $r2 = virtualinvoke r0.<org.apache.log4j.helpers.DateLayoutTest: org.apache.log4j.Layout createLayout()>();
+
+        r1 = (org.apache.log4j.helpers.DateLayout) $r2;
+
+        virtualinvoke r1.<org.apache.log4j.helpers.DateLayout: void setOption(java.lang.String,java.lang.String)>("dAtefOrmat", "foobar");
+
+        $r3 = virtualinvoke r1.<org.apache.log4j.helpers.DateLayout: java.lang.String getDateFormat()>();
+
+        staticinvoke <org.apache.log4j.helpers.DateLayoutTest: void assertEquals(java.lang.String,java.lang.String)>("FOOBAR", $r3);
+
+        return;
+    }
+
+    public void testSetOptionTimeZone()
+    {
+        org.apache.log4j.helpers.DateLayoutTest r0;
+        org.apache.log4j.helpers.DateLayout r1;
+        org.apache.log4j.Layout $r2;
+        java.lang.String $r3;
+
+        r0 := @this: org.apache.log4j.helpers.DateLayoutTest;
+
+        $r2 = virtualinvoke r0.<org.apache.log4j.helpers.DateLayoutTest: org.apache.log4j.Layout createLayout()>();
+
+        r1 = (org.apache.log4j.helpers.DateLayout) $r2;
+
+        virtualinvoke r1.<org.apache.log4j.helpers.DateLayout: void setOption(java.lang.String,java.lang.String)>("tImezOne", "+05:00");
+
+        $r3 = virtualinvoke r1.<org.apache.log4j.helpers.DateLayout: java.lang.String getTimeZone()>();
+
+        staticinvoke <org.apache.log4j.helpers.DateLayoutTest: void assertEquals(java.lang.String,java.lang.String)>("+05:00", $r3);
+
+        return;
+    }
+
+    public void testSetDateFormat()
+    {
+        org.apache.log4j.helpers.DateLayoutTest r0;
+        org.apache.log4j.helpers.DateLayout r1;
+        org.apache.log4j.Layout $r2;
+        java.lang.String $r3;
+
+        r0 := @this: org.apache.log4j.helpers.DateLayoutTest;
+
+        $r2 = virtualinvoke r0.<org.apache.log4j.helpers.DateLayoutTest: org.apache.log4j.Layout createLayout()>();
+
+        r1 = (org.apache.log4j.helpers.DateLayout) $r2;
+
+        virtualinvoke r1.<org.apache.log4j.helpers.DateLayout: void setDateFormat(java.lang.String)>("ABSOLUTE");
+
+        $r3 = virtualinvoke r1.<org.apache.log4j.helpers.DateLayout: java.lang.String getDateFormat()>();
+
+        staticinvoke <org.apache.log4j.helpers.DateLayoutTest: void assertEquals(java.lang.String,java.lang.String)>("ABSOLUTE", $r3);
+
+        return;
+    }
+
+    public void testSetTimeZone()
+    {
+        org.apache.log4j.helpers.DateLayoutTest r0;
+        org.apache.log4j.helpers.DateLayout r1;
+        org.apache.log4j.Layout $r2;
+        java.lang.String $r3;
+
+        r0 := @this: org.apache.log4j.helpers.DateLayoutTest;
+
+        $r2 = virtualinvoke r0.<org.apache.log4j.helpers.DateLayoutTest: org.apache.log4j.Layout createLayout()>();
+
+        r1 = (org.apache.log4j.helpers.DateLayout) $r2;
+
+        virtualinvoke r1.<org.apache.log4j.helpers.DateLayout: void setTimeZone(java.lang.String)>("+05:00");
+
+        $r3 = virtualinvoke r1.<org.apache.log4j.helpers.DateLayout: java.lang.String getTimeZone()>();
+
+        staticinvoke <org.apache.log4j.helpers.DateLayoutTest: void assertEquals(java.lang.String,java.lang.String)>("+05:00", $r3);
+
+        return;
+    }
+
+    public void testSetDateFormatNull()
+    {
+        org.apache.log4j.helpers.DateLayoutTest r0;
+        org.apache.log4j.helpers.DateLayout r1;
+        org.apache.log4j.Layout $r2;
+
+        r0 := @this: org.apache.log4j.helpers.DateLayoutTest;
+
+        $r2 = virtualinvoke r0.<org.apache.log4j.helpers.DateLayoutTest: org.apache.log4j.Layout createLayout()>();
+
+        r1 = (org.apache.log4j.helpers.DateLayout) $r2;
+
+        virtualinvoke r1.<org.apache.log4j.helpers.DateLayout: void setDateFormat(java.lang.String,java.util.TimeZone)>(null, null);
+
+        return;
+    }
+
+    public void testSetDateFormatNullString()
+    {
+        org.apache.log4j.helpers.DateLayoutTest r0;
+        org.apache.log4j.helpers.DateLayout r1;
+        org.apache.log4j.Layout $r2;
+
+        r0 := @this: org.apache.log4j.helpers.DateLayoutTest;
+
+        $r2 = virtualinvoke r0.<org.apache.log4j.helpers.DateLayoutTest: org.apache.log4j.Layout createLayout()>();
+
+        r1 = (org.apache.log4j.helpers.DateLayout) $r2;
+
+        virtualinvoke r1.<org.apache.log4j.helpers.DateLayout: void setDateFormat(java.lang.String,java.util.TimeZone)>("NuLL", null);
+
+        return;
+    }
+
+    public void testSetDateFormatRelative()
+    {
+        org.apache.log4j.helpers.DateLayoutTest r0;
+        org.apache.log4j.helpers.DateLayout r1;
+        org.apache.log4j.Layout $r2;
+        java.util.TimeZone $r3;
+
+        r0 := @this: org.apache.log4j.helpers.DateLayoutTest;
+
+        $r2 = virtualinvoke r0.<org.apache.log4j.helpers.DateLayoutTest: org.apache.log4j.Layout createLayout()>();
+
+        r1 = (org.apache.log4j.helpers.DateLayout) $r2;
+
+        $r3 = staticinvoke <java.util.TimeZone: java.util.TimeZone getDefault()>();
+
+        virtualinvoke r1.<org.apache.log4j.helpers.DateLayout: void setDateFormat(java.lang.String,java.util.TimeZone)>("rElatIve", $r3);
+
+        return;
+    }
+
+    public void testSetDateFormatAbsolute()
+    {
+        org.apache.log4j.helpers.DateLayoutTest r0;
+        org.apache.log4j.helpers.DateLayout r1;
+        org.apache.log4j.Layout $r2;
+        java.util.TimeZone $r3;
+
+        r0 := @this: org.apache.log4j.helpers.DateLayoutTest;
+
+        $r2 = virtualinvoke r0.<org.apache.log4j.helpers.DateLayoutTest: org.apache.log4j.Layout createLayout()>();
+
+        r1 = (org.apache.log4j.helpers.DateLayout) $r2;
+
+        $r3 = staticinvoke <java.util.TimeZone: java.util.TimeZone getDefault()>();
+
+        virtualinvoke r1.<org.apache.log4j.helpers.DateLayout: void setDateFormat(java.lang.String,java.util.TimeZone)>("aBsolUte", $r3);
+
+        return;
+    }
+
+    public void testSetDateFormatDateTime()
+    {
+        org.apache.log4j.helpers.DateLayoutTest r0;
+        org.apache.log4j.helpers.DateLayout r1;
+        org.apache.log4j.Layout $r2;
+        java.util.TimeZone $r3;
+
+        r0 := @this: org.apache.log4j.helpers.DateLayoutTest;
+
+        $r2 = virtualinvoke r0.<org.apache.log4j.helpers.DateLayoutTest: org.apache.log4j.Layout createLayout()>();
+
+        r1 = (org.apache.log4j.helpers.DateLayout) $r2;
+
+        $r3 = staticinvoke <java.util.TimeZone: java.util.TimeZone getDefault()>();
+
+        virtualinvoke r1.<org.apache.log4j.helpers.DateLayout: void setDateFormat(java.lang.String,java.util.TimeZone)>("dAte", $r3);
+
+        return;
+    }
+
+    public void testSetDateFormatISO8601()
+    {
+        org.apache.log4j.helpers.DateLayoutTest r0;
+        org.apache.log4j.helpers.DateLayout r1;
+        org.apache.log4j.Layout $r2;
+        java.util.TimeZone $r3;
+
+        r0 := @this: org.apache.log4j.helpers.DateLayoutTest;
+
+        $r2 = virtualinvoke r0.<org.apache.log4j.helpers.DateLayoutTest: org.apache.log4j.Layout createLayout()>();
+
+        r1 = (org.apache.log4j.helpers.DateLayout) $r2;
+
+        $r3 = staticinvoke <java.util.TimeZone: java.util.TimeZone getDefault()>();
+
+        virtualinvoke r1.<org.apache.log4j.helpers.DateLayout: void setDateFormat(java.lang.String,java.util.TimeZone)>("iSo8601", $r3);
+
+        return;
+    }
+
+    public void testSetDateFormatSimple()
+    {
+        org.apache.log4j.helpers.DateLayoutTest r0;
+        org.apache.log4j.helpers.DateLayout r1;
+        org.apache.log4j.Layout $r2;
+        java.util.TimeZone $r3;
+
+        r0 := @this: org.apache.log4j.helpers.DateLayoutTest;
+
+        $r2 = virtualinvoke r0.<org.apache.log4j.helpers.DateLayoutTest: org.apache.log4j.Layout createLayout()>();
+
+        r1 = (org.apache.log4j.helpers.DateLayout) $r2;
+
+        $r3 = staticinvoke <java.util.TimeZone: java.util.TimeZone getDefault()>();
+
+        virtualinvoke r1.<org.apache.log4j.helpers.DateLayout: void setDateFormat(java.lang.String,java.util.TimeZone)>("HH:mm:ss", $r3);
+
+        return;
+    }
+
+    public void testActivateOptions()
+    {
+        org.apache.log4j.helpers.DateLayoutTest r0;
+        org.apache.log4j.helpers.DateLayout r1;
+        org.apache.log4j.Layout $r2;
+
+        r0 := @this: org.apache.log4j.helpers.DateLayoutTest;
+
+        $r2 = virtualinvoke r0.<org.apache.log4j.helpers.DateLayoutTest: org.apache.log4j.Layout createLayout()>();
+
+        r1 = (org.apache.log4j.helpers.DateLayout) $r2;
+
+        virtualinvoke r1.<org.apache.log4j.helpers.DateLayout: void setDateFormat(java.lang.String)>("HH:mm:ss");
+
+        virtualinvoke r1.<org.apache.log4j.helpers.DateLayout: void setTimeZone(java.lang.String)>("+05:00");
+
+        virtualinvoke r1.<org.apache.log4j.helpers.DateLayout: void activateOptions()>();
+
+        return;
+    }
+
+    public void testSetDateFormatWithFormat()
+    {
+        org.apache.log4j.helpers.DateLayoutTest r0;
+        org.apache.log4j.helpers.DateLayout r2;
+        java.text.SimpleDateFormat $r3;
+        org.apache.log4j.Layout $r4;
+        java.util.TimeZone $r5;
+
+        r0 := @this: org.apache.log4j.helpers.DateLayoutTest;
+
+        $r3 = new java.text.SimpleDateFormat;
+
+        specialinvoke $r3.<java.text.SimpleDateFormat: void <init>(java.lang.String)>("HH:mm");
+
+        $r4 = virtualinvoke r0.<org.apache.log4j.helpers.DateLayoutTest: org.apache.log4j.Layout createLayout()>();
+
+        r2 = (org.apache.log4j.helpers.DateLayout) $r4;
+
+        $r5 = staticinvoke <java.util.TimeZone: java.util.TimeZone getDefault()>();
+
+        virtualinvoke r2.<org.apache.log4j.helpers.DateLayout: void setDateFormat(java.text.DateFormat,java.util.TimeZone)>($r3, $r5);
+
+        return;
+    }
+
+    public void testISO8601Format()
+    {
+        org.apache.log4j.helpers.DateLayoutTest r0;
+        java.util.Calendar r2;
+        java.lang.String r3;
+        org.apache.log4j.helpers.ISO8601DateFormat $r4;
+        java.util.Date $r5;
+
+        r0 := @this: org.apache.log4j.helpers.DateLayoutTest;
+
+        $r4 = new org.apache.log4j.helpers.ISO8601DateFormat;
+
+        specialinvoke $r4.<org.apache.log4j.helpers.ISO8601DateFormat: void <init>()>();
+
+        r2 = staticinvoke <java.util.Calendar: java.util.Calendar getInstance()>();
+
+        virtualinvoke r2.<java.util.Calendar: void clear()>();
+
+        virtualinvoke r2.<java.util.Calendar: void set(int,int,int,int,int,int)>(1970, 0, 1, 0, 0, 0);
+
+        $r5 = virtualinvoke r2.<java.util.Calendar: java.util.Date getTime()>();
+
+        r3 = virtualinvoke $r4.<java.text.DateFormat: java.lang.String format(java.util.Date)>($r5);
+
+        staticinvoke <org.apache.log4j.helpers.DateLayoutTest: void assertEquals(java.lang.String,java.lang.String)>("1970-01-01 00:00:00,000", r3);
+
+        return;
+    }
+
+    public void testDateTimeFormat()
+    {
+        org.apache.log4j.helpers.DateLayoutTest r0;
+        java.util.Calendar r2;
+        java.lang.String r3, r5;
+        org.apache.log4j.helpers.DateTimeDateFormat $r6;
+        java.util.Date $r7, $r9;
+        java.text.SimpleDateFormat $r8;
+
+        r0 := @this: org.apache.log4j.helpers.DateLayoutTest;
+
+        $r6 = new org.apache.log4j.helpers.DateTimeDateFormat;
+
+        specialinvoke $r6.<org.apache.log4j.helpers.DateTimeDateFormat: void <init>()>();
+
+        r2 = staticinvoke <java.util.Calendar: java.util.Calendar getInstance()>();
+
+        virtualinvoke r2.<java.util.Calendar: void clear()>();
+
+        virtualinvoke r2.<java.util.Calendar: void set(int,int,int,int,int,int)>(1970, 0, 1, 0, 0, 0);
+
+        $r7 = virtualinvoke r2.<java.util.Calendar: java.util.Date getTime()>();
+
+        r3 = virtualinvoke $r6.<java.text.DateFormat: java.lang.String format(java.util.Date)>($r7);
+
+        $r8 = new java.text.SimpleDateFormat;
+
+        specialinvoke $r8.<java.text.SimpleDateFormat: void <init>(java.lang.String)>("dd MMM yyyy HH:mm:ss,SSS");
+
+        $r9 = virtualinvoke r2.<java.util.Calendar: java.util.Date getTime()>();
+
+        r5 = virtualinvoke $r8.<java.text.SimpleDateFormat: java.lang.String format(java.util.Date)>($r9);
+
+        staticinvoke <org.apache.log4j.helpers.DateLayoutTest: void assertEquals(java.lang.String,java.lang.String)>(r5, r3);
+
+        return;
+    }
+}

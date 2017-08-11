@@ -1,0 +1,288 @@
+public class org.apache.commons.logging.BasicOperationsTestCase extends junit.framework.TestCase
+{
+
+    public void <init>()
+    {
+        org.apache.commons.logging.BasicOperationsTestCase r0;
+
+        r0 := @this: org.apache.commons.logging.BasicOperationsTestCase;
+
+        specialinvoke r0.<junit.framework.TestCase: void <init>()>();
+
+        return;
+    }
+
+    public void testIsEnabledClassLog()
+    {
+        org.apache.commons.logging.BasicOperationsTestCase r0;
+        org.apache.commons.logging.Log r1;
+
+        r0 := @this: org.apache.commons.logging.BasicOperationsTestCase;
+
+        r1 = staticinvoke <org.apache.commons.logging.LogFactory: org.apache.commons.logging.Log getLog(java.lang.Class)>(class "org/apache/commons/logging/BasicOperationsTestCase");
+
+        virtualinvoke r0.<org.apache.commons.logging.BasicOperationsTestCase: void executeIsEnabledTest(org.apache.commons.logging.Log)>(r1);
+
+        return;
+    }
+
+    public void testIsEnabledNamedLog()
+    {
+        org.apache.commons.logging.BasicOperationsTestCase r0;
+        org.apache.commons.logging.Log r1;
+        java.lang.Class $r2;
+        java.lang.String $r3;
+
+        r0 := @this: org.apache.commons.logging.BasicOperationsTestCase;
+
+        $r2 = class "org/apache/commons/logging/BasicOperationsTestCase";
+
+        $r3 = virtualinvoke $r2.<java.lang.Class: java.lang.String getName()>();
+
+        r1 = staticinvoke <org.apache.commons.logging.LogFactory: org.apache.commons.logging.Log getLog(java.lang.String)>($r3);
+
+        virtualinvoke r0.<org.apache.commons.logging.BasicOperationsTestCase: void executeIsEnabledTest(org.apache.commons.logging.Log)>(r1);
+
+        return;
+    }
+
+    public void executeIsEnabledTest(org.apache.commons.logging.Log)
+    {
+        org.apache.commons.logging.BasicOperationsTestCase r0;
+        org.apache.commons.logging.Log r1;
+        java.lang.Throwable $r3;
+        java.lang.StringBuilder $r4, $r5;
+        java.lang.String $r6;
+
+        r0 := @this: org.apache.commons.logging.BasicOperationsTestCase;
+
+        r1 := @parameter0: org.apache.commons.logging.Log;
+
+     label1:
+        interfaceinvoke r1.<org.apache.commons.logging.Log: boolean isTraceEnabled()>();
+
+        interfaceinvoke r1.<org.apache.commons.logging.Log: boolean isDebugEnabled()>();
+
+        interfaceinvoke r1.<org.apache.commons.logging.Log: boolean isInfoEnabled()>();
+
+        interfaceinvoke r1.<org.apache.commons.logging.Log: boolean isWarnEnabled()>();
+
+        interfaceinvoke r1.<org.apache.commons.logging.Log: boolean isErrorEnabled()>();
+
+        interfaceinvoke r1.<org.apache.commons.logging.Log: boolean isFatalEnabled()>();
+
+     label2:
+        goto label4;
+
+     label3:
+        $r3 := @caughtexception;
+
+        virtualinvoke $r3.<java.lang.Throwable: void printStackTrace()>();
+
+        $r4 = new java.lang.StringBuilder;
+
+        specialinvoke $r4.<java.lang.StringBuilder: void <init>(java.lang.String)>("Exception thrown: ");
+
+        $r5 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r3);
+
+        $r6 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.apache.commons.logging.BasicOperationsTestCase: void fail(java.lang.String)>($r6);
+
+     label4:
+        return;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+    }
+
+    public void testMessageWithoutExceptionClassLog()
+    {
+        org.apache.commons.logging.BasicOperationsTestCase r0;
+        org.apache.commons.logging.Log r1;
+
+        r0 := @this: org.apache.commons.logging.BasicOperationsTestCase;
+
+        r1 = staticinvoke <org.apache.commons.logging.LogFactory: org.apache.commons.logging.Log getLog(java.lang.Class)>(class "org/apache/commons/logging/BasicOperationsTestCase");
+
+        virtualinvoke r0.<org.apache.commons.logging.BasicOperationsTestCase: void executeMessageWithoutExceptionTest(org.apache.commons.logging.Log)>(r1);
+
+        return;
+    }
+
+    public void testMessageWithoutExceptionNamedLog()
+    {
+        org.apache.commons.logging.BasicOperationsTestCase r0;
+        org.apache.commons.logging.Log r1;
+        java.lang.Class $r2;
+        java.lang.String $r3;
+
+        r0 := @this: org.apache.commons.logging.BasicOperationsTestCase;
+
+        $r2 = class "org/apache/commons/logging/BasicOperationsTestCase";
+
+        $r3 = virtualinvoke $r2.<java.lang.Class: java.lang.String getName()>();
+
+        r1 = staticinvoke <org.apache.commons.logging.LogFactory: org.apache.commons.logging.Log getLog(java.lang.String)>($r3);
+
+        virtualinvoke r0.<org.apache.commons.logging.BasicOperationsTestCase: void executeMessageWithoutExceptionTest(org.apache.commons.logging.Log)>(r1);
+
+        return;
+    }
+
+    public void executeMessageWithoutExceptionTest(org.apache.commons.logging.Log)
+    {
+        org.apache.commons.logging.BasicOperationsTestCase r0;
+        org.apache.commons.logging.Log r1;
+        java.lang.Throwable $r3;
+        java.lang.StringBuilder $r4, $r5;
+        java.lang.String $r6;
+
+        r0 := @this: org.apache.commons.logging.BasicOperationsTestCase;
+
+        r1 := @parameter0: org.apache.commons.logging.Log;
+
+     label1:
+        interfaceinvoke r1.<org.apache.commons.logging.Log: void trace(java.lang.Object)>("Hello, Mum");
+
+        interfaceinvoke r1.<org.apache.commons.logging.Log: void debug(java.lang.Object)>("Hello, Mum");
+
+        interfaceinvoke r1.<org.apache.commons.logging.Log: void info(java.lang.Object)>("Hello, Mum");
+
+        interfaceinvoke r1.<org.apache.commons.logging.Log: void warn(java.lang.Object)>("Hello, Mum");
+
+        interfaceinvoke r1.<org.apache.commons.logging.Log: void error(java.lang.Object)>("Hello, Mum");
+
+        interfaceinvoke r1.<org.apache.commons.logging.Log: void fatal(java.lang.Object)>("Hello, Mum");
+
+     label2:
+        goto label4;
+
+     label3:
+        $r3 := @caughtexception;
+
+        virtualinvoke $r3.<java.lang.Throwable: void printStackTrace()>();
+
+        $r4 = new java.lang.StringBuilder;
+
+        specialinvoke $r4.<java.lang.StringBuilder: void <init>(java.lang.String)>("Exception thrown: ");
+
+        $r5 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r3);
+
+        $r6 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.apache.commons.logging.BasicOperationsTestCase: void fail(java.lang.String)>($r6);
+
+     label4:
+        return;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+    }
+
+    public void testMessageWithExceptionClassLog()
+    {
+        org.apache.commons.logging.BasicOperationsTestCase r0;
+        org.apache.commons.logging.Log r1;
+
+        r0 := @this: org.apache.commons.logging.BasicOperationsTestCase;
+
+        r1 = staticinvoke <org.apache.commons.logging.LogFactory: org.apache.commons.logging.Log getLog(java.lang.Class)>(class "org/apache/commons/logging/BasicOperationsTestCase");
+
+        virtualinvoke r0.<org.apache.commons.logging.BasicOperationsTestCase: void executeMessageWithExceptionTest(org.apache.commons.logging.Log)>(r1);
+
+        return;
+    }
+
+    public void testMessageWithExceptionNamedLog()
+    {
+        org.apache.commons.logging.BasicOperationsTestCase r0;
+        org.apache.commons.logging.Log r1;
+        java.lang.Class $r2;
+        java.lang.String $r3;
+
+        r0 := @this: org.apache.commons.logging.BasicOperationsTestCase;
+
+        $r2 = class "org/apache/commons/logging/BasicOperationsTestCase";
+
+        $r3 = virtualinvoke $r2.<java.lang.Class: java.lang.String getName()>();
+
+        r1 = staticinvoke <org.apache.commons.logging.LogFactory: org.apache.commons.logging.Log getLog(java.lang.String)>($r3);
+
+        virtualinvoke r0.<org.apache.commons.logging.BasicOperationsTestCase: void executeMessageWithExceptionTest(org.apache.commons.logging.Log)>(r1);
+
+        return;
+    }
+
+    public void executeMessageWithExceptionTest(org.apache.commons.logging.Log)
+    {
+        org.apache.commons.logging.BasicOperationsTestCase r0;
+        org.apache.commons.logging.Log r1;
+        java.lang.ArithmeticException $r3, $r4, $r5, $r6, $r7, $r8;
+        java.lang.Throwable $r9;
+        java.lang.StringBuilder $r10, $r11;
+        java.lang.String $r12;
+
+        r0 := @this: org.apache.commons.logging.BasicOperationsTestCase;
+
+        r1 := @parameter0: org.apache.commons.logging.Log;
+
+     label1:
+        $r3 = new java.lang.ArithmeticException;
+
+        specialinvoke $r3.<java.lang.ArithmeticException: void <init>()>();
+
+        interfaceinvoke r1.<org.apache.commons.logging.Log: void trace(java.lang.Object,java.lang.Throwable)>("Hello, Mum", $r3);
+
+        $r4 = new java.lang.ArithmeticException;
+
+        specialinvoke $r4.<java.lang.ArithmeticException: void <init>()>();
+
+        interfaceinvoke r1.<org.apache.commons.logging.Log: void debug(java.lang.Object,java.lang.Throwable)>("Hello, Mum", $r4);
+
+        $r5 = new java.lang.ArithmeticException;
+
+        specialinvoke $r5.<java.lang.ArithmeticException: void <init>()>();
+
+        interfaceinvoke r1.<org.apache.commons.logging.Log: void info(java.lang.Object,java.lang.Throwable)>("Hello, Mum", $r5);
+
+        $r6 = new java.lang.ArithmeticException;
+
+        specialinvoke $r6.<java.lang.ArithmeticException: void <init>()>();
+
+        interfaceinvoke r1.<org.apache.commons.logging.Log: void warn(java.lang.Object,java.lang.Throwable)>("Hello, Mum", $r6);
+
+        $r7 = new java.lang.ArithmeticException;
+
+        specialinvoke $r7.<java.lang.ArithmeticException: void <init>()>();
+
+        interfaceinvoke r1.<org.apache.commons.logging.Log: void error(java.lang.Object,java.lang.Throwable)>("Hello, Mum", $r7);
+
+        $r8 = new java.lang.ArithmeticException;
+
+        specialinvoke $r8.<java.lang.ArithmeticException: void <init>()>();
+
+        interfaceinvoke r1.<org.apache.commons.logging.Log: void fatal(java.lang.Object,java.lang.Throwable)>("Hello, Mum", $r8);
+
+     label2:
+        goto label4;
+
+     label3:
+        $r9 := @caughtexception;
+
+        virtualinvoke $r9.<java.lang.Throwable: void printStackTrace()>();
+
+        $r10 = new java.lang.StringBuilder;
+
+        specialinvoke $r10.<java.lang.StringBuilder: void <init>(java.lang.String)>("Exception thrown: ");
+
+        $r11 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r9);
+
+        $r12 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.apache.commons.logging.BasicOperationsTestCase: void fail(java.lang.String)>($r12);
+
+     label4:
+        return;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+    }
+}

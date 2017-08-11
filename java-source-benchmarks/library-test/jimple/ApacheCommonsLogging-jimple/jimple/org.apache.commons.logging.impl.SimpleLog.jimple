@@ -1,0 +1,1079 @@
+public class org.apache.commons.logging.impl.SimpleLog extends java.lang.Object implements org.apache.commons.logging.Log, java.io.Serializable
+{
+    private static final long serialVersionUID;
+    protected static final java.lang.String systemPrefix;
+    protected static final java.util.Properties simpleLogProps;
+    protected static final java.lang.String DEFAULT_DATE_TIME_FORMAT;
+    protected static volatile boolean showLogName;
+    protected static volatile boolean showShortName;
+    protected static volatile boolean showDateTime;
+    protected static volatile java.lang.String dateTimeFormat;
+    protected static java.text.DateFormat dateFormatter;
+    public static final int LOG_LEVEL_TRACE;
+    public static final int LOG_LEVEL_DEBUG;
+    public static final int LOG_LEVEL_INFO;
+    public static final int LOG_LEVEL_WARN;
+    public static final int LOG_LEVEL_ERROR;
+    public static final int LOG_LEVEL_FATAL;
+    public static final int LOG_LEVEL_ALL;
+    public static final int LOG_LEVEL_OFF;
+    protected volatile java.lang.String logName;
+    protected volatile int currentLogLevel;
+    private volatile java.lang.String shortLogName;
+
+    static void <clinit>()
+    {
+        java.io.InputStream r0;
+        java.util.Properties $r1, $r6;
+        java.lang.String $r2, $r3, $r5, $r9;
+        java.text.SimpleDateFormat $r4, $r8;
+        java.lang.IllegalArgumentException $r7;
+        java.io.IOException $r10;
+        boolean $z0, $z1, $z2, $z3, $z4, $z5, $z6;
+
+        <org.apache.commons.logging.impl.SimpleLog: int LOG_LEVEL_OFF> = 7;
+
+        <org.apache.commons.logging.impl.SimpleLog: int LOG_LEVEL_ALL> = 0;
+
+        <org.apache.commons.logging.impl.SimpleLog: int LOG_LEVEL_FATAL> = 6;
+
+        <org.apache.commons.logging.impl.SimpleLog: int LOG_LEVEL_ERROR> = 5;
+
+        <org.apache.commons.logging.impl.SimpleLog: int LOG_LEVEL_WARN> = 4;
+
+        <org.apache.commons.logging.impl.SimpleLog: int LOG_LEVEL_INFO> = 3;
+
+        <org.apache.commons.logging.impl.SimpleLog: int LOG_LEVEL_DEBUG> = 2;
+
+        <org.apache.commons.logging.impl.SimpleLog: int LOG_LEVEL_TRACE> = 1;
+
+        <org.apache.commons.logging.impl.SimpleLog: java.lang.String DEFAULT_DATE_TIME_FORMAT> = "yyyy/MM/dd HH:mm:ss:SSS zzz";
+
+        <org.apache.commons.logging.impl.SimpleLog: java.lang.String systemPrefix> = "org.apache.commons.logging.simplelog.";
+
+        <org.apache.commons.logging.impl.SimpleLog: long serialVersionUID> = 136942970684951178L;
+
+        $r1 = new java.util.Properties;
+
+        specialinvoke $r1.<java.util.Properties: void <init>()>();
+
+        <org.apache.commons.logging.impl.SimpleLog: java.util.Properties simpleLogProps> = $r1;
+
+        <org.apache.commons.logging.impl.SimpleLog: boolean showLogName> = 0;
+
+        <org.apache.commons.logging.impl.SimpleLog: boolean showShortName> = 1;
+
+        <org.apache.commons.logging.impl.SimpleLog: boolean showDateTime> = 0;
+
+        <org.apache.commons.logging.impl.SimpleLog: java.lang.String dateTimeFormat> = "yyyy/MM/dd HH:mm:ss:SSS zzz";
+
+        <org.apache.commons.logging.impl.SimpleLog: java.text.DateFormat dateFormatter> = null;
+
+        r0 = staticinvoke <org.apache.commons.logging.impl.SimpleLog: java.io.InputStream getResourceAsStream(java.lang.String)>("simplelog.properties");
+
+        if r0 == null goto label4;
+
+     label1:
+        $r6 = <org.apache.commons.logging.impl.SimpleLog: java.util.Properties simpleLogProps>;
+
+        virtualinvoke $r6.<java.util.Properties: void load(java.io.InputStream)>(r0);
+
+        virtualinvoke r0.<java.io.InputStream: void close()>();
+
+     label2:
+        goto label4;
+
+     label3:
+        $r10 := @caughtexception;
+
+     label4:
+        $z0 = <org.apache.commons.logging.impl.SimpleLog: boolean showLogName>;
+
+        $z1 = staticinvoke <org.apache.commons.logging.impl.SimpleLog: boolean getBooleanProperty(java.lang.String,boolean)>("org.apache.commons.logging.simplelog.showlogname", $z0);
+
+        <org.apache.commons.logging.impl.SimpleLog: boolean showLogName> = $z1;
+
+        $z2 = <org.apache.commons.logging.impl.SimpleLog: boolean showShortName>;
+
+        $z3 = staticinvoke <org.apache.commons.logging.impl.SimpleLog: boolean getBooleanProperty(java.lang.String,boolean)>("org.apache.commons.logging.simplelog.showShortLogname", $z2);
+
+        <org.apache.commons.logging.impl.SimpleLog: boolean showShortName> = $z3;
+
+        $z4 = <org.apache.commons.logging.impl.SimpleLog: boolean showDateTime>;
+
+        $z5 = staticinvoke <org.apache.commons.logging.impl.SimpleLog: boolean getBooleanProperty(java.lang.String,boolean)>("org.apache.commons.logging.simplelog.showdatetime", $z4);
+
+        <org.apache.commons.logging.impl.SimpleLog: boolean showDateTime> = $z5;
+
+        $z6 = <org.apache.commons.logging.impl.SimpleLog: boolean showDateTime>;
+
+        if $z6 == 0 goto label8;
+
+        $r2 = <org.apache.commons.logging.impl.SimpleLog: java.lang.String dateTimeFormat>;
+
+        $r3 = staticinvoke <org.apache.commons.logging.impl.SimpleLog: java.lang.String getStringProperty(java.lang.String,java.lang.String)>("org.apache.commons.logging.simplelog.dateTimeFormat", $r2);
+
+        <org.apache.commons.logging.impl.SimpleLog: java.lang.String dateTimeFormat> = $r3;
+
+     label5:
+        $r4 = new java.text.SimpleDateFormat;
+
+        $r5 = <org.apache.commons.logging.impl.SimpleLog: java.lang.String dateTimeFormat>;
+
+        specialinvoke $r4.<java.text.SimpleDateFormat: void <init>(java.lang.String)>($r5);
+
+        <org.apache.commons.logging.impl.SimpleLog: java.text.DateFormat dateFormatter> = $r4;
+
+     label6:
+        goto label8;
+
+     label7:
+        $r7 := @caughtexception;
+
+        <org.apache.commons.logging.impl.SimpleLog: java.lang.String dateTimeFormat> = "yyyy/MM/dd HH:mm:ss:SSS zzz";
+
+        $r8 = new java.text.SimpleDateFormat;
+
+        $r9 = <org.apache.commons.logging.impl.SimpleLog: java.lang.String dateTimeFormat>;
+
+        specialinvoke $r8.<java.text.SimpleDateFormat: void <init>(java.lang.String)>($r9);
+
+        <org.apache.commons.logging.impl.SimpleLog: java.text.DateFormat dateFormatter> = $r8;
+
+     label8:
+        return;
+
+        catch java.io.IOException from label1 to label2 with label3;
+        catch java.lang.IllegalArgumentException from label5 to label6 with label7;
+    }
+
+    private static java.lang.String getStringProperty(java.lang.String)
+    {
+        java.lang.String r0, r4, $r5;
+        java.util.Properties $r2;
+        java.lang.SecurityException $r3;
+
+        r0 := @parameter0: java.lang.String;
+
+        r4 = null;
+
+     label1:
+        r4 = staticinvoke <java.lang.System: java.lang.String getProperty(java.lang.String)>(r0);
+
+     label2:
+        goto label4;
+
+     label3:
+        $r3 := @caughtexception;
+
+     label4:
+        if r4 != null goto label5;
+
+        $r2 = <org.apache.commons.logging.impl.SimpleLog: java.util.Properties simpleLogProps>;
+
+        $r5 = virtualinvoke $r2.<java.util.Properties: java.lang.String getProperty(java.lang.String)>(r0);
+
+        goto label6;
+
+     label5:
+        $r5 = r4;
+
+     label6:
+        return $r5;
+
+        catch java.lang.SecurityException from label1 to label2 with label3;
+    }
+
+    private static java.lang.String getStringProperty(java.lang.String, java.lang.String)
+    {
+        java.lang.String r0, r1, r2, $r3;
+
+        r0 := @parameter0: java.lang.String;
+
+        r1 := @parameter1: java.lang.String;
+
+        r2 = staticinvoke <org.apache.commons.logging.impl.SimpleLog: java.lang.String getStringProperty(java.lang.String)>(r0);
+
+        if r2 != null goto label1;
+
+        $r3 = r1;
+
+        goto label2;
+
+     label1:
+        $r3 = r2;
+
+     label2:
+        return $r3;
+    }
+
+    private static boolean getBooleanProperty(java.lang.String, boolean)
+    {
+        java.lang.String r0, r1, $r2;
+        boolean z0, $z1;
+
+        r0 := @parameter0: java.lang.String;
+
+        z0 := @parameter1: boolean;
+
+        r1 = staticinvoke <org.apache.commons.logging.impl.SimpleLog: java.lang.String getStringProperty(java.lang.String)>(r0);
+
+        if r1 != null goto label1;
+
+        $z1 = z0;
+
+        goto label2;
+
+     label1:
+        $r2 = "true";
+
+        $z1 = virtualinvoke $r2.<java.lang.String: boolean equalsIgnoreCase(java.lang.String)>(r1);
+
+     label2:
+        return $z1;
+    }
+
+    public void <init>(java.lang.String)
+    {
+        org.apache.commons.logging.impl.SimpleLog r0;
+        java.lang.StringBuilder $r1, $r3, $r14, $r15;
+        java.lang.String $r2, $r4, $r5, $r6, $r7, $r8, $r9, $r10, $r11, $r12, $r13, $r16, $r17, r18, r19;
+        boolean $z0, $z1, $z2, $z3, $z4, $z5, $z6, $z7;
+        int i0;
+
+        r0 := @this: org.apache.commons.logging.impl.SimpleLog;
+
+        r18 := @parameter0: java.lang.String;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<org.apache.commons.logging.impl.SimpleLog: java.lang.String logName> = null;
+
+        r0.<org.apache.commons.logging.impl.SimpleLog: java.lang.String shortLogName> = null;
+
+        r0.<org.apache.commons.logging.impl.SimpleLog: java.lang.String logName> = r18;
+
+        virtualinvoke r0.<org.apache.commons.logging.impl.SimpleLog: void setLevel(int)>(3);
+
+        $r1 = new java.lang.StringBuilder;
+
+        specialinvoke $r1.<java.lang.StringBuilder: void <init>(java.lang.String)>("org.apache.commons.logging.simplelog.log.");
+
+        $r2 = r0.<org.apache.commons.logging.impl.SimpleLog: java.lang.String logName>;
+
+        $r3 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        $r4 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        r19 = staticinvoke <org.apache.commons.logging.impl.SimpleLog: java.lang.String getStringProperty(java.lang.String)>($r4);
+
+        $r5 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>(r18);
+
+        i0 = virtualinvoke $r5.<java.lang.String: int lastIndexOf(java.lang.String)>(".");
+
+        goto label02;
+
+     label01:
+        r18 = virtualinvoke r18.<java.lang.String: java.lang.String substring(int,int)>(0, i0);
+
+        $r14 = new java.lang.StringBuilder;
+
+        specialinvoke $r14.<java.lang.StringBuilder: void <init>(java.lang.String)>("org.apache.commons.logging.simplelog.log.");
+
+        $r15 = virtualinvoke $r14.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r18);
+
+        $r16 = virtualinvoke $r15.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        r19 = staticinvoke <org.apache.commons.logging.impl.SimpleLog: java.lang.String getStringProperty(java.lang.String)>($r16);
+
+        $r17 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>(r18);
+
+        i0 = virtualinvoke $r17.<java.lang.String: int lastIndexOf(java.lang.String)>(".");
+
+     label02:
+        if r19 != null goto label03;
+
+        if i0 > -1 goto label01;
+
+     label03:
+        if r19 != null goto label04;
+
+        r19 = staticinvoke <org.apache.commons.logging.impl.SimpleLog: java.lang.String getStringProperty(java.lang.String)>("org.apache.commons.logging.simplelog.defaultlog");
+
+     label04:
+        $r6 = "all";
+
+        $z0 = virtualinvoke $r6.<java.lang.String: boolean equalsIgnoreCase(java.lang.String)>(r19);
+
+        if $z0 == 0 goto label05;
+
+        virtualinvoke r0.<org.apache.commons.logging.impl.SimpleLog: void setLevel(int)>(0);
+
+        goto label12;
+
+     label05:
+        $r7 = "trace";
+
+        $z1 = virtualinvoke $r7.<java.lang.String: boolean equalsIgnoreCase(java.lang.String)>(r19);
+
+        if $z1 == 0 goto label06;
+
+        virtualinvoke r0.<org.apache.commons.logging.impl.SimpleLog: void setLevel(int)>(1);
+
+        goto label12;
+
+     label06:
+        $r8 = "debug";
+
+        $z2 = virtualinvoke $r8.<java.lang.String: boolean equalsIgnoreCase(java.lang.String)>(r19);
+
+        if $z2 == 0 goto label07;
+
+        virtualinvoke r0.<org.apache.commons.logging.impl.SimpleLog: void setLevel(int)>(2);
+
+        goto label12;
+
+     label07:
+        $r9 = "info";
+
+        $z3 = virtualinvoke $r9.<java.lang.String: boolean equalsIgnoreCase(java.lang.String)>(r19);
+
+        if $z3 == 0 goto label08;
+
+        virtualinvoke r0.<org.apache.commons.logging.impl.SimpleLog: void setLevel(int)>(3);
+
+        goto label12;
+
+     label08:
+        $r10 = "warn";
+
+        $z4 = virtualinvoke $r10.<java.lang.String: boolean equalsIgnoreCase(java.lang.String)>(r19);
+
+        if $z4 == 0 goto label09;
+
+        virtualinvoke r0.<org.apache.commons.logging.impl.SimpleLog: void setLevel(int)>(4);
+
+        goto label12;
+
+     label09:
+        $r11 = "error";
+
+        $z5 = virtualinvoke $r11.<java.lang.String: boolean equalsIgnoreCase(java.lang.String)>(r19);
+
+        if $z5 == 0 goto label10;
+
+        virtualinvoke r0.<org.apache.commons.logging.impl.SimpleLog: void setLevel(int)>(5);
+
+        goto label12;
+
+     label10:
+        $r12 = "fatal";
+
+        $z6 = virtualinvoke $r12.<java.lang.String: boolean equalsIgnoreCase(java.lang.String)>(r19);
+
+        if $z6 == 0 goto label11;
+
+        virtualinvoke r0.<org.apache.commons.logging.impl.SimpleLog: void setLevel(int)>(6);
+
+        goto label12;
+
+     label11:
+        $r13 = "off";
+
+        $z7 = virtualinvoke $r13.<java.lang.String: boolean equalsIgnoreCase(java.lang.String)>(r19);
+
+        if $z7 == 0 goto label12;
+
+        virtualinvoke r0.<org.apache.commons.logging.impl.SimpleLog: void setLevel(int)>(7);
+
+     label12:
+        return;
+    }
+
+    public void setLevel(int)
+    {
+        org.apache.commons.logging.impl.SimpleLog r0;
+        int i0;
+
+        r0 := @this: org.apache.commons.logging.impl.SimpleLog;
+
+        i0 := @parameter0: int;
+
+        r0.<org.apache.commons.logging.impl.SimpleLog: int currentLogLevel> = i0;
+
+        return;
+    }
+
+    public int getLevel()
+    {
+        org.apache.commons.logging.impl.SimpleLog r0;
+        int $i0;
+
+        r0 := @this: org.apache.commons.logging.impl.SimpleLog;
+
+        $i0 = r0.<org.apache.commons.logging.impl.SimpleLog: int currentLogLevel>;
+
+        return $i0;
+    }
+
+    protected void log(int, java.lang.Object, java.lang.Throwable)
+    {
+        org.apache.commons.logging.impl.SimpleLog r0;
+        int i0, $i1, $i2, $i3, $i4;
+        java.lang.Object r1;
+        java.lang.Throwable r2, $r38;
+        java.lang.StringBuffer $r5, $r18, $r23;
+        boolean $z0, $z1, $z2;
+        java.lang.String $r9, $r14, $r16, $r17, $r20, $r21, $r22, $r25, $r26, $r27, r40, r41, $r42;
+        java.io.StringWriter $r12;
+        java.io.PrintWriter $r13;
+        java.util.Date $r33;
+        java.text.DateFormat $r34, $r35;
+
+        r0 := @this: org.apache.commons.logging.impl.SimpleLog;
+
+        i0 := @parameter0: int;
+
+        r1 := @parameter1: java.lang.Object;
+
+        r2 := @parameter2: java.lang.Throwable;
+
+        $r5 = new java.lang.StringBuffer;
+
+        specialinvoke $r5.<java.lang.StringBuffer: void <init>()>();
+
+        $z0 = <org.apache.commons.logging.impl.SimpleLog: boolean showDateTime>;
+
+        if $z0 == 0 goto label06;
+
+        $r33 = new java.util.Date;
+
+        specialinvoke $r33.<java.util.Date: void <init>()>();
+
+        $r34 = <org.apache.commons.logging.impl.SimpleLog: java.text.DateFormat dateFormatter>;
+
+        entermonitor $r34;
+
+     label01:
+        $r35 = <org.apache.commons.logging.impl.SimpleLog: java.text.DateFormat dateFormatter>;
+
+        r40 = virtualinvoke $r35.<java.text.DateFormat: java.lang.String format(java.util.Date)>($r33);
+
+        exitmonitor $r34;
+
+     label02:
+        goto label05;
+
+     label03:
+        $r38 := @caughtexception;
+
+        exitmonitor $r34;
+
+     label04:
+        throw $r38;
+
+     label05:
+        virtualinvoke $r5.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>(r40);
+
+        virtualinvoke $r5.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>(" ");
+
+     label06:
+        tableswitch(i0)
+        {
+            case 1: goto label07;
+            case 2: goto label08;
+            case 3: goto label09;
+            case 4: goto label10;
+            case 5: goto label11;
+            case 6: goto label12;
+            default: goto label13;
+        };
+
+     label07:
+        virtualinvoke $r5.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>("[TRACE] ");
+
+        goto label13;
+
+     label08:
+        virtualinvoke $r5.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>("[DEBUG] ");
+
+        goto label13;
+
+     label09:
+        virtualinvoke $r5.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>("[INFO] ");
+
+        goto label13;
+
+     label10:
+        virtualinvoke $r5.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>("[WARN] ");
+
+        goto label13;
+
+     label11:
+        virtualinvoke $r5.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>("[ERROR] ");
+
+        goto label13;
+
+     label12:
+        virtualinvoke $r5.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>("[FATAL] ");
+
+     label13:
+        $z2 = <org.apache.commons.logging.impl.SimpleLog: boolean showShortName>;
+
+        if $z2 == 0 goto label15;
+
+        $r20 = r0.<org.apache.commons.logging.impl.SimpleLog: java.lang.String shortLogName>;
+
+        if $r20 != null goto label14;
+
+        $r26 = r0.<org.apache.commons.logging.impl.SimpleLog: java.lang.String logName>;
+
+        $r25 = r0.<org.apache.commons.logging.impl.SimpleLog: java.lang.String logName>;
+
+        $i1 = virtualinvoke $r25.<java.lang.String: int lastIndexOf(java.lang.String)>(".");
+
+        $i2 = $i1 + 1;
+
+        r41 = virtualinvoke $r26.<java.lang.String: java.lang.String substring(int)>($i2);
+
+        $i3 = virtualinvoke r41.<java.lang.String: int lastIndexOf(java.lang.String)>("/");
+
+        $i4 = $i3 + 1;
+
+        $r27 = virtualinvoke r41.<java.lang.String: java.lang.String substring(int)>($i4);
+
+        r0.<org.apache.commons.logging.impl.SimpleLog: java.lang.String shortLogName> = $r27;
+
+     label14:
+        $r21 = r0.<org.apache.commons.logging.impl.SimpleLog: java.lang.String shortLogName>;
+
+        $r22 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r21);
+
+        $r23 = virtualinvoke $r5.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>($r22);
+
+        virtualinvoke $r23.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>(" - ");
+
+        goto label16;
+
+     label15:
+        $z1 = <org.apache.commons.logging.impl.SimpleLog: boolean showLogName>;
+
+        if $z1 == 0 goto label16;
+
+        $r16 = r0.<org.apache.commons.logging.impl.SimpleLog: java.lang.String logName>;
+
+        $r17 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r16);
+
+        $r18 = virtualinvoke $r5.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>($r17);
+
+        virtualinvoke $r18.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>(" - ");
+
+     label16:
+        $r42 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>(r1);
+
+        virtualinvoke $r5.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>($r42);
+
+        if r2 == null goto label17;
+
+        virtualinvoke $r5.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>(" <");
+
+        $r9 = virtualinvoke r2.<java.lang.Throwable: java.lang.String toString()>();
+
+        virtualinvoke $r5.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>($r9);
+
+        virtualinvoke $r5.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>(">");
+
+        $r12 = new java.io.StringWriter;
+
+        specialinvoke $r12.<java.io.StringWriter: void <init>(int)>(1024);
+
+        $r13 = new java.io.PrintWriter;
+
+        specialinvoke $r13.<java.io.PrintWriter: void <init>(java.io.Writer)>($r12);
+
+        virtualinvoke r2.<java.lang.Throwable: void printStackTrace(java.io.PrintWriter)>($r13);
+
+        virtualinvoke $r13.<java.io.PrintWriter: void close()>();
+
+        $r14 = virtualinvoke $r12.<java.io.StringWriter: java.lang.String toString()>();
+
+        virtualinvoke $r5.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>($r14);
+
+     label17:
+        virtualinvoke r0.<org.apache.commons.logging.impl.SimpleLog: void write(java.lang.StringBuffer)>($r5);
+
+        return;
+
+        catch java.lang.Throwable from label01 to label02 with label03;
+        catch java.lang.Throwable from label03 to label04 with label03;
+    }
+
+    protected void write(java.lang.StringBuffer)
+    {
+        org.apache.commons.logging.impl.SimpleLog r0;
+        java.lang.StringBuffer r1;
+        java.io.PrintStream $r2;
+        java.lang.String $r3;
+
+        r0 := @this: org.apache.commons.logging.impl.SimpleLog;
+
+        r1 := @parameter0: java.lang.StringBuffer;
+
+        $r2 = <java.lang.System: java.io.PrintStream err>;
+
+        $r3 = virtualinvoke r1.<java.lang.StringBuffer: java.lang.String toString()>();
+
+        virtualinvoke $r2.<java.io.PrintStream: void println(java.lang.String)>($r3);
+
+        return;
+    }
+
+    protected boolean isLevelEnabled(int)
+    {
+        org.apache.commons.logging.impl.SimpleLog r0;
+        int i0, $i1;
+
+        r0 := @this: org.apache.commons.logging.impl.SimpleLog;
+
+        i0 := @parameter0: int;
+
+        $i1 = r0.<org.apache.commons.logging.impl.SimpleLog: int currentLogLevel>;
+
+        if i0 < $i1 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public final void debug(java.lang.Object)
+    {
+        org.apache.commons.logging.impl.SimpleLog r0;
+        java.lang.Object r1;
+        boolean $z0;
+
+        r0 := @this: org.apache.commons.logging.impl.SimpleLog;
+
+        r1 := @parameter0: java.lang.Object;
+
+        $z0 = virtualinvoke r0.<org.apache.commons.logging.impl.SimpleLog: boolean isLevelEnabled(int)>(2);
+
+        if $z0 == 0 goto label1;
+
+        virtualinvoke r0.<org.apache.commons.logging.impl.SimpleLog: void log(int,java.lang.Object,java.lang.Throwable)>(2, r1, null);
+
+     label1:
+        return;
+    }
+
+    public final void debug(java.lang.Object, java.lang.Throwable)
+    {
+        org.apache.commons.logging.impl.SimpleLog r0;
+        java.lang.Object r1;
+        java.lang.Throwable r2;
+        boolean $z0;
+
+        r0 := @this: org.apache.commons.logging.impl.SimpleLog;
+
+        r1 := @parameter0: java.lang.Object;
+
+        r2 := @parameter1: java.lang.Throwable;
+
+        $z0 = virtualinvoke r0.<org.apache.commons.logging.impl.SimpleLog: boolean isLevelEnabled(int)>(2);
+
+        if $z0 == 0 goto label1;
+
+        virtualinvoke r0.<org.apache.commons.logging.impl.SimpleLog: void log(int,java.lang.Object,java.lang.Throwable)>(2, r1, r2);
+
+     label1:
+        return;
+    }
+
+    public final void trace(java.lang.Object)
+    {
+        org.apache.commons.logging.impl.SimpleLog r0;
+        java.lang.Object r1;
+        boolean $z0;
+
+        r0 := @this: org.apache.commons.logging.impl.SimpleLog;
+
+        r1 := @parameter0: java.lang.Object;
+
+        $z0 = virtualinvoke r0.<org.apache.commons.logging.impl.SimpleLog: boolean isLevelEnabled(int)>(1);
+
+        if $z0 == 0 goto label1;
+
+        virtualinvoke r0.<org.apache.commons.logging.impl.SimpleLog: void log(int,java.lang.Object,java.lang.Throwable)>(1, r1, null);
+
+     label1:
+        return;
+    }
+
+    public final void trace(java.lang.Object, java.lang.Throwable)
+    {
+        org.apache.commons.logging.impl.SimpleLog r0;
+        java.lang.Object r1;
+        java.lang.Throwable r2;
+        boolean $z0;
+
+        r0 := @this: org.apache.commons.logging.impl.SimpleLog;
+
+        r1 := @parameter0: java.lang.Object;
+
+        r2 := @parameter1: java.lang.Throwable;
+
+        $z0 = virtualinvoke r0.<org.apache.commons.logging.impl.SimpleLog: boolean isLevelEnabled(int)>(1);
+
+        if $z0 == 0 goto label1;
+
+        virtualinvoke r0.<org.apache.commons.logging.impl.SimpleLog: void log(int,java.lang.Object,java.lang.Throwable)>(1, r1, r2);
+
+     label1:
+        return;
+    }
+
+    public final void info(java.lang.Object)
+    {
+        org.apache.commons.logging.impl.SimpleLog r0;
+        java.lang.Object r1;
+        boolean $z0;
+
+        r0 := @this: org.apache.commons.logging.impl.SimpleLog;
+
+        r1 := @parameter0: java.lang.Object;
+
+        $z0 = virtualinvoke r0.<org.apache.commons.logging.impl.SimpleLog: boolean isLevelEnabled(int)>(3);
+
+        if $z0 == 0 goto label1;
+
+        virtualinvoke r0.<org.apache.commons.logging.impl.SimpleLog: void log(int,java.lang.Object,java.lang.Throwable)>(3, r1, null);
+
+     label1:
+        return;
+    }
+
+    public final void info(java.lang.Object, java.lang.Throwable)
+    {
+        org.apache.commons.logging.impl.SimpleLog r0;
+        java.lang.Object r1;
+        java.lang.Throwable r2;
+        boolean $z0;
+
+        r0 := @this: org.apache.commons.logging.impl.SimpleLog;
+
+        r1 := @parameter0: java.lang.Object;
+
+        r2 := @parameter1: java.lang.Throwable;
+
+        $z0 = virtualinvoke r0.<org.apache.commons.logging.impl.SimpleLog: boolean isLevelEnabled(int)>(3);
+
+        if $z0 == 0 goto label1;
+
+        virtualinvoke r0.<org.apache.commons.logging.impl.SimpleLog: void log(int,java.lang.Object,java.lang.Throwable)>(3, r1, r2);
+
+     label1:
+        return;
+    }
+
+    public final void warn(java.lang.Object)
+    {
+        org.apache.commons.logging.impl.SimpleLog r0;
+        java.lang.Object r1;
+        boolean $z0;
+
+        r0 := @this: org.apache.commons.logging.impl.SimpleLog;
+
+        r1 := @parameter0: java.lang.Object;
+
+        $z0 = virtualinvoke r0.<org.apache.commons.logging.impl.SimpleLog: boolean isLevelEnabled(int)>(4);
+
+        if $z0 == 0 goto label1;
+
+        virtualinvoke r0.<org.apache.commons.logging.impl.SimpleLog: void log(int,java.lang.Object,java.lang.Throwable)>(4, r1, null);
+
+     label1:
+        return;
+    }
+
+    public final void warn(java.lang.Object, java.lang.Throwable)
+    {
+        org.apache.commons.logging.impl.SimpleLog r0;
+        java.lang.Object r1;
+        java.lang.Throwable r2;
+        boolean $z0;
+
+        r0 := @this: org.apache.commons.logging.impl.SimpleLog;
+
+        r1 := @parameter0: java.lang.Object;
+
+        r2 := @parameter1: java.lang.Throwable;
+
+        $z0 = virtualinvoke r0.<org.apache.commons.logging.impl.SimpleLog: boolean isLevelEnabled(int)>(4);
+
+        if $z0 == 0 goto label1;
+
+        virtualinvoke r0.<org.apache.commons.logging.impl.SimpleLog: void log(int,java.lang.Object,java.lang.Throwable)>(4, r1, r2);
+
+     label1:
+        return;
+    }
+
+    public final void error(java.lang.Object)
+    {
+        org.apache.commons.logging.impl.SimpleLog r0;
+        java.lang.Object r1;
+        boolean $z0;
+
+        r0 := @this: org.apache.commons.logging.impl.SimpleLog;
+
+        r1 := @parameter0: java.lang.Object;
+
+        $z0 = virtualinvoke r0.<org.apache.commons.logging.impl.SimpleLog: boolean isLevelEnabled(int)>(5);
+
+        if $z0 == 0 goto label1;
+
+        virtualinvoke r0.<org.apache.commons.logging.impl.SimpleLog: void log(int,java.lang.Object,java.lang.Throwable)>(5, r1, null);
+
+     label1:
+        return;
+    }
+
+    public final void error(java.lang.Object, java.lang.Throwable)
+    {
+        org.apache.commons.logging.impl.SimpleLog r0;
+        java.lang.Object r1;
+        java.lang.Throwable r2;
+        boolean $z0;
+
+        r0 := @this: org.apache.commons.logging.impl.SimpleLog;
+
+        r1 := @parameter0: java.lang.Object;
+
+        r2 := @parameter1: java.lang.Throwable;
+
+        $z0 = virtualinvoke r0.<org.apache.commons.logging.impl.SimpleLog: boolean isLevelEnabled(int)>(5);
+
+        if $z0 == 0 goto label1;
+
+        virtualinvoke r0.<org.apache.commons.logging.impl.SimpleLog: void log(int,java.lang.Object,java.lang.Throwable)>(5, r1, r2);
+
+     label1:
+        return;
+    }
+
+    public final void fatal(java.lang.Object)
+    {
+        org.apache.commons.logging.impl.SimpleLog r0;
+        java.lang.Object r1;
+        boolean $z0;
+
+        r0 := @this: org.apache.commons.logging.impl.SimpleLog;
+
+        r1 := @parameter0: java.lang.Object;
+
+        $z0 = virtualinvoke r0.<org.apache.commons.logging.impl.SimpleLog: boolean isLevelEnabled(int)>(6);
+
+        if $z0 == 0 goto label1;
+
+        virtualinvoke r0.<org.apache.commons.logging.impl.SimpleLog: void log(int,java.lang.Object,java.lang.Throwable)>(6, r1, null);
+
+     label1:
+        return;
+    }
+
+    public final void fatal(java.lang.Object, java.lang.Throwable)
+    {
+        org.apache.commons.logging.impl.SimpleLog r0;
+        java.lang.Object r1;
+        java.lang.Throwable r2;
+        boolean $z0;
+
+        r0 := @this: org.apache.commons.logging.impl.SimpleLog;
+
+        r1 := @parameter0: java.lang.Object;
+
+        r2 := @parameter1: java.lang.Throwable;
+
+        $z0 = virtualinvoke r0.<org.apache.commons.logging.impl.SimpleLog: boolean isLevelEnabled(int)>(6);
+
+        if $z0 == 0 goto label1;
+
+        virtualinvoke r0.<org.apache.commons.logging.impl.SimpleLog: void log(int,java.lang.Object,java.lang.Throwable)>(6, r1, r2);
+
+     label1:
+        return;
+    }
+
+    public final boolean isDebugEnabled()
+    {
+        org.apache.commons.logging.impl.SimpleLog r0;
+        boolean $z0;
+
+        r0 := @this: org.apache.commons.logging.impl.SimpleLog;
+
+        $z0 = virtualinvoke r0.<org.apache.commons.logging.impl.SimpleLog: boolean isLevelEnabled(int)>(2);
+
+        return $z0;
+    }
+
+    public final boolean isErrorEnabled()
+    {
+        org.apache.commons.logging.impl.SimpleLog r0;
+        boolean $z0;
+
+        r0 := @this: org.apache.commons.logging.impl.SimpleLog;
+
+        $z0 = virtualinvoke r0.<org.apache.commons.logging.impl.SimpleLog: boolean isLevelEnabled(int)>(5);
+
+        return $z0;
+    }
+
+    public final boolean isFatalEnabled()
+    {
+        org.apache.commons.logging.impl.SimpleLog r0;
+        boolean $z0;
+
+        r0 := @this: org.apache.commons.logging.impl.SimpleLog;
+
+        $z0 = virtualinvoke r0.<org.apache.commons.logging.impl.SimpleLog: boolean isLevelEnabled(int)>(6);
+
+        return $z0;
+    }
+
+    public final boolean isInfoEnabled()
+    {
+        org.apache.commons.logging.impl.SimpleLog r0;
+        boolean $z0;
+
+        r0 := @this: org.apache.commons.logging.impl.SimpleLog;
+
+        $z0 = virtualinvoke r0.<org.apache.commons.logging.impl.SimpleLog: boolean isLevelEnabled(int)>(3);
+
+        return $z0;
+    }
+
+    public final boolean isTraceEnabled()
+    {
+        org.apache.commons.logging.impl.SimpleLog r0;
+        boolean $z0;
+
+        r0 := @this: org.apache.commons.logging.impl.SimpleLog;
+
+        $z0 = virtualinvoke r0.<org.apache.commons.logging.impl.SimpleLog: boolean isLevelEnabled(int)>(1);
+
+        return $z0;
+    }
+
+    public final boolean isWarnEnabled()
+    {
+        org.apache.commons.logging.impl.SimpleLog r0;
+        boolean $z0;
+
+        r0 := @this: org.apache.commons.logging.impl.SimpleLog;
+
+        $z0 = virtualinvoke r0.<org.apache.commons.logging.impl.SimpleLog: boolean isLevelEnabled(int)>(4);
+
+        return $z0;
+    }
+
+    private static java.lang.ClassLoader getContextClassLoader()
+    {
+        java.lang.Class $r0, $r3;
+        java.lang.Thread $r1;
+        java.lang.Object $r2;
+        java.lang.NoSuchMethodException $r4;
+        java.lang.reflect.InvocationTargetException $r5;
+        java.lang.Throwable $r6, $r8;
+        boolean $z0;
+        org.apache.commons.logging.LogConfigurationException $r7;
+        java.lang.IllegalAccessException $r9;
+        java.lang.ClassLoader r10;
+        java.lang.reflect.Method r11;
+
+        r10 = null;
+
+     label1:
+        $r0 = class "java/lang/Thread";
+
+        r11 = virtualinvoke $r0.<java.lang.Class: java.lang.reflect.Method getMethod(java.lang.String,java.lang.Class[])>("getContextClassLoader", null);
+
+     label2:
+        $r1 = staticinvoke <java.lang.Thread: java.lang.Thread currentThread()>();
+
+        $r2 = virtualinvoke r11.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>($r1, null);
+
+        r10 = (java.lang.ClassLoader) $r2;
+
+     label3:
+        goto label7;
+
+     label4:
+        $r9 := @caughtexception;
+
+        goto label7;
+
+     label5:
+        $r5 := @caughtexception;
+
+        $r6 = virtualinvoke $r5.<java.lang.reflect.InvocationTargetException: java.lang.Throwable getTargetException()>();
+
+        $z0 = $r6 instanceof java.lang.SecurityException;
+
+        if $z0 != 0 goto label7;
+
+        $r7 = new org.apache.commons.logging.LogConfigurationException;
+
+        $r8 = virtualinvoke $r5.<java.lang.reflect.InvocationTargetException: java.lang.Throwable getTargetException()>();
+
+        specialinvoke $r7.<org.apache.commons.logging.LogConfigurationException: void <init>(java.lang.String,java.lang.Throwable)>("Unexpected InvocationTargetException", $r8);
+
+        throw $r7;
+
+     label6:
+        $r4 := @caughtexception;
+
+     label7:
+        if r10 != null goto label8;
+
+        $r3 = class "org/apache/commons/logging/impl/SimpleLog";
+
+        r10 = virtualinvoke $r3.<java.lang.Class: java.lang.ClassLoader getClassLoader()>();
+
+     label8:
+        return r10;
+
+        catch java.lang.IllegalAccessException from label2 to label3 with label4;
+        catch java.lang.reflect.InvocationTargetException from label2 to label3 with label5;
+        catch java.lang.NoSuchMethodException from label1 to label6 with label6;
+    }
+
+    private static java.io.InputStream getResourceAsStream(java.lang.String)
+    {
+        java.lang.String r0;
+        org.apache.commons.logging.impl.SimpleLog$1 $r1;
+        java.lang.Object $r2;
+        java.io.InputStream $r3;
+
+        r0 := @parameter0: java.lang.String;
+
+        $r1 = new org.apache.commons.logging.impl.SimpleLog$1;
+
+        specialinvoke $r1.<org.apache.commons.logging.impl.SimpleLog$1: void <init>(java.lang.String)>(r0);
+
+        $r2 = staticinvoke <java.security.AccessController: java.lang.Object doPrivileged(java.security.PrivilegedAction)>($r1);
+
+        $r3 = (java.io.InputStream) $r2;
+
+        return $r3;
+    }
+
+    static java.lang.ClassLoader access$0()
+    {
+        java.lang.ClassLoader $r0;
+
+        $r0 = staticinvoke <org.apache.commons.logging.impl.SimpleLog: java.lang.ClassLoader getContextClassLoader()>();
+
+        return $r0;
+    }
+}

@@ -1,0 +1,55 @@
+public class org.apache.log4j.EnhancedMyPatternLayout extends org.apache.log4j.EnhancedPatternLayout
+{
+
+    public void <init>()
+    {
+        org.apache.log4j.EnhancedMyPatternLayout r0;
+
+        r0 := @this: org.apache.log4j.EnhancedMyPatternLayout;
+
+        specialinvoke r0.<org.apache.log4j.EnhancedMyPatternLayout: void <init>(java.lang.String)>("%m%n");
+
+        return;
+    }
+
+    public void <init>(java.lang.String)
+    {
+        org.apache.log4j.EnhancedMyPatternLayout r0;
+        java.lang.String r1;
+
+        r0 := @this: org.apache.log4j.EnhancedMyPatternLayout;
+
+        r1 := @parameter0: java.lang.String;
+
+        specialinvoke r0.<org.apache.log4j.EnhancedPatternLayout: void <init>(java.lang.String)>(r1);
+
+        return;
+    }
+
+    public org.apache.log4j.helpers.PatternParser createPatternParser(java.lang.String)
+    {
+        org.apache.log4j.EnhancedMyPatternLayout r0;
+        java.lang.String r1, $r3;
+        org.apache.log4j.MyPatternParser $r2;
+
+        r0 := @this: org.apache.log4j.EnhancedMyPatternLayout;
+
+        r1 := @parameter0: java.lang.String;
+
+        $r2 = new org.apache.log4j.MyPatternParser;
+
+        if r1 != null goto label1;
+
+        $r3 = "%m%n";
+
+        goto label2;
+
+     label1:
+        $r3 = r1;
+
+     label2:
+        specialinvoke $r2.<org.apache.log4j.MyPatternParser: void <init>(java.lang.String)>($r3);
+
+        return $r2;
+    }
+}

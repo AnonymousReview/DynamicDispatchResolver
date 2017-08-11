@@ -1,0 +1,338 @@
+public abstract class org.apache.commons.io.comparator.ComparatorAbstractTestCase extends org.apache.commons.io.testtools.FileBasedTestCase
+{
+    protected org.apache.commons.io.comparator.AbstractFileComparator comparator;
+    protected java.util.Comparator reverse;
+    protected java.io.File equalFile1;
+    protected java.io.File equalFile2;
+    protected java.io.File lessFile;
+    protected java.io.File moreFile;
+
+    public void <init>()
+    {
+        org.apache.commons.io.comparator.ComparatorAbstractTestCase r0;
+
+        r0 := @this: org.apache.commons.io.comparator.ComparatorAbstractTestCase;
+
+        specialinvoke r0.<org.apache.commons.io.testtools.FileBasedTestCase: void <init>()>();
+
+        return;
+    }
+
+    public void tearDown() throws java.lang.Exception
+    {
+        org.apache.commons.io.comparator.ComparatorAbstractTestCase r0;
+        java.io.File $r1;
+
+        r0 := @this: org.apache.commons.io.comparator.ComparatorAbstractTestCase;
+
+        r0.<org.apache.commons.io.comparator.ComparatorAbstractTestCase: org.apache.commons.io.comparator.AbstractFileComparator comparator> = null;
+
+        r0.<org.apache.commons.io.comparator.ComparatorAbstractTestCase: java.util.Comparator reverse> = null;
+
+        r0.<org.apache.commons.io.comparator.ComparatorAbstractTestCase: java.io.File equalFile1> = null;
+
+        r0.<org.apache.commons.io.comparator.ComparatorAbstractTestCase: java.io.File equalFile2> = null;
+
+        r0.<org.apache.commons.io.comparator.ComparatorAbstractTestCase: java.io.File lessFile> = null;
+
+        r0.<org.apache.commons.io.comparator.ComparatorAbstractTestCase: java.io.File moreFile> = null;
+
+        $r1 = staticinvoke <org.apache.commons.io.comparator.ComparatorAbstractTestCase: java.io.File getTestDirectory()>();
+
+        staticinvoke <org.apache.commons.io.FileUtils: void deleteDirectory(java.io.File)>($r1);
+
+        return;
+    }
+
+    public void testComparator()
+    {
+        org.apache.commons.io.comparator.ComparatorAbstractTestCase r0;
+        java.io.File $r1, $r2, $r4, $r5, $r8, $r9;
+        org.apache.commons.io.comparator.AbstractFileComparator $r3, $r6, $r10;
+        int $i0, $i2, $i3;
+        long $l1;
+        boolean $z0, $z1;
+
+        r0 := @this: org.apache.commons.io.comparator.ComparatorAbstractTestCase;
+
+        $r3 = r0.<org.apache.commons.io.comparator.ComparatorAbstractTestCase: org.apache.commons.io.comparator.AbstractFileComparator comparator>;
+
+        $r2 = r0.<org.apache.commons.io.comparator.ComparatorAbstractTestCase: java.io.File equalFile1>;
+
+        $r1 = r0.<org.apache.commons.io.comparator.ComparatorAbstractTestCase: java.io.File equalFile2>;
+
+        $i0 = virtualinvoke $r3.<org.apache.commons.io.comparator.AbstractFileComparator: int compare(java.lang.Object,java.lang.Object)>($r2, $r1);
+
+        $l1 = (long) $i0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("equal", 0L, $l1);
+
+        $r6 = r0.<org.apache.commons.io.comparator.ComparatorAbstractTestCase: org.apache.commons.io.comparator.AbstractFileComparator comparator>;
+
+        $r5 = r0.<org.apache.commons.io.comparator.ComparatorAbstractTestCase: java.io.File lessFile>;
+
+        $r4 = r0.<org.apache.commons.io.comparator.ComparatorAbstractTestCase: java.io.File moreFile>;
+
+        $i2 = virtualinvoke $r6.<org.apache.commons.io.comparator.AbstractFileComparator: int compare(java.lang.Object,java.lang.Object)>($r5, $r4);
+
+        if $i2 >= 0 goto label1;
+
+        $z0 = 1;
+
+        goto label2;
+
+     label1:
+        $z0 = 0;
+
+     label2:
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>("less", $z0);
+
+        $r10 = r0.<org.apache.commons.io.comparator.ComparatorAbstractTestCase: org.apache.commons.io.comparator.AbstractFileComparator comparator>;
+
+        $r9 = r0.<org.apache.commons.io.comparator.ComparatorAbstractTestCase: java.io.File moreFile>;
+
+        $r8 = r0.<org.apache.commons.io.comparator.ComparatorAbstractTestCase: java.io.File lessFile>;
+
+        $i3 = virtualinvoke $r10.<org.apache.commons.io.comparator.AbstractFileComparator: int compare(java.lang.Object,java.lang.Object)>($r9, $r8);
+
+        if $i3 <= 0 goto label3;
+
+        $z1 = 1;
+
+        goto label4;
+
+     label3:
+        $z1 = 0;
+
+     label4:
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>("more", $z1);
+
+        return;
+    }
+
+    public void testReverseComparator()
+    {
+        org.apache.commons.io.comparator.ComparatorAbstractTestCase r0;
+        java.io.File $r1, $r2, $r4, $r5, $r8, $r9;
+        java.util.Comparator $r3, $r6, $r10;
+        int $i0, $i2, $i3;
+        long $l1;
+        boolean $z0, $z1;
+
+        r0 := @this: org.apache.commons.io.comparator.ComparatorAbstractTestCase;
+
+        $r3 = r0.<org.apache.commons.io.comparator.ComparatorAbstractTestCase: java.util.Comparator reverse>;
+
+        $r2 = r0.<org.apache.commons.io.comparator.ComparatorAbstractTestCase: java.io.File equalFile1>;
+
+        $r1 = r0.<org.apache.commons.io.comparator.ComparatorAbstractTestCase: java.io.File equalFile2>;
+
+        $i0 = interfaceinvoke $r3.<java.util.Comparator: int compare(java.lang.Object,java.lang.Object)>($r2, $r1);
+
+        $l1 = (long) $i0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("equal", 0L, $l1);
+
+        $r6 = r0.<org.apache.commons.io.comparator.ComparatorAbstractTestCase: java.util.Comparator reverse>;
+
+        $r5 = r0.<org.apache.commons.io.comparator.ComparatorAbstractTestCase: java.io.File moreFile>;
+
+        $r4 = r0.<org.apache.commons.io.comparator.ComparatorAbstractTestCase: java.io.File lessFile>;
+
+        $i2 = interfaceinvoke $r6.<java.util.Comparator: int compare(java.lang.Object,java.lang.Object)>($r5, $r4);
+
+        if $i2 >= 0 goto label1;
+
+        $z0 = 1;
+
+        goto label2;
+
+     label1:
+        $z0 = 0;
+
+     label2:
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>("less", $z0);
+
+        $r10 = r0.<org.apache.commons.io.comparator.ComparatorAbstractTestCase: java.util.Comparator reverse>;
+
+        $r9 = r0.<org.apache.commons.io.comparator.ComparatorAbstractTestCase: java.io.File lessFile>;
+
+        $r8 = r0.<org.apache.commons.io.comparator.ComparatorAbstractTestCase: java.io.File moreFile>;
+
+        $i3 = interfaceinvoke $r10.<java.util.Comparator: int compare(java.lang.Object,java.lang.Object)>($r9, $r8);
+
+        if $i3 <= 0 goto label3;
+
+        $z1 = 1;
+
+        goto label4;
+
+     label3:
+        $z1 = 0;
+
+     label4:
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>("more", $z1);
+
+        return;
+    }
+
+    public void testSortArrayNull()
+    {
+        org.apache.commons.io.comparator.ComparatorAbstractTestCase r0;
+        org.apache.commons.io.comparator.AbstractFileComparator $r1;
+        java.io.File[] $r2;
+
+        r0 := @this: org.apache.commons.io.comparator.ComparatorAbstractTestCase;
+
+        $r1 = r0.<org.apache.commons.io.comparator.ComparatorAbstractTestCase: org.apache.commons.io.comparator.AbstractFileComparator comparator>;
+
+        $r2 = virtualinvoke $r1.<org.apache.commons.io.comparator.AbstractFileComparator: java.io.File[] sort(java.io.File[])>(null);
+
+        staticinvoke <org.junit.Assert: void assertNull(java.lang.Object)>($r2);
+
+        return;
+    }
+
+    public void testSortArray()
+    {
+        org.apache.commons.io.comparator.ComparatorAbstractTestCase r0;
+        java.io.File[] r1;
+        java.io.File $r2, $r3, $r4, $r7, $r8, $r9, $r10, $r11, $r12;
+        org.apache.commons.io.comparator.AbstractFileComparator $r5;
+
+        r0 := @this: org.apache.commons.io.comparator.ComparatorAbstractTestCase;
+
+        r1 = newarray (java.io.File)[3];
+
+        $r2 = r0.<org.apache.commons.io.comparator.ComparatorAbstractTestCase: java.io.File equalFile1>;
+
+        r1[0] = $r2;
+
+        $r3 = r0.<org.apache.commons.io.comparator.ComparatorAbstractTestCase: java.io.File moreFile>;
+
+        r1[1] = $r3;
+
+        $r4 = r0.<org.apache.commons.io.comparator.ComparatorAbstractTestCase: java.io.File lessFile>;
+
+        r1[2] = $r4;
+
+        $r5 = r0.<org.apache.commons.io.comparator.ComparatorAbstractTestCase: org.apache.commons.io.comparator.AbstractFileComparator comparator>;
+
+        virtualinvoke $r5.<org.apache.commons.io.comparator.AbstractFileComparator: java.io.File[] sort(java.io.File[])>(r1);
+
+        $r8 = r0.<org.apache.commons.io.comparator.ComparatorAbstractTestCase: java.io.File lessFile>;
+
+        $r7 = r1[0];
+
+        staticinvoke <org.junit.Assert: void assertSame(java.lang.String,java.lang.Object,java.lang.Object)>("equal", $r8, $r7);
+
+        $r10 = r0.<org.apache.commons.io.comparator.ComparatorAbstractTestCase: java.io.File equalFile1>;
+
+        $r9 = r1[1];
+
+        staticinvoke <org.junit.Assert: void assertSame(java.lang.String,java.lang.Object,java.lang.Object)>("less", $r10, $r9);
+
+        $r12 = r0.<org.apache.commons.io.comparator.ComparatorAbstractTestCase: java.io.File moreFile>;
+
+        $r11 = r1[2];
+
+        staticinvoke <org.junit.Assert: void assertSame(java.lang.String,java.lang.Object,java.lang.Object)>("more", $r12, $r11);
+
+        return;
+    }
+
+    public void testSortList()
+    {
+        org.apache.commons.io.comparator.ComparatorAbstractTestCase r0;
+        java.util.ArrayList $r2;
+        java.io.File $r3, $r4, $r5, $r8, $r10, $r12;
+        org.apache.commons.io.comparator.AbstractFileComparator $r6;
+        java.lang.Object $r9, $r11, $r13;
+
+        r0 := @this: org.apache.commons.io.comparator.ComparatorAbstractTestCase;
+
+        $r2 = new java.util.ArrayList;
+
+        specialinvoke $r2.<java.util.ArrayList: void <init>()>();
+
+        $r3 = r0.<org.apache.commons.io.comparator.ComparatorAbstractTestCase: java.io.File equalFile1>;
+
+        interfaceinvoke $r2.<java.util.List: boolean add(java.lang.Object)>($r3);
+
+        $r4 = r0.<org.apache.commons.io.comparator.ComparatorAbstractTestCase: java.io.File moreFile>;
+
+        interfaceinvoke $r2.<java.util.List: boolean add(java.lang.Object)>($r4);
+
+        $r5 = r0.<org.apache.commons.io.comparator.ComparatorAbstractTestCase: java.io.File lessFile>;
+
+        interfaceinvoke $r2.<java.util.List: boolean add(java.lang.Object)>($r5);
+
+        $r6 = r0.<org.apache.commons.io.comparator.ComparatorAbstractTestCase: org.apache.commons.io.comparator.AbstractFileComparator comparator>;
+
+        virtualinvoke $r6.<org.apache.commons.io.comparator.AbstractFileComparator: java.util.List sort(java.util.List)>($r2);
+
+        $r8 = r0.<org.apache.commons.io.comparator.ComparatorAbstractTestCase: java.io.File lessFile>;
+
+        $r9 = interfaceinvoke $r2.<java.util.List: java.lang.Object get(int)>(0);
+
+        staticinvoke <org.junit.Assert: void assertSame(java.lang.String,java.lang.Object,java.lang.Object)>("equal", $r8, $r9);
+
+        $r10 = r0.<org.apache.commons.io.comparator.ComparatorAbstractTestCase: java.io.File equalFile1>;
+
+        $r11 = interfaceinvoke $r2.<java.util.List: java.lang.Object get(int)>(1);
+
+        staticinvoke <org.junit.Assert: void assertSame(java.lang.String,java.lang.Object,java.lang.Object)>("less", $r10, $r11);
+
+        $r12 = r0.<org.apache.commons.io.comparator.ComparatorAbstractTestCase: java.io.File moreFile>;
+
+        $r13 = interfaceinvoke $r2.<java.util.List: java.lang.Object get(int)>(2);
+
+        staticinvoke <org.junit.Assert: void assertSame(java.lang.String,java.lang.Object,java.lang.Object)>("more", $r12, $r13);
+
+        return;
+    }
+
+    public void testSortListNull()
+    {
+        org.apache.commons.io.comparator.ComparatorAbstractTestCase r0;
+        org.apache.commons.io.comparator.AbstractFileComparator $r1;
+        java.util.List $r2;
+
+        r0 := @this: org.apache.commons.io.comparator.ComparatorAbstractTestCase;
+
+        $r1 = r0.<org.apache.commons.io.comparator.ComparatorAbstractTestCase: org.apache.commons.io.comparator.AbstractFileComparator comparator>;
+
+        $r2 = virtualinvoke $r1.<org.apache.commons.io.comparator.AbstractFileComparator: java.util.List sort(java.util.List)>(null);
+
+        staticinvoke <org.junit.Assert: void assertNull(java.lang.Object)>($r2);
+
+        return;
+    }
+
+    public void testToString()
+    {
+        org.apache.commons.io.comparator.ComparatorAbstractTestCase r0;
+        org.apache.commons.io.comparator.AbstractFileComparator $r1;
+        java.lang.String $r2, $r4;
+        java.util.Comparator $r3;
+        boolean $z0;
+
+        r0 := @this: org.apache.commons.io.comparator.ComparatorAbstractTestCase;
+
+        $r1 = r0.<org.apache.commons.io.comparator.ComparatorAbstractTestCase: org.apache.commons.io.comparator.AbstractFileComparator comparator>;
+
+        $r2 = virtualinvoke $r1.<org.apache.commons.io.comparator.AbstractFileComparator: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void assertNotNull(java.lang.String,java.lang.Object)>("comparator", $r2);
+
+        $r3 = r0.<org.apache.commons.io.comparator.ComparatorAbstractTestCase: java.util.Comparator reverse>;
+
+        $r4 = virtualinvoke $r3.<java.lang.Object: java.lang.String toString()>();
+
+        $z0 = virtualinvoke $r4.<java.lang.String: boolean startsWith(java.lang.String)>("ReverseComparator[");
+
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>("reverse", $z0);
+
+        return;
+    }
+}

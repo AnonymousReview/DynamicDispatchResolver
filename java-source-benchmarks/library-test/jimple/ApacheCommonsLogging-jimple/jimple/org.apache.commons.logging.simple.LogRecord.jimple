@@ -1,0 +1,40 @@
+public class org.apache.commons.logging.simple.LogRecord extends java.lang.Object implements java.io.Serializable
+{
+    private static final long serialVersionUID;
+    public int type;
+    public java.lang.Object message;
+    public java.lang.Throwable t;
+
+    public void <init>(int, java.lang.Object, java.lang.Throwable)
+    {
+        org.apache.commons.logging.simple.LogRecord r0;
+        int i0;
+        java.lang.Object r1;
+        java.lang.Throwable r2;
+
+        r0 := @this: org.apache.commons.logging.simple.LogRecord;
+
+        i0 := @parameter0: int;
+
+        r1 := @parameter1: java.lang.Object;
+
+        r2 := @parameter2: java.lang.Throwable;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<org.apache.commons.logging.simple.LogRecord: int type> = i0;
+
+        r0.<org.apache.commons.logging.simple.LogRecord: java.lang.Object message> = r1;
+
+        r0.<org.apache.commons.logging.simple.LogRecord: java.lang.Throwable t> = r2;
+
+        return;
+    }
+
+    public static void <clinit>()
+    {
+        <org.apache.commons.logging.simple.LogRecord: long serialVersionUID> = -5254831759209770665L;
+
+        return;
+    }
+}

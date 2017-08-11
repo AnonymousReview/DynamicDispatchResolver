@@ -1,0 +1,395 @@
+public class org.apache.commons.io.serialization.ValidatingObjectInputStream extends java.io.ObjectInputStream
+{
+    private final java.util.List acceptMatchers;
+    private final java.util.List rejectMatchers;
+
+    public void <init>(java.io.InputStream) throws java.io.IOException
+    {
+        org.apache.commons.io.serialization.ValidatingObjectInputStream r0;
+        java.io.InputStream r1;
+        java.util.ArrayList $r2, $r3;
+
+        r0 := @this: org.apache.commons.io.serialization.ValidatingObjectInputStream;
+
+        r1 := @parameter0: java.io.InputStream;
+
+        specialinvoke r0.<java.io.ObjectInputStream: void <init>(java.io.InputStream)>(r1);
+
+        $r2 = new java.util.ArrayList;
+
+        specialinvoke $r2.<java.util.ArrayList: void <init>()>();
+
+        r0.<org.apache.commons.io.serialization.ValidatingObjectInputStream: java.util.List acceptMatchers> = $r2;
+
+        $r3 = new java.util.ArrayList;
+
+        specialinvoke $r3.<java.util.ArrayList: void <init>()>();
+
+        r0.<org.apache.commons.io.serialization.ValidatingObjectInputStream: java.util.List rejectMatchers> = $r3;
+
+        return;
+    }
+
+    private void validateClassName(java.lang.String) throws java.io.InvalidClassException
+    {
+        org.apache.commons.io.serialization.ValidatingObjectInputStream r0;
+        java.lang.String r1;
+        java.util.Iterator r2, r7;
+        java.util.List $r3, $r5;
+        java.lang.Object $r4, $r6;
+        boolean $z0, $z1, $z2, $z3, z4;
+        org.apache.commons.io.serialization.ClassNameMatcher r8, r9;
+
+        r0 := @this: org.apache.commons.io.serialization.ValidatingObjectInputStream;
+
+        r1 := @parameter0: java.lang.String;
+
+        $r3 = r0.<org.apache.commons.io.serialization.ValidatingObjectInputStream: java.util.List rejectMatchers>;
+
+        r7 = interfaceinvoke $r3.<java.util.List: java.util.Iterator iterator()>();
+
+        goto label2;
+
+     label1:
+        $r4 = interfaceinvoke r7.<java.util.Iterator: java.lang.Object next()>();
+
+        r8 = (org.apache.commons.io.serialization.ClassNameMatcher) $r4;
+
+        $z0 = interfaceinvoke r8.<org.apache.commons.io.serialization.ClassNameMatcher: boolean matches(java.lang.String)>(r1);
+
+        if $z0 == 0 goto label2;
+
+        virtualinvoke r0.<org.apache.commons.io.serialization.ValidatingObjectInputStream: void invalidClassNameFound(java.lang.String)>(r1);
+
+     label2:
+        $z3 = interfaceinvoke r7.<java.util.Iterator: boolean hasNext()>();
+
+        if $z3 != 0 goto label1;
+
+        z4 = 0;
+
+        $r5 = r0.<org.apache.commons.io.serialization.ValidatingObjectInputStream: java.util.List acceptMatchers>;
+
+        r2 = interfaceinvoke $r5.<java.util.List: java.util.Iterator iterator()>();
+
+        goto label4;
+
+     label3:
+        $r6 = interfaceinvoke r2.<java.util.Iterator: java.lang.Object next()>();
+
+        r9 = (org.apache.commons.io.serialization.ClassNameMatcher) $r6;
+
+        $z2 = interfaceinvoke r9.<org.apache.commons.io.serialization.ClassNameMatcher: boolean matches(java.lang.String)>(r1);
+
+        if $z2 == 0 goto label4;
+
+        z4 = 1;
+
+        goto label5;
+
+     label4:
+        $z1 = interfaceinvoke r2.<java.util.Iterator: boolean hasNext()>();
+
+        if $z1 != 0 goto label3;
+
+     label5:
+        if z4 != 0 goto label6;
+
+        virtualinvoke r0.<org.apache.commons.io.serialization.ValidatingObjectInputStream: void invalidClassNameFound(java.lang.String)>(r1);
+
+     label6:
+        return;
+    }
+
+    protected void invalidClassNameFound(java.lang.String) throws java.io.InvalidClassException
+    {
+        org.apache.commons.io.serialization.ValidatingObjectInputStream r0;
+        java.lang.String r1, $r5;
+        java.io.InvalidClassException $r2;
+        java.lang.StringBuilder $r3, $r4;
+
+        r0 := @this: org.apache.commons.io.serialization.ValidatingObjectInputStream;
+
+        r1 := @parameter0: java.lang.String;
+
+        $r2 = new java.io.InvalidClassException;
+
+        $r3 = new java.lang.StringBuilder;
+
+        specialinvoke $r3.<java.lang.StringBuilder: void <init>(java.lang.String)>("Class name not accepted: ");
+
+        $r4 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r1);
+
+        $r5 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r2.<java.io.InvalidClassException: void <init>(java.lang.String)>($r5);
+
+        throw $r2;
+    }
+
+    protected java.lang.Class resolveClass(java.io.ObjectStreamClass) throws java.io.IOException, java.lang.ClassNotFoundException
+    {
+        org.apache.commons.io.serialization.ValidatingObjectInputStream r0;
+        java.io.ObjectStreamClass r1;
+        java.lang.String $r2;
+        java.lang.Class $r3;
+
+        r0 := @this: org.apache.commons.io.serialization.ValidatingObjectInputStream;
+
+        r1 := @parameter0: java.io.ObjectStreamClass;
+
+        $r2 = virtualinvoke r1.<java.io.ObjectStreamClass: java.lang.String getName()>();
+
+        specialinvoke r0.<org.apache.commons.io.serialization.ValidatingObjectInputStream: void validateClassName(java.lang.String)>($r2);
+
+        $r3 = specialinvoke r0.<java.io.ObjectInputStream: java.lang.Class resolveClass(java.io.ObjectStreamClass)>(r1);
+
+        return $r3;
+    }
+
+    public transient org.apache.commons.io.serialization.ValidatingObjectInputStream accept(java.lang.Class[])
+    {
+        org.apache.commons.io.serialization.ValidatingObjectInputStream r0;
+        java.lang.Class[] r1;
+        java.lang.Class r2;
+        int i0, i1;
+        org.apache.commons.io.serialization.FullClassNameMatcher $r4;
+        java.lang.String[] $r5;
+        java.util.List $r6;
+        java.lang.String $r7;
+
+        r0 := @this: org.apache.commons.io.serialization.ValidatingObjectInputStream;
+
+        r1 := @parameter0: java.lang.Class[];
+
+        i0 = lengthof r1;
+
+        i1 = 0;
+
+        goto label2;
+
+     label1:
+        r2 = r1[i1];
+
+        $r6 = r0.<org.apache.commons.io.serialization.ValidatingObjectInputStream: java.util.List acceptMatchers>;
+
+        $r4 = new org.apache.commons.io.serialization.FullClassNameMatcher;
+
+        $r5 = newarray (java.lang.String)[1];
+
+        $r7 = virtualinvoke r2.<java.lang.Class: java.lang.String getName()>();
+
+        $r5[0] = $r7;
+
+        specialinvoke $r4.<org.apache.commons.io.serialization.FullClassNameMatcher: void <init>(java.lang.String[])>($r5);
+
+        interfaceinvoke $r6.<java.util.List: boolean add(java.lang.Object)>($r4);
+
+        i1 = i1 + 1;
+
+     label2:
+        if i1 < i0 goto label1;
+
+        return r0;
+    }
+
+    public transient org.apache.commons.io.serialization.ValidatingObjectInputStream reject(java.lang.Class[])
+    {
+        org.apache.commons.io.serialization.ValidatingObjectInputStream r0;
+        java.lang.Class[] r1;
+        java.lang.Class r2;
+        int i0, i1;
+        org.apache.commons.io.serialization.FullClassNameMatcher $r4;
+        java.lang.String[] $r5;
+        java.util.List $r6;
+        java.lang.String $r7;
+
+        r0 := @this: org.apache.commons.io.serialization.ValidatingObjectInputStream;
+
+        r1 := @parameter0: java.lang.Class[];
+
+        i0 = lengthof r1;
+
+        i1 = 0;
+
+        goto label2;
+
+     label1:
+        r2 = r1[i1];
+
+        $r6 = r0.<org.apache.commons.io.serialization.ValidatingObjectInputStream: java.util.List rejectMatchers>;
+
+        $r4 = new org.apache.commons.io.serialization.FullClassNameMatcher;
+
+        $r5 = newarray (java.lang.String)[1];
+
+        $r7 = virtualinvoke r2.<java.lang.Class: java.lang.String getName()>();
+
+        $r5[0] = $r7;
+
+        specialinvoke $r4.<org.apache.commons.io.serialization.FullClassNameMatcher: void <init>(java.lang.String[])>($r5);
+
+        interfaceinvoke $r6.<java.util.List: boolean add(java.lang.Object)>($r4);
+
+        i1 = i1 + 1;
+
+     label2:
+        if i1 < i0 goto label1;
+
+        return r0;
+    }
+
+    public transient org.apache.commons.io.serialization.ValidatingObjectInputStream accept(java.lang.String[])
+    {
+        org.apache.commons.io.serialization.ValidatingObjectInputStream r0;
+        java.lang.String[] r1;
+        java.lang.String r2;
+        int i0, i1;
+        org.apache.commons.io.serialization.WildcardClassNameMatcher $r4;
+        java.util.List $r5;
+
+        r0 := @this: org.apache.commons.io.serialization.ValidatingObjectInputStream;
+
+        r1 := @parameter0: java.lang.String[];
+
+        i0 = lengthof r1;
+
+        i1 = 0;
+
+        goto label2;
+
+     label1:
+        r2 = r1[i1];
+
+        $r5 = r0.<org.apache.commons.io.serialization.ValidatingObjectInputStream: java.util.List acceptMatchers>;
+
+        $r4 = new org.apache.commons.io.serialization.WildcardClassNameMatcher;
+
+        specialinvoke $r4.<org.apache.commons.io.serialization.WildcardClassNameMatcher: void <init>(java.lang.String)>(r2);
+
+        interfaceinvoke $r5.<java.util.List: boolean add(java.lang.Object)>($r4);
+
+        i1 = i1 + 1;
+
+     label2:
+        if i1 < i0 goto label1;
+
+        return r0;
+    }
+
+    public transient org.apache.commons.io.serialization.ValidatingObjectInputStream reject(java.lang.String[])
+    {
+        org.apache.commons.io.serialization.ValidatingObjectInputStream r0;
+        java.lang.String[] r1;
+        java.lang.String r2;
+        int i0, i1;
+        org.apache.commons.io.serialization.WildcardClassNameMatcher $r4;
+        java.util.List $r5;
+
+        r0 := @this: org.apache.commons.io.serialization.ValidatingObjectInputStream;
+
+        r1 := @parameter0: java.lang.String[];
+
+        i0 = lengthof r1;
+
+        i1 = 0;
+
+        goto label2;
+
+     label1:
+        r2 = r1[i1];
+
+        $r5 = r0.<org.apache.commons.io.serialization.ValidatingObjectInputStream: java.util.List rejectMatchers>;
+
+        $r4 = new org.apache.commons.io.serialization.WildcardClassNameMatcher;
+
+        specialinvoke $r4.<org.apache.commons.io.serialization.WildcardClassNameMatcher: void <init>(java.lang.String)>(r2);
+
+        interfaceinvoke $r5.<java.util.List: boolean add(java.lang.Object)>($r4);
+
+        i1 = i1 + 1;
+
+     label2:
+        if i1 < i0 goto label1;
+
+        return r0;
+    }
+
+    public org.apache.commons.io.serialization.ValidatingObjectInputStream accept(java.util.regex.Pattern)
+    {
+        org.apache.commons.io.serialization.ValidatingObjectInputStream r0;
+        java.util.regex.Pattern r1;
+        org.apache.commons.io.serialization.RegexpClassNameMatcher $r2;
+        java.util.List $r3;
+
+        r0 := @this: org.apache.commons.io.serialization.ValidatingObjectInputStream;
+
+        r1 := @parameter0: java.util.regex.Pattern;
+
+        $r3 = r0.<org.apache.commons.io.serialization.ValidatingObjectInputStream: java.util.List acceptMatchers>;
+
+        $r2 = new org.apache.commons.io.serialization.RegexpClassNameMatcher;
+
+        specialinvoke $r2.<org.apache.commons.io.serialization.RegexpClassNameMatcher: void <init>(java.util.regex.Pattern)>(r1);
+
+        interfaceinvoke $r3.<java.util.List: boolean add(java.lang.Object)>($r2);
+
+        return r0;
+    }
+
+    public org.apache.commons.io.serialization.ValidatingObjectInputStream reject(java.util.regex.Pattern)
+    {
+        org.apache.commons.io.serialization.ValidatingObjectInputStream r0;
+        java.util.regex.Pattern r1;
+        org.apache.commons.io.serialization.RegexpClassNameMatcher $r2;
+        java.util.List $r3;
+
+        r0 := @this: org.apache.commons.io.serialization.ValidatingObjectInputStream;
+
+        r1 := @parameter0: java.util.regex.Pattern;
+
+        $r3 = r0.<org.apache.commons.io.serialization.ValidatingObjectInputStream: java.util.List rejectMatchers>;
+
+        $r2 = new org.apache.commons.io.serialization.RegexpClassNameMatcher;
+
+        specialinvoke $r2.<org.apache.commons.io.serialization.RegexpClassNameMatcher: void <init>(java.util.regex.Pattern)>(r1);
+
+        interfaceinvoke $r3.<java.util.List: boolean add(java.lang.Object)>($r2);
+
+        return r0;
+    }
+
+    public org.apache.commons.io.serialization.ValidatingObjectInputStream accept(org.apache.commons.io.serialization.ClassNameMatcher)
+    {
+        org.apache.commons.io.serialization.ValidatingObjectInputStream r0;
+        org.apache.commons.io.serialization.ClassNameMatcher r1;
+        java.util.List $r2;
+
+        r0 := @this: org.apache.commons.io.serialization.ValidatingObjectInputStream;
+
+        r1 := @parameter0: org.apache.commons.io.serialization.ClassNameMatcher;
+
+        $r2 = r0.<org.apache.commons.io.serialization.ValidatingObjectInputStream: java.util.List acceptMatchers>;
+
+        interfaceinvoke $r2.<java.util.List: boolean add(java.lang.Object)>(r1);
+
+        return r0;
+    }
+
+    public org.apache.commons.io.serialization.ValidatingObjectInputStream reject(org.apache.commons.io.serialization.ClassNameMatcher)
+    {
+        org.apache.commons.io.serialization.ValidatingObjectInputStream r0;
+        org.apache.commons.io.serialization.ClassNameMatcher r1;
+        java.util.List $r2;
+
+        r0 := @this: org.apache.commons.io.serialization.ValidatingObjectInputStream;
+
+        r1 := @parameter0: org.apache.commons.io.serialization.ClassNameMatcher;
+
+        $r2 = r0.<org.apache.commons.io.serialization.ValidatingObjectInputStream: java.util.List rejectMatchers>;
+
+        interfaceinvoke $r2.<java.util.List: boolean add(java.lang.Object)>(r1);
+
+        return r0;
+    }
+}

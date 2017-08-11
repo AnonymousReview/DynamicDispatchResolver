@@ -1,0 +1,671 @@
+public class org.apache.commons.io.input.BOMInputStream extends org.apache.commons.io.input.ProxyInputStream
+{
+    private final boolean include;
+    private final java.util.List boms;
+    private org.apache.commons.io.ByteOrderMark byteOrderMark;
+    private int[] firstBytes;
+    private int fbLength;
+    private int fbIndex;
+    private int markFbIndex;
+    private boolean markedAtStart;
+    private static final java.util.Comparator ByteOrderMarkLengthComparator;
+
+    static void <clinit>()
+    {
+        org.apache.commons.io.input.BOMInputStream$1 $r0;
+
+        $r0 = new org.apache.commons.io.input.BOMInputStream$1;
+
+        specialinvoke $r0.<org.apache.commons.io.input.BOMInputStream$1: void <init>()>();
+
+        <org.apache.commons.io.input.BOMInputStream: java.util.Comparator ByteOrderMarkLengthComparator> = $r0;
+
+        return;
+    }
+
+    public void <init>(java.io.InputStream)
+    {
+        org.apache.commons.io.input.BOMInputStream r0;
+        java.io.InputStream r1;
+        org.apache.commons.io.ByteOrderMark[] $r2;
+        org.apache.commons.io.ByteOrderMark $r3;
+
+        r0 := @this: org.apache.commons.io.input.BOMInputStream;
+
+        r1 := @parameter0: java.io.InputStream;
+
+        $r2 = newarray (org.apache.commons.io.ByteOrderMark)[1];
+
+        $r3 = <org.apache.commons.io.ByteOrderMark: org.apache.commons.io.ByteOrderMark UTF_8>;
+
+        $r2[0] = $r3;
+
+        specialinvoke r0.<org.apache.commons.io.input.BOMInputStream: void <init>(java.io.InputStream,boolean,org.apache.commons.io.ByteOrderMark[])>(r1, 0, $r2);
+
+        return;
+    }
+
+    public void <init>(java.io.InputStream, boolean)
+    {
+        org.apache.commons.io.input.BOMInputStream r0;
+        java.io.InputStream r1;
+        boolean z0;
+        org.apache.commons.io.ByteOrderMark[] $r2;
+        org.apache.commons.io.ByteOrderMark $r3;
+
+        r0 := @this: org.apache.commons.io.input.BOMInputStream;
+
+        r1 := @parameter0: java.io.InputStream;
+
+        z0 := @parameter1: boolean;
+
+        $r2 = newarray (org.apache.commons.io.ByteOrderMark)[1];
+
+        $r3 = <org.apache.commons.io.ByteOrderMark: org.apache.commons.io.ByteOrderMark UTF_8>;
+
+        $r2[0] = $r3;
+
+        specialinvoke r0.<org.apache.commons.io.input.BOMInputStream: void <init>(java.io.InputStream,boolean,org.apache.commons.io.ByteOrderMark[])>(r1, z0, $r2);
+
+        return;
+    }
+
+    public transient void <init>(java.io.InputStream, org.apache.commons.io.ByteOrderMark[])
+    {
+        org.apache.commons.io.input.BOMInputStream r0;
+        java.io.InputStream r1;
+        org.apache.commons.io.ByteOrderMark[] r2;
+
+        r0 := @this: org.apache.commons.io.input.BOMInputStream;
+
+        r1 := @parameter0: java.io.InputStream;
+
+        r2 := @parameter1: org.apache.commons.io.ByteOrderMark[];
+
+        specialinvoke r0.<org.apache.commons.io.input.BOMInputStream: void <init>(java.io.InputStream,boolean,org.apache.commons.io.ByteOrderMark[])>(r1, 0, r2);
+
+        return;
+    }
+
+    public transient void <init>(java.io.InputStream, boolean, org.apache.commons.io.ByteOrderMark[])
+    {
+        org.apache.commons.io.input.BOMInputStream r0;
+        java.io.InputStream r1;
+        boolean z0;
+        org.apache.commons.io.ByteOrderMark[] r2;
+        java.lang.IllegalArgumentException $r3;
+        int $i0;
+        java.util.Comparator $r4;
+        java.util.List $r5;
+
+        r0 := @this: org.apache.commons.io.input.BOMInputStream;
+
+        r1 := @parameter0: java.io.InputStream;
+
+        z0 := @parameter1: boolean;
+
+        r2 := @parameter2: org.apache.commons.io.ByteOrderMark[];
+
+        specialinvoke r0.<org.apache.commons.io.input.ProxyInputStream: void <init>(java.io.InputStream)>(r1);
+
+        if r2 == null goto label1;
+
+        $i0 = lengthof r2;
+
+        if $i0 != 0 goto label2;
+
+     label1:
+        $r3 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r3.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("No BOMs specified");
+
+        throw $r3;
+
+     label2:
+        r0.<org.apache.commons.io.input.BOMInputStream: boolean include> = z0;
+
+        $r4 = <org.apache.commons.io.input.BOMInputStream: java.util.Comparator ByteOrderMarkLengthComparator>;
+
+        staticinvoke <java.util.Arrays: void sort(java.lang.Object[],java.util.Comparator)>(r2, $r4);
+
+        $r5 = staticinvoke <java.util.Arrays: java.util.List asList(java.lang.Object[])>(r2);
+
+        r0.<org.apache.commons.io.input.BOMInputStream: java.util.List boms> = $r5;
+
+        return;
+    }
+
+    public boolean hasBOM() throws java.io.IOException
+    {
+        org.apache.commons.io.input.BOMInputStream r0;
+        org.apache.commons.io.ByteOrderMark $r1;
+
+        r0 := @this: org.apache.commons.io.input.BOMInputStream;
+
+        $r1 = virtualinvoke r0.<org.apache.commons.io.input.BOMInputStream: org.apache.commons.io.ByteOrderMark getBOM()>();
+
+        if $r1 == null goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public boolean hasBOM(org.apache.commons.io.ByteOrderMark) throws java.io.IOException
+    {
+        org.apache.commons.io.input.BOMInputStream r0;
+        org.apache.commons.io.ByteOrderMark r1, $r3, $r4;
+        java.util.List $r2;
+        boolean $z0, $z1;
+        java.lang.IllegalArgumentException $r5;
+        java.lang.StringBuilder $r6, $r7;
+        java.lang.String $r8;
+
+        r0 := @this: org.apache.commons.io.input.BOMInputStream;
+
+        r1 := @parameter0: org.apache.commons.io.ByteOrderMark;
+
+        $r2 = r0.<org.apache.commons.io.input.BOMInputStream: java.util.List boms>;
+
+        $z0 = interfaceinvoke $r2.<java.util.List: boolean contains(java.lang.Object)>(r1);
+
+        if $z0 != 0 goto label1;
+
+        $r5 = new java.lang.IllegalArgumentException;
+
+        $r6 = new java.lang.StringBuilder;
+
+        specialinvoke $r6.<java.lang.StringBuilder: void <init>(java.lang.String)>("Stream not configure to detect ");
+
+        $r7 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(r1);
+
+        $r8 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r5.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>($r8);
+
+        throw $r5;
+
+     label1:
+        $r3 = r0.<org.apache.commons.io.input.BOMInputStream: org.apache.commons.io.ByteOrderMark byteOrderMark>;
+
+        if $r3 == null goto label2;
+
+        $r4 = virtualinvoke r0.<org.apache.commons.io.input.BOMInputStream: org.apache.commons.io.ByteOrderMark getBOM()>();
+
+        $z1 = virtualinvoke $r4.<org.apache.commons.io.ByteOrderMark: boolean equals(java.lang.Object)>(r1);
+
+        if $z1 == 0 goto label2;
+
+        return 1;
+
+     label2:
+        return 0;
+    }
+
+    public org.apache.commons.io.ByteOrderMark getBOM() throws java.io.IOException
+    {
+        org.apache.commons.io.input.BOMInputStream r0;
+        int i0, $i1, $i2, $i3, $i4, $i5, $i6, $i7, $i8, i9;
+        int[] $r1, $r5, $r6, $r8, $r9, $r13;
+        java.util.List $r2;
+        java.lang.Object $r3;
+        org.apache.commons.io.ByteOrderMark $r4, $r10, $r11, $r12, $r14, $r15;
+        java.io.InputStream $r7;
+        boolean $z0;
+
+        r0 := @this: org.apache.commons.io.input.BOMInputStream;
+
+        $r1 = r0.<org.apache.commons.io.input.BOMInputStream: int[] firstBytes>;
+
+        if $r1 != null goto label6;
+
+        r0.<org.apache.commons.io.input.BOMInputStream: int fbLength> = 0;
+
+        $r2 = r0.<org.apache.commons.io.input.BOMInputStream: java.util.List boms>;
+
+        $r3 = interfaceinvoke $r2.<java.util.List: java.lang.Object get(int)>(0);
+
+        $r4 = (org.apache.commons.io.ByteOrderMark) $r3;
+
+        i0 = virtualinvoke $r4.<org.apache.commons.io.ByteOrderMark: int length()>();
+
+        $r5 = newarray (int)[i0];
+
+        r0.<org.apache.commons.io.input.BOMInputStream: int[] firstBytes> = $r5;
+
+        i9 = 0;
+
+        goto label3;
+
+     label1:
+        $r8 = r0.<org.apache.commons.io.input.BOMInputStream: int[] firstBytes>;
+
+        $r7 = r0.<org.apache.commons.io.input.BOMInputStream: java.io.InputStream in>;
+
+        $i2 = virtualinvoke $r7.<java.io.InputStream: int read()>();
+
+        $r8[i9] = $i2;
+
+        $i3 = r0.<org.apache.commons.io.input.BOMInputStream: int fbLength>;
+
+        $i4 = $i3 + 1;
+
+        r0.<org.apache.commons.io.input.BOMInputStream: int fbLength> = $i4;
+
+        $r9 = r0.<org.apache.commons.io.input.BOMInputStream: int[] firstBytes>;
+
+        $i5 = $r9[i9];
+
+        if $i5 >= 0 goto label2;
+
+        goto label4;
+
+     label2:
+        i9 = i9 + 1;
+
+     label3:
+        $r6 = r0.<org.apache.commons.io.input.BOMInputStream: int[] firstBytes>;
+
+        $i1 = lengthof $r6;
+
+        if i9 < $i1 goto label1;
+
+     label4:
+        $r10 = specialinvoke r0.<org.apache.commons.io.input.BOMInputStream: org.apache.commons.io.ByteOrderMark find()>();
+
+        r0.<org.apache.commons.io.input.BOMInputStream: org.apache.commons.io.ByteOrderMark byteOrderMark> = $r10;
+
+        $r11 = r0.<org.apache.commons.io.input.BOMInputStream: org.apache.commons.io.ByteOrderMark byteOrderMark>;
+
+        if $r11 == null goto label6;
+
+        $z0 = r0.<org.apache.commons.io.input.BOMInputStream: boolean include>;
+
+        if $z0 != 0 goto label6;
+
+        $r12 = r0.<org.apache.commons.io.input.BOMInputStream: org.apache.commons.io.ByteOrderMark byteOrderMark>;
+
+        $i6 = virtualinvoke $r12.<org.apache.commons.io.ByteOrderMark: int length()>();
+
+        $r13 = r0.<org.apache.commons.io.input.BOMInputStream: int[] firstBytes>;
+
+        $i7 = lengthof $r13;
+
+        if $i6 >= $i7 goto label5;
+
+        $r14 = r0.<org.apache.commons.io.input.BOMInputStream: org.apache.commons.io.ByteOrderMark byteOrderMark>;
+
+        $i8 = virtualinvoke $r14.<org.apache.commons.io.ByteOrderMark: int length()>();
+
+        r0.<org.apache.commons.io.input.BOMInputStream: int fbIndex> = $i8;
+
+        goto label6;
+
+     label5:
+        r0.<org.apache.commons.io.input.BOMInputStream: int fbLength> = 0;
+
+     label6:
+        $r15 = r0.<org.apache.commons.io.input.BOMInputStream: org.apache.commons.io.ByteOrderMark byteOrderMark>;
+
+        return $r15;
+    }
+
+    public java.lang.String getBOMCharsetName() throws java.io.IOException
+    {
+        org.apache.commons.io.input.BOMInputStream r0;
+        org.apache.commons.io.ByteOrderMark $r2, $r3;
+        java.lang.String $r4;
+
+        r0 := @this: org.apache.commons.io.input.BOMInputStream;
+
+        virtualinvoke r0.<org.apache.commons.io.input.BOMInputStream: org.apache.commons.io.ByteOrderMark getBOM()>();
+
+        $r2 = r0.<org.apache.commons.io.input.BOMInputStream: org.apache.commons.io.ByteOrderMark byteOrderMark>;
+
+        if $r2 != null goto label1;
+
+        $r4 = null;
+
+        goto label2;
+
+     label1:
+        $r3 = r0.<org.apache.commons.io.input.BOMInputStream: org.apache.commons.io.ByteOrderMark byteOrderMark>;
+
+        $r4 = virtualinvoke $r3.<org.apache.commons.io.ByteOrderMark: java.lang.String getCharsetName()>();
+
+     label2:
+        return $r4;
+    }
+
+    private int readFirstBytes() throws java.io.IOException
+    {
+        org.apache.commons.io.input.BOMInputStream r0;
+        int $i0, $i1, $i2, $i3, $i4;
+        int[] $r2;
+
+        r0 := @this: org.apache.commons.io.input.BOMInputStream;
+
+        virtualinvoke r0.<org.apache.commons.io.input.BOMInputStream: org.apache.commons.io.ByteOrderMark getBOM()>();
+
+        $i1 = r0.<org.apache.commons.io.input.BOMInputStream: int fbIndex>;
+
+        $i0 = r0.<org.apache.commons.io.input.BOMInputStream: int fbLength>;
+
+        if $i1 >= $i0 goto label1;
+
+        $r2 = r0.<org.apache.commons.io.input.BOMInputStream: int[] firstBytes>;
+
+        $i2 = r0.<org.apache.commons.io.input.BOMInputStream: int fbIndex>;
+
+        $i3 = $i2 + 1;
+
+        r0.<org.apache.commons.io.input.BOMInputStream: int fbIndex> = $i3;
+
+        $i4 = $r2[$i2];
+
+        goto label2;
+
+     label1:
+        $i4 = -1;
+
+     label2:
+        return $i4;
+    }
+
+    private org.apache.commons.io.ByteOrderMark find()
+    {
+        org.apache.commons.io.input.BOMInputStream r0;
+        org.apache.commons.io.ByteOrderMark r1;
+        java.util.Iterator r2;
+        java.util.List $r3;
+        boolean $z0, $z1;
+        java.lang.Object $r4;
+
+        r0 := @this: org.apache.commons.io.input.BOMInputStream;
+
+        $r3 = r0.<org.apache.commons.io.input.BOMInputStream: java.util.List boms>;
+
+        r2 = interfaceinvoke $r3.<java.util.List: java.util.Iterator iterator()>();
+
+        goto label2;
+
+     label1:
+        $r4 = interfaceinvoke r2.<java.util.Iterator: java.lang.Object next()>();
+
+        r1 = (org.apache.commons.io.ByteOrderMark) $r4;
+
+        $z1 = specialinvoke r0.<org.apache.commons.io.input.BOMInputStream: boolean matches(org.apache.commons.io.ByteOrderMark)>(r1);
+
+        if $z1 == 0 goto label2;
+
+        return r1;
+
+     label2:
+        $z0 = interfaceinvoke r2.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 != 0 goto label1;
+
+        return null;
+    }
+
+    private boolean matches(org.apache.commons.io.ByteOrderMark)
+    {
+        org.apache.commons.io.input.BOMInputStream r0;
+        org.apache.commons.io.ByteOrderMark r1;
+        int $i0, $i1, $i2, i3;
+        int[] $r2;
+
+        r0 := @this: org.apache.commons.io.input.BOMInputStream;
+
+        r1 := @parameter0: org.apache.commons.io.ByteOrderMark;
+
+        i3 = 0;
+
+        goto label3;
+
+     label1:
+        $i1 = virtualinvoke r1.<org.apache.commons.io.ByteOrderMark: int get(int)>(i3);
+
+        $r2 = r0.<org.apache.commons.io.input.BOMInputStream: int[] firstBytes>;
+
+        $i2 = $r2[i3];
+
+        if $i1 == $i2 goto label2;
+
+        return 0;
+
+     label2:
+        i3 = i3 + 1;
+
+     label3:
+        $i0 = virtualinvoke r1.<org.apache.commons.io.ByteOrderMark: int length()>();
+
+        if i3 < $i0 goto label1;
+
+        return 1;
+    }
+
+    public int read() throws java.io.IOException
+    {
+        org.apache.commons.io.input.BOMInputStream r0;
+        int i0, $i1;
+        java.io.InputStream $r1;
+
+        r0 := @this: org.apache.commons.io.input.BOMInputStream;
+
+        i0 = specialinvoke r0.<org.apache.commons.io.input.BOMInputStream: int readFirstBytes()>();
+
+        if i0 < 0 goto label1;
+
+        $i1 = i0;
+
+        goto label2;
+
+     label1:
+        $r1 = r0.<org.apache.commons.io.input.BOMInputStream: java.io.InputStream in>;
+
+        $i1 = virtualinvoke $r1.<java.io.InputStream: int read()>();
+
+     label2:
+        return $i1;
+    }
+
+    public int read(byte[], int, int) throws java.io.IOException
+    {
+        org.apache.commons.io.input.BOMInputStream r0;
+        byte[] r1;
+        int i0, $i1, $i2, i4, i5, i6, i7, $i8;
+        java.io.InputStream $r2;
+        byte $b3;
+
+        r0 := @this: org.apache.commons.io.input.BOMInputStream;
+
+        r1 := @parameter0: byte[];
+
+        i4 := @parameter1: int;
+
+        i5 := @parameter2: int;
+
+        i6 = 0;
+
+        i7 = 0;
+
+        goto label2;
+
+     label1:
+        i7 = specialinvoke r0.<org.apache.commons.io.input.BOMInputStream: int readFirstBytes()>();
+
+        if i7 < 0 goto label2;
+
+        $i1 = i4;
+
+        i4 = i4 + 1;
+
+        $i2 = i7 & 255;
+
+        $b3 = (byte) $i2;
+
+        r1[$i1] = $b3;
+
+        i5 = i5 + -1;
+
+        i6 = i6 + 1;
+
+     label2:
+        if i5 <= 0 goto label3;
+
+        if i7 >= 0 goto label1;
+
+     label3:
+        $r2 = r0.<org.apache.commons.io.input.BOMInputStream: java.io.InputStream in>;
+
+        i0 = virtualinvoke $r2.<java.io.InputStream: int read(byte[],int,int)>(r1, i4, i5);
+
+        if i0 >= 0 goto label5;
+
+        if i6 <= 0 goto label4;
+
+        $i8 = i6;
+
+        goto label6;
+
+     label4:
+        $i8 = -1;
+
+        goto label6;
+
+     label5:
+        $i8 = i6 + i0;
+
+     label6:
+        return $i8;
+    }
+
+    public int read(byte[]) throws java.io.IOException
+    {
+        org.apache.commons.io.input.BOMInputStream r0;
+        byte[] r1;
+        int $i0, $i1;
+
+        r0 := @this: org.apache.commons.io.input.BOMInputStream;
+
+        r1 := @parameter0: byte[];
+
+        $i0 = lengthof r1;
+
+        $i1 = virtualinvoke r0.<org.apache.commons.io.input.BOMInputStream: int read(byte[],int,int)>(r1, 0, $i0);
+
+        return $i1;
+    }
+
+    public synchronized void mark(int)
+    {
+        org.apache.commons.io.input.BOMInputStream r0;
+        int i0, $i1;
+        int[] $r1;
+        java.io.InputStream $r2;
+        boolean $z0;
+
+        r0 := @this: org.apache.commons.io.input.BOMInputStream;
+
+        i0 := @parameter0: int;
+
+        $i1 = r0.<org.apache.commons.io.input.BOMInputStream: int fbIndex>;
+
+        r0.<org.apache.commons.io.input.BOMInputStream: int markFbIndex> = $i1;
+
+        $r1 = r0.<org.apache.commons.io.input.BOMInputStream: int[] firstBytes>;
+
+        if $r1 != null goto label1;
+
+        $z0 = 1;
+
+        goto label2;
+
+     label1:
+        $z0 = 0;
+
+     label2:
+        r0.<org.apache.commons.io.input.BOMInputStream: boolean markedAtStart> = $z0;
+
+        $r2 = r0.<org.apache.commons.io.input.BOMInputStream: java.io.InputStream in>;
+
+        virtualinvoke $r2.<java.io.InputStream: void mark(int)>(i0);
+
+        return;
+    }
+
+    public synchronized void reset() throws java.io.IOException
+    {
+        org.apache.commons.io.input.BOMInputStream r0;
+        int $i0;
+        boolean $z0;
+        java.io.InputStream $r1;
+
+        r0 := @this: org.apache.commons.io.input.BOMInputStream;
+
+        $i0 = r0.<org.apache.commons.io.input.BOMInputStream: int markFbIndex>;
+
+        r0.<org.apache.commons.io.input.BOMInputStream: int fbIndex> = $i0;
+
+        $z0 = r0.<org.apache.commons.io.input.BOMInputStream: boolean markedAtStart>;
+
+        if $z0 == 0 goto label1;
+
+        r0.<org.apache.commons.io.input.BOMInputStream: int[] firstBytes> = null;
+
+     label1:
+        $r1 = r0.<org.apache.commons.io.input.BOMInputStream: java.io.InputStream in>;
+
+        virtualinvoke $r1.<java.io.InputStream: void reset()>();
+
+        return;
+    }
+
+    public long skip(long) throws java.io.IOException
+    {
+        org.apache.commons.io.input.BOMInputStream r0;
+        long l0, $l1, $l3, $l4, $l5, $l6, $l7;
+        byte $b2;
+        java.io.InputStream $r1;
+        int $i8, i9;
+
+        r0 := @this: org.apache.commons.io.input.BOMInputStream;
+
+        l0 := @parameter0: long;
+
+        i9 = 0;
+
+        goto label2;
+
+     label1:
+        i9 = i9 + 1;
+
+     label2:
+        $l1 = (long) i9;
+
+        $b2 = l0 cmp $l1;
+
+        if $b2 <= 0 goto label3;
+
+        $i8 = specialinvoke r0.<org.apache.commons.io.input.BOMInputStream: int readFirstBytes()>();
+
+        if $i8 >= 0 goto label1;
+
+     label3:
+        $r1 = r0.<org.apache.commons.io.input.BOMInputStream: java.io.InputStream in>;
+
+        $l3 = (long) i9;
+
+        $l4 = l0 - $l3;
+
+        $l5 = virtualinvoke $r1.<java.io.InputStream: long skip(long)>($l4);
+
+        $l6 = (long) i9;
+
+        $l7 = $l5 + $l6;
+
+        return $l7;
+    }
+}

@@ -1,0 +1,36 @@
+class org.apache.log4j.rewrite.RewriteAppenderTest$MessageBean extends org.apache.log4j.rewrite.RewriteAppenderTest$BaseBean
+{
+    private final java.lang.Object msg;
+
+    public void <init>(java.lang.Object, java.lang.Object, java.lang.Object)
+    {
+        org.apache.log4j.rewrite.RewriteAppenderTest$MessageBean r0;
+        java.lang.Object r1, r2, r3;
+
+        r0 := @this: org.apache.log4j.rewrite.RewriteAppenderTest$MessageBean;
+
+        r1 := @parameter0: java.lang.Object;
+
+        r2 := @parameter1: java.lang.Object;
+
+        r3 := @parameter2: java.lang.Object;
+
+        specialinvoke r0.<org.apache.log4j.rewrite.RewriteAppenderTest$BaseBean: void <init>(java.lang.Object,java.lang.Object)>(r2, r3);
+
+        r0.<org.apache.log4j.rewrite.RewriteAppenderTest$MessageBean: java.lang.Object msg> = r1;
+
+        return;
+    }
+
+    public java.lang.Object getMessage()
+    {
+        org.apache.log4j.rewrite.RewriteAppenderTest$MessageBean r0;
+        java.lang.Object $r1;
+
+        r0 := @this: org.apache.log4j.rewrite.RewriteAppenderTest$MessageBean;
+
+        $r1 = r0.<org.apache.log4j.rewrite.RewriteAppenderTest$MessageBean: java.lang.Object msg>;
+
+        return $r1;
+    }
+}

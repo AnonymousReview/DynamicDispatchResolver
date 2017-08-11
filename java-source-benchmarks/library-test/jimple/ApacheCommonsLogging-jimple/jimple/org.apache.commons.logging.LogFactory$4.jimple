@@ -1,0 +1,100 @@
+class org.apache.commons.logging.LogFactory$4 extends java.lang.Object implements java.security.PrivilegedAction
+{
+    private final java.lang.ClassLoader val$loader;
+    private final java.lang.String val$name;
+
+    void <init>(java.lang.ClassLoader, java.lang.String)
+    {
+        org.apache.commons.logging.LogFactory$4 r0;
+        java.lang.ClassLoader r1;
+        java.lang.String r2;
+
+        r0 := @this: org.apache.commons.logging.LogFactory$4;
+
+        r1 := @parameter0: java.lang.ClassLoader;
+
+        r2 := @parameter1: java.lang.String;
+
+        r0.<org.apache.commons.logging.LogFactory$4: java.lang.ClassLoader val$loader> = r1;
+
+        r0.<org.apache.commons.logging.LogFactory$4: java.lang.String val$name> = r2;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public java.lang.Object run()
+    {
+        org.apache.commons.logging.LogFactory$4 r0;
+        java.lang.ClassLoader $r1, $r5;
+        java.lang.String $r2, $r4, $r9, $r12, $r14;
+        java.util.Enumeration $r3, $r6;
+        java.io.IOException $r7;
+        boolean $z0;
+        java.lang.StringBuilder $r8, $r10, $r11, $r13;
+        java.lang.NoSuchMethodError $r15;
+
+        r0 := @this: org.apache.commons.logging.LogFactory$4;
+
+     label1:
+        $r1 = r0.<org.apache.commons.logging.LogFactory$4: java.lang.ClassLoader val$loader>;
+
+        if $r1 == null goto label3;
+
+        $r5 = r0.<org.apache.commons.logging.LogFactory$4: java.lang.ClassLoader val$loader>;
+
+        $r4 = r0.<org.apache.commons.logging.LogFactory$4: java.lang.String val$name>;
+
+        $r6 = virtualinvoke $r5.<java.lang.ClassLoader: java.util.Enumeration getResources(java.lang.String)>($r4);
+
+     label2:
+        return $r6;
+
+     label3:
+        $r2 = r0.<org.apache.commons.logging.LogFactory$4: java.lang.String val$name>;
+
+        $r3 = staticinvoke <java.lang.ClassLoader: java.util.Enumeration getSystemResources(java.lang.String)>($r2);
+
+     label4:
+        return $r3;
+
+     label5:
+        $r7 := @caughtexception;
+
+        $z0 = staticinvoke <org.apache.commons.logging.LogFactory: boolean isDiagnosticsEnabled()>();
+
+        if $z0 == 0 goto label6;
+
+        $r8 = new java.lang.StringBuilder;
+
+        specialinvoke $r8.<java.lang.StringBuilder: void <init>(java.lang.String)>("Exception while trying to find configuration file ");
+
+        $r9 = r0.<org.apache.commons.logging.LogFactory$4: java.lang.String val$name>;
+
+        $r10 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r9);
+
+        $r11 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(":");
+
+        $r12 = virtualinvoke $r7.<java.io.IOException: java.lang.String getMessage()>();
+
+        $r13 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r12);
+
+        $r14 = virtualinvoke $r13.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.apache.commons.logging.LogFactory: void access$0(java.lang.String)>($r14);
+
+     label6:
+        return null;
+
+     label7:
+        $r15 := @caughtexception;
+
+        return null;
+
+        catch java.io.IOException from label1 to label2 with label5;
+        catch java.io.IOException from label3 to label4 with label5;
+        catch java.lang.NoSuchMethodError from label1 to label2 with label7;
+        catch java.lang.NoSuchMethodError from label3 to label4 with label7;
+    }
+}

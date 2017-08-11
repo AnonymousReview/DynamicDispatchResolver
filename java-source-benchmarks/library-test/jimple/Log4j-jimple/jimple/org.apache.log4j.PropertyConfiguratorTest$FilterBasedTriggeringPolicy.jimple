@@ -1,0 +1,41 @@
+public final class org.apache.log4j.PropertyConfiguratorTest$FilterBasedTriggeringPolicy extends org.apache.log4j.PropertyConfiguratorTest$TriggeringPolicy
+{
+    private org.apache.log4j.spi.Filter filter;
+
+    public void <init>()
+    {
+        org.apache.log4j.PropertyConfiguratorTest$FilterBasedTriggeringPolicy r0;
+
+        r0 := @this: org.apache.log4j.PropertyConfiguratorTest$FilterBasedTriggeringPolicy;
+
+        specialinvoke r0.<org.apache.log4j.PropertyConfiguratorTest$TriggeringPolicy: void <init>()>();
+
+        return;
+    }
+
+    public void setFilter(org.apache.log4j.spi.Filter)
+    {
+        org.apache.log4j.PropertyConfiguratorTest$FilterBasedTriggeringPolicy r0;
+        org.apache.log4j.spi.Filter r1;
+
+        r0 := @this: org.apache.log4j.PropertyConfiguratorTest$FilterBasedTriggeringPolicy;
+
+        r1 := @parameter0: org.apache.log4j.spi.Filter;
+
+        r0.<org.apache.log4j.PropertyConfiguratorTest$FilterBasedTriggeringPolicy: org.apache.log4j.spi.Filter filter> = r1;
+
+        return;
+    }
+
+    public org.apache.log4j.spi.Filter getFilter()
+    {
+        org.apache.log4j.PropertyConfiguratorTest$FilterBasedTriggeringPolicy r0;
+        org.apache.log4j.spi.Filter $r1;
+
+        r0 := @this: org.apache.log4j.PropertyConfiguratorTest$FilterBasedTriggeringPolicy;
+
+        $r1 = r0.<org.apache.log4j.PropertyConfiguratorTest$FilterBasedTriggeringPolicy: org.apache.log4j.spi.Filter filter>;
+
+        return $r1;
+    }
+}

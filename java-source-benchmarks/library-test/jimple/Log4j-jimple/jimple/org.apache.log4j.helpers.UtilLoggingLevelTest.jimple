@@ -1,0 +1,34 @@
+public class org.apache.log4j.helpers.UtilLoggingLevelTest extends junit.framework.TestCase
+{
+
+    public void <init>(java.lang.String)
+    {
+        org.apache.log4j.helpers.UtilLoggingLevelTest r0;
+        java.lang.String r1;
+
+        r0 := @this: org.apache.log4j.helpers.UtilLoggingLevelTest;
+
+        r1 := @parameter0: java.lang.String;
+
+        specialinvoke r0.<junit.framework.TestCase: void <init>(java.lang.String)>(r1);
+
+        return;
+    }
+
+    public void testToLevelFINEST()
+    {
+        org.apache.log4j.helpers.UtilLoggingLevelTest r0;
+        org.apache.log4j.helpers.UtilLoggingLevel $r1;
+        org.apache.log4j.Level $r2;
+
+        r0 := @this: org.apache.log4j.helpers.UtilLoggingLevelTest;
+
+        $r1 = <org.apache.log4j.helpers.UtilLoggingLevel: org.apache.log4j.helpers.UtilLoggingLevel FINEST>;
+
+        $r2 = staticinvoke <org.apache.log4j.helpers.UtilLoggingLevel: org.apache.log4j.Level toLevel(java.lang.String)>("fiNeSt");
+
+        staticinvoke <org.apache.log4j.helpers.UtilLoggingLevelTest: void assertSame(java.lang.Object,java.lang.Object)>($r1, $r2);
+
+        return;
+    }
+}

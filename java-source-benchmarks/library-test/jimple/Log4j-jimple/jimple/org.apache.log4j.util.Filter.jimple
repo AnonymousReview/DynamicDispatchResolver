@@ -1,0 +1,25 @@
+public interface  org.apache.log4j.util.Filter extends java.lang.Object
+{
+    public static final java.lang.String BASIC_PAT;
+    public static final java.lang.String ISO8601_PAT;
+    public static final java.lang.String ABSOLUTE_DATE_AND_TIME_PAT;
+    public static final java.lang.String ABSOLUTE_TIME_PAT;
+    public static final java.lang.String RELATIVE_TIME_PAT;
+
+    public abstract java.lang.String filter(java.lang.String) throws org.apache.log4j.util.UnexpectedFormatException;
+
+    public static void <clinit>()
+    {
+        <org.apache.log4j.util.Filter: java.lang.String RELATIVE_TIME_PAT> = "^\\d{1,10}";
+
+        <org.apache.log4j.util.Filter: java.lang.String ABSOLUTE_TIME_PAT> = "^\\d{2}:\\d{2}:\\d{2},\\d{3}";
+
+        <org.apache.log4j.util.Filter: java.lang.String ABSOLUTE_DATE_AND_TIME_PAT> = "^\\d{1,2} .{2,6}\\.? 2\\d{3} \\d{2}:\\d{2}:\\d{2},\\d{3}";
+
+        <org.apache.log4j.util.Filter: java.lang.String ISO8601_PAT> = "^\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2},\\d{3}";
+
+        <org.apache.log4j.util.Filter: java.lang.String BASIC_PAT> = "\\[main\\] (FATAL|ERROR|WARN|INFO|DEBUG)";
+
+        return;
+    }
+}

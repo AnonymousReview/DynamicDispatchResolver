@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<attributes>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="0" eline="0" spos="0" epos="0"/>
+<text info="[inner=org/apache/commons/codec/language/bm/Lang$LangRule, outer=org/apache/commons/codec/language/bm/Lang, name=LangRule,flags=26]" aType="InnerClassTag"/>
+<text info="[inner=org/apache/commons/codec/language/bm/Languages$LanguageSet, outer=org/apache/commons/codec/language/bm/Languages, name=LanguageSet,flags=1033]" aType="InnerClassTag"/>
+<text info="soot.tagkit.InnerClassAttribute@561edbf9" aType="InnerClassAttribute"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="3" eline="3" spos="0" epos="0"/>
+<text info="Signature: Ljava/util/Map&lt;Lorg/apache/commons/codec/language/bm/NameType;Lorg/apache/commons/codec/language/bm/Lang;&gt;;" aType="SignatureTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="4" eline="4" spos="0" epos="0"/>
+<text info="ConstantValue: org/apache/commons/codec/language/bm/%s_lang.txt" aType="StringConstantValueTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="6" eline="6" spos="0" epos="0"/>
+<text info="Signature: Ljava/util/List&lt;Lorg/apache/commons/codec/language/bm/Lang$LangRule;&gt;;" aType="SignatureTag"/>
+</attribute>
+<attribute>
+<srcPos sline="189" eline="189" spos="0" epos="0"/>
+<jmpPos sline="253" eline="253" spos="0" epos="0"/>
+<text info="Signature: (Ljava/util/List&lt;Lorg/apache/commons/codec/language/bm/Lang$LangRule;&gt;;Lorg/apache/commons/codec/language/bm/Languages;)V" aType="SignatureTag"/>
+</attribute>
+</attributes>

@@ -1,0 +1,168 @@
+public class org.apache.commons.io.serialization.MoreComplexObject extends java.lang.Object implements java.io.Serializable
+{
+    private static final long serialVersionUID;
+    private final java.util.Random random;
+    private final java.lang.String string;
+    private final java.lang.Integer integer;
+    private final int pInt;
+    private final long pLong;
+    private final java.lang.Integer[] intArray;
+    private final java.util.List boolList;
+
+    void <init>()
+    {
+        org.apache.commons.io.serialization.MoreComplexObject r0;
+        java.util.Random $r1, $r4, $r6, $r7, $r9, $r11, $r14;
+        long $l0, $l3;
+        java.util.UUID $r2;
+        java.lang.String $r3;
+        int $i1, $i2, $i4, $i5, i6;
+        java.lang.Integer $r5, $r10, $r12;
+        java.lang.Integer[] $r8;
+        java.util.ArrayList $r13;
+        java.util.List $r15;
+        boolean $z0;
+        java.lang.Boolean $r16;
+
+        r0 := @this: org.apache.commons.io.serialization.MoreComplexObject;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r1 = new java.util.Random;
+
+        $l0 = staticinvoke <java.lang.System: long currentTimeMillis()>();
+
+        specialinvoke $r1.<java.util.Random: void <init>(long)>($l0);
+
+        r0.<org.apache.commons.io.serialization.MoreComplexObject: java.util.Random random> = $r1;
+
+        $r2 = staticinvoke <java.util.UUID: java.util.UUID randomUUID()>();
+
+        $r3 = virtualinvoke $r2.<java.util.UUID: java.lang.String toString()>();
+
+        r0.<org.apache.commons.io.serialization.MoreComplexObject: java.lang.String string> = $r3;
+
+        $r4 = r0.<org.apache.commons.io.serialization.MoreComplexObject: java.util.Random random>;
+
+        $i1 = virtualinvoke $r4.<java.util.Random: int nextInt()>();
+
+        $r5 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($i1);
+
+        r0.<org.apache.commons.io.serialization.MoreComplexObject: java.lang.Integer integer> = $r5;
+
+        $r6 = r0.<org.apache.commons.io.serialization.MoreComplexObject: java.util.Random random>;
+
+        $i2 = virtualinvoke $r6.<java.util.Random: int nextInt()>();
+
+        r0.<org.apache.commons.io.serialization.MoreComplexObject: int pInt> = $i2;
+
+        $r7 = r0.<org.apache.commons.io.serialization.MoreComplexObject: java.util.Random random>;
+
+        $l3 = virtualinvoke $r7.<java.util.Random: long nextLong()>();
+
+        r0.<org.apache.commons.io.serialization.MoreComplexObject: long pLong> = $l3;
+
+        $r8 = newarray (java.lang.Integer)[2];
+
+        $r9 = r0.<org.apache.commons.io.serialization.MoreComplexObject: java.util.Random random>;
+
+        $i4 = virtualinvoke $r9.<java.util.Random: int nextInt()>();
+
+        $r10 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($i4);
+
+        $r8[0] = $r10;
+
+        $r11 = r0.<org.apache.commons.io.serialization.MoreComplexObject: java.util.Random random>;
+
+        $i5 = virtualinvoke $r11.<java.util.Random: int nextInt()>();
+
+        $r12 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($i5);
+
+        $r8[1] = $r12;
+
+        r0.<org.apache.commons.io.serialization.MoreComplexObject: java.lang.Integer[] intArray> = $r8;
+
+        $r13 = new java.util.ArrayList;
+
+        specialinvoke $r13.<java.util.ArrayList: void <init>()>();
+
+        r0.<org.apache.commons.io.serialization.MoreComplexObject: java.util.List boolList> = $r13;
+
+        i6 = 0;
+
+        goto label2;
+
+     label1:
+        $r15 = r0.<org.apache.commons.io.serialization.MoreComplexObject: java.util.List boolList>;
+
+        $r14 = r0.<org.apache.commons.io.serialization.MoreComplexObject: java.util.Random random>;
+
+        $z0 = virtualinvoke $r14.<java.util.Random: boolean nextBoolean()>();
+
+        $r16 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($z0);
+
+        interfaceinvoke $r15.<java.util.List: boolean add(java.lang.Object)>($r16);
+
+        i6 = i6 + 1;
+
+     label2:
+        if i6 < 5 goto label1;
+
+        return;
+    }
+
+    public java.lang.String toString()
+    {
+        org.apache.commons.io.serialization.MoreComplexObject r0;
+        java.lang.StringBuilder $r1, $r5, $r6, $r7, $r10, $r12;
+        java.lang.String $r2, $r3, $r13;
+        java.lang.Integer $r4;
+        int $i0;
+        long $l1;
+        java.lang.Integer[] $r8;
+        java.util.List $r9, $r11;
+
+        r0 := @this: org.apache.commons.io.serialization.MoreComplexObject;
+
+        $r1 = new java.lang.StringBuilder;
+
+        $r2 = r0.<org.apache.commons.io.serialization.MoreComplexObject: java.lang.String string>;
+
+        $r3 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r2);
+
+        specialinvoke $r1.<java.lang.StringBuilder: void <init>(java.lang.String)>($r3);
+
+        $r4 = r0.<org.apache.commons.io.serialization.MoreComplexObject: java.lang.Integer integer>;
+
+        $r5 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r4);
+
+        $i0 = r0.<org.apache.commons.io.serialization.MoreComplexObject: int pInt>;
+
+        $r6 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        $l1 = r0.<org.apache.commons.io.serialization.MoreComplexObject: long pLong>;
+
+        $r7 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(long)>($l1);
+
+        $r8 = r0.<org.apache.commons.io.serialization.MoreComplexObject: java.lang.Integer[] intArray>;
+
+        $r9 = staticinvoke <java.util.Arrays: java.util.List asList(java.lang.Object[])>($r8);
+
+        $r10 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r9);
+
+        $r11 = r0.<org.apache.commons.io.serialization.MoreComplexObject: java.util.List boolList>;
+
+        $r12 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r11);
+
+        $r13 = virtualinvoke $r12.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $r13;
+    }
+
+    public static void <clinit>()
+    {
+        <org.apache.commons.io.serialization.MoreComplexObject: long serialVersionUID> = -5187124661539240729L;
+
+        return;
+    }
+}

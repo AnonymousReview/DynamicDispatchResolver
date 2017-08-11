@@ -1,0 +1,18 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Java Toolbox Commons
+Bundle-SymbolicName: com.anonymous.open.java.commons;singleton:=true
+Bundle-Version: 3.1.0.qualifier
+Bundle-Activator: com.eanonymous.open.java.commons.Activator
+Bundle-Vendor: EnSoft Corp.
+Require-Bundle: com.ensoftcorp.atlas.java.core;bundle-version="3.1.0";visibility:=reexport,
+ com.ensoftcorp.atlas.java.ui;bundle-version="3.1.0";visibility:=reexport,
+ com.anonymous.open.commons;bundle-version="3.1.0";visibility:=reexport
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ActivationPolicy: lazy
+Export-Package: com.eanonymous.open.java.commons.analysis,
+ com.eanonymous.open.java.commons.analyzers,
+ com.eanonymous.open.java.commons.filters,
+ com.eanonymous.open.java.commons.preferences,
+ com.eanonymous.open.java.commons.subsystems,
+ com.eanonymous.open.java.commons.wishful

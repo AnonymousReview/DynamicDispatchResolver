@@ -1,0 +1,100 @@
+final class org.apache.commons.io.input.NullInputStreamTest$TestNullInputStream extends org.apache.commons.io.input.NullInputStream
+{
+
+    public void <init>(int)
+    {
+        org.apache.commons.io.input.NullInputStreamTest$TestNullInputStream r0;
+        int i0;
+        long $l1;
+
+        r0 := @this: org.apache.commons.io.input.NullInputStreamTest$TestNullInputStream;
+
+        i0 := @parameter0: int;
+
+        $l1 = (long) i0;
+
+        specialinvoke r0.<org.apache.commons.io.input.NullInputStream: void <init>(long)>($l1);
+
+        return;
+    }
+
+    public void <init>(int, boolean, boolean)
+    {
+        org.apache.commons.io.input.NullInputStreamTest$TestNullInputStream r0;
+        int i0;
+        boolean z0, z1;
+        long $l1;
+
+        r0 := @this: org.apache.commons.io.input.NullInputStreamTest$TestNullInputStream;
+
+        i0 := @parameter0: int;
+
+        z0 := @parameter1: boolean;
+
+        z1 := @parameter2: boolean;
+
+        $l1 = (long) i0;
+
+        specialinvoke r0.<org.apache.commons.io.input.NullInputStream: void <init>(long,boolean,boolean)>($l1, z0, z1);
+
+        return;
+    }
+
+    protected int processByte()
+    {
+        org.apache.commons.io.input.NullInputStreamTest$TestNullInputStream r0;
+        long $l0;
+        int $i1, $i2;
+
+        r0 := @this: org.apache.commons.io.input.NullInputStreamTest$TestNullInputStream;
+
+        $l0 = virtualinvoke r0.<org.apache.commons.io.input.NullInputStreamTest$TestNullInputStream: long getPosition()>();
+
+        $i1 = (int) $l0;
+
+        $i2 = $i1 - 1;
+
+        return $i2;
+    }
+
+    protected void processBytes(byte[], int, int)
+    {
+        org.apache.commons.io.input.NullInputStreamTest$TestNullInputStream r0;
+        byte[] r1;
+        int i0, i1, i2, $i4, $i5, i7;
+        long $l3;
+        byte $b6;
+
+        r0 := @this: org.apache.commons.io.input.NullInputStreamTest$TestNullInputStream;
+
+        r1 := @parameter0: byte[];
+
+        i0 := @parameter1: int;
+
+        i1 := @parameter2: int;
+
+        $l3 = virtualinvoke r0.<org.apache.commons.io.input.NullInputStreamTest$TestNullInputStream: long getPosition()>();
+
+        $i4 = (int) $l3;
+
+        i2 = $i4 - i1;
+
+        i7 = i0;
+
+        goto label2;
+
+     label1:
+        $i5 = i2 + i7;
+
+        $b6 = (byte) $i5;
+
+        r1[i7] = $b6;
+
+        i7 = i7 + 1;
+
+     label2:
+        if i7 < i1 goto label1;
+
+        return;
+    }
+}

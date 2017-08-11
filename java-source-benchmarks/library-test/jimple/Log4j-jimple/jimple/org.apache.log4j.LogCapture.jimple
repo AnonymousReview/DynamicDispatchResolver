@@ -1,0 +1,90 @@
+public class org.apache.log4j.LogCapture extends java.lang.Object
+{
+    private final org.apache.log4j.VectorAppender appender;
+    private final org.apache.log4j.Level level;
+
+    public void <init>(org.apache.log4j.Level)
+    {
+        org.apache.log4j.LogCapture r0;
+        org.apache.log4j.Level r1;
+        org.apache.log4j.Logger r2;
+        org.apache.log4j.VectorAppender $r3, $r4;
+
+        r0 := @this: org.apache.log4j.LogCapture;
+
+        r1 := @parameter0: org.apache.log4j.Level;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<org.apache.log4j.LogCapture: org.apache.log4j.Level level> = r1;
+
+        r2 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getRootLogger()>();
+
+        $r3 = new org.apache.log4j.VectorAppender;
+
+        specialinvoke $r3.<org.apache.log4j.VectorAppender: void <init>()>();
+
+        r0.<org.apache.log4j.LogCapture: org.apache.log4j.VectorAppender appender> = $r3;
+
+        $r4 = r0.<org.apache.log4j.LogCapture: org.apache.log4j.VectorAppender appender>;
+
+        virtualinvoke r2.<org.apache.log4j.Logger: void addAppender(org.apache.log4j.Appender)>($r4);
+
+        return;
+    }
+
+    public java.lang.String getMessage()
+    {
+        org.apache.log4j.LogCapture r0;
+        java.util.Vector r1;
+        org.apache.log4j.spi.LoggingEvent r2;
+        org.apache.log4j.VectorAppender $r3;
+        int $i0;
+        java.lang.Object $r4;
+        org.apache.log4j.Level $r5, $r6;
+        java.lang.String r7;
+
+        r0 := @this: org.apache.log4j.LogCapture;
+
+        $r3 = r0.<org.apache.log4j.LogCapture: org.apache.log4j.VectorAppender appender>;
+
+        r1 = virtualinvoke $r3.<org.apache.log4j.VectorAppender: java.util.Vector getVector()>();
+
+        r7 = null;
+
+        $i0 = virtualinvoke r1.<java.util.Vector: int size()>();
+
+        tableswitch($i0)
+        {
+            case 0: goto label1;
+            case 1: goto label2;
+            default: goto label3;
+        };
+
+     label1:
+        goto label4;
+
+     label2:
+        $r4 = virtualinvoke r1.<java.util.Vector: java.lang.Object elementAt(int)>(0);
+
+        r2 = (org.apache.log4j.spi.LoggingEvent) $r4;
+
+        staticinvoke <junit.framework.Assert: void assertNotNull(java.lang.Object)>(r2);
+
+        $r5 = r0.<org.apache.log4j.LogCapture: org.apache.log4j.Level level>;
+
+        $r6 = virtualinvoke r2.<org.apache.log4j.spi.LoggingEvent: org.apache.log4j.Level getLevel()>();
+
+        staticinvoke <junit.framework.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r5, $r6);
+
+        r7 = virtualinvoke r2.<org.apache.log4j.spi.LoggingEvent: java.lang.String getRenderedMessage()>();
+
+        goto label4;
+
+     label3:
+        staticinvoke <junit.framework.Assert: void fail(java.lang.String)>("More than one request captured");
+
+     label4:
+        return r7;
+    }
+}

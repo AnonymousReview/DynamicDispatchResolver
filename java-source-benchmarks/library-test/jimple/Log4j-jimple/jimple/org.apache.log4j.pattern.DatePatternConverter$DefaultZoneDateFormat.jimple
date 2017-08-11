@@ -1,0 +1,86 @@
+class org.apache.log4j.pattern.DatePatternConverter$DefaultZoneDateFormat extends java.text.DateFormat
+{
+    private static final long serialVersionUID;
+    private final java.text.DateFormat dateFormat;
+
+    public void <init>(java.text.DateFormat)
+    {
+        org.apache.log4j.pattern.DatePatternConverter$DefaultZoneDateFormat r0;
+        java.text.DateFormat r1;
+
+        r0 := @this: org.apache.log4j.pattern.DatePatternConverter$DefaultZoneDateFormat;
+
+        r1 := @parameter0: java.text.DateFormat;
+
+        specialinvoke r0.<java.text.DateFormat: void <init>()>();
+
+        r0.<org.apache.log4j.pattern.DatePatternConverter$DefaultZoneDateFormat: java.text.DateFormat dateFormat> = r1;
+
+        return;
+    }
+
+    public java.lang.StringBuffer format(java.util.Date, java.lang.StringBuffer, java.text.FieldPosition)
+    {
+        org.apache.log4j.pattern.DatePatternConverter$DefaultZoneDateFormat r0;
+        java.util.Date r1;
+        java.lang.StringBuffer r2, $r7;
+        java.text.FieldPosition r3;
+        java.text.DateFormat $r4, $r6;
+        java.util.TimeZone $r5;
+
+        r0 := @this: org.apache.log4j.pattern.DatePatternConverter$DefaultZoneDateFormat;
+
+        r1 := @parameter0: java.util.Date;
+
+        r2 := @parameter1: java.lang.StringBuffer;
+
+        r3 := @parameter2: java.text.FieldPosition;
+
+        $r4 = r0.<org.apache.log4j.pattern.DatePatternConverter$DefaultZoneDateFormat: java.text.DateFormat dateFormat>;
+
+        $r5 = staticinvoke <java.util.TimeZone: java.util.TimeZone getDefault()>();
+
+        virtualinvoke $r4.<java.text.DateFormat: void setTimeZone(java.util.TimeZone)>($r5);
+
+        $r6 = r0.<org.apache.log4j.pattern.DatePatternConverter$DefaultZoneDateFormat: java.text.DateFormat dateFormat>;
+
+        $r7 = virtualinvoke $r6.<java.text.DateFormat: java.lang.StringBuffer format(java.util.Date,java.lang.StringBuffer,java.text.FieldPosition)>(r1, r2, r3);
+
+        return $r7;
+    }
+
+    public java.util.Date parse(java.lang.String, java.text.ParsePosition)
+    {
+        org.apache.log4j.pattern.DatePatternConverter$DefaultZoneDateFormat r0;
+        java.lang.String r1;
+        java.text.ParsePosition r2;
+        java.text.DateFormat $r3, $r5;
+        java.util.TimeZone $r4;
+        java.util.Date $r6;
+
+        r0 := @this: org.apache.log4j.pattern.DatePatternConverter$DefaultZoneDateFormat;
+
+        r1 := @parameter0: java.lang.String;
+
+        r2 := @parameter1: java.text.ParsePosition;
+
+        $r3 = r0.<org.apache.log4j.pattern.DatePatternConverter$DefaultZoneDateFormat: java.text.DateFormat dateFormat>;
+
+        $r4 = staticinvoke <java.util.TimeZone: java.util.TimeZone getDefault()>();
+
+        virtualinvoke $r3.<java.text.DateFormat: void setTimeZone(java.util.TimeZone)>($r4);
+
+        $r5 = r0.<org.apache.log4j.pattern.DatePatternConverter$DefaultZoneDateFormat: java.text.DateFormat dateFormat>;
+
+        $r6 = virtualinvoke $r5.<java.text.DateFormat: java.util.Date parse(java.lang.String,java.text.ParsePosition)>(r1, r2);
+
+        return $r6;
+    }
+
+    public static void <clinit>()
+    {
+        <org.apache.log4j.pattern.DatePatternConverter$DefaultZoneDateFormat: long serialVersionUID> = 1L;
+
+        return;
+    }
+}

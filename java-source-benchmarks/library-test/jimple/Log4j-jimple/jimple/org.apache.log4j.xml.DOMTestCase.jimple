@@ -1,0 +1,1014 @@
+public class org.apache.log4j.xml.DOMTestCase extends junit.framework.TestCase
+{
+    static java.lang.String TEMP_A1;
+    static java.lang.String TEMP_A2;
+    static java.lang.String FILTERED_A1;
+    static java.lang.String FILTERED_A2;
+    static java.lang.String EXCEPTION1;
+    static java.lang.String EXCEPTION2;
+    static java.lang.String EXCEPTION3;
+    static java.lang.String EXCEPTION4;
+    static java.lang.String EXCEPTION5;
+    static java.lang.String TEST1_1A_PAT;
+    static java.lang.String TEST1_1B_PAT;
+    static java.lang.String TEST1_2_PAT;
+    org.apache.log4j.Logger root;
+    org.apache.log4j.Logger logger;
+
+    static void <clinit>()
+    {
+        <org.apache.log4j.xml.DOMTestCase: java.lang.String TEMP_A1> = "output/temp.A1";
+
+        <org.apache.log4j.xml.DOMTestCase: java.lang.String TEMP_A2> = "output/temp.A2";
+
+        <org.apache.log4j.xml.DOMTestCase: java.lang.String FILTERED_A1> = "output/filtered.A1";
+
+        <org.apache.log4j.xml.DOMTestCase: java.lang.String FILTERED_A2> = "output/filtered.A2";
+
+        <org.apache.log4j.xml.DOMTestCase: java.lang.String EXCEPTION1> = "java.lang.Exception: Just testing";
+
+        <org.apache.log4j.xml.DOMTestCase: java.lang.String EXCEPTION2> = "\\s*at .*\\(.*\\)";
+
+        <org.apache.log4j.xml.DOMTestCase: java.lang.String EXCEPTION3> = "\\s*at .*\\(Native Method\\)";
+
+        <org.apache.log4j.xml.DOMTestCase: java.lang.String EXCEPTION4> = "\\s*at .*\\(.*Compiled Code\\)";
+
+        <org.apache.log4j.xml.DOMTestCase: java.lang.String EXCEPTION5> = "\\s*at .*\\(.*libgcj.*\\)";
+
+        <org.apache.log4j.xml.DOMTestCase: java.lang.String TEST1_1A_PAT> = "(TRACE|DEBUG|INFO |WARN |ERROR|FATAL) \\w*\\.\\w* - Message \\d";
+
+        <org.apache.log4j.xml.DOMTestCase: java.lang.String TEST1_1B_PAT> = "(TRACE|DEBUG|INFO |WARN |ERROR|FATAL) root - Message \\d";
+
+        <org.apache.log4j.xml.DOMTestCase: java.lang.String TEST1_2_PAT> = "^\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2},\\d{3} \\[main]\\ (TRACE|DEBUG|INFO|WARN|ERROR|FATAL) .* - Message \\d";
+
+        return;
+    }
+
+    public void <init>(java.lang.String)
+    {
+        org.apache.log4j.xml.DOMTestCase r0;
+        java.lang.String r1;
+
+        r0 := @this: org.apache.log4j.xml.DOMTestCase;
+
+        r1 := @parameter0: java.lang.String;
+
+        specialinvoke r0.<junit.framework.TestCase: void <init>(java.lang.String)>(r1);
+
+        return;
+    }
+
+    public void setUp()
+    {
+        org.apache.log4j.xml.DOMTestCase r0;
+        org.apache.log4j.Logger $r1, $r2;
+
+        r0 := @this: org.apache.log4j.xml.DOMTestCase;
+
+        $r1 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getRootLogger()>();
+
+        r0.<org.apache.log4j.xml.DOMTestCase: org.apache.log4j.Logger root> = $r1;
+
+        $r2 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getLogger(java.lang.Class)>(class "org/apache/log4j/xml/DOMTestCase");
+
+        r0.<org.apache.log4j.xml.DOMTestCase: org.apache.log4j.Logger logger> = $r2;
+
+        return;
+    }
+
+    public void tearDown()
+    {
+        org.apache.log4j.xml.DOMTestCase r0;
+        org.apache.log4j.Logger $r1;
+        org.apache.log4j.spi.LoggerRepository $r2;
+
+        r0 := @this: org.apache.log4j.xml.DOMTestCase;
+
+        $r1 = r0.<org.apache.log4j.xml.DOMTestCase: org.apache.log4j.Logger root>;
+
+        $r2 = virtualinvoke $r1.<org.apache.log4j.Logger: org.apache.log4j.spi.LoggerRepository getLoggerRepository()>();
+
+        interfaceinvoke $r2.<org.apache.log4j.spi.LoggerRepository: void resetConfiguration()>();
+
+        return;
+    }
+
+    public void test1() throws java.lang.Exception
+    {
+        org.apache.log4j.xml.DOMTestCase r0;
+        org.apache.log4j.util.ControlFilter $r3, $r12;
+        java.lang.String[] $r4, $r13;
+        java.lang.String $r5, $r6, $r7, $r8, $r9, $r10, $r11, $r14, $r15, $r16, $r17, $r18, $r19, $r22, $r23, $r28, $r29, $r33, $r34;
+        org.apache.log4j.util.Filter[] $r20, $r26;
+        org.apache.log4j.util.LineNumberFilter $r21, $r27;
+        org.apache.log4j.util.SunReflectFilter $r24, $r31;
+        org.apache.log4j.util.JunitTestRunnerFilter $r25, $r32;
+        org.apache.log4j.util.ISO8601Filter $r30;
+        boolean $z0, $z1;
+
+        r0 := @this: org.apache.log4j.xml.DOMTestCase;
+
+        staticinvoke <org.apache.log4j.xml.DOMConfigurator: void configure(java.lang.String)>("input/xml/DOMTestCase1.xml");
+
+        virtualinvoke r0.<org.apache.log4j.xml.DOMTestCase: void common()>();
+
+        $r3 = new org.apache.log4j.util.ControlFilter;
+
+        $r4 = newarray (java.lang.String)[7];
+
+        $r5 = <org.apache.log4j.xml.DOMTestCase: java.lang.String TEST1_1A_PAT>;
+
+        $r4[0] = $r5;
+
+        $r6 = <org.apache.log4j.xml.DOMTestCase: java.lang.String TEST1_1B_PAT>;
+
+        $r4[1] = $r6;
+
+        $r7 = <org.apache.log4j.xml.DOMTestCase: java.lang.String EXCEPTION1>;
+
+        $r4[2] = $r7;
+
+        $r8 = <org.apache.log4j.xml.DOMTestCase: java.lang.String EXCEPTION2>;
+
+        $r4[3] = $r8;
+
+        $r9 = <org.apache.log4j.xml.DOMTestCase: java.lang.String EXCEPTION3>;
+
+        $r4[4] = $r9;
+
+        $r10 = <org.apache.log4j.xml.DOMTestCase: java.lang.String EXCEPTION4>;
+
+        $r4[5] = $r10;
+
+        $r11 = <org.apache.log4j.xml.DOMTestCase: java.lang.String EXCEPTION5>;
+
+        $r4[6] = $r11;
+
+        specialinvoke $r3.<org.apache.log4j.util.ControlFilter: void <init>(java.lang.String[])>($r4);
+
+        $r12 = new org.apache.log4j.util.ControlFilter;
+
+        $r13 = newarray (java.lang.String)[6];
+
+        $r14 = <org.apache.log4j.xml.DOMTestCase: java.lang.String TEST1_2_PAT>;
+
+        $r13[0] = $r14;
+
+        $r15 = <org.apache.log4j.xml.DOMTestCase: java.lang.String EXCEPTION1>;
+
+        $r13[1] = $r15;
+
+        $r16 = <org.apache.log4j.xml.DOMTestCase: java.lang.String EXCEPTION2>;
+
+        $r13[2] = $r16;
+
+        $r17 = <org.apache.log4j.xml.DOMTestCase: java.lang.String EXCEPTION3>;
+
+        $r13[3] = $r17;
+
+        $r18 = <org.apache.log4j.xml.DOMTestCase: java.lang.String EXCEPTION4>;
+
+        $r13[4] = $r18;
+
+        $r19 = <org.apache.log4j.xml.DOMTestCase: java.lang.String EXCEPTION5>;
+
+        $r13[5] = $r19;
+
+        specialinvoke $r12.<org.apache.log4j.util.ControlFilter: void <init>(java.lang.String[])>($r13);
+
+        $r22 = <org.apache.log4j.xml.DOMTestCase: java.lang.String TEMP_A1>;
+
+        $r23 = <org.apache.log4j.xml.DOMTestCase: java.lang.String FILTERED_A1>;
+
+        $r20 = newarray (org.apache.log4j.util.Filter)[4];
+
+        $r20[0] = $r3;
+
+        $r21 = new org.apache.log4j.util.LineNumberFilter;
+
+        specialinvoke $r21.<org.apache.log4j.util.LineNumberFilter: void <init>()>();
+
+        $r20[1] = $r21;
+
+        $r24 = new org.apache.log4j.util.SunReflectFilter;
+
+        specialinvoke $r24.<org.apache.log4j.util.SunReflectFilter: void <init>()>();
+
+        $r20[2] = $r24;
+
+        $r25 = new org.apache.log4j.util.JunitTestRunnerFilter;
+
+        specialinvoke $r25.<org.apache.log4j.util.JunitTestRunnerFilter: void <init>()>();
+
+        $r20[3] = $r25;
+
+        staticinvoke <org.apache.log4j.util.Transformer: void transform(java.lang.String,java.lang.String,org.apache.log4j.util.Filter[])>($r22, $r23, $r20);
+
+        $r28 = <org.apache.log4j.xml.DOMTestCase: java.lang.String TEMP_A2>;
+
+        $r29 = <org.apache.log4j.xml.DOMTestCase: java.lang.String FILTERED_A2>;
+
+        $r26 = newarray (org.apache.log4j.util.Filter)[5];
+
+        $r26[0] = $r12;
+
+        $r27 = new org.apache.log4j.util.LineNumberFilter;
+
+        specialinvoke $r27.<org.apache.log4j.util.LineNumberFilter: void <init>()>();
+
+        $r26[1] = $r27;
+
+        $r30 = new org.apache.log4j.util.ISO8601Filter;
+
+        specialinvoke $r30.<org.apache.log4j.util.ISO8601Filter: void <init>()>();
+
+        $r26[2] = $r30;
+
+        $r31 = new org.apache.log4j.util.SunReflectFilter;
+
+        specialinvoke $r31.<org.apache.log4j.util.SunReflectFilter: void <init>()>();
+
+        $r26[3] = $r31;
+
+        $r32 = new org.apache.log4j.util.JunitTestRunnerFilter;
+
+        specialinvoke $r32.<org.apache.log4j.util.JunitTestRunnerFilter: void <init>()>();
+
+        $r26[4] = $r32;
+
+        staticinvoke <org.apache.log4j.util.Transformer: void transform(java.lang.String,java.lang.String,org.apache.log4j.util.Filter[])>($r28, $r29, $r26);
+
+        $r33 = <org.apache.log4j.xml.DOMTestCase: java.lang.String FILTERED_A1>;
+
+        $z0 = staticinvoke <org.apache.log4j.util.Compare: boolean compare(java.lang.String,java.lang.String)>($r33, "witness/dom.A1.1");
+
+        staticinvoke <org.apache.log4j.xml.DOMTestCase: void assertTrue(boolean)>($z0);
+
+        $r34 = <org.apache.log4j.xml.DOMTestCase: java.lang.String FILTERED_A2>;
+
+        $z1 = staticinvoke <org.apache.log4j.util.Compare: boolean compare(java.lang.String,java.lang.String)>($r34, "witness/dom.A2.1");
+
+        staticinvoke <org.apache.log4j.xml.DOMTestCase: void assertTrue(boolean)>($z1);
+
+        return;
+    }
+
+    public void test4() throws java.lang.Exception
+    {
+        org.apache.log4j.xml.DOMTestCase r0;
+        org.apache.log4j.util.ControlFilter $r3, $r12;
+        java.lang.String[] $r4, $r13;
+        java.lang.String $r5, $r6, $r7, $r8, $r9, $r10, $r11, $r14, $r15, $r16, $r17, $r18, $r19, $r21, $r22, $r24, $r26, $r27, $r29, $r35, $r36, $r38, $r40, $r41, $r43, $r50, $r51, $r53, $r55, $r56, $r58;
+        java.lang.StringBuilder $r20, $r23, $r25, $r28, $r34, $r37, $r39, $r42, $r49, $r52, $r54, $r57;
+        org.apache.log4j.util.Filter[] $r30, $r44;
+        org.apache.log4j.util.LineNumberFilter $r31, $r45;
+        org.apache.log4j.util.SunReflectFilter $r32, $r47;
+        org.apache.log4j.util.JunitTestRunnerFilter $r33, $r48;
+        org.apache.log4j.util.ISO8601Filter $r46;
+        boolean $z0, $z1;
+
+        r0 := @this: org.apache.log4j.xml.DOMTestCase;
+
+        staticinvoke <org.apache.log4j.xml.DOMConfigurator: void configure(java.lang.String)>("input/xml/DOMTest4.xml");
+
+        virtualinvoke r0.<org.apache.log4j.xml.DOMTestCase: void common()>();
+
+        $r3 = new org.apache.log4j.util.ControlFilter;
+
+        $r4 = newarray (java.lang.String)[7];
+
+        $r5 = <org.apache.log4j.xml.DOMTestCase: java.lang.String TEST1_1A_PAT>;
+
+        $r4[0] = $r5;
+
+        $r6 = <org.apache.log4j.xml.DOMTestCase: java.lang.String TEST1_1B_PAT>;
+
+        $r4[1] = $r6;
+
+        $r7 = <org.apache.log4j.xml.DOMTestCase: java.lang.String EXCEPTION1>;
+
+        $r4[2] = $r7;
+
+        $r8 = <org.apache.log4j.xml.DOMTestCase: java.lang.String EXCEPTION2>;
+
+        $r4[3] = $r8;
+
+        $r9 = <org.apache.log4j.xml.DOMTestCase: java.lang.String EXCEPTION3>;
+
+        $r4[4] = $r9;
+
+        $r10 = <org.apache.log4j.xml.DOMTestCase: java.lang.String EXCEPTION4>;
+
+        $r4[5] = $r10;
+
+        $r11 = <org.apache.log4j.xml.DOMTestCase: java.lang.String EXCEPTION5>;
+
+        $r4[6] = $r11;
+
+        specialinvoke $r3.<org.apache.log4j.util.ControlFilter: void <init>(java.lang.String[])>($r4);
+
+        $r12 = new org.apache.log4j.util.ControlFilter;
+
+        $r13 = newarray (java.lang.String)[6];
+
+        $r14 = <org.apache.log4j.xml.DOMTestCase: java.lang.String TEST1_2_PAT>;
+
+        $r13[0] = $r14;
+
+        $r15 = <org.apache.log4j.xml.DOMTestCase: java.lang.String EXCEPTION1>;
+
+        $r13[1] = $r15;
+
+        $r16 = <org.apache.log4j.xml.DOMTestCase: java.lang.String EXCEPTION2>;
+
+        $r13[2] = $r16;
+
+        $r17 = <org.apache.log4j.xml.DOMTestCase: java.lang.String EXCEPTION3>;
+
+        $r13[3] = $r17;
+
+        $r18 = <org.apache.log4j.xml.DOMTestCase: java.lang.String EXCEPTION4>;
+
+        $r13[4] = $r18;
+
+        $r19 = <org.apache.log4j.xml.DOMTestCase: java.lang.String EXCEPTION5>;
+
+        $r13[5] = $r19;
+
+        specialinvoke $r12.<org.apache.log4j.util.ControlFilter: void <init>(java.lang.String[])>($r13);
+
+        $r20 = new java.lang.StringBuilder;
+
+        $r21 = <org.apache.log4j.xml.DOMTestCase: java.lang.String TEMP_A1>;
+
+        $r22 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r21);
+
+        specialinvoke $r20.<java.lang.StringBuilder: void <init>(java.lang.String)>($r22);
+
+        $r23 = virtualinvoke $r20.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(".4");
+
+        $r24 = virtualinvoke $r23.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r25 = new java.lang.StringBuilder;
+
+        $r26 = <org.apache.log4j.xml.DOMTestCase: java.lang.String FILTERED_A1>;
+
+        $r27 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r26);
+
+        specialinvoke $r25.<java.lang.StringBuilder: void <init>(java.lang.String)>($r27);
+
+        $r28 = virtualinvoke $r25.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(".4");
+
+        $r29 = virtualinvoke $r28.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r30 = newarray (org.apache.log4j.util.Filter)[4];
+
+        $r30[0] = $r3;
+
+        $r31 = new org.apache.log4j.util.LineNumberFilter;
+
+        specialinvoke $r31.<org.apache.log4j.util.LineNumberFilter: void <init>()>();
+
+        $r30[1] = $r31;
+
+        $r32 = new org.apache.log4j.util.SunReflectFilter;
+
+        specialinvoke $r32.<org.apache.log4j.util.SunReflectFilter: void <init>()>();
+
+        $r30[2] = $r32;
+
+        $r33 = new org.apache.log4j.util.JunitTestRunnerFilter;
+
+        specialinvoke $r33.<org.apache.log4j.util.JunitTestRunnerFilter: void <init>()>();
+
+        $r30[3] = $r33;
+
+        staticinvoke <org.apache.log4j.util.Transformer: void transform(java.lang.String,java.lang.String,org.apache.log4j.util.Filter[])>($r24, $r29, $r30);
+
+        $r34 = new java.lang.StringBuilder;
+
+        $r35 = <org.apache.log4j.xml.DOMTestCase: java.lang.String TEMP_A2>;
+
+        $r36 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r35);
+
+        specialinvoke $r34.<java.lang.StringBuilder: void <init>(java.lang.String)>($r36);
+
+        $r37 = virtualinvoke $r34.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(".4");
+
+        $r38 = virtualinvoke $r37.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r39 = new java.lang.StringBuilder;
+
+        $r40 = <org.apache.log4j.xml.DOMTestCase: java.lang.String FILTERED_A2>;
+
+        $r41 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r40);
+
+        specialinvoke $r39.<java.lang.StringBuilder: void <init>(java.lang.String)>($r41);
+
+        $r42 = virtualinvoke $r39.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(".4");
+
+        $r43 = virtualinvoke $r42.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r44 = newarray (org.apache.log4j.util.Filter)[5];
+
+        $r44[0] = $r12;
+
+        $r45 = new org.apache.log4j.util.LineNumberFilter;
+
+        specialinvoke $r45.<org.apache.log4j.util.LineNumberFilter: void <init>()>();
+
+        $r44[1] = $r45;
+
+        $r46 = new org.apache.log4j.util.ISO8601Filter;
+
+        specialinvoke $r46.<org.apache.log4j.util.ISO8601Filter: void <init>()>();
+
+        $r44[2] = $r46;
+
+        $r47 = new org.apache.log4j.util.SunReflectFilter;
+
+        specialinvoke $r47.<org.apache.log4j.util.SunReflectFilter: void <init>()>();
+
+        $r44[3] = $r47;
+
+        $r48 = new org.apache.log4j.util.JunitTestRunnerFilter;
+
+        specialinvoke $r48.<org.apache.log4j.util.JunitTestRunnerFilter: void <init>()>();
+
+        $r44[4] = $r48;
+
+        staticinvoke <org.apache.log4j.util.Transformer: void transform(java.lang.String,java.lang.String,org.apache.log4j.util.Filter[])>($r38, $r43, $r44);
+
+        $r49 = new java.lang.StringBuilder;
+
+        $r50 = <org.apache.log4j.xml.DOMTestCase: java.lang.String FILTERED_A1>;
+
+        $r51 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r50);
+
+        specialinvoke $r49.<java.lang.StringBuilder: void <init>(java.lang.String)>($r51);
+
+        $r52 = virtualinvoke $r49.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(".4");
+
+        $r53 = virtualinvoke $r52.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $z0 = staticinvoke <org.apache.log4j.util.Compare: boolean compare(java.lang.String,java.lang.String)>($r53, "witness/dom.A1.4");
+
+        staticinvoke <org.apache.log4j.xml.DOMTestCase: void assertTrue(boolean)>($z0);
+
+        $r54 = new java.lang.StringBuilder;
+
+        $r55 = <org.apache.log4j.xml.DOMTestCase: java.lang.String FILTERED_A2>;
+
+        $r56 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r55);
+
+        specialinvoke $r54.<java.lang.StringBuilder: void <init>(java.lang.String)>($r56);
+
+        $r57 = virtualinvoke $r54.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(".4");
+
+        $r58 = virtualinvoke $r57.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $z1 = staticinvoke <org.apache.log4j.util.Compare: boolean compare(java.lang.String,java.lang.String)>($r58, "witness/dom.A2.4");
+
+        staticinvoke <org.apache.log4j.xml.DOMTestCase: void assertTrue(boolean)>($z1);
+
+        return;
+    }
+
+    void common()
+    {
+        org.apache.log4j.xml.DOMTestCase r0;
+        java.lang.String r1, $r8, $r12, $r16, $r20, $r24, $r28, $r32, $r36, $r40, $r44, $r49, $r54, $r59, $r63, $r67, $r71;
+        java.lang.Thread $r3, $r4, $r72;
+        java.lang.StringBuilder $r5, $r7, $r9, $r11, $r13, $r15, $r17, $r19, $r21, $r23, $r25, $r27, $r29, $r31, $r33, $r35, $r37, $r39, $r41, $r43, $r45, $r48, $r50, $r53, $r56, $r58, $r60, $r62, $r64, $r66, $r68, $r70;
+        org.apache.log4j.Logger $r6, $r10, $r14, $r18, $r22, $r26, $r30, $r34, $r38, $r42, $r46, $r51, $r57, $r61, $r65, $r69;
+        org.apache.log4j.Level $r47, $r52;
+        java.lang.Exception $r55;
+        int i1, i2, i3, i4, i5, i6, i7, i8;
+
+        r0 := @this: org.apache.log4j.xml.DOMTestCase;
+
+        $r3 = staticinvoke <java.lang.Thread: java.lang.Thread currentThread()>();
+
+        r1 = virtualinvoke $r3.<java.lang.Thread: java.lang.String getName()>();
+
+        $r4 = staticinvoke <java.lang.Thread: java.lang.Thread currentThread()>();
+
+        virtualinvoke $r4.<java.lang.Thread: void setName(java.lang.String)>("main");
+
+        $r6 = r0.<org.apache.log4j.xml.DOMTestCase: org.apache.log4j.Logger logger>;
+
+        $r5 = new java.lang.StringBuilder;
+
+        specialinvoke $r5.<java.lang.StringBuilder: void <init>(java.lang.String)>("Message ");
+
+        i1 = -1 + 1;
+
+        $r7 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i1);
+
+        $r8 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r6.<org.apache.log4j.Logger: void trace(java.lang.Object)>($r8);
+
+        $r10 = r0.<org.apache.log4j.xml.DOMTestCase: org.apache.log4j.Logger root>;
+
+        $r9 = new java.lang.StringBuilder;
+
+        specialinvoke $r9.<java.lang.StringBuilder: void <init>(java.lang.String)>("Message ");
+
+        $r11 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i1);
+
+        $r12 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r10.<org.apache.log4j.Logger: void trace(java.lang.Object)>($r12);
+
+        $r14 = r0.<org.apache.log4j.xml.DOMTestCase: org.apache.log4j.Logger logger>;
+
+        $r13 = new java.lang.StringBuilder;
+
+        specialinvoke $r13.<java.lang.StringBuilder: void <init>(java.lang.String)>("Message ");
+
+        i2 = i1 + 1;
+
+        $r15 = virtualinvoke $r13.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i2);
+
+        $r16 = virtualinvoke $r15.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r14.<org.apache.log4j.Logger: void debug(java.lang.Object)>($r16);
+
+        $r18 = r0.<org.apache.log4j.xml.DOMTestCase: org.apache.log4j.Logger root>;
+
+        $r17 = new java.lang.StringBuilder;
+
+        specialinvoke $r17.<java.lang.StringBuilder: void <init>(java.lang.String)>("Message ");
+
+        $r19 = virtualinvoke $r17.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i2);
+
+        $r20 = virtualinvoke $r19.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r18.<org.apache.log4j.Logger: void debug(java.lang.Object)>($r20);
+
+        $r22 = r0.<org.apache.log4j.xml.DOMTestCase: org.apache.log4j.Logger logger>;
+
+        $r21 = new java.lang.StringBuilder;
+
+        specialinvoke $r21.<java.lang.StringBuilder: void <init>(java.lang.String)>("Message ");
+
+        i3 = i2 + 1;
+
+        $r23 = virtualinvoke $r21.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i3);
+
+        $r24 = virtualinvoke $r23.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r22.<org.apache.log4j.Logger: void info(java.lang.Object)>($r24);
+
+        $r26 = r0.<org.apache.log4j.xml.DOMTestCase: org.apache.log4j.Logger root>;
+
+        $r25 = new java.lang.StringBuilder;
+
+        specialinvoke $r25.<java.lang.StringBuilder: void <init>(java.lang.String)>("Message ");
+
+        $r27 = virtualinvoke $r25.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i3);
+
+        $r28 = virtualinvoke $r27.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r26.<org.apache.log4j.Logger: void info(java.lang.Object)>($r28);
+
+        $r30 = r0.<org.apache.log4j.xml.DOMTestCase: org.apache.log4j.Logger logger>;
+
+        $r29 = new java.lang.StringBuilder;
+
+        specialinvoke $r29.<java.lang.StringBuilder: void <init>(java.lang.String)>("Message ");
+
+        i4 = i3 + 1;
+
+        $r31 = virtualinvoke $r29.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i4);
+
+        $r32 = virtualinvoke $r31.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r30.<org.apache.log4j.Logger: void warn(java.lang.Object)>($r32);
+
+        $r34 = r0.<org.apache.log4j.xml.DOMTestCase: org.apache.log4j.Logger root>;
+
+        $r33 = new java.lang.StringBuilder;
+
+        specialinvoke $r33.<java.lang.StringBuilder: void <init>(java.lang.String)>("Message ");
+
+        $r35 = virtualinvoke $r33.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i4);
+
+        $r36 = virtualinvoke $r35.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r34.<org.apache.log4j.Logger: void warn(java.lang.Object)>($r36);
+
+        $r38 = r0.<org.apache.log4j.xml.DOMTestCase: org.apache.log4j.Logger logger>;
+
+        $r37 = new java.lang.StringBuilder;
+
+        specialinvoke $r37.<java.lang.StringBuilder: void <init>(java.lang.String)>("Message ");
+
+        i5 = i4 + 1;
+
+        $r39 = virtualinvoke $r37.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i5);
+
+        $r40 = virtualinvoke $r39.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r38.<org.apache.log4j.Logger: void error(java.lang.Object)>($r40);
+
+        $r42 = r0.<org.apache.log4j.xml.DOMTestCase: org.apache.log4j.Logger root>;
+
+        $r41 = new java.lang.StringBuilder;
+
+        specialinvoke $r41.<java.lang.StringBuilder: void <init>(java.lang.String)>("Message ");
+
+        $r43 = virtualinvoke $r41.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i5);
+
+        $r44 = virtualinvoke $r43.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r42.<org.apache.log4j.Logger: void error(java.lang.Object)>($r44);
+
+        $r46 = r0.<org.apache.log4j.xml.DOMTestCase: org.apache.log4j.Logger logger>;
+
+        $r47 = <org.apache.log4j.Level: org.apache.log4j.Level FATAL>;
+
+        $r45 = new java.lang.StringBuilder;
+
+        specialinvoke $r45.<java.lang.StringBuilder: void <init>(java.lang.String)>("Message ");
+
+        i6 = i5 + 1;
+
+        $r48 = virtualinvoke $r45.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i6);
+
+        $r49 = virtualinvoke $r48.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r46.<org.apache.log4j.Logger: void log(org.apache.log4j.Priority,java.lang.Object)>($r47, $r49);
+
+        $r51 = r0.<org.apache.log4j.xml.DOMTestCase: org.apache.log4j.Logger root>;
+
+        $r52 = <org.apache.log4j.Level: org.apache.log4j.Level FATAL>;
+
+        $r50 = new java.lang.StringBuilder;
+
+        specialinvoke $r50.<java.lang.StringBuilder: void <init>(java.lang.String)>("Message ");
+
+        $r53 = virtualinvoke $r50.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i6);
+
+        $r54 = virtualinvoke $r53.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r51.<org.apache.log4j.Logger: void log(org.apache.log4j.Priority,java.lang.Object)>($r52, $r54);
+
+        $r55 = new java.lang.Exception;
+
+        specialinvoke $r55.<java.lang.Exception: void <init>(java.lang.String)>("Just testing");
+
+        $r57 = r0.<org.apache.log4j.xml.DOMTestCase: org.apache.log4j.Logger logger>;
+
+        $r56 = new java.lang.StringBuilder;
+
+        specialinvoke $r56.<java.lang.StringBuilder: void <init>(java.lang.String)>("Message ");
+
+        i7 = i6 + 1;
+
+        $r58 = virtualinvoke $r56.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i7);
+
+        $r59 = virtualinvoke $r58.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r57.<org.apache.log4j.Logger: void debug(java.lang.Object,java.lang.Throwable)>($r59, $r55);
+
+        $r61 = r0.<org.apache.log4j.xml.DOMTestCase: org.apache.log4j.Logger root>;
+
+        $r60 = new java.lang.StringBuilder;
+
+        specialinvoke $r60.<java.lang.StringBuilder: void <init>(java.lang.String)>("Message ");
+
+        $r62 = virtualinvoke $r60.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i7);
+
+        $r63 = virtualinvoke $r62.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r61.<org.apache.log4j.Logger: void debug(java.lang.Object,java.lang.Throwable)>($r63, $r55);
+
+        $r65 = r0.<org.apache.log4j.xml.DOMTestCase: org.apache.log4j.Logger logger>;
+
+        $r64 = new java.lang.StringBuilder;
+
+        specialinvoke $r64.<java.lang.StringBuilder: void <init>(java.lang.String)>("Message ");
+
+        i8 = i7 + 1;
+
+        $r66 = virtualinvoke $r64.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i8);
+
+        $r67 = virtualinvoke $r66.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r65.<org.apache.log4j.Logger: void error(java.lang.Object,java.lang.Throwable)>($r67, $r55);
+
+        $r69 = r0.<org.apache.log4j.xml.DOMTestCase: org.apache.log4j.Logger root>;
+
+        $r68 = new java.lang.StringBuilder;
+
+        specialinvoke $r68.<java.lang.StringBuilder: void <init>(java.lang.String)>("Message ");
+
+        $r70 = virtualinvoke $r68.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i8);
+
+        $r71 = virtualinvoke $r70.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r69.<org.apache.log4j.Logger: void error(java.lang.Object,java.lang.Throwable)>($r71, $r55);
+
+        $r72 = staticinvoke <java.lang.Thread: java.lang.Thread currentThread()>();
+
+        virtualinvoke $r72.<java.lang.Thread: void setName(java.lang.String)>(r1);
+
+        return;
+    }
+
+    public void testCategoryFactory1()
+    {
+        org.apache.log4j.xml.DOMTestCase r0;
+        org.apache.log4j.Logger r1, r2;
+        boolean $z0, $z1;
+
+        r0 := @this: org.apache.log4j.xml.DOMTestCase;
+
+        staticinvoke <org.apache.log4j.xml.DOMConfigurator: void configure(java.lang.String)>("input/xml/categoryfactory1.xml");
+
+        r1 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getLogger(java.lang.String)>("org.apache.log4j.xml.DOMTestCase.testCategoryFactory1.1");
+
+        $z0 = r1 instanceof org.apache.log4j.xml.DOMTestCase$CustomLogger;
+
+        staticinvoke <org.apache.log4j.xml.DOMTestCase: void assertTrue(boolean)>($z0);
+
+        r2 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getLogger(java.lang.String)>("org.apache.log4j.xml.DOMTestCase.testCategoryFactory1.2");
+
+        $z1 = r2 instanceof org.apache.log4j.xml.DOMTestCase$CustomLogger;
+
+        staticinvoke <org.apache.log4j.xml.DOMTestCase: void assertFalse(boolean)>($z1);
+
+        return;
+    }
+
+    public void testCategoryFactory2()
+    {
+        org.apache.log4j.xml.DOMTestCase r0;
+        org.apache.log4j.Logger r1, r2;
+        boolean $z0, $z1;
+
+        r0 := @this: org.apache.log4j.xml.DOMTestCase;
+
+        staticinvoke <org.apache.log4j.xml.DOMConfigurator: void configure(java.lang.String)>("input/xml/categoryfactory2.xml");
+
+        r1 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getLogger(java.lang.String)>("org.apache.log4j.xml.DOMTestCase.testCategoryFactory2.1");
+
+        $z0 = r1 instanceof org.apache.log4j.xml.DOMTestCase$CustomLogger;
+
+        staticinvoke <org.apache.log4j.xml.DOMTestCase: void assertTrue(boolean)>($z0);
+
+        r2 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getLogger(java.lang.String)>("org.apache.log4j.xml.DOMTestCase.testCategoryFactory2.2");
+
+        $z1 = r2 instanceof org.apache.log4j.xml.DOMTestCase$CustomLogger;
+
+        staticinvoke <org.apache.log4j.xml.DOMTestCase: void assertFalse(boolean)>($z1);
+
+        return;
+    }
+
+    public void testLoggerFactory1()
+    {
+        org.apache.log4j.xml.DOMTestCase r0;
+        org.apache.log4j.Logger r1, r2;
+        boolean $z0, $z1;
+
+        r0 := @this: org.apache.log4j.xml.DOMTestCase;
+
+        staticinvoke <org.apache.log4j.xml.DOMConfigurator: void configure(java.lang.String)>("input/xml/loggerfactory1.xml");
+
+        r1 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getLogger(java.lang.String)>("org.apache.log4j.xml.DOMTestCase.testLoggerFactory1.1");
+
+        $z0 = r1 instanceof org.apache.log4j.xml.DOMTestCase$CustomLogger;
+
+        staticinvoke <org.apache.log4j.xml.DOMTestCase: void assertTrue(boolean)>($z0);
+
+        r2 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getLogger(java.lang.String)>("org.apache.log4j.xml.DOMTestCase.testLoggerFactory1.2");
+
+        $z1 = r2 instanceof org.apache.log4j.xml.DOMTestCase$CustomLogger;
+
+        staticinvoke <org.apache.log4j.xml.DOMTestCase: void assertFalse(boolean)>($z1);
+
+        return;
+    }
+
+    public void testReset() throws java.lang.Exception
+    {
+        org.apache.log4j.xml.DOMTestCase r0;
+        org.apache.log4j.VectorAppender $r2;
+        org.apache.log4j.Logger $r3, $r4;
+        org.apache.log4j.Appender $r5;
+
+        r0 := @this: org.apache.log4j.xml.DOMTestCase;
+
+        $r2 = new org.apache.log4j.VectorAppender;
+
+        specialinvoke $r2.<org.apache.log4j.VectorAppender: void <init>()>();
+
+        virtualinvoke $r2.<org.apache.log4j.VectorAppender: void setName(java.lang.String)>("V1");
+
+        $r3 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getRootLogger()>();
+
+        virtualinvoke $r3.<org.apache.log4j.Logger: void addAppender(org.apache.log4j.Appender)>($r2);
+
+        staticinvoke <org.apache.log4j.xml.DOMConfigurator: void configure(java.lang.String)>("input/xml/testReset.xml");
+
+        $r4 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getRootLogger()>();
+
+        $r5 = virtualinvoke $r4.<org.apache.log4j.Logger: org.apache.log4j.Appender getAppender(java.lang.String)>("V1");
+
+        staticinvoke <org.apache.log4j.xml.DOMTestCase: void assertNull(java.lang.Object)>($r5);
+
+        return;
+    }
+
+    public void testConfigureAndWatch() throws java.lang.Exception
+    {
+        org.apache.log4j.xml.DOMTestCase r0;
+        org.apache.log4j.Logger $r1;
+        org.apache.log4j.Appender $r2;
+
+        r0 := @this: org.apache.log4j.xml.DOMTestCase;
+
+        staticinvoke <org.apache.log4j.xml.DOMConfigurator: void configureAndWatch(java.lang.String)>("input/xml/DOMTestCase1.xml");
+
+        $r1 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getRootLogger()>();
+
+        $r2 = virtualinvoke $r1.<org.apache.log4j.Logger: org.apache.log4j.Appender getAppender(java.lang.String)>("A1");
+
+        staticinvoke <org.apache.log4j.xml.DOMTestCase: void assertNotNull(java.lang.Object)>($r2);
+
+        return;
+    }
+
+    public void testOverrideSubst()
+    {
+        org.apache.log4j.xml.DOMTestCase r0;
+        org.apache.log4j.FileAppender r2;
+        java.lang.String r3;
+        org.apache.log4j.xml.DOMTestCase$1 $r4;
+        org.apache.log4j.spi.LoggerRepository $r5;
+        org.apache.log4j.Logger $r6;
+        org.apache.log4j.Appender $r7;
+
+        r0 := @this: org.apache.log4j.xml.DOMTestCase;
+
+        $r4 = new org.apache.log4j.xml.DOMTestCase$1;
+
+        specialinvoke $r4.<org.apache.log4j.xml.DOMTestCase$1: void <init>(org.apache.log4j.xml.DOMTestCase)>(r0);
+
+        $r5 = staticinvoke <org.apache.log4j.LogManager: org.apache.log4j.spi.LoggerRepository getLoggerRepository()>();
+
+        virtualinvoke $r4.<org.apache.log4j.xml.DOMConfigurator: void doConfigure(java.lang.String,org.apache.log4j.spi.LoggerRepository)>("input/xml/DOMTestCase1.xml", $r5);
+
+        $r6 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getRootLogger()>();
+
+        $r7 = virtualinvoke $r6.<org.apache.log4j.Logger: org.apache.log4j.Appender getAppender(java.lang.String)>("A1");
+
+        r2 = (org.apache.log4j.FileAppender) $r7;
+
+        r3 = virtualinvoke r2.<org.apache.log4j.FileAppender: java.lang.String getFile()>();
+
+        staticinvoke <org.apache.log4j.xml.DOMTestCase: void assertEquals(java.lang.String,java.lang.String)>("output/subst-test.A1", r3);
+
+        return;
+    }
+
+    public void testThrowableRenderer1()
+    {
+        org.apache.log4j.xml.DOMTestCase r0;
+        org.apache.log4j.spi.ThrowableRendererSupport r1;
+        org.apache.log4j.xml.DOMTestCase$MockThrowableRenderer r2;
+        org.apache.log4j.spi.LoggerRepository $r3;
+        org.apache.log4j.spi.ThrowableRenderer $r4;
+        boolean $z0, $z1;
+
+        r0 := @this: org.apache.log4j.xml.DOMTestCase;
+
+        staticinvoke <org.apache.log4j.xml.DOMConfigurator: void configure(java.lang.String)>("input/xml/throwableRenderer1.xml");
+
+        $r3 = staticinvoke <org.apache.log4j.LogManager: org.apache.log4j.spi.LoggerRepository getLoggerRepository()>();
+
+        r1 = (org.apache.log4j.spi.ThrowableRendererSupport) $r3;
+
+        $r4 = interfaceinvoke r1.<org.apache.log4j.spi.ThrowableRendererSupport: org.apache.log4j.spi.ThrowableRenderer getThrowableRenderer()>();
+
+        r2 = (org.apache.log4j.xml.DOMTestCase$MockThrowableRenderer) $r4;
+
+        staticinvoke <org.apache.log4j.LogManager: void resetConfiguration()>();
+
+        staticinvoke <org.apache.log4j.xml.DOMTestCase: void assertNotNull(java.lang.Object)>(r2);
+
+        $z0 = virtualinvoke r2.<org.apache.log4j.xml.DOMTestCase$MockThrowableRenderer: boolean isActivated()>();
+
+        staticinvoke <org.apache.log4j.xml.DOMTestCase: void assertEquals(boolean,boolean)>(1, $z0);
+
+        $z1 = virtualinvoke r2.<org.apache.log4j.xml.DOMTestCase$MockThrowableRenderer: boolean getShowVersion()>();
+
+        staticinvoke <org.apache.log4j.xml.DOMTestCase: void assertEquals(boolean,boolean)>(0, $z1);
+
+        return;
+    }
+
+    public void testJarURL() throws java.io.IOException
+    {
+        org.apache.log4j.xml.DOMTestCase r0;
+        byte[] r6;
+        java.io.File $r8, $r12, $r13;
+        java.io.PrintStream $r9;
+        java.lang.String $r10, $r22;
+        java.io.FileInputStream $r11;
+        java.util.zip.ZipOutputStream $r14;
+        java.io.FileOutputStream $r15;
+        java.util.zip.ZipEntry $r16;
+        int $i1;
+        java.net.URL $r17, $r19;
+        java.lang.StringBuilder $r18, $r20, $r21;
+        boolean $z1, $z2;
+
+        r0 := @this: org.apache.log4j.xml.DOMTestCase;
+
+        $r8 = new java.io.File;
+
+        specialinvoke $r8.<java.io.File: void <init>(java.lang.String)>("input/xml/defaultInit.xml");
+
+        $r9 = <java.lang.System: java.io.PrintStream out>;
+
+        $r10 = virtualinvoke $r8.<java.io.File: java.lang.String getAbsolutePath()>();
+
+        virtualinvoke $r9.<java.io.PrintStream: void println(java.lang.String)>($r10);
+
+        $r11 = new java.io.FileInputStream;
+
+        specialinvoke $r11.<java.io.FileInputStream: void <init>(java.io.File)>($r8);
+
+        $r12 = new java.io.File;
+
+        specialinvoke $r12.<java.io.File: void <init>(java.lang.String)>("output");
+
+        virtualinvoke $r12.<java.io.File: boolean mkdirs()>();
+
+        $r13 = new java.io.File;
+
+        specialinvoke $r13.<java.io.File: void <init>(java.lang.String)>("output/xml.jar");
+
+        $r14 = new java.util.zip.ZipOutputStream;
+
+        $r15 = new java.io.FileOutputStream;
+
+        specialinvoke $r15.<java.io.FileOutputStream: void <init>(java.io.File)>($r13);
+
+        specialinvoke $r14.<java.util.zip.ZipOutputStream: void <init>(java.io.OutputStream)>($r15);
+
+        $r16 = new java.util.zip.ZipEntry;
+
+        specialinvoke $r16.<java.util.zip.ZipEntry: void <init>(java.lang.String)>("log4j.xml");
+
+        virtualinvoke $r14.<java.util.zip.ZipOutputStream: void putNextEntry(java.util.zip.ZipEntry)>($r16);
+
+        r6 = newarray (byte)[1024];
+
+        goto label2;
+
+     label1:
+        virtualinvoke $r14.<java.util.zip.ZipOutputStream: void write(byte[],int,int)>(r6, 0, $i1);
+
+     label2:
+        $i1 = virtualinvoke $r11.<java.io.InputStream: int read(byte[])>(r6);
+
+        if $i1 > 0 goto label1;
+
+        virtualinvoke $r14.<java.util.zip.ZipOutputStream: void closeEntry()>();
+
+        virtualinvoke $r14.<java.util.zip.ZipOutputStream: void close()>();
+
+        $r17 = new java.net.URL;
+
+        $r18 = new java.lang.StringBuilder;
+
+        specialinvoke $r18.<java.lang.StringBuilder: void <init>(java.lang.String)>("jar:");
+
+        $r19 = virtualinvoke $r13.<java.io.File: java.net.URL toURL()>();
+
+        $r20 = virtualinvoke $r18.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r19);
+
+        $r21 = virtualinvoke $r20.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("!/log4j.xml");
+
+        $r22 = virtualinvoke $r21.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r17.<java.net.URL: void <init>(java.lang.String)>($r22);
+
+        staticinvoke <org.apache.log4j.xml.DOMConfigurator: void configure(java.net.URL)>($r17);
+
+        $z1 = virtualinvoke $r13.<java.io.File: boolean delete()>();
+
+        staticinvoke <org.apache.log4j.xml.DOMTestCase: void assertTrue(boolean)>($z1);
+
+        $z2 = virtualinvoke $r13.<java.io.File: boolean exists()>();
+
+        staticinvoke <org.apache.log4j.xml.DOMTestCase: void assertFalse(boolean)>($z2);
+
+        return;
+    }
+}

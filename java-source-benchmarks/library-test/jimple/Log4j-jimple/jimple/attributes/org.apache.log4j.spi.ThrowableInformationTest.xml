@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<attributes>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="0" eline="0" spos="0" epos="0"/>
+<text info="[inner=org/apache/log4j/spi/ThrowableInformationTest$EmptyThrowable, outer=org/apache/log4j/spi/ThrowableInformationTest, name=EmptyThrowable,flags=26]" aType="InnerClassTag"/>
+<text info="[inner=org/apache/log4j/spi/ThrowableInformationTest$NastyThrowable, outer=org/apache/log4j/spi/ThrowableInformationTest, name=NastyThrowable,flags=26]" aType="InnerClassTag"/>
+<text info="[inner=org/apache/log4j/spi/ThrowableInformationTest$NotOverriddenThrowable, outer=org/apache/log4j/spi/ThrowableInformationTest, name=NotOverriddenThrowable,flags=26]" aType="InnerClassTag"/>
+<text info="[inner=org/apache/log4j/spi/ThrowableInformationTest$NullThrowable, outer=org/apache/log4j/spi/ThrowableInformationTest, name=NullThrowable,flags=26]" aType="InnerClassTag"/>
+<text info="[inner=org/apache/log4j/spi/ThrowableInformationTest$OverriddenThrowable, outer=org/apache/log4j/spi/ThrowableInformationTest, name=OverriddenThrowable,flags=26]" aType="InnerClassTag"/>
+<text info="[inner=org/apache/log4j/spi/ThrowableInformationTest$StringThrowable, outer=org/apache/log4j/spi/ThrowableInformationTest, name=StringThrowable,flags=26]" aType="InnerClassTag"/>
+<text info="soot.tagkit.InnerClassAttribute@79d1aa31" aType="InnerClassAttribute"/>
+</attribute>
+</attributes>

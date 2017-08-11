@@ -1,0 +1,302 @@
+public class org.apache.commons.io.filefilter.MagicNumberFileFilter extends org.apache.commons.io.filefilter.AbstractFileFilter implements java.io.Serializable
+{
+    private static final long serialVersionUID;
+    private final byte[] magicNumbers;
+    private final long byteOffset;
+
+    public void <init>(byte[])
+    {
+        org.apache.commons.io.filefilter.MagicNumberFileFilter r0;
+        byte[] r1;
+
+        r0 := @this: org.apache.commons.io.filefilter.MagicNumberFileFilter;
+
+        r1 := @parameter0: byte[];
+
+        specialinvoke r0.<org.apache.commons.io.filefilter.MagicNumberFileFilter: void <init>(byte[],long)>(r1, 0L);
+
+        return;
+    }
+
+    public void <init>(java.lang.String)
+    {
+        org.apache.commons.io.filefilter.MagicNumberFileFilter r0;
+        java.lang.String r1;
+
+        r0 := @this: org.apache.commons.io.filefilter.MagicNumberFileFilter;
+
+        r1 := @parameter0: java.lang.String;
+
+        specialinvoke r0.<org.apache.commons.io.filefilter.MagicNumberFileFilter: void <init>(java.lang.String,long)>(r1, 0L);
+
+        return;
+    }
+
+    public void <init>(java.lang.String, long)
+    {
+        org.apache.commons.io.filefilter.MagicNumberFileFilter r0;
+        java.lang.String r1;
+        long l0;
+        boolean $z0;
+        byte $b1;
+        java.nio.charset.Charset $r2;
+        byte[] $r3;
+        java.lang.IllegalArgumentException $r4, $r5, $r6;
+
+        r0 := @this: org.apache.commons.io.filefilter.MagicNumberFileFilter;
+
+        r1 := @parameter0: java.lang.String;
+
+        l0 := @parameter1: long;
+
+        specialinvoke r0.<org.apache.commons.io.filefilter.AbstractFileFilter: void <init>()>();
+
+        if r1 != null goto label1;
+
+        $r6 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r6.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("The magic number cannot be null");
+
+        throw $r6;
+
+     label1:
+        $z0 = virtualinvoke r1.<java.lang.String: boolean isEmpty()>();
+
+        if $z0 == 0 goto label2;
+
+        $r5 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r5.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("The magic number must contain at least one byte");
+
+        throw $r5;
+
+     label2:
+        $b1 = l0 cmp 0L;
+
+        if $b1 >= 0 goto label3;
+
+        $r4 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r4.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("The offset cannot be negative");
+
+        throw $r4;
+
+     label3:
+        $r2 = staticinvoke <java.nio.charset.Charset: java.nio.charset.Charset defaultCharset()>();
+
+        $r3 = virtualinvoke r1.<java.lang.String: byte[] getBytes(java.nio.charset.Charset)>($r2);
+
+        r0.<org.apache.commons.io.filefilter.MagicNumberFileFilter: byte[] magicNumbers> = $r3;
+
+        r0.<org.apache.commons.io.filefilter.MagicNumberFileFilter: long byteOffset> = l0;
+
+        return;
+    }
+
+    public void <init>(byte[], long)
+    {
+        org.apache.commons.io.filefilter.MagicNumberFileFilter r0;
+        byte[] r1, $r2, $r3;
+        long l0;
+        int $i1, $i3, $i4;
+        byte $b2;
+        java.lang.IllegalArgumentException $r4, $r5, $r6;
+
+        r0 := @this: org.apache.commons.io.filefilter.MagicNumberFileFilter;
+
+        r1 := @parameter0: byte[];
+
+        l0 := @parameter1: long;
+
+        specialinvoke r0.<org.apache.commons.io.filefilter.AbstractFileFilter: void <init>()>();
+
+        if r1 != null goto label1;
+
+        $r6 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r6.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("The magic number cannot be null");
+
+        throw $r6;
+
+     label1:
+        $i1 = lengthof r1;
+
+        if $i1 != 0 goto label2;
+
+        $r5 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r5.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("The magic number must contain at least one byte");
+
+        throw $r5;
+
+     label2:
+        $b2 = l0 cmp 0L;
+
+        if $b2 >= 0 goto label3;
+
+        $r4 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r4.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("The offset cannot be negative");
+
+        throw $r4;
+
+     label3:
+        $i3 = lengthof r1;
+
+        $r2 = newarray (byte)[$i3];
+
+        r0.<org.apache.commons.io.filefilter.MagicNumberFileFilter: byte[] magicNumbers> = $r2;
+
+        $r3 = r0.<org.apache.commons.io.filefilter.MagicNumberFileFilter: byte[] magicNumbers>;
+
+        $i4 = lengthof r1;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>(r1, 0, $r3, 0, $i4);
+
+        r0.<org.apache.commons.io.filefilter.MagicNumberFileFilter: long byteOffset> = l0;
+
+        return;
+    }
+
+    public boolean accept(java.io.File)
+    {
+        org.apache.commons.io.filefilter.MagicNumberFileFilter r0;
+        java.io.File r1;
+        int i0, $i1, $i3;
+        boolean z0, $z1, $z2;
+        byte[] $r3, $r5, $r6, r10;
+        java.io.RandomAccessFile $r4, r9;
+        long $l2;
+        java.io.IOException $r7;
+        java.lang.Throwable $r8;
+
+        r0 := @this: org.apache.commons.io.filefilter.MagicNumberFileFilter;
+
+        r1 := @parameter0: java.io.File;
+
+        if r1 == null goto label8;
+
+        $z1 = virtualinvoke r1.<java.io.File: boolean isFile()>();
+
+        if $z1 == 0 goto label8;
+
+        $z2 = virtualinvoke r1.<java.io.File: boolean canRead()>();
+
+        if $z2 == 0 goto label8;
+
+        r9 = null;
+
+     label1:
+        $r3 = r0.<org.apache.commons.io.filefilter.MagicNumberFileFilter: byte[] magicNumbers>;
+
+        $i1 = lengthof $r3;
+
+        r10 = newarray (byte)[$i1];
+
+        $r4 = new java.io.RandomAccessFile;
+
+        specialinvoke $r4.<java.io.RandomAccessFile: void <init>(java.io.File,java.lang.String)>(r1, "r");
+
+        r9 = $r4;
+
+        $l2 = r0.<org.apache.commons.io.filefilter.MagicNumberFileFilter: long byteOffset>;
+
+        virtualinvoke $r4.<java.io.RandomAccessFile: void seek(long)>($l2);
+
+        i0 = virtualinvoke $r4.<java.io.RandomAccessFile: int read(byte[])>(r10);
+
+        $r5 = r0.<org.apache.commons.io.filefilter.MagicNumberFileFilter: byte[] magicNumbers>;
+
+        $i3 = lengthof $r5;
+
+        if i0 == $i3 goto label3;
+
+     label2:
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.Closeable)>($r4);
+
+        return 0;
+
+     label3:
+        $r6 = r0.<org.apache.commons.io.filefilter.MagicNumberFileFilter: byte[] magicNumbers>;
+
+        z0 = staticinvoke <java.util.Arrays: boolean equals(byte[],byte[])>($r6, r10);
+
+     label4:
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.Closeable)>($r4);
+
+        return z0;
+
+     label5:
+        $r7 := @caughtexception;
+
+     label6:
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.Closeable)>(r9);
+
+        goto label8;
+
+     label7:
+        $r8 := @caughtexception;
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.Closeable)>(r9);
+
+        throw $r8;
+
+     label8:
+        return 0;
+
+        catch java.io.IOException from label1 to label2 with label5;
+        catch java.io.IOException from label3 to label4 with label5;
+        catch java.lang.Throwable from label1 to label2 with label7;
+        catch java.lang.Throwable from label3 to label4 with label7;
+        catch java.lang.Throwable from label5 to label6 with label7;
+    }
+
+    public java.lang.String toString()
+    {
+        org.apache.commons.io.filefilter.MagicNumberFileFilter r0;
+        java.lang.StringBuilder $r2;
+        java.lang.String $r3, $r5, $r12;
+        byte[] $r6;
+        java.nio.charset.Charset $r7;
+        long $l0;
+
+        r0 := @this: org.apache.commons.io.filefilter.MagicNumberFileFilter;
+
+        $r2 = new java.lang.StringBuilder;
+
+        $r3 = specialinvoke r0.<org.apache.commons.io.filefilter.AbstractFileFilter: java.lang.String toString()>();
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>(java.lang.String)>($r3);
+
+        virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("(");
+
+        $r5 = new java.lang.String;
+
+        $r6 = r0.<org.apache.commons.io.filefilter.MagicNumberFileFilter: byte[] magicNumbers>;
+
+        $r7 = staticinvoke <java.nio.charset.Charset: java.nio.charset.Charset defaultCharset()>();
+
+        specialinvoke $r5.<java.lang.String: void <init>(byte[],java.nio.charset.Charset)>($r6, $r7);
+
+        virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r5);
+
+        virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(",");
+
+        $l0 = r0.<org.apache.commons.io.filefilter.MagicNumberFileFilter: long byteOffset>;
+
+        virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(long)>($l0);
+
+        virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(")");
+
+        $r12 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $r12;
+    }
+
+    public static void <clinit>()
+    {
+        <org.apache.commons.io.filefilter.MagicNumberFileFilter: long serialVersionUID> = -547733176983104172L;
+
+        return;
+    }
+}

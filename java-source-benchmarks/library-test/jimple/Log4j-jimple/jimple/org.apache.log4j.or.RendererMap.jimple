@@ -1,0 +1,308 @@
+public class org.apache.log4j.or.RendererMap extends java.lang.Object
+{
+    java.util.Hashtable map;
+    static org.apache.log4j.or.ObjectRenderer defaultRenderer;
+
+    static void <clinit>()
+    {
+        org.apache.log4j.or.DefaultRenderer $r0;
+
+        $r0 = new org.apache.log4j.or.DefaultRenderer;
+
+        specialinvoke $r0.<org.apache.log4j.or.DefaultRenderer: void <init>()>();
+
+        <org.apache.log4j.or.RendererMap: org.apache.log4j.or.ObjectRenderer defaultRenderer> = $r0;
+
+        return;
+    }
+
+    public void <init>()
+    {
+        org.apache.log4j.or.RendererMap r0;
+        java.util.Hashtable $r1;
+
+        r0 := @this: org.apache.log4j.or.RendererMap;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r1 = new java.util.Hashtable;
+
+        specialinvoke $r1.<java.util.Hashtable: void <init>()>();
+
+        r0.<org.apache.log4j.or.RendererMap: java.util.Hashtable map> = $r1;
+
+        return;
+    }
+
+    public static void addRenderer(org.apache.log4j.spi.RendererSupport, java.lang.String, java.lang.String)
+    {
+        org.apache.log4j.spi.RendererSupport r0;
+        java.lang.String r1, r2, $r9, $r14, $r19;
+        org.apache.log4j.or.ObjectRenderer r3;
+        java.lang.StringBuilder $r4, $r5, $r6, $r7, $r8, $r11, $r12, $r13, $r16, $r17, $r18;
+        java.lang.Object $r10;
+        java.lang.ClassNotFoundException $r15;
+        java.lang.Class r20;
+
+        r0 := @parameter0: org.apache.log4j.spi.RendererSupport;
+
+        r1 := @parameter1: java.lang.String;
+
+        r2 := @parameter2: java.lang.String;
+
+        $r4 = new java.lang.StringBuilder;
+
+        specialinvoke $r4.<java.lang.StringBuilder: void <init>(java.lang.String)>("Rendering class: [");
+
+        $r5 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r2);
+
+        $r6 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("], Rendered class: [");
+
+        $r7 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r1);
+
+        $r8 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("].");
+
+        $r9 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.apache.log4j.helpers.LogLog: void debug(java.lang.String)>($r9);
+
+        $r10 = staticinvoke <org.apache.log4j.helpers.OptionConverter: java.lang.Object instantiateByClassName(java.lang.String,java.lang.Class,java.lang.Object)>(r2, class "org/apache/log4j/or/ObjectRenderer", null);
+
+        r3 = (org.apache.log4j.or.ObjectRenderer) $r10;
+
+        if r3 != null goto label1;
+
+        $r11 = new java.lang.StringBuilder;
+
+        specialinvoke $r11.<java.lang.StringBuilder: void <init>(java.lang.String)>("Could not instantiate renderer [");
+
+        $r12 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r2);
+
+        $r13 = virtualinvoke $r12.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("].");
+
+        $r14 = virtualinvoke $r13.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.apache.log4j.helpers.LogLog: void error(java.lang.String)>($r14);
+
+        return;
+
+     label1:
+        r20 = staticinvoke <org.apache.log4j.helpers.Loader: java.lang.Class loadClass(java.lang.String)>(r1);
+
+        interfaceinvoke r0.<org.apache.log4j.spi.RendererSupport: void setRenderer(java.lang.Class,org.apache.log4j.or.ObjectRenderer)>(r20, r3);
+
+     label2:
+        goto label4;
+
+     label3:
+        $r15 := @caughtexception;
+
+        $r16 = new java.lang.StringBuilder;
+
+        specialinvoke $r16.<java.lang.StringBuilder: void <init>(java.lang.String)>("Could not find class [");
+
+        $r17 = virtualinvoke $r16.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r1);
+
+        $r18 = virtualinvoke $r17.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("].");
+
+        $r19 = virtualinvoke $r18.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.apache.log4j.helpers.LogLog: void error(java.lang.String,java.lang.Throwable)>($r19, $r15);
+
+     label4:
+        return;
+
+        catch java.lang.ClassNotFoundException from label1 to label2 with label3;
+    }
+
+    public java.lang.String findAndRender(java.lang.Object)
+    {
+        org.apache.log4j.or.RendererMap r0;
+        java.lang.Object r1;
+        java.lang.Class $r2;
+        org.apache.log4j.or.ObjectRenderer $r3;
+        java.lang.String $r4;
+
+        r0 := @this: org.apache.log4j.or.RendererMap;
+
+        r1 := @parameter0: java.lang.Object;
+
+        if r1 != null goto label1;
+
+        return null;
+
+     label1:
+        $r2 = virtualinvoke r1.<java.lang.Object: java.lang.Class getClass()>();
+
+        $r3 = virtualinvoke r0.<org.apache.log4j.or.RendererMap: org.apache.log4j.or.ObjectRenderer get(java.lang.Class)>($r2);
+
+        $r4 = interfaceinvoke $r3.<org.apache.log4j.or.ObjectRenderer: java.lang.String doRender(java.lang.Object)>(r1);
+
+        return $r4;
+    }
+
+    public org.apache.log4j.or.ObjectRenderer get(java.lang.Object)
+    {
+        org.apache.log4j.or.RendererMap r0;
+        java.lang.Object r1;
+        java.lang.Class $r2;
+        org.apache.log4j.or.ObjectRenderer $r3;
+
+        r0 := @this: org.apache.log4j.or.RendererMap;
+
+        r1 := @parameter0: java.lang.Object;
+
+        if r1 != null goto label1;
+
+        return null;
+
+     label1:
+        $r2 = virtualinvoke r1.<java.lang.Object: java.lang.Class getClass()>();
+
+        $r3 = virtualinvoke r0.<org.apache.log4j.or.RendererMap: org.apache.log4j.or.ObjectRenderer get(java.lang.Class)>($r2);
+
+        return $r3;
+    }
+
+    public org.apache.log4j.or.ObjectRenderer get(java.lang.Class)
+    {
+        org.apache.log4j.or.RendererMap r0;
+        java.lang.Class r1, r5;
+        java.util.Hashtable $r2;
+        java.lang.Object $r3;
+        org.apache.log4j.or.ObjectRenderer $r4, r6, r7;
+
+        r0 := @this: org.apache.log4j.or.RendererMap;
+
+        r1 := @parameter0: java.lang.Class;
+
+        r5 = r1;
+
+        goto label4;
+
+     label1:
+        $r2 = r0.<org.apache.log4j.or.RendererMap: java.util.Hashtable map>;
+
+        $r3 = virtualinvoke $r2.<java.util.Hashtable: java.lang.Object get(java.lang.Object)>(r5);
+
+        r6 = (org.apache.log4j.or.ObjectRenderer) $r3;
+
+        if r6 == null goto label2;
+
+        return r6;
+
+     label2:
+        r7 = virtualinvoke r0.<org.apache.log4j.or.RendererMap: org.apache.log4j.or.ObjectRenderer searchInterfaces(java.lang.Class)>(r5);
+
+        if r7 == null goto label3;
+
+        return r7;
+
+     label3:
+        r5 = virtualinvoke r5.<java.lang.Class: java.lang.Class getSuperclass()>();
+
+     label4:
+        if r5 != null goto label1;
+
+        $r4 = <org.apache.log4j.or.RendererMap: org.apache.log4j.or.ObjectRenderer defaultRenderer>;
+
+        return $r4;
+    }
+
+    org.apache.log4j.or.ObjectRenderer searchInterfaces(java.lang.Class)
+    {
+        org.apache.log4j.or.RendererMap r0;
+        java.lang.Class r1, $r5;
+        java.lang.Class[] r2;
+        java.util.Hashtable $r3;
+        java.lang.Object $r4;
+        int $i0, i1;
+        org.apache.log4j.or.ObjectRenderer r6, r7;
+
+        r0 := @this: org.apache.log4j.or.RendererMap;
+
+        r1 := @parameter0: java.lang.Class;
+
+        $r3 = r0.<org.apache.log4j.or.RendererMap: java.util.Hashtable map>;
+
+        $r4 = virtualinvoke $r3.<java.util.Hashtable: java.lang.Object get(java.lang.Object)>(r1);
+
+        r6 = (org.apache.log4j.or.ObjectRenderer) $r4;
+
+        if r6 == null goto label1;
+
+        return r6;
+
+     label1:
+        r2 = virtualinvoke r1.<java.lang.Class: java.lang.Class[] getInterfaces()>();
+
+        i1 = 0;
+
+        goto label4;
+
+     label2:
+        $r5 = r2[i1];
+
+        r7 = virtualinvoke r0.<org.apache.log4j.or.RendererMap: org.apache.log4j.or.ObjectRenderer searchInterfaces(java.lang.Class)>($r5);
+
+        if r7 == null goto label3;
+
+        return r7;
+
+     label3:
+        i1 = i1 + 1;
+
+     label4:
+        $i0 = lengthof r2;
+
+        if i1 < $i0 goto label2;
+
+        return null;
+    }
+
+    public org.apache.log4j.or.ObjectRenderer getDefaultRenderer()
+    {
+        org.apache.log4j.or.RendererMap r0;
+        org.apache.log4j.or.ObjectRenderer $r1;
+
+        r0 := @this: org.apache.log4j.or.RendererMap;
+
+        $r1 = <org.apache.log4j.or.RendererMap: org.apache.log4j.or.ObjectRenderer defaultRenderer>;
+
+        return $r1;
+    }
+
+    public void clear()
+    {
+        org.apache.log4j.or.RendererMap r0;
+        java.util.Hashtable $r1;
+
+        r0 := @this: org.apache.log4j.or.RendererMap;
+
+        $r1 = r0.<org.apache.log4j.or.RendererMap: java.util.Hashtable map>;
+
+        virtualinvoke $r1.<java.util.Hashtable: void clear()>();
+
+        return;
+    }
+
+    public void put(java.lang.Class, org.apache.log4j.or.ObjectRenderer)
+    {
+        org.apache.log4j.or.RendererMap r0;
+        java.lang.Class r1;
+        org.apache.log4j.or.ObjectRenderer r2;
+        java.util.Hashtable $r3;
+
+        r0 := @this: org.apache.log4j.or.RendererMap;
+
+        r1 := @parameter0: java.lang.Class;
+
+        r2 := @parameter1: org.apache.log4j.or.ObjectRenderer;
+
+        $r3 = r0.<org.apache.log4j.or.RendererMap: java.util.Hashtable map>;
+
+        virtualinvoke $r3.<java.util.Hashtable: java.lang.Object put(java.lang.Object,java.lang.Object)>(r1, r2);
+
+        return;
+    }
+}

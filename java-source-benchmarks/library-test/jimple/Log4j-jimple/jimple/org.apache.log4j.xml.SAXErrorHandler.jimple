@@ -1,0 +1,97 @@
+public class org.apache.log4j.xml.SAXErrorHandler extends java.lang.Object implements org.xml.sax.ErrorHandler
+{
+
+    public void <init>()
+    {
+        org.apache.log4j.xml.SAXErrorHandler r0;
+
+        r0 := @this: org.apache.log4j.xml.SAXErrorHandler;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void error(org.xml.sax.SAXParseException)
+    {
+        org.apache.log4j.xml.SAXErrorHandler r0;
+        org.xml.sax.SAXParseException r1;
+
+        r0 := @this: org.apache.log4j.xml.SAXErrorHandler;
+
+        r1 := @parameter0: org.xml.sax.SAXParseException;
+
+        staticinvoke <org.apache.log4j.xml.SAXErrorHandler: void emitMessage(java.lang.String,org.xml.sax.SAXParseException)>("Continuable parsing error ", r1);
+
+        return;
+    }
+
+    public void fatalError(org.xml.sax.SAXParseException)
+    {
+        org.apache.log4j.xml.SAXErrorHandler r0;
+        org.xml.sax.SAXParseException r1;
+
+        r0 := @this: org.apache.log4j.xml.SAXErrorHandler;
+
+        r1 := @parameter0: org.xml.sax.SAXParseException;
+
+        staticinvoke <org.apache.log4j.xml.SAXErrorHandler: void emitMessage(java.lang.String,org.xml.sax.SAXParseException)>("Fatal parsing error ", r1);
+
+        return;
+    }
+
+    public void warning(org.xml.sax.SAXParseException)
+    {
+        org.apache.log4j.xml.SAXErrorHandler r0;
+        org.xml.sax.SAXParseException r1;
+
+        r0 := @this: org.apache.log4j.xml.SAXErrorHandler;
+
+        r1 := @parameter0: org.xml.sax.SAXParseException;
+
+        staticinvoke <org.apache.log4j.xml.SAXErrorHandler: void emitMessage(java.lang.String,org.xml.sax.SAXParseException)>("Parsing warning ", r1);
+
+        return;
+    }
+
+    private static void emitMessage(java.lang.String, org.xml.sax.SAXParseException)
+    {
+        java.lang.String r0, $r3, $r7, $r8;
+        org.xml.sax.SAXParseException r1;
+        java.lang.StringBuilder $r2, $r4, $r5, $r6;
+        int $i0, $i1;
+        java.lang.Exception $r9;
+
+        r0 := @parameter0: java.lang.String;
+
+        r1 := @parameter1: org.xml.sax.SAXParseException;
+
+        $r2 = new java.lang.StringBuilder;
+
+        $r3 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>(r0);
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>(java.lang.String)>($r3);
+
+        $i0 = virtualinvoke r1.<org.xml.sax.SAXParseException: int getLineNumber()>();
+
+        $r4 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        $r5 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" and column ");
+
+        $i1 = virtualinvoke r1.<org.xml.sax.SAXParseException: int getColumnNumber()>();
+
+        $r6 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i1);
+
+        $r7 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.apache.log4j.helpers.LogLog: void warn(java.lang.String)>($r7);
+
+        $r8 = virtualinvoke r1.<org.xml.sax.SAXParseException: java.lang.String getMessage()>();
+
+        $r9 = virtualinvoke r1.<org.xml.sax.SAXParseException: java.lang.Exception getException()>();
+
+        staticinvoke <org.apache.log4j.helpers.LogLog: void warn(java.lang.String,java.lang.Throwable)>($r8, $r9);
+
+        return;
+    }
+}

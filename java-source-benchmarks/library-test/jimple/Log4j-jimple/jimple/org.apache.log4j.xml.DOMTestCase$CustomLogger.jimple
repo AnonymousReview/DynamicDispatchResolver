@@ -1,0 +1,17 @@
+class org.apache.log4j.xml.DOMTestCase$CustomLogger extends org.apache.log4j.Logger
+{
+
+    public void <init>(java.lang.String)
+    {
+        org.apache.log4j.xml.DOMTestCase$CustomLogger r0;
+        java.lang.String r1;
+
+        r0 := @this: org.apache.log4j.xml.DOMTestCase$CustomLogger;
+
+        r1 := @parameter0: java.lang.String;
+
+        specialinvoke r0.<org.apache.log4j.Logger: void <init>(java.lang.String)>(r1);
+
+        return;
+    }
+}

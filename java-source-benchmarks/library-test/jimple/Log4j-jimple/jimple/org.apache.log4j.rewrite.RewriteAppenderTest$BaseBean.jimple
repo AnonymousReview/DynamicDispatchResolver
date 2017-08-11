@@ -1,0 +1,58 @@
+class org.apache.log4j.rewrite.RewriteAppenderTest$BaseBean extends java.lang.Object
+{
+    private final java.lang.Object p2;
+    private final java.lang.Object x1;
+
+    public void <init>(java.lang.Object, java.lang.Object)
+    {
+        org.apache.log4j.rewrite.RewriteAppenderTest$BaseBean r0;
+        java.lang.Object r1, r2;
+
+        r0 := @this: org.apache.log4j.rewrite.RewriteAppenderTest$BaseBean;
+
+        r1 := @parameter0: java.lang.Object;
+
+        r2 := @parameter1: java.lang.Object;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<org.apache.log4j.rewrite.RewriteAppenderTest$BaseBean: java.lang.Object p2> = r1;
+
+        r0.<org.apache.log4j.rewrite.RewriteAppenderTest$BaseBean: java.lang.Object x1> = r2;
+
+        return;
+    }
+
+    public java.lang.Object getP2()
+    {
+        org.apache.log4j.rewrite.RewriteAppenderTest$BaseBean r0;
+        java.lang.Object $r1;
+
+        r0 := @this: org.apache.log4j.rewrite.RewriteAppenderTest$BaseBean;
+
+        $r1 = r0.<org.apache.log4j.rewrite.RewriteAppenderTest$BaseBean: java.lang.Object p2>;
+
+        return $r1;
+    }
+
+    public java.lang.Object getX1()
+    {
+        org.apache.log4j.rewrite.RewriteAppenderTest$BaseBean r0;
+        java.lang.Object $r1;
+
+        r0 := @this: org.apache.log4j.rewrite.RewriteAppenderTest$BaseBean;
+
+        $r1 = r0.<org.apache.log4j.rewrite.RewriteAppenderTest$BaseBean: java.lang.Object x1>;
+
+        return $r1;
+    }
+
+    public java.lang.String toString()
+    {
+        org.apache.log4j.rewrite.RewriteAppenderTest$BaseBean r0;
+
+        r0 := @this: org.apache.log4j.rewrite.RewriteAppenderTest$BaseBean;
+
+        return "I am bean.";
+    }
+}

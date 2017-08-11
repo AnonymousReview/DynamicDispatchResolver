@@ -1,0 +1,427 @@
+public class org.apache.commons.io.monitor.FileAlterationMonitorTestCase extends org.apache.commons.io.monitor.AbstractMonitorTestCase
+{
+
+    public void <init>()
+    {
+        org.apache.commons.io.monitor.FileAlterationMonitorTestCase r0;
+        org.apache.commons.io.monitor.CollectionFileListener $r1;
+
+        r0 := @this: org.apache.commons.io.monitor.FileAlterationMonitorTestCase;
+
+        specialinvoke r0.<org.apache.commons.io.monitor.AbstractMonitorTestCase: void <init>()>();
+
+        r0.<org.apache.commons.io.monitor.FileAlterationMonitorTestCase: java.lang.String testDirName> = "test-monitor";
+
+        $r1 = new org.apache.commons.io.monitor.CollectionFileListener;
+
+        specialinvoke $r1.<org.apache.commons.io.monitor.CollectionFileListener: void <init>(boolean)>(0);
+
+        r0.<org.apache.commons.io.monitor.FileAlterationMonitorTestCase: org.apache.commons.io.monitor.CollectionFileListener listener> = $r1;
+
+        return;
+    }
+
+    public void testDefaultConstructor()
+    {
+        org.apache.commons.io.monitor.FileAlterationMonitorTestCase r0;
+        org.apache.commons.io.monitor.FileAlterationMonitor $r2;
+        long $l0;
+
+        r0 := @this: org.apache.commons.io.monitor.FileAlterationMonitorTestCase;
+
+        $r2 = new org.apache.commons.io.monitor.FileAlterationMonitor;
+
+        specialinvoke $r2.<org.apache.commons.io.monitor.FileAlterationMonitor: void <init>()>();
+
+        $l0 = virtualinvoke $r2.<org.apache.commons.io.monitor.FileAlterationMonitor: long getInterval()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("Interval", 10000L, $l0);
+
+        return;
+    }
+
+    public void testAddRemoveObservers()
+    {
+        org.apache.commons.io.monitor.FileAlterationMonitorTestCase r0;
+        java.util.Iterator r2, $r5, $r8, $r10, $r15;
+        org.apache.commons.io.monitor.FileAlterationMonitor $r3, $r6;
+        long $l0;
+        java.lang.Iterable $r4, $r7, $r9, $r12, $r14;
+        boolean $z0, $z1, $z2, $z3, $z4, $z5;
+        org.apache.commons.io.monitor.FileAlterationObserver $r11;
+        java.lang.Object $r13;
+        org.apache.commons.io.monitor.FileAlterationObserver[] r17;
+
+        r0 := @this: org.apache.commons.io.monitor.FileAlterationMonitorTestCase;
+
+        $r3 = new org.apache.commons.io.monitor.FileAlterationMonitor;
+
+        specialinvoke $r3.<org.apache.commons.io.monitor.FileAlterationMonitor: void <init>(long,org.apache.commons.io.monitor.FileAlterationObserver[])>(123L, null);
+
+        $l0 = virtualinvoke $r3.<org.apache.commons.io.monitor.FileAlterationMonitor: long getInterval()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("Interval", 123L, $l0);
+
+        $r4 = virtualinvoke $r3.<org.apache.commons.io.monitor.FileAlterationMonitor: java.lang.Iterable getObservers()>();
+
+        $r5 = interfaceinvoke $r4.<java.lang.Iterable: java.util.Iterator iterator()>();
+
+        $z0 = interfaceinvoke $r5.<java.util.Iterator: boolean hasNext()>();
+
+        staticinvoke <org.junit.Assert: void assertFalse(java.lang.String,boolean)>("Observers[1]", $z0);
+
+        r17 = newarray (org.apache.commons.io.monitor.FileAlterationObserver)[1];
+
+        $r6 = new org.apache.commons.io.monitor.FileAlterationMonitor;
+
+        specialinvoke $r6.<org.apache.commons.io.monitor.FileAlterationMonitor: void <init>(long,org.apache.commons.io.monitor.FileAlterationObserver[])>(456L, r17);
+
+        $r7 = virtualinvoke $r6.<org.apache.commons.io.monitor.FileAlterationMonitor: java.lang.Iterable getObservers()>();
+
+        $r8 = interfaceinvoke $r7.<java.lang.Iterable: java.util.Iterator iterator()>();
+
+        $z1 = interfaceinvoke $r8.<java.util.Iterator: boolean hasNext()>();
+
+        staticinvoke <org.junit.Assert: void assertFalse(java.lang.String,boolean)>("Observers[2]", $z1);
+
+        virtualinvoke $r6.<org.apache.commons.io.monitor.FileAlterationMonitor: void addObserver(org.apache.commons.io.monitor.FileAlterationObserver)>(null);
+
+        $r9 = virtualinvoke $r6.<org.apache.commons.io.monitor.FileAlterationMonitor: java.lang.Iterable getObservers()>();
+
+        $r10 = interfaceinvoke $r9.<java.lang.Iterable: java.util.Iterator iterator()>();
+
+        $z2 = interfaceinvoke $r10.<java.util.Iterator: boolean hasNext()>();
+
+        staticinvoke <org.junit.Assert: void assertFalse(java.lang.String,boolean)>("Observers[3]", $z2);
+
+        virtualinvoke $r6.<org.apache.commons.io.monitor.FileAlterationMonitor: void removeObserver(org.apache.commons.io.monitor.FileAlterationObserver)>(null);
+
+        $r11 = new org.apache.commons.io.monitor.FileAlterationObserver;
+
+        specialinvoke $r11.<org.apache.commons.io.monitor.FileAlterationObserver: void <init>(java.lang.String)>("foo");
+
+        virtualinvoke $r6.<org.apache.commons.io.monitor.FileAlterationMonitor: void addObserver(org.apache.commons.io.monitor.FileAlterationObserver)>($r11);
+
+        $r12 = virtualinvoke $r6.<org.apache.commons.io.monitor.FileAlterationMonitor: java.lang.Iterable getObservers()>();
+
+        r2 = interfaceinvoke $r12.<java.lang.Iterable: java.util.Iterator iterator()>();
+
+        $z3 = interfaceinvoke r2.<java.util.Iterator: boolean hasNext()>();
+
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>("Observers[4]", $z3);
+
+        $r13 = interfaceinvoke r2.<java.util.Iterator: java.lang.Object next()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,java.lang.Object,java.lang.Object)>("Added", $r11, $r13);
+
+        $z4 = interfaceinvoke r2.<java.util.Iterator: boolean hasNext()>();
+
+        staticinvoke <org.junit.Assert: void assertFalse(java.lang.String,boolean)>("Observers[5]", $z4);
+
+        virtualinvoke $r6.<org.apache.commons.io.monitor.FileAlterationMonitor: void removeObserver(org.apache.commons.io.monitor.FileAlterationObserver)>($r11);
+
+        $r14 = virtualinvoke $r6.<org.apache.commons.io.monitor.FileAlterationMonitor: java.lang.Iterable getObservers()>();
+
+        $r15 = interfaceinvoke $r14.<java.lang.Iterable: java.util.Iterator iterator()>();
+
+        $z5 = interfaceinvoke $r15.<java.util.Iterator: boolean hasNext()>();
+
+        staticinvoke <org.junit.Assert: void assertFalse(java.lang.String,boolean)>("Observers[6]", $z5);
+
+        return;
+    }
+
+    public void testMonitor()
+    {
+        org.apache.commons.io.monitor.FileAlterationMonitorTestCase r0;
+        org.apache.commons.io.monitor.CollectionFileListener $r3, $r9, $r11, $r12, $r14, $r15, $r17;
+        org.apache.commons.io.monitor.FileAlterationMonitor $r4;
+        org.apache.commons.io.monitor.FileAlterationObserver[] $r5;
+        org.apache.commons.io.monitor.FileAlterationObserver $r6;
+        long $l0;
+        java.io.File $r7, $r8, r25, r26;
+        java.util.Collection $r10, $r13, $r16;
+        java.lang.Exception $r18;
+        java.lang.StringBuilder $r19, $r20;
+        java.lang.String $r21;
+        java.lang.IllegalStateException $r22, $r23;
+
+        r0 := @this: org.apache.commons.io.monitor.FileAlterationMonitorTestCase;
+
+     label01:
+        $r3 = r0.<org.apache.commons.io.monitor.FileAlterationMonitorTestCase: org.apache.commons.io.monitor.CollectionFileListener listener>;
+
+        virtualinvoke $r3.<org.apache.commons.io.monitor.CollectionFileListener: void clear()>();
+
+        $r4 = new org.apache.commons.io.monitor.FileAlterationMonitor;
+
+        $r5 = newarray (org.apache.commons.io.monitor.FileAlterationObserver)[1];
+
+        $r6 = r0.<org.apache.commons.io.monitor.FileAlterationMonitorTestCase: org.apache.commons.io.monitor.FileAlterationObserver observer>;
+
+        $r5[0] = $r6;
+
+        specialinvoke $r4.<org.apache.commons.io.monitor.FileAlterationMonitor: void <init>(long,org.apache.commons.io.monitor.FileAlterationObserver[])>(100L, $r5);
+
+        $l0 = virtualinvoke $r4.<org.apache.commons.io.monitor.FileAlterationMonitor: long getInterval()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("Interval", 100L, $l0);
+
+        virtualinvoke $r4.<org.apache.commons.io.monitor.FileAlterationMonitor: void start()>();
+
+     label02:
+        virtualinvoke $r4.<org.apache.commons.io.monitor.FileAlterationMonitor: void start()>();
+
+     label03:
+        goto label05;
+
+     label04:
+        $r22 := @caughtexception;
+
+     label05:
+        virtualinvoke r0.<org.apache.commons.io.monitor.FileAlterationMonitorTestCase: void checkCollectionsEmpty(java.lang.String)>("A");
+
+        $r7 = new java.io.File;
+
+        $r8 = r0.<org.apache.commons.io.monitor.FileAlterationMonitorTestCase: java.io.File testDir>;
+
+        specialinvoke $r7.<java.io.File: void <init>(java.io.File,java.lang.String)>($r8, "file1.java");
+
+        r25 = virtualinvoke r0.<org.apache.commons.io.monitor.FileAlterationMonitorTestCase: java.io.File touch(java.io.File)>($r7);
+
+        $r9 = r0.<org.apache.commons.io.monitor.FileAlterationMonitorTestCase: org.apache.commons.io.monitor.CollectionFileListener listener>;
+
+        $r10 = virtualinvoke $r9.<org.apache.commons.io.monitor.CollectionFileListener: java.util.Collection getCreatedFiles()>();
+
+        specialinvoke r0.<org.apache.commons.io.monitor.FileAlterationMonitorTestCase: void checkFile(java.lang.String,java.io.File,java.util.Collection)>("Create", r25, $r10);
+
+        $r11 = r0.<org.apache.commons.io.monitor.FileAlterationMonitorTestCase: org.apache.commons.io.monitor.CollectionFileListener listener>;
+
+        virtualinvoke $r11.<org.apache.commons.io.monitor.CollectionFileListener: void clear()>();
+
+        virtualinvoke r0.<org.apache.commons.io.monitor.FileAlterationMonitorTestCase: void checkCollectionsEmpty(java.lang.String)>("B");
+
+        r26 = virtualinvoke r0.<org.apache.commons.io.monitor.FileAlterationMonitorTestCase: java.io.File touch(java.io.File)>(r25);
+
+        $r12 = r0.<org.apache.commons.io.monitor.FileAlterationMonitorTestCase: org.apache.commons.io.monitor.CollectionFileListener listener>;
+
+        $r13 = virtualinvoke $r12.<org.apache.commons.io.monitor.CollectionFileListener: java.util.Collection getChangedFiles()>();
+
+        specialinvoke r0.<org.apache.commons.io.monitor.FileAlterationMonitorTestCase: void checkFile(java.lang.String,java.io.File,java.util.Collection)>("Update", r26, $r13);
+
+        $r14 = r0.<org.apache.commons.io.monitor.FileAlterationMonitorTestCase: org.apache.commons.io.monitor.CollectionFileListener listener>;
+
+        virtualinvoke $r14.<org.apache.commons.io.monitor.CollectionFileListener: void clear()>();
+
+        virtualinvoke r0.<org.apache.commons.io.monitor.FileAlterationMonitorTestCase: void checkCollectionsEmpty(java.lang.String)>("C");
+
+        virtualinvoke r26.<java.io.File: boolean delete()>();
+
+        $r15 = r0.<org.apache.commons.io.monitor.FileAlterationMonitorTestCase: org.apache.commons.io.monitor.CollectionFileListener listener>;
+
+        $r16 = virtualinvoke $r15.<org.apache.commons.io.monitor.CollectionFileListener: java.util.Collection getDeletedFiles()>();
+
+        specialinvoke r0.<org.apache.commons.io.monitor.FileAlterationMonitorTestCase: void checkFile(java.lang.String,java.io.File,java.util.Collection)>("Delete", r26, $r16);
+
+        $r17 = r0.<org.apache.commons.io.monitor.FileAlterationMonitorTestCase: org.apache.commons.io.monitor.CollectionFileListener listener>;
+
+        virtualinvoke $r17.<org.apache.commons.io.monitor.CollectionFileListener: void clear()>();
+
+        virtualinvoke $r4.<org.apache.commons.io.monitor.FileAlterationMonitor: void stop()>();
+
+     label06:
+        virtualinvoke $r4.<org.apache.commons.io.monitor.FileAlterationMonitor: void stop()>();
+
+     label07:
+        goto label11;
+
+     label08:
+        $r23 := @caughtexception;
+
+     label09:
+        goto label11;
+
+     label10:
+        $r18 := @caughtexception;
+
+        virtualinvoke $r18.<java.lang.Exception: void printStackTrace()>();
+
+        $r19 = new java.lang.StringBuilder;
+
+        specialinvoke $r19.<java.lang.StringBuilder: void <init>(java.lang.String)>("Threw ");
+
+        $r20 = virtualinvoke $r19.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r18);
+
+        $r21 = virtualinvoke $r20.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>($r21);
+
+     label11:
+        return;
+
+        catch java.lang.IllegalStateException from label02 to label03 with label04;
+        catch java.lang.IllegalStateException from label06 to label07 with label08;
+        catch java.lang.Exception from label01 to label09 with label10;
+    }
+
+    public void testThreadFactory()
+    {
+        org.apache.commons.io.monitor.FileAlterationMonitorTestCase r0;
+        java.io.File r2, $r8, $r9;
+        org.apache.commons.io.monitor.CollectionFileListener $r3, $r10, $r12, $r13, $r15;
+        org.apache.commons.io.monitor.FileAlterationMonitor $r4;
+        org.apache.commons.io.monitor.FileAlterationObserver[] $r5;
+        org.apache.commons.io.monitor.FileAlterationObserver $r6;
+        java.util.concurrent.ThreadFactory $r7;
+        long $l0;
+        java.util.Collection $r11, $r14;
+        java.lang.Exception $r16;
+        java.lang.StringBuilder $r17, $r18;
+        java.lang.String $r19;
+
+        r0 := @this: org.apache.commons.io.monitor.FileAlterationMonitorTestCase;
+
+     label1:
+        $r3 = r0.<org.apache.commons.io.monitor.FileAlterationMonitorTestCase: org.apache.commons.io.monitor.CollectionFileListener listener>;
+
+        virtualinvoke $r3.<org.apache.commons.io.monitor.CollectionFileListener: void clear()>();
+
+        $r4 = new org.apache.commons.io.monitor.FileAlterationMonitor;
+
+        $r5 = newarray (org.apache.commons.io.monitor.FileAlterationObserver)[1];
+
+        $r6 = r0.<org.apache.commons.io.monitor.FileAlterationMonitorTestCase: org.apache.commons.io.monitor.FileAlterationObserver observer>;
+
+        $r5[0] = $r6;
+
+        specialinvoke $r4.<org.apache.commons.io.monitor.FileAlterationMonitor: void <init>(long,org.apache.commons.io.monitor.FileAlterationObserver[])>(100L, $r5);
+
+        $r7 = staticinvoke <java.util.concurrent.Executors: java.util.concurrent.ThreadFactory defaultThreadFactory()>();
+
+        virtualinvoke $r4.<org.apache.commons.io.monitor.FileAlterationMonitor: void setThreadFactory(java.util.concurrent.ThreadFactory)>($r7);
+
+        $l0 = virtualinvoke $r4.<org.apache.commons.io.monitor.FileAlterationMonitor: long getInterval()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("Interval", 100L, $l0);
+
+        virtualinvoke $r4.<org.apache.commons.io.monitor.FileAlterationMonitor: void start()>();
+
+        virtualinvoke r0.<org.apache.commons.io.monitor.FileAlterationMonitorTestCase: void checkCollectionsEmpty(java.lang.String)>("A");
+
+        $r8 = new java.io.File;
+
+        $r9 = r0.<org.apache.commons.io.monitor.FileAlterationMonitorTestCase: java.io.File testDir>;
+
+        specialinvoke $r8.<java.io.File: void <init>(java.io.File,java.lang.String)>($r9, "file2.java");
+
+        r2 = virtualinvoke r0.<org.apache.commons.io.monitor.FileAlterationMonitorTestCase: java.io.File touch(java.io.File)>($r8);
+
+        $r10 = r0.<org.apache.commons.io.monitor.FileAlterationMonitorTestCase: org.apache.commons.io.monitor.CollectionFileListener listener>;
+
+        $r11 = virtualinvoke $r10.<org.apache.commons.io.monitor.CollectionFileListener: java.util.Collection getCreatedFiles()>();
+
+        specialinvoke r0.<org.apache.commons.io.monitor.FileAlterationMonitorTestCase: void checkFile(java.lang.String,java.io.File,java.util.Collection)>("Create", r2, $r11);
+
+        $r12 = r0.<org.apache.commons.io.monitor.FileAlterationMonitorTestCase: org.apache.commons.io.monitor.CollectionFileListener listener>;
+
+        virtualinvoke $r12.<org.apache.commons.io.monitor.CollectionFileListener: void clear()>();
+
+        virtualinvoke r0.<org.apache.commons.io.monitor.FileAlterationMonitorTestCase: void checkCollectionsEmpty(java.lang.String)>("B");
+
+        virtualinvoke r2.<java.io.File: boolean delete()>();
+
+        $r13 = r0.<org.apache.commons.io.monitor.FileAlterationMonitorTestCase: org.apache.commons.io.monitor.CollectionFileListener listener>;
+
+        $r14 = virtualinvoke $r13.<org.apache.commons.io.monitor.CollectionFileListener: java.util.Collection getDeletedFiles()>();
+
+        specialinvoke r0.<org.apache.commons.io.monitor.FileAlterationMonitorTestCase: void checkFile(java.lang.String,java.io.File,java.util.Collection)>("Delete", r2, $r14);
+
+        $r15 = r0.<org.apache.commons.io.monitor.FileAlterationMonitorTestCase: org.apache.commons.io.monitor.CollectionFileListener listener>;
+
+        virtualinvoke $r15.<org.apache.commons.io.monitor.CollectionFileListener: void clear()>();
+
+        virtualinvoke $r4.<org.apache.commons.io.monitor.FileAlterationMonitor: void stop()>();
+
+     label2:
+        goto label4;
+
+     label3:
+        $r16 := @caughtexception;
+
+        virtualinvoke $r16.<java.lang.Exception: void printStackTrace()>();
+
+        $r17 = new java.lang.StringBuilder;
+
+        specialinvoke $r17.<java.lang.StringBuilder: void <init>(java.lang.String)>("Threw ");
+
+        $r18 = virtualinvoke $r17.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r16);
+
+        $r19 = virtualinvoke $r18.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>($r19);
+
+     label4:
+        return;
+
+        catch java.lang.Exception from label1 to label2 with label3;
+    }
+
+    private void checkFile(java.lang.String, java.io.File, java.util.Collection)
+    {
+        org.apache.commons.io.monitor.FileAlterationMonitorTestCase r0;
+        java.lang.String r1, $r5, $r9;
+        java.io.File r2;
+        java.util.Collection r3;
+        boolean $z0;
+        long $l0;
+        java.lang.StringBuilder $r4, $r6, $r7, $r8;
+        int i1;
+
+        r0 := @this: org.apache.commons.io.monitor.FileAlterationMonitorTestCase;
+
+        r1 := @parameter0: java.lang.String;
+
+        r2 := @parameter1: java.io.File;
+
+        r3 := @parameter2: java.util.Collection;
+
+        i1 = 0;
+
+        goto label3;
+
+     label1:
+        $z0 = interfaceinvoke r3.<java.util.Collection: boolean contains(java.lang.Object)>(r2);
+
+        if $z0 == 0 goto label2;
+
+        return;
+
+     label2:
+        $l0 = r0.<org.apache.commons.io.monitor.FileAlterationMonitorTestCase: long pauseTime>;
+
+        staticinvoke <org.apache.commons.io.testtools.TestUtils: void sleepQuietly(long)>($l0);
+
+        i1 = i1 + 1;
+
+     label3:
+        if i1 < 20 goto label1;
+
+        $r4 = new java.lang.StringBuilder;
+
+        $r5 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>(r1);
+
+        specialinvoke $r4.<java.lang.StringBuilder: void <init>(java.lang.String)>($r5);
+
+        $r6 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" ");
+
+        $r7 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(r2);
+
+        $r8 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" not found");
+
+        $r9 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>($r9);
+
+        return;
+    }
+}

@@ -1,0 +1,907 @@
+public class org.apache.commons.io.output.FileWriterWithEncodingTest extends org.apache.commons.io.testtools.FileBasedTestCase
+{
+    private java.lang.String defaultEncoding;
+    private java.io.File file1;
+    private java.io.File file2;
+    private java.lang.String textContent;
+    private char[] anotherTestContent;
+
+    public void <init>()
+    {
+        org.apache.commons.io.output.FileWriterWithEncodingTest r0;
+        char[] $r1;
+
+        r0 := @this: org.apache.commons.io.output.FileWriterWithEncodingTest;
+
+        specialinvoke r0.<org.apache.commons.io.testtools.FileBasedTestCase: void <init>()>();
+
+        $r1 = newarray (char)[3];
+
+        $r1[0] = 102;
+
+        $r1[1] = 122;
+
+        $r1[2] = 120;
+
+        r0.<org.apache.commons.io.output.FileWriterWithEncodingTest: char[] anotherTestContent> = $r1;
+
+        return;
+    }
+
+    public void setUp()
+    {
+        org.apache.commons.io.output.FileWriterWithEncodingTest r0;
+        java.io.File $r2, $r3, $r7, $r8, $r9, $r10;
+        java.io.OutputStreamWriter $r4, r17;
+        java.io.FileOutputStream $r5;
+        java.lang.String $r6, $r11, $r12, $r16;
+        int $i0, $i1, $i2, i4;
+        char $c3;
+        java.lang.Throwable $r13;
+        java.io.IOException $r14;
+        java.lang.RuntimeException $r15;
+        char[] r20, r21;
+
+        r0 := @this: org.apache.commons.io.output.FileWriterWithEncodingTest;
+
+        $r2 = new java.io.File;
+
+        $r3 = staticinvoke <org.apache.commons.io.output.FileWriterWithEncodingTest: java.io.File getTestDirectory()>();
+
+        specialinvoke $r2.<java.io.File: void <init>(java.io.File,java.lang.String)>($r3, "finder.txt");
+
+        r17 = null;
+
+     label1:
+        $r4 = new java.io.OutputStreamWriter;
+
+        $r5 = new java.io.FileOutputStream;
+
+        specialinvoke $r5.<java.io.FileOutputStream: void <init>(java.io.File)>($r2);
+
+        specialinvoke $r4.<java.io.OutputStreamWriter: void <init>(java.io.OutputStream)>($r5);
+
+        r17 = $r4;
+
+        $r6 = virtualinvoke $r4.<java.io.OutputStreamWriter: java.lang.String getEncoding()>();
+
+        r0.<org.apache.commons.io.output.FileWriterWithEncodingTest: java.lang.String defaultEncoding> = $r6;
+
+     label2:
+        goto label5;
+
+     label3:
+        $r14 := @caughtexception;
+
+        $r15 = new java.lang.RuntimeException;
+
+        $r16 = virtualinvoke $r14.<java.io.IOException: java.lang.String getMessage()>();
+
+        specialinvoke $r15.<java.lang.RuntimeException: void <init>(java.lang.String)>($r16);
+
+        throw $r15;
+
+     label4:
+        $r13 := @caughtexception;
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.Writer)>(r17);
+
+        throw $r13;
+
+     label5:
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.Writer)>($r4);
+
+        $r7 = new java.io.File;
+
+        $r8 = staticinvoke <org.apache.commons.io.output.FileWriterWithEncodingTest: java.io.File getTestDirectory()>();
+
+        specialinvoke $r7.<java.io.File: void <init>(java.io.File,java.lang.String)>($r8, "testfile1.txt");
+
+        r0.<org.apache.commons.io.output.FileWriterWithEncodingTest: java.io.File file1> = $r7;
+
+        $r9 = new java.io.File;
+
+        $r10 = staticinvoke <org.apache.commons.io.output.FileWriterWithEncodingTest: java.io.File getTestDirectory()>();
+
+        specialinvoke $r9.<java.io.File: void <init>(java.io.File,java.lang.String)>($r10, "testfile2.txt");
+
+        r0.<org.apache.commons.io.output.FileWriterWithEncodingTest: java.io.File file2> = $r9;
+
+        r20 = newarray (char)[1024];
+
+        $r11 = "ABCDEFGHIJKLMNOPQabcdefgihklmnopq";
+
+        r21 = virtualinvoke $r11.<java.lang.String: char[] toCharArray()>();
+
+        i4 = 0;
+
+        goto label7;
+
+     label6:
+        $i1 = lengthof r21;
+
+        $i2 = i4 % $i1;
+
+        $c3 = r21[$i2];
+
+        r20[i4] = $c3;
+
+        i4 = i4 + 1;
+
+     label7:
+        $i0 = lengthof r20;
+
+        if i4 < $i0 goto label6;
+
+        $r12 = new java.lang.String;
+
+        specialinvoke $r12.<java.lang.String: void <init>(char[])>(r20);
+
+        r0.<org.apache.commons.io.output.FileWriterWithEncodingTest: java.lang.String textContent> = $r12;
+
+        return;
+
+        catch java.io.IOException from label1 to label2 with label3;
+        catch java.lang.Throwable from label1 to label4 with label4;
+    }
+
+    public void tearDown() throws java.lang.Exception
+    {
+        org.apache.commons.io.output.FileWriterWithEncodingTest r0;
+        java.io.File $r1;
+
+        r0 := @this: org.apache.commons.io.output.FileWriterWithEncodingTest;
+
+        $r1 = staticinvoke <org.apache.commons.io.output.FileWriterWithEncodingTest: java.io.File getTestDirectory()>();
+
+        staticinvoke <org.apache.commons.io.FileUtils: void deleteDirectory(java.io.File)>($r1);
+
+        r0.<org.apache.commons.io.output.FileWriterWithEncodingTest: java.lang.String defaultEncoding> = null;
+
+        r0.<org.apache.commons.io.output.FileWriterWithEncodingTest: java.lang.String textContent> = null;
+
+        return;
+    }
+
+    public void sameEncoding_string_constructor() throws java.lang.Exception
+    {
+        org.apache.commons.io.output.FileWriterWithEncodingTest r0;
+        org.apache.commons.io.output.FileWriterWithEncoding $r1;
+        java.lang.String $r2;
+        java.io.File $r3;
+
+        r0 := @this: org.apache.commons.io.output.FileWriterWithEncodingTest;
+
+        $r1 = new org.apache.commons.io.output.FileWriterWithEncoding;
+
+        $r3 = r0.<org.apache.commons.io.output.FileWriterWithEncodingTest: java.io.File file2>;
+
+        $r2 = r0.<org.apache.commons.io.output.FileWriterWithEncodingTest: java.lang.String defaultEncoding>;
+
+        specialinvoke $r1.<org.apache.commons.io.output.FileWriterWithEncoding: void <init>(java.io.File,java.lang.String)>($r3, $r2);
+
+        specialinvoke r0.<org.apache.commons.io.output.FileWriterWithEncodingTest: void succesfulRun(org.apache.commons.io.output.FileWriterWithEncoding)>($r1);
+
+        return;
+    }
+
+    public void sameEncoding_string_string_constructor() throws java.lang.Exception
+    {
+        org.apache.commons.io.output.FileWriterWithEncodingTest r0;
+        org.apache.commons.io.output.FileWriterWithEncoding $r1;
+        java.io.File $r2;
+        java.lang.String $r3, $r4;
+
+        r0 := @this: org.apache.commons.io.output.FileWriterWithEncodingTest;
+
+        $r1 = new org.apache.commons.io.output.FileWriterWithEncoding;
+
+        $r2 = r0.<org.apache.commons.io.output.FileWriterWithEncodingTest: java.io.File file2>;
+
+        $r3 = virtualinvoke $r2.<java.io.File: java.lang.String getPath()>();
+
+        $r4 = r0.<org.apache.commons.io.output.FileWriterWithEncodingTest: java.lang.String defaultEncoding>;
+
+        specialinvoke $r1.<org.apache.commons.io.output.FileWriterWithEncoding: void <init>(java.lang.String,java.lang.String)>($r3, $r4);
+
+        specialinvoke r0.<org.apache.commons.io.output.FileWriterWithEncodingTest: void succesfulRun(org.apache.commons.io.output.FileWriterWithEncoding)>($r1);
+
+        return;
+    }
+
+    public void sameEncoding_Charset_constructor() throws java.lang.Exception
+    {
+        org.apache.commons.io.output.FileWriterWithEncodingTest r0;
+        org.apache.commons.io.output.FileWriterWithEncoding $r1;
+        java.io.File $r2;
+        java.nio.charset.Charset $r3;
+
+        r0 := @this: org.apache.commons.io.output.FileWriterWithEncodingTest;
+
+        $r1 = new org.apache.commons.io.output.FileWriterWithEncoding;
+
+        $r2 = r0.<org.apache.commons.io.output.FileWriterWithEncodingTest: java.io.File file2>;
+
+        $r3 = staticinvoke <java.nio.charset.Charset: java.nio.charset.Charset defaultCharset()>();
+
+        specialinvoke $r1.<org.apache.commons.io.output.FileWriterWithEncoding: void <init>(java.io.File,java.nio.charset.Charset)>($r2, $r3);
+
+        specialinvoke r0.<org.apache.commons.io.output.FileWriterWithEncodingTest: void succesfulRun(org.apache.commons.io.output.FileWriterWithEncoding)>($r1);
+
+        return;
+    }
+
+    public void sameEncoding_string_Charset_constructor() throws java.lang.Exception
+    {
+        org.apache.commons.io.output.FileWriterWithEncodingTest r0;
+        org.apache.commons.io.output.FileWriterWithEncoding $r1;
+        java.io.File $r2;
+        java.lang.String $r3;
+        java.nio.charset.Charset $r4;
+
+        r0 := @this: org.apache.commons.io.output.FileWriterWithEncodingTest;
+
+        $r1 = new org.apache.commons.io.output.FileWriterWithEncoding;
+
+        $r2 = r0.<org.apache.commons.io.output.FileWriterWithEncodingTest: java.io.File file2>;
+
+        $r3 = virtualinvoke $r2.<java.io.File: java.lang.String getPath()>();
+
+        $r4 = staticinvoke <java.nio.charset.Charset: java.nio.charset.Charset defaultCharset()>();
+
+        specialinvoke $r1.<org.apache.commons.io.output.FileWriterWithEncoding: void <init>(java.lang.String,java.nio.charset.Charset)>($r3, $r4);
+
+        specialinvoke r0.<org.apache.commons.io.output.FileWriterWithEncodingTest: void succesfulRun(org.apache.commons.io.output.FileWriterWithEncoding)>($r1);
+
+        return;
+    }
+
+    public void sameEncoding_CharsetEncoder_constructor() throws java.lang.Exception
+    {
+        org.apache.commons.io.output.FileWriterWithEncodingTest r0;
+        java.nio.charset.CharsetEncoder r1;
+        java.nio.charset.Charset $r2;
+        org.apache.commons.io.output.FileWriterWithEncoding $r3;
+        java.io.File $r4;
+
+        r0 := @this: org.apache.commons.io.output.FileWriterWithEncodingTest;
+
+        $r2 = staticinvoke <java.nio.charset.Charset: java.nio.charset.Charset defaultCharset()>();
+
+        r1 = virtualinvoke $r2.<java.nio.charset.Charset: java.nio.charset.CharsetEncoder newEncoder()>();
+
+        $r3 = new org.apache.commons.io.output.FileWriterWithEncoding;
+
+        $r4 = r0.<org.apache.commons.io.output.FileWriterWithEncodingTest: java.io.File file2>;
+
+        specialinvoke $r3.<org.apache.commons.io.output.FileWriterWithEncoding: void <init>(java.io.File,java.nio.charset.CharsetEncoder)>($r4, r1);
+
+        specialinvoke r0.<org.apache.commons.io.output.FileWriterWithEncodingTest: void succesfulRun(org.apache.commons.io.output.FileWriterWithEncoding)>($r3);
+
+        return;
+    }
+
+    public void sameEncoding_string_CharsetEncoder_constructor() throws java.lang.Exception
+    {
+        org.apache.commons.io.output.FileWriterWithEncodingTest r0;
+        java.nio.charset.CharsetEncoder r1;
+        java.nio.charset.Charset $r2;
+        org.apache.commons.io.output.FileWriterWithEncoding $r3;
+        java.io.File $r4;
+        java.lang.String $r5;
+
+        r0 := @this: org.apache.commons.io.output.FileWriterWithEncodingTest;
+
+        $r2 = staticinvoke <java.nio.charset.Charset: java.nio.charset.Charset defaultCharset()>();
+
+        r1 = virtualinvoke $r2.<java.nio.charset.Charset: java.nio.charset.CharsetEncoder newEncoder()>();
+
+        $r3 = new org.apache.commons.io.output.FileWriterWithEncoding;
+
+        $r4 = r0.<org.apache.commons.io.output.FileWriterWithEncodingTest: java.io.File file2>;
+
+        $r5 = virtualinvoke $r4.<java.io.File: java.lang.String getPath()>();
+
+        specialinvoke $r3.<org.apache.commons.io.output.FileWriterWithEncoding: void <init>(java.lang.String,java.nio.charset.CharsetEncoder)>($r5, r1);
+
+        specialinvoke r0.<org.apache.commons.io.output.FileWriterWithEncodingTest: void succesfulRun(org.apache.commons.io.output.FileWriterWithEncoding)>($r3);
+
+        return;
+    }
+
+    private void succesfulRun(org.apache.commons.io.output.FileWriterWithEncoding) throws java.lang.Exception
+    {
+        org.apache.commons.io.output.FileWriterWithEncodingTest r0;
+        org.apache.commons.io.output.FileWriterWithEncoding r1, r11;
+        java.io.FileWriter $r3, r10;
+        java.io.File $r4, $r5, $r6, $r7, $r8;
+        boolean $z0, $z1;
+        java.lang.Throwable $r9;
+
+        r0 := @this: org.apache.commons.io.output.FileWriterWithEncodingTest;
+
+        r1 := @parameter0: org.apache.commons.io.output.FileWriterWithEncoding;
+
+        r10 = null;
+
+        r11 = null;
+
+     label1:
+        $r3 = new java.io.FileWriter;
+
+        $r4 = r0.<org.apache.commons.io.output.FileWriterWithEncodingTest: java.io.File file1>;
+
+        specialinvoke $r3.<java.io.FileWriter: void <init>(java.io.File)>($r4);
+
+        r10 = $r3;
+
+        r11 = r1;
+
+        specialinvoke r0.<org.apache.commons.io.output.FileWriterWithEncodingTest: void writeTestPayload(java.io.FileWriter,org.apache.commons.io.output.FileWriterWithEncoding)>($r3, r1);
+
+        $r6 = r0.<org.apache.commons.io.output.FileWriterWithEncodingTest: java.io.File file1>;
+
+        $r5 = r0.<org.apache.commons.io.output.FileWriterWithEncodingTest: java.io.File file2>;
+
+        staticinvoke <org.apache.commons.io.testtools.TestUtils: void checkFile(java.io.File,java.io.File)>($r6, $r5);
+
+        goto label3;
+
+     label2:
+        $r9 := @caughtexception;
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.Writer)>(r10);
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.Writer)>(r11);
+
+        throw $r9;
+
+     label3:
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.Writer)>($r3);
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.Writer)>(r1);
+
+        $r7 = r0.<org.apache.commons.io.output.FileWriterWithEncodingTest: java.io.File file1>;
+
+        $z0 = virtualinvoke $r7.<java.io.File: boolean exists()>();
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z0);
+
+        $r8 = r0.<org.apache.commons.io.output.FileWriterWithEncodingTest: java.io.File file2>;
+
+        $z1 = virtualinvoke $r8.<java.io.File: boolean exists()>();
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z1);
+
+        return;
+
+        catch java.lang.Throwable from label1 to label2 with label2;
+    }
+
+    public void testDifferentEncoding() throws java.lang.Exception
+    {
+        org.apache.commons.io.output.FileWriterWithEncodingTest r0;
+        boolean $z0, $z1, $z2, $z3, $z4, $z5;
+        java.io.FileWriter $r1, $r10, r23, r27;
+        java.io.File $r2, $r5, $r6, $r7, $r8, $r9, $r11, $r14, $r15, $r16, $r17, $r18;
+        org.apache.commons.io.output.FileWriterWithEncoding $r3, $r12, r24, r28;
+        java.lang.String $r4, $r13;
+        java.lang.Throwable $r19, $r20;
+        java.lang.AssertionError $r21, $r22;
+
+        r0 := @this: org.apache.commons.io.output.FileWriterWithEncodingTest;
+
+        $z0 = staticinvoke <java.nio.charset.Charset: boolean isSupported(java.lang.String)>("UTF-16BE");
+
+        if $z0 == 0 goto label07;
+
+        r23 = null;
+
+        r24 = null;
+
+     label01:
+        $r10 = new java.io.FileWriter;
+
+        $r11 = r0.<org.apache.commons.io.output.FileWriterWithEncodingTest: java.io.File file1>;
+
+        specialinvoke $r10.<java.io.FileWriter: void <init>(java.io.File)>($r11);
+
+        r23 = $r10;
+
+        $r12 = new org.apache.commons.io.output.FileWriterWithEncoding;
+
+        $r14 = r0.<org.apache.commons.io.output.FileWriterWithEncodingTest: java.io.File file2>;
+
+        $r13 = r0.<org.apache.commons.io.output.FileWriterWithEncodingTest: java.lang.String defaultEncoding>;
+
+        specialinvoke $r12.<org.apache.commons.io.output.FileWriterWithEncoding: void <init>(java.io.File,java.lang.String)>($r14, $r13);
+
+        r24 = $r12;
+
+        specialinvoke r0.<org.apache.commons.io.output.FileWriterWithEncodingTest: void writeTestPayload(java.io.FileWriter,org.apache.commons.io.output.FileWriterWithEncoding)>($r10, $r12);
+
+     label02:
+        $r16 = r0.<org.apache.commons.io.output.FileWriterWithEncodingTest: java.io.File file1>;
+
+        $r15 = r0.<org.apache.commons.io.output.FileWriterWithEncodingTest: java.io.File file2>;
+
+        staticinvoke <org.apache.commons.io.testtools.TestUtils: void checkFile(java.io.File,java.io.File)>($r16, $r15);
+
+        staticinvoke <org.junit.Assert: void fail()>();
+
+     label03:
+        goto label06;
+
+     label04:
+        $r22 := @caughtexception;
+
+        goto label06;
+
+     label05:
+        $r19 := @caughtexception;
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.Writer)>(r23);
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.Writer)>(r24);
+
+        throw $r19;
+
+     label06:
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.Writer)>($r10);
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.Writer)>($r12);
+
+        $r17 = r0.<org.apache.commons.io.output.FileWriterWithEncodingTest: java.io.File file1>;
+
+        $z3 = virtualinvoke $r17.<java.io.File: boolean exists()>();
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z3);
+
+        $r18 = r0.<org.apache.commons.io.output.FileWriterWithEncodingTest: java.io.File file2>;
+
+        $z4 = virtualinvoke $r18.<java.io.File: boolean exists()>();
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z4);
+
+     label07:
+        $z5 = staticinvoke <java.nio.charset.Charset: boolean isSupported(java.lang.String)>("UTF-16LE");
+
+        if $z5 == 0 goto label14;
+
+        r27 = null;
+
+        r28 = null;
+
+     label08:
+        $r1 = new java.io.FileWriter;
+
+        $r2 = r0.<org.apache.commons.io.output.FileWriterWithEncodingTest: java.io.File file1>;
+
+        specialinvoke $r1.<java.io.FileWriter: void <init>(java.io.File)>($r2);
+
+        r27 = $r1;
+
+        $r3 = new org.apache.commons.io.output.FileWriterWithEncoding;
+
+        $r5 = r0.<org.apache.commons.io.output.FileWriterWithEncodingTest: java.io.File file2>;
+
+        $r4 = r0.<org.apache.commons.io.output.FileWriterWithEncodingTest: java.lang.String defaultEncoding>;
+
+        specialinvoke $r3.<org.apache.commons.io.output.FileWriterWithEncoding: void <init>(java.io.File,java.lang.String)>($r5, $r4);
+
+        r28 = $r3;
+
+        specialinvoke r0.<org.apache.commons.io.output.FileWriterWithEncodingTest: void writeTestPayload(java.io.FileWriter,org.apache.commons.io.output.FileWriterWithEncoding)>($r1, $r3);
+
+     label09:
+        $r7 = r0.<org.apache.commons.io.output.FileWriterWithEncodingTest: java.io.File file1>;
+
+        $r6 = r0.<org.apache.commons.io.output.FileWriterWithEncodingTest: java.io.File file2>;
+
+        staticinvoke <org.apache.commons.io.testtools.TestUtils: void checkFile(java.io.File,java.io.File)>($r7, $r6);
+
+        staticinvoke <org.junit.Assert: void fail()>();
+
+     label10:
+        goto label13;
+
+     label11:
+        $r21 := @caughtexception;
+
+        goto label13;
+
+     label12:
+        $r20 := @caughtexception;
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.Writer)>(r27);
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.Writer)>(r28);
+
+        throw $r20;
+
+     label13:
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.Writer)>($r1);
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.Writer)>($r3);
+
+        $r8 = r0.<org.apache.commons.io.output.FileWriterWithEncodingTest: java.io.File file1>;
+
+        $z1 = virtualinvoke $r8.<java.io.File: boolean exists()>();
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z1);
+
+        $r9 = r0.<org.apache.commons.io.output.FileWriterWithEncodingTest: java.io.File file2>;
+
+        $z2 = virtualinvoke $r9.<java.io.File: boolean exists()>();
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z2);
+
+     label14:
+        return;
+
+        catch java.lang.AssertionError from label02 to label03 with label04;
+        catch java.lang.Throwable from label01 to label05 with label05;
+        catch java.lang.AssertionError from label09 to label10 with label11;
+        catch java.lang.Throwable from label08 to label12 with label12;
+    }
+
+    private void writeTestPayload(java.io.FileWriter, org.apache.commons.io.output.FileWriterWithEncoding) throws java.io.IOException
+    {
+        org.apache.commons.io.output.FileWriterWithEncodingTest r0;
+        java.io.FileWriter r1;
+        org.apache.commons.io.output.FileWriterWithEncoding r2;
+        java.io.File $r3, $r4;
+        boolean $z0, $z1;
+        java.lang.String $r5, $r6;
+        char[] $r7, $r8, $r9, $r10;
+
+        r0 := @this: org.apache.commons.io.output.FileWriterWithEncodingTest;
+
+        r1 := @parameter0: java.io.FileWriter;
+
+        r2 := @parameter1: org.apache.commons.io.output.FileWriterWithEncoding;
+
+        $r3 = r0.<org.apache.commons.io.output.FileWriterWithEncodingTest: java.io.File file1>;
+
+        $z0 = virtualinvoke $r3.<java.io.File: boolean exists()>();
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z0);
+
+        $r4 = r0.<org.apache.commons.io.output.FileWriterWithEncodingTest: java.io.File file2>;
+
+        $z1 = virtualinvoke $r4.<java.io.File: boolean exists()>();
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z1);
+
+        $r5 = r0.<org.apache.commons.io.output.FileWriterWithEncodingTest: java.lang.String textContent>;
+
+        virtualinvoke r1.<java.io.FileWriter: void write(java.lang.String)>($r5);
+
+        $r6 = r0.<org.apache.commons.io.output.FileWriterWithEncodingTest: java.lang.String textContent>;
+
+        virtualinvoke r2.<org.apache.commons.io.output.FileWriterWithEncoding: void write(java.lang.String)>($r6);
+
+        virtualinvoke r1.<java.io.FileWriter: void write(int)>(65);
+
+        virtualinvoke r2.<org.apache.commons.io.output.FileWriterWithEncoding: void write(int)>(65);
+
+        $r7 = r0.<org.apache.commons.io.output.FileWriterWithEncodingTest: char[] anotherTestContent>;
+
+        virtualinvoke r1.<java.io.FileWriter: void write(char[])>($r7);
+
+        $r8 = r0.<org.apache.commons.io.output.FileWriterWithEncodingTest: char[] anotherTestContent>;
+
+        virtualinvoke r2.<org.apache.commons.io.output.FileWriterWithEncoding: void write(char[])>($r8);
+
+        $r9 = r0.<org.apache.commons.io.output.FileWriterWithEncodingTest: char[] anotherTestContent>;
+
+        virtualinvoke r1.<java.io.FileWriter: void write(char[],int,int)>($r9, 1, 2);
+
+        $r10 = r0.<org.apache.commons.io.output.FileWriterWithEncodingTest: char[] anotherTestContent>;
+
+        virtualinvoke r2.<org.apache.commons.io.output.FileWriterWithEncoding: void write(char[],int,int)>($r10, 1, 2);
+
+        virtualinvoke r1.<java.io.FileWriter: void write(java.lang.String,int,int)>("CAFE", 1, 2);
+
+        virtualinvoke r2.<org.apache.commons.io.output.FileWriterWithEncoding: void write(java.lang.String,int,int)>("CAFE", 1, 2);
+
+        virtualinvoke r1.<java.io.FileWriter: void flush()>();
+
+        virtualinvoke r2.<org.apache.commons.io.output.FileWriterWithEncoding: void flush()>();
+
+        return;
+    }
+
+    public void constructor_File_encoding_badEncoding()
+    {
+        org.apache.commons.io.output.FileWriterWithEncodingTest r0;
+        org.apache.commons.io.output.FileWriterWithEncoding $r3, r9;
+        java.io.File $r4, $r5, $r7;
+        boolean $z0, $z1;
+        java.io.IOException $r6;
+        java.lang.Throwable $r8;
+
+        r0 := @this: org.apache.commons.io.output.FileWriterWithEncodingTest;
+
+        r9 = null;
+
+     label1:
+        $r3 = new org.apache.commons.io.output.FileWriterWithEncoding;
+
+        $r4 = r0.<org.apache.commons.io.output.FileWriterWithEncodingTest: java.io.File file1>;
+
+        specialinvoke $r3.<org.apache.commons.io.output.FileWriterWithEncoding: void <init>(java.io.File,java.lang.String)>($r4, "BAD-ENCODE");
+
+        r9 = $r3;
+
+        staticinvoke <org.junit.Assert: void fail()>();
+
+     label2:
+        goto label6;
+
+     label3:
+        $r6 := @caughtexception;
+
+        $r7 = r0.<org.apache.commons.io.output.FileWriterWithEncodingTest: java.io.File file1>;
+
+        $z1 = virtualinvoke $r7.<java.io.File: boolean exists()>();
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z1);
+
+     label4:
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.Writer)>(r9);
+
+        goto label7;
+
+     label5:
+        $r8 := @caughtexception;
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.Writer)>(r9);
+
+        throw $r8;
+
+     label6:
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.Writer)>($r3);
+
+     label7:
+        $r5 = r0.<org.apache.commons.io.output.FileWriterWithEncodingTest: java.io.File file1>;
+
+        $z0 = virtualinvoke $r5.<java.io.File: boolean exists()>();
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z0);
+
+        return;
+
+        catch java.io.IOException from label1 to label2 with label3;
+        catch java.lang.Throwable from label1 to label4 with label5;
+    }
+
+    public void constructor_File_directory()
+    {
+        org.apache.commons.io.output.FileWriterWithEncodingTest r0;
+        org.apache.commons.io.output.FileWriterWithEncoding $r3, r10;
+        java.io.File $r4, $r6, $r9;
+        java.lang.String $r5;
+        boolean $z0, $z1;
+        java.lang.Throwable $r7;
+        java.io.IOException $r8;
+
+        r0 := @this: org.apache.commons.io.output.FileWriterWithEncodingTest;
+
+        r10 = null;
+
+     label1:
+        $r3 = new org.apache.commons.io.output.FileWriterWithEncoding;
+
+        $r4 = staticinvoke <org.apache.commons.io.output.FileWriterWithEncodingTest: java.io.File getTestDirectory()>();
+
+        $r5 = r0.<org.apache.commons.io.output.FileWriterWithEncodingTest: java.lang.String defaultEncoding>;
+
+        specialinvoke $r3.<org.apache.commons.io.output.FileWriterWithEncoding: void <init>(java.io.File,java.lang.String)>($r4, $r5);
+
+        r10 = $r3;
+
+        staticinvoke <org.junit.Assert: void fail()>();
+
+     label2:
+        goto label6;
+
+     label3:
+        $r8 := @caughtexception;
+
+        $r9 = r0.<org.apache.commons.io.output.FileWriterWithEncodingTest: java.io.File file1>;
+
+        $z1 = virtualinvoke $r9.<java.io.File: boolean exists()>();
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z1);
+
+     label4:
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.Writer)>(r10);
+
+        goto label7;
+
+     label5:
+        $r7 := @caughtexception;
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.Writer)>(r10);
+
+        throw $r7;
+
+     label6:
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.Writer)>($r3);
+
+     label7:
+        $r6 = r0.<org.apache.commons.io.output.FileWriterWithEncodingTest: java.io.File file1>;
+
+        $z0 = virtualinvoke $r6.<java.io.File: boolean exists()>();
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z0);
+
+        return;
+
+        catch java.io.IOException from label1 to label2 with label3;
+        catch java.lang.Throwable from label1 to label4 with label5;
+    }
+
+    public void constructor_File_nullFile() throws java.io.IOException
+    {
+        org.apache.commons.io.output.FileWriterWithEncodingTest r0;
+        org.apache.commons.io.output.FileWriterWithEncoding $r3, r9;
+        java.lang.String $r4;
+        java.io.File $r5, $r7;
+        boolean $z0, $z1;
+        java.lang.NullPointerException $r6;
+        java.lang.Throwable $r8;
+
+        r0 := @this: org.apache.commons.io.output.FileWriterWithEncodingTest;
+
+        r9 = null;
+
+     label1:
+        $r3 = new org.apache.commons.io.output.FileWriterWithEncoding;
+
+        $r4 = r0.<org.apache.commons.io.output.FileWriterWithEncodingTest: java.lang.String defaultEncoding>;
+
+        specialinvoke $r3.<org.apache.commons.io.output.FileWriterWithEncoding: void <init>(java.io.File,java.lang.String)>(null, $r4);
+
+        r9 = $r3;
+
+        staticinvoke <org.junit.Assert: void fail()>();
+
+     label2:
+        goto label6;
+
+     label3:
+        $r6 := @caughtexception;
+
+        $r7 = r0.<org.apache.commons.io.output.FileWriterWithEncodingTest: java.io.File file1>;
+
+        $z1 = virtualinvoke $r7.<java.io.File: boolean exists()>();
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z1);
+
+     label4:
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.Writer)>(r9);
+
+        goto label7;
+
+     label5:
+        $r8 := @caughtexception;
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.Writer)>(r9);
+
+        throw $r8;
+
+     label6:
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.Writer)>($r3);
+
+     label7:
+        $r5 = r0.<org.apache.commons.io.output.FileWriterWithEncodingTest: java.io.File file1>;
+
+        $z0 = virtualinvoke $r5.<java.io.File: boolean exists()>();
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z0);
+
+        return;
+
+        catch java.lang.NullPointerException from label1 to label2 with label3;
+        catch java.lang.Throwable from label1 to label4 with label5;
+    }
+
+    public void constructor_fileName_nullFile() throws java.io.IOException
+    {
+        org.apache.commons.io.output.FileWriterWithEncodingTest r0;
+        org.apache.commons.io.output.FileWriterWithEncoding $r3, r9;
+        java.lang.String $r4;
+        java.io.File $r5, $r8;
+        boolean $z0, $z1;
+        java.lang.Throwable $r6;
+        java.lang.NullPointerException $r7;
+
+        r0 := @this: org.apache.commons.io.output.FileWriterWithEncodingTest;
+
+        r9 = null;
+
+     label1:
+        $r3 = new org.apache.commons.io.output.FileWriterWithEncoding;
+
+        $r4 = r0.<org.apache.commons.io.output.FileWriterWithEncodingTest: java.lang.String defaultEncoding>;
+
+        specialinvoke $r3.<org.apache.commons.io.output.FileWriterWithEncoding: void <init>(java.lang.String,java.lang.String)>(null, $r4);
+
+        r9 = $r3;
+
+        staticinvoke <org.junit.Assert: void fail()>();
+
+     label2:
+        goto label6;
+
+     label3:
+        $r7 := @caughtexception;
+
+        $r8 = r0.<org.apache.commons.io.output.FileWriterWithEncodingTest: java.io.File file1>;
+
+        $z1 = virtualinvoke $r8.<java.io.File: boolean exists()>();
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z1);
+
+     label4:
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.Writer)>(r9);
+
+        goto label7;
+
+     label5:
+        $r6 := @caughtexception;
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.Writer)>(r9);
+
+        throw $r6;
+
+     label6:
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.Writer)>($r3);
+
+     label7:
+        $r5 = r0.<org.apache.commons.io.output.FileWriterWithEncodingTest: java.io.File file1>;
+
+        $z0 = virtualinvoke $r5.<java.io.File: boolean exists()>();
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z0);
+
+        return;
+
+        catch java.lang.NullPointerException from label1 to label2 with label3;
+        catch java.lang.Throwable from label1 to label4 with label5;
+    }
+
+    public void sameEncoding_null_Charset_constructor() throws java.lang.Exception
+    {
+        org.apache.commons.io.output.FileWriterWithEncodingTest r0;
+        org.apache.commons.io.output.FileWriterWithEncoding $r2;
+        java.io.File $r3;
+        java.lang.NullPointerException $r4;
+
+        r0 := @this: org.apache.commons.io.output.FileWriterWithEncodingTest;
+
+     label1:
+        $r2 = new org.apache.commons.io.output.FileWriterWithEncoding;
+
+        $r3 = r0.<org.apache.commons.io.output.FileWriterWithEncodingTest: java.io.File file2>;
+
+        specialinvoke $r2.<org.apache.commons.io.output.FileWriterWithEncoding: void <init>(java.io.File,java.nio.charset.Charset)>($r3, null);
+
+        specialinvoke r0.<org.apache.commons.io.output.FileWriterWithEncodingTest: void succesfulRun(org.apache.commons.io.output.FileWriterWithEncoding)>($r2);
+
+        staticinvoke <org.junit.Assert: void fail()>();
+
+     label2:
+        goto label4;
+
+     label3:
+        $r4 := @caughtexception;
+
+     label4:
+        return;
+
+        catch java.lang.NullPointerException from label1 to label2 with label3;
+    }
+}

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<attributes>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="0" eline="0" spos="0" epos="0"/>
+<text info="[inner=org/apache/commons/codec/net/RFC1522CodecTest$RFC1522TestCodec, outer=org/apache/commons/codec/net/RFC1522CodecTest, name=RFC1522TestCodec,flags=8]" aType="InnerClassTag"/>
+<text info="soot.tagkit.InnerClassAttribute@14cea516" aType="InnerClassAttribute"/>
+</attribute>
+<attribute>
+<srcPos sline="54" eline="54" spos="0" epos="0"/>
+<jmpPos sline="15" eline="15" spos="0" epos="0"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation type: Lorg/junit/Test; without elements
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+<attribute>
+<srcPos sline="71" eline="71" spos="0" epos="0"/>
+<jmpPos sline="70" eline="70" spos="0" epos="0"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation type: Lorg/junit/Test; without elements
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+</attributes>

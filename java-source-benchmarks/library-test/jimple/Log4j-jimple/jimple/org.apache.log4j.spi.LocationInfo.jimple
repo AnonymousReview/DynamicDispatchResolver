@@ -1,0 +1,753 @@
+public class org.apache.log4j.spi.LocationInfo extends java.lang.Object implements java.io.Serializable
+{
+    transient java.lang.String lineNumber;
+    transient java.lang.String fileName;
+    transient java.lang.String className;
+    transient java.lang.String methodName;
+    public java.lang.String fullInfo;
+    private static java.io.StringWriter sw;
+    private static java.io.PrintWriter pw;
+    private static java.lang.reflect.Method getStackTraceMethod;
+    private static java.lang.reflect.Method getClassNameMethod;
+    private static java.lang.reflect.Method getMethodNameMethod;
+    private static java.lang.reflect.Method getFileNameMethod;
+    private static java.lang.reflect.Method getLineNumberMethod;
+    public static final java.lang.String NA;
+    static final long serialVersionUID;
+    public static final org.apache.log4j.spi.LocationInfo NA_LOCATION_INFO;
+    static boolean inVisualAge;
+
+    static void <clinit>()
+    {
+        java.lang.Class r0, $r5, $r6;
+        java.io.StringWriter $r1, $r3;
+        java.io.PrintWriter $r2;
+        org.apache.log4j.spi.LocationInfo $r4;
+        java.lang.reflect.Method $r7, $r8, $r9, $r10, $r11;
+        java.lang.NoSuchMethodException $r12;
+        java.lang.Throwable $r13;
+        java.lang.ClassNotFoundException $r14;
+        boolean $z0;
+
+        <org.apache.log4j.spi.LocationInfo: long serialVersionUID> = -1325822038990805636L;
+
+        <org.apache.log4j.spi.LocationInfo: java.lang.String NA> = "?";
+
+        $r1 = new java.io.StringWriter;
+
+        specialinvoke $r1.<java.io.StringWriter: void <init>()>();
+
+        <org.apache.log4j.spi.LocationInfo: java.io.StringWriter sw> = $r1;
+
+        $r2 = new java.io.PrintWriter;
+
+        $r3 = <org.apache.log4j.spi.LocationInfo: java.io.StringWriter sw>;
+
+        specialinvoke $r2.<java.io.PrintWriter: void <init>(java.io.Writer)>($r3);
+
+        <org.apache.log4j.spi.LocationInfo: java.io.PrintWriter pw> = $r2;
+
+        $r4 = new org.apache.log4j.spi.LocationInfo;
+
+        specialinvoke $r4.<org.apache.log4j.spi.LocationInfo: void <init>(java.lang.String,java.lang.String,java.lang.String,java.lang.String)>("?", "?", "?", "?");
+
+        <org.apache.log4j.spi.LocationInfo: org.apache.log4j.spi.LocationInfo NA_LOCATION_INFO> = $r4;
+
+        <org.apache.log4j.spi.LocationInfo: boolean inVisualAge> = 0;
+
+     label01:
+        $r5 = staticinvoke <java.lang.Class: java.lang.Class forName(java.lang.String)>("com.ibm.uvm.tools.DebugSupport");
+
+        if $r5 == null goto label02;
+
+        $z0 = 1;
+
+        goto label03;
+
+     label02:
+        $z0 = 0;
+
+     label03:
+        <org.apache.log4j.spi.LocationInfo: boolean inVisualAge> = $z0;
+
+        staticinvoke <org.apache.log4j.helpers.LogLog: void debug(java.lang.String)>("Detected IBM VisualAge environment.");
+
+     label04:
+        goto label06;
+
+     label05:
+        $r13 := @caughtexception;
+
+     label06:
+        $r6 = class "java/lang/Throwable";
+
+        $r7 = virtualinvoke $r6.<java.lang.Class: java.lang.reflect.Method getMethod(java.lang.String,java.lang.Class[])>("getStackTrace", null);
+
+        <org.apache.log4j.spi.LocationInfo: java.lang.reflect.Method getStackTraceMethod> = $r7;
+
+        r0 = staticinvoke <java.lang.Class: java.lang.Class forName(java.lang.String)>("java.lang.StackTraceElement");
+
+        $r8 = virtualinvoke r0.<java.lang.Class: java.lang.reflect.Method getMethod(java.lang.String,java.lang.Class[])>("getClassName", null);
+
+        <org.apache.log4j.spi.LocationInfo: java.lang.reflect.Method getClassNameMethod> = $r8;
+
+        $r9 = virtualinvoke r0.<java.lang.Class: java.lang.reflect.Method getMethod(java.lang.String,java.lang.Class[])>("getMethodName", null);
+
+        <org.apache.log4j.spi.LocationInfo: java.lang.reflect.Method getMethodNameMethod> = $r9;
+
+        $r10 = virtualinvoke r0.<java.lang.Class: java.lang.reflect.Method getMethod(java.lang.String,java.lang.Class[])>("getFileName", null);
+
+        <org.apache.log4j.spi.LocationInfo: java.lang.reflect.Method getFileNameMethod> = $r10;
+
+        $r11 = virtualinvoke r0.<java.lang.Class: java.lang.reflect.Method getMethod(java.lang.String,java.lang.Class[])>("getLineNumber", null);
+
+        <org.apache.log4j.spi.LocationInfo: java.lang.reflect.Method getLineNumberMethod> = $r11;
+
+     label07:
+        goto label10;
+
+     label08:
+        $r14 := @caughtexception;
+
+        staticinvoke <org.apache.log4j.helpers.LogLog: void debug(java.lang.String)>("LocationInfo will use pre-JDK 1.4 methods to determine location.");
+
+        goto label10;
+
+     label09:
+        $r12 := @caughtexception;
+
+        staticinvoke <org.apache.log4j.helpers.LogLog: void debug(java.lang.String)>("LocationInfo will use pre-JDK 1.4 methods to determine location.");
+
+     label10:
+        return;
+
+        catch java.lang.Throwable from label01 to label04 with label05;
+        catch java.lang.ClassNotFoundException from label06 to label07 with label08;
+        catch java.lang.NoSuchMethodException from label06 to label07 with label09;
+    }
+
+    public void <init>(java.lang.Throwable, java.lang.String)
+    {
+        org.apache.log4j.spi.LocationInfo r0;
+        java.lang.Throwable r1, $r37, $r40, $r42;
+        java.lang.String r2, r3, $r6, $r7, $r9, $r11, $r20, $r24, $r25, $r30, $r32, $r33, $r34, $r35, $r36, r45, r53, $r56;
+        int i0, i1, $i2, $i3, $i4, $i5, $i6, $i7, $i9, $i10, i11, i12, i13, i14, i15, i16, i17;
+        java.lang.reflect.Method $r5, $r12, $r15, $r18, $r22, $r27;
+        boolean $z0, $z1, $z2, $z3;
+        char $c8;
+        java.lang.StringBuilder $r8, $r10;
+        java.lang.Object $r13, $r14, $r16, $r17, $r19, $r21, $r23, $r26, $r28;
+        java.lang.Integer $r29;
+        java.lang.StringBuffer $r31, $r55;
+        java.lang.IllegalAccessException $r38;
+        java.lang.reflect.InvocationTargetException $r39;
+        java.lang.Thread $r41;
+        java.lang.RuntimeException $r43;
+        java.lang.Object[] r44;
+        java.io.StringWriter $r49, $r52, $r54;
+        java.io.PrintWriter $r51;
+
+        r0 := @this: org.apache.log4j.spi.LocationInfo;
+
+        r1 := @parameter0: java.lang.Throwable;
+
+        r2 := @parameter1: java.lang.String;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        if r1 == null goto label01;
+
+        if r2 != null goto label02;
+
+     label01:
+        return;
+
+     label02:
+        $r5 = <org.apache.log4j.spi.LocationInfo: java.lang.reflect.Method getLineNumberMethod>;
+
+        if $r5 == null goto label17;
+
+     label03:
+        $r12 = <org.apache.log4j.spi.LocationInfo: java.lang.reflect.Method getStackTraceMethod>;
+
+        $r13 = virtualinvoke $r12.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>(r1, null);
+
+        r44 = (java.lang.Object[]) $r13;
+
+        r45 = "?";
+
+        $i9 = lengthof r44;
+
+        i11 = $i9 - 1;
+
+        goto label10;
+
+     label04:
+        $r15 = <org.apache.log4j.spi.LocationInfo: java.lang.reflect.Method getClassNameMethod>;
+
+        $r14 = r44[i11];
+
+        $r16 = virtualinvoke $r15.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>($r14, null);
+
+        r3 = (java.lang.String) $r16;
+
+        $z1 = virtualinvoke r2.<java.lang.String: boolean equals(java.lang.Object)>(r3);
+
+        if $z1 == 0 goto label09;
+
+        i0 = i11 + 1;
+
+        $i10 = lengthof r44;
+
+        if i0 >= $i10 goto label08;
+
+        r0.<org.apache.log4j.spi.LocationInfo: java.lang.String className> = r45;
+
+        $r18 = <org.apache.log4j.spi.LocationInfo: java.lang.reflect.Method getMethodNameMethod>;
+
+        $r17 = r44[i0];
+
+        $r19 = virtualinvoke $r18.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>($r17, null);
+
+        $r20 = (java.lang.String) $r19;
+
+        r0.<org.apache.log4j.spi.LocationInfo: java.lang.String methodName> = $r20;
+
+        $r22 = <org.apache.log4j.spi.LocationInfo: java.lang.reflect.Method getFileNameMethod>;
+
+        $r21 = r44[i0];
+
+        $r23 = virtualinvoke $r22.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>($r21, null);
+
+        $r24 = (java.lang.String) $r23;
+
+        r0.<org.apache.log4j.spi.LocationInfo: java.lang.String fileName> = $r24;
+
+        $r25 = r0.<org.apache.log4j.spi.LocationInfo: java.lang.String fileName>;
+
+        if $r25 != null goto label05;
+
+        r0.<org.apache.log4j.spi.LocationInfo: java.lang.String fileName> = "?";
+
+     label05:
+        $r27 = <org.apache.log4j.spi.LocationInfo: java.lang.reflect.Method getLineNumberMethod>;
+
+        $r26 = r44[i0];
+
+        $r28 = virtualinvoke $r27.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>($r26, null);
+
+        $r29 = (java.lang.Integer) $r28;
+
+        i1 = virtualinvoke $r29.<java.lang.Integer: int intValue()>();
+
+        if i1 >= 0 goto label06;
+
+        r0.<org.apache.log4j.spi.LocationInfo: java.lang.String lineNumber> = "?";
+
+        goto label07;
+
+     label06:
+        $r30 = staticinvoke <java.lang.String: java.lang.String valueOf(int)>(i1);
+
+        r0.<org.apache.log4j.spi.LocationInfo: java.lang.String lineNumber> = $r30;
+
+     label07:
+        $r31 = new java.lang.StringBuffer;
+
+        specialinvoke $r31.<java.lang.StringBuffer: void <init>()>();
+
+        $r32 = r0.<org.apache.log4j.spi.LocationInfo: java.lang.String className>;
+
+        virtualinvoke $r31.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>($r32);
+
+        virtualinvoke $r31.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>(".");
+
+        $r33 = r0.<org.apache.log4j.spi.LocationInfo: java.lang.String methodName>;
+
+        virtualinvoke $r31.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>($r33);
+
+        virtualinvoke $r31.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>("(");
+
+        $r34 = r0.<org.apache.log4j.spi.LocationInfo: java.lang.String fileName>;
+
+        virtualinvoke $r31.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>($r34);
+
+        virtualinvoke $r31.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>(":");
+
+        $r35 = r0.<org.apache.log4j.spi.LocationInfo: java.lang.String lineNumber>;
+
+        virtualinvoke $r31.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>($r35);
+
+        virtualinvoke $r31.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>(")");
+
+        $r36 = virtualinvoke $r31.<java.lang.StringBuffer: java.lang.String toString()>();
+
+        r0.<org.apache.log4j.spi.LocationInfo: java.lang.String fullInfo> = $r36;
+
+     label08:
+        return;
+
+     label09:
+        r45 = r3;
+
+        i11 = i11 + -1;
+
+     label10:
+        if i11 >= 0 goto label04;
+
+     label11:
+        return;
+
+     label12:
+        $r38 := @caughtexception;
+
+        staticinvoke <org.apache.log4j.helpers.LogLog: void debug(java.lang.String,java.lang.Throwable)>("LocationInfo failed using JDK 1.4 methods", $r38);
+
+        goto label17;
+
+     label13:
+        $r39 := @caughtexception;
+
+        $r40 = virtualinvoke $r39.<java.lang.reflect.InvocationTargetException: java.lang.Throwable getTargetException()>();
+
+        $z2 = $r40 instanceof java.lang.InterruptedException;
+
+        if $z2 != 0 goto label14;
+
+        $r42 = virtualinvoke $r39.<java.lang.reflect.InvocationTargetException: java.lang.Throwable getTargetException()>();
+
+        $z3 = $r42 instanceof java.io.InterruptedIOException;
+
+        if $z3 == 0 goto label15;
+
+     label14:
+        $r41 = staticinvoke <java.lang.Thread: java.lang.Thread currentThread()>();
+
+        virtualinvoke $r41.<java.lang.Thread: void interrupt()>();
+
+     label15:
+        staticinvoke <org.apache.log4j.helpers.LogLog: void debug(java.lang.String,java.lang.Throwable)>("LocationInfo failed using JDK 1.4 methods", $r39);
+
+        goto label17;
+
+     label16:
+        $r43 := @caughtexception;
+
+        staticinvoke <org.apache.log4j.helpers.LogLog: void debug(java.lang.String,java.lang.Throwable)>("LocationInfo failed using JDK 1.4 methods", $r43);
+
+     label17:
+        $r49 = <org.apache.log4j.spi.LocationInfo: java.io.StringWriter sw>;
+
+        entermonitor $r49;
+
+     label18:
+        $r51 = <org.apache.log4j.spi.LocationInfo: java.io.PrintWriter pw>;
+
+        virtualinvoke r1.<java.lang.Throwable: void printStackTrace(java.io.PrintWriter)>($r51);
+
+        $r52 = <org.apache.log4j.spi.LocationInfo: java.io.StringWriter sw>;
+
+        r53 = virtualinvoke $r52.<java.io.StringWriter: java.lang.String toString()>();
+
+        $r54 = <org.apache.log4j.spi.LocationInfo: java.io.StringWriter sw>;
+
+        $r55 = virtualinvoke $r54.<java.io.StringWriter: java.lang.StringBuffer getBuffer()>();
+
+        virtualinvoke $r55.<java.lang.StringBuffer: void setLength(int)>(0);
+
+        exitmonitor $r49;
+
+     label19:
+        goto label22;
+
+     label20:
+        $r37 := @caughtexception;
+
+        exitmonitor $r49;
+
+     label21:
+        throw $r37;
+
+     label22:
+        i12 = virtualinvoke r53.<java.lang.String: int lastIndexOf(java.lang.String)>(r2);
+
+        if i12 != -1 goto label23;
+
+        return;
+
+     label23:
+        $i2 = virtualinvoke r2.<java.lang.String: int length()>();
+
+        $i3 = i12 + $i2;
+
+        $i4 = virtualinvoke r53.<java.lang.String: int length()>();
+
+        if $i3 >= $i4 goto label24;
+
+        $i6 = virtualinvoke r2.<java.lang.String: int length()>();
+
+        $i7 = i12 + $i6;
+
+        $c8 = virtualinvoke r53.<java.lang.String: char charAt(int)>($i7);
+
+        if $c8 == 46 goto label24;
+
+        $r8 = new java.lang.StringBuilder;
+
+        $r9 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>(r2);
+
+        specialinvoke $r8.<java.lang.StringBuilder: void <init>(java.lang.String)>($r9);
+
+        $r10 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(".");
+
+        $r11 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        i13 = virtualinvoke r53.<java.lang.String: int lastIndexOf(java.lang.String)>($r11);
+
+        if i13 == -1 goto label24;
+
+        i12 = i13;
+
+     label24:
+        $r56 = <org.apache.log4j.Layout: java.lang.String LINE_SEP>;
+
+        i14 = virtualinvoke r53.<java.lang.String: int indexOf(java.lang.String,int)>($r56, i12);
+
+        if i14 != -1 goto label25;
+
+        return;
+
+     label25:
+        $i5 = <org.apache.log4j.Layout: int LINE_SEP_LEN>;
+
+        i15 = i14 + $i5;
+
+        $r6 = <org.apache.log4j.Layout: java.lang.String LINE_SEP>;
+
+        i16 = virtualinvoke r53.<java.lang.String: int indexOf(java.lang.String,int)>($r6, i15);
+
+        if i16 != -1 goto label26;
+
+        return;
+
+     label26:
+        $z0 = <org.apache.log4j.spi.LocationInfo: boolean inVisualAge>;
+
+        if $z0 != 0 goto label28;
+
+        i17 = virtualinvoke r53.<java.lang.String: int lastIndexOf(java.lang.String,int)>("at ", i16);
+
+        if i17 != -1 goto label27;
+
+        return;
+
+     label27:
+        i15 = i17 + 3;
+
+     label28:
+        $r7 = virtualinvoke r53.<java.lang.String: java.lang.String substring(int,int)>(i15, i16);
+
+        r0.<org.apache.log4j.spi.LocationInfo: java.lang.String fullInfo> = $r7;
+
+        return;
+
+        catch java.lang.IllegalAccessException from label03 to label08 with label12;
+        catch java.lang.IllegalAccessException from label09 to label11 with label12;
+        catch java.lang.reflect.InvocationTargetException from label03 to label08 with label13;
+        catch java.lang.reflect.InvocationTargetException from label09 to label11 with label13;
+        catch java.lang.RuntimeException from label03 to label08 with label16;
+        catch java.lang.RuntimeException from label09 to label11 with label16;
+        catch java.lang.Throwable from label18 to label19 with label20;
+        catch java.lang.Throwable from label20 to label21 with label20;
+    }
+
+    private static final void appendFragment(java.lang.StringBuffer, java.lang.String)
+    {
+        java.lang.StringBuffer r0;
+        java.lang.String r1;
+
+        r0 := @parameter0: java.lang.StringBuffer;
+
+        r1 := @parameter1: java.lang.String;
+
+        if r1 != null goto label1;
+
+        virtualinvoke r0.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>("?");
+
+        goto label2;
+
+     label1:
+        virtualinvoke r0.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>(r1);
+
+     label2:
+        return;
+    }
+
+    public void <init>(java.lang.String, java.lang.String, java.lang.String, java.lang.String)
+    {
+        org.apache.log4j.spi.LocationInfo r0;
+        java.lang.String r1, r2, r3, r4, $r11;
+        java.lang.StringBuffer $r6;
+
+        r0 := @this: org.apache.log4j.spi.LocationInfo;
+
+        r1 := @parameter0: java.lang.String;
+
+        r2 := @parameter1: java.lang.String;
+
+        r3 := @parameter2: java.lang.String;
+
+        r4 := @parameter3: java.lang.String;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<org.apache.log4j.spi.LocationInfo: java.lang.String fileName> = r1;
+
+        r0.<org.apache.log4j.spi.LocationInfo: java.lang.String className> = r2;
+
+        r0.<org.apache.log4j.spi.LocationInfo: java.lang.String methodName> = r3;
+
+        r0.<org.apache.log4j.spi.LocationInfo: java.lang.String lineNumber> = r4;
+
+        $r6 = new java.lang.StringBuffer;
+
+        specialinvoke $r6.<java.lang.StringBuffer: void <init>()>();
+
+        staticinvoke <org.apache.log4j.spi.LocationInfo: void appendFragment(java.lang.StringBuffer,java.lang.String)>($r6, r2);
+
+        virtualinvoke $r6.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>(".");
+
+        staticinvoke <org.apache.log4j.spi.LocationInfo: void appendFragment(java.lang.StringBuffer,java.lang.String)>($r6, r3);
+
+        virtualinvoke $r6.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>("(");
+
+        staticinvoke <org.apache.log4j.spi.LocationInfo: void appendFragment(java.lang.StringBuffer,java.lang.String)>($r6, r1);
+
+        virtualinvoke $r6.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>(":");
+
+        staticinvoke <org.apache.log4j.spi.LocationInfo: void appendFragment(java.lang.StringBuffer,java.lang.String)>($r6, r4);
+
+        virtualinvoke $r6.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>(")");
+
+        $r11 = virtualinvoke $r6.<java.lang.StringBuffer: java.lang.String toString()>();
+
+        r0.<org.apache.log4j.spi.LocationInfo: java.lang.String fullInfo> = $r11;
+
+        return;
+    }
+
+    public java.lang.String getClassName()
+    {
+        org.apache.log4j.spi.LocationInfo r0;
+        java.lang.String $r1, $r2, $r3, $r4, $r5, $r6, $r7, $r8;
+        boolean $z0;
+        int $i0, i1, i2, i3;
+
+        r0 := @this: org.apache.log4j.spi.LocationInfo;
+
+        $r1 = r0.<org.apache.log4j.spi.LocationInfo: java.lang.String fullInfo>;
+
+        if $r1 != null goto label1;
+
+        return "?";
+
+     label1:
+        $r2 = r0.<org.apache.log4j.spi.LocationInfo: java.lang.String className>;
+
+        if $r2 != null goto label5;
+
+        $r3 = r0.<org.apache.log4j.spi.LocationInfo: java.lang.String fullInfo>;
+
+        i1 = virtualinvoke $r3.<java.lang.String: int lastIndexOf(int)>(40);
+
+        if i1 != -1 goto label2;
+
+        r0.<org.apache.log4j.spi.LocationInfo: java.lang.String className> = "?";
+
+        goto label5;
+
+     label2:
+        $r4 = r0.<org.apache.log4j.spi.LocationInfo: java.lang.String fullInfo>;
+
+        i2 = virtualinvoke $r4.<java.lang.String: int lastIndexOf(int,int)>(46, i1);
+
+        i3 = 0;
+
+        $z0 = <org.apache.log4j.spi.LocationInfo: boolean inVisualAge>;
+
+        if $z0 == 0 goto label3;
+
+        $r7 = r0.<org.apache.log4j.spi.LocationInfo: java.lang.String fullInfo>;
+
+        $i0 = virtualinvoke $r7.<java.lang.String: int lastIndexOf(int,int)>(32, i2);
+
+        i3 = $i0 + 1;
+
+     label3:
+        if i2 != -1 goto label4;
+
+        r0.<org.apache.log4j.spi.LocationInfo: java.lang.String className> = "?";
+
+        goto label5;
+
+     label4:
+        $r5 = r0.<org.apache.log4j.spi.LocationInfo: java.lang.String fullInfo>;
+
+        $r6 = virtualinvoke $r5.<java.lang.String: java.lang.String substring(int,int)>(i3, i2);
+
+        r0.<org.apache.log4j.spi.LocationInfo: java.lang.String className> = $r6;
+
+     label5:
+        $r8 = r0.<org.apache.log4j.spi.LocationInfo: java.lang.String className>;
+
+        return $r8;
+    }
+
+    public java.lang.String getFileName()
+    {
+        org.apache.log4j.spi.LocationInfo r0;
+        int i0, i1, $i2, $i3;
+        java.lang.String $r1, $r2, $r3, $r4, $r5, $r6, $r7;
+
+        r0 := @this: org.apache.log4j.spi.LocationInfo;
+
+        $r1 = r0.<org.apache.log4j.spi.LocationInfo: java.lang.String fullInfo>;
+
+        if $r1 != null goto label1;
+
+        return "?";
+
+     label1:
+        $r2 = r0.<org.apache.log4j.spi.LocationInfo: java.lang.String fileName>;
+
+        if $r2 != null goto label3;
+
+        $r3 = r0.<org.apache.log4j.spi.LocationInfo: java.lang.String fullInfo>;
+
+        i0 = virtualinvoke $r3.<java.lang.String: int lastIndexOf(int)>(58);
+
+        if i0 != -1 goto label2;
+
+        r0.<org.apache.log4j.spi.LocationInfo: java.lang.String fileName> = "?";
+
+        goto label3;
+
+     label2:
+        $r4 = r0.<org.apache.log4j.spi.LocationInfo: java.lang.String fullInfo>;
+
+        $i2 = i0 - 1;
+
+        i1 = virtualinvoke $r4.<java.lang.String: int lastIndexOf(int,int)>(40, $i2);
+
+        $r5 = r0.<org.apache.log4j.spi.LocationInfo: java.lang.String fullInfo>;
+
+        $i3 = i1 + 1;
+
+        $r6 = virtualinvoke $r5.<java.lang.String: java.lang.String substring(int,int)>($i3, i0);
+
+        r0.<org.apache.log4j.spi.LocationInfo: java.lang.String fileName> = $r6;
+
+     label3:
+        $r7 = r0.<org.apache.log4j.spi.LocationInfo: java.lang.String fileName>;
+
+        return $r7;
+    }
+
+    public java.lang.String getLineNumber()
+    {
+        org.apache.log4j.spi.LocationInfo r0;
+        int i0, i1, $i2, $i3;
+        java.lang.String $r1, $r2, $r3, $r4, $r5, $r6, $r7;
+
+        r0 := @this: org.apache.log4j.spi.LocationInfo;
+
+        $r1 = r0.<org.apache.log4j.spi.LocationInfo: java.lang.String fullInfo>;
+
+        if $r1 != null goto label1;
+
+        return "?";
+
+     label1:
+        $r2 = r0.<org.apache.log4j.spi.LocationInfo: java.lang.String lineNumber>;
+
+        if $r2 != null goto label3;
+
+        $r3 = r0.<org.apache.log4j.spi.LocationInfo: java.lang.String fullInfo>;
+
+        i0 = virtualinvoke $r3.<java.lang.String: int lastIndexOf(int)>(41);
+
+        $r4 = r0.<org.apache.log4j.spi.LocationInfo: java.lang.String fullInfo>;
+
+        $i2 = i0 - 1;
+
+        i1 = virtualinvoke $r4.<java.lang.String: int lastIndexOf(int,int)>(58, $i2);
+
+        if i1 != -1 goto label2;
+
+        r0.<org.apache.log4j.spi.LocationInfo: java.lang.String lineNumber> = "?";
+
+        goto label3;
+
+     label2:
+        $r5 = r0.<org.apache.log4j.spi.LocationInfo: java.lang.String fullInfo>;
+
+        $i3 = i1 + 1;
+
+        $r6 = virtualinvoke $r5.<java.lang.String: java.lang.String substring(int,int)>($i3, i0);
+
+        r0.<org.apache.log4j.spi.LocationInfo: java.lang.String lineNumber> = $r6;
+
+     label3:
+        $r7 = r0.<org.apache.log4j.spi.LocationInfo: java.lang.String lineNumber>;
+
+        return $r7;
+    }
+
+    public java.lang.String getMethodName()
+    {
+        org.apache.log4j.spi.LocationInfo r0;
+        int i0, i1, $i2;
+        java.lang.String $r1, $r2, $r3, $r4, $r5, $r6, $r7;
+
+        r0 := @this: org.apache.log4j.spi.LocationInfo;
+
+        $r1 = r0.<org.apache.log4j.spi.LocationInfo: java.lang.String fullInfo>;
+
+        if $r1 != null goto label1;
+
+        return "?";
+
+     label1:
+        $r2 = r0.<org.apache.log4j.spi.LocationInfo: java.lang.String methodName>;
+
+        if $r2 != null goto label3;
+
+        $r3 = r0.<org.apache.log4j.spi.LocationInfo: java.lang.String fullInfo>;
+
+        i0 = virtualinvoke $r3.<java.lang.String: int lastIndexOf(int)>(40);
+
+        $r4 = r0.<org.apache.log4j.spi.LocationInfo: java.lang.String fullInfo>;
+
+        i1 = virtualinvoke $r4.<java.lang.String: int lastIndexOf(int,int)>(46, i0);
+
+        if i1 != -1 goto label2;
+
+        r0.<org.apache.log4j.spi.LocationInfo: java.lang.String methodName> = "?";
+
+        goto label3;
+
+     label2:
+        $r5 = r0.<org.apache.log4j.spi.LocationInfo: java.lang.String fullInfo>;
+
+        $i2 = i1 + 1;
+
+        $r6 = virtualinvoke $r5.<java.lang.String: java.lang.String substring(int,int)>($i2, i0);
+
+        r0.<org.apache.log4j.spi.LocationInfo: java.lang.String methodName> = $r6;
+
+     label3:
+        $r7 = r0.<org.apache.log4j.spi.LocationInfo: java.lang.String methodName>;
+
+        return $r7;
+    }
+}

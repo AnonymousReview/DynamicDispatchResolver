@@ -1,0 +1,129 @@
+public class org.apache.commons.io.output.ChunkedOutputStreamTest extends java.lang.Object
+{
+
+    public void <init>()
+    {
+        org.apache.commons.io.output.ChunkedOutputStreamTest r0;
+
+        r0 := @this: org.apache.commons.io.output.ChunkedOutputStreamTest;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void write_four_chunks() throws java.lang.Exception
+    {
+        org.apache.commons.io.output.ChunkedOutputStreamTest r0;
+        org.apache.commons.io.output.ByteArrayOutputStream r2;
+        java.util.concurrent.atomic.AtomicInteger $r4;
+        org.apache.commons.io.output.ChunkedOutputStream $r5;
+        java.lang.String $r6;
+        byte[] $r7;
+        int $i0;
+        long $l1;
+
+        r0 := @this: org.apache.commons.io.output.ChunkedOutputStreamTest;
+
+        $r4 = new java.util.concurrent.atomic.AtomicInteger;
+
+        specialinvoke $r4.<java.util.concurrent.atomic.AtomicInteger: void <init>()>();
+
+        r2 = specialinvoke r0.<org.apache.commons.io.output.ChunkedOutputStreamTest: org.apache.commons.io.output.ByteArrayOutputStream getByteArrayOutputStream(java.util.concurrent.atomic.AtomicInteger)>($r4);
+
+        $r5 = new org.apache.commons.io.output.ChunkedOutputStream;
+
+        specialinvoke $r5.<org.apache.commons.io.output.ChunkedOutputStream: void <init>(java.io.OutputStream,int)>(r2, 10);
+
+        $r6 = "0123456789012345678901234567891";
+
+        $r7 = virtualinvoke $r6.<java.lang.String: byte[] getBytes()>();
+
+        virtualinvoke $r5.<org.apache.commons.io.output.ChunkedOutputStream: void write(byte[])>($r7);
+
+        $i0 = virtualinvoke $r4.<java.util.concurrent.atomic.AtomicInteger: int get()>();
+
+        $l1 = (long) $i0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(4L, $l1);
+
+        virtualinvoke $r5.<org.apache.commons.io.output.ChunkedOutputStream: void close()>();
+
+        return;
+    }
+
+    public void negative_chunksize_not_permitted() throws java.lang.Exception
+    {
+        org.apache.commons.io.output.ChunkedOutputStreamTest r0;
+        org.apache.commons.io.output.ChunkedOutputStream $r2;
+        org.apache.commons.io.output.ByteArrayOutputStream $r3;
+
+        r0 := @this: org.apache.commons.io.output.ChunkedOutputStreamTest;
+
+        $r2 = new org.apache.commons.io.output.ChunkedOutputStream;
+
+        $r3 = new org.apache.commons.io.output.ByteArrayOutputStream;
+
+        specialinvoke $r3.<org.apache.commons.io.output.ByteArrayOutputStream: void <init>()>();
+
+        specialinvoke $r2.<org.apache.commons.io.output.ChunkedOutputStream: void <init>(java.io.OutputStream,int)>($r3, 0);
+
+        virtualinvoke $r2.<org.apache.commons.io.output.ChunkedOutputStream: void close()>();
+
+        return;
+    }
+
+    public void defaultConstructor() throws java.io.IOException
+    {
+        org.apache.commons.io.output.ChunkedOutputStreamTest r0;
+        org.apache.commons.io.output.ByteArrayOutputStream r2;
+        java.util.concurrent.atomic.AtomicInteger $r4;
+        org.apache.commons.io.output.ChunkedOutputStream $r5;
+        byte[] $r6;
+        int $i0;
+        long $l1;
+
+        r0 := @this: org.apache.commons.io.output.ChunkedOutputStreamTest;
+
+        $r4 = new java.util.concurrent.atomic.AtomicInteger;
+
+        specialinvoke $r4.<java.util.concurrent.atomic.AtomicInteger: void <init>()>();
+
+        r2 = specialinvoke r0.<org.apache.commons.io.output.ChunkedOutputStreamTest: org.apache.commons.io.output.ByteArrayOutputStream getByteArrayOutputStream(java.util.concurrent.atomic.AtomicInteger)>($r4);
+
+        $r5 = new org.apache.commons.io.output.ChunkedOutputStream;
+
+        specialinvoke $r5.<org.apache.commons.io.output.ChunkedOutputStream: void <init>(java.io.OutputStream)>(r2);
+
+        $r6 = newarray (byte)[4097];
+
+        virtualinvoke $r5.<org.apache.commons.io.output.ChunkedOutputStream: void write(byte[])>($r6);
+
+        $i0 = virtualinvoke $r4.<java.util.concurrent.atomic.AtomicInteger: int get()>();
+
+        $l1 = (long) $i0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(2L, $l1);
+
+        virtualinvoke $r5.<org.apache.commons.io.output.ChunkedOutputStream: void close()>();
+
+        return;
+    }
+
+    private org.apache.commons.io.output.ByteArrayOutputStream getByteArrayOutputStream(java.util.concurrent.atomic.AtomicInteger)
+    {
+        org.apache.commons.io.output.ChunkedOutputStreamTest r0;
+        java.util.concurrent.atomic.AtomicInteger r1;
+        org.apache.commons.io.output.ChunkedOutputStreamTest$1 $r2;
+
+        r0 := @this: org.apache.commons.io.output.ChunkedOutputStreamTest;
+
+        r1 := @parameter0: java.util.concurrent.atomic.AtomicInteger;
+
+        $r2 = new org.apache.commons.io.output.ChunkedOutputStreamTest$1;
+
+        specialinvoke $r2.<org.apache.commons.io.output.ChunkedOutputStreamTest$1: void <init>(org.apache.commons.io.output.ChunkedOutputStreamTest,java.util.concurrent.atomic.AtomicInteger)>(r0, r1);
+
+        return $r2;
+    }
+}

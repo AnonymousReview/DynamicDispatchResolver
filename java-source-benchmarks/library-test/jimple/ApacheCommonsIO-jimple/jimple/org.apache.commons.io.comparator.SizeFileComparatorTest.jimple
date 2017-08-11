@@ -1,0 +1,348 @@
+public class org.apache.commons.io.comparator.SizeFileComparatorTest extends org.apache.commons.io.comparator.ComparatorAbstractTestCase
+{
+    private java.io.File smallerDir;
+    private java.io.File largerDir;
+    private java.io.File smallerFile;
+    private java.io.File largerFile;
+
+    public void <init>()
+    {
+        org.apache.commons.io.comparator.SizeFileComparatorTest r0;
+
+        r0 := @this: org.apache.commons.io.comparator.SizeFileComparatorTest;
+
+        specialinvoke r0.<org.apache.commons.io.comparator.ComparatorAbstractTestCase: void <init>()>();
+
+        return;
+    }
+
+    public void setUp() throws java.lang.Exception
+    {
+        org.apache.commons.io.comparator.SizeFileComparatorTest r0;
+        java.io.File r1, $r8, $r9, $r10, $r11, $r12, $r13, $r14, $r15, $r16, $r17, $r18, $r21, $r22, $r25, $r26, $r29, $r30, $r31, $r34, $r45;
+        java.util.Comparator $r5, $r7;
+        org.apache.commons.io.comparator.AbstractFileComparator $r6;
+        boolean $z2, $z3, $z4;
+        java.io.BufferedOutputStream $r19, $r23, $r27;
+        java.io.FileOutputStream $r20, $r24, $r28;
+        java.io.IOException $r32, $r38, $r43;
+        java.lang.StringBuilder $r33, $r35, $r36, $r39, $r40, $r41, $r44, $r46, $r47;
+        java.lang.String $r37, $r42, $r48;
+        java.lang.Throwable $r49, $r50, $r51;
+
+        r0 := @this: org.apache.commons.io.comparator.SizeFileComparatorTest;
+
+        $r5 = <org.apache.commons.io.comparator.SizeFileComparator: java.util.Comparator SIZE_COMPARATOR>;
+
+        $r6 = (org.apache.commons.io.comparator.AbstractFileComparator) $r5;
+
+        r0.<org.apache.commons.io.comparator.SizeFileComparatorTest: org.apache.commons.io.comparator.AbstractFileComparator comparator> = $r6;
+
+        $r7 = <org.apache.commons.io.comparator.SizeFileComparator: java.util.Comparator SIZE_REVERSE>;
+
+        r0.<org.apache.commons.io.comparator.SizeFileComparatorTest: java.util.Comparator reverse> = $r7;
+
+        r1 = staticinvoke <org.apache.commons.io.comparator.SizeFileComparatorTest: java.io.File getTestDirectory()>();
+
+        $r8 = new java.io.File;
+
+        specialinvoke $r8.<java.io.File: void <init>(java.io.File,java.lang.String)>(r1, "smallerdir");
+
+        r0.<org.apache.commons.io.comparator.SizeFileComparatorTest: java.io.File smallerDir> = $r8;
+
+        $r9 = new java.io.File;
+
+        specialinvoke $r9.<java.io.File: void <init>(java.io.File,java.lang.String)>(r1, "largerdir");
+
+        r0.<org.apache.commons.io.comparator.SizeFileComparatorTest: java.io.File largerDir> = $r9;
+
+        $r10 = new java.io.File;
+
+        $r11 = r0.<org.apache.commons.io.comparator.SizeFileComparatorTest: java.io.File smallerDir>;
+
+        specialinvoke $r10.<java.io.File: void <init>(java.io.File,java.lang.String)>($r11, "smaller.txt");
+
+        r0.<org.apache.commons.io.comparator.SizeFileComparatorTest: java.io.File smallerFile> = $r10;
+
+        $r12 = new java.io.File;
+
+        specialinvoke $r12.<java.io.File: void <init>(java.io.File,java.lang.String)>(r1, "equal.txt");
+
+        $r13 = new java.io.File;
+
+        $r14 = r0.<org.apache.commons.io.comparator.SizeFileComparatorTest: java.io.File largerDir>;
+
+        specialinvoke $r13.<java.io.File: void <init>(java.io.File,java.lang.String)>($r14, "larger.txt");
+
+        r0.<org.apache.commons.io.comparator.SizeFileComparatorTest: java.io.File largerFile> = $r13;
+
+        $r15 = r0.<org.apache.commons.io.comparator.SizeFileComparatorTest: java.io.File smallerDir>;
+
+        virtualinvoke $r15.<java.io.File: boolean mkdir()>();
+
+        $r16 = r0.<org.apache.commons.io.comparator.SizeFileComparatorTest: java.io.File largerDir>;
+
+        virtualinvoke $r16.<java.io.File: boolean mkdir()>();
+
+        $r17 = r0.<org.apache.commons.io.comparator.SizeFileComparatorTest: java.io.File smallerFile>;
+
+        $r18 = virtualinvoke $r17.<java.io.File: java.io.File getParentFile()>();
+
+        $z2 = virtualinvoke $r18.<java.io.File: boolean exists()>();
+
+        if $z2 != 0 goto label01;
+
+        $r43 = new java.io.IOException;
+
+        $r44 = new java.lang.StringBuilder;
+
+        specialinvoke $r44.<java.lang.StringBuilder: void <init>(java.lang.String)>("Cannot create file ");
+
+        $r45 = r0.<org.apache.commons.io.comparator.SizeFileComparatorTest: java.io.File smallerFile>;
+
+        $r46 = virtualinvoke $r44.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r45);
+
+        $r47 = virtualinvoke $r46.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" as the parent directory does not exist");
+
+        $r48 = virtualinvoke $r47.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r43.<java.io.IOException: void <init>(java.lang.String)>($r48);
+
+        throw $r43;
+
+     label01:
+        $r19 = new java.io.BufferedOutputStream;
+
+        $r20 = new java.io.FileOutputStream;
+
+        $r21 = r0.<org.apache.commons.io.comparator.SizeFileComparatorTest: java.io.File smallerFile>;
+
+        specialinvoke $r20.<java.io.FileOutputStream: void <init>(java.io.File)>($r21);
+
+        specialinvoke $r19.<java.io.BufferedOutputStream: void <init>(java.io.OutputStream)>($r20);
+
+     label02:
+        staticinvoke <org.apache.commons.io.testtools.TestUtils: void generateTestData(java.io.OutputStream,long)>($r19, 32L);
+
+        goto label04;
+
+     label03:
+        $r51 := @caughtexception;
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.OutputStream)>($r19);
+
+        throw $r51;
+
+     label04:
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.OutputStream)>($r19);
+
+        $r22 = virtualinvoke $r12.<java.io.File: java.io.File getParentFile()>();
+
+        $z3 = virtualinvoke $r22.<java.io.File: boolean exists()>();
+
+        if $z3 != 0 goto label05;
+
+        $r38 = new java.io.IOException;
+
+        $r39 = new java.lang.StringBuilder;
+
+        specialinvoke $r39.<java.lang.StringBuilder: void <init>(java.lang.String)>("Cannot create file ");
+
+        $r40 = virtualinvoke $r39.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r12);
+
+        $r41 = virtualinvoke $r40.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" as the parent directory does not exist");
+
+        $r42 = virtualinvoke $r41.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r38.<java.io.IOException: void <init>(java.lang.String)>($r42);
+
+        throw $r38;
+
+     label05:
+        $r23 = new java.io.BufferedOutputStream;
+
+        $r24 = new java.io.FileOutputStream;
+
+        specialinvoke $r24.<java.io.FileOutputStream: void <init>(java.io.File)>($r12);
+
+        specialinvoke $r23.<java.io.BufferedOutputStream: void <init>(java.io.OutputStream)>($r24);
+
+     label06:
+        staticinvoke <org.apache.commons.io.testtools.TestUtils: void generateTestData(java.io.OutputStream,long)>($r23, 48L);
+
+        goto label08;
+
+     label07:
+        $r50 := @caughtexception;
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.OutputStream)>($r23);
+
+        throw $r50;
+
+     label08:
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.OutputStream)>($r23);
+
+        $r25 = r0.<org.apache.commons.io.comparator.SizeFileComparatorTest: java.io.File largerFile>;
+
+        $r26 = virtualinvoke $r25.<java.io.File: java.io.File getParentFile()>();
+
+        $z4 = virtualinvoke $r26.<java.io.File: boolean exists()>();
+
+        if $z4 != 0 goto label09;
+
+        $r32 = new java.io.IOException;
+
+        $r33 = new java.lang.StringBuilder;
+
+        specialinvoke $r33.<java.lang.StringBuilder: void <init>(java.lang.String)>("Cannot create file ");
+
+        $r34 = r0.<org.apache.commons.io.comparator.SizeFileComparatorTest: java.io.File largerFile>;
+
+        $r35 = virtualinvoke $r33.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r34);
+
+        $r36 = virtualinvoke $r35.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" as the parent directory does not exist");
+
+        $r37 = virtualinvoke $r36.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r32.<java.io.IOException: void <init>(java.lang.String)>($r37);
+
+        throw $r32;
+
+     label09:
+        $r27 = new java.io.BufferedOutputStream;
+
+        $r28 = new java.io.FileOutputStream;
+
+        $r29 = r0.<org.apache.commons.io.comparator.SizeFileComparatorTest: java.io.File largerFile>;
+
+        specialinvoke $r28.<java.io.FileOutputStream: void <init>(java.io.File)>($r29);
+
+        specialinvoke $r27.<java.io.BufferedOutputStream: void <init>(java.io.OutputStream)>($r28);
+
+     label10:
+        staticinvoke <org.apache.commons.io.testtools.TestUtils: void generateTestData(java.io.OutputStream,long)>($r27, 64L);
+
+        goto label12;
+
+     label11:
+        $r49 := @caughtexception;
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.OutputStream)>($r27);
+
+        throw $r49;
+
+     label12:
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.OutputStream)>($r27);
+
+        r0.<org.apache.commons.io.comparator.SizeFileComparatorTest: java.io.File equalFile1> = $r12;
+
+        r0.<org.apache.commons.io.comparator.SizeFileComparatorTest: java.io.File equalFile2> = $r12;
+
+        $r30 = r0.<org.apache.commons.io.comparator.SizeFileComparatorTest: java.io.File smallerFile>;
+
+        r0.<org.apache.commons.io.comparator.SizeFileComparatorTest: java.io.File lessFile> = $r30;
+
+        $r31 = r0.<org.apache.commons.io.comparator.SizeFileComparatorTest: java.io.File largerFile>;
+
+        r0.<org.apache.commons.io.comparator.SizeFileComparatorTest: java.io.File moreFile> = $r31;
+
+        return;
+
+        catch java.lang.Throwable from label02 to label03 with label03;
+        catch java.lang.Throwable from label06 to label07 with label07;
+        catch java.lang.Throwable from label10 to label11 with label11;
+    }
+
+    public void testNonexistantFile()
+    {
+        org.apache.commons.io.comparator.SizeFileComparatorTest r0;
+        java.io.File $r2, $r3, $r4;
+        boolean $z0, $z1;
+        org.apache.commons.io.comparator.AbstractFileComparator $r5;
+        int $i0;
+
+        r0 := @this: org.apache.commons.io.comparator.SizeFileComparatorTest;
+
+        $r2 = new java.io.File;
+
+        $r3 = new java.io.File;
+
+        specialinvoke $r3.<java.io.File: void <init>(java.lang.String)>(".");
+
+        specialinvoke $r2.<java.io.File: void <init>(java.io.File,java.lang.String)>($r3, "nonexistant.txt");
+
+        $z0 = virtualinvoke $r2.<java.io.File: boolean exists()>();
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z0);
+
+        $r5 = r0.<org.apache.commons.io.comparator.SizeFileComparatorTest: org.apache.commons.io.comparator.AbstractFileComparator comparator>;
+
+        $r4 = r0.<org.apache.commons.io.comparator.SizeFileComparatorTest: java.io.File moreFile>;
+
+        $i0 = virtualinvoke $r5.<org.apache.commons.io.comparator.AbstractFileComparator: int compare(java.lang.Object,java.lang.Object)>($r2, $r4);
+
+        if $i0 >= 0 goto label1;
+
+        $z1 = 1;
+
+        goto label2;
+
+     label1:
+        $z1 = 0;
+
+     label2:
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>("less", $z1);
+
+        return;
+    }
+
+    public void testCompareDirectorySizes()
+    {
+        org.apache.commons.io.comparator.SizeFileComparatorTest r0;
+        java.io.File $r1, $r2, $r4, $r5, $r7, $r8;
+        org.apache.commons.io.comparator.AbstractFileComparator $r3;
+        int $i0, $i2, $i4;
+        long $l1, $l3, $l5;
+        java.util.Comparator $r6, $r9;
+
+        r0 := @this: org.apache.commons.io.comparator.SizeFileComparatorTest;
+
+        $r3 = r0.<org.apache.commons.io.comparator.SizeFileComparatorTest: org.apache.commons.io.comparator.AbstractFileComparator comparator>;
+
+        $r2 = r0.<org.apache.commons.io.comparator.SizeFileComparatorTest: java.io.File smallerDir>;
+
+        $r1 = r0.<org.apache.commons.io.comparator.SizeFileComparatorTest: java.io.File largerDir>;
+
+        $i0 = virtualinvoke $r3.<org.apache.commons.io.comparator.AbstractFileComparator: int compare(java.lang.Object,java.lang.Object)>($r2, $r1);
+
+        $l1 = (long) $i0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("sumDirectoryContents=false", 0L, $l1);
+
+        $r6 = <org.apache.commons.io.comparator.SizeFileComparator: java.util.Comparator SIZE_SUMDIR_COMPARATOR>;
+
+        $r5 = r0.<org.apache.commons.io.comparator.SizeFileComparatorTest: java.io.File smallerDir>;
+
+        $r4 = r0.<org.apache.commons.io.comparator.SizeFileComparatorTest: java.io.File largerDir>;
+
+        $i2 = interfaceinvoke $r6.<java.util.Comparator: int compare(java.lang.Object,java.lang.Object)>($r5, $r4);
+
+        $l3 = (long) $i2;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("less", -1L, $l3);
+
+        $r9 = <org.apache.commons.io.comparator.SizeFileComparator: java.util.Comparator SIZE_SUMDIR_REVERSE>;
+
+        $r8 = r0.<org.apache.commons.io.comparator.SizeFileComparatorTest: java.io.File smallerDir>;
+
+        $r7 = r0.<org.apache.commons.io.comparator.SizeFileComparatorTest: java.io.File largerDir>;
+
+        $i4 = interfaceinvoke $r9.<java.util.Comparator: int compare(java.lang.Object,java.lang.Object)>($r8, $r7);
+
+        $l5 = (long) $i4;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("less", 1L, $l5);
+
+        return;
+    }
+}

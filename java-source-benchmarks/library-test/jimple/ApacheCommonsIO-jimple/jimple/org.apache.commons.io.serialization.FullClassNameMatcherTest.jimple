@@ -1,0 +1,104 @@
+public class org.apache.commons.io.serialization.FullClassNameMatcherTest extends java.lang.Object
+{
+    private static final java.lang.String[] NAMES_ARRAY;
+
+    static void <clinit>()
+    {
+        java.lang.String[] $r0;
+        java.lang.Class $r1, $r3;
+        java.lang.String $r2, $r4;
+
+        $r0 = newarray (java.lang.String)[2];
+
+        $r1 = class "java/lang/Integer";
+
+        $r2 = virtualinvoke $r1.<java.lang.Class: java.lang.String getName()>();
+
+        $r0[0] = $r2;
+
+        $r3 = class "java/lang/Long";
+
+        $r4 = virtualinvoke $r3.<java.lang.Class: java.lang.String getName()>();
+
+        $r0[1] = $r4;
+
+        <org.apache.commons.io.serialization.FullClassNameMatcherTest: java.lang.String[] NAMES_ARRAY> = $r0;
+
+        return;
+    }
+
+    public void <init>()
+    {
+        org.apache.commons.io.serialization.FullClassNameMatcherTest r0;
+
+        r0 := @this: org.apache.commons.io.serialization.FullClassNameMatcherTest;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void noNames() throws java.lang.Exception
+    {
+        org.apache.commons.io.serialization.FullClassNameMatcherTest r0;
+        org.apache.commons.io.serialization.FullClassNameMatcher $r2;
+        java.lang.String[] $r3;
+        java.lang.Class $r4;
+        java.lang.String $r5;
+        boolean $z0;
+
+        r0 := @this: org.apache.commons.io.serialization.FullClassNameMatcherTest;
+
+        $r2 = new org.apache.commons.io.serialization.FullClassNameMatcher;
+
+        $r3 = newarray (java.lang.String)[0];
+
+        specialinvoke $r2.<org.apache.commons.io.serialization.FullClassNameMatcher: void <init>(java.lang.String[])>($r3);
+
+        $r4 = class "java/lang/Integer";
+
+        $r5 = virtualinvoke $r4.<java.lang.Class: java.lang.String getName()>();
+
+        $z0 = virtualinvoke $r2.<org.apache.commons.io.serialization.FullClassNameMatcher: boolean matches(java.lang.String)>($r5);
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z0);
+
+        return;
+    }
+
+    public void withNames() throws java.lang.Exception
+    {
+        org.apache.commons.io.serialization.FullClassNameMatcherTest r0;
+        org.apache.commons.io.serialization.FullClassNameMatcher $r2;
+        java.lang.String[] $r3;
+        java.lang.Class $r4, $r6;
+        java.lang.String $r5, $r7;
+        boolean $z0, $z1;
+
+        r0 := @this: org.apache.commons.io.serialization.FullClassNameMatcherTest;
+
+        $r2 = new org.apache.commons.io.serialization.FullClassNameMatcher;
+
+        $r3 = <org.apache.commons.io.serialization.FullClassNameMatcherTest: java.lang.String[] NAMES_ARRAY>;
+
+        specialinvoke $r2.<org.apache.commons.io.serialization.FullClassNameMatcher: void <init>(java.lang.String[])>($r3);
+
+        $r4 = class "java/lang/Integer";
+
+        $r5 = virtualinvoke $r4.<java.lang.Class: java.lang.String getName()>();
+
+        $z0 = virtualinvoke $r2.<org.apache.commons.io.serialization.FullClassNameMatcher: boolean matches(java.lang.String)>($r5);
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z0);
+
+        $r6 = class "java/lang/String";
+
+        $r7 = virtualinvoke $r6.<java.lang.Class: java.lang.String getName()>();
+
+        $z1 = virtualinvoke $r2.<org.apache.commons.io.serialization.FullClassNameMatcher: boolean matches(java.lang.String)>($r7);
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z1);
+
+        return;
+    }
+}

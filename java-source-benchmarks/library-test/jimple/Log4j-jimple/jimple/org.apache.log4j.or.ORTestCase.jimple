@@ -1,0 +1,445 @@
+public class org.apache.log4j.or.ORTestCase extends junit.framework.TestCase
+{
+    static org.apache.log4j.or.UTObjectRenderer aor;
+    static org.apache.log4j.or.UTObjectRenderer bor;
+    static org.apache.log4j.or.UTObjectRenderer xor;
+    static org.apache.log4j.or.UTObjectRenderer yor;
+    static org.apache.log4j.or.UTObjectRenderer oor;
+    static org.apache.log4j.or.UTObjectRenderer nor;
+    static org.apache.log4j.or.UTObjectRenderer ior;
+    static org.apache.log4j.or.UTObjectRenderer cor;
+    static org.apache.log4j.or.UTObjectRenderer sor;
+
+    public void <init>(java.lang.String)
+    {
+        org.apache.log4j.or.ORTestCase r0;
+        java.lang.String r1;
+
+        r0 := @this: org.apache.log4j.or.ORTestCase;
+
+        r1 := @parameter0: java.lang.String;
+
+        specialinvoke r0.<junit.framework.TestCase: void <init>(java.lang.String)>(r1);
+
+        return;
+    }
+
+    public void setUp()
+    {
+        org.apache.log4j.or.ORTestCase r0;
+        org.apache.log4j.or.UTObjectRenderer $r1, $r2, $r3, $r4, $r5, $r6, $r7, $r8, $r9;
+
+        r0 := @this: org.apache.log4j.or.ORTestCase;
+
+        $r1 = new org.apache.log4j.or.UTObjectRenderer;
+
+        specialinvoke $r1.<org.apache.log4j.or.UTObjectRenderer: void <init>(java.lang.String)>("A");
+
+        <org.apache.log4j.or.ORTestCase: org.apache.log4j.or.UTObjectRenderer aor> = $r1;
+
+        $r2 = new org.apache.log4j.or.UTObjectRenderer;
+
+        specialinvoke $r2.<org.apache.log4j.or.UTObjectRenderer: void <init>(java.lang.String)>("B");
+
+        <org.apache.log4j.or.ORTestCase: org.apache.log4j.or.UTObjectRenderer bor> = $r2;
+
+        $r3 = new org.apache.log4j.or.UTObjectRenderer;
+
+        specialinvoke $r3.<org.apache.log4j.or.UTObjectRenderer: void <init>(java.lang.String)>("X");
+
+        <org.apache.log4j.or.ORTestCase: org.apache.log4j.or.UTObjectRenderer xor> = $r3;
+
+        $r4 = new org.apache.log4j.or.UTObjectRenderer;
+
+        specialinvoke $r4.<org.apache.log4j.or.UTObjectRenderer: void <init>(java.lang.String)>("Y");
+
+        <org.apache.log4j.or.ORTestCase: org.apache.log4j.or.UTObjectRenderer yor> = $r4;
+
+        $r5 = new org.apache.log4j.or.UTObjectRenderer;
+
+        specialinvoke $r5.<org.apache.log4j.or.UTObjectRenderer: void <init>(java.lang.String)>("Object");
+
+        <org.apache.log4j.or.ORTestCase: org.apache.log4j.or.UTObjectRenderer oor> = $r5;
+
+        $r6 = new org.apache.log4j.or.UTObjectRenderer;
+
+        specialinvoke $r6.<org.apache.log4j.or.UTObjectRenderer: void <init>(java.lang.String)>("Number");
+
+        <org.apache.log4j.or.ORTestCase: org.apache.log4j.or.UTObjectRenderer nor> = $r6;
+
+        $r7 = new org.apache.log4j.or.UTObjectRenderer;
+
+        specialinvoke $r7.<org.apache.log4j.or.UTObjectRenderer: void <init>(java.lang.String)>("Integer");
+
+        <org.apache.log4j.or.ORTestCase: org.apache.log4j.or.UTObjectRenderer ior> = $r7;
+
+        $r8 = new org.apache.log4j.or.UTObjectRenderer;
+
+        specialinvoke $r8.<org.apache.log4j.or.UTObjectRenderer: void <init>(java.lang.String)>("Comparable");
+
+        <org.apache.log4j.or.ORTestCase: org.apache.log4j.or.UTObjectRenderer cor> = $r8;
+
+        $r9 = new org.apache.log4j.or.UTObjectRenderer;
+
+        specialinvoke $r9.<org.apache.log4j.or.UTObjectRenderer: void <init>(java.lang.String)>("Serializable");
+
+        <org.apache.log4j.or.ORTestCase: org.apache.log4j.or.UTObjectRenderer sor> = $r9;
+
+        return;
+    }
+
+    public void test1()
+    {
+        org.apache.log4j.or.ORTestCase r0;
+        org.apache.log4j.or.ObjectRenderer r2, r3;
+        org.apache.log4j.or.RendererMap $r4;
+
+        r0 := @this: org.apache.log4j.or.ORTestCase;
+
+        $r4 = new org.apache.log4j.or.RendererMap;
+
+        specialinvoke $r4.<org.apache.log4j.or.RendererMap: void <init>()>();
+
+        r2 = virtualinvoke $r4.<org.apache.log4j.or.RendererMap: org.apache.log4j.or.ObjectRenderer getDefaultRenderer()>();
+
+        r3 = virtualinvoke $r4.<org.apache.log4j.or.RendererMap: org.apache.log4j.or.ObjectRenderer get(java.lang.Class)>(class "java/lang/Integer");
+
+        staticinvoke <org.apache.log4j.or.ORTestCase: void assertEquals(java.lang.Object,java.lang.Object)>(r3, r2);
+
+        return;
+    }
+
+    public void test2()
+    {
+        org.apache.log4j.or.ORTestCase r0;
+        org.apache.log4j.or.ObjectRenderer r2;
+        org.apache.log4j.or.RendererMap $r3;
+        org.apache.log4j.or.UTObjectRenderer $r4, $r5;
+
+        r0 := @this: org.apache.log4j.or.ORTestCase;
+
+        $r3 = new org.apache.log4j.or.RendererMap;
+
+        specialinvoke $r3.<org.apache.log4j.or.RendererMap: void <init>()>();
+
+        $r4 = <org.apache.log4j.or.ORTestCase: org.apache.log4j.or.UTObjectRenderer ior>;
+
+        virtualinvoke $r3.<org.apache.log4j.or.RendererMap: void put(java.lang.Class,org.apache.log4j.or.ObjectRenderer)>(class "java/lang/Integer", $r4);
+
+        r2 = virtualinvoke $r3.<org.apache.log4j.or.RendererMap: org.apache.log4j.or.ObjectRenderer get(java.lang.Class)>(class "java/lang/Integer");
+
+        $r5 = <org.apache.log4j.or.ORTestCase: org.apache.log4j.or.UTObjectRenderer ior>;
+
+        staticinvoke <org.apache.log4j.or.ORTestCase: void assertEquals(java.lang.Object,java.lang.Object)>(r2, $r5);
+
+        return;
+    }
+
+    public void test3()
+    {
+        org.apache.log4j.or.ORTestCase r0;
+        org.apache.log4j.or.ObjectRenderer r2;
+        org.apache.log4j.or.RendererMap $r3;
+        org.apache.log4j.or.UTObjectRenderer $r4, $r5;
+
+        r0 := @this: org.apache.log4j.or.ORTestCase;
+
+        $r3 = new org.apache.log4j.or.RendererMap;
+
+        specialinvoke $r3.<org.apache.log4j.or.RendererMap: void <init>()>();
+
+        $r4 = <org.apache.log4j.or.ORTestCase: org.apache.log4j.or.UTObjectRenderer ior>;
+
+        virtualinvoke $r3.<org.apache.log4j.or.RendererMap: void put(java.lang.Class,org.apache.log4j.or.ObjectRenderer)>(class "java/lang/Number", $r4);
+
+        r2 = virtualinvoke $r3.<org.apache.log4j.or.RendererMap: org.apache.log4j.or.ObjectRenderer get(java.lang.Class)>(class "java/lang/Integer");
+
+        $r5 = <org.apache.log4j.or.ORTestCase: org.apache.log4j.or.UTObjectRenderer ior>;
+
+        staticinvoke <org.apache.log4j.or.ORTestCase: void assertEquals(java.lang.Object,java.lang.Object)>(r2, $r5);
+
+        return;
+    }
+
+    public void test4()
+    {
+        org.apache.log4j.or.ORTestCase r0;
+        org.apache.log4j.or.ObjectRenderer r2;
+        org.apache.log4j.or.RendererMap $r3;
+        org.apache.log4j.or.UTObjectRenderer $r4, $r5;
+
+        r0 := @this: org.apache.log4j.or.ORTestCase;
+
+        $r3 = new org.apache.log4j.or.RendererMap;
+
+        specialinvoke $r3.<org.apache.log4j.or.RendererMap: void <init>()>();
+
+        $r4 = <org.apache.log4j.or.ORTestCase: org.apache.log4j.or.UTObjectRenderer oor>;
+
+        virtualinvoke $r3.<org.apache.log4j.or.RendererMap: void put(java.lang.Class,org.apache.log4j.or.ObjectRenderer)>(class "java/lang/Object", $r4);
+
+        r2 = virtualinvoke $r3.<org.apache.log4j.or.RendererMap: org.apache.log4j.or.ObjectRenderer get(java.lang.Class)>(class "java/lang/Integer");
+
+        $r5 = <org.apache.log4j.or.ORTestCase: org.apache.log4j.or.UTObjectRenderer oor>;
+
+        staticinvoke <org.apache.log4j.or.ORTestCase: void assertEquals(java.lang.Object,java.lang.Object)>(r2, $r5);
+
+        return;
+    }
+
+    public void test5()
+    {
+        org.apache.log4j.or.ORTestCase r0;
+        org.apache.log4j.or.ObjectRenderer r2;
+        org.apache.log4j.or.RendererMap $r3;
+        org.apache.log4j.or.UTObjectRenderer $r4, $r5, $r6, $r7;
+
+        r0 := @this: org.apache.log4j.or.ORTestCase;
+
+        $r3 = new org.apache.log4j.or.RendererMap;
+
+        specialinvoke $r3.<org.apache.log4j.or.RendererMap: void <init>()>();
+
+        $r4 = <org.apache.log4j.or.ORTestCase: org.apache.log4j.or.UTObjectRenderer oor>;
+
+        virtualinvoke $r3.<org.apache.log4j.or.RendererMap: void put(java.lang.Class,org.apache.log4j.or.ObjectRenderer)>(class "java/lang/Object", $r4);
+
+        $r5 = <org.apache.log4j.or.ORTestCase: org.apache.log4j.or.UTObjectRenderer nor>;
+
+        virtualinvoke $r3.<org.apache.log4j.or.RendererMap: void put(java.lang.Class,org.apache.log4j.or.ObjectRenderer)>(class "java/lang/Number", $r5);
+
+        $r6 = <org.apache.log4j.or.ORTestCase: org.apache.log4j.or.UTObjectRenderer ior>;
+
+        virtualinvoke $r3.<org.apache.log4j.or.RendererMap: void put(java.lang.Class,org.apache.log4j.or.ObjectRenderer)>(class "java/lang/Integer", $r6);
+
+        r2 = virtualinvoke $r3.<org.apache.log4j.or.RendererMap: org.apache.log4j.or.ObjectRenderer get(java.lang.Class)>(class "java/lang/Integer");
+
+        $r7 = <org.apache.log4j.or.ORTestCase: org.apache.log4j.or.UTObjectRenderer ior>;
+
+        staticinvoke <org.apache.log4j.or.ORTestCase: void assertEquals(java.lang.Object,java.lang.Object)>(r2, $r7);
+
+        return;
+    }
+
+    public void test6()
+    {
+        org.apache.log4j.or.ORTestCase r0;
+        org.apache.log4j.or.ObjectRenderer r2;
+        org.apache.log4j.or.RendererMap $r3;
+        org.apache.log4j.or.UTObjectRenderer $r4, $r5, $r6;
+
+        r0 := @this: org.apache.log4j.or.ORTestCase;
+
+        $r3 = new org.apache.log4j.or.RendererMap;
+
+        specialinvoke $r3.<org.apache.log4j.or.RendererMap: void <init>()>();
+
+        $r4 = <org.apache.log4j.or.ORTestCase: org.apache.log4j.or.UTObjectRenderer oor>;
+
+        virtualinvoke $r3.<org.apache.log4j.or.RendererMap: void put(java.lang.Class,org.apache.log4j.or.ObjectRenderer)>(class "java/lang/Object", $r4);
+
+        $r5 = <org.apache.log4j.or.ORTestCase: org.apache.log4j.or.UTObjectRenderer nor>;
+
+        virtualinvoke $r3.<org.apache.log4j.or.RendererMap: void put(java.lang.Class,org.apache.log4j.or.ObjectRenderer)>(class "java/lang/Number", $r5);
+
+        r2 = virtualinvoke $r3.<org.apache.log4j.or.RendererMap: org.apache.log4j.or.ObjectRenderer get(java.lang.Class)>(class "java/lang/Integer");
+
+        $r6 = <org.apache.log4j.or.ORTestCase: org.apache.log4j.or.UTObjectRenderer nor>;
+
+        staticinvoke <org.apache.log4j.or.ORTestCase: void assertEquals(java.lang.Object,java.lang.Object)>(r2, $r6);
+
+        return;
+    }
+
+    public void test7() throws java.lang.Exception
+    {
+        org.apache.log4j.or.ORTestCase r0;
+        org.apache.log4j.or.RendererMap $r2;
+        org.apache.log4j.or.UTObjectRenderer $r3, $r4;
+        java.lang.Exception $r5;
+        java.lang.Class r6;
+        org.apache.log4j.or.ObjectRenderer r7;
+
+        r0 := @this: org.apache.log4j.or.ORTestCase;
+
+        $r2 = new org.apache.log4j.or.RendererMap;
+
+        specialinvoke $r2.<org.apache.log4j.or.RendererMap: void <init>()>();
+
+     label1:
+        r6 = staticinvoke <java.lang.Class: java.lang.Class forName(java.lang.String)>("java.lang.Comparable");
+
+     label2:
+        goto label4;
+
+     label3:
+        $r5 := @caughtexception;
+
+        return;
+
+     label4:
+        $r3 = <org.apache.log4j.or.ORTestCase: org.apache.log4j.or.UTObjectRenderer cor>;
+
+        virtualinvoke $r2.<org.apache.log4j.or.RendererMap: void put(java.lang.Class,org.apache.log4j.or.ObjectRenderer)>(r6, $r3);
+
+        r7 = virtualinvoke $r2.<org.apache.log4j.or.RendererMap: org.apache.log4j.or.ObjectRenderer get(java.lang.Class)>(class "java/lang/Integer");
+
+        $r4 = <org.apache.log4j.or.ORTestCase: org.apache.log4j.or.UTObjectRenderer cor>;
+
+        staticinvoke <org.apache.log4j.or.ORTestCase: void assertEquals(java.lang.Object,java.lang.Object)>(r7, $r4);
+
+        return;
+
+        catch java.lang.Exception from label1 to label2 with label3;
+    }
+
+    public void test8()
+    {
+        org.apache.log4j.or.ORTestCase r0;
+        org.apache.log4j.or.ObjectRenderer r2;
+        org.apache.log4j.or.RendererMap $r3;
+        org.apache.log4j.or.UTObjectRenderer $r4, $r5;
+
+        r0 := @this: org.apache.log4j.or.ORTestCase;
+
+        $r3 = new org.apache.log4j.or.RendererMap;
+
+        specialinvoke $r3.<org.apache.log4j.or.RendererMap: void <init>()>();
+
+        $r4 = <org.apache.log4j.or.ORTestCase: org.apache.log4j.or.UTObjectRenderer sor>;
+
+        virtualinvoke $r3.<org.apache.log4j.or.RendererMap: void put(java.lang.Class,org.apache.log4j.or.ObjectRenderer)>(class "java/io/Serializable", $r4);
+
+        r2 = virtualinvoke $r3.<org.apache.log4j.or.RendererMap: org.apache.log4j.or.ObjectRenderer get(java.lang.Class)>(class "java/lang/Integer");
+
+        $r5 = <org.apache.log4j.or.ORTestCase: org.apache.log4j.or.UTObjectRenderer sor>;
+
+        staticinvoke <org.apache.log4j.or.ORTestCase: void assertEquals(java.lang.Object,java.lang.Object)>(r2, $r5);
+
+        return;
+    }
+
+    public void test9()
+    {
+        org.apache.log4j.or.ORTestCase r0;
+        org.apache.log4j.or.ObjectRenderer r2;
+        org.apache.log4j.or.RendererMap $r3;
+        org.apache.log4j.or.UTObjectRenderer $r4, $r5;
+
+        r0 := @this: org.apache.log4j.or.ORTestCase;
+
+        $r3 = new org.apache.log4j.or.RendererMap;
+
+        specialinvoke $r3.<org.apache.log4j.or.RendererMap: void <init>()>();
+
+        $r4 = <org.apache.log4j.or.ORTestCase: org.apache.log4j.or.UTObjectRenderer yor>;
+
+        virtualinvoke $r3.<org.apache.log4j.or.RendererMap: void put(java.lang.Class,org.apache.log4j.or.ObjectRenderer)>(class "org/apache/log4j/or/Y", $r4);
+
+        r2 = virtualinvoke $r3.<org.apache.log4j.or.RendererMap: org.apache.log4j.or.ObjectRenderer get(java.lang.Class)>(class "org/apache/log4j/or/B");
+
+        $r5 = <org.apache.log4j.or.ORTestCase: org.apache.log4j.or.UTObjectRenderer yor>;
+
+        staticinvoke <org.apache.log4j.or.ORTestCase: void assertEquals(java.lang.Object,java.lang.Object)>(r2, $r5);
+
+        return;
+    }
+
+    public void test10()
+    {
+        org.apache.log4j.or.ORTestCase r0;
+        org.apache.log4j.or.ObjectRenderer r2;
+        org.apache.log4j.or.RendererMap $r3;
+        org.apache.log4j.or.UTObjectRenderer $r4, $r5;
+
+        r0 := @this: org.apache.log4j.or.ORTestCase;
+
+        $r3 = new org.apache.log4j.or.RendererMap;
+
+        specialinvoke $r3.<org.apache.log4j.or.RendererMap: void <init>()>();
+
+        $r4 = <org.apache.log4j.or.ORTestCase: org.apache.log4j.or.UTObjectRenderer xor>;
+
+        virtualinvoke $r3.<org.apache.log4j.or.RendererMap: void put(java.lang.Class,org.apache.log4j.or.ObjectRenderer)>(class "org/apache/log4j/or/X", $r4);
+
+        r2 = virtualinvoke $r3.<org.apache.log4j.or.RendererMap: org.apache.log4j.or.ObjectRenderer get(java.lang.Class)>(class "org/apache/log4j/or/B");
+
+        $r5 = <org.apache.log4j.or.ORTestCase: org.apache.log4j.or.UTObjectRenderer xor>;
+
+        staticinvoke <org.apache.log4j.or.ORTestCase: void assertEquals(java.lang.Object,java.lang.Object)>(r2, $r5);
+
+        return;
+    }
+
+    public static junit.framework.Test suite()
+    {
+        junit.framework.TestSuite $r1;
+        org.apache.log4j.or.ORTestCase $r2, $r3, $r4, $r5, $r6, $r7, $r8, $r9, $r10, $r11;
+
+        $r1 = new junit.framework.TestSuite;
+
+        specialinvoke $r1.<junit.framework.TestSuite: void <init>()>();
+
+        $r2 = new org.apache.log4j.or.ORTestCase;
+
+        specialinvoke $r2.<org.apache.log4j.or.ORTestCase: void <init>(java.lang.String)>("test1");
+
+        virtualinvoke $r1.<junit.framework.TestSuite: void addTest(junit.framework.Test)>($r2);
+
+        $r3 = new org.apache.log4j.or.ORTestCase;
+
+        specialinvoke $r3.<org.apache.log4j.or.ORTestCase: void <init>(java.lang.String)>("test2");
+
+        virtualinvoke $r1.<junit.framework.TestSuite: void addTest(junit.framework.Test)>($r3);
+
+        $r4 = new org.apache.log4j.or.ORTestCase;
+
+        specialinvoke $r4.<org.apache.log4j.or.ORTestCase: void <init>(java.lang.String)>("test3");
+
+        virtualinvoke $r1.<junit.framework.TestSuite: void addTest(junit.framework.Test)>($r4);
+
+        $r5 = new org.apache.log4j.or.ORTestCase;
+
+        specialinvoke $r5.<org.apache.log4j.or.ORTestCase: void <init>(java.lang.String)>("test4");
+
+        virtualinvoke $r1.<junit.framework.TestSuite: void addTest(junit.framework.Test)>($r5);
+
+        $r6 = new org.apache.log4j.or.ORTestCase;
+
+        specialinvoke $r6.<org.apache.log4j.or.ORTestCase: void <init>(java.lang.String)>("test5");
+
+        virtualinvoke $r1.<junit.framework.TestSuite: void addTest(junit.framework.Test)>($r6);
+
+        $r7 = new org.apache.log4j.or.ORTestCase;
+
+        specialinvoke $r7.<org.apache.log4j.or.ORTestCase: void <init>(java.lang.String)>("test6");
+
+        virtualinvoke $r1.<junit.framework.TestSuite: void addTest(junit.framework.Test)>($r7);
+
+        $r8 = new org.apache.log4j.or.ORTestCase;
+
+        specialinvoke $r8.<org.apache.log4j.or.ORTestCase: void <init>(java.lang.String)>("test7");
+
+        virtualinvoke $r1.<junit.framework.TestSuite: void addTest(junit.framework.Test)>($r8);
+
+        $r9 = new org.apache.log4j.or.ORTestCase;
+
+        specialinvoke $r9.<org.apache.log4j.or.ORTestCase: void <init>(java.lang.String)>("test8");
+
+        virtualinvoke $r1.<junit.framework.TestSuite: void addTest(junit.framework.Test)>($r9);
+
+        $r10 = new org.apache.log4j.or.ORTestCase;
+
+        specialinvoke $r10.<org.apache.log4j.or.ORTestCase: void <init>(java.lang.String)>("test9");
+
+        virtualinvoke $r1.<junit.framework.TestSuite: void addTest(junit.framework.Test)>($r10);
+
+        $r11 = new org.apache.log4j.or.ORTestCase;
+
+        specialinvoke $r11.<org.apache.log4j.or.ORTestCase: void <init>(java.lang.String)>("test10");
+
+        virtualinvoke $r1.<junit.framework.TestSuite: void addTest(junit.framework.Test)>($r11);
+
+        return $r1;
+    }
+}

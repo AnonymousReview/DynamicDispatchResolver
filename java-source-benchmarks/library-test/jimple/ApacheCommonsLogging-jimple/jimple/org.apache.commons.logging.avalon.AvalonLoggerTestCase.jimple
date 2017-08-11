@@ -1,0 +1,46 @@
+public class org.apache.commons.logging.avalon.AvalonLoggerTestCase extends org.apache.commons.logging.AbstractLogTest
+{
+
+    public void <init>()
+    {
+        org.apache.commons.logging.avalon.AvalonLoggerTestCase r0;
+
+        r0 := @this: org.apache.commons.logging.avalon.AvalonLoggerTestCase;
+
+        specialinvoke r0.<org.apache.commons.logging.AbstractLogTest: void <init>()>();
+
+        return;
+    }
+
+    public static junit.framework.Test suite()
+    {
+        junit.framework.TestSuite $r1;
+
+        $r1 = new junit.framework.TestSuite;
+
+        specialinvoke $r1.<junit.framework.TestSuite: void <init>()>();
+
+        virtualinvoke $r1.<junit.framework.TestSuite: void addTestSuite(java.lang.Class)>(class "org/apache/commons/logging/avalon/AvalonLoggerTestCase");
+
+        return $r1;
+    }
+
+    public org.apache.commons.logging.Log getLogObject()
+    {
+        org.apache.commons.logging.avalon.AvalonLoggerTestCase r0;
+        org.apache.commons.logging.impl.AvalonLogger $r2;
+        org.apache.avalon.framework.logger.NullLogger $r3;
+
+        r0 := @this: org.apache.commons.logging.avalon.AvalonLoggerTestCase;
+
+        $r2 = new org.apache.commons.logging.impl.AvalonLogger;
+
+        $r3 = new org.apache.avalon.framework.logger.NullLogger;
+
+        specialinvoke $r3.<org.apache.avalon.framework.logger.NullLogger: void <init>()>();
+
+        specialinvoke $r2.<org.apache.commons.logging.impl.AvalonLogger: void <init>(org.apache.avalon.framework.logger.Logger)>($r3);
+
+        return $r2;
+    }
+}

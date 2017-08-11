@@ -1,0 +1,22 @@
+public class org.apache.commons.logging.security.SecurityForbiddenTestCase$CustomHashtable extends java.util.Hashtable
+{
+    private static final long serialVersionUID;
+
+    public void <init>()
+    {
+        org.apache.commons.logging.security.SecurityForbiddenTestCase$CustomHashtable r0;
+
+        r0 := @this: org.apache.commons.logging.security.SecurityForbiddenTestCase$CustomHashtable;
+
+        specialinvoke r0.<java.util.Hashtable: void <init>()>();
+
+        return;
+    }
+
+    public static void <clinit>()
+    {
+        <org.apache.commons.logging.security.SecurityForbiddenTestCase$CustomHashtable: long serialVersionUID> = 7224652794746236024L;
+
+        return;
+    }
+}

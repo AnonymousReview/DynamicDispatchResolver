@@ -1,0 +1,911 @@
+public class org.apache.commons.logging.jdk14.CustomConfigTestCase extends org.apache.commons.logging.jdk14.DefaultConfigTestCase
+{
+    protected static final java.lang.String HANDLER_NAME;
+    protected org.apache.commons.logging.jdk14.TestHandler handler;
+    protected java.util.logging.Handler[] handlers;
+    protected java.util.logging.Logger logger;
+    protected java.util.logging.LogManager manager;
+    protected java.util.logging.Level[] testLevels;
+    protected java.lang.String[] testMessages;
+
+    public void <init>(java.lang.String)
+    {
+        org.apache.commons.logging.jdk14.CustomConfigTestCase r0;
+        java.lang.String r1;
+        java.util.logging.Level[] $r2;
+        java.util.logging.Level $r3, $r4, $r5, $r6, $r7;
+        java.lang.String[] $r8;
+
+        r0 := @this: org.apache.commons.logging.jdk14.CustomConfigTestCase;
+
+        r1 := @parameter0: java.lang.String;
+
+        specialinvoke r0.<org.apache.commons.logging.jdk14.DefaultConfigTestCase: void <init>(java.lang.String)>(r1);
+
+        r0.<org.apache.commons.logging.jdk14.CustomConfigTestCase: org.apache.commons.logging.jdk14.TestHandler handler> = null;
+
+        r0.<org.apache.commons.logging.jdk14.CustomConfigTestCase: java.util.logging.Handler[] handlers> = null;
+
+        r0.<org.apache.commons.logging.jdk14.CustomConfigTestCase: java.util.logging.Logger logger> = null;
+
+        r0.<org.apache.commons.logging.jdk14.CustomConfigTestCase: java.util.logging.LogManager manager> = null;
+
+        $r2 = newarray (java.util.logging.Level)[5];
+
+        $r3 = <java.util.logging.Level: java.util.logging.Level FINE>;
+
+        $r2[0] = $r3;
+
+        $r4 = <java.util.logging.Level: java.util.logging.Level INFO>;
+
+        $r2[1] = $r4;
+
+        $r5 = <java.util.logging.Level: java.util.logging.Level WARNING>;
+
+        $r2[2] = $r5;
+
+        $r6 = <java.util.logging.Level: java.util.logging.Level SEVERE>;
+
+        $r2[3] = $r6;
+
+        $r7 = <java.util.logging.Level: java.util.logging.Level SEVERE>;
+
+        $r2[4] = $r7;
+
+        r0.<org.apache.commons.logging.jdk14.CustomConfigTestCase: java.util.logging.Level[] testLevels> = $r2;
+
+        $r8 = newarray (java.lang.String)[5];
+
+        $r8[0] = "debug";
+
+        $r8[1] = "info";
+
+        $r8[2] = "warn";
+
+        $r8[3] = "error";
+
+        $r8[4] = "fatal";
+
+        r0.<org.apache.commons.logging.jdk14.CustomConfigTestCase: java.lang.String[] testMessages> = $r8;
+
+        return;
+    }
+
+    protected static byte[] readClass(java.lang.String, java.lang.ClassLoader) throws java.lang.Exception
+    {
+        java.lang.String r0, r2, $r7, $r8, $r14, $r20;
+        java.lang.ClassLoader r1;
+        java.io.InputStream r3;
+        byte[] r5, $r21;
+        int i0;
+        java.lang.StringBuilder $r6, $r9, $r10, $r12, $r13, $r16, $r18, $r19;
+        java.io.PrintStream $r11, $r17;
+        java.io.ByteArrayOutputStream $r15;
+
+        r0 := @parameter0: java.lang.String;
+
+        r1 := @parameter1: java.lang.ClassLoader;
+
+        $r6 = new java.lang.StringBuilder;
+
+        $r7 = virtualinvoke r0.<java.lang.String: java.lang.String replace(char,char)>(46, 47);
+
+        $r8 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r7);
+
+        specialinvoke $r6.<java.lang.StringBuilder: void <init>(java.lang.String)>($r8);
+
+        $r9 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(".class");
+
+        r2 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r11 = <java.lang.System: java.io.PrintStream err>;
+
+        $r10 = new java.lang.StringBuilder;
+
+        specialinvoke $r10.<java.lang.StringBuilder: void <init>(java.lang.String)>("Trying to load resource [");
+
+        $r12 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r2);
+
+        $r13 = virtualinvoke $r12.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("]");
+
+        $r14 = virtualinvoke $r13.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r11.<java.io.PrintStream: void println(java.lang.String)>($r14);
+
+        r3 = virtualinvoke r1.<java.lang.ClassLoader: java.io.InputStream getResourceAsStream(java.lang.String)>(r2);
+
+        $r15 = new java.io.ByteArrayOutputStream;
+
+        specialinvoke $r15.<java.io.ByteArrayOutputStream: void <init>()>();
+
+        $r17 = <java.lang.System: java.io.PrintStream err>;
+
+        $r16 = new java.lang.StringBuilder;
+
+        specialinvoke $r16.<java.lang.StringBuilder: void <init>(java.lang.String)>("Reading resource [");
+
+        $r18 = virtualinvoke $r16.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r2);
+
+        $r19 = virtualinvoke $r18.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("]");
+
+        $r20 = virtualinvoke $r19.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r17.<java.io.PrintStream: void println(java.lang.String)>($r20);
+
+        r5 = newarray (byte)[1000];
+
+     label1:
+        i0 = virtualinvoke r3.<java.io.InputStream: int read(byte[])>(r5);
+
+        if i0 > 0 goto label2;
+
+        goto label3;
+
+     label2:
+        virtualinvoke $r15.<java.io.ByteArrayOutputStream: void write(byte[],int,int)>(r5, 0, i0);
+
+        goto label1;
+
+     label3:
+        virtualinvoke r3.<java.io.InputStream: void close()>();
+
+        $r21 = virtualinvoke $r15.<java.io.ByteArrayOutputStream: byte[] toByteArray()>();
+
+        return $r21;
+    }
+
+    protected static void loadTestHandler(java.lang.String, java.lang.ClassLoader)
+    {
+        java.lang.String r0, $r10;
+        java.lang.ClassLoader r1, r22;
+        byte[] r2;
+        java.lang.reflect.Method r4;
+        java.lang.Object[] r5;
+        java.lang.Exception $r7;
+        java.lang.StringBuilder $r8, $r9;
+        java.lang.ClassNotFoundException $r11;
+        java.lang.Class $r12, $r14, $r15, $r16, $r17;
+        java.lang.Class[] $r13;
+        java.lang.Integer $r18, $r19;
+        int $i0;
+
+        r0 := @parameter0: java.lang.String;
+
+        r1 := @parameter1: java.lang.ClassLoader;
+
+     label1:
+        virtualinvoke r1.<java.lang.ClassLoader: java.lang.Class loadClass(java.lang.String)>(r0);
+
+     label2:
+        return;
+
+     label3:
+        $r11 := @caughtexception;
+
+     label4:
+        $r12 = class "org/apache/commons/logging/jdk14/CustomConfigAPITestCase";
+
+        r22 = virtualinvoke $r12.<java.lang.Class: java.lang.ClassLoader getClassLoader()>();
+
+        r2 = staticinvoke <org.apache.commons.logging.jdk14.CustomConfigTestCase: byte[] readClass(java.lang.String,java.lang.ClassLoader)>(r0, r22);
+
+        $r13 = newarray (java.lang.Class)[4];
+
+        $r13[0] = class "java/lang/String";
+
+        $r14 = virtualinvoke r2.<java.lang.Object: java.lang.Class getClass()>();
+
+        $r13[1] = $r14;
+
+        $r15 = <java.lang.Integer: java.lang.Class TYPE>;
+
+        $r13[2] = $r15;
+
+        $r16 = <java.lang.Integer: java.lang.Class TYPE>;
+
+        $r13[3] = $r16;
+
+        $r17 = class "java/lang/ClassLoader";
+
+        r4 = virtualinvoke $r17.<java.lang.Class: java.lang.reflect.Method getDeclaredMethod(java.lang.String,java.lang.Class[])>("defineClass", $r13);
+
+        r5 = newarray (java.lang.Object)[4];
+
+        r5[0] = r0;
+
+        r5[1] = r2;
+
+        $r18 = new java.lang.Integer;
+
+        specialinvoke $r18.<java.lang.Integer: void <init>(int)>(0);
+
+        r5[2] = $r18;
+
+        $r19 = new java.lang.Integer;
+
+        $i0 = lengthof r2;
+
+        specialinvoke $r19.<java.lang.Integer: void <init>(int)>($i0);
+
+        r5[3] = $r19;
+
+        virtualinvoke r4.<java.lang.reflect.Method: void setAccessible(boolean)>(1);
+
+        virtualinvoke r4.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>(r1, r5);
+
+     label5:
+        goto label7;
+
+     label6:
+        $r7 := @caughtexception;
+
+        virtualinvoke $r7.<java.lang.Exception: void printStackTrace()>();
+
+        $r8 = new java.lang.StringBuilder;
+
+        specialinvoke $r8.<java.lang.StringBuilder: void <init>(java.lang.String)>("Unable to load class ");
+
+        $r9 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r0);
+
+        $r10 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.apache.commons.logging.jdk14.CustomConfigTestCase: void fail(java.lang.String)>($r10);
+
+     label7:
+        return;
+
+        catch java.lang.ClassNotFoundException from label1 to label2 with label3;
+        catch java.lang.Exception from label4 to label5 with label6;
+    }
+
+    public void setUp() throws java.lang.Exception
+    {
+        org.apache.commons.logging.jdk14.CustomConfigTestCase r0;
+        java.lang.Class $r1, $r3;
+        java.lang.String $r2, $r4;
+
+        r0 := @this: org.apache.commons.logging.jdk14.CustomConfigTestCase;
+
+        virtualinvoke r0.<org.apache.commons.logging.jdk14.CustomConfigTestCase: void setUpManager(java.lang.String)>("org/apache/commons/logging/jdk14/CustomConfig.properties");
+
+        $r1 = virtualinvoke r0.<java.lang.Object: java.lang.Class getClass()>();
+
+        $r2 = virtualinvoke $r1.<java.lang.Class: java.lang.String getName()>();
+
+        virtualinvoke r0.<org.apache.commons.logging.jdk14.CustomConfigTestCase: void setUpLogger(java.lang.String)>($r2);
+
+        virtualinvoke r0.<org.apache.commons.logging.jdk14.CustomConfigTestCase: void setUpHandlers()>();
+
+        virtualinvoke r0.<org.apache.commons.logging.jdk14.CustomConfigTestCase: void setUpFactory()>();
+
+        $r3 = virtualinvoke r0.<java.lang.Object: java.lang.Class getClass()>();
+
+        $r4 = virtualinvoke $r3.<java.lang.Class: java.lang.String getName()>();
+
+        virtualinvoke r0.<org.apache.commons.logging.jdk14.CustomConfigTestCase: void setUpLog(java.lang.String)>($r4);
+
+        return;
+    }
+
+    public static junit.framework.Test suite() throws java.lang.Exception
+    {
+        java.lang.ClassLoader r1, $r5;
+        java.lang.Class r2, $r4, $r6;
+        org.apache.commons.logging.PathableClassLoader $r3;
+        java.lang.String $r7;
+        org.apache.commons.logging.PathableTestSuite $r8;
+
+        $r3 = new org.apache.commons.logging.PathableClassLoader;
+
+        specialinvoke $r3.<org.apache.commons.logging.PathableClassLoader: void <init>(java.lang.ClassLoader)>(null);
+
+        $r4 = class "junit/framework/Test";
+
+        $r5 = virtualinvoke $r4.<java.lang.Class: java.lang.ClassLoader getClassLoader()>();
+
+        virtualinvoke $r3.<org.apache.commons.logging.PathableClassLoader: void useExplicitLoader(java.lang.String,java.lang.ClassLoader)>("junit.", $r5);
+
+        r1 = staticinvoke <java.lang.ClassLoader: java.lang.ClassLoader getSystemClassLoader()>();
+
+        staticinvoke <org.apache.commons.logging.jdk14.CustomConfigTestCase: void loadTestHandler(java.lang.String,java.lang.ClassLoader)>("org.apache.commons.logging.jdk14.TestHandler", r1);
+
+        virtualinvoke $r3.<org.apache.commons.logging.PathableClassLoader: void useExplicitLoader(java.lang.String,java.lang.ClassLoader)>("org.apache.commons.logging.jdk14.TestHandler", r1);
+
+        virtualinvoke $r3.<org.apache.commons.logging.PathableClassLoader: void addLogicalLib(java.lang.String)>("commons-logging");
+
+        virtualinvoke $r3.<org.apache.commons.logging.PathableClassLoader: void addLogicalLib(java.lang.String)>("testclasses");
+
+        $r6 = class "org/apache/commons/logging/jdk14/CustomConfigTestCase";
+
+        $r7 = virtualinvoke $r6.<java.lang.Class: java.lang.String getName()>();
+
+        r2 = virtualinvoke $r3.<org.apache.commons.logging.PathableClassLoader: java.lang.Class loadClass(java.lang.String)>($r7);
+
+        $r8 = new org.apache.commons.logging.PathableTestSuite;
+
+        specialinvoke $r8.<org.apache.commons.logging.PathableTestSuite: void <init>(java.lang.Class,java.lang.ClassLoader)>(r2, $r3);
+
+        return $r8;
+    }
+
+    public void tearDown()
+    {
+        org.apache.commons.logging.jdk14.CustomConfigTestCase r0;
+
+        r0 := @this: org.apache.commons.logging.jdk14.CustomConfigTestCase;
+
+        specialinvoke r0.<org.apache.commons.logging.jdk14.DefaultConfigTestCase: void tearDown()>();
+
+        r0.<org.apache.commons.logging.jdk14.CustomConfigTestCase: java.util.logging.Handler[] handlers> = null;
+
+        r0.<org.apache.commons.logging.jdk14.CustomConfigTestCase: java.util.logging.Logger logger> = null;
+
+        r0.<org.apache.commons.logging.jdk14.CustomConfigTestCase: java.util.logging.LogManager manager> = null;
+
+        return;
+    }
+
+    public void testExceptionMessages() throws java.lang.Exception
+    {
+        org.apache.commons.logging.jdk14.CustomConfigTestCase r0;
+
+        r0 := @this: org.apache.commons.logging.jdk14.CustomConfigTestCase;
+
+        virtualinvoke r0.<org.apache.commons.logging.jdk14.CustomConfigTestCase: void logExceptionMessages()>();
+
+        virtualinvoke r0.<org.apache.commons.logging.jdk14.CustomConfigTestCase: void checkLogRecords(boolean)>(1);
+
+        return;
+    }
+
+    public void testPlainMessages() throws java.lang.Exception
+    {
+        org.apache.commons.logging.jdk14.CustomConfigTestCase r0;
+
+        r0 := @this: org.apache.commons.logging.jdk14.CustomConfigTestCase;
+
+        virtualinvoke r0.<org.apache.commons.logging.jdk14.CustomConfigTestCase: void logPlainMessages()>();
+
+        virtualinvoke r0.<org.apache.commons.logging.jdk14.CustomConfigTestCase: void checkLogRecords(boolean)>(0);
+
+        return;
+    }
+
+    public void testPristineHandlers()
+    {
+        org.apache.commons.logging.jdk14.CustomConfigTestCase r0;
+        java.util.logging.Handler[] $r1, $r2, $r3;
+        int $i0;
+        java.util.logging.Handler $r4;
+        boolean $z0;
+        org.apache.commons.logging.jdk14.TestHandler $r5;
+
+        r0 := @this: org.apache.commons.logging.jdk14.CustomConfigTestCase;
+
+        $r1 = r0.<org.apache.commons.logging.jdk14.CustomConfigTestCase: java.util.logging.Handler[] handlers>;
+
+        staticinvoke <org.apache.commons.logging.jdk14.CustomConfigTestCase: void assertNotNull(java.lang.Object)>($r1);
+
+        $r2 = r0.<org.apache.commons.logging.jdk14.CustomConfigTestCase: java.util.logging.Handler[] handlers>;
+
+        $i0 = lengthof $r2;
+
+        staticinvoke <org.apache.commons.logging.jdk14.CustomConfigTestCase: void assertEquals(int,int)>(1, $i0);
+
+        $r3 = r0.<org.apache.commons.logging.jdk14.CustomConfigTestCase: java.util.logging.Handler[] handlers>;
+
+        $r4 = $r3[0];
+
+        $z0 = $r4 instanceof org.apache.commons.logging.jdk14.TestHandler;
+
+        staticinvoke <org.apache.commons.logging.jdk14.CustomConfigTestCase: void assertTrue(boolean)>($z0);
+
+        $r5 = r0.<org.apache.commons.logging.jdk14.CustomConfigTestCase: org.apache.commons.logging.jdk14.TestHandler handler>;
+
+        staticinvoke <org.apache.commons.logging.jdk14.CustomConfigTestCase: void assertNotNull(java.lang.Object)>($r5);
+
+        return;
+    }
+
+    public void testPristineLogger()
+    {
+        org.apache.commons.logging.jdk14.CustomConfigTestCase r0;
+        java.util.logging.Logger $r1, $r4, $r7, $r9, $r11, $r13, $r15, $r17, $r19;
+        java.lang.Class $r2;
+        java.lang.String $r3, $r5;
+        java.util.logging.Level $r6, $r8, $r10, $r12, $r14, $r16, $r18;
+        boolean $z0, $z1, $z2, $z3, $z4, $z5, $z6, $z7, $z8;
+
+        r0 := @this: org.apache.commons.logging.jdk14.CustomConfigTestCase;
+
+        $r1 = r0.<org.apache.commons.logging.jdk14.CustomConfigTestCase: java.util.logging.Logger logger>;
+
+        staticinvoke <org.apache.commons.logging.jdk14.CustomConfigTestCase: void assertNotNull(java.lang.String,java.lang.Object)>("Logger exists", $r1);
+
+        $r2 = virtualinvoke r0.<java.lang.Object: java.lang.Class getClass()>();
+
+        $r3 = virtualinvoke $r2.<java.lang.Class: java.lang.String getName()>();
+
+        $r4 = r0.<org.apache.commons.logging.jdk14.CustomConfigTestCase: java.util.logging.Logger logger>;
+
+        $r5 = virtualinvoke $r4.<java.util.logging.Logger: java.lang.String getName()>();
+
+        staticinvoke <org.apache.commons.logging.jdk14.CustomConfigTestCase: void assertEquals(java.lang.String,java.lang.String,java.lang.String)>("Logger name", $r3, $r5);
+
+        $r7 = r0.<org.apache.commons.logging.jdk14.CustomConfigTestCase: java.util.logging.Logger logger>;
+
+        $r6 = <java.util.logging.Level: java.util.logging.Level SEVERE>;
+
+        $z0 = virtualinvoke $r7.<java.util.logging.Logger: boolean isLoggable(java.util.logging.Level)>($r6);
+
+        staticinvoke <org.apache.commons.logging.jdk14.CustomConfigTestCase: void assertTrue(boolean)>($z0);
+
+        $r9 = r0.<org.apache.commons.logging.jdk14.CustomConfigTestCase: java.util.logging.Logger logger>;
+
+        $r8 = <java.util.logging.Level: java.util.logging.Level WARNING>;
+
+        $z1 = virtualinvoke $r9.<java.util.logging.Logger: boolean isLoggable(java.util.logging.Level)>($r8);
+
+        staticinvoke <org.apache.commons.logging.jdk14.CustomConfigTestCase: void assertTrue(boolean)>($z1);
+
+        $r11 = r0.<org.apache.commons.logging.jdk14.CustomConfigTestCase: java.util.logging.Logger logger>;
+
+        $r10 = <java.util.logging.Level: java.util.logging.Level INFO>;
+
+        $z2 = virtualinvoke $r11.<java.util.logging.Logger: boolean isLoggable(java.util.logging.Level)>($r10);
+
+        staticinvoke <org.apache.commons.logging.jdk14.CustomConfigTestCase: void assertTrue(boolean)>($z2);
+
+        $r13 = r0.<org.apache.commons.logging.jdk14.CustomConfigTestCase: java.util.logging.Logger logger>;
+
+        $r12 = <java.util.logging.Level: java.util.logging.Level CONFIG>;
+
+        $z3 = virtualinvoke $r13.<java.util.logging.Logger: boolean isLoggable(java.util.logging.Level)>($r12);
+
+        staticinvoke <org.apache.commons.logging.jdk14.CustomConfigTestCase: void assertTrue(boolean)>($z3);
+
+        $r15 = r0.<org.apache.commons.logging.jdk14.CustomConfigTestCase: java.util.logging.Logger logger>;
+
+        $r14 = <java.util.logging.Level: java.util.logging.Level FINE>;
+
+        $z4 = virtualinvoke $r15.<java.util.logging.Logger: boolean isLoggable(java.util.logging.Level)>($r14);
+
+        staticinvoke <org.apache.commons.logging.jdk14.CustomConfigTestCase: void assertTrue(boolean)>($z4);
+
+        $r17 = r0.<org.apache.commons.logging.jdk14.CustomConfigTestCase: java.util.logging.Logger logger>;
+
+        $r16 = <java.util.logging.Level: java.util.logging.Level FINER>;
+
+        $z5 = virtualinvoke $r17.<java.util.logging.Logger: boolean isLoggable(java.util.logging.Level)>($r16);
+
+        if $z5 == 0 goto label1;
+
+        $z7 = 0;
+
+        goto label2;
+
+     label1:
+        $z7 = 1;
+
+     label2:
+        staticinvoke <org.apache.commons.logging.jdk14.CustomConfigTestCase: void assertTrue(boolean)>($z7);
+
+        $r19 = r0.<org.apache.commons.logging.jdk14.CustomConfigTestCase: java.util.logging.Logger logger>;
+
+        $r18 = <java.util.logging.Level: java.util.logging.Level FINEST>;
+
+        $z6 = virtualinvoke $r19.<java.util.logging.Logger: boolean isLoggable(java.util.logging.Level)>($r18);
+
+        if $z6 == 0 goto label3;
+
+        $z8 = 0;
+
+        goto label4;
+
+     label3:
+        $z8 = 1;
+
+     label4:
+        staticinvoke <org.apache.commons.logging.jdk14.CustomConfigTestCase: void assertTrue(boolean)>($z8);
+
+        return;
+    }
+
+    public void testSerializable() throws java.lang.Exception
+    {
+        org.apache.commons.logging.jdk14.CustomConfigTestCase r0;
+
+        r0 := @this: org.apache.commons.logging.jdk14.CustomConfigTestCase;
+
+        specialinvoke r0.<org.apache.commons.logging.jdk14.DefaultConfigTestCase: void testSerializable()>();
+
+        virtualinvoke r0.<org.apache.commons.logging.jdk14.CustomConfigTestCase: void testExceptionMessages()>();
+
+        return;
+    }
+
+    protected void checkLog()
+    {
+        org.apache.commons.logging.jdk14.CustomConfigTestCase r0;
+        org.apache.commons.logging.Log $r1, $r2, $r5, $r6, $r7, $r8, $r9, $r10;
+        java.lang.Class $r3;
+        java.lang.String $r4;
+        boolean $z0, $z1, $z2, $z3, $z4, $z5, $z6;
+
+        r0 := @this: org.apache.commons.logging.jdk14.CustomConfigTestCase;
+
+        $r1 = r0.<org.apache.commons.logging.jdk14.CustomConfigTestCase: org.apache.commons.logging.Log log>;
+
+        staticinvoke <org.apache.commons.logging.jdk14.CustomConfigTestCase: void assertNotNull(java.lang.String,java.lang.Object)>("Log exists", $r1);
+
+        $r2 = r0.<org.apache.commons.logging.jdk14.CustomConfigTestCase: org.apache.commons.logging.Log log>;
+
+        $r3 = virtualinvoke $r2.<java.lang.Object: java.lang.Class getClass()>();
+
+        $r4 = virtualinvoke $r3.<java.lang.Class: java.lang.String getName()>();
+
+        staticinvoke <org.apache.commons.logging.jdk14.CustomConfigTestCase: void assertEquals(java.lang.String,java.lang.String,java.lang.String)>("Log class", "org.apache.commons.logging.impl.Jdk14Logger", $r4);
+
+        $r5 = r0.<org.apache.commons.logging.jdk14.CustomConfigTestCase: org.apache.commons.logging.Log log>;
+
+        $z0 = interfaceinvoke $r5.<org.apache.commons.logging.Log: boolean isFatalEnabled()>();
+
+        staticinvoke <org.apache.commons.logging.jdk14.CustomConfigTestCase: void assertTrue(boolean)>($z0);
+
+        $r6 = r0.<org.apache.commons.logging.jdk14.CustomConfigTestCase: org.apache.commons.logging.Log log>;
+
+        $z1 = interfaceinvoke $r6.<org.apache.commons.logging.Log: boolean isErrorEnabled()>();
+
+        staticinvoke <org.apache.commons.logging.jdk14.CustomConfigTestCase: void assertTrue(boolean)>($z1);
+
+        $r7 = r0.<org.apache.commons.logging.jdk14.CustomConfigTestCase: org.apache.commons.logging.Log log>;
+
+        $z2 = interfaceinvoke $r7.<org.apache.commons.logging.Log: boolean isWarnEnabled()>();
+
+        staticinvoke <org.apache.commons.logging.jdk14.CustomConfigTestCase: void assertTrue(boolean)>($z2);
+
+        $r8 = r0.<org.apache.commons.logging.jdk14.CustomConfigTestCase: org.apache.commons.logging.Log log>;
+
+        $z3 = interfaceinvoke $r8.<org.apache.commons.logging.Log: boolean isInfoEnabled()>();
+
+        staticinvoke <org.apache.commons.logging.jdk14.CustomConfigTestCase: void assertTrue(boolean)>($z3);
+
+        $r9 = r0.<org.apache.commons.logging.jdk14.CustomConfigTestCase: org.apache.commons.logging.Log log>;
+
+        $z4 = interfaceinvoke $r9.<org.apache.commons.logging.Log: boolean isDebugEnabled()>();
+
+        staticinvoke <org.apache.commons.logging.jdk14.CustomConfigTestCase: void assertTrue(boolean)>($z4);
+
+        $r10 = r0.<org.apache.commons.logging.jdk14.CustomConfigTestCase: org.apache.commons.logging.Log log>;
+
+        $z5 = interfaceinvoke $r10.<org.apache.commons.logging.Log: boolean isTraceEnabled()>();
+
+        if $z5 == 0 goto label1;
+
+        $z6 = 0;
+
+        goto label2;
+
+     label1:
+        $z6 = 1;
+
+     label2:
+        staticinvoke <org.apache.commons.logging.jdk14.CustomConfigTestCase: void assertTrue(boolean)>($z6);
+
+        return;
+    }
+
+    protected void checkLogRecords(boolean)
+    {
+        org.apache.commons.logging.jdk14.CustomConfigTestCase r0;
+        boolean z0, $z1, $z2, $z3, $z4, $z5;
+        java.util.Iterator r1;
+        java.util.logging.LogRecord r2;
+        org.apache.commons.logging.jdk14.TestHandler $r3, $r17;
+        java.lang.Object $r4;
+        java.util.logging.Level[] $r5;
+        java.util.logging.Level $r6, $r7;
+        java.lang.String[] $r8, $r18;
+        java.lang.String $r9, $r10, $r11, $r12, $r16;
+        java.lang.Throwable $r13, $r14, $r15;
+        int i0, $i1;
+
+        r0 := @this: org.apache.commons.logging.jdk14.CustomConfigTestCase;
+
+        z0 := @parameter0: boolean;
+
+        $r3 = r0.<org.apache.commons.logging.jdk14.CustomConfigTestCase: org.apache.commons.logging.jdk14.TestHandler handler>;
+
+        r1 = virtualinvoke $r3.<org.apache.commons.logging.jdk14.TestHandler: java.util.Iterator records()>();
+
+        i0 = 0;
+
+        goto label6;
+
+     label1:
+        $z1 = interfaceinvoke r1.<java.util.Iterator: boolean hasNext()>();
+
+        staticinvoke <org.apache.commons.logging.jdk14.CustomConfigTestCase: void assertTrue(boolean)>($z1);
+
+        $r4 = interfaceinvoke r1.<java.util.Iterator: java.lang.Object next()>();
+
+        r2 = (java.util.logging.LogRecord) $r4;
+
+        $r5 = r0.<org.apache.commons.logging.jdk14.CustomConfigTestCase: java.util.logging.Level[] testLevels>;
+
+        $r6 = $r5[i0];
+
+        $r7 = virtualinvoke r2.<java.util.logging.LogRecord: java.util.logging.Level getLevel()>();
+
+        staticinvoke <org.apache.commons.logging.jdk14.CustomConfigTestCase: void assertEquals(java.lang.String,java.lang.Object,java.lang.Object)>("LogRecord level", $r6, $r7);
+
+        $r8 = r0.<org.apache.commons.logging.jdk14.CustomConfigTestCase: java.lang.String[] testMessages>;
+
+        $r9 = $r8[i0];
+
+        $r10 = virtualinvoke r2.<java.util.logging.LogRecord: java.lang.String getMessage()>();
+
+        staticinvoke <org.apache.commons.logging.jdk14.CustomConfigTestCase: void assertEquals(java.lang.String,java.lang.String,java.lang.String)>("LogRecord message", $r9, $r10);
+
+        $r11 = virtualinvoke r2.<java.util.logging.LogRecord: java.lang.String getSourceClassName()>();
+
+        $z2 = virtualinvoke $r11.<java.lang.String: boolean startsWith(java.lang.String)>("org.apache.commons.logging.jdk14.CustomConfig");
+
+        staticinvoke <org.apache.commons.logging.jdk14.CustomConfigTestCase: void assertTrue(java.lang.String,boolean)>("LogRecord class", $z2);
+
+        if z0 == 0 goto label2;
+
+        $r16 = virtualinvoke r2.<java.util.logging.LogRecord: java.lang.String getSourceMethodName()>();
+
+        staticinvoke <org.apache.commons.logging.jdk14.CustomConfigTestCase: void assertEquals(java.lang.String,java.lang.String,java.lang.String)>("LogRecord method", "logExceptionMessages", $r16);
+
+        goto label3;
+
+     label2:
+        $r12 = virtualinvoke r2.<java.util.logging.LogRecord: java.lang.String getSourceMethodName()>();
+
+        staticinvoke <org.apache.commons.logging.jdk14.CustomConfigTestCase: void assertEquals(java.lang.String,java.lang.String,java.lang.String)>("LogRecord method", "logPlainMessages", $r12);
+
+     label3:
+        if z0 == 0 goto label4;
+
+        $r14 = virtualinvoke r2.<java.util.logging.LogRecord: java.lang.Throwable getThrown()>();
+
+        staticinvoke <org.apache.commons.logging.jdk14.CustomConfigTestCase: void assertNotNull(java.lang.String,java.lang.Object)>("LogRecord thrown", $r14);
+
+        $r15 = virtualinvoke r2.<java.util.logging.LogRecord: java.lang.Throwable getThrown()>();
+
+        $z3 = $r15 instanceof org.apache.commons.logging.DummyException;
+
+        staticinvoke <org.apache.commons.logging.jdk14.CustomConfigTestCase: void assertTrue(java.lang.String,boolean)>("LogRecord thrown type", $z3);
+
+        goto label5;
+
+     label4:
+        $r13 = virtualinvoke r2.<java.util.logging.LogRecord: java.lang.Throwable getThrown()>();
+
+        staticinvoke <org.apache.commons.logging.jdk14.CustomConfigTestCase: void assertNull(java.lang.String,java.lang.Object)>("LogRecord thrown", $r13);
+
+     label5:
+        i0 = i0 + 1;
+
+     label6:
+        $r18 = r0.<org.apache.commons.logging.jdk14.CustomConfigTestCase: java.lang.String[] testMessages>;
+
+        $i1 = lengthof $r18;
+
+        if i0 < $i1 goto label1;
+
+        $z4 = interfaceinvoke r1.<java.util.Iterator: boolean hasNext()>();
+
+        if $z4 == 0 goto label7;
+
+        $z5 = 0;
+
+        goto label8;
+
+     label7:
+        $z5 = 1;
+
+     label8:
+        staticinvoke <org.apache.commons.logging.jdk14.CustomConfigTestCase: void assertTrue(boolean)>($z5);
+
+        $r17 = r0.<org.apache.commons.logging.jdk14.CustomConfigTestCase: org.apache.commons.logging.jdk14.TestHandler handler>;
+
+        virtualinvoke $r17.<org.apache.commons.logging.jdk14.TestHandler: void flush()>();
+
+        return;
+    }
+
+    protected void logExceptionMessages()
+    {
+        org.apache.commons.logging.jdk14.CustomConfigTestCase r0;
+        org.apache.commons.logging.DummyException $r2;
+        org.apache.commons.logging.Log $r3, $r4, $r5, $r6, $r7, $r8;
+
+        r0 := @this: org.apache.commons.logging.jdk14.CustomConfigTestCase;
+
+        $r2 = new org.apache.commons.logging.DummyException;
+
+        specialinvoke $r2.<org.apache.commons.logging.DummyException: void <init>()>();
+
+        $r3 = r0.<org.apache.commons.logging.jdk14.CustomConfigTestCase: org.apache.commons.logging.Log log>;
+
+        interfaceinvoke $r3.<org.apache.commons.logging.Log: void trace(java.lang.Object,java.lang.Throwable)>("trace", $r2);
+
+        $r4 = r0.<org.apache.commons.logging.jdk14.CustomConfigTestCase: org.apache.commons.logging.Log log>;
+
+        interfaceinvoke $r4.<org.apache.commons.logging.Log: void debug(java.lang.Object,java.lang.Throwable)>("debug", $r2);
+
+        $r5 = r0.<org.apache.commons.logging.jdk14.CustomConfigTestCase: org.apache.commons.logging.Log log>;
+
+        interfaceinvoke $r5.<org.apache.commons.logging.Log: void info(java.lang.Object,java.lang.Throwable)>("info", $r2);
+
+        $r6 = r0.<org.apache.commons.logging.jdk14.CustomConfigTestCase: org.apache.commons.logging.Log log>;
+
+        interfaceinvoke $r6.<org.apache.commons.logging.Log: void warn(java.lang.Object,java.lang.Throwable)>("warn", $r2);
+
+        $r7 = r0.<org.apache.commons.logging.jdk14.CustomConfigTestCase: org.apache.commons.logging.Log log>;
+
+        interfaceinvoke $r7.<org.apache.commons.logging.Log: void error(java.lang.Object,java.lang.Throwable)>("error", $r2);
+
+        $r8 = r0.<org.apache.commons.logging.jdk14.CustomConfigTestCase: org.apache.commons.logging.Log log>;
+
+        interfaceinvoke $r8.<org.apache.commons.logging.Log: void fatal(java.lang.Object,java.lang.Throwable)>("fatal", $r2);
+
+        return;
+    }
+
+    protected void logPlainMessages()
+    {
+        org.apache.commons.logging.jdk14.CustomConfigTestCase r0;
+        org.apache.commons.logging.Log $r1, $r2, $r3, $r4, $r5, $r6;
+
+        r0 := @this: org.apache.commons.logging.jdk14.CustomConfigTestCase;
+
+        $r1 = r0.<org.apache.commons.logging.jdk14.CustomConfigTestCase: org.apache.commons.logging.Log log>;
+
+        interfaceinvoke $r1.<org.apache.commons.logging.Log: void trace(java.lang.Object)>("trace");
+
+        $r2 = r0.<org.apache.commons.logging.jdk14.CustomConfigTestCase: org.apache.commons.logging.Log log>;
+
+        interfaceinvoke $r2.<org.apache.commons.logging.Log: void debug(java.lang.Object)>("debug");
+
+        $r3 = r0.<org.apache.commons.logging.jdk14.CustomConfigTestCase: org.apache.commons.logging.Log log>;
+
+        interfaceinvoke $r3.<org.apache.commons.logging.Log: void info(java.lang.Object)>("info");
+
+        $r4 = r0.<org.apache.commons.logging.jdk14.CustomConfigTestCase: org.apache.commons.logging.Log log>;
+
+        interfaceinvoke $r4.<org.apache.commons.logging.Log: void warn(java.lang.Object)>("warn");
+
+        $r5 = r0.<org.apache.commons.logging.jdk14.CustomConfigTestCase: org.apache.commons.logging.Log log>;
+
+        interfaceinvoke $r5.<org.apache.commons.logging.Log: void error(java.lang.Object)>("error");
+
+        $r6 = r0.<org.apache.commons.logging.jdk14.CustomConfigTestCase: org.apache.commons.logging.Log log>;
+
+        interfaceinvoke $r6.<org.apache.commons.logging.Log: void fatal(java.lang.Object)>("fatal");
+
+        return;
+    }
+
+    protected void setUpHandlers() throws java.lang.Exception
+    {
+        org.apache.commons.logging.jdk14.CustomConfigTestCase r0;
+        java.util.logging.Logger $r1, r12;
+        java.util.logging.Handler[] $r2, $r3, $r4, $r5, $r7, $r9;
+        int $i0;
+        java.util.logging.Handler $r6, $r8, $r10;
+        boolean $z0;
+        org.apache.commons.logging.jdk14.TestHandler $r11;
+
+        r0 := @this: org.apache.commons.logging.jdk14.CustomConfigTestCase;
+
+        r12 = r0.<org.apache.commons.logging.jdk14.CustomConfigTestCase: java.util.logging.Logger logger>;
+
+        goto label2;
+
+     label1:
+        r12 = virtualinvoke r12.<java.util.logging.Logger: java.util.logging.Logger getParent()>();
+
+     label2:
+        $r1 = virtualinvoke r12.<java.util.logging.Logger: java.util.logging.Logger getParent()>();
+
+        if $r1 != null goto label1;
+
+        $r2 = virtualinvoke r12.<java.util.logging.Logger: java.util.logging.Handler[] getHandlers()>();
+
+        r0.<org.apache.commons.logging.jdk14.CustomConfigTestCase: java.util.logging.Handler[] handlers> = $r2;
+
+        $r3 = r0.<org.apache.commons.logging.jdk14.CustomConfigTestCase: java.util.logging.Handler[] handlers>;
+
+        staticinvoke <org.apache.commons.logging.jdk14.CustomConfigTestCase: void assertNotNull(java.lang.String,java.lang.Object)>("No Handlers defined for JDK14 logging", $r3);
+
+        $r4 = r0.<org.apache.commons.logging.jdk14.CustomConfigTestCase: java.util.logging.Handler[] handlers>;
+
+        $i0 = lengthof $r4;
+
+        staticinvoke <org.apache.commons.logging.jdk14.CustomConfigTestCase: void assertEquals(java.lang.String,int,int)>("Unexpected number of handlers for JDK14 logging", 1, $i0);
+
+        $r5 = r0.<org.apache.commons.logging.jdk14.CustomConfigTestCase: java.util.logging.Handler[] handlers>;
+
+        $r6 = $r5[0];
+
+        staticinvoke <org.apache.commons.logging.jdk14.CustomConfigTestCase: void assertNotNull(java.lang.String,java.lang.Object)>("Handler is null", $r6);
+
+        $r7 = r0.<org.apache.commons.logging.jdk14.CustomConfigTestCase: java.util.logging.Handler[] handlers>;
+
+        $r8 = $r7[0];
+
+        $z0 = $r8 instanceof org.apache.commons.logging.jdk14.TestHandler;
+
+        staticinvoke <org.apache.commons.logging.jdk14.CustomConfigTestCase: void assertTrue(java.lang.String,boolean)>("Handler not of expected type", $z0);
+
+        $r9 = r0.<org.apache.commons.logging.jdk14.CustomConfigTestCase: java.util.logging.Handler[] handlers>;
+
+        $r10 = $r9[0];
+
+        $r11 = (org.apache.commons.logging.jdk14.TestHandler) $r10;
+
+        r0.<org.apache.commons.logging.jdk14.CustomConfigTestCase: org.apache.commons.logging.jdk14.TestHandler handler> = $r11;
+
+        return;
+    }
+
+    protected void setUpLogger(java.lang.String) throws java.lang.Exception
+    {
+        org.apache.commons.logging.jdk14.CustomConfigTestCase r0;
+        java.lang.String r1;
+        java.util.logging.Logger $r2;
+
+        r0 := @this: org.apache.commons.logging.jdk14.CustomConfigTestCase;
+
+        r1 := @parameter0: java.lang.String;
+
+        $r2 = staticinvoke <java.util.logging.Logger: java.util.logging.Logger getLogger(java.lang.String)>(r1);
+
+        r0.<org.apache.commons.logging.jdk14.CustomConfigTestCase: java.util.logging.Logger logger> = $r2;
+
+        return;
+    }
+
+    protected void setUpManager(java.lang.String) throws java.lang.Exception
+    {
+        org.apache.commons.logging.jdk14.CustomConfigTestCase r0;
+        java.lang.String r1;
+        java.io.InputStream r2;
+        java.util.logging.LogManager $r3, $r6;
+        java.lang.Class $r4;
+        java.lang.ClassLoader $r5;
+
+        r0 := @this: org.apache.commons.logging.jdk14.CustomConfigTestCase;
+
+        r1 := @parameter0: java.lang.String;
+
+        $r3 = staticinvoke <java.util.logging.LogManager: java.util.logging.LogManager getLogManager()>();
+
+        r0.<org.apache.commons.logging.jdk14.CustomConfigTestCase: java.util.logging.LogManager manager> = $r3;
+
+        $r4 = virtualinvoke r0.<java.lang.Object: java.lang.Class getClass()>();
+
+        $r5 = virtualinvoke $r4.<java.lang.Class: java.lang.ClassLoader getClassLoader()>();
+
+        r2 = virtualinvoke $r5.<java.lang.ClassLoader: java.io.InputStream getResourceAsStream(java.lang.String)>(r1);
+
+        $r6 = r0.<org.apache.commons.logging.jdk14.CustomConfigTestCase: java.util.logging.LogManager manager>;
+
+        virtualinvoke $r6.<java.util.logging.LogManager: void readConfiguration(java.io.InputStream)>(r2);
+
+        virtualinvoke r2.<java.io.InputStream: void close()>();
+
+        return;
+    }
+
+    public static void <clinit>()
+    {
+        <org.apache.commons.logging.jdk14.CustomConfigTestCase: java.lang.String HANDLER_NAME> = "org.apache.commons.logging.jdk14.TestHandler";
+
+        return;
+    }
+}

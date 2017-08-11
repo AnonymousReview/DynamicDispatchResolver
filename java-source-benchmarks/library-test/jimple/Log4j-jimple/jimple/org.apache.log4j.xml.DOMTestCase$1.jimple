@@ -1,0 +1,42 @@
+class org.apache.log4j.xml.DOMTestCase$1 extends org.apache.log4j.xml.DOMConfigurator
+{
+    final org.apache.log4j.xml.DOMTestCase this$0;
+
+    void <init>(org.apache.log4j.xml.DOMTestCase)
+    {
+        org.apache.log4j.xml.DOMTestCase$1 r0;
+        org.apache.log4j.xml.DOMTestCase r1;
+
+        r0 := @this: org.apache.log4j.xml.DOMTestCase$1;
+
+        r1 := @parameter0: org.apache.log4j.xml.DOMTestCase;
+
+        r0.<org.apache.log4j.xml.DOMTestCase$1: org.apache.log4j.xml.DOMTestCase this$0> = r1;
+
+        specialinvoke r0.<org.apache.log4j.xml.DOMConfigurator: void <init>()>();
+
+        return;
+    }
+
+    protected java.lang.String subst(java.lang.String)
+    {
+        org.apache.log4j.xml.DOMTestCase$1 r0;
+        java.lang.String r1, $r2;
+        boolean $z0;
+
+        r0 := @this: org.apache.log4j.xml.DOMTestCase$1;
+
+        r1 := @parameter0: java.lang.String;
+
+        $r2 = "output/temp.A1";
+
+        $z0 = virtualinvoke $r2.<java.lang.String: boolean equals(java.lang.Object)>(r1);
+
+        if $z0 == 0 goto label1;
+
+        return "output/subst-test.A1";
+
+     label1:
+        return r1;
+    }
+}

@@ -1,0 +1,2236 @@
+public class org.apache.commons.codec.binary.Base32 extends org.apache.commons.codec.binary.BaseNCodec
+{
+    private static final int BITS_PER_ENCODED_BYTE;
+    private static final int BYTES_PER_ENCODED_BLOCK;
+    private static final int BYTES_PER_UNENCODED_BLOCK;
+    private static final byte[] CHUNK_SEPARATOR;
+    private static final byte[] DECODE_TABLE;
+    private static final byte[] ENCODE_TABLE;
+    private static final byte[] HEX_DECODE_TABLE;
+    private static final byte[] HEX_ENCODE_TABLE;
+    private static final int MASK_5BITS;
+    private final int decodeSize;
+    private final byte[] decodeTable;
+    private final int encodeSize;
+    private final byte[] encodeTable;
+    private final byte[] lineSeparator;
+
+    static void <clinit>()
+    {
+        byte[] $r0, $r1, $r2, $r3, $r4;
+
+        <org.apache.commons.codec.binary.Base32: int MASK_5BITS> = 31;
+
+        <org.apache.commons.codec.binary.Base32: int BYTES_PER_UNENCODED_BLOCK> = 5;
+
+        <org.apache.commons.codec.binary.Base32: int BYTES_PER_ENCODED_BLOCK> = 8;
+
+        <org.apache.commons.codec.binary.Base32: int BITS_PER_ENCODED_BYTE> = 5;
+
+        $r0 = newarray (byte)[2];
+
+        $r0[0] = 13;
+
+        $r0[1] = 10;
+
+        <org.apache.commons.codec.binary.Base32: byte[] CHUNK_SEPARATOR> = $r0;
+
+        $r1 = newarray (byte)[91];
+
+        $r1[0] = -1;
+
+        $r1[1] = -1;
+
+        $r1[2] = -1;
+
+        $r1[3] = -1;
+
+        $r1[4] = -1;
+
+        $r1[5] = -1;
+
+        $r1[6] = -1;
+
+        $r1[7] = -1;
+
+        $r1[8] = -1;
+
+        $r1[9] = -1;
+
+        $r1[10] = -1;
+
+        $r1[11] = -1;
+
+        $r1[12] = -1;
+
+        $r1[13] = -1;
+
+        $r1[14] = -1;
+
+        $r1[15] = -1;
+
+        $r1[16] = -1;
+
+        $r1[17] = -1;
+
+        $r1[18] = -1;
+
+        $r1[19] = -1;
+
+        $r1[20] = -1;
+
+        $r1[21] = -1;
+
+        $r1[22] = -1;
+
+        $r1[23] = -1;
+
+        $r1[24] = -1;
+
+        $r1[25] = -1;
+
+        $r1[26] = -1;
+
+        $r1[27] = -1;
+
+        $r1[28] = -1;
+
+        $r1[29] = -1;
+
+        $r1[30] = -1;
+
+        $r1[31] = -1;
+
+        $r1[32] = -1;
+
+        $r1[33] = -1;
+
+        $r1[34] = -1;
+
+        $r1[35] = -1;
+
+        $r1[36] = -1;
+
+        $r1[37] = -1;
+
+        $r1[38] = -1;
+
+        $r1[39] = -1;
+
+        $r1[40] = -1;
+
+        $r1[41] = -1;
+
+        $r1[42] = -1;
+
+        $r1[43] = -1;
+
+        $r1[44] = -1;
+
+        $r1[45] = -1;
+
+        $r1[46] = -1;
+
+        $r1[47] = -1;
+
+        $r1[48] = -1;
+
+        $r1[49] = -1;
+
+        $r1[50] = 26;
+
+        $r1[51] = 27;
+
+        $r1[52] = 28;
+
+        $r1[53] = 29;
+
+        $r1[54] = 30;
+
+        $r1[55] = 31;
+
+        $r1[56] = -1;
+
+        $r1[57] = -1;
+
+        $r1[58] = -1;
+
+        $r1[59] = -1;
+
+        $r1[60] = -1;
+
+        $r1[61] = -1;
+
+        $r1[62] = -1;
+
+        $r1[63] = -1;
+
+        $r1[64] = -1;
+
+        $r1[66] = 1;
+
+        $r1[67] = 2;
+
+        $r1[68] = 3;
+
+        $r1[69] = 4;
+
+        $r1[70] = 5;
+
+        $r1[71] = 6;
+
+        $r1[72] = 7;
+
+        $r1[73] = 8;
+
+        $r1[74] = 9;
+
+        $r1[75] = 10;
+
+        $r1[76] = 11;
+
+        $r1[77] = 12;
+
+        $r1[78] = 13;
+
+        $r1[79] = 14;
+
+        $r1[80] = 15;
+
+        $r1[81] = 16;
+
+        $r1[82] = 17;
+
+        $r1[83] = 18;
+
+        $r1[84] = 19;
+
+        $r1[85] = 20;
+
+        $r1[86] = 21;
+
+        $r1[87] = 22;
+
+        $r1[88] = 23;
+
+        $r1[89] = 24;
+
+        $r1[90] = 25;
+
+        <org.apache.commons.codec.binary.Base32: byte[] DECODE_TABLE> = $r1;
+
+        $r2 = newarray (byte)[32];
+
+        $r2[0] = 65;
+
+        $r2[1] = 66;
+
+        $r2[2] = 67;
+
+        $r2[3] = 68;
+
+        $r2[4] = 69;
+
+        $r2[5] = 70;
+
+        $r2[6] = 71;
+
+        $r2[7] = 72;
+
+        $r2[8] = 73;
+
+        $r2[9] = 74;
+
+        $r2[10] = 75;
+
+        $r2[11] = 76;
+
+        $r2[12] = 77;
+
+        $r2[13] = 78;
+
+        $r2[14] = 79;
+
+        $r2[15] = 80;
+
+        $r2[16] = 81;
+
+        $r2[17] = 82;
+
+        $r2[18] = 83;
+
+        $r2[19] = 84;
+
+        $r2[20] = 85;
+
+        $r2[21] = 86;
+
+        $r2[22] = 87;
+
+        $r2[23] = 88;
+
+        $r2[24] = 89;
+
+        $r2[25] = 90;
+
+        $r2[26] = 50;
+
+        $r2[27] = 51;
+
+        $r2[28] = 52;
+
+        $r2[29] = 53;
+
+        $r2[30] = 54;
+
+        $r2[31] = 55;
+
+        <org.apache.commons.codec.binary.Base32: byte[] ENCODE_TABLE> = $r2;
+
+        $r3 = newarray (byte)[88];
+
+        $r3[0] = -1;
+
+        $r3[1] = -1;
+
+        $r3[2] = -1;
+
+        $r3[3] = -1;
+
+        $r3[4] = -1;
+
+        $r3[5] = -1;
+
+        $r3[6] = -1;
+
+        $r3[7] = -1;
+
+        $r3[8] = -1;
+
+        $r3[9] = -1;
+
+        $r3[10] = -1;
+
+        $r3[11] = -1;
+
+        $r3[12] = -1;
+
+        $r3[13] = -1;
+
+        $r3[14] = -1;
+
+        $r3[15] = -1;
+
+        $r3[16] = -1;
+
+        $r3[17] = -1;
+
+        $r3[18] = -1;
+
+        $r3[19] = -1;
+
+        $r3[20] = -1;
+
+        $r3[21] = -1;
+
+        $r3[22] = -1;
+
+        $r3[23] = -1;
+
+        $r3[24] = -1;
+
+        $r3[25] = -1;
+
+        $r3[26] = -1;
+
+        $r3[27] = -1;
+
+        $r3[28] = -1;
+
+        $r3[29] = -1;
+
+        $r3[30] = -1;
+
+        $r3[31] = -1;
+
+        $r3[32] = -1;
+
+        $r3[33] = -1;
+
+        $r3[34] = -1;
+
+        $r3[35] = -1;
+
+        $r3[36] = -1;
+
+        $r3[37] = -1;
+
+        $r3[38] = -1;
+
+        $r3[39] = -1;
+
+        $r3[40] = -1;
+
+        $r3[41] = -1;
+
+        $r3[42] = -1;
+
+        $r3[43] = -1;
+
+        $r3[44] = -1;
+
+        $r3[45] = -1;
+
+        $r3[46] = -1;
+
+        $r3[47] = -1;
+
+        $r3[49] = 1;
+
+        $r3[50] = 2;
+
+        $r3[51] = 3;
+
+        $r3[52] = 4;
+
+        $r3[53] = 5;
+
+        $r3[54] = 6;
+
+        $r3[55] = 7;
+
+        $r3[56] = 8;
+
+        $r3[57] = 9;
+
+        $r3[58] = -1;
+
+        $r3[59] = -1;
+
+        $r3[60] = -1;
+
+        $r3[61] = -1;
+
+        $r3[62] = -1;
+
+        $r3[63] = -1;
+
+        $r3[64] = -1;
+
+        $r3[65] = 10;
+
+        $r3[66] = 11;
+
+        $r3[67] = 12;
+
+        $r3[68] = 13;
+
+        $r3[69] = 14;
+
+        $r3[70] = 15;
+
+        $r3[71] = 16;
+
+        $r3[72] = 17;
+
+        $r3[73] = 18;
+
+        $r3[74] = 19;
+
+        $r3[75] = 20;
+
+        $r3[76] = 21;
+
+        $r3[77] = 22;
+
+        $r3[78] = 23;
+
+        $r3[79] = 24;
+
+        $r3[80] = 25;
+
+        $r3[81] = 26;
+
+        $r3[82] = 27;
+
+        $r3[83] = 28;
+
+        $r3[84] = 29;
+
+        $r3[85] = 30;
+
+        $r3[86] = 31;
+
+        $r3[87] = 32;
+
+        <org.apache.commons.codec.binary.Base32: byte[] HEX_DECODE_TABLE> = $r3;
+
+        $r4 = newarray (byte)[32];
+
+        $r4[0] = 48;
+
+        $r4[1] = 49;
+
+        $r4[2] = 50;
+
+        $r4[3] = 51;
+
+        $r4[4] = 52;
+
+        $r4[5] = 53;
+
+        $r4[6] = 54;
+
+        $r4[7] = 55;
+
+        $r4[8] = 56;
+
+        $r4[9] = 57;
+
+        $r4[10] = 65;
+
+        $r4[11] = 66;
+
+        $r4[12] = 67;
+
+        $r4[13] = 68;
+
+        $r4[14] = 69;
+
+        $r4[15] = 70;
+
+        $r4[16] = 71;
+
+        $r4[17] = 72;
+
+        $r4[18] = 73;
+
+        $r4[19] = 74;
+
+        $r4[20] = 75;
+
+        $r4[21] = 76;
+
+        $r4[22] = 77;
+
+        $r4[23] = 78;
+
+        $r4[24] = 79;
+
+        $r4[25] = 80;
+
+        $r4[26] = 81;
+
+        $r4[27] = 82;
+
+        $r4[28] = 83;
+
+        $r4[29] = 84;
+
+        $r4[30] = 85;
+
+        $r4[31] = 86;
+
+        <org.apache.commons.codec.binary.Base32: byte[] HEX_ENCODE_TABLE> = $r4;
+
+        return;
+    }
+
+    public void <init>()
+    {
+        org.apache.commons.codec.binary.Base32 r0;
+
+        r0 := @this: org.apache.commons.codec.binary.Base32;
+
+        specialinvoke r0.<org.apache.commons.codec.binary.Base32: void <init>(boolean)>(0);
+
+        return;
+    }
+
+    public void <init>(byte)
+    {
+        org.apache.commons.codec.binary.Base32 r0;
+        byte b0;
+
+        r0 := @this: org.apache.commons.codec.binary.Base32;
+
+        b0 := @parameter0: byte;
+
+        specialinvoke r0.<org.apache.commons.codec.binary.Base32: void <init>(boolean,byte)>(0, b0);
+
+        return;
+    }
+
+    public void <init>(boolean)
+    {
+        org.apache.commons.codec.binary.Base32 r0;
+        boolean z0;
+
+        r0 := @this: org.apache.commons.codec.binary.Base32;
+
+        z0 := @parameter0: boolean;
+
+        specialinvoke r0.<org.apache.commons.codec.binary.Base32: void <init>(int,byte[],boolean,byte)>(0, null, z0, 61);
+
+        return;
+    }
+
+    public void <init>(boolean, byte)
+    {
+        org.apache.commons.codec.binary.Base32 r0;
+        boolean z0;
+        byte b0;
+
+        r0 := @this: org.apache.commons.codec.binary.Base32;
+
+        z0 := @parameter0: boolean;
+
+        b0 := @parameter1: byte;
+
+        specialinvoke r0.<org.apache.commons.codec.binary.Base32: void <init>(int,byte[],boolean,byte)>(0, null, z0, b0);
+
+        return;
+    }
+
+    public void <init>(int)
+    {
+        org.apache.commons.codec.binary.Base32 r0;
+        int i0;
+        byte[] $r1;
+
+        r0 := @this: org.apache.commons.codec.binary.Base32;
+
+        i0 := @parameter0: int;
+
+        $r1 = <org.apache.commons.codec.binary.Base32: byte[] CHUNK_SEPARATOR>;
+
+        specialinvoke r0.<org.apache.commons.codec.binary.Base32: void <init>(int,byte[])>(i0, $r1);
+
+        return;
+    }
+
+    public void <init>(int, byte[])
+    {
+        org.apache.commons.codec.binary.Base32 r0;
+        int i0;
+        byte[] r1;
+
+        r0 := @this: org.apache.commons.codec.binary.Base32;
+
+        i0 := @parameter0: int;
+
+        r1 := @parameter1: byte[];
+
+        specialinvoke r0.<org.apache.commons.codec.binary.Base32: void <init>(int,byte[],boolean,byte)>(i0, r1, 0, 61);
+
+        return;
+    }
+
+    public void <init>(int, byte[], boolean)
+    {
+        org.apache.commons.codec.binary.Base32 r0;
+        int i0;
+        byte[] r1;
+        boolean z0;
+
+        r0 := @this: org.apache.commons.codec.binary.Base32;
+
+        i0 := @parameter0: int;
+
+        r1 := @parameter1: byte[];
+
+        z0 := @parameter2: boolean;
+
+        specialinvoke r0.<org.apache.commons.codec.binary.Base32: void <init>(int,byte[],boolean,byte)>(i0, r1, z0, 61);
+
+        return;
+    }
+
+    public void <init>(int, byte[], boolean, byte)
+    {
+        org.apache.commons.codec.binary.Base32 r0;
+        int i0, $i2, $i3, $i4, $i5, $i6, $i7, $i11;
+        byte[] r1, $r3, $r4, $r6, $r7, $r18, $r19;
+        boolean z0, $z1, $z2, $z3;
+        byte b1;
+        java.lang.String r2, $r12, $r17;
+        java.lang.IllegalArgumentException $r5, $r8, $r13;
+        java.lang.StringBuilder $r9, $r10, $r11, $r14, $r15, $r16;
+
+        r0 := @this: org.apache.commons.codec.binary.Base32;
+
+        i0 := @parameter0: int;
+
+        r1 := @parameter1: byte[];
+
+        z0 := @parameter2: boolean;
+
+        b1 := @parameter3: byte;
+
+        if r1 != null goto label01;
+
+        $i11 = 0;
+
+        goto label02;
+
+     label01:
+        $i11 = lengthof r1;
+
+     label02:
+        specialinvoke r0.<org.apache.commons.codec.binary.BaseNCodec: void <init>(int,int,int,int,byte)>(5, 8, i0, $i11, b1);
+
+        if z0 == 0 goto label03;
+
+        $r18 = <org.apache.commons.codec.binary.Base32: byte[] HEX_ENCODE_TABLE>;
+
+        r0.<org.apache.commons.codec.binary.Base32: byte[] encodeTable> = $r18;
+
+        $r19 = <org.apache.commons.codec.binary.Base32: byte[] HEX_DECODE_TABLE>;
+
+        r0.<org.apache.commons.codec.binary.Base32: byte[] decodeTable> = $r19;
+
+        goto label04;
+
+     label03:
+        $r3 = <org.apache.commons.codec.binary.Base32: byte[] ENCODE_TABLE>;
+
+        r0.<org.apache.commons.codec.binary.Base32: byte[] encodeTable> = $r3;
+
+        $r4 = <org.apache.commons.codec.binary.Base32: byte[] DECODE_TABLE>;
+
+        r0.<org.apache.commons.codec.binary.Base32: byte[] decodeTable> = $r4;
+
+     label04:
+        if i0 <= 0 goto label07;
+
+        if r1 != null goto label05;
+
+        $r13 = new java.lang.IllegalArgumentException;
+
+        $r14 = new java.lang.StringBuilder;
+
+        specialinvoke $r14.<java.lang.StringBuilder: void <init>(java.lang.String)>("lineLength ");
+
+        $r15 = virtualinvoke $r14.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i0);
+
+        $r16 = virtualinvoke $r15.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" > 0, but lineSeparator is null");
+
+        $r17 = virtualinvoke $r16.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r13.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>($r17);
+
+        throw $r13;
+
+     label05:
+        $z3 = virtualinvoke r0.<org.apache.commons.codec.binary.Base32: boolean containsAlphabetOrPad(byte[])>(r1);
+
+        if $z3 == 0 goto label06;
+
+        r2 = staticinvoke <org.apache.commons.codec.binary.StringUtils: java.lang.String newStringUtf8(byte[])>(r1);
+
+        $r8 = new java.lang.IllegalArgumentException;
+
+        $r9 = new java.lang.StringBuilder;
+
+        specialinvoke $r9.<java.lang.StringBuilder: void <init>(java.lang.String)>("lineSeparator must not contain Base32 characters: [");
+
+        $r10 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r2);
+
+        $r11 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("]");
+
+        $r12 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r8.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>($r12);
+
+        throw $r8;
+
+     label06:
+        $i4 = lengthof r1;
+
+        $i5 = 8 + $i4;
+
+        r0.<org.apache.commons.codec.binary.Base32: int encodeSize> = $i5;
+
+        $i6 = lengthof r1;
+
+        $r6 = newarray (byte)[$i6];
+
+        r0.<org.apache.commons.codec.binary.Base32: byte[] lineSeparator> = $r6;
+
+        $r7 = r0.<org.apache.commons.codec.binary.Base32: byte[] lineSeparator>;
+
+        $i7 = lengthof r1;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>(r1, 0, $r7, 0, $i7);
+
+        goto label08;
+
+     label07:
+        r0.<org.apache.commons.codec.binary.Base32: int encodeSize> = 8;
+
+        r0.<org.apache.commons.codec.binary.Base32: byte[] lineSeparator> = null;
+
+     label08:
+        $i2 = r0.<org.apache.commons.codec.binary.Base32: int encodeSize>;
+
+        $i3 = $i2 - 1;
+
+        r0.<org.apache.commons.codec.binary.Base32: int decodeSize> = $i3;
+
+        $z1 = virtualinvoke r0.<org.apache.commons.codec.binary.Base32: boolean isInAlphabet(byte)>(b1);
+
+        if $z1 != 0 goto label09;
+
+        $z2 = staticinvoke <org.apache.commons.codec.binary.Base32: boolean isWhiteSpace(byte)>(b1);
+
+        if $z2 == 0 goto label10;
+
+     label09:
+        $r5 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r5.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("pad must not be in alphabet or whitespace");
+
+        throw $r5;
+
+     label10:
+        return;
+    }
+
+    void decode(byte[], int, int, org.apache.commons.codec.binary.BaseNCodec$Context)
+    {
+        org.apache.commons.codec.binary.Base32 r0;
+        byte[] r1, r3, $r4, $r5, r11;
+        int i0, $i3, $i5, $i6, $i7, $i8, $i9, $i14, $i15, $i16, $i20, $i22, $i23, $i27, $i29, $i30, $i34, $i36, $i37, $i41, $i43, $i44, $i47, $i49, $i50, $i51, $i52, $i53, $i57, $i61, $i62, $i66, $i68, $i69, $i73, $i75, $i76, $i80, $i82, $i83, $i86, $i90, $i91, $i95, $i97, $i98, $i102, $i104, $i105, $i108, $i112, $i113, $i117, $i119, $i120, $i124, $i126, $i127, $i130, $i134, $i135, $i139, $i141, $i142, $i145, $i147, $i148, $i152, $i154, i155, i156;
+        org.apache.commons.codec.binary.BaseNCodec$Context r2;
+        byte b1, b2, $b4, $b21, $b28, $b35, $b42, $b48, $b58, $b67, $b74, $b81, $b87, $b96, $b103, $b109, $b118, $b125, $b131, $b140, $b146, $b153;
+        boolean $z0, $z1;
+        long $l10, $l11, $l12, $l13, $l17, $l18, $l19, $l24, $l25, $l26, $l31, $l32, $l33, $l38, $l39, $l40, $l45, $l46, $l54, $l55, $l56, $l59, $l60, $l63, $l64, $l65, $l70, $l71, $l72, $l77, $l78, $l79, $l84, $l85, $l88, $l89, $l92, $l93, $l94, $l99, $l100, $l101, $l106, $l107, $l110, $l111, $l114, $l115, $l116, $l121, $l122, $l123, $l128, $l129, $l132, $l133, $l136, $l137, $l138, $l143, $l144, $l149, $l150, $l151;
+        java.lang.IllegalStateException $r7;
+        java.lang.StringBuilder $r8, $r9;
+        java.lang.String $r10;
+
+        r0 := @this: org.apache.commons.codec.binary.Base32;
+
+        r1 := @parameter0: byte[];
+
+        i155 := @parameter1: int;
+
+        i0 := @parameter2: int;
+
+        r2 := @parameter3: org.apache.commons.codec.binary.BaseNCodec$Context;
+
+        $z0 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: boolean eof>;
+
+        if $z0 == 0 goto label01;
+
+        return;
+
+     label01:
+        if i0 >= 0 goto label02;
+
+        r2.<org.apache.commons.codec.binary.BaseNCodec$Context: boolean eof> = 1;
+
+     label02:
+        i156 = 0;
+
+        goto label06;
+
+     label03:
+        $i3 = i155;
+
+        i155 = i155 + 1;
+
+        b1 = r1[$i3];
+
+        $b4 = r0.<org.apache.commons.codec.binary.Base32: byte pad>;
+
+        if b1 != $b4 goto label04;
+
+        r2.<org.apache.commons.codec.binary.BaseNCodec$Context: boolean eof> = 1;
+
+        goto label07;
+
+     label04:
+        $i5 = r0.<org.apache.commons.codec.binary.Base32: int decodeSize>;
+
+        r3 = virtualinvoke r0.<org.apache.commons.codec.binary.Base32: byte[] ensureBufferSize(int,org.apache.commons.codec.binary.BaseNCodec$Context)>($i5, r2);
+
+        if b1 < 0 goto label05;
+
+        $r4 = r0.<org.apache.commons.codec.binary.Base32: byte[] decodeTable>;
+
+        $i6 = lengthof $r4;
+
+        if b1 >= $i6 goto label05;
+
+        $r5 = r0.<org.apache.commons.codec.binary.Base32: byte[] decodeTable>;
+
+        b2 = $r5[b1];
+
+        if b2 < 0 goto label05;
+
+        $i7 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int modulus>;
+
+        $i8 = $i7 + 1;
+
+        $i9 = $i8 % 8;
+
+        r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int modulus> = $i9;
+
+        $l10 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: long lbitWorkArea>;
+
+        $l12 = $l10 << 5;
+
+        $l11 = (long) b2;
+
+        $l13 = $l12 + $l11;
+
+        r2.<org.apache.commons.codec.binary.BaseNCodec$Context: long lbitWorkArea> = $l13;
+
+        $i14 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int modulus>;
+
+        if $i14 != 0 goto label05;
+
+        $i15 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos>;
+
+        $i16 = $i15 + 1;
+
+        r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos> = $i16;
+
+        $l17 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: long lbitWorkArea>;
+
+        $l18 = $l17 >> 32;
+
+        $l19 = $l18 & 255L;
+
+        $i20 = (int) $l19;
+
+        $b21 = (byte) $i20;
+
+        r3[$i15] = $b21;
+
+        $i22 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos>;
+
+        $i23 = $i22 + 1;
+
+        r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos> = $i23;
+
+        $l24 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: long lbitWorkArea>;
+
+        $l25 = $l24 >> 24;
+
+        $l26 = $l25 & 255L;
+
+        $i27 = (int) $l26;
+
+        $b28 = (byte) $i27;
+
+        r3[$i22] = $b28;
+
+        $i29 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos>;
+
+        $i30 = $i29 + 1;
+
+        r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos> = $i30;
+
+        $l31 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: long lbitWorkArea>;
+
+        $l32 = $l31 >> 16;
+
+        $l33 = $l32 & 255L;
+
+        $i34 = (int) $l33;
+
+        $b35 = (byte) $i34;
+
+        r3[$i29] = $b35;
+
+        $i36 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos>;
+
+        $i37 = $i36 + 1;
+
+        r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos> = $i37;
+
+        $l38 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: long lbitWorkArea>;
+
+        $l39 = $l38 >> 8;
+
+        $l40 = $l39 & 255L;
+
+        $i41 = (int) $l40;
+
+        $b42 = (byte) $i41;
+
+        r3[$i36] = $b42;
+
+        $i43 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos>;
+
+        $i44 = $i43 + 1;
+
+        r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos> = $i44;
+
+        $l45 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: long lbitWorkArea>;
+
+        $l46 = $l45 & 255L;
+
+        $i47 = (int) $l46;
+
+        $b48 = (byte) $i47;
+
+        r3[$i43] = $b48;
+
+     label05:
+        i156 = i156 + 1;
+
+     label06:
+        if i156 < i0 goto label03;
+
+     label07:
+        $z1 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: boolean eof>;
+
+        if $z1 == 0 goto label15;
+
+        $i49 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int modulus>;
+
+        if $i49 < 2 goto label15;
+
+        $i50 = r0.<org.apache.commons.codec.binary.Base32: int decodeSize>;
+
+        r11 = virtualinvoke r0.<org.apache.commons.codec.binary.Base32: byte[] ensureBufferSize(int,org.apache.commons.codec.binary.BaseNCodec$Context)>($i50, r2);
+
+        $i51 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int modulus>;
+
+        tableswitch($i51)
+        {
+            case 2: goto label08;
+            case 3: goto label09;
+            case 4: goto label10;
+            case 5: goto label11;
+            case 6: goto label12;
+            case 7: goto label13;
+            default: goto label14;
+        };
+
+     label08:
+        $i52 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos>;
+
+        $i53 = $i52 + 1;
+
+        r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos> = $i53;
+
+        $l54 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: long lbitWorkArea>;
+
+        $l55 = $l54 >> 2;
+
+        $l56 = $l55 & 255L;
+
+        $i57 = (int) $l56;
+
+        $b58 = (byte) $i57;
+
+        r11[$i52] = $b58;
+
+        goto label15;
+
+     label09:
+        $i147 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos>;
+
+        $i148 = $i147 + 1;
+
+        r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos> = $i148;
+
+        $l149 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: long lbitWorkArea>;
+
+        $l150 = $l149 >> 7;
+
+        $l151 = $l150 & 255L;
+
+        $i152 = (int) $l151;
+
+        $b153 = (byte) $i152;
+
+        r11[$i147] = $b153;
+
+        goto label15;
+
+     label10:
+        $l132 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: long lbitWorkArea>;
+
+        $l133 = $l132 >> 4;
+
+        r2.<org.apache.commons.codec.binary.BaseNCodec$Context: long lbitWorkArea> = $l133;
+
+        $i134 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos>;
+
+        $i135 = $i134 + 1;
+
+        r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos> = $i135;
+
+        $l136 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: long lbitWorkArea>;
+
+        $l137 = $l136 >> 8;
+
+        $l138 = $l137 & 255L;
+
+        $i139 = (int) $l138;
+
+        $b140 = (byte) $i139;
+
+        r11[$i134] = $b140;
+
+        $i141 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos>;
+
+        $i142 = $i141 + 1;
+
+        r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos> = $i142;
+
+        $l143 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: long lbitWorkArea>;
+
+        $l144 = $l143 & 255L;
+
+        $i145 = (int) $l144;
+
+        $b146 = (byte) $i145;
+
+        r11[$i141] = $b146;
+
+        goto label15;
+
+     label11:
+        $l110 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: long lbitWorkArea>;
+
+        $l111 = $l110 >> 1;
+
+        r2.<org.apache.commons.codec.binary.BaseNCodec$Context: long lbitWorkArea> = $l111;
+
+        $i112 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos>;
+
+        $i113 = $i112 + 1;
+
+        r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos> = $i113;
+
+        $l114 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: long lbitWorkArea>;
+
+        $l115 = $l114 >> 16;
+
+        $l116 = $l115 & 255L;
+
+        $i117 = (int) $l116;
+
+        $b118 = (byte) $i117;
+
+        r11[$i112] = $b118;
+
+        $i119 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos>;
+
+        $i120 = $i119 + 1;
+
+        r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos> = $i120;
+
+        $l121 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: long lbitWorkArea>;
+
+        $l122 = $l121 >> 8;
+
+        $l123 = $l122 & 255L;
+
+        $i124 = (int) $l123;
+
+        $b125 = (byte) $i124;
+
+        r11[$i119] = $b125;
+
+        $i126 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos>;
+
+        $i127 = $i126 + 1;
+
+        r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos> = $i127;
+
+        $l128 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: long lbitWorkArea>;
+
+        $l129 = $l128 & 255L;
+
+        $i130 = (int) $l129;
+
+        $b131 = (byte) $i130;
+
+        r11[$i126] = $b131;
+
+        goto label15;
+
+     label12:
+        $l88 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: long lbitWorkArea>;
+
+        $l89 = $l88 >> 6;
+
+        r2.<org.apache.commons.codec.binary.BaseNCodec$Context: long lbitWorkArea> = $l89;
+
+        $i90 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos>;
+
+        $i91 = $i90 + 1;
+
+        r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos> = $i91;
+
+        $l92 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: long lbitWorkArea>;
+
+        $l93 = $l92 >> 16;
+
+        $l94 = $l93 & 255L;
+
+        $i95 = (int) $l94;
+
+        $b96 = (byte) $i95;
+
+        r11[$i90] = $b96;
+
+        $i97 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos>;
+
+        $i98 = $i97 + 1;
+
+        r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos> = $i98;
+
+        $l99 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: long lbitWorkArea>;
+
+        $l100 = $l99 >> 8;
+
+        $l101 = $l100 & 255L;
+
+        $i102 = (int) $l101;
+
+        $b103 = (byte) $i102;
+
+        r11[$i97] = $b103;
+
+        $i104 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos>;
+
+        $i105 = $i104 + 1;
+
+        r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos> = $i105;
+
+        $l106 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: long lbitWorkArea>;
+
+        $l107 = $l106 & 255L;
+
+        $i108 = (int) $l107;
+
+        $b109 = (byte) $i108;
+
+        r11[$i104] = $b109;
+
+        goto label15;
+
+     label13:
+        $l59 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: long lbitWorkArea>;
+
+        $l60 = $l59 >> 3;
+
+        r2.<org.apache.commons.codec.binary.BaseNCodec$Context: long lbitWorkArea> = $l60;
+
+        $i61 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos>;
+
+        $i62 = $i61 + 1;
+
+        r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos> = $i62;
+
+        $l63 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: long lbitWorkArea>;
+
+        $l64 = $l63 >> 24;
+
+        $l65 = $l64 & 255L;
+
+        $i66 = (int) $l65;
+
+        $b67 = (byte) $i66;
+
+        r11[$i61] = $b67;
+
+        $i68 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos>;
+
+        $i69 = $i68 + 1;
+
+        r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos> = $i69;
+
+        $l70 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: long lbitWorkArea>;
+
+        $l71 = $l70 >> 16;
+
+        $l72 = $l71 & 255L;
+
+        $i73 = (int) $l72;
+
+        $b74 = (byte) $i73;
+
+        r11[$i68] = $b74;
+
+        $i75 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos>;
+
+        $i76 = $i75 + 1;
+
+        r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos> = $i76;
+
+        $l77 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: long lbitWorkArea>;
+
+        $l78 = $l77 >> 8;
+
+        $l79 = $l78 & 255L;
+
+        $i80 = (int) $l79;
+
+        $b81 = (byte) $i80;
+
+        r11[$i75] = $b81;
+
+        $i82 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos>;
+
+        $i83 = $i82 + 1;
+
+        r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos> = $i83;
+
+        $l84 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: long lbitWorkArea>;
+
+        $l85 = $l84 & 255L;
+
+        $i86 = (int) $l85;
+
+        $b87 = (byte) $i86;
+
+        r11[$i82] = $b87;
+
+        goto label15;
+
+     label14:
+        $r7 = new java.lang.IllegalStateException;
+
+        $r8 = new java.lang.StringBuilder;
+
+        specialinvoke $r8.<java.lang.StringBuilder: void <init>(java.lang.String)>("Impossible modulus ");
+
+        $i154 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int modulus>;
+
+        $r9 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i154);
+
+        $r10 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r7.<java.lang.IllegalStateException: void <init>(java.lang.String)>($r10);
+
+        throw $r7;
+
+     label15:
+        return;
+    }
+
+    void encode(byte[], int, int, org.apache.commons.codec.binary.BaseNCodec$Context)
+    {
+        org.apache.commons.codec.binary.Base32 r0;
+        byte[] r1, $r3, $r4, $r5, $r6, $r7, $r8, $r9, $r10, $r11, $r12, $r13, $r14, $r15, $r16, $r17, $r18, $r19, $r20, $r21, $r22, $r23, $r24, $r25, $r26, $r27, $r28, $r29, $r30, $r31, $r32, $r33, $r34, r39, r41;
+        int i0, $i1, $i2, $i3, $i4, $i5, $i10, $i11, $i12, $i15, $i16, $i18, $i19, $i22, $i23, $i25, $i26, $i29, $i30, $i32, $i33, $i36, $i37, $i39, $i40, $i43, $i44, $i46, $i47, $i50, $i51, $i53, $i54, $i57, $i58, $i60, $i61, $i63, $i64, $i66, $i67, $i68, $i69, $i70, $i71, $i72, $i73, $i74, $i75, $i76, $i77, $i78, $i79, $i80, $i81, $i82, $i83, $i84, $i85, $i86, $i89, $i90, $i92, $i93, $i96, $i97, $i99, $i100, $i103, $i104, $i106, $i107, $i110, $i111, $i113, $i114, $i117, $i118, $i120, $i121, $i124, $i125, $i127, $i128, $i131, $i132, $i134, $i135, $i137, $i138, $i141, $i142, $i144, $i145, $i148, $i149, $i151, $i152, $i155, $i156, $i158, $i159, $i162, $i163, $i165, $i166, $i169, $i170, $i172, $i173, $i175, $i176, $i178, $i179, $i181, $i182, $i185, $i186, $i188, $i189, $i192, $i193, $i195, $i196, $i199, $i200, $i202, $i203, $i206, $i207, $i209, $i210, $i212, $i213, $i215, $i216, $i218, $i219, $i221, $i222, $i225, $i226, $i228, $i229, $i232, $i233, $i235, $i236, $i238, $i239, $i241, $i242, $i244, $i245, $i247, $i248, $i250, $i251, $i253, $i254, i255, i256, $i257, $i258, $i259, $i260, $i261, i262, i263;
+        org.apache.commons.codec.binary.BaseNCodec$Context r2;
+        boolean $z0;
+        long $l6, $l7, $l8, $l9, $l13, $l14, $l20, $l21, $l27, $l28, $l34, $l35, $l41, $l42, $l48, $l49, $l55, $l56, $l62, $l87, $l88, $l94, $l95, $l101, $l102, $l108, $l109, $l115, $l116, $l122, $l123, $l129, $l130, $l139, $l140, $l146, $l147, $l153, $l154, $l160, $l161, $l167, $l168, $l183, $l184, $l190, $l191, $l197, $l198, $l204, $l205, $l223, $l224, $l230, $l231;
+        byte $b17, $b24, $b31, $b38, $b45, $b52, $b59, $b65, $b91, $b98, $b105, $b112, $b119, $b126, $b133, $b136, $b143, $b150, $b157, $b164, $b171, $b174, $b177, $b180, $b187, $b194, $b201, $b208, $b211, $b214, $b217, $b220, $b227, $b234, $b237, $b240, $b243, $b246, $b249, $b252;
+        java.lang.IllegalStateException $r35;
+        java.lang.StringBuilder $r36, $r37;
+        java.lang.String $r38;
+
+        r0 := @this: org.apache.commons.codec.binary.Base32;
+
+        r1 := @parameter0: byte[];
+
+        i255 := @parameter1: int;
+
+        i0 := @parameter2: int;
+
+        r2 := @parameter3: org.apache.commons.codec.binary.BaseNCodec$Context;
+
+        $z0 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: boolean eof>;
+
+        if $z0 == 0 goto label01;
+
+        return;
+
+     label01:
+        if i0 >= 0 goto label10;
+
+        r2.<org.apache.commons.codec.binary.BaseNCodec$Context: boolean eof> = 1;
+
+        $i76 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int modulus>;
+
+        if $i76 != 0 goto label02;
+
+        $i254 = r0.<org.apache.commons.codec.binary.Base32: int lineLength>;
+
+        if $i254 != 0 goto label02;
+
+        return;
+
+     label02:
+        $i77 = r0.<org.apache.commons.codec.binary.Base32: int encodeSize>;
+
+        r39 = virtualinvoke r0.<org.apache.commons.codec.binary.Base32: byte[] ensureBufferSize(int,org.apache.commons.codec.binary.BaseNCodec$Context)>($i77, r2);
+
+        i256 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos>;
+
+        $i78 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int modulus>;
+
+        tableswitch($i78)
+        {
+            case 0: goto label03;
+            case 1: goto label04;
+            case 2: goto label05;
+            case 3: goto label06;
+            case 4: goto label07;
+            default: goto label08;
+        };
+
+     label03:
+        goto label09;
+
+     label04:
+        $i221 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos>;
+
+        $i222 = $i221 + 1;
+
+        r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos> = $i222;
+
+        $r33 = r0.<org.apache.commons.codec.binary.Base32: byte[] encodeTable>;
+
+        $l223 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: long lbitWorkArea>;
+
+        $l224 = $l223 >> 3;
+
+        $i225 = (int) $l224;
+
+        $i226 = $i225 & 31;
+
+        $b227 = $r33[$i226];
+
+        r39[$i221] = $b227;
+
+        $i228 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos>;
+
+        $i229 = $i228 + 1;
+
+        r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos> = $i229;
+
+        $r34 = r0.<org.apache.commons.codec.binary.Base32: byte[] encodeTable>;
+
+        $l230 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: long lbitWorkArea>;
+
+        $l231 = $l230 << 2;
+
+        $i232 = (int) $l231;
+
+        $i233 = $i232 & 31;
+
+        $b234 = $r34[$i233];
+
+        r39[$i228] = $b234;
+
+        $i235 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos>;
+
+        $i236 = $i235 + 1;
+
+        r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos> = $i236;
+
+        $b237 = r0.<org.apache.commons.codec.binary.Base32: byte pad>;
+
+        r39[$i235] = $b237;
+
+        $i238 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos>;
+
+        $i239 = $i238 + 1;
+
+        r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos> = $i239;
+
+        $b240 = r0.<org.apache.commons.codec.binary.Base32: byte pad>;
+
+        r39[$i238] = $b240;
+
+        $i241 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos>;
+
+        $i242 = $i241 + 1;
+
+        r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos> = $i242;
+
+        $b243 = r0.<org.apache.commons.codec.binary.Base32: byte pad>;
+
+        r39[$i241] = $b243;
+
+        $i244 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos>;
+
+        $i245 = $i244 + 1;
+
+        r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos> = $i245;
+
+        $b246 = r0.<org.apache.commons.codec.binary.Base32: byte pad>;
+
+        r39[$i244] = $b246;
+
+        $i247 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos>;
+
+        $i248 = $i247 + 1;
+
+        r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos> = $i248;
+
+        $b249 = r0.<org.apache.commons.codec.binary.Base32: byte pad>;
+
+        r39[$i247] = $b249;
+
+        $i250 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos>;
+
+        $i251 = $i250 + 1;
+
+        r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos> = $i251;
+
+        $b252 = r0.<org.apache.commons.codec.binary.Base32: byte pad>;
+
+        r39[$i250] = $b252;
+
+        goto label09;
+
+     label05:
+        $i181 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos>;
+
+        $i182 = $i181 + 1;
+
+        r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos> = $i182;
+
+        $r29 = r0.<org.apache.commons.codec.binary.Base32: byte[] encodeTable>;
+
+        $l183 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: long lbitWorkArea>;
+
+        $l184 = $l183 >> 11;
+
+        $i185 = (int) $l184;
+
+        $i186 = $i185 & 31;
+
+        $b187 = $r29[$i186];
+
+        r39[$i181] = $b187;
+
+        $i188 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos>;
+
+        $i189 = $i188 + 1;
+
+        r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos> = $i189;
+
+        $r30 = r0.<org.apache.commons.codec.binary.Base32: byte[] encodeTable>;
+
+        $l190 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: long lbitWorkArea>;
+
+        $l191 = $l190 >> 6;
+
+        $i192 = (int) $l191;
+
+        $i193 = $i192 & 31;
+
+        $b194 = $r30[$i193];
+
+        r39[$i188] = $b194;
+
+        $i195 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos>;
+
+        $i196 = $i195 + 1;
+
+        r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos> = $i196;
+
+        $r31 = r0.<org.apache.commons.codec.binary.Base32: byte[] encodeTable>;
+
+        $l197 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: long lbitWorkArea>;
+
+        $l198 = $l197 >> 1;
+
+        $i199 = (int) $l198;
+
+        $i200 = $i199 & 31;
+
+        $b201 = $r31[$i200];
+
+        r39[$i195] = $b201;
+
+        $i202 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos>;
+
+        $i203 = $i202 + 1;
+
+        r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos> = $i203;
+
+        $r32 = r0.<org.apache.commons.codec.binary.Base32: byte[] encodeTable>;
+
+        $l204 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: long lbitWorkArea>;
+
+        $l205 = $l204 << 4;
+
+        $i206 = (int) $l205;
+
+        $i207 = $i206 & 31;
+
+        $b208 = $r32[$i207];
+
+        r39[$i202] = $b208;
+
+        $i209 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos>;
+
+        $i210 = $i209 + 1;
+
+        r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos> = $i210;
+
+        $b211 = r0.<org.apache.commons.codec.binary.Base32: byte pad>;
+
+        r39[$i209] = $b211;
+
+        $i212 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos>;
+
+        $i213 = $i212 + 1;
+
+        r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos> = $i213;
+
+        $b214 = r0.<org.apache.commons.codec.binary.Base32: byte pad>;
+
+        r39[$i212] = $b214;
+
+        $i215 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos>;
+
+        $i216 = $i215 + 1;
+
+        r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos> = $i216;
+
+        $b217 = r0.<org.apache.commons.codec.binary.Base32: byte pad>;
+
+        r39[$i215] = $b217;
+
+        $i218 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos>;
+
+        $i219 = $i218 + 1;
+
+        r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos> = $i219;
+
+        $b220 = r0.<org.apache.commons.codec.binary.Base32: byte pad>;
+
+        r39[$i218] = $b220;
+
+        goto label09;
+
+     label06:
+        $i137 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos>;
+
+        $i138 = $i137 + 1;
+
+        r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos> = $i138;
+
+        $r24 = r0.<org.apache.commons.codec.binary.Base32: byte[] encodeTable>;
+
+        $l139 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: long lbitWorkArea>;
+
+        $l140 = $l139 >> 19;
+
+        $i141 = (int) $l140;
+
+        $i142 = $i141 & 31;
+
+        $b143 = $r24[$i142];
+
+        r39[$i137] = $b143;
+
+        $i144 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos>;
+
+        $i145 = $i144 + 1;
+
+        r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos> = $i145;
+
+        $r25 = r0.<org.apache.commons.codec.binary.Base32: byte[] encodeTable>;
+
+        $l146 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: long lbitWorkArea>;
+
+        $l147 = $l146 >> 14;
+
+        $i148 = (int) $l147;
+
+        $i149 = $i148 & 31;
+
+        $b150 = $r25[$i149];
+
+        r39[$i144] = $b150;
+
+        $i151 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos>;
+
+        $i152 = $i151 + 1;
+
+        r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos> = $i152;
+
+        $r26 = r0.<org.apache.commons.codec.binary.Base32: byte[] encodeTable>;
+
+        $l153 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: long lbitWorkArea>;
+
+        $l154 = $l153 >> 9;
+
+        $i155 = (int) $l154;
+
+        $i156 = $i155 & 31;
+
+        $b157 = $r26[$i156];
+
+        r39[$i151] = $b157;
+
+        $i158 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos>;
+
+        $i159 = $i158 + 1;
+
+        r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos> = $i159;
+
+        $r27 = r0.<org.apache.commons.codec.binary.Base32: byte[] encodeTable>;
+
+        $l160 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: long lbitWorkArea>;
+
+        $l161 = $l160 >> 4;
+
+        $i162 = (int) $l161;
+
+        $i163 = $i162 & 31;
+
+        $b164 = $r27[$i163];
+
+        r39[$i158] = $b164;
+
+        $i165 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos>;
+
+        $i166 = $i165 + 1;
+
+        r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos> = $i166;
+
+        $r28 = r0.<org.apache.commons.codec.binary.Base32: byte[] encodeTable>;
+
+        $l167 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: long lbitWorkArea>;
+
+        $l168 = $l167 << 1;
+
+        $i169 = (int) $l168;
+
+        $i170 = $i169 & 31;
+
+        $b171 = $r28[$i170];
+
+        r39[$i165] = $b171;
+
+        $i172 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos>;
+
+        $i173 = $i172 + 1;
+
+        r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos> = $i173;
+
+        $b174 = r0.<org.apache.commons.codec.binary.Base32: byte pad>;
+
+        r39[$i172] = $b174;
+
+        $i175 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos>;
+
+        $i176 = $i175 + 1;
+
+        r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos> = $i176;
+
+        $b177 = r0.<org.apache.commons.codec.binary.Base32: byte pad>;
+
+        r39[$i175] = $b177;
+
+        $i178 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos>;
+
+        $i179 = $i178 + 1;
+
+        r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos> = $i179;
+
+        $b180 = r0.<org.apache.commons.codec.binary.Base32: byte pad>;
+
+        r39[$i178] = $b180;
+
+        goto label09;
+
+     label07:
+        $i85 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos>;
+
+        $i86 = $i85 + 1;
+
+        r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos> = $i86;
+
+        $r17 = r0.<org.apache.commons.codec.binary.Base32: byte[] encodeTable>;
+
+        $l87 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: long lbitWorkArea>;
+
+        $l88 = $l87 >> 27;
+
+        $i89 = (int) $l88;
+
+        $i90 = $i89 & 31;
+
+        $b91 = $r17[$i90];
+
+        r39[$i85] = $b91;
+
+        $i92 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos>;
+
+        $i93 = $i92 + 1;
+
+        r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos> = $i93;
+
+        $r18 = r0.<org.apache.commons.codec.binary.Base32: byte[] encodeTable>;
+
+        $l94 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: long lbitWorkArea>;
+
+        $l95 = $l94 >> 22;
+
+        $i96 = (int) $l95;
+
+        $i97 = $i96 & 31;
+
+        $b98 = $r18[$i97];
+
+        r39[$i92] = $b98;
+
+        $i99 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos>;
+
+        $i100 = $i99 + 1;
+
+        r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos> = $i100;
+
+        $r19 = r0.<org.apache.commons.codec.binary.Base32: byte[] encodeTable>;
+
+        $l101 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: long lbitWorkArea>;
+
+        $l102 = $l101 >> 17;
+
+        $i103 = (int) $l102;
+
+        $i104 = $i103 & 31;
+
+        $b105 = $r19[$i104];
+
+        r39[$i99] = $b105;
+
+        $i106 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos>;
+
+        $i107 = $i106 + 1;
+
+        r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos> = $i107;
+
+        $r20 = r0.<org.apache.commons.codec.binary.Base32: byte[] encodeTable>;
+
+        $l108 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: long lbitWorkArea>;
+
+        $l109 = $l108 >> 12;
+
+        $i110 = (int) $l109;
+
+        $i111 = $i110 & 31;
+
+        $b112 = $r20[$i111];
+
+        r39[$i106] = $b112;
+
+        $i113 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos>;
+
+        $i114 = $i113 + 1;
+
+        r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos> = $i114;
+
+        $r21 = r0.<org.apache.commons.codec.binary.Base32: byte[] encodeTable>;
+
+        $l115 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: long lbitWorkArea>;
+
+        $l116 = $l115 >> 7;
+
+        $i117 = (int) $l116;
+
+        $i118 = $i117 & 31;
+
+        $b119 = $r21[$i118];
+
+        r39[$i113] = $b119;
+
+        $i120 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos>;
+
+        $i121 = $i120 + 1;
+
+        r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos> = $i121;
+
+        $r22 = r0.<org.apache.commons.codec.binary.Base32: byte[] encodeTable>;
+
+        $l122 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: long lbitWorkArea>;
+
+        $l123 = $l122 >> 2;
+
+        $i124 = (int) $l123;
+
+        $i125 = $i124 & 31;
+
+        $b126 = $r22[$i125];
+
+        r39[$i120] = $b126;
+
+        $i127 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos>;
+
+        $i128 = $i127 + 1;
+
+        r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos> = $i128;
+
+        $r23 = r0.<org.apache.commons.codec.binary.Base32: byte[] encodeTable>;
+
+        $l129 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: long lbitWorkArea>;
+
+        $l130 = $l129 << 3;
+
+        $i131 = (int) $l130;
+
+        $i132 = $i131 & 31;
+
+        $b133 = $r23[$i132];
+
+        r39[$i127] = $b133;
+
+        $i134 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos>;
+
+        $i135 = $i134 + 1;
+
+        r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos> = $i135;
+
+        $b136 = r0.<org.apache.commons.codec.binary.Base32: byte pad>;
+
+        r39[$i134] = $b136;
+
+        goto label09;
+
+     label08:
+        $r35 = new java.lang.IllegalStateException;
+
+        $r36 = new java.lang.StringBuilder;
+
+        specialinvoke $r36.<java.lang.StringBuilder: void <init>(java.lang.String)>("Impossible modulus ");
+
+        $i253 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int modulus>;
+
+        $r37 = virtualinvoke $r36.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i253);
+
+        $r38 = virtualinvoke $r37.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r35.<java.lang.IllegalStateException: void <init>(java.lang.String)>($r38);
+
+        throw $r35;
+
+     label09:
+        $i257 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int currentLinePos>;
+
+        $i258 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos>;
+
+        $i259 = $i258 - i256;
+
+        $i260 = $i257 + $i259;
+
+        r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int currentLinePos> = $i260;
+
+        $i261 = r0.<org.apache.commons.codec.binary.Base32: int lineLength>;
+
+        if $i261 <= 0 goto label15;
+
+        $i79 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int currentLinePos>;
+
+        if $i79 <= 0 goto label15;
+
+        $r15 = r0.<org.apache.commons.codec.binary.Base32: byte[] lineSeparator>;
+
+        $i81 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos>;
+
+        $r14 = r0.<org.apache.commons.codec.binary.Base32: byte[] lineSeparator>;
+
+        $i80 = lengthof $r14;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>($r15, 0, r39, $i81, $i80);
+
+        $i83 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos>;
+
+        $r16 = r0.<org.apache.commons.codec.binary.Base32: byte[] lineSeparator>;
+
+        $i82 = lengthof $r16;
+
+        $i84 = $i83 + $i82;
+
+        r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos> = $i84;
+
+        goto label15;
+
+     label10:
+        i262 = 0;
+
+        goto label14;
+
+     label11:
+        $i1 = r0.<org.apache.commons.codec.binary.Base32: int encodeSize>;
+
+        r41 = virtualinvoke r0.<org.apache.commons.codec.binary.Base32: byte[] ensureBufferSize(int,org.apache.commons.codec.binary.BaseNCodec$Context)>($i1, r2);
+
+        $i2 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int modulus>;
+
+        $i3 = $i2 + 1;
+
+        $i4 = $i3 % 5;
+
+        r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int modulus> = $i4;
+
+        $i5 = i255;
+
+        i255 = i255 + 1;
+
+        i263 = r1[$i5];
+
+        if i263 >= 0 goto label12;
+
+        i263 = i263 + 256;
+
+     label12:
+        $l6 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: long lbitWorkArea>;
+
+        $l8 = $l6 << 8;
+
+        $l7 = (long) i263;
+
+        $l9 = $l8 + $l7;
+
+        r2.<org.apache.commons.codec.binary.BaseNCodec$Context: long lbitWorkArea> = $l9;
+
+        $i10 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int modulus>;
+
+        if $i10 != 0 goto label13;
+
+        $i11 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos>;
+
+        $i12 = $i11 + 1;
+
+        r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos> = $i12;
+
+        $r3 = r0.<org.apache.commons.codec.binary.Base32: byte[] encodeTable>;
+
+        $l13 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: long lbitWorkArea>;
+
+        $l14 = $l13 >> 35;
+
+        $i15 = (int) $l14;
+
+        $i16 = $i15 & 31;
+
+        $b17 = $r3[$i16];
+
+        r41[$i11] = $b17;
+
+        $i18 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos>;
+
+        $i19 = $i18 + 1;
+
+        r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos> = $i19;
+
+        $r4 = r0.<org.apache.commons.codec.binary.Base32: byte[] encodeTable>;
+
+        $l20 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: long lbitWorkArea>;
+
+        $l21 = $l20 >> 30;
+
+        $i22 = (int) $l21;
+
+        $i23 = $i22 & 31;
+
+        $b24 = $r4[$i23];
+
+        r41[$i18] = $b24;
+
+        $i25 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos>;
+
+        $i26 = $i25 + 1;
+
+        r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos> = $i26;
+
+        $r5 = r0.<org.apache.commons.codec.binary.Base32: byte[] encodeTable>;
+
+        $l27 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: long lbitWorkArea>;
+
+        $l28 = $l27 >> 25;
+
+        $i29 = (int) $l28;
+
+        $i30 = $i29 & 31;
+
+        $b31 = $r5[$i30];
+
+        r41[$i25] = $b31;
+
+        $i32 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos>;
+
+        $i33 = $i32 + 1;
+
+        r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos> = $i33;
+
+        $r6 = r0.<org.apache.commons.codec.binary.Base32: byte[] encodeTable>;
+
+        $l34 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: long lbitWorkArea>;
+
+        $l35 = $l34 >> 20;
+
+        $i36 = (int) $l35;
+
+        $i37 = $i36 & 31;
+
+        $b38 = $r6[$i37];
+
+        r41[$i32] = $b38;
+
+        $i39 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos>;
+
+        $i40 = $i39 + 1;
+
+        r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos> = $i40;
+
+        $r7 = r0.<org.apache.commons.codec.binary.Base32: byte[] encodeTable>;
+
+        $l41 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: long lbitWorkArea>;
+
+        $l42 = $l41 >> 15;
+
+        $i43 = (int) $l42;
+
+        $i44 = $i43 & 31;
+
+        $b45 = $r7[$i44];
+
+        r41[$i39] = $b45;
+
+        $i46 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos>;
+
+        $i47 = $i46 + 1;
+
+        r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos> = $i47;
+
+        $r8 = r0.<org.apache.commons.codec.binary.Base32: byte[] encodeTable>;
+
+        $l48 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: long lbitWorkArea>;
+
+        $l49 = $l48 >> 10;
+
+        $i50 = (int) $l49;
+
+        $i51 = $i50 & 31;
+
+        $b52 = $r8[$i51];
+
+        r41[$i46] = $b52;
+
+        $i53 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos>;
+
+        $i54 = $i53 + 1;
+
+        r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos> = $i54;
+
+        $r9 = r0.<org.apache.commons.codec.binary.Base32: byte[] encodeTable>;
+
+        $l55 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: long lbitWorkArea>;
+
+        $l56 = $l55 >> 5;
+
+        $i57 = (int) $l56;
+
+        $i58 = $i57 & 31;
+
+        $b59 = $r9[$i58];
+
+        r41[$i53] = $b59;
+
+        $i60 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos>;
+
+        $i61 = $i60 + 1;
+
+        r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos> = $i61;
+
+        $r10 = r0.<org.apache.commons.codec.binary.Base32: byte[] encodeTable>;
+
+        $l62 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: long lbitWorkArea>;
+
+        $i63 = (int) $l62;
+
+        $i64 = $i63 & 31;
+
+        $b65 = $r10[$i64];
+
+        r41[$i60] = $b65;
+
+        $i66 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int currentLinePos>;
+
+        $i67 = $i66 + 8;
+
+        r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int currentLinePos> = $i67;
+
+        $i68 = r0.<org.apache.commons.codec.binary.Base32: int lineLength>;
+
+        if $i68 <= 0 goto label13;
+
+        $i70 = r0.<org.apache.commons.codec.binary.Base32: int lineLength>;
+
+        $i69 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int currentLinePos>;
+
+        if $i70 > $i69 goto label13;
+
+        $r12 = r0.<org.apache.commons.codec.binary.Base32: byte[] lineSeparator>;
+
+        $i72 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos>;
+
+        $r11 = r0.<org.apache.commons.codec.binary.Base32: byte[] lineSeparator>;
+
+        $i71 = lengthof $r11;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>($r12, 0, r41, $i72, $i71);
+
+        $i74 = r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos>;
+
+        $r13 = r0.<org.apache.commons.codec.binary.Base32: byte[] lineSeparator>;
+
+        $i73 = lengthof $r13;
+
+        $i75 = $i74 + $i73;
+
+        r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int pos> = $i75;
+
+        r2.<org.apache.commons.codec.binary.BaseNCodec$Context: int currentLinePos> = 0;
+
+     label13:
+        i262 = i262 + 1;
+
+     label14:
+        if i262 < i0 goto label11;
+
+     label15:
+        return;
+    }
+
+    public boolean isInAlphabet(byte)
+    {
+        org.apache.commons.codec.binary.Base32 r0;
+        byte b0, $b2;
+        byte[] $r1, $r2;
+        int $i1;
+
+        r0 := @this: org.apache.commons.codec.binary.Base32;
+
+        b0 := @parameter0: byte;
+
+        if b0 < 0 goto label1;
+
+        $r1 = r0.<org.apache.commons.codec.binary.Base32: byte[] decodeTable>;
+
+        $i1 = lengthof $r1;
+
+        if b0 >= $i1 goto label1;
+
+        $r2 = r0.<org.apache.commons.codec.binary.Base32: byte[] decodeTable>;
+
+        $b2 = $r2[b0];
+
+        if $b2 == -1 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+}

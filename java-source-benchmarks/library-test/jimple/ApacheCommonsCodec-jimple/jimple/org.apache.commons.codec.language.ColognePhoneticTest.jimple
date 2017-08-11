@@ -1,0 +1,749 @@
+public class org.apache.commons.codec.language.ColognePhoneticTest extends org.apache.commons.codec.StringEncoderAbstractTest
+{
+
+    public void <init>()
+    {
+        org.apache.commons.codec.language.ColognePhoneticTest r0;
+
+        r0 := @this: org.apache.commons.codec.language.ColognePhoneticTest;
+
+        specialinvoke r0.<org.apache.commons.codec.StringEncoderAbstractTest: void <init>()>();
+
+        return;
+    }
+
+    protected org.apache.commons.codec.language.ColognePhonetic createStringEncoder()
+    {
+        org.apache.commons.codec.language.ColognePhoneticTest r0;
+        org.apache.commons.codec.language.ColognePhonetic $r1;
+
+        r0 := @this: org.apache.commons.codec.language.ColognePhoneticTest;
+
+        $r1 = new org.apache.commons.codec.language.ColognePhonetic;
+
+        specialinvoke $r1.<org.apache.commons.codec.language.ColognePhonetic: void <init>()>();
+
+        return $r1;
+    }
+
+    public void testAabjoe() throws org.apache.commons.codec.EncoderException
+    {
+        org.apache.commons.codec.language.ColognePhoneticTest r0;
+
+        r0 := @this: org.apache.commons.codec.language.ColognePhoneticTest;
+
+        virtualinvoke r0.<org.apache.commons.codec.language.ColognePhoneticTest: void checkEncoding(java.lang.String,java.lang.String)>("01", "Aabjoe");
+
+        return;
+    }
+
+    public void testAaclan() throws org.apache.commons.codec.EncoderException
+    {
+        org.apache.commons.codec.language.ColognePhoneticTest r0;
+
+        r0 := @this: org.apache.commons.codec.language.ColognePhoneticTest;
+
+        virtualinvoke r0.<org.apache.commons.codec.language.ColognePhoneticTest: void checkEncoding(java.lang.String,java.lang.String)>("0856", "Aaclan");
+
+        return;
+    }
+
+    public void testAychlmajrForCodec122() throws org.apache.commons.codec.EncoderException
+    {
+        org.apache.commons.codec.language.ColognePhoneticTest r0;
+
+        r0 := @this: org.apache.commons.codec.language.ColognePhoneticTest;
+
+        virtualinvoke r0.<org.apache.commons.codec.language.ColognePhoneticTest: void checkEncoding(java.lang.String,java.lang.String)>("04567", "Aychlmajr");
+
+        return;
+    }
+
+    public void testEdgeCases() throws org.apache.commons.codec.EncoderException
+    {
+        org.apache.commons.codec.language.ColognePhoneticTest r0;
+        java.lang.String[][] $r2;
+        java.lang.String[] $r3, $r4, $r5, $r6, $r7, $r8, $r9, $r10, $r11, $r12, $r13, $r14, $r15, $r16, $r17, $r18, $r19, $r20, $r21, $r22, $r23, $r24, $r25, $r26, $r27, $r28, $r29, $r30, $r31;
+
+        r0 := @this: org.apache.commons.codec.language.ColognePhoneticTest;
+
+        $r2 = newarray (java.lang.String[])[29];
+
+        $r3 = newarray (java.lang.String)[2];
+
+        $r3[0] = "a";
+
+        $r3[1] = "0";
+
+        $r2[0] = $r3;
+
+        $r4 = newarray (java.lang.String)[2];
+
+        $r4[0] = "e";
+
+        $r4[1] = "0";
+
+        $r2[1] = $r4;
+
+        $r5 = newarray (java.lang.String)[2];
+
+        $r5[0] = "i";
+
+        $r5[1] = "0";
+
+        $r2[2] = $r5;
+
+        $r6 = newarray (java.lang.String)[2];
+
+        $r6[0] = "o";
+
+        $r6[1] = "0";
+
+        $r2[3] = $r6;
+
+        $r7 = newarray (java.lang.String)[2];
+
+        $r7[0] = "u";
+
+        $r7[1] = "0";
+
+        $r2[4] = $r7;
+
+        $r8 = newarray (java.lang.String)[2];
+
+        $r8[0] = "\u00e4";
+
+        $r8[1] = "0";
+
+        $r2[5] = $r8;
+
+        $r9 = newarray (java.lang.String)[2];
+
+        $r9[0] = "\u00f6";
+
+        $r9[1] = "0";
+
+        $r2[6] = $r9;
+
+        $r10 = newarray (java.lang.String)[2];
+
+        $r10[0] = "\u00fc";
+
+        $r10[1] = "0";
+
+        $r2[7] = $r10;
+
+        $r11 = newarray (java.lang.String)[2];
+
+        $r11[0] = "aa";
+
+        $r11[1] = "0";
+
+        $r2[8] = $r11;
+
+        $r12 = newarray (java.lang.String)[2];
+
+        $r12[0] = "ha";
+
+        $r12[1] = "0";
+
+        $r2[9] = $r12;
+
+        $r13 = newarray (java.lang.String)[2];
+
+        $r13[0] = "h";
+
+        $r13[1] = "";
+
+        $r2[10] = $r13;
+
+        $r14 = newarray (java.lang.String)[2];
+
+        $r14[0] = "aha";
+
+        $r14[1] = "0";
+
+        $r2[11] = $r14;
+
+        $r15 = newarray (java.lang.String)[2];
+
+        $r15[0] = "b";
+
+        $r15[1] = "1";
+
+        $r2[12] = $r15;
+
+        $r16 = newarray (java.lang.String)[2];
+
+        $r16[0] = "p";
+
+        $r16[1] = "1";
+
+        $r2[13] = $r16;
+
+        $r17 = newarray (java.lang.String)[2];
+
+        $r17[0] = "ph";
+
+        $r17[1] = "3";
+
+        $r2[14] = $r17;
+
+        $r18 = newarray (java.lang.String)[2];
+
+        $r18[0] = "f";
+
+        $r18[1] = "3";
+
+        $r2[15] = $r18;
+
+        $r19 = newarray (java.lang.String)[2];
+
+        $r19[0] = "v";
+
+        $r19[1] = "3";
+
+        $r2[16] = $r19;
+
+        $r20 = newarray (java.lang.String)[2];
+
+        $r20[0] = "w";
+
+        $r20[1] = "3";
+
+        $r2[17] = $r20;
+
+        $r21 = newarray (java.lang.String)[2];
+
+        $r21[0] = "g";
+
+        $r21[1] = "4";
+
+        $r2[18] = $r21;
+
+        $r22 = newarray (java.lang.String)[2];
+
+        $r22[0] = "k";
+
+        $r22[1] = "4";
+
+        $r2[19] = $r22;
+
+        $r23 = newarray (java.lang.String)[2];
+
+        $r23[0] = "q";
+
+        $r23[1] = "4";
+
+        $r2[20] = $r23;
+
+        $r24 = newarray (java.lang.String)[2];
+
+        $r24[0] = "x";
+
+        $r24[1] = "48";
+
+        $r2[21] = $r24;
+
+        $r25 = newarray (java.lang.String)[2];
+
+        $r25[0] = "ax";
+
+        $r25[1] = "048";
+
+        $r2[22] = $r25;
+
+        $r26 = newarray (java.lang.String)[2];
+
+        $r26[0] = "cx";
+
+        $r26[1] = "48";
+
+        $r2[23] = $r26;
+
+        $r27 = newarray (java.lang.String)[2];
+
+        $r27[0] = "l";
+
+        $r27[1] = "5";
+
+        $r2[24] = $r27;
+
+        $r28 = newarray (java.lang.String)[2];
+
+        $r28[0] = "cl";
+
+        $r28[1] = "45";
+
+        $r2[25] = $r28;
+
+        $r29 = newarray (java.lang.String)[2];
+
+        $r29[0] = "acl";
+
+        $r29[1] = "085";
+
+        $r2[26] = $r29;
+
+        $r30 = newarray (java.lang.String)[2];
+
+        $r30[0] = "mn";
+
+        $r30[1] = "6";
+
+        $r2[27] = $r30;
+
+        $r31 = newarray (java.lang.String)[2];
+
+        $r31[0] = "r";
+
+        $r31[1] = "7";
+
+        $r2[28] = $r31;
+
+        virtualinvoke r0.<org.apache.commons.codec.language.ColognePhoneticTest: void checkEncodings(java.lang.String[][])>($r2);
+
+        return;
+    }
+
+    public void testExamples() throws org.apache.commons.codec.EncoderException
+    {
+        org.apache.commons.codec.language.ColognePhoneticTest r0;
+        java.lang.String[][] $r2;
+        java.lang.String[] $r3, $r4, $r5, $r6, $r7, $r8, $r9, $r10, $r11, $r12, $r13, $r14, $r15, $r16, $r17, $r18, $r19, $r20, $r21, $r22, $r23, $r24, $r25, $r26, $r27, $r28, $r29, $r30;
+
+        r0 := @this: org.apache.commons.codec.language.ColognePhoneticTest;
+
+        $r2 = newarray (java.lang.String[])[28];
+
+        $r3 = newarray (java.lang.String)[2];
+
+        $r3[0] = "m\u00dcller";
+
+        $r3[1] = "657";
+
+        $r2[0] = $r3;
+
+        $r4 = newarray (java.lang.String)[2];
+
+        $r4[0] = "schmidt";
+
+        $r4[1] = "862";
+
+        $r2[1] = $r4;
+
+        $r5 = newarray (java.lang.String)[2];
+
+        $r5[0] = "schneider";
+
+        $r5[1] = "8627";
+
+        $r2[2] = $r5;
+
+        $r6 = newarray (java.lang.String)[2];
+
+        $r6[0] = "fischer";
+
+        $r6[1] = "387";
+
+        $r2[3] = $r6;
+
+        $r7 = newarray (java.lang.String)[2];
+
+        $r7[0] = "weber";
+
+        $r7[1] = "317";
+
+        $r2[4] = $r7;
+
+        $r8 = newarray (java.lang.String)[2];
+
+        $r8[0] = "wagner";
+
+        $r8[1] = "3467";
+
+        $r2[5] = $r8;
+
+        $r9 = newarray (java.lang.String)[2];
+
+        $r9[0] = "becker";
+
+        $r9[1] = "147";
+
+        $r2[6] = $r9;
+
+        $r10 = newarray (java.lang.String)[2];
+
+        $r10[0] = "hoffmann";
+
+        $r10[1] = "0366";
+
+        $r2[7] = $r10;
+
+        $r11 = newarray (java.lang.String)[2];
+
+        $r11[0] = "sch\u00c4fer";
+
+        $r11[1] = "837";
+
+        $r2[8] = $r11;
+
+        $r12 = newarray (java.lang.String)[2];
+
+        $r12[0] = "Breschnew";
+
+        $r12[1] = "17863";
+
+        $r2[9] = $r12;
+
+        $r13 = newarray (java.lang.String)[2];
+
+        $r13[0] = "Wikipedia";
+
+        $r13[1] = "3412";
+
+        $r2[10] = $r13;
+
+        $r14 = newarray (java.lang.String)[2];
+
+        $r14[0] = "peter";
+
+        $r14[1] = "127";
+
+        $r2[11] = $r14;
+
+        $r15 = newarray (java.lang.String)[2];
+
+        $r15[0] = "pharma";
+
+        $r15[1] = "376";
+
+        $r2[12] = $r15;
+
+        $r16 = newarray (java.lang.String)[2];
+
+        $r16[0] = "m\u00f6nchengladbach";
+
+        $r16[1] = "664645214";
+
+        $r2[13] = $r16;
+
+        $r17 = newarray (java.lang.String)[2];
+
+        $r17[0] = "deutsch";
+
+        $r17[1] = "28";
+
+        $r2[14] = $r17;
+
+        $r18 = newarray (java.lang.String)[2];
+
+        $r18[0] = "deutz";
+
+        $r18[1] = "28";
+
+        $r2[15] = $r18;
+
+        $r19 = newarray (java.lang.String)[2];
+
+        $r19[0] = "hamburg";
+
+        $r19[1] = "06174";
+
+        $r2[16] = $r19;
+
+        $r20 = newarray (java.lang.String)[2];
+
+        $r20[0] = "hannover";
+
+        $r20[1] = "0637";
+
+        $r2[17] = $r20;
+
+        $r21 = newarray (java.lang.String)[2];
+
+        $r21[0] = "christstollen";
+
+        $r21[1] = "478256";
+
+        $r2[18] = $r21;
+
+        $r22 = newarray (java.lang.String)[2];
+
+        $r22[0] = "Xanthippe";
+
+        $r22[1] = "48621";
+
+        $r2[19] = $r22;
+
+        $r23 = newarray (java.lang.String)[2];
+
+        $r23[0] = "Zacharias";
+
+        $r23[1] = "8478";
+
+        $r2[20] = $r23;
+
+        $r24 = newarray (java.lang.String)[2];
+
+        $r24[0] = "Holzbau";
+
+        $r24[1] = "0581";
+
+        $r2[21] = $r24;
+
+        $r25 = newarray (java.lang.String)[2];
+
+        $r25[0] = "matsch";
+
+        $r25[1] = "68";
+
+        $r2[22] = $r25;
+
+        $r26 = newarray (java.lang.String)[2];
+
+        $r26[0] = "matz";
+
+        $r26[1] = "68";
+
+        $r2[23] = $r26;
+
+        $r27 = newarray (java.lang.String)[2];
+
+        $r27[0] = "Arbeitsamt";
+
+        $r27[1] = "071862";
+
+        $r2[24] = $r27;
+
+        $r28 = newarray (java.lang.String)[2];
+
+        $r28[0] = "Eberhard";
+
+        $r28[1] = "01772";
+
+        $r2[25] = $r28;
+
+        $r29 = newarray (java.lang.String)[2];
+
+        $r29[0] = "Eberhardt";
+
+        $r29[1] = "01772";
+
+        $r2[26] = $r29;
+
+        $r30 = newarray (java.lang.String)[2];
+
+        $r30[0] = "heithabu";
+
+        $r30[1] = "021";
+
+        $r2[27] = $r30;
+
+        virtualinvoke r0.<org.apache.commons.codec.language.ColognePhoneticTest: void checkEncodings(java.lang.String[][])>($r2);
+
+        return;
+    }
+
+    public void testHyphen() throws org.apache.commons.codec.EncoderException
+    {
+        org.apache.commons.codec.language.ColognePhoneticTest r0;
+        java.lang.String[][] $r2;
+        java.lang.String[] $r3, $r4;
+
+        r0 := @this: org.apache.commons.codec.language.ColognePhoneticTest;
+
+        $r2 = newarray (java.lang.String[])[2];
+
+        $r3 = newarray (java.lang.String)[2];
+
+        $r3[0] = "bergisch-gladbach";
+
+        $r3[1] = "174845214";
+
+        $r2[0] = $r3;
+
+        $r4 = newarray (java.lang.String)[2];
+
+        $r4[0] = "M\u00fcller-L\u00fcdenscheidt";
+
+        $r4[1] = "65752682";
+
+        $r2[1] = $r4;
+
+        virtualinvoke r0.<org.apache.commons.codec.language.ColognePhoneticTest: void checkEncodings(java.lang.String[][])>($r2);
+
+        return;
+    }
+
+    public void testIsEncodeEquals()
+    {
+        org.apache.commons.codec.language.ColognePhoneticTest r0;
+        java.lang.String[] r2, $r5, $r6, $r7, $r8, $r9, $r10, $r11, $r12;
+        int i0, i1;
+        java.lang.String[][] $r4;
+        org.apache.commons.codec.StringEncoder $r13;
+        java.lang.String $r14, $r15;
+        org.apache.commons.codec.language.ColognePhonetic $r16;
+
+        r0 := @this: org.apache.commons.codec.language.ColognePhoneticTest;
+
+        $r4 = newarray (java.lang.String[])[8];
+
+        $r5 = newarray (java.lang.String)[2];
+
+        $r5[0] = "Meyer";
+
+        $r5[1] = "M\u00fcller";
+
+        $r4[0] = $r5;
+
+        $r6 = newarray (java.lang.String)[2];
+
+        $r6[0] = "Meyer";
+
+        $r6[1] = "Mayr";
+
+        $r4[1] = $r6;
+
+        $r7 = newarray (java.lang.String)[2];
+
+        $r7[0] = "house";
+
+        $r7[1] = "house";
+
+        $r4[2] = $r7;
+
+        $r8 = newarray (java.lang.String)[2];
+
+        $r8[0] = "House";
+
+        $r8[1] = "house";
+
+        $r4[3] = $r8;
+
+        $r9 = newarray (java.lang.String)[2];
+
+        $r9[0] = "Haus";
+
+        $r9[1] = "house";
+
+        $r4[4] = $r9;
+
+        $r10 = newarray (java.lang.String)[2];
+
+        $r10[0] = "ganz";
+
+        $r10[1] = "Gans";
+
+        $r4[5] = $r10;
+
+        $r11 = newarray (java.lang.String)[2];
+
+        $r11[0] = "ganz";
+
+        $r11[1] = "G\u00e4nse";
+
+        $r4[6] = $r11;
+
+        $r12 = newarray (java.lang.String)[2];
+
+        $r12[0] = "Miyagi";
+
+        $r12[1] = "Miyako";
+
+        $r4[7] = $r12;
+
+        i0 = lengthof $r4;
+
+        i1 = 0;
+
+        goto label2;
+
+     label1:
+        r2 = $r4[i1];
+
+        $r13 = virtualinvoke r0.<org.apache.commons.codec.language.ColognePhoneticTest: org.apache.commons.codec.StringEncoder getStringEncoder()>();
+
+        $r16 = (org.apache.commons.codec.language.ColognePhonetic) $r13;
+
+        $r15 = r2[1];
+
+        $r14 = r2[0];
+
+        virtualinvoke $r16.<org.apache.commons.codec.language.ColognePhonetic: boolean isEncodeEqual(java.lang.String,java.lang.String)>($r15, $r14);
+
+        i1 = i1 + 1;
+
+     label2:
+        if i1 < i0 goto label1;
+
+        return;
+    }
+
+    public void testVariationsMella() throws org.apache.commons.codec.EncoderException
+    {
+        org.apache.commons.codec.language.ColognePhoneticTest r0;
+        java.lang.String[] $r2;
+
+        r0 := @this: org.apache.commons.codec.language.ColognePhoneticTest;
+
+        $r2 = newarray (java.lang.String)[6];
+
+        $r2[0] = "mella";
+
+        $r2[1] = "milah";
+
+        $r2[2] = "moulla";
+
+        $r2[3] = "mellah";
+
+        $r2[4] = "muehle";
+
+        $r2[5] = "mule";
+
+        virtualinvoke r0.<org.apache.commons.codec.language.ColognePhoneticTest: void checkEncodingVariations(java.lang.String,java.lang.String[])>("65", $r2);
+
+        return;
+    }
+
+    public void testVariationsMeyer() throws org.apache.commons.codec.EncoderException
+    {
+        org.apache.commons.codec.language.ColognePhoneticTest r0;
+        java.lang.String[] $r2;
+
+        r0 := @this: org.apache.commons.codec.language.ColognePhoneticTest;
+
+        $r2 = newarray (java.lang.String)[7];
+
+        $r2[0] = "Meier";
+
+        $r2[1] = "Maier";
+
+        $r2[2] = "Mair";
+
+        $r2[3] = "Meyer";
+
+        $r2[4] = "Meyr";
+
+        $r2[5] = "Mejer";
+
+        $r2[6] = "Major";
+
+        virtualinvoke r0.<org.apache.commons.codec.language.ColognePhoneticTest: void checkEncodingVariations(java.lang.String,java.lang.String[])>("67", $r2);
+
+        return;
+    }
+
+    protected volatile org.apache.commons.codec.StringEncoder createStringEncoder()
+    {
+        org.apache.commons.codec.language.ColognePhoneticTest r0;
+        org.apache.commons.codec.language.ColognePhonetic $r1;
+
+        r0 := @this: org.apache.commons.codec.language.ColognePhoneticTest;
+
+        $r1 = virtualinvoke r0.<org.apache.commons.codec.language.ColognePhoneticTest: org.apache.commons.codec.language.ColognePhonetic createStringEncoder()>();
+
+        return $r1;
+    }
+}

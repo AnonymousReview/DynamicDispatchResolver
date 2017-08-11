@@ -1,0 +1,58 @@
+public class org.apache.commons.io.output.NullOutputStreamTest extends java.lang.Object
+{
+
+    public void <init>()
+    {
+        org.apache.commons.io.output.NullOutputStreamTest r0;
+
+        r0 := @this: org.apache.commons.io.output.NullOutputStreamTest;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void testNull() throws java.io.IOException
+    {
+        org.apache.commons.io.output.NullOutputStreamTest r0;
+        org.apache.commons.io.output.NullOutputStream $r2;
+        java.lang.String $r3, $r5, $r7;
+        byte[] $r4, $r6, $r8;
+
+        r0 := @this: org.apache.commons.io.output.NullOutputStreamTest;
+
+        $r2 = new org.apache.commons.io.output.NullOutputStream;
+
+        specialinvoke $r2.<org.apache.commons.io.output.NullOutputStream: void <init>()>();
+
+        $r3 = "string";
+
+        $r4 = virtualinvoke $r3.<java.lang.String: byte[] getBytes()>();
+
+        virtualinvoke $r2.<org.apache.commons.io.output.NullOutputStream: void write(byte[])>($r4);
+
+        $r5 = "some string";
+
+        $r6 = virtualinvoke $r5.<java.lang.String: byte[] getBytes()>();
+
+        virtualinvoke $r2.<org.apache.commons.io.output.NullOutputStream: void write(byte[],int,int)>($r6, 3, 5);
+
+        virtualinvoke $r2.<org.apache.commons.io.output.NullOutputStream: void write(int)>(1);
+
+        virtualinvoke $r2.<org.apache.commons.io.output.NullOutputStream: void write(int)>(15);
+
+        virtualinvoke $r2.<org.apache.commons.io.output.NullOutputStream: void flush()>();
+
+        virtualinvoke $r2.<org.apache.commons.io.output.NullOutputStream: void close()>();
+
+        $r7 = "allowed";
+
+        $r8 = virtualinvoke $r7.<java.lang.String: byte[] getBytes()>();
+
+        virtualinvoke $r2.<org.apache.commons.io.output.NullOutputStream: void write(byte[])>($r8);
+
+        virtualinvoke $r2.<org.apache.commons.io.output.NullOutputStream: void write(int)>(255);
+
+        return;
+    }
+}

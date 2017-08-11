@@ -1,0 +1,46 @@
+class org.apache.commons.io.IOUtilsTestCase$11 extends java.io.Reader
+{
+    final org.apache.commons.io.IOUtilsTestCase this$0;
+
+    void <init>(org.apache.commons.io.IOUtilsTestCase)
+    {
+        org.apache.commons.io.IOUtilsTestCase$11 r0;
+        org.apache.commons.io.IOUtilsTestCase r1;
+
+        r0 := @this: org.apache.commons.io.IOUtilsTestCase$11;
+
+        r1 := @parameter0: org.apache.commons.io.IOUtilsTestCase;
+
+        r0.<org.apache.commons.io.IOUtilsTestCase$11: org.apache.commons.io.IOUtilsTestCase this$0> = r1;
+
+        specialinvoke r0.<java.io.Reader: void <init>()>();
+
+        return;
+    }
+
+    public int read(char[], int, int) throws java.io.IOException
+    {
+        org.apache.commons.io.IOUtilsTestCase$11 r0;
+        char[] r1;
+        int i0, i1;
+
+        r0 := @this: org.apache.commons.io.IOUtilsTestCase$11;
+
+        r1 := @parameter0: char[];
+
+        i0 := @parameter1: int;
+
+        i1 := @parameter2: int;
+
+        return 0;
+    }
+
+    public void close() throws java.io.IOException
+    {
+        org.apache.commons.io.IOUtilsTestCase$11 r0;
+
+        r0 := @this: org.apache.commons.io.IOUtilsTestCase$11;
+
+        return;
+    }
+}

@@ -1,0 +1,395 @@
+public class org.apache.log4j.Level extends org.apache.log4j.Priority implements java.io.Serializable
+{
+    private static final java.lang.String ALL_NAME;
+    private static final java.lang.String TRACE_NAME;
+    private static final java.lang.String DEBUG_NAME;
+    private static final java.lang.String INFO_NAME;
+    private static final java.lang.String WARN_NAME;
+    private static final java.lang.String ERROR_NAME;
+    private static final java.lang.String FATAL_NAME;
+    private static final java.lang.String OFF_NAME;
+    public static final int TRACE_INT;
+    public static final org.apache.log4j.Level OFF;
+    public static final org.apache.log4j.Level FATAL;
+    public static final org.apache.log4j.Level ERROR;
+    public static final org.apache.log4j.Level WARN;
+    public static final org.apache.log4j.Level INFO;
+    public static final org.apache.log4j.Level DEBUG;
+    public static final org.apache.log4j.Level TRACE;
+    public static final org.apache.log4j.Level ALL;
+    static final long serialVersionUID;
+
+    static void <clinit>()
+    {
+        org.apache.log4j.Level $r0, $r1, $r2, $r3, $r4, $r5, $r6, $r7;
+
+        <org.apache.log4j.Level: long serialVersionUID> = 3491141966387921974L;
+
+        <org.apache.log4j.Level: int TRACE_INT> = 5000;
+
+        <org.apache.log4j.Level: java.lang.String OFF_NAME> = "OFF";
+
+        <org.apache.log4j.Level: java.lang.String FATAL_NAME> = "FATAL";
+
+        <org.apache.log4j.Level: java.lang.String ERROR_NAME> = "ERROR";
+
+        <org.apache.log4j.Level: java.lang.String WARN_NAME> = "WARN";
+
+        <org.apache.log4j.Level: java.lang.String INFO_NAME> = "INFO";
+
+        <org.apache.log4j.Level: java.lang.String DEBUG_NAME> = "DEBUG";
+
+        <org.apache.log4j.Level: java.lang.String TRACE_NAME> = "TRACE";
+
+        <org.apache.log4j.Level: java.lang.String ALL_NAME> = "ALL";
+
+        $r0 = new org.apache.log4j.Level;
+
+        specialinvoke $r0.<org.apache.log4j.Level: void <init>(int,java.lang.String,int)>(2147483647, "OFF", 0);
+
+        <org.apache.log4j.Level: org.apache.log4j.Level OFF> = $r0;
+
+        $r1 = new org.apache.log4j.Level;
+
+        specialinvoke $r1.<org.apache.log4j.Level: void <init>(int,java.lang.String,int)>(50000, "FATAL", 0);
+
+        <org.apache.log4j.Level: org.apache.log4j.Level FATAL> = $r1;
+
+        $r2 = new org.apache.log4j.Level;
+
+        specialinvoke $r2.<org.apache.log4j.Level: void <init>(int,java.lang.String,int)>(40000, "ERROR", 3);
+
+        <org.apache.log4j.Level: org.apache.log4j.Level ERROR> = $r2;
+
+        $r3 = new org.apache.log4j.Level;
+
+        specialinvoke $r3.<org.apache.log4j.Level: void <init>(int,java.lang.String,int)>(30000, "WARN", 4);
+
+        <org.apache.log4j.Level: org.apache.log4j.Level WARN> = $r3;
+
+        $r4 = new org.apache.log4j.Level;
+
+        specialinvoke $r4.<org.apache.log4j.Level: void <init>(int,java.lang.String,int)>(20000, "INFO", 6);
+
+        <org.apache.log4j.Level: org.apache.log4j.Level INFO> = $r4;
+
+        $r5 = new org.apache.log4j.Level;
+
+        specialinvoke $r5.<org.apache.log4j.Level: void <init>(int,java.lang.String,int)>(10000, "DEBUG", 7);
+
+        <org.apache.log4j.Level: org.apache.log4j.Level DEBUG> = $r5;
+
+        $r6 = new org.apache.log4j.Level;
+
+        specialinvoke $r6.<org.apache.log4j.Level: void <init>(int,java.lang.String,int)>(5000, "TRACE", 7);
+
+        <org.apache.log4j.Level: org.apache.log4j.Level TRACE> = $r6;
+
+        $r7 = new org.apache.log4j.Level;
+
+        specialinvoke $r7.<org.apache.log4j.Level: void <init>(int,java.lang.String,int)>(-2147483648, "ALL", 7);
+
+        <org.apache.log4j.Level: org.apache.log4j.Level ALL> = $r7;
+
+        return;
+    }
+
+    protected void <init>(int, java.lang.String, int)
+    {
+        org.apache.log4j.Level r0;
+        int i0, i1;
+        java.lang.String r1;
+
+        r0 := @this: org.apache.log4j.Level;
+
+        i0 := @parameter0: int;
+
+        r1 := @parameter1: java.lang.String;
+
+        i1 := @parameter2: int;
+
+        specialinvoke r0.<org.apache.log4j.Priority: void <init>(int,java.lang.String,int)>(i0, r1, i1);
+
+        return;
+    }
+
+    public static org.apache.log4j.Level toLevel(java.lang.String)
+    {
+        java.lang.String r0;
+        org.apache.log4j.Level $r1, $r2;
+
+        r0 := @parameter0: java.lang.String;
+
+        $r1 = <org.apache.log4j.Level: org.apache.log4j.Level DEBUG>;
+
+        $r2 = staticinvoke <org.apache.log4j.Level: org.apache.log4j.Level toLevel(java.lang.String,org.apache.log4j.Level)>(r0, $r1);
+
+        return $r2;
+    }
+
+    public static org.apache.log4j.Level toLevel(int)
+    {
+        int i0;
+        org.apache.log4j.Level $r0, $r1;
+
+        i0 := @parameter0: int;
+
+        $r0 = <org.apache.log4j.Level: org.apache.log4j.Level DEBUG>;
+
+        $r1 = staticinvoke <org.apache.log4j.Level: org.apache.log4j.Level toLevel(int,org.apache.log4j.Level)>(i0, $r0);
+
+        return $r1;
+    }
+
+    public static org.apache.log4j.Level toLevel(int, org.apache.log4j.Level)
+    {
+        int i0;
+        org.apache.log4j.Level r0, $r1, $r2, $r3, $r4, $r5, $r6, $r7, $r8;
+
+        i0 := @parameter0: int;
+
+        r0 := @parameter1: org.apache.log4j.Level;
+
+        lookupswitch(i0)
+        {
+            case -2147483648: goto label1;
+            case 5000: goto label8;
+            case 10000: goto label2;
+            case 20000: goto label3;
+            case 30000: goto label4;
+            case 40000: goto label5;
+            case 50000: goto label6;
+            case 2147483647: goto label7;
+            default: goto label9;
+        };
+
+     label1:
+        $r8 = <org.apache.log4j.Level: org.apache.log4j.Level ALL>;
+
+        return $r8;
+
+     label2:
+        $r6 = <org.apache.log4j.Level: org.apache.log4j.Level DEBUG>;
+
+        return $r6;
+
+     label3:
+        $r5 = <org.apache.log4j.Level: org.apache.log4j.Level INFO>;
+
+        return $r5;
+
+     label4:
+        $r4 = <org.apache.log4j.Level: org.apache.log4j.Level WARN>;
+
+        return $r4;
+
+     label5:
+        $r3 = <org.apache.log4j.Level: org.apache.log4j.Level ERROR>;
+
+        return $r3;
+
+     label6:
+        $r2 = <org.apache.log4j.Level: org.apache.log4j.Level FATAL>;
+
+        return $r2;
+
+     label7:
+        $r1 = <org.apache.log4j.Level: org.apache.log4j.Level OFF>;
+
+        return $r1;
+
+     label8:
+        $r7 = <org.apache.log4j.Level: org.apache.log4j.Level TRACE>;
+
+        return $r7;
+
+     label9:
+        return r0;
+    }
+
+    public static org.apache.log4j.Level toLevel(java.lang.String, org.apache.log4j.Level)
+    {
+        java.lang.String r0, r2;
+        org.apache.log4j.Level r1, $r3, $r4, $r5, $r6, $r7, $r8, $r9, $r10, $r11;
+        boolean $z0, $z1, $z2, $z3, $z4, $z5, $z6, $z7, $z8;
+
+        r0 := @parameter0: java.lang.String;
+
+        r1 := @parameter1: org.apache.log4j.Level;
+
+        if r0 != null goto label01;
+
+        return r1;
+
+     label01:
+        r2 = virtualinvoke r0.<java.lang.String: java.lang.String toUpperCase()>();
+
+        $z0 = virtualinvoke r2.<java.lang.String: boolean equals(java.lang.Object)>("ALL");
+
+        if $z0 == 0 goto label02;
+
+        $r11 = <org.apache.log4j.Level: org.apache.log4j.Level ALL>;
+
+        return $r11;
+
+     label02:
+        $z1 = virtualinvoke r2.<java.lang.String: boolean equals(java.lang.Object)>("DEBUG");
+
+        if $z1 == 0 goto label03;
+
+        $r10 = <org.apache.log4j.Level: org.apache.log4j.Level DEBUG>;
+
+        return $r10;
+
+     label03:
+        $z2 = virtualinvoke r2.<java.lang.String: boolean equals(java.lang.Object)>("INFO");
+
+        if $z2 == 0 goto label04;
+
+        $r9 = <org.apache.log4j.Level: org.apache.log4j.Level INFO>;
+
+        return $r9;
+
+     label04:
+        $z3 = virtualinvoke r2.<java.lang.String: boolean equals(java.lang.Object)>("WARN");
+
+        if $z3 == 0 goto label05;
+
+        $r8 = <org.apache.log4j.Level: org.apache.log4j.Level WARN>;
+
+        return $r8;
+
+     label05:
+        $z4 = virtualinvoke r2.<java.lang.String: boolean equals(java.lang.Object)>("ERROR");
+
+        if $z4 == 0 goto label06;
+
+        $r7 = <org.apache.log4j.Level: org.apache.log4j.Level ERROR>;
+
+        return $r7;
+
+     label06:
+        $z5 = virtualinvoke r2.<java.lang.String: boolean equals(java.lang.Object)>("FATAL");
+
+        if $z5 == 0 goto label07;
+
+        $r6 = <org.apache.log4j.Level: org.apache.log4j.Level FATAL>;
+
+        return $r6;
+
+     label07:
+        $z6 = virtualinvoke r2.<java.lang.String: boolean equals(java.lang.Object)>("OFF");
+
+        if $z6 == 0 goto label08;
+
+        $r5 = <org.apache.log4j.Level: org.apache.log4j.Level OFF>;
+
+        return $r5;
+
+     label08:
+        $z7 = virtualinvoke r2.<java.lang.String: boolean equals(java.lang.Object)>("TRACE");
+
+        if $z7 == 0 goto label09;
+
+        $r4 = <org.apache.log4j.Level: org.apache.log4j.Level TRACE>;
+
+        return $r4;
+
+     label09:
+        $z8 = virtualinvoke r2.<java.lang.String: boolean equals(java.lang.Object)>("\u0130NFO");
+
+        if $z8 == 0 goto label10;
+
+        $r3 = <org.apache.log4j.Level: org.apache.log4j.Level INFO>;
+
+        return $r3;
+
+     label10:
+        return r1;
+    }
+
+    private void readObject(java.io.ObjectInputStream) throws java.io.IOException, java.lang.ClassNotFoundException
+    {
+        org.apache.log4j.Level r0;
+        java.io.ObjectInputStream r1;
+        int $i0, $i1;
+        java.lang.String $r2, $r3;
+
+        r0 := @this: org.apache.log4j.Level;
+
+        r1 := @parameter0: java.io.ObjectInputStream;
+
+        virtualinvoke r1.<java.io.ObjectInputStream: void defaultReadObject()>();
+
+        $i0 = virtualinvoke r1.<java.io.ObjectInputStream: int readInt()>();
+
+        r0.<org.apache.log4j.Level: int level> = $i0;
+
+        $i1 = virtualinvoke r1.<java.io.ObjectInputStream: int readInt()>();
+
+        r0.<org.apache.log4j.Level: int syslogEquivalent> = $i1;
+
+        $r2 = virtualinvoke r1.<java.io.ObjectInputStream: java.lang.String readUTF()>();
+
+        r0.<org.apache.log4j.Level: java.lang.String levelStr> = $r2;
+
+        $r3 = r0.<org.apache.log4j.Level: java.lang.String levelStr>;
+
+        if $r3 != null goto label1;
+
+        r0.<org.apache.log4j.Level: java.lang.String levelStr> = "";
+
+     label1:
+        return;
+    }
+
+    private void writeObject(java.io.ObjectOutputStream) throws java.io.IOException
+    {
+        org.apache.log4j.Level r0;
+        java.io.ObjectOutputStream r1;
+        int $i0, $i1;
+        java.lang.String $r2;
+
+        r0 := @this: org.apache.log4j.Level;
+
+        r1 := @parameter0: java.io.ObjectOutputStream;
+
+        virtualinvoke r1.<java.io.ObjectOutputStream: void defaultWriteObject()>();
+
+        $i0 = r0.<org.apache.log4j.Level: int level>;
+
+        virtualinvoke r1.<java.io.ObjectOutputStream: void writeInt(int)>($i0);
+
+        $i1 = r0.<org.apache.log4j.Level: int syslogEquivalent>;
+
+        virtualinvoke r1.<java.io.ObjectOutputStream: void writeInt(int)>($i1);
+
+        $r2 = r0.<org.apache.log4j.Level: java.lang.String levelStr>;
+
+        virtualinvoke r1.<java.io.ObjectOutputStream: void writeUTF(java.lang.String)>($r2);
+
+        return;
+    }
+
+    private java.lang.Object readResolve() throws java.io.ObjectStreamException
+    {
+        org.apache.log4j.Level r0, $r2;
+        java.lang.Class $r1;
+        int $i0;
+
+        r0 := @this: org.apache.log4j.Level;
+
+        $r1 = virtualinvoke r0.<java.lang.Object: java.lang.Class getClass()>();
+
+        if $r1 != class "org/apache/log4j/Level" goto label1;
+
+        $i0 = r0.<org.apache.log4j.Level: int level>;
+
+        $r2 = staticinvoke <org.apache.log4j.Level: org.apache.log4j.Level toLevel(int)>($i0);
+
+        return $r2;
+
+     label1:
+        return r0;
+    }
+}

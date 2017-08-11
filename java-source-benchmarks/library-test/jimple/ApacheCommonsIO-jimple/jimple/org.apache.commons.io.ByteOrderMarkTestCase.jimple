@@ -1,0 +1,573 @@
+public class org.apache.commons.io.ByteOrderMarkTestCase extends java.lang.Object
+{
+    private static final org.apache.commons.io.ByteOrderMark TEST_BOM_1;
+    private static final org.apache.commons.io.ByteOrderMark TEST_BOM_2;
+    private static final org.apache.commons.io.ByteOrderMark TEST_BOM_3;
+
+    static void <clinit>()
+    {
+        org.apache.commons.io.ByteOrderMark $r0, $r2, $r4;
+        int[] $r1, $r3, $r5;
+
+        $r0 = new org.apache.commons.io.ByteOrderMark;
+
+        $r1 = newarray (int)[1];
+
+        $r1[0] = 1;
+
+        specialinvoke $r0.<org.apache.commons.io.ByteOrderMark: void <init>(java.lang.String,int[])>("test1", $r1);
+
+        <org.apache.commons.io.ByteOrderMarkTestCase: org.apache.commons.io.ByteOrderMark TEST_BOM_1> = $r0;
+
+        $r2 = new org.apache.commons.io.ByteOrderMark;
+
+        $r3 = newarray (int)[2];
+
+        $r3[0] = 1;
+
+        $r3[1] = 2;
+
+        specialinvoke $r2.<org.apache.commons.io.ByteOrderMark: void <init>(java.lang.String,int[])>("test2", $r3);
+
+        <org.apache.commons.io.ByteOrderMarkTestCase: org.apache.commons.io.ByteOrderMark TEST_BOM_2> = $r2;
+
+        $r4 = new org.apache.commons.io.ByteOrderMark;
+
+        $r5 = newarray (int)[3];
+
+        $r5[0] = 1;
+
+        $r5[1] = 2;
+
+        $r5[2] = 3;
+
+        specialinvoke $r4.<org.apache.commons.io.ByteOrderMark: void <init>(java.lang.String,int[])>("test3", $r5);
+
+        <org.apache.commons.io.ByteOrderMarkTestCase: org.apache.commons.io.ByteOrderMark TEST_BOM_3> = $r4;
+
+        return;
+    }
+
+    public void <init>()
+    {
+        org.apache.commons.io.ByteOrderMarkTestCase r0;
+
+        r0 := @this: org.apache.commons.io.ByteOrderMarkTestCase;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void charsetName()
+    {
+        org.apache.commons.io.ByteOrderMarkTestCase r0;
+        org.apache.commons.io.ByteOrderMark $r1, $r3, $r5;
+        java.lang.String $r2, $r4, $r6;
+
+        r0 := @this: org.apache.commons.io.ByteOrderMarkTestCase;
+
+        $r1 = <org.apache.commons.io.ByteOrderMarkTestCase: org.apache.commons.io.ByteOrderMark TEST_BOM_1>;
+
+        $r2 = virtualinvoke $r1.<org.apache.commons.io.ByteOrderMark: java.lang.String getCharsetName()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,java.lang.Object,java.lang.Object)>("test1 name", "test1", $r2);
+
+        $r3 = <org.apache.commons.io.ByteOrderMarkTestCase: org.apache.commons.io.ByteOrderMark TEST_BOM_2>;
+
+        $r4 = virtualinvoke $r3.<org.apache.commons.io.ByteOrderMark: java.lang.String getCharsetName()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,java.lang.Object,java.lang.Object)>("test2 name", "test2", $r4);
+
+        $r5 = <org.apache.commons.io.ByteOrderMarkTestCase: org.apache.commons.io.ByteOrderMark TEST_BOM_3>;
+
+        $r6 = virtualinvoke $r5.<org.apache.commons.io.ByteOrderMark: java.lang.String getCharsetName()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,java.lang.Object,java.lang.Object)>("test3 name", "test3", $r6);
+
+        return;
+    }
+
+    public void constantCharsetNames()
+    {
+        org.apache.commons.io.ByteOrderMarkTestCase r0;
+        org.apache.commons.io.ByteOrderMark $r1, $r4, $r7, $r10, $r13;
+        java.lang.String $r2, $r5, $r8, $r11, $r14;
+        java.nio.charset.Charset $r3, $r6, $r9, $r12, $r15;
+
+        r0 := @this: org.apache.commons.io.ByteOrderMarkTestCase;
+
+        $r1 = <org.apache.commons.io.ByteOrderMark: org.apache.commons.io.ByteOrderMark UTF_8>;
+
+        $r2 = virtualinvoke $r1.<org.apache.commons.io.ByteOrderMark: java.lang.String getCharsetName()>();
+
+        $r3 = staticinvoke <java.nio.charset.Charset: java.nio.charset.Charset forName(java.lang.String)>($r2);
+
+        staticinvoke <org.junit.Assert: void assertNotNull(java.lang.Object)>($r3);
+
+        $r4 = <org.apache.commons.io.ByteOrderMark: org.apache.commons.io.ByteOrderMark UTF_16BE>;
+
+        $r5 = virtualinvoke $r4.<org.apache.commons.io.ByteOrderMark: java.lang.String getCharsetName()>();
+
+        $r6 = staticinvoke <java.nio.charset.Charset: java.nio.charset.Charset forName(java.lang.String)>($r5);
+
+        staticinvoke <org.junit.Assert: void assertNotNull(java.lang.Object)>($r6);
+
+        $r7 = <org.apache.commons.io.ByteOrderMark: org.apache.commons.io.ByteOrderMark UTF_16LE>;
+
+        $r8 = virtualinvoke $r7.<org.apache.commons.io.ByteOrderMark: java.lang.String getCharsetName()>();
+
+        $r9 = staticinvoke <java.nio.charset.Charset: java.nio.charset.Charset forName(java.lang.String)>($r8);
+
+        staticinvoke <org.junit.Assert: void assertNotNull(java.lang.Object)>($r9);
+
+        $r10 = <org.apache.commons.io.ByteOrderMark: org.apache.commons.io.ByteOrderMark UTF_32BE>;
+
+        $r11 = virtualinvoke $r10.<org.apache.commons.io.ByteOrderMark: java.lang.String getCharsetName()>();
+
+        $r12 = staticinvoke <java.nio.charset.Charset: java.nio.charset.Charset forName(java.lang.String)>($r11);
+
+        staticinvoke <org.junit.Assert: void assertNotNull(java.lang.Object)>($r12);
+
+        $r13 = <org.apache.commons.io.ByteOrderMark: org.apache.commons.io.ByteOrderMark UTF_32LE>;
+
+        $r14 = virtualinvoke $r13.<org.apache.commons.io.ByteOrderMark: java.lang.String getCharsetName()>();
+
+        $r15 = staticinvoke <java.nio.charset.Charset: java.nio.charset.Charset forName(java.lang.String)>($r14);
+
+        staticinvoke <org.junit.Assert: void assertNotNull(java.lang.Object)>($r15);
+
+        return;
+    }
+
+    public void testLength()
+    {
+        org.apache.commons.io.ByteOrderMarkTestCase r0;
+        org.apache.commons.io.ByteOrderMark $r1, $r2, $r3;
+        int $i0, $i2, $i4;
+        long $l1, $l3, $l5;
+
+        r0 := @this: org.apache.commons.io.ByteOrderMarkTestCase;
+
+        $r1 = <org.apache.commons.io.ByteOrderMarkTestCase: org.apache.commons.io.ByteOrderMark TEST_BOM_1>;
+
+        $i0 = virtualinvoke $r1.<org.apache.commons.io.ByteOrderMark: int length()>();
+
+        $l1 = (long) $i0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("test1 length", 1L, $l1);
+
+        $r2 = <org.apache.commons.io.ByteOrderMarkTestCase: org.apache.commons.io.ByteOrderMark TEST_BOM_2>;
+
+        $i2 = virtualinvoke $r2.<org.apache.commons.io.ByteOrderMark: int length()>();
+
+        $l3 = (long) $i2;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("test2 length", 2L, $l3);
+
+        $r3 = <org.apache.commons.io.ByteOrderMarkTestCase: org.apache.commons.io.ByteOrderMark TEST_BOM_3>;
+
+        $i4 = virtualinvoke $r3.<org.apache.commons.io.ByteOrderMark: int length()>();
+
+        $l5 = (long) $i4;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("test3 length", 3L, $l5);
+
+        return;
+    }
+
+    public void get()
+    {
+        org.apache.commons.io.ByteOrderMarkTestCase r0;
+        org.apache.commons.io.ByteOrderMark $r1, $r2, $r3, $r4, $r5, $r6;
+        int $i0, $i2, $i4, $i6, $i8, $i10;
+        long $l1, $l3, $l5, $l7, $l9, $l11;
+
+        r0 := @this: org.apache.commons.io.ByteOrderMarkTestCase;
+
+        $r1 = <org.apache.commons.io.ByteOrderMarkTestCase: org.apache.commons.io.ByteOrderMark TEST_BOM_1>;
+
+        $i0 = virtualinvoke $r1.<org.apache.commons.io.ByteOrderMark: int get(int)>(0);
+
+        $l1 = (long) $i0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("test1 get(0)", 1L, $l1);
+
+        $r2 = <org.apache.commons.io.ByteOrderMarkTestCase: org.apache.commons.io.ByteOrderMark TEST_BOM_2>;
+
+        $i2 = virtualinvoke $r2.<org.apache.commons.io.ByteOrderMark: int get(int)>(0);
+
+        $l3 = (long) $i2;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("test2 get(0)", 1L, $l3);
+
+        $r3 = <org.apache.commons.io.ByteOrderMarkTestCase: org.apache.commons.io.ByteOrderMark TEST_BOM_2>;
+
+        $i4 = virtualinvoke $r3.<org.apache.commons.io.ByteOrderMark: int get(int)>(1);
+
+        $l5 = (long) $i4;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("test2 get(1)", 2L, $l5);
+
+        $r4 = <org.apache.commons.io.ByteOrderMarkTestCase: org.apache.commons.io.ByteOrderMark TEST_BOM_3>;
+
+        $i6 = virtualinvoke $r4.<org.apache.commons.io.ByteOrderMark: int get(int)>(0);
+
+        $l7 = (long) $i6;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("test3 get(0)", 1L, $l7);
+
+        $r5 = <org.apache.commons.io.ByteOrderMarkTestCase: org.apache.commons.io.ByteOrderMark TEST_BOM_3>;
+
+        $i8 = virtualinvoke $r5.<org.apache.commons.io.ByteOrderMark: int get(int)>(1);
+
+        $l9 = (long) $i8;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("test3 get(1)", 2L, $l9);
+
+        $r6 = <org.apache.commons.io.ByteOrderMarkTestCase: org.apache.commons.io.ByteOrderMark TEST_BOM_3>;
+
+        $i10 = virtualinvoke $r6.<org.apache.commons.io.ByteOrderMark: int get(int)>(2);
+
+        $l11 = (long) $i10;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("test3 get(2)", 3L, $l11);
+
+        return;
+    }
+
+    public void getBytes()
+    {
+        org.apache.commons.io.ByteOrderMarkTestCase r0;
+        org.apache.commons.io.ByteOrderMark $r1, $r4, $r7;
+        byte[] $r2, $r3, $r5, $r6, $r8, $r9;
+        boolean $z0, $z1, $z2;
+
+        r0 := @this: org.apache.commons.io.ByteOrderMarkTestCase;
+
+        $r1 = <org.apache.commons.io.ByteOrderMarkTestCase: org.apache.commons.io.ByteOrderMark TEST_BOM_1>;
+
+        $r2 = virtualinvoke $r1.<org.apache.commons.io.ByteOrderMark: byte[] getBytes()>();
+
+        $r3 = newarray (byte)[1];
+
+        $r3[0] = 1;
+
+        $z0 = staticinvoke <java.util.Arrays: boolean equals(byte[],byte[])>($r2, $r3);
+
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>("test1 bytes", $z0);
+
+        $r4 = <org.apache.commons.io.ByteOrderMarkTestCase: org.apache.commons.io.ByteOrderMark TEST_BOM_2>;
+
+        $r5 = virtualinvoke $r4.<org.apache.commons.io.ByteOrderMark: byte[] getBytes()>();
+
+        $r6 = newarray (byte)[2];
+
+        $r6[0] = 1;
+
+        $r6[1] = 2;
+
+        $z1 = staticinvoke <java.util.Arrays: boolean equals(byte[],byte[])>($r5, $r6);
+
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>("test1 bytes", $z1);
+
+        $r7 = <org.apache.commons.io.ByteOrderMarkTestCase: org.apache.commons.io.ByteOrderMark TEST_BOM_3>;
+
+        $r8 = virtualinvoke $r7.<org.apache.commons.io.ByteOrderMark: byte[] getBytes()>();
+
+        $r9 = newarray (byte)[3];
+
+        $r9[0] = 1;
+
+        $r9[1] = 2;
+
+        $r9[2] = 3;
+
+        $z2 = staticinvoke <java.util.Arrays: boolean equals(byte[],byte[])>($r8, $r9);
+
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>("test1 bytes", $z2);
+
+        return;
+    }
+
+    public void testEquals()
+    {
+        org.apache.commons.io.ByteOrderMarkTestCase r0;
+        org.apache.commons.io.ByteOrderMark $r1, $r2, $r3, $r4, $r5, $r6, $r8, $r9, $r11, $r12, $r14, $r15, $r17, $r18, $r20;
+        boolean $z0, $z1, $z2, $z3, $z4, $z5, $z6, $z7;
+        java.lang.Object $r7;
+        int[] $r10, $r13, $r16, $r19;
+
+        r0 := @this: org.apache.commons.io.ByteOrderMarkTestCase;
+
+        $r2 = <org.apache.commons.io.ByteOrderMarkTestCase: org.apache.commons.io.ByteOrderMark TEST_BOM_1>;
+
+        $r1 = <org.apache.commons.io.ByteOrderMarkTestCase: org.apache.commons.io.ByteOrderMark TEST_BOM_1>;
+
+        $z0 = virtualinvoke $r2.<org.apache.commons.io.ByteOrderMark: boolean equals(java.lang.Object)>($r1);
+
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>("test1 equals", $z0);
+
+        $r4 = <org.apache.commons.io.ByteOrderMarkTestCase: org.apache.commons.io.ByteOrderMark TEST_BOM_2>;
+
+        $r3 = <org.apache.commons.io.ByteOrderMarkTestCase: org.apache.commons.io.ByteOrderMark TEST_BOM_2>;
+
+        $z1 = virtualinvoke $r4.<org.apache.commons.io.ByteOrderMark: boolean equals(java.lang.Object)>($r3);
+
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>("test2 equals", $z1);
+
+        $r6 = <org.apache.commons.io.ByteOrderMarkTestCase: org.apache.commons.io.ByteOrderMark TEST_BOM_3>;
+
+        $r5 = <org.apache.commons.io.ByteOrderMarkTestCase: org.apache.commons.io.ByteOrderMark TEST_BOM_3>;
+
+        $z2 = virtualinvoke $r6.<org.apache.commons.io.ByteOrderMark: boolean equals(java.lang.Object)>($r5);
+
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>("test3 equals", $z2);
+
+        $r8 = <org.apache.commons.io.ByteOrderMarkTestCase: org.apache.commons.io.ByteOrderMark TEST_BOM_1>;
+
+        $r7 = new java.lang.Object;
+
+        specialinvoke $r7.<java.lang.Object: void <init>()>();
+
+        $z3 = virtualinvoke $r8.<org.apache.commons.io.ByteOrderMark: boolean equals(java.lang.Object)>($r7);
+
+        staticinvoke <org.junit.Assert: void assertFalse(java.lang.String,boolean)>("Object not equal", $z3);
+
+        $r11 = <org.apache.commons.io.ByteOrderMarkTestCase: org.apache.commons.io.ByteOrderMark TEST_BOM_1>;
+
+        $r9 = new org.apache.commons.io.ByteOrderMark;
+
+        $r10 = newarray (int)[1];
+
+        $r10[0] = 2;
+
+        specialinvoke $r9.<org.apache.commons.io.ByteOrderMark: void <init>(java.lang.String,int[])>("1a", $r10);
+
+        $z4 = virtualinvoke $r11.<org.apache.commons.io.ByteOrderMark: boolean equals(java.lang.Object)>($r9);
+
+        staticinvoke <org.junit.Assert: void assertFalse(java.lang.String,boolean)>("test1-1 not equal", $z4);
+
+        $r14 = <org.apache.commons.io.ByteOrderMarkTestCase: org.apache.commons.io.ByteOrderMark TEST_BOM_1>;
+
+        $r12 = new org.apache.commons.io.ByteOrderMark;
+
+        $r13 = newarray (int)[2];
+
+        $r13[0] = 1;
+
+        $r13[1] = 2;
+
+        specialinvoke $r12.<org.apache.commons.io.ByteOrderMark: void <init>(java.lang.String,int[])>("1b", $r13);
+
+        $z5 = virtualinvoke $r14.<org.apache.commons.io.ByteOrderMark: boolean equals(java.lang.Object)>($r12);
+
+        staticinvoke <org.junit.Assert: void assertFalse(java.lang.String,boolean)>("test1-2 not test2", $z5);
+
+        $r17 = <org.apache.commons.io.ByteOrderMarkTestCase: org.apache.commons.io.ByteOrderMark TEST_BOM_2>;
+
+        $r15 = new org.apache.commons.io.ByteOrderMark;
+
+        $r16 = newarray (int)[2];
+
+        $r16[0] = 1;
+
+        $r16[1] = 1;
+
+        specialinvoke $r15.<org.apache.commons.io.ByteOrderMark: void <init>(java.lang.String,int[])>("2", $r16);
+
+        $z6 = virtualinvoke $r17.<org.apache.commons.io.ByteOrderMark: boolean equals(java.lang.Object)>($r15);
+
+        staticinvoke <org.junit.Assert: void assertFalse(java.lang.String,boolean)>("test2 not equal", $z6);
+
+        $r20 = <org.apache.commons.io.ByteOrderMarkTestCase: org.apache.commons.io.ByteOrderMark TEST_BOM_3>;
+
+        $r18 = new org.apache.commons.io.ByteOrderMark;
+
+        $r19 = newarray (int)[3];
+
+        $r19[0] = 1;
+
+        $r19[1] = 2;
+
+        $r19[2] = 4;
+
+        specialinvoke $r18.<org.apache.commons.io.ByteOrderMark: void <init>(java.lang.String,int[])>("3", $r19);
+
+        $z7 = virtualinvoke $r20.<org.apache.commons.io.ByteOrderMark: boolean equals(java.lang.Object)>($r18);
+
+        staticinvoke <org.junit.Assert: void assertFalse(java.lang.String,boolean)>("test3 not equal", $z7);
+
+        return;
+    }
+
+    public void testHashCode()
+    {
+        org.apache.commons.io.ByteOrderMarkTestCase r0;
+        int i0, $i1, $i3, $i5, $i7, $i9, $i11;
+        java.lang.Class $r1;
+        org.apache.commons.io.ByteOrderMark $r2, $r3, $r4;
+        long $l2, $l4, $l6, $l8, $l10, $l12;
+
+        r0 := @this: org.apache.commons.io.ByteOrderMarkTestCase;
+
+        $r1 = class "org/apache/commons/io/ByteOrderMark";
+
+        i0 = virtualinvoke $r1.<java.lang.Object: int hashCode()>();
+
+        $i1 = i0 + 1;
+
+        $l2 = (long) $i1;
+
+        $r2 = <org.apache.commons.io.ByteOrderMarkTestCase: org.apache.commons.io.ByteOrderMark TEST_BOM_1>;
+
+        $i3 = virtualinvoke $r2.<org.apache.commons.io.ByteOrderMark: int hashCode()>();
+
+        $l4 = (long) $i3;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("hash test1 ", $l2, $l4);
+
+        $i5 = i0 + 3;
+
+        $l6 = (long) $i5;
+
+        $r3 = <org.apache.commons.io.ByteOrderMarkTestCase: org.apache.commons.io.ByteOrderMark TEST_BOM_2>;
+
+        $i7 = virtualinvoke $r3.<org.apache.commons.io.ByteOrderMark: int hashCode()>();
+
+        $l8 = (long) $i7;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("hash test2 ", $l6, $l8);
+
+        $i9 = i0 + 6;
+
+        $l10 = (long) $i9;
+
+        $r4 = <org.apache.commons.io.ByteOrderMarkTestCase: org.apache.commons.io.ByteOrderMark TEST_BOM_3>;
+
+        $i11 = virtualinvoke $r4.<org.apache.commons.io.ByteOrderMark: int hashCode()>();
+
+        $l12 = (long) $i11;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("hash test3 ", $l10, $l12);
+
+        return;
+    }
+
+    public void errors()
+    {
+        org.apache.commons.io.ByteOrderMarkTestCase r0;
+        int[] $r1, $r3, $r6;
+        org.apache.commons.io.ByteOrderMark $r2, $r4, $r5, $r7;
+        java.lang.IllegalArgumentException $r8, $r9, $r10, $r11;
+
+        r0 := @this: org.apache.commons.io.ByteOrderMarkTestCase;
+
+     label01:
+        $r2 = new org.apache.commons.io.ByteOrderMark;
+
+        $r1 = newarray (int)[3];
+
+        $r1[0] = 1;
+
+        $r1[1] = 2;
+
+        $r1[2] = 3;
+
+        specialinvoke $r2.<org.apache.commons.io.ByteOrderMark: void <init>(java.lang.String,int[])>(null, $r1);
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("null charset name, expected IllegalArgumentException");
+
+     label02:
+        goto label04;
+
+     label03:
+        $r10 := @caughtexception;
+
+     label04:
+        $r4 = new org.apache.commons.io.ByteOrderMark;
+
+        $r3 = newarray (int)[3];
+
+        $r3[0] = 1;
+
+        $r3[1] = 2;
+
+        $r3[2] = 3;
+
+        specialinvoke $r4.<org.apache.commons.io.ByteOrderMark: void <init>(java.lang.String,int[])>("", $r3);
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("no charset name, expected IllegalArgumentException");
+
+     label05:
+        goto label07;
+
+     label06:
+        $r11 := @caughtexception;
+
+     label07:
+        $r5 = new org.apache.commons.io.ByteOrderMark;
+
+        specialinvoke $r5.<org.apache.commons.io.ByteOrderMark: void <init>(java.lang.String,int[])>("a", null);
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("null bytes, expected IllegalArgumentException");
+
+     label08:
+        goto label10;
+
+     label09:
+        $r8 := @caughtexception;
+
+     label10:
+        $r7 = new org.apache.commons.io.ByteOrderMark;
+
+        $r6 = newarray (int)[0];
+
+        specialinvoke $r7.<org.apache.commons.io.ByteOrderMark: void <init>(java.lang.String,int[])>("b", $r6);
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("empty bytes, expected IllegalArgumentException");
+
+     label11:
+        goto label13;
+
+     label12:
+        $r9 := @caughtexception;
+
+     label13:
+        return;
+
+        catch java.lang.IllegalArgumentException from label01 to label02 with label03;
+        catch java.lang.IllegalArgumentException from label04 to label05 with label06;
+        catch java.lang.IllegalArgumentException from label07 to label08 with label09;
+        catch java.lang.IllegalArgumentException from label10 to label11 with label12;
+    }
+
+    public void testToString()
+    {
+        org.apache.commons.io.ByteOrderMarkTestCase r0;
+        org.apache.commons.io.ByteOrderMark $r1, $r3, $r5;
+        java.lang.String $r2, $r4, $r6;
+
+        r0 := @this: org.apache.commons.io.ByteOrderMarkTestCase;
+
+        $r1 = <org.apache.commons.io.ByteOrderMarkTestCase: org.apache.commons.io.ByteOrderMark TEST_BOM_1>;
+
+        $r2 = virtualinvoke $r1.<org.apache.commons.io.ByteOrderMark: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,java.lang.Object,java.lang.Object)>("test1 ", "ByteOrderMark[test1: 0x1]", $r2);
+
+        $r3 = <org.apache.commons.io.ByteOrderMarkTestCase: org.apache.commons.io.ByteOrderMark TEST_BOM_2>;
+
+        $r4 = virtualinvoke $r3.<org.apache.commons.io.ByteOrderMark: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,java.lang.Object,java.lang.Object)>("test2 ", "ByteOrderMark[test2: 0x1,0x2]", $r4);
+
+        $r5 = <org.apache.commons.io.ByteOrderMarkTestCase: org.apache.commons.io.ByteOrderMark TEST_BOM_3>;
+
+        $r6 = virtualinvoke $r5.<org.apache.commons.io.ByteOrderMark: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,java.lang.Object,java.lang.Object)>("test3 ", "ByteOrderMark[test3: 0x1,0x2,0x3]", $r6);
+
+        return;
+    }
+}

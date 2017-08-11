@@ -1,0 +1,317 @@
+public final class org.apache.log4j.EnhancedThrowableRenderer extends java.lang.Object implements org.apache.log4j.spi.ThrowableRenderer
+{
+    private java.lang.reflect.Method getStackTraceMethod;
+    private java.lang.reflect.Method getClassNameMethod;
+
+    public void <init>()
+    {
+        org.apache.log4j.EnhancedThrowableRenderer r0;
+        java.lang.Class r1, $r2;
+        java.lang.reflect.Method $r3, $r4;
+        java.lang.Exception $r5;
+
+        r0 := @this: org.apache.log4j.EnhancedThrowableRenderer;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+     label1:
+        $r2 = class "java/lang/Throwable";
+
+        $r3 = virtualinvoke $r2.<java.lang.Class: java.lang.reflect.Method getMethod(java.lang.String,java.lang.Class[])>("getStackTrace", null);
+
+        r0.<org.apache.log4j.EnhancedThrowableRenderer: java.lang.reflect.Method getStackTraceMethod> = $r3;
+
+        r1 = staticinvoke <java.lang.Class: java.lang.Class forName(java.lang.String)>("java.lang.StackTraceElement");
+
+        $r4 = virtualinvoke r1.<java.lang.Class: java.lang.reflect.Method getMethod(java.lang.String,java.lang.Class[])>("getClassName", null);
+
+        r0.<org.apache.log4j.EnhancedThrowableRenderer: java.lang.reflect.Method getClassNameMethod> = $r4;
+
+     label2:
+        goto label4;
+
+     label3:
+        $r5 := @caughtexception;
+
+     label4:
+        return;
+
+        catch java.lang.Exception from label1 to label2 with label3;
+    }
+
+    public java.lang.String[] doRender(java.lang.Throwable)
+    {
+        org.apache.log4j.EnhancedThrowableRenderer r0;
+        java.lang.Throwable r1;
+        java.lang.Object[] r2;
+        java.lang.String[] r3, $r6;
+        java.lang.reflect.Method $r5, $r7;
+        java.lang.Object $r8, $r11;
+        int $i0, $i1, $i2, $i3, i4;
+        java.lang.String $r9, $r12;
+        java.util.HashMap $r10;
+        java.lang.Exception $r13;
+
+        r0 := @this: org.apache.log4j.EnhancedThrowableRenderer;
+
+        r1 := @parameter0: java.lang.Throwable;
+
+        $r5 = r0.<org.apache.log4j.EnhancedThrowableRenderer: java.lang.reflect.Method getStackTraceMethod>;
+
+        if $r5 == null goto label6;
+
+     label1:
+        $r7 = r0.<org.apache.log4j.EnhancedThrowableRenderer: java.lang.reflect.Method getStackTraceMethod>;
+
+        $r8 = virtualinvoke $r7.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>(r1, null);
+
+        r2 = (java.lang.Object[]) $r8;
+
+        $i0 = lengthof r2;
+
+        $i1 = $i0 + 1;
+
+        r3 = newarray (java.lang.String)[$i1];
+
+        $r9 = virtualinvoke r1.<java.lang.Throwable: java.lang.String toString()>();
+
+        r3[0] = $r9;
+
+        $r10 = new java.util.HashMap;
+
+        specialinvoke $r10.<java.util.HashMap: void <init>()>();
+
+        i4 = 0;
+
+        goto label3;
+
+     label2:
+        $i3 = i4 + 1;
+
+        $r11 = r2[i4];
+
+        $r12 = specialinvoke r0.<org.apache.log4j.EnhancedThrowableRenderer: java.lang.String formatElement(java.lang.Object,java.util.Map)>($r11, $r10);
+
+        r3[$i3] = $r12;
+
+        i4 = i4 + 1;
+
+     label3:
+        $i2 = lengthof r2;
+
+        if i4 < $i2 goto label2;
+
+     label4:
+        return r3;
+
+     label5:
+        $r13 := @caughtexception;
+
+     label6:
+        $r6 = staticinvoke <org.apache.log4j.DefaultThrowableRenderer: java.lang.String[] render(java.lang.Throwable)>(r1);
+
+        return $r6;
+
+        catch java.lang.Exception from label1 to label4 with label5;
+    }
+
+    private java.lang.String formatElement(java.lang.Object, java.util.Map)
+    {
+        org.apache.log4j.EnhancedThrowableRenderer r0;
+        java.lang.Object r1, r4, $r10;
+        java.util.Map r2;
+        java.lang.Class r5;
+        int i0, i1, $i3, $i4, $i5, i6;
+        java.lang.String r6, $r17, $r18, $r21, r26, r31, $r32, $r34;
+        java.lang.StringBuffer $r7;
+        java.lang.reflect.Method $r9;
+        java.security.ProtectionDomain $r12;
+        boolean $z0;
+        char $c2;
+        java.lang.SecurityException $r24;
+        java.lang.Exception $r25;
+        java.security.CodeSource r27;
+        java.net.URL r28;
+        java.lang.Package r30;
+
+        r0 := @this: org.apache.log4j.EnhancedThrowableRenderer;
+
+        r1 := @parameter0: java.lang.Object;
+
+        r2 := @parameter1: java.util.Map;
+
+        $r7 = new java.lang.StringBuffer;
+
+        specialinvoke $r7.<java.lang.StringBuffer: void <init>(java.lang.String)>("\tat ");
+
+        virtualinvoke $r7.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(r1);
+
+     label01:
+        $r9 = r0.<org.apache.log4j.EnhancedThrowableRenderer: java.lang.reflect.Method getClassNameMethod>;
+
+        $r10 = virtualinvoke $r9.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>(r1, null);
+
+        r26 = virtualinvoke $r10.<java.lang.Object: java.lang.String toString()>();
+
+        r4 = interfaceinvoke r2.<java.util.Map: java.lang.Object get(java.lang.Object)>(r26);
+
+        if r4 == null goto label02;
+
+        virtualinvoke $r7.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(r4);
+
+        goto label14;
+
+     label02:
+        r5 = specialinvoke r0.<org.apache.log4j.EnhancedThrowableRenderer: java.lang.Class findClass(java.lang.String)>(r26);
+
+        i0 = virtualinvoke $r7.<java.lang.StringBuffer: int length()>();
+
+        virtualinvoke $r7.<java.lang.StringBuffer: java.lang.StringBuffer append(char)>(91);
+
+     label03:
+        $r12 = virtualinvoke r5.<java.lang.Class: java.security.ProtectionDomain getProtectionDomain()>();
+
+        r27 = virtualinvoke $r12.<java.security.ProtectionDomain: java.security.CodeSource getCodeSource()>();
+
+        if r27 == null goto label10;
+
+        r28 = virtualinvoke r27.<java.security.CodeSource: java.net.URL getLocation()>();
+
+        if r28 == null goto label10;
+
+        $r17 = "file";
+
+        $r18 = virtualinvoke r28.<java.net.URL: java.lang.String getProtocol()>();
+
+        $z0 = virtualinvoke $r17.<java.lang.String: boolean equals(java.lang.Object)>($r18);
+
+        if $z0 == 0 goto label07;
+
+        r6 = virtualinvoke r28.<java.net.URL: java.lang.String getPath()>();
+
+        if r6 == null goto label10;
+
+        i6 = virtualinvoke r6.<java.lang.String: int lastIndexOf(int)>(47);
+
+        $c2 = <java.io.File: char separatorChar>;
+
+        i1 = virtualinvoke r6.<java.lang.String: int lastIndexOf(int)>($c2);
+
+        if i1 <= i6 goto label04;
+
+        i6 = i1;
+
+     label04:
+        if i6 <= 0 goto label05;
+
+        $i3 = virtualinvoke r6.<java.lang.String: int length()>();
+
+        $i4 = $i3 - 1;
+
+        if i6 != $i4 goto label06;
+
+     label05:
+        virtualinvoke $r7.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(r28);
+
+        goto label10;
+
+     label06:
+        $i5 = i6 + 1;
+
+        $r21 = virtualinvoke r6.<java.lang.String: java.lang.String substring(int)>($i5);
+
+        virtualinvoke $r7.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>($r21);
+
+        goto label10;
+
+     label07:
+        virtualinvoke $r7.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(r28);
+
+     label08:
+        goto label10;
+
+     label09:
+        $r24 := @caughtexception;
+
+     label10:
+        virtualinvoke $r7.<java.lang.StringBuffer: java.lang.StringBuffer append(char)>(58);
+
+        r30 = virtualinvoke r5.<java.lang.Class: java.lang.Package getPackage()>();
+
+        if r30 == null goto label11;
+
+        r31 = virtualinvoke r30.<java.lang.Package: java.lang.String getImplementationVersion()>();
+
+        if r31 == null goto label11;
+
+        virtualinvoke $r7.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>(r31);
+
+     label11:
+        virtualinvoke $r7.<java.lang.StringBuffer: java.lang.StringBuffer append(char)>(93);
+
+        $r32 = virtualinvoke $r7.<java.lang.StringBuffer: java.lang.String substring(int)>(i0);
+
+        interfaceinvoke r2.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>(r26, $r32);
+
+     label12:
+        goto label14;
+
+     label13:
+        $r25 := @caughtexception;
+
+     label14:
+        $r34 = virtualinvoke $r7.<java.lang.StringBuffer: java.lang.String toString()>();
+
+        return $r34;
+
+        catch java.lang.SecurityException from label03 to label08 with label09;
+        catch java.lang.Exception from label01 to label12 with label13;
+    }
+
+    private java.lang.Class findClass(java.lang.String) throws java.lang.ClassNotFoundException
+    {
+        org.apache.log4j.EnhancedThrowableRenderer r0;
+        java.lang.String r1;
+        java.lang.Thread $r4;
+        java.lang.ClassLoader $r5, $r11;
+        java.lang.Class $r6, $r8, $r10, $r12;
+        java.lang.ClassNotFoundException $r7, $r9;
+
+        r0 := @this: org.apache.log4j.EnhancedThrowableRenderer;
+
+        r1 := @parameter0: java.lang.String;
+
+     label1:
+        $r4 = staticinvoke <java.lang.Thread: java.lang.Thread currentThread()>();
+
+        $r5 = virtualinvoke $r4.<java.lang.Thread: java.lang.ClassLoader getContextClassLoader()>();
+
+        $r6 = virtualinvoke $r5.<java.lang.ClassLoader: java.lang.Class loadClass(java.lang.String)>(r1);
+
+     label2:
+        return $r6;
+
+     label3:
+        $r7 := @caughtexception;
+
+     label4:
+        $r8 = staticinvoke <java.lang.Class: java.lang.Class forName(java.lang.String)>(r1);
+
+     label5:
+        return $r8;
+
+     label6:
+        $r9 := @caughtexception;
+
+        $r10 = virtualinvoke r0.<java.lang.Object: java.lang.Class getClass()>();
+
+        $r11 = virtualinvoke $r10.<java.lang.Class: java.lang.ClassLoader getClassLoader()>();
+
+        $r12 = virtualinvoke $r11.<java.lang.ClassLoader: java.lang.Class loadClass(java.lang.String)>(r1);
+
+        return $r12;
+
+        catch java.lang.ClassNotFoundException from label1 to label2 with label3;
+        catch java.lang.ClassNotFoundException from label4 to label5 with label6;
+    }
+}

@@ -1,0 +1,67 @@
+class org.apache.commons.io.IOUtilsTestCase$12 extends java.io.Writer
+{
+    final org.apache.commons.io.IOUtilsTestCase this$0;
+
+    void <init>(org.apache.commons.io.IOUtilsTestCase)
+    {
+        org.apache.commons.io.IOUtilsTestCase$12 r0;
+        org.apache.commons.io.IOUtilsTestCase r1;
+
+        r0 := @this: org.apache.commons.io.IOUtilsTestCase$12;
+
+        r1 := @parameter0: org.apache.commons.io.IOUtilsTestCase;
+
+        r0.<org.apache.commons.io.IOUtilsTestCase$12: org.apache.commons.io.IOUtilsTestCase this$0> = r1;
+
+        specialinvoke r0.<java.io.Writer: void <init>()>();
+
+        return;
+    }
+
+    public void write(int) throws java.io.IOException
+    {
+        org.apache.commons.io.IOUtilsTestCase$12 r0;
+        int i0;
+
+        r0 := @this: org.apache.commons.io.IOUtilsTestCase$12;
+
+        i0 := @parameter0: int;
+
+        return;
+    }
+
+    public void write(char[], int, int) throws java.io.IOException
+    {
+        org.apache.commons.io.IOUtilsTestCase$12 r0;
+        char[] r1;
+        int i0, i1;
+
+        r0 := @this: org.apache.commons.io.IOUtilsTestCase$12;
+
+        r1 := @parameter0: char[];
+
+        i0 := @parameter1: int;
+
+        i1 := @parameter2: int;
+
+        return;
+    }
+
+    public void flush() throws java.io.IOException
+    {
+        org.apache.commons.io.IOUtilsTestCase$12 r0;
+
+        r0 := @this: org.apache.commons.io.IOUtilsTestCase$12;
+
+        return;
+    }
+
+    public void close() throws java.io.IOException
+    {
+        org.apache.commons.io.IOUtilsTestCase$12 r0;
+
+        r0 := @this: org.apache.commons.io.IOUtilsTestCase$12;
+
+        return;
+    }
+}

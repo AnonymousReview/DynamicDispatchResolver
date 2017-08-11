@@ -1,0 +1,86 @@
+public class org.apache.log4j.util.SunReflectFilter extends java.lang.Object implements org.apache.log4j.util.Filter
+{
+    org.apache.oro.text.perl.Perl5Util util;
+
+    public void <init>()
+    {
+        org.apache.log4j.util.SunReflectFilter r0;
+        org.apache.oro.text.perl.Perl5Util $r1;
+
+        r0 := @this: org.apache.log4j.util.SunReflectFilter;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r1 = new org.apache.oro.text.perl.Perl5Util;
+
+        specialinvoke $r1.<org.apache.oro.text.perl.Perl5Util: void <init>()>();
+
+        r0.<org.apache.log4j.util.SunReflectFilter: org.apache.oro.text.perl.Perl5Util util> = $r1;
+
+        return;
+    }
+
+    public java.lang.String filter(java.lang.String)
+    {
+        org.apache.log4j.util.SunReflectFilter r0;
+        java.lang.String r1, $r5, $r7;
+        org.apache.oro.text.perl.Perl5Util $r2, $r3, $r4, $r6;
+        boolean $z0, $z1;
+        int $i0, $i1, $i2;
+
+        r0 := @this: org.apache.log4j.util.SunReflectFilter;
+
+        r1 := @parameter0: java.lang.String;
+
+        if r1 != null goto label1;
+
+        return null;
+
+     label1:
+        $r2 = r0.<org.apache.log4j.util.SunReflectFilter: org.apache.oro.text.perl.Perl5Util util>;
+
+        $z0 = virtualinvoke $r2.<org.apache.oro.text.perl.Perl5Util: boolean match(java.lang.String,java.lang.String)>("/at sun.reflect/", r1);
+
+        if $z0 == 0 goto label2;
+
+        return null;
+
+     label2:
+        $i0 = virtualinvoke r1.<java.lang.String: int indexOf(java.lang.String)>("at java.lang.reflect.");
+
+        if $i0 < 0 goto label3;
+
+        return null;
+
+     label3:
+        $i1 = virtualinvoke r1.<java.lang.String: int indexOf(java.lang.String)>("Compiled Code");
+
+        if $i1 < 0 goto label4;
+
+        $i2 = virtualinvoke r1.<java.lang.String: int indexOf(java.lang.String)>("junit.framework.TestSuite");
+
+        if $i2 < 0 goto label4;
+
+        $r6 = r0.<org.apache.log4j.util.SunReflectFilter: org.apache.oro.text.perl.Perl5Util util>;
+
+        $r7 = virtualinvoke $r6.<org.apache.oro.text.perl.Perl5Util: java.lang.String substitute(java.lang.String,java.lang.String)>("s/Compiled Code/TestSuite.java:XXX/", r1);
+
+        return $r7;
+
+     label4:
+        $r3 = r0.<org.apache.log4j.util.SunReflectFilter: org.apache.oro.text.perl.Perl5Util util>;
+
+        $z1 = virtualinvoke $r3.<org.apache.oro.text.perl.Perl5Util: boolean match(java.lang.String,java.lang.String)>("/\\(Method.java:.*\\)/", r1);
+
+        if $z1 == 0 goto label5;
+
+        $r4 = r0.<org.apache.log4j.util.SunReflectFilter: org.apache.oro.text.perl.Perl5Util util>;
+
+        $r5 = virtualinvoke $r4.<org.apache.oro.text.perl.Perl5Util: java.lang.String substitute(java.lang.String,java.lang.String)>("s/\\(Method.java:.*\\)/(Native Method)/", r1);
+
+        return $r5;
+
+     label5:
+        return r1;
+    }
+}

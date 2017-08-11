@@ -1,0 +1,118 @@
+public class org.apache.commons.io.serialization.RegexpClassNameMatcherTest extends java.lang.Object
+{
+
+    public void <init>()
+    {
+        org.apache.commons.io.serialization.RegexpClassNameMatcherTest r0;
+
+        r0 := @this: org.apache.commons.io.serialization.RegexpClassNameMatcherTest;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void testSimplePatternFromString()
+    {
+        org.apache.commons.io.serialization.RegexpClassNameMatcherTest r0;
+        org.apache.commons.io.serialization.RegexpClassNameMatcher $r2;
+        boolean $z0, $z1;
+
+        r0 := @this: org.apache.commons.io.serialization.RegexpClassNameMatcherTest;
+
+        $r2 = new org.apache.commons.io.serialization.RegexpClassNameMatcher;
+
+        specialinvoke $r2.<org.apache.commons.io.serialization.RegexpClassNameMatcher: void <init>(java.lang.String)>("foo.*");
+
+        $z0 = interfaceinvoke $r2.<org.apache.commons.io.serialization.ClassNameMatcher: boolean matches(java.lang.String)>("foo.should.match");
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z0);
+
+        $z1 = interfaceinvoke $r2.<org.apache.commons.io.serialization.ClassNameMatcher: boolean matches(java.lang.String)>("bar.should.not.match");
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z1);
+
+        return;
+    }
+
+    public void testSimplePatternFromPattern()
+    {
+        org.apache.commons.io.serialization.RegexpClassNameMatcherTest r0;
+        org.apache.commons.io.serialization.RegexpClassNameMatcher $r2;
+        java.util.regex.Pattern $r3;
+        boolean $z0, $z1;
+
+        r0 := @this: org.apache.commons.io.serialization.RegexpClassNameMatcherTest;
+
+        $r2 = new org.apache.commons.io.serialization.RegexpClassNameMatcher;
+
+        $r3 = staticinvoke <java.util.regex.Pattern: java.util.regex.Pattern compile(java.lang.String)>("foo.*");
+
+        specialinvoke $r2.<org.apache.commons.io.serialization.RegexpClassNameMatcher: void <init>(java.util.regex.Pattern)>($r3);
+
+        $z0 = interfaceinvoke $r2.<org.apache.commons.io.serialization.ClassNameMatcher: boolean matches(java.lang.String)>("foo.should.match");
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z0);
+
+        $z1 = interfaceinvoke $r2.<org.apache.commons.io.serialization.ClassNameMatcher: boolean matches(java.lang.String)>("bar.should.not.match");
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z1);
+
+        return;
+    }
+
+    public void testOrPattern()
+    {
+        org.apache.commons.io.serialization.RegexpClassNameMatcherTest r0;
+        org.apache.commons.io.serialization.RegexpClassNameMatcher $r2;
+        boolean $z0, $z1, $z2;
+
+        r0 := @this: org.apache.commons.io.serialization.RegexpClassNameMatcherTest;
+
+        $r2 = new org.apache.commons.io.serialization.RegexpClassNameMatcher;
+
+        specialinvoke $r2.<org.apache.commons.io.serialization.RegexpClassNameMatcher: void <init>(java.lang.String)>("foo.*|bar.*");
+
+        $z0 = interfaceinvoke $r2.<org.apache.commons.io.serialization.ClassNameMatcher: boolean matches(java.lang.String)>("foo.should.match");
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z0);
+
+        $z1 = interfaceinvoke $r2.<org.apache.commons.io.serialization.ClassNameMatcher: boolean matches(java.lang.String)>("bar.should.match");
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z1);
+
+        $z2 = interfaceinvoke $r2.<org.apache.commons.io.serialization.ClassNameMatcher: boolean matches(java.lang.String)>("zoo.should.not.match");
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z2);
+
+        return;
+    }
+
+    public void testNullStringPattern()
+    {
+        org.apache.commons.io.serialization.RegexpClassNameMatcherTest r0;
+        org.apache.commons.io.serialization.RegexpClassNameMatcher $r1;
+
+        r0 := @this: org.apache.commons.io.serialization.RegexpClassNameMatcherTest;
+
+        $r1 = new org.apache.commons.io.serialization.RegexpClassNameMatcher;
+
+        specialinvoke $r1.<org.apache.commons.io.serialization.RegexpClassNameMatcher: void <init>(java.lang.String)>(null);
+
+        return;
+    }
+
+    public void testNullPatternPattern()
+    {
+        org.apache.commons.io.serialization.RegexpClassNameMatcherTest r0;
+        org.apache.commons.io.serialization.RegexpClassNameMatcher $r1;
+
+        r0 := @this: org.apache.commons.io.serialization.RegexpClassNameMatcherTest;
+
+        $r1 = new org.apache.commons.io.serialization.RegexpClassNameMatcher;
+
+        specialinvoke $r1.<org.apache.commons.io.serialization.RegexpClassNameMatcher: void <init>(java.util.regex.Pattern)>(null);
+
+        return;
+    }
+}

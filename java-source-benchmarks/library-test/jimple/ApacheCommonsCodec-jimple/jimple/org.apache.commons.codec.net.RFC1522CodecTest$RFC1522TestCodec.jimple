@@ -1,0 +1,47 @@
+class org.apache.commons.codec.net.RFC1522CodecTest$RFC1522TestCodec extends org.apache.commons.codec.net.RFC1522Codec
+{
+
+    void <init>()
+    {
+        org.apache.commons.codec.net.RFC1522CodecTest$RFC1522TestCodec r0;
+
+        r0 := @this: org.apache.commons.codec.net.RFC1522CodecTest$RFC1522TestCodec;
+
+        specialinvoke r0.<org.apache.commons.codec.net.RFC1522Codec: void <init>()>();
+
+        return;
+    }
+
+    protected byte[] doDecoding(byte[])
+    {
+        org.apache.commons.codec.net.RFC1522CodecTest$RFC1522TestCodec r0;
+        byte[] r1;
+
+        r0 := @this: org.apache.commons.codec.net.RFC1522CodecTest$RFC1522TestCodec;
+
+        r1 := @parameter0: byte[];
+
+        return r1;
+    }
+
+    protected byte[] doEncoding(byte[])
+    {
+        org.apache.commons.codec.net.RFC1522CodecTest$RFC1522TestCodec r0;
+        byte[] r1;
+
+        r0 := @this: org.apache.commons.codec.net.RFC1522CodecTest$RFC1522TestCodec;
+
+        r1 := @parameter0: byte[];
+
+        return r1;
+    }
+
+    protected java.lang.String getEncoding()
+    {
+        org.apache.commons.codec.net.RFC1522CodecTest$RFC1522TestCodec r0;
+
+        r0 := @this: org.apache.commons.codec.net.RFC1522CodecTest$RFC1522TestCodec;
+
+        return "T";
+    }
+}

@@ -1,0 +1,270 @@
+public class org.apache.log4j.helpers.SyslogWriter extends java.io.Writer
+{
+    final int SYSLOG_PORT;
+    static java.lang.String syslogHost;
+    private java.net.InetAddress address;
+    private final int port;
+    private java.net.DatagramSocket ds;
+
+    public void <init>(java.lang.String)
+    {
+        org.apache.log4j.helpers.SyslogWriter r0;
+        java.lang.String r1, $r5, $r6, $r14, $r19, r21;
+        int $i0, $i1, $i2, $i4, $i5, $i6, $i7, i8;
+        java.net.URL $r2;
+        java.lang.StringBuilder $r3, $r4, $r11, $r12, $r13, $r16, $r17, $r18;
+        java.net.InetAddress $r7;
+        java.net.DatagramSocket $r8;
+        boolean $z0;
+        char $c3;
+        java.lang.NullPointerException $r9;
+        java.net.SocketException $r10;
+        java.net.UnknownHostException $r15;
+        java.net.MalformedURLException $r20;
+
+        r0 := @this: org.apache.log4j.helpers.SyslogWriter;
+
+        r1 := @parameter0: java.lang.String;
+
+        specialinvoke r0.<java.io.Writer: void <init>()>();
+
+        r0.<org.apache.log4j.helpers.SyslogWriter: int SYSLOG_PORT> = 514;
+
+        <org.apache.log4j.helpers.SyslogWriter: java.lang.String syslogHost> = r1;
+
+        if r1 != null goto label01;
+
+        $r9 = new java.lang.NullPointerException;
+
+        specialinvoke $r9.<java.lang.NullPointerException: void <init>(java.lang.String)>("syslogHost");
+
+        throw $r9;
+
+     label01:
+        r21 = r1;
+
+        i8 = -1;
+
+        $i0 = virtualinvoke r1.<java.lang.String: int indexOf(java.lang.String)>("[");
+
+        if $i0 != -1 goto label02;
+
+        $i6 = virtualinvoke r1.<java.lang.String: int indexOf(int)>(58);
+
+        $i7 = virtualinvoke r1.<java.lang.String: int lastIndexOf(int)>(58);
+
+        if $i6 != $i7 goto label06;
+
+     label02:
+        $r2 = new java.net.URL;
+
+        $r3 = new java.lang.StringBuilder;
+
+        specialinvoke $r3.<java.lang.StringBuilder: void <init>(java.lang.String)>("http://");
+
+        $r4 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r1);
+
+        $r5 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r2.<java.net.URL: void <init>(java.lang.String)>($r5);
+
+        $r6 = virtualinvoke $r2.<java.net.URL: java.lang.String getHost()>();
+
+        if $r6 == null goto label06;
+
+        r21 = virtualinvoke $r2.<java.net.URL: java.lang.String getHost()>();
+
+        $z0 = virtualinvoke r21.<java.lang.String: boolean startsWith(java.lang.String)>("[");
+
+        if $z0 == 0 goto label03;
+
+        $i1 = virtualinvoke r21.<java.lang.String: int length()>();
+
+        $i2 = $i1 - 1;
+
+        $c3 = virtualinvoke r21.<java.lang.String: char charAt(int)>($i2);
+
+        if $c3 != 93 goto label03;
+
+        $i4 = virtualinvoke r21.<java.lang.String: int length()>();
+
+        $i5 = $i4 - 1;
+
+        r21 = virtualinvoke r21.<java.lang.String: java.lang.String substring(int,int)>(1, $i5);
+
+     label03:
+        i8 = virtualinvoke $r2.<java.net.URL: int getPort()>();
+
+     label04:
+        goto label06;
+
+     label05:
+        $r20 := @caughtexception;
+
+        staticinvoke <org.apache.log4j.helpers.LogLog: void error(java.lang.String,java.lang.Throwable)>("Malformed URL: will attempt to interpret as InetAddress.", $r20);
+
+     label06:
+        if i8 != -1 goto label07;
+
+        i8 = 514;
+
+     label07:
+        r0.<org.apache.log4j.helpers.SyslogWriter: int port> = i8;
+
+     label08:
+        $r7 = staticinvoke <java.net.InetAddress: java.net.InetAddress getByName(java.lang.String)>(r21);
+
+        r0.<org.apache.log4j.helpers.SyslogWriter: java.net.InetAddress address> = $r7;
+
+     label09:
+        goto label11;
+
+     label10:
+        $r15 := @caughtexception;
+
+        $r16 = new java.lang.StringBuilder;
+
+        specialinvoke $r16.<java.lang.StringBuilder: void <init>(java.lang.String)>("Could not find ");
+
+        $r17 = virtualinvoke $r16.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r21);
+
+        $r18 = virtualinvoke $r17.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(". All logging will FAIL.");
+
+        $r19 = virtualinvoke $r18.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.apache.log4j.helpers.LogLog: void error(java.lang.String,java.lang.Throwable)>($r19, $r15);
+
+     label11:
+        $r8 = new java.net.DatagramSocket;
+
+        specialinvoke $r8.<java.net.DatagramSocket: void <init>()>();
+
+        r0.<org.apache.log4j.helpers.SyslogWriter: java.net.DatagramSocket ds> = $r8;
+
+     label12:
+        goto label14;
+
+     label13:
+        $r10 := @caughtexception;
+
+        virtualinvoke $r10.<java.net.SocketException: void printStackTrace()>();
+
+        $r11 = new java.lang.StringBuilder;
+
+        specialinvoke $r11.<java.lang.StringBuilder: void <init>(java.lang.String)>("Could not instantiate DatagramSocket to ");
+
+        $r12 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r21);
+
+        $r13 = virtualinvoke $r12.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(". All logging will FAIL.");
+
+        $r14 = virtualinvoke $r13.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.apache.log4j.helpers.LogLog: void error(java.lang.String,java.lang.Throwable)>($r14, $r10);
+
+     label14:
+        return;
+
+        catch java.net.MalformedURLException from label02 to label04 with label05;
+        catch java.net.UnknownHostException from label08 to label09 with label10;
+        catch java.net.SocketException from label11 to label12 with label13;
+    }
+
+    public void write(char[], int, int) throws java.io.IOException
+    {
+        org.apache.log4j.helpers.SyslogWriter r0;
+        char[] r1;
+        int i0, i1;
+        java.lang.String $r2;
+
+        r0 := @this: org.apache.log4j.helpers.SyslogWriter;
+
+        r1 := @parameter0: char[];
+
+        i0 := @parameter1: int;
+
+        i1 := @parameter2: int;
+
+        $r2 = new java.lang.String;
+
+        specialinvoke $r2.<java.lang.String: void <init>(char[],int,int)>(r1, i0, i1);
+
+        virtualinvoke r0.<org.apache.log4j.helpers.SyslogWriter: void write(java.lang.String)>($r2);
+
+        return;
+    }
+
+    public void write(java.lang.String) throws java.io.IOException
+    {
+        org.apache.log4j.helpers.SyslogWriter r0;
+        java.lang.String r1;
+        byte[] r2;
+        java.net.DatagramSocket $r4, $r8;
+        java.net.InetAddress $r5, $r7;
+        java.net.DatagramPacket $r6;
+        int $i0, i1;
+
+        r0 := @this: org.apache.log4j.helpers.SyslogWriter;
+
+        r1 := @parameter0: java.lang.String;
+
+        $r4 = r0.<org.apache.log4j.helpers.SyslogWriter: java.net.DatagramSocket ds>;
+
+        if $r4 == null goto label2;
+
+        $r5 = r0.<org.apache.log4j.helpers.SyslogWriter: java.net.InetAddress address>;
+
+        if $r5 == null goto label2;
+
+        r2 = virtualinvoke r1.<java.lang.String: byte[] getBytes()>();
+
+        i1 = lengthof r2;
+
+        if i1 < 1024 goto label1;
+
+        i1 = 1024;
+
+     label1:
+        $r6 = new java.net.DatagramPacket;
+
+        $r7 = r0.<org.apache.log4j.helpers.SyslogWriter: java.net.InetAddress address>;
+
+        $i0 = r0.<org.apache.log4j.helpers.SyslogWriter: int port>;
+
+        specialinvoke $r6.<java.net.DatagramPacket: void <init>(byte[],int,java.net.InetAddress,int)>(r2, i1, $r7, $i0);
+
+        $r8 = r0.<org.apache.log4j.helpers.SyslogWriter: java.net.DatagramSocket ds>;
+
+        virtualinvoke $r8.<java.net.DatagramSocket: void send(java.net.DatagramPacket)>($r6);
+
+     label2:
+        return;
+    }
+
+    public void flush()
+    {
+        org.apache.log4j.helpers.SyslogWriter r0;
+
+        r0 := @this: org.apache.log4j.helpers.SyslogWriter;
+
+        return;
+    }
+
+    public void close()
+    {
+        org.apache.log4j.helpers.SyslogWriter r0;
+        java.net.DatagramSocket $r1, $r2;
+
+        r0 := @this: org.apache.log4j.helpers.SyslogWriter;
+
+        $r1 = r0.<org.apache.log4j.helpers.SyslogWriter: java.net.DatagramSocket ds>;
+
+        if $r1 == null goto label1;
+
+        $r2 = r0.<org.apache.log4j.helpers.SyslogWriter: java.net.DatagramSocket ds>;
+
+        virtualinvoke $r2.<java.net.DatagramSocket: void close()>();
+
+     label1:
+        return;
+    }
+}

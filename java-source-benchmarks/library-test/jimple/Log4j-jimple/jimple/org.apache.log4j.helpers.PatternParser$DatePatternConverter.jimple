@@ -1,0 +1,74 @@
+class org.apache.log4j.helpers.PatternParser$DatePatternConverter extends org.apache.log4j.helpers.PatternConverter
+{
+    private java.text.DateFormat df;
+    private java.util.Date date;
+
+    void <init>(org.apache.log4j.helpers.FormattingInfo, java.text.DateFormat)
+    {
+        org.apache.log4j.helpers.PatternParser$DatePatternConverter r0;
+        org.apache.log4j.helpers.FormattingInfo r1;
+        java.text.DateFormat r2;
+        java.util.Date $r3;
+
+        r0 := @this: org.apache.log4j.helpers.PatternParser$DatePatternConverter;
+
+        r1 := @parameter0: org.apache.log4j.helpers.FormattingInfo;
+
+        r2 := @parameter1: java.text.DateFormat;
+
+        specialinvoke r0.<org.apache.log4j.helpers.PatternConverter: void <init>(org.apache.log4j.helpers.FormattingInfo)>(r1);
+
+        $r3 = new java.util.Date;
+
+        specialinvoke $r3.<java.util.Date: void <init>()>();
+
+        r0.<org.apache.log4j.helpers.PatternParser$DatePatternConverter: java.util.Date date> = $r3;
+
+        r0.<org.apache.log4j.helpers.PatternParser$DatePatternConverter: java.text.DateFormat df> = r2;
+
+        return;
+    }
+
+    public java.lang.String convert(org.apache.log4j.spi.LoggingEvent)
+    {
+        org.apache.log4j.helpers.PatternParser$DatePatternConverter r0;
+        org.apache.log4j.spi.LoggingEvent r1;
+        long $l0;
+        java.util.Date $r3, $r4;
+        java.text.DateFormat $r5;
+        java.lang.Exception $r6;
+        java.lang.String r7;
+
+        r0 := @this: org.apache.log4j.helpers.PatternParser$DatePatternConverter;
+
+        r1 := @parameter0: org.apache.log4j.spi.LoggingEvent;
+
+        $r3 = r0.<org.apache.log4j.helpers.PatternParser$DatePatternConverter: java.util.Date date>;
+
+        $l0 = r1.<org.apache.log4j.spi.LoggingEvent: long timeStamp>;
+
+        virtualinvoke $r3.<java.util.Date: void setTime(long)>($l0);
+
+        r7 = null;
+
+     label1:
+        $r5 = r0.<org.apache.log4j.helpers.PatternParser$DatePatternConverter: java.text.DateFormat df>;
+
+        $r4 = r0.<org.apache.log4j.helpers.PatternParser$DatePatternConverter: java.util.Date date>;
+
+        r7 = virtualinvoke $r5.<java.text.DateFormat: java.lang.String format(java.util.Date)>($r4);
+
+     label2:
+        goto label4;
+
+     label3:
+        $r6 := @caughtexception;
+
+        staticinvoke <org.apache.log4j.helpers.LogLog: void error(java.lang.String,java.lang.Throwable)>("Error occured while converting date.", $r6);
+
+     label4:
+        return r7;
+
+        catch java.lang.Exception from label1 to label2 with label3;
+    }
+}

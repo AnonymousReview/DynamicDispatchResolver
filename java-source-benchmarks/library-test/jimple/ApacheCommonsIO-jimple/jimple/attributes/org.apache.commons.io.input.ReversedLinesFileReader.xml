@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<attributes>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="0" eline="0" spos="0" epos="0"/>
+<text info="[inner=org/apache/commons/io/input/ReversedLinesFileReader$FilePart, outer=org/apache/commons/io/input/ReversedLinesFileReader, name=FilePart,flags=2]" aType="InnerClassTag"/>
+<text info="soot.tagkit.InnerClassAttribute@7a58d146" aType="InnerClassAttribute"/>
+</attribute>
+<attribute>
+<srcPos sline="63" eline="63" spos="0" epos="0"/>
+<jmpPos sline="14" eline="14" spos="0" epos="0"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation type: Ljava/lang/Deprecated; without elements
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+</attributes>

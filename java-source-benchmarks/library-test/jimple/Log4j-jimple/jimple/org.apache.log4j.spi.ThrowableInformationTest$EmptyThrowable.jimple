@@ -1,0 +1,34 @@
+final class org.apache.log4j.spi.ThrowableInformationTest$EmptyThrowable extends java.lang.Throwable
+{
+    private static final long serialVersionUID;
+
+    public void <init>()
+    {
+        org.apache.log4j.spi.ThrowableInformationTest$EmptyThrowable r0;
+
+        r0 := @this: org.apache.log4j.spi.ThrowableInformationTest$EmptyThrowable;
+
+        specialinvoke r0.<java.lang.Throwable: void <init>()>();
+
+        return;
+    }
+
+    public void printStackTrace(java.io.PrintWriter)
+    {
+        org.apache.log4j.spi.ThrowableInformationTest$EmptyThrowable r0;
+        java.io.PrintWriter r1;
+
+        r0 := @this: org.apache.log4j.spi.ThrowableInformationTest$EmptyThrowable;
+
+        r1 := @parameter0: java.io.PrintWriter;
+
+        return;
+    }
+
+    public static void <clinit>()
+    {
+        <org.apache.log4j.spi.ThrowableInformationTest$EmptyThrowable: long serialVersionUID> = 1L;
+
+        return;
+    }
+}

@@ -1,0 +1,109 @@
+public class org.slf4j.helpers.SubstitureServiceProvider extends java.lang.Object implements org.slf4j.spi.SLF4JServiceProvider
+{
+    private org.slf4j.helpers.SubstituteLoggerFactory loggerFactory;
+    private org.slf4j.IMarkerFactory markerFactory;
+    private org.slf4j.spi.MDCAdapter mdcAdapter;
+
+    public void <init>()
+    {
+        org.slf4j.helpers.SubstitureServiceProvider r0;
+        org.slf4j.helpers.SubstituteLoggerFactory $r1;
+        org.slf4j.helpers.BasicMarkerFactory $r2;
+        org.slf4j.helpers.BasicMDCAdapter $r3;
+
+        r0 := @this: org.slf4j.helpers.SubstitureServiceProvider;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r1 = new org.slf4j.helpers.SubstituteLoggerFactory;
+
+        specialinvoke $r1.<org.slf4j.helpers.SubstituteLoggerFactory: void <init>()>();
+
+        r0.<org.slf4j.helpers.SubstitureServiceProvider: org.slf4j.helpers.SubstituteLoggerFactory loggerFactory> = $r1;
+
+        $r2 = new org.slf4j.helpers.BasicMarkerFactory;
+
+        specialinvoke $r2.<org.slf4j.helpers.BasicMarkerFactory: void <init>()>();
+
+        r0.<org.slf4j.helpers.SubstitureServiceProvider: org.slf4j.IMarkerFactory markerFactory> = $r2;
+
+        $r3 = new org.slf4j.helpers.BasicMDCAdapter;
+
+        specialinvoke $r3.<org.slf4j.helpers.BasicMDCAdapter: void <init>()>();
+
+        r0.<org.slf4j.helpers.SubstitureServiceProvider: org.slf4j.spi.MDCAdapter mdcAdapter> = $r3;
+
+        return;
+    }
+
+    public org.slf4j.ILoggerFactory getLoggerFactory()
+    {
+        org.slf4j.helpers.SubstitureServiceProvider r0;
+        org.slf4j.helpers.SubstituteLoggerFactory $r1;
+
+        r0 := @this: org.slf4j.helpers.SubstitureServiceProvider;
+
+        $r1 = r0.<org.slf4j.helpers.SubstitureServiceProvider: org.slf4j.helpers.SubstituteLoggerFactory loggerFactory>;
+
+        return $r1;
+    }
+
+    public org.slf4j.helpers.SubstituteLoggerFactory getSubstituteLoggerFactory()
+    {
+        org.slf4j.helpers.SubstitureServiceProvider r0;
+        org.slf4j.helpers.SubstituteLoggerFactory $r1;
+
+        r0 := @this: org.slf4j.helpers.SubstitureServiceProvider;
+
+        $r1 = r0.<org.slf4j.helpers.SubstitureServiceProvider: org.slf4j.helpers.SubstituteLoggerFactory loggerFactory>;
+
+        return $r1;
+    }
+
+    public org.slf4j.IMarkerFactory getMarkerFactory()
+    {
+        org.slf4j.helpers.SubstitureServiceProvider r0;
+        org.slf4j.IMarkerFactory $r1;
+
+        r0 := @this: org.slf4j.helpers.SubstitureServiceProvider;
+
+        $r1 = r0.<org.slf4j.helpers.SubstitureServiceProvider: org.slf4j.IMarkerFactory markerFactory>;
+
+        return $r1;
+    }
+
+    public org.slf4j.spi.MDCAdapter getMDCAdapter()
+    {
+        org.slf4j.helpers.SubstitureServiceProvider r0;
+        org.slf4j.spi.MDCAdapter $r1;
+
+        r0 := @this: org.slf4j.helpers.SubstitureServiceProvider;
+
+        $r1 = r0.<org.slf4j.helpers.SubstitureServiceProvider: org.slf4j.spi.MDCAdapter mdcAdapter>;
+
+        return $r1;
+    }
+
+    public java.lang.String getRequesteApiVersion()
+    {
+        org.slf4j.helpers.SubstitureServiceProvider r0;
+        java.lang.UnsupportedOperationException $r1;
+
+        r0 := @this: org.slf4j.helpers.SubstitureServiceProvider;
+
+        $r1 = new java.lang.UnsupportedOperationException;
+
+        specialinvoke $r1.<java.lang.UnsupportedOperationException: void <init>()>();
+
+        throw $r1;
+    }
+
+    public void initialize()
+    {
+        org.slf4j.helpers.SubstitureServiceProvider r0;
+
+        r0 := @this: org.slf4j.helpers.SubstitureServiceProvider;
+
+        return;
+    }
+}

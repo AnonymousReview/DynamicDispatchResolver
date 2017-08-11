@@ -1,0 +1,517 @@
+public class org.apache.log4j.TestLogXF extends junit.framework.TestCase
+{
+    private final org.apache.log4j.Logger logger;
+
+    public void <init>(java.lang.String)
+    {
+        org.apache.log4j.TestLogXF r0;
+        java.lang.String r1;
+        org.apache.log4j.Logger $r2;
+
+        r0 := @this: org.apache.log4j.TestLogXF;
+
+        r1 := @parameter0: java.lang.String;
+
+        specialinvoke r0.<junit.framework.TestCase: void <init>(java.lang.String)>(r1);
+
+        $r2 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getLogger(java.lang.String)>("org.apache.log4j.formatter.TestLogXF");
+
+        r0.<org.apache.log4j.TestLogXF: org.apache.log4j.Logger logger> = $r2;
+
+        return;
+    }
+
+    public void tearDown()
+    {
+        org.apache.log4j.TestLogXF r0;
+
+        r0 := @this: org.apache.log4j.TestLogXF;
+
+        staticinvoke <org.apache.log4j.LogManager: void resetConfiguration()>();
+
+        return;
+    }
+
+    public void testEnteringNullNull()
+    {
+        org.apache.log4j.TestLogXF r0;
+        org.apache.log4j.LogCapture $r2;
+        org.apache.log4j.Level $r3, $r4;
+        org.apache.log4j.Logger $r5, $r6;
+        java.lang.String $r7;
+
+        r0 := @this: org.apache.log4j.TestLogXF;
+
+        $r2 = new org.apache.log4j.LogCapture;
+
+        $r3 = <org.apache.log4j.Level: org.apache.log4j.Level DEBUG>;
+
+        specialinvoke $r2.<org.apache.log4j.LogCapture: void <init>(org.apache.log4j.Level)>($r3);
+
+        $r5 = r0.<org.apache.log4j.TestLogXF: org.apache.log4j.Logger logger>;
+
+        $r4 = <org.apache.log4j.Level: org.apache.log4j.Level DEBUG>;
+
+        virtualinvoke $r5.<org.apache.log4j.Logger: void setLevel(org.apache.log4j.Level)>($r4);
+
+        $r6 = r0.<org.apache.log4j.TestLogXF: org.apache.log4j.Logger logger>;
+
+        staticinvoke <org.apache.log4j.LogXF: void entering(org.apache.log4j.Logger,java.lang.String,java.lang.String)>($r6, null, null);
+
+        $r7 = virtualinvoke $r2.<org.apache.log4j.LogCapture: java.lang.String getMessage()>();
+
+        staticinvoke <org.apache.log4j.TestLogXF: void assertEquals(java.lang.String,java.lang.String)>("null.null ENTRY", $r7);
+
+        return;
+    }
+
+    public void testEnteringNullNullNull()
+    {
+        org.apache.log4j.TestLogXF r0;
+        org.apache.log4j.LogCapture $r2;
+        org.apache.log4j.Level $r3, $r4;
+        org.apache.log4j.Logger $r5, $r6;
+        java.lang.String $r7;
+
+        r0 := @this: org.apache.log4j.TestLogXF;
+
+        $r2 = new org.apache.log4j.LogCapture;
+
+        $r3 = <org.apache.log4j.Level: org.apache.log4j.Level DEBUG>;
+
+        specialinvoke $r2.<org.apache.log4j.LogCapture: void <init>(org.apache.log4j.Level)>($r3);
+
+        $r5 = r0.<org.apache.log4j.TestLogXF: org.apache.log4j.Logger logger>;
+
+        $r4 = <org.apache.log4j.Level: org.apache.log4j.Level DEBUG>;
+
+        virtualinvoke $r5.<org.apache.log4j.Logger: void setLevel(org.apache.log4j.Level)>($r4);
+
+        $r6 = r0.<org.apache.log4j.TestLogXF: org.apache.log4j.Logger logger>;
+
+        staticinvoke <org.apache.log4j.LogXF: void entering(org.apache.log4j.Logger,java.lang.String,java.lang.String,java.lang.String)>($r6, null, null, null);
+
+        $r7 = virtualinvoke $r2.<org.apache.log4j.LogCapture: java.lang.String getMessage()>();
+
+        staticinvoke <org.apache.log4j.TestLogXF: void assertEquals(java.lang.String,java.lang.String)>("null.null ENTRY null", $r7);
+
+        return;
+    }
+
+    public void testEnteringNullNullNullArray()
+    {
+        org.apache.log4j.TestLogXF r0;
+        org.apache.log4j.LogCapture $r2;
+        org.apache.log4j.Level $r3, $r4;
+        org.apache.log4j.Logger $r5, $r6;
+        java.lang.String $r7;
+
+        r0 := @this: org.apache.log4j.TestLogXF;
+
+        $r2 = new org.apache.log4j.LogCapture;
+
+        $r3 = <org.apache.log4j.Level: org.apache.log4j.Level DEBUG>;
+
+        specialinvoke $r2.<org.apache.log4j.LogCapture: void <init>(org.apache.log4j.Level)>($r3);
+
+        $r5 = r0.<org.apache.log4j.TestLogXF: org.apache.log4j.Logger logger>;
+
+        $r4 = <org.apache.log4j.Level: org.apache.log4j.Level DEBUG>;
+
+        virtualinvoke $r5.<org.apache.log4j.Logger: void setLevel(org.apache.log4j.Level)>($r4);
+
+        $r6 = r0.<org.apache.log4j.TestLogXF: org.apache.log4j.Logger logger>;
+
+        staticinvoke <org.apache.log4j.LogXF: void entering(org.apache.log4j.Logger,java.lang.String,java.lang.String,java.lang.Object[])>($r6, null, null, null);
+
+        $r7 = virtualinvoke $r2.<org.apache.log4j.LogCapture: java.lang.String getMessage()>();
+
+        staticinvoke <org.apache.log4j.TestLogXF: void assertEquals(java.lang.String,java.lang.String)>("null.null ENTRY {}", $r7);
+
+        return;
+    }
+
+    public void testEntering()
+    {
+        org.apache.log4j.TestLogXF r0;
+        org.apache.log4j.LogCapture $r2;
+        org.apache.log4j.Level $r3, $r4;
+        org.apache.log4j.Logger $r5, $r6;
+        java.lang.String $r7;
+
+        r0 := @this: org.apache.log4j.TestLogXF;
+
+        $r2 = new org.apache.log4j.LogCapture;
+
+        $r3 = <org.apache.log4j.Level: org.apache.log4j.Level DEBUG>;
+
+        specialinvoke $r2.<org.apache.log4j.LogCapture: void <init>(org.apache.log4j.Level)>($r3);
+
+        $r5 = r0.<org.apache.log4j.TestLogXF: org.apache.log4j.Logger logger>;
+
+        $r4 = <org.apache.log4j.Level: org.apache.log4j.Level DEBUG>;
+
+        virtualinvoke $r5.<org.apache.log4j.Logger: void setLevel(org.apache.log4j.Level)>($r4);
+
+        $r6 = r0.<org.apache.log4j.TestLogXF: org.apache.log4j.Logger logger>;
+
+        staticinvoke <org.apache.log4j.LogXF: void entering(org.apache.log4j.Logger,java.lang.String,java.lang.String)>($r6, "SomeClass", "someMethod");
+
+        $r7 = virtualinvoke $r2.<org.apache.log4j.LogCapture: java.lang.String getMessage()>();
+
+        staticinvoke <org.apache.log4j.TestLogXF: void assertEquals(java.lang.String,java.lang.String)>("SomeClass.someMethod ENTRY", $r7);
+
+        return;
+    }
+
+    public void testEnteringWithParam()
+    {
+        org.apache.log4j.TestLogXF r0;
+        org.apache.log4j.LogCapture $r2;
+        org.apache.log4j.Level $r3, $r4;
+        org.apache.log4j.Logger $r5, $r6;
+        java.lang.String $r7;
+
+        r0 := @this: org.apache.log4j.TestLogXF;
+
+        $r2 = new org.apache.log4j.LogCapture;
+
+        $r3 = <org.apache.log4j.Level: org.apache.log4j.Level DEBUG>;
+
+        specialinvoke $r2.<org.apache.log4j.LogCapture: void <init>(org.apache.log4j.Level)>($r3);
+
+        $r5 = r0.<org.apache.log4j.TestLogXF: org.apache.log4j.Logger logger>;
+
+        $r4 = <org.apache.log4j.Level: org.apache.log4j.Level DEBUG>;
+
+        virtualinvoke $r5.<org.apache.log4j.Logger: void setLevel(org.apache.log4j.Level)>($r4);
+
+        $r6 = r0.<org.apache.log4j.TestLogXF: org.apache.log4j.Logger logger>;
+
+        staticinvoke <org.apache.log4j.LogXF: void entering(org.apache.log4j.Logger,java.lang.String,java.lang.String,java.lang.String)>($r6, "SomeClass", "someMethod", "someParam");
+
+        $r7 = virtualinvoke $r2.<org.apache.log4j.LogCapture: java.lang.String getMessage()>();
+
+        staticinvoke <org.apache.log4j.TestLogXF: void assertEquals(java.lang.String,java.lang.String)>("SomeClass.someMethod ENTRY someParam", $r7);
+
+        return;
+    }
+
+    public void testEnteringWithBadParam()
+    {
+        org.apache.log4j.TestLogXF r0;
+        org.apache.log4j.LogCapture $r2;
+        org.apache.log4j.Level $r3, $r4;
+        org.apache.log4j.Logger $r5, $r7;
+        org.apache.log4j.TestLogXF$BadStringifier $r6;
+        java.lang.String $r8;
+
+        r0 := @this: org.apache.log4j.TestLogXF;
+
+        $r2 = new org.apache.log4j.LogCapture;
+
+        $r3 = <org.apache.log4j.Level: org.apache.log4j.Level DEBUG>;
+
+        specialinvoke $r2.<org.apache.log4j.LogCapture: void <init>(org.apache.log4j.Level)>($r3);
+
+        $r5 = r0.<org.apache.log4j.TestLogXF: org.apache.log4j.Logger logger>;
+
+        $r4 = <org.apache.log4j.Level: org.apache.log4j.Level DEBUG>;
+
+        virtualinvoke $r5.<org.apache.log4j.Logger: void setLevel(org.apache.log4j.Level)>($r4);
+
+        $r7 = r0.<org.apache.log4j.TestLogXF: org.apache.log4j.Logger logger>;
+
+        $r6 = <org.apache.log4j.TestLogXF$BadStringifier: org.apache.log4j.TestLogXF$BadStringifier INSTANCE>;
+
+        staticinvoke <org.apache.log4j.LogXF: void entering(org.apache.log4j.Logger,java.lang.String,java.lang.String,java.lang.Object)>($r7, "SomeClass", "someMethod", $r6);
+
+        $r8 = virtualinvoke $r2.<org.apache.log4j.LogCapture: java.lang.String getMessage()>();
+
+        staticinvoke <org.apache.log4j.TestLogXF: void assertEquals(java.lang.String,java.lang.String)>("SomeClass.someMethod ENTRY ?", $r8);
+
+        return;
+    }
+
+    public void testEnteringWithBadParams()
+    {
+        org.apache.log4j.TestLogXF r0;
+        org.apache.log4j.LogCapture $r2;
+        org.apache.log4j.Level $r3, $r4;
+        org.apache.log4j.Logger $r5, $r8;
+        java.lang.Object[] $r6;
+        org.apache.log4j.TestLogXF$BadStringifier $r7;
+        java.lang.String $r9;
+
+        r0 := @this: org.apache.log4j.TestLogXF;
+
+        $r2 = new org.apache.log4j.LogCapture;
+
+        $r3 = <org.apache.log4j.Level: org.apache.log4j.Level DEBUG>;
+
+        specialinvoke $r2.<org.apache.log4j.LogCapture: void <init>(org.apache.log4j.Level)>($r3);
+
+        $r5 = r0.<org.apache.log4j.TestLogXF: org.apache.log4j.Logger logger>;
+
+        $r4 = <org.apache.log4j.Level: org.apache.log4j.Level DEBUG>;
+
+        virtualinvoke $r5.<org.apache.log4j.Logger: void setLevel(org.apache.log4j.Level)>($r4);
+
+        $r8 = r0.<org.apache.log4j.TestLogXF: org.apache.log4j.Logger logger>;
+
+        $r6 = newarray (java.lang.Object)[2];
+
+        $r6[0] = "param1";
+
+        $r7 = <org.apache.log4j.TestLogXF$BadStringifier: org.apache.log4j.TestLogXF$BadStringifier INSTANCE>;
+
+        $r6[1] = $r7;
+
+        staticinvoke <org.apache.log4j.LogXF: void entering(org.apache.log4j.Logger,java.lang.String,java.lang.String,java.lang.Object[])>($r8, "SomeClass", "someMethod", $r6);
+
+        $r9 = virtualinvoke $r2.<org.apache.log4j.LogCapture: java.lang.String getMessage()>();
+
+        staticinvoke <org.apache.log4j.TestLogXF: void assertEquals(java.lang.String,java.lang.String)>("SomeClass.someMethod ENTRY {param1,?}", $r9);
+
+        return;
+    }
+
+    public void testExitingNullNull()
+    {
+        org.apache.log4j.TestLogXF r0;
+        org.apache.log4j.LogCapture $r2;
+        org.apache.log4j.Level $r3, $r4;
+        org.apache.log4j.Logger $r5, $r6;
+        java.lang.String $r7;
+
+        r0 := @this: org.apache.log4j.TestLogXF;
+
+        $r2 = new org.apache.log4j.LogCapture;
+
+        $r3 = <org.apache.log4j.Level: org.apache.log4j.Level DEBUG>;
+
+        specialinvoke $r2.<org.apache.log4j.LogCapture: void <init>(org.apache.log4j.Level)>($r3);
+
+        $r5 = r0.<org.apache.log4j.TestLogXF: org.apache.log4j.Logger logger>;
+
+        $r4 = <org.apache.log4j.Level: org.apache.log4j.Level DEBUG>;
+
+        virtualinvoke $r5.<org.apache.log4j.Logger: void setLevel(org.apache.log4j.Level)>($r4);
+
+        $r6 = r0.<org.apache.log4j.TestLogXF: org.apache.log4j.Logger logger>;
+
+        staticinvoke <org.apache.log4j.LogXF: void exiting(org.apache.log4j.Logger,java.lang.String,java.lang.String)>($r6, null, null);
+
+        $r7 = virtualinvoke $r2.<org.apache.log4j.LogCapture: java.lang.String getMessage()>();
+
+        staticinvoke <org.apache.log4j.TestLogXF: void assertEquals(java.lang.String,java.lang.String)>("null.null RETURN", $r7);
+
+        return;
+    }
+
+    public void testExitingNullNullNull()
+    {
+        org.apache.log4j.TestLogXF r0;
+        org.apache.log4j.LogCapture $r2;
+        org.apache.log4j.Level $r3, $r4;
+        org.apache.log4j.Logger $r5, $r6;
+        java.lang.String $r7;
+
+        r0 := @this: org.apache.log4j.TestLogXF;
+
+        $r2 = new org.apache.log4j.LogCapture;
+
+        $r3 = <org.apache.log4j.Level: org.apache.log4j.Level DEBUG>;
+
+        specialinvoke $r2.<org.apache.log4j.LogCapture: void <init>(org.apache.log4j.Level)>($r3);
+
+        $r5 = r0.<org.apache.log4j.TestLogXF: org.apache.log4j.Logger logger>;
+
+        $r4 = <org.apache.log4j.Level: org.apache.log4j.Level DEBUG>;
+
+        virtualinvoke $r5.<org.apache.log4j.Logger: void setLevel(org.apache.log4j.Level)>($r4);
+
+        $r6 = r0.<org.apache.log4j.TestLogXF: org.apache.log4j.Logger logger>;
+
+        staticinvoke <org.apache.log4j.LogXF: void exiting(org.apache.log4j.Logger,java.lang.String,java.lang.String,java.lang.String)>($r6, null, null, null);
+
+        $r7 = virtualinvoke $r2.<org.apache.log4j.LogCapture: java.lang.String getMessage()>();
+
+        staticinvoke <org.apache.log4j.TestLogXF: void assertEquals(java.lang.String,java.lang.String)>("null.null RETURN null", $r7);
+
+        return;
+    }
+
+    public void testExiting()
+    {
+        org.apache.log4j.TestLogXF r0;
+        org.apache.log4j.LogCapture $r2;
+        org.apache.log4j.Level $r3, $r4;
+        org.apache.log4j.Logger $r5, $r6;
+        java.lang.String $r7;
+
+        r0 := @this: org.apache.log4j.TestLogXF;
+
+        $r2 = new org.apache.log4j.LogCapture;
+
+        $r3 = <org.apache.log4j.Level: org.apache.log4j.Level DEBUG>;
+
+        specialinvoke $r2.<org.apache.log4j.LogCapture: void <init>(org.apache.log4j.Level)>($r3);
+
+        $r5 = r0.<org.apache.log4j.TestLogXF: org.apache.log4j.Logger logger>;
+
+        $r4 = <org.apache.log4j.Level: org.apache.log4j.Level DEBUG>;
+
+        virtualinvoke $r5.<org.apache.log4j.Logger: void setLevel(org.apache.log4j.Level)>($r4);
+
+        $r6 = r0.<org.apache.log4j.TestLogXF: org.apache.log4j.Logger logger>;
+
+        staticinvoke <org.apache.log4j.LogXF: void exiting(org.apache.log4j.Logger,java.lang.String,java.lang.String)>($r6, "SomeClass", "someMethod");
+
+        $r7 = virtualinvoke $r2.<org.apache.log4j.LogCapture: java.lang.String getMessage()>();
+
+        staticinvoke <org.apache.log4j.TestLogXF: void assertEquals(java.lang.String,java.lang.String)>("SomeClass.someMethod RETURN", $r7);
+
+        return;
+    }
+
+    public void testExitingWithValue()
+    {
+        org.apache.log4j.TestLogXF r0;
+        org.apache.log4j.LogCapture $r2;
+        org.apache.log4j.Level $r3, $r4;
+        org.apache.log4j.Logger $r5, $r6;
+        java.lang.String $r7;
+
+        r0 := @this: org.apache.log4j.TestLogXF;
+
+        $r2 = new org.apache.log4j.LogCapture;
+
+        $r3 = <org.apache.log4j.Level: org.apache.log4j.Level DEBUG>;
+
+        specialinvoke $r2.<org.apache.log4j.LogCapture: void <init>(org.apache.log4j.Level)>($r3);
+
+        $r5 = r0.<org.apache.log4j.TestLogXF: org.apache.log4j.Logger logger>;
+
+        $r4 = <org.apache.log4j.Level: org.apache.log4j.Level DEBUG>;
+
+        virtualinvoke $r5.<org.apache.log4j.Logger: void setLevel(org.apache.log4j.Level)>($r4);
+
+        $r6 = r0.<org.apache.log4j.TestLogXF: org.apache.log4j.Logger logger>;
+
+        staticinvoke <org.apache.log4j.LogXF: void exiting(org.apache.log4j.Logger,java.lang.String,java.lang.String,java.lang.String)>($r6, "SomeClass", "someMethod", "someValue");
+
+        $r7 = virtualinvoke $r2.<org.apache.log4j.LogCapture: java.lang.String getMessage()>();
+
+        staticinvoke <org.apache.log4j.TestLogXF: void assertEquals(java.lang.String,java.lang.String)>("SomeClass.someMethod RETURN someValue", $r7);
+
+        return;
+    }
+
+    public void testExitingWithBadValue()
+    {
+        org.apache.log4j.TestLogXF r0;
+        org.apache.log4j.LogCapture $r2;
+        org.apache.log4j.Level $r3, $r4;
+        org.apache.log4j.Logger $r5, $r7;
+        org.apache.log4j.TestLogXF$BadStringifier $r6;
+        java.lang.String $r8;
+
+        r0 := @this: org.apache.log4j.TestLogXF;
+
+        $r2 = new org.apache.log4j.LogCapture;
+
+        $r3 = <org.apache.log4j.Level: org.apache.log4j.Level DEBUG>;
+
+        specialinvoke $r2.<org.apache.log4j.LogCapture: void <init>(org.apache.log4j.Level)>($r3);
+
+        $r5 = r0.<org.apache.log4j.TestLogXF: org.apache.log4j.Logger logger>;
+
+        $r4 = <org.apache.log4j.Level: org.apache.log4j.Level DEBUG>;
+
+        virtualinvoke $r5.<org.apache.log4j.Logger: void setLevel(org.apache.log4j.Level)>($r4);
+
+        $r7 = r0.<org.apache.log4j.TestLogXF: org.apache.log4j.Logger logger>;
+
+        $r6 = <org.apache.log4j.TestLogXF$BadStringifier: org.apache.log4j.TestLogXF$BadStringifier INSTANCE>;
+
+        staticinvoke <org.apache.log4j.LogXF: void exiting(org.apache.log4j.Logger,java.lang.String,java.lang.String,java.lang.Object)>($r7, "SomeClass", "someMethod", $r6);
+
+        $r8 = virtualinvoke $r2.<org.apache.log4j.LogCapture: java.lang.String getMessage()>();
+
+        staticinvoke <org.apache.log4j.TestLogXF: void assertEquals(java.lang.String,java.lang.String)>("SomeClass.someMethod RETURN ?", $r8);
+
+        return;
+    }
+
+    public void testThrowingNullNullNull()
+    {
+        org.apache.log4j.TestLogXF r0;
+        org.apache.log4j.LogCapture $r2;
+        org.apache.log4j.Level $r3, $r4;
+        org.apache.log4j.Logger $r5, $r6;
+        java.lang.String $r7;
+
+        r0 := @this: org.apache.log4j.TestLogXF;
+
+        $r2 = new org.apache.log4j.LogCapture;
+
+        $r3 = <org.apache.log4j.Level: org.apache.log4j.Level DEBUG>;
+
+        specialinvoke $r2.<org.apache.log4j.LogCapture: void <init>(org.apache.log4j.Level)>($r3);
+
+        $r5 = r0.<org.apache.log4j.TestLogXF: org.apache.log4j.Logger logger>;
+
+        $r4 = <org.apache.log4j.Level: org.apache.log4j.Level DEBUG>;
+
+        virtualinvoke $r5.<org.apache.log4j.Logger: void setLevel(org.apache.log4j.Level)>($r4);
+
+        $r6 = r0.<org.apache.log4j.TestLogXF: org.apache.log4j.Logger logger>;
+
+        staticinvoke <org.apache.log4j.LogXF: void throwing(org.apache.log4j.Logger,java.lang.String,java.lang.String,java.lang.Throwable)>($r6, null, null, null);
+
+        $r7 = virtualinvoke $r2.<org.apache.log4j.LogCapture: java.lang.String getMessage()>();
+
+        staticinvoke <org.apache.log4j.TestLogXF: void assertEquals(java.lang.String,java.lang.String)>("null.null THROW", $r7);
+
+        return;
+    }
+
+    public void testThrowing()
+    {
+        org.apache.log4j.TestLogXF r0;
+        org.apache.log4j.LogCapture $r2;
+        org.apache.log4j.Level $r3, $r4;
+        org.apache.log4j.Logger $r5, $r7;
+        java.lang.IllegalArgumentException $r6;
+        java.lang.String $r8;
+
+        r0 := @this: org.apache.log4j.TestLogXF;
+
+        $r2 = new org.apache.log4j.LogCapture;
+
+        $r3 = <org.apache.log4j.Level: org.apache.log4j.Level DEBUG>;
+
+        specialinvoke $r2.<org.apache.log4j.LogCapture: void <init>(org.apache.log4j.Level)>($r3);
+
+        $r5 = r0.<org.apache.log4j.TestLogXF: org.apache.log4j.Logger logger>;
+
+        $r4 = <org.apache.log4j.Level: org.apache.log4j.Level DEBUG>;
+
+        virtualinvoke $r5.<org.apache.log4j.Logger: void setLevel(org.apache.log4j.Level)>($r4);
+
+        $r7 = r0.<org.apache.log4j.TestLogXF: org.apache.log4j.Logger logger>;
+
+        $r6 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r6.<java.lang.IllegalArgumentException: void <init>()>();
+
+        staticinvoke <org.apache.log4j.LogXF: void throwing(org.apache.log4j.Logger,java.lang.String,java.lang.String,java.lang.Throwable)>($r7, "SomeClass", "someMethod", $r6);
+
+        $r8 = virtualinvoke $r2.<org.apache.log4j.LogCapture: java.lang.String getMessage()>();
+
+        staticinvoke <org.apache.log4j.TestLogXF: void assertEquals(java.lang.String,java.lang.String)>("SomeClass.someMethod THROW", $r8);
+
+        return;
+    }
+}

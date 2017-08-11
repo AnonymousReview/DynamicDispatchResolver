@@ -1,0 +1,1909 @@
+public class org.apache.log4j.PropertyConfigurator extends java.lang.Object implements org.apache.log4j.spi.Configurator
+{
+    protected java.util.Hashtable registry;
+    private org.apache.log4j.spi.LoggerRepository repository;
+    protected org.apache.log4j.spi.LoggerFactory loggerFactory;
+    static final java.lang.String CATEGORY_PREFIX;
+    static final java.lang.String LOGGER_PREFIX;
+    static final java.lang.String FACTORY_PREFIX;
+    static final java.lang.String ADDITIVITY_PREFIX;
+    static final java.lang.String ROOT_CATEGORY_PREFIX;
+    static final java.lang.String ROOT_LOGGER_PREFIX;
+    static final java.lang.String APPENDER_PREFIX;
+    static final java.lang.String RENDERER_PREFIX;
+    static final java.lang.String THRESHOLD_PREFIX;
+    private static final java.lang.String THROWABLE_RENDERER_PREFIX;
+    private static final java.lang.String LOGGER_REF;
+    private static final java.lang.String ROOT_REF;
+    private static final java.lang.String APPENDER_REF_TAG;
+    public static final java.lang.String LOGGER_FACTORY_KEY;
+    private static final java.lang.String RESET_KEY;
+    private static final java.lang.String INTERNAL_ROOT_NAME;
+
+    public void <init>()
+    {
+        org.apache.log4j.PropertyConfigurator r0;
+        java.util.Hashtable $r1;
+        org.apache.log4j.DefaultCategoryFactory $r2;
+
+        r0 := @this: org.apache.log4j.PropertyConfigurator;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r1 = new java.util.Hashtable;
+
+        specialinvoke $r1.<java.util.Hashtable: void <init>(int)>(11);
+
+        r0.<org.apache.log4j.PropertyConfigurator: java.util.Hashtable registry> = $r1;
+
+        $r2 = new org.apache.log4j.DefaultCategoryFactory;
+
+        specialinvoke $r2.<org.apache.log4j.DefaultCategoryFactory: void <init>()>();
+
+        r0.<org.apache.log4j.PropertyConfigurator: org.apache.log4j.spi.LoggerFactory loggerFactory> = $r2;
+
+        return;
+    }
+
+    public void doConfigure(java.lang.String, org.apache.log4j.spi.LoggerRepository)
+    {
+        org.apache.log4j.PropertyConfigurator r0;
+        java.lang.String r1, $r24, $r28;
+        org.apache.log4j.spi.LoggerRepository r2;
+        java.util.Properties $r6;
+        java.io.FileInputStream $r7, r20;
+        java.lang.Throwable $r8, $r9, $r12, $r17;
+        java.io.InterruptedIOException $r10, $r13, $r15;
+        java.lang.Thread $r11, $r14, $r16, $r19;
+        java.lang.Exception $r18;
+        boolean $z0, $z1;
+        java.lang.StringBuilder $r21, $r22, $r23, $r25, $r26, $r27;
+
+        r0 := @this: org.apache.log4j.PropertyConfigurator;
+
+        r1 := @parameter0: java.lang.String;
+
+        r2 := @parameter1: org.apache.log4j.spi.LoggerRepository;
+
+        $r6 = new java.util.Properties;
+
+        specialinvoke $r6.<java.util.Properties: void <init>()>();
+
+        r20 = null;
+
+     label01:
+        $r7 = new java.io.FileInputStream;
+
+        specialinvoke $r7.<java.io.FileInputStream: void <init>(java.lang.String)>(r1);
+
+        r20 = $r7;
+
+        virtualinvoke $r6.<java.util.Properties: void load(java.io.InputStream)>($r7);
+
+        virtualinvoke $r7.<java.io.FileInputStream: void close()>();
+
+     label02:
+        goto label18;
+
+     label03:
+        $r18 := @caughtexception;
+
+        $z0 = $r18 instanceof java.io.InterruptedIOException;
+
+        if $z0 != 0 goto label04;
+
+        $z1 = $r18 instanceof java.lang.InterruptedException;
+
+        if $z1 == 0 goto label05;
+
+     label04:
+        $r19 = staticinvoke <java.lang.Thread: java.lang.Thread currentThread()>();
+
+        virtualinvoke $r19.<java.lang.Thread: void interrupt()>();
+
+     label05:
+        $r21 = new java.lang.StringBuilder;
+
+        specialinvoke $r21.<java.lang.StringBuilder: void <init>(java.lang.String)>("Could not read configuration file [");
+
+        $r22 = virtualinvoke $r21.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r1);
+
+        $r23 = virtualinvoke $r22.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("].");
+
+        $r24 = virtualinvoke $r23.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.apache.log4j.helpers.LogLog: void error(java.lang.String,java.lang.Throwable)>($r24, $r18);
+
+        $r25 = new java.lang.StringBuilder;
+
+        specialinvoke $r25.<java.lang.StringBuilder: void <init>(java.lang.String)>("Ignoring configuration file [");
+
+        $r26 = virtualinvoke $r25.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r1);
+
+        $r27 = virtualinvoke $r26.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("].");
+
+        $r28 = virtualinvoke $r27.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.apache.log4j.helpers.LogLog: void error(java.lang.String)>($r28);
+
+     label06:
+        if r20 == null goto label11;
+
+     label07:
+        virtualinvoke r20.<java.io.FileInputStream: void close()>();
+
+     label08:
+        goto label11;
+
+     label09:
+        $r15 := @caughtexception;
+
+        $r16 = staticinvoke <java.lang.Thread: java.lang.Thread currentThread()>();
+
+        virtualinvoke $r16.<java.lang.Thread: void interrupt()>();
+
+        goto label11;
+
+     label10:
+        $r17 := @caughtexception;
+
+     label11:
+        return;
+
+     label12:
+        $r9 := @caughtexception;
+
+        if r20 == null goto label17;
+
+     label13:
+        virtualinvoke r20.<java.io.FileInputStream: void close()>();
+
+     label14:
+        goto label17;
+
+     label15:
+        $r10 := @caughtexception;
+
+        $r11 = staticinvoke <java.lang.Thread: java.lang.Thread currentThread()>();
+
+        virtualinvoke $r11.<java.lang.Thread: void interrupt()>();
+
+        goto label17;
+
+     label16:
+        $r12 := @caughtexception;
+
+     label17:
+        throw $r9;
+
+     label18:
+        if $r7 == null goto label23;
+
+     label19:
+        virtualinvoke $r7.<java.io.FileInputStream: void close()>();
+
+     label20:
+        goto label23;
+
+     label21:
+        $r13 := @caughtexception;
+
+        $r14 = staticinvoke <java.lang.Thread: java.lang.Thread currentThread()>();
+
+        virtualinvoke $r14.<java.lang.Thread: void interrupt()>();
+
+        goto label23;
+
+     label22:
+        $r8 := @caughtexception;
+
+     label23:
+        virtualinvoke r0.<org.apache.log4j.PropertyConfigurator: void doConfigure(java.util.Properties,org.apache.log4j.spi.LoggerRepository)>($r6, r2);
+
+        return;
+
+        catch java.lang.Exception from label01 to label02 with label03;
+        catch java.io.InterruptedIOException from label07 to label08 with label09;
+        catch java.lang.Throwable from label07 to label08 with label10;
+        catch java.lang.Throwable from label01 to label06 with label12;
+        catch java.io.InterruptedIOException from label13 to label14 with label15;
+        catch java.lang.Throwable from label13 to label14 with label16;
+        catch java.io.InterruptedIOException from label19 to label20 with label21;
+        catch java.lang.Throwable from label19 to label20 with label22;
+    }
+
+    public static void configure(java.lang.String)
+    {
+        java.lang.String r0;
+        org.apache.log4j.PropertyConfigurator $r1;
+        org.apache.log4j.spi.LoggerRepository $r2;
+
+        r0 := @parameter0: java.lang.String;
+
+        $r1 = new org.apache.log4j.PropertyConfigurator;
+
+        specialinvoke $r1.<org.apache.log4j.PropertyConfigurator: void <init>()>();
+
+        $r2 = staticinvoke <org.apache.log4j.LogManager: org.apache.log4j.spi.LoggerRepository getLoggerRepository()>();
+
+        virtualinvoke $r1.<org.apache.log4j.PropertyConfigurator: void doConfigure(java.lang.String,org.apache.log4j.spi.LoggerRepository)>(r0, $r2);
+
+        return;
+    }
+
+    public static void configure(java.net.URL)
+    {
+        java.net.URL r0;
+        org.apache.log4j.PropertyConfigurator $r1;
+        org.apache.log4j.spi.LoggerRepository $r2;
+
+        r0 := @parameter0: java.net.URL;
+
+        $r1 = new org.apache.log4j.PropertyConfigurator;
+
+        specialinvoke $r1.<org.apache.log4j.PropertyConfigurator: void <init>()>();
+
+        $r2 = staticinvoke <org.apache.log4j.LogManager: org.apache.log4j.spi.LoggerRepository getLoggerRepository()>();
+
+        virtualinvoke $r1.<org.apache.log4j.PropertyConfigurator: void doConfigure(java.net.URL,org.apache.log4j.spi.LoggerRepository)>(r0, $r2);
+
+        return;
+    }
+
+    public static void configure(java.io.InputStream)
+    {
+        java.io.InputStream r0;
+        org.apache.log4j.PropertyConfigurator $r1;
+        org.apache.log4j.spi.LoggerRepository $r2;
+
+        r0 := @parameter0: java.io.InputStream;
+
+        $r1 = new org.apache.log4j.PropertyConfigurator;
+
+        specialinvoke $r1.<org.apache.log4j.PropertyConfigurator: void <init>()>();
+
+        $r2 = staticinvoke <org.apache.log4j.LogManager: org.apache.log4j.spi.LoggerRepository getLoggerRepository()>();
+
+        virtualinvoke $r1.<org.apache.log4j.PropertyConfigurator: void doConfigure(java.io.InputStream,org.apache.log4j.spi.LoggerRepository)>(r0, $r2);
+
+        return;
+    }
+
+    public static void configure(java.util.Properties)
+    {
+        java.util.Properties r0;
+        org.apache.log4j.PropertyConfigurator $r1;
+        org.apache.log4j.spi.LoggerRepository $r2;
+
+        r0 := @parameter0: java.util.Properties;
+
+        $r1 = new org.apache.log4j.PropertyConfigurator;
+
+        specialinvoke $r1.<org.apache.log4j.PropertyConfigurator: void <init>()>();
+
+        $r2 = staticinvoke <org.apache.log4j.LogManager: org.apache.log4j.spi.LoggerRepository getLoggerRepository()>();
+
+        virtualinvoke $r1.<org.apache.log4j.PropertyConfigurator: void doConfigure(java.util.Properties,org.apache.log4j.spi.LoggerRepository)>(r0, $r2);
+
+        return;
+    }
+
+    public static void configureAndWatch(java.lang.String)
+    {
+        java.lang.String r0;
+
+        r0 := @parameter0: java.lang.String;
+
+        staticinvoke <org.apache.log4j.PropertyConfigurator: void configureAndWatch(java.lang.String,long)>(r0, 60000L);
+
+        return;
+    }
+
+    public static void configureAndWatch(java.lang.String, long)
+    {
+        java.lang.String r0;
+        long l0;
+        org.apache.log4j.PropertyWatchdog $r2;
+
+        r0 := @parameter0: java.lang.String;
+
+        l0 := @parameter1: long;
+
+        $r2 = new org.apache.log4j.PropertyWatchdog;
+
+        specialinvoke $r2.<org.apache.log4j.PropertyWatchdog: void <init>(java.lang.String)>(r0);
+
+        virtualinvoke $r2.<org.apache.log4j.PropertyWatchdog: void setDelay(long)>(l0);
+
+        virtualinvoke $r2.<org.apache.log4j.PropertyWatchdog: void start()>();
+
+        return;
+    }
+
+    public void doConfigure(java.util.Properties, org.apache.log4j.spi.LoggerRepository)
+    {
+        org.apache.log4j.PropertyConfigurator r0;
+        java.util.Properties r1;
+        org.apache.log4j.spi.LoggerRepository r2;
+        java.lang.String r3, r4, $r12, r13;
+        java.util.Hashtable $r5;
+        org.apache.log4j.Level $r6, $r7, $r9;
+        java.lang.StringBuilder $r8, $r10, $r11;
+        boolean $z0, $z1;
+
+        r0 := @this: org.apache.log4j.PropertyConfigurator;
+
+        r1 := @parameter0: java.util.Properties;
+
+        r2 := @parameter1: org.apache.log4j.spi.LoggerRepository;
+
+        r0.<org.apache.log4j.PropertyConfigurator: org.apache.log4j.spi.LoggerRepository repository> = r2;
+
+        r13 = virtualinvoke r1.<java.util.Properties: java.lang.String getProperty(java.lang.String)>("log4j.debug");
+
+        if r13 != null goto label1;
+
+        r13 = virtualinvoke r1.<java.util.Properties: java.lang.String getProperty(java.lang.String)>("log4j.configDebug");
+
+        if r13 == null goto label1;
+
+        staticinvoke <org.apache.log4j.helpers.LogLog: void warn(java.lang.String)>("[log4j.configDebug] is deprecated. Use [log4j.debug] instead.");
+
+     label1:
+        if r13 == null goto label2;
+
+        $z1 = staticinvoke <org.apache.log4j.helpers.OptionConverter: boolean toBoolean(java.lang.String,boolean)>(r13, 1);
+
+        staticinvoke <org.apache.log4j.helpers.LogLog: void setInternalDebugging(boolean)>($z1);
+
+     label2:
+        r3 = virtualinvoke r1.<java.util.Properties: java.lang.String getProperty(java.lang.String)>("log4j.reset");
+
+        if r3 == null goto label3;
+
+        $z0 = staticinvoke <org.apache.log4j.helpers.OptionConverter: boolean toBoolean(java.lang.String,boolean)>(r3, 0);
+
+        if $z0 == 0 goto label3;
+
+        interfaceinvoke r2.<org.apache.log4j.spi.LoggerRepository: void resetConfiguration()>();
+
+     label3:
+        r4 = staticinvoke <org.apache.log4j.helpers.OptionConverter: java.lang.String findAndSubst(java.lang.String,java.util.Properties)>("log4j.threshold", r1);
+
+        if r4 == null goto label4;
+
+        $r6 = <org.apache.log4j.Level: org.apache.log4j.Level ALL>;
+
+        $r7 = staticinvoke <org.apache.log4j.helpers.OptionConverter: org.apache.log4j.Level toLevel(java.lang.String,org.apache.log4j.Level)>(r4, $r6);
+
+        interfaceinvoke r2.<org.apache.log4j.spi.LoggerRepository: void setThreshold(org.apache.log4j.Level)>($r7);
+
+        $r8 = new java.lang.StringBuilder;
+
+        specialinvoke $r8.<java.lang.StringBuilder: void <init>(java.lang.String)>("Hierarchy threshold set to [");
+
+        $r9 = interfaceinvoke r2.<org.apache.log4j.spi.LoggerRepository: org.apache.log4j.Level getThreshold()>();
+
+        $r10 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r9);
+
+        $r11 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("].");
+
+        $r12 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.apache.log4j.helpers.LogLog: void debug(java.lang.String)>($r12);
+
+     label4:
+        virtualinvoke r0.<org.apache.log4j.PropertyConfigurator: void configureRootCategory(java.util.Properties,org.apache.log4j.spi.LoggerRepository)>(r1, r2);
+
+        virtualinvoke r0.<org.apache.log4j.PropertyConfigurator: void configureLoggerFactory(java.util.Properties)>(r1);
+
+        virtualinvoke r0.<org.apache.log4j.PropertyConfigurator: void parseCatsAndRenderers(java.util.Properties,org.apache.log4j.spi.LoggerRepository)>(r1, r2);
+
+        staticinvoke <org.apache.log4j.helpers.LogLog: void debug(java.lang.String)>("Finished configuring.");
+
+        $r5 = r0.<org.apache.log4j.PropertyConfigurator: java.util.Hashtable registry>;
+
+        virtualinvoke $r5.<java.util.Hashtable: void clear()>();
+
+        return;
+    }
+
+    public void doConfigure(java.io.InputStream, org.apache.log4j.spi.LoggerRepository)
+    {
+        org.apache.log4j.PropertyConfigurator r0;
+        java.io.InputStream r1;
+        org.apache.log4j.spi.LoggerRepository r2;
+        java.util.Properties $r5;
+        java.io.IOException $r6;
+        boolean $z0;
+        java.lang.StringBuilder $r7, $r8, $r9, $r11, $r12, $r13;
+        java.lang.String $r10, $r14;
+        java.lang.Thread $r15;
+
+        r0 := @this: org.apache.log4j.PropertyConfigurator;
+
+        r1 := @parameter0: java.io.InputStream;
+
+        r2 := @parameter1: org.apache.log4j.spi.LoggerRepository;
+
+        $r5 = new java.util.Properties;
+
+        specialinvoke $r5.<java.util.Properties: void <init>()>();
+
+     label1:
+        virtualinvoke $r5.<java.util.Properties: void load(java.io.InputStream)>(r1);
+
+     label2:
+        goto label5;
+
+     label3:
+        $r6 := @caughtexception;
+
+        $z0 = $r6 instanceof java.io.InterruptedIOException;
+
+        if $z0 == 0 goto label4;
+
+        $r15 = staticinvoke <java.lang.Thread: java.lang.Thread currentThread()>();
+
+        virtualinvoke $r15.<java.lang.Thread: void interrupt()>();
+
+     label4:
+        $r7 = new java.lang.StringBuilder;
+
+        specialinvoke $r7.<java.lang.StringBuilder: void <init>(java.lang.String)>("Could not read configuration file from InputStream [");
+
+        $r8 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(r1);
+
+        $r9 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("].");
+
+        $r10 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.apache.log4j.helpers.LogLog: void error(java.lang.String,java.lang.Throwable)>($r10, $r6);
+
+        $r11 = new java.lang.StringBuilder;
+
+        specialinvoke $r11.<java.lang.StringBuilder: void <init>(java.lang.String)>("Ignoring configuration InputStream [");
+
+        $r12 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(r1);
+
+        $r13 = virtualinvoke $r12.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("].");
+
+        $r14 = virtualinvoke $r13.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.apache.log4j.helpers.LogLog: void error(java.lang.String)>($r14);
+
+        return;
+
+     label5:
+        virtualinvoke r0.<org.apache.log4j.PropertyConfigurator: void doConfigure(java.util.Properties,org.apache.log4j.spi.LoggerRepository)>($r5, r2);
+
+        return;
+
+        catch java.io.IOException from label1 to label2 with label3;
+    }
+
+    public void doConfigure(java.net.URL, org.apache.log4j.spi.LoggerRepository)
+    {
+        org.apache.log4j.PropertyConfigurator r0;
+        java.net.URL r1;
+        org.apache.log4j.spi.LoggerRepository r2;
+        java.util.Properties $r6;
+        java.lang.StringBuilder $r7, $r8, $r27, $r28, $r29, $r31, $r32, $r33;
+        java.lang.String $r9, $r30, $r34;
+        java.lang.RuntimeException $r10, $r14, $r24;
+        java.io.IOException $r11, $r18, $r23;
+        java.lang.Exception $r12;
+        boolean $z0, $z1;
+        java.lang.Thread $r13, $r16, $r20, $r22;
+        java.io.InterruptedIOException $r15, $r19, $r21;
+        java.lang.Throwable $r17;
+        java.io.InputStream r25;
+        java.net.URLConnection r26;
+
+        r0 := @this: org.apache.log4j.PropertyConfigurator;
+
+        r1 := @parameter0: java.net.URL;
+
+        r2 := @parameter1: org.apache.log4j.spi.LoggerRepository;
+
+        $r6 = new java.util.Properties;
+
+        specialinvoke $r6.<java.util.Properties: void <init>()>();
+
+        $r7 = new java.lang.StringBuilder;
+
+        specialinvoke $r7.<java.lang.StringBuilder: void <init>(java.lang.String)>("Reading configuration from URL ");
+
+        $r8 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(r1);
+
+        $r9 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.apache.log4j.helpers.LogLog: void debug(java.lang.String)>($r9);
+
+        r25 = null;
+
+     label01:
+        r26 = virtualinvoke r1.<java.net.URL: java.net.URLConnection openConnection()>();
+
+        virtualinvoke r26.<java.net.URLConnection: void setUseCaches(boolean)>(0);
+
+        r25 = virtualinvoke r26.<java.net.URLConnection: java.io.InputStream getInputStream()>();
+
+        virtualinvoke $r6.<java.util.Properties: void load(java.io.InputStream)>(r25);
+
+     label02:
+        goto label20;
+
+     label03:
+        $r12 := @caughtexception;
+
+        $z0 = $r12 instanceof java.io.InterruptedIOException;
+
+        if $z0 != 0 goto label04;
+
+        $z1 = $r12 instanceof java.lang.InterruptedException;
+
+        if $z1 == 0 goto label05;
+
+     label04:
+        $r13 = staticinvoke <java.lang.Thread: java.lang.Thread currentThread()>();
+
+        virtualinvoke $r13.<java.lang.Thread: void interrupt()>();
+
+     label05:
+        $r27 = new java.lang.StringBuilder;
+
+        specialinvoke $r27.<java.lang.StringBuilder: void <init>(java.lang.String)>("Could not read configuration file from URL [");
+
+        $r28 = virtualinvoke $r27.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(r1);
+
+        $r29 = virtualinvoke $r28.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("].");
+
+        $r30 = virtualinvoke $r29.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.apache.log4j.helpers.LogLog: void error(java.lang.String,java.lang.Throwable)>($r30, $r12);
+
+        $r31 = new java.lang.StringBuilder;
+
+        specialinvoke $r31.<java.lang.StringBuilder: void <init>(java.lang.String)>("Ignoring configuration file [");
+
+        $r32 = virtualinvoke $r31.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(r1);
+
+        $r33 = virtualinvoke $r32.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("].");
+
+        $r34 = virtualinvoke $r33.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.apache.log4j.helpers.LogLog: void error(java.lang.String)>($r34);
+
+     label06:
+        if r25 == null goto label12;
+
+     label07:
+        virtualinvoke r25.<java.io.InputStream: void close()>();
+
+     label08:
+        goto label12;
+
+     label09:
+        $r21 := @caughtexception;
+
+        $r22 = staticinvoke <java.lang.Thread: java.lang.Thread currentThread()>();
+
+        virtualinvoke $r22.<java.lang.Thread: void interrupt()>();
+
+        goto label12;
+
+     label10:
+        $r11 := @caughtexception;
+
+        goto label12;
+
+     label11:
+        $r24 := @caughtexception;
+
+     label12:
+        return;
+
+     label13:
+        $r17 := @caughtexception;
+
+        if r25 == null goto label19;
+
+     label14:
+        virtualinvoke r25.<java.io.InputStream: void close()>();
+
+     label15:
+        goto label19;
+
+     label16:
+        $r15 := @caughtexception;
+
+        $r16 = staticinvoke <java.lang.Thread: java.lang.Thread currentThread()>();
+
+        virtualinvoke $r16.<java.lang.Thread: void interrupt()>();
+
+        goto label19;
+
+     label17:
+        $r23 := @caughtexception;
+
+        goto label19;
+
+     label18:
+        $r10 := @caughtexception;
+
+     label19:
+        throw $r17;
+
+     label20:
+        if r25 == null goto label26;
+
+     label21:
+        virtualinvoke r25.<java.io.InputStream: void close()>();
+
+     label22:
+        goto label26;
+
+     label23:
+        $r19 := @caughtexception;
+
+        $r20 = staticinvoke <java.lang.Thread: java.lang.Thread currentThread()>();
+
+        virtualinvoke $r20.<java.lang.Thread: void interrupt()>();
+
+        goto label26;
+
+     label24:
+        $r18 := @caughtexception;
+
+        goto label26;
+
+     label25:
+        $r14 := @caughtexception;
+
+     label26:
+        virtualinvoke r0.<org.apache.log4j.PropertyConfigurator: void doConfigure(java.util.Properties,org.apache.log4j.spi.LoggerRepository)>($r6, r2);
+
+        return;
+
+        catch java.lang.Exception from label01 to label02 with label03;
+        catch java.io.InterruptedIOException from label07 to label08 with label09;
+        catch java.io.IOException from label07 to label08 with label10;
+        catch java.lang.RuntimeException from label07 to label08 with label11;
+        catch java.lang.Throwable from label01 to label06 with label13;
+        catch java.io.InterruptedIOException from label14 to label15 with label16;
+        catch java.io.IOException from label14 to label15 with label17;
+        catch java.lang.RuntimeException from label14 to label15 with label18;
+        catch java.io.InterruptedIOException from label21 to label22 with label23;
+        catch java.io.IOException from label21 to label22 with label24;
+        catch java.lang.RuntimeException from label21 to label22 with label25;
+    }
+
+    protected void configureLoggerFactory(java.util.Properties)
+    {
+        org.apache.log4j.PropertyConfigurator r0;
+        java.util.Properties r1;
+        java.lang.String r2, $r6;
+        java.lang.StringBuilder $r3, $r4, $r5;
+        org.apache.log4j.spi.LoggerFactory $r7, $r9, $r10;
+        java.lang.Object $r8;
+
+        r0 := @this: org.apache.log4j.PropertyConfigurator;
+
+        r1 := @parameter0: java.util.Properties;
+
+        r2 = staticinvoke <org.apache.log4j.helpers.OptionConverter: java.lang.String findAndSubst(java.lang.String,java.util.Properties)>("log4j.loggerFactory", r1);
+
+        if r2 == null goto label1;
+
+        $r3 = new java.lang.StringBuilder;
+
+        specialinvoke $r3.<java.lang.StringBuilder: void <init>(java.lang.String)>("Setting category factory to [");
+
+        $r4 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r2);
+
+        $r5 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("].");
+
+        $r6 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.apache.log4j.helpers.LogLog: void debug(java.lang.String)>($r6);
+
+        $r7 = r0.<org.apache.log4j.PropertyConfigurator: org.apache.log4j.spi.LoggerFactory loggerFactory>;
+
+        $r8 = staticinvoke <org.apache.log4j.helpers.OptionConverter: java.lang.Object instantiateByClassName(java.lang.String,java.lang.Class,java.lang.Object)>(r2, class "org/apache/log4j/spi/LoggerFactory", $r7);
+
+        $r9 = (org.apache.log4j.spi.LoggerFactory) $r8;
+
+        r0.<org.apache.log4j.PropertyConfigurator: org.apache.log4j.spi.LoggerFactory loggerFactory> = $r9;
+
+        $r10 = r0.<org.apache.log4j.PropertyConfigurator: org.apache.log4j.spi.LoggerFactory loggerFactory>;
+
+        staticinvoke <org.apache.log4j.config.PropertySetter: void setProperties(java.lang.Object,java.util.Properties,java.lang.String)>($r10, r1, "log4j.factory.");
+
+     label1:
+        return;
+    }
+
+    void configureRootCategory(java.util.Properties, org.apache.log4j.spi.LoggerRepository)
+    {
+        org.apache.log4j.PropertyConfigurator r0;
+        java.util.Properties r1;
+        org.apache.log4j.spi.LoggerRepository r2;
+        org.apache.log4j.Logger r3;
+        java.lang.Throwable $r6;
+        java.lang.String r7, r8;
+
+        r0 := @this: org.apache.log4j.PropertyConfigurator;
+
+        r1 := @parameter0: java.util.Properties;
+
+        r2 := @parameter1: org.apache.log4j.spi.LoggerRepository;
+
+        r7 = "log4j.rootLogger";
+
+        r8 = staticinvoke <org.apache.log4j.helpers.OptionConverter: java.lang.String findAndSubst(java.lang.String,java.util.Properties)>("log4j.rootLogger", r1);
+
+        if r8 != null goto label1;
+
+        r8 = staticinvoke <org.apache.log4j.helpers.OptionConverter: java.lang.String findAndSubst(java.lang.String,java.util.Properties)>("log4j.rootCategory", r1);
+
+        r7 = "log4j.rootCategory";
+
+     label1:
+        if r8 != null goto label2;
+
+        staticinvoke <org.apache.log4j.helpers.LogLog: void debug(java.lang.String)>("Could not find root logger information. Is this OK?");
+
+        goto label7;
+
+     label2:
+        r3 = interfaceinvoke r2.<org.apache.log4j.spi.LoggerRepository: org.apache.log4j.Logger getRootLogger()>();
+
+        entermonitor r3;
+
+     label3:
+        virtualinvoke r0.<org.apache.log4j.PropertyConfigurator: void parseCategory(java.util.Properties,org.apache.log4j.Logger,java.lang.String,java.lang.String,java.lang.String)>(r1, r3, r7, "root", r8);
+
+        exitmonitor r3;
+
+     label4:
+        goto label7;
+
+     label5:
+        $r6 := @caughtexception;
+
+        exitmonitor r3;
+
+     label6:
+        throw $r6;
+
+     label7:
+        return;
+
+        catch java.lang.Throwable from label3 to label4 with label5;
+        catch java.lang.Throwable from label5 to label6 with label5;
+    }
+
+    protected void parseCatsAndRenderers(java.util.Properties, org.apache.log4j.spi.LoggerRepository)
+    {
+        org.apache.log4j.PropertyConfigurator r0;
+        java.util.Properties r1;
+        org.apache.log4j.spi.LoggerRepository r2;
+        java.util.Enumeration r3;
+        java.lang.String r4, $r8, $r9, $r13, r16, r17, r20, r21;
+        org.apache.log4j.Logger r5;
+        java.lang.Object $r7, $r10;
+        boolean $z0, $z1, $z2, $z3, $z4, $z5, $z6, $z7, $z8;
+        int $i0, $i1, $i2;
+        org.apache.log4j.config.PropertySetter $r11;
+        org.apache.log4j.spi.ThrowableRendererSupport $r12;
+        org.apache.log4j.spi.RendererSupport $r14;
+        java.lang.Throwable $r15;
+        org.apache.log4j.spi.LoggerFactory $r18;
+        org.apache.log4j.spi.ThrowableRenderer r22;
+
+        r0 := @this: org.apache.log4j.PropertyConfigurator;
+
+        r1 := @parameter0: java.util.Properties;
+
+        r2 := @parameter1: org.apache.log4j.spi.LoggerRepository;
+
+        r3 = virtualinvoke r1.<java.util.Properties: java.util.Enumeration propertyNames()>();
+
+        goto label12;
+
+     label01:
+        $r7 = interfaceinvoke r3.<java.util.Enumeration: java.lang.Object nextElement()>();
+
+        r4 = (java.lang.String) $r7;
+
+        $z0 = virtualinvoke r4.<java.lang.String: boolean startsWith(java.lang.String)>("log4j.category.");
+
+        if $z0 != 0 goto label02;
+
+        $z3 = virtualinvoke r4.<java.lang.String: boolean startsWith(java.lang.String)>("log4j.logger.");
+
+        if $z3 == 0 goto label09;
+
+     label02:
+        r16 = null;
+
+        $z1 = virtualinvoke r4.<java.lang.String: boolean startsWith(java.lang.String)>("log4j.category.");
+
+        if $z1 == 0 goto label03;
+
+        $r9 = "log4j.category.";
+
+        $i1 = virtualinvoke $r9.<java.lang.String: int length()>();
+
+        r16 = virtualinvoke r4.<java.lang.String: java.lang.String substring(int)>($i1);
+
+        goto label04;
+
+     label03:
+        $z2 = virtualinvoke r4.<java.lang.String: boolean startsWith(java.lang.String)>("log4j.logger.");
+
+        if $z2 == 0 goto label04;
+
+        $r8 = "log4j.logger.";
+
+        $i0 = virtualinvoke $r8.<java.lang.String: int length()>();
+
+        r16 = virtualinvoke r4.<java.lang.String: java.lang.String substring(int)>($i0);
+
+     label04:
+        r17 = staticinvoke <org.apache.log4j.helpers.OptionConverter: java.lang.String findAndSubst(java.lang.String,java.util.Properties)>(r4, r1);
+
+        $r18 = r0.<org.apache.log4j.PropertyConfigurator: org.apache.log4j.spi.LoggerFactory loggerFactory>;
+
+        r5 = interfaceinvoke r2.<org.apache.log4j.spi.LoggerRepository: org.apache.log4j.Logger getLogger(java.lang.String,org.apache.log4j.spi.LoggerFactory)>(r16, $r18);
+
+        entermonitor r5;
+
+     label05:
+        virtualinvoke r0.<org.apache.log4j.PropertyConfigurator: void parseCategory(java.util.Properties,org.apache.log4j.Logger,java.lang.String,java.lang.String,java.lang.String)>(r1, r5, r4, r16, r17);
+
+        virtualinvoke r0.<org.apache.log4j.PropertyConfigurator: void parseAdditivityForLogger(java.util.Properties,org.apache.log4j.Logger,java.lang.String)>(r1, r5, r16);
+
+        exitmonitor r5;
+
+     label06:
+        goto label12;
+
+     label07:
+        $r15 := @caughtexception;
+
+        exitmonitor r5;
+
+     label08:
+        throw $r15;
+
+     label09:
+        $z4 = virtualinvoke r4.<java.lang.String: boolean startsWith(java.lang.String)>("log4j.renderer.");
+
+        if $z4 == 0 goto label10;
+
+        $r13 = "log4j.renderer.";
+
+        $i2 = virtualinvoke $r13.<java.lang.String: int length()>();
+
+        r20 = virtualinvoke r4.<java.lang.String: java.lang.String substring(int)>($i2);
+
+        r21 = staticinvoke <org.apache.log4j.helpers.OptionConverter: java.lang.String findAndSubst(java.lang.String,java.util.Properties)>(r4, r1);
+
+        $z7 = r2 instanceof org.apache.log4j.spi.RendererSupport;
+
+        if $z7 == 0 goto label12;
+
+        $r14 = (org.apache.log4j.spi.RendererSupport) r2;
+
+        staticinvoke <org.apache.log4j.or.RendererMap: void addRenderer(org.apache.log4j.spi.RendererSupport,java.lang.String,java.lang.String)>($r14, r20, r21);
+
+        goto label12;
+
+     label10:
+        $z5 = virtualinvoke r4.<java.lang.String: boolean equals(java.lang.Object)>("log4j.throwableRenderer");
+
+        if $z5 == 0 goto label12;
+
+        $z6 = r2 instanceof org.apache.log4j.spi.ThrowableRendererSupport;
+
+        if $z6 == 0 goto label12;
+
+        $r10 = staticinvoke <org.apache.log4j.helpers.OptionConverter: java.lang.Object instantiateByKey(java.util.Properties,java.lang.String,java.lang.Class,java.lang.Object)>(r1, "log4j.throwableRenderer", class "org/apache/log4j/spi/ThrowableRenderer", null);
+
+        r22 = (org.apache.log4j.spi.ThrowableRenderer) $r10;
+
+        if r22 != null goto label11;
+
+        staticinvoke <org.apache.log4j.helpers.LogLog: void error(java.lang.String)>("Could not instantiate throwableRenderer.");
+
+        goto label12;
+
+     label11:
+        $r11 = new org.apache.log4j.config.PropertySetter;
+
+        specialinvoke $r11.<org.apache.log4j.config.PropertySetter: void <init>(java.lang.Object)>(r22);
+
+        virtualinvoke $r11.<org.apache.log4j.config.PropertySetter: void setProperties(java.util.Properties,java.lang.String)>(r1, "log4j.throwableRenderer.");
+
+        $r12 = (org.apache.log4j.spi.ThrowableRendererSupport) r2;
+
+        interfaceinvoke $r12.<org.apache.log4j.spi.ThrowableRendererSupport: void setThrowableRenderer(org.apache.log4j.spi.ThrowableRenderer)>(r22);
+
+     label12:
+        $z8 = interfaceinvoke r3.<java.util.Enumeration: boolean hasMoreElements()>();
+
+        if $z8 != 0 goto label01;
+
+        return;
+
+        catch java.lang.Throwable from label05 to label06 with label07;
+        catch java.lang.Throwable from label07 to label08 with label07;
+    }
+
+    void parseAdditivityForLogger(java.util.Properties, org.apache.log4j.Logger, java.lang.String)
+    {
+        org.apache.log4j.PropertyConfigurator r0;
+        java.util.Properties r1;
+        org.apache.log4j.Logger r2;
+        java.lang.String r3, r4, $r7, $r13, $r18;
+        boolean z0, $z1;
+        java.lang.StringBuilder $r5, $r6, $r8, $r9, $r10, $r11, $r12, $r14, $r15, $r16, $r17;
+
+        r0 := @this: org.apache.log4j.PropertyConfigurator;
+
+        r1 := @parameter0: java.util.Properties;
+
+        r2 := @parameter1: org.apache.log4j.Logger;
+
+        r3 := @parameter2: java.lang.String;
+
+        $r5 = new java.lang.StringBuilder;
+
+        specialinvoke $r5.<java.lang.StringBuilder: void <init>(java.lang.String)>("log4j.additivity.");
+
+        $r6 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r3);
+
+        $r7 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        r4 = staticinvoke <org.apache.log4j.helpers.OptionConverter: java.lang.String findAndSubst(java.lang.String,java.util.Properties)>($r7, r1);
+
+        $r8 = new java.lang.StringBuilder;
+
+        specialinvoke $r8.<java.lang.StringBuilder: void <init>(java.lang.String)>("Handling log4j.additivity.");
+
+        $r9 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r3);
+
+        $r10 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("=[");
+
+        $r11 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r4);
+
+        $r12 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("]");
+
+        $r13 = virtualinvoke $r12.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.apache.log4j.helpers.LogLog: void debug(java.lang.String)>($r13);
+
+        if r4 == null goto label1;
+
+        $z1 = virtualinvoke r4.<java.lang.String: boolean equals(java.lang.Object)>("");
+
+        if $z1 != 0 goto label1;
+
+        z0 = staticinvoke <org.apache.log4j.helpers.OptionConverter: boolean toBoolean(java.lang.String,boolean)>(r4, 1);
+
+        $r14 = new java.lang.StringBuilder;
+
+        specialinvoke $r14.<java.lang.StringBuilder: void <init>(java.lang.String)>("Setting additivity for \"");
+
+        $r15 = virtualinvoke $r14.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r3);
+
+        $r16 = virtualinvoke $r15.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\" to ");
+
+        $r17 = virtualinvoke $r16.<java.lang.StringBuilder: java.lang.StringBuilder append(boolean)>(z0);
+
+        $r18 = virtualinvoke $r17.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.apache.log4j.helpers.LogLog: void debug(java.lang.String)>($r18);
+
+        virtualinvoke r2.<org.apache.log4j.Logger: void setAdditivity(boolean)>(z0);
+
+     label1:
+        return;
+    }
+
+    void parseCategory(java.util.Properties, org.apache.log4j.Logger, java.lang.String, java.lang.String, java.lang.String)
+    {
+        org.apache.log4j.PropertyConfigurator r0;
+        java.util.Properties r1;
+        org.apache.log4j.Logger r2;
+        java.lang.String r3, r4, r5, r7, $r13, $r15, $r19, $r23, $r24, $r25, r28, $r34;
+        java.lang.StringBuilder $r8, $r9, $r10, $r11, $r12, $r16, $r17, $r18, $r20, $r21, $r22, $r29, $r30, $r31, $r33;
+        java.util.StringTokenizer $r14;
+        boolean $z0, $z1, $z2, $z3, $z4, $z5, $z6, $z7;
+        org.apache.log4j.Level $r26, $r27, $r32;
+        org.apache.log4j.Appender r35;
+
+        r0 := @this: org.apache.log4j.PropertyConfigurator;
+
+        r1 := @parameter0: java.util.Properties;
+
+        r2 := @parameter1: org.apache.log4j.Logger;
+
+        r3 := @parameter2: java.lang.String;
+
+        r4 := @parameter3: java.lang.String;
+
+        r5 := @parameter4: java.lang.String;
+
+        $r8 = new java.lang.StringBuilder;
+
+        specialinvoke $r8.<java.lang.StringBuilder: void <init>(java.lang.String)>("Parsing for [");
+
+        $r9 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r4);
+
+        $r10 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("] with value=[");
+
+        $r11 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r5);
+
+        $r12 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("].");
+
+        $r13 = virtualinvoke $r12.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.apache.log4j.helpers.LogLog: void debug(java.lang.String)>($r13);
+
+        $r14 = new java.util.StringTokenizer;
+
+        specialinvoke $r14.<java.util.StringTokenizer: void <init>(java.lang.String,java.lang.String)>(r5, ",");
+
+        $z0 = virtualinvoke r5.<java.lang.String: boolean startsWith(java.lang.String)>(",");
+
+        if $z0 != 0 goto label6;
+
+        $z2 = virtualinvoke r5.<java.lang.String: boolean equals(java.lang.Object)>("");
+
+        if $z2 != 0 goto label6;
+
+        $z3 = virtualinvoke $r14.<java.util.StringTokenizer: boolean hasMoreTokens()>();
+
+        if $z3 != 0 goto label1;
+
+        return;
+
+     label1:
+        r28 = virtualinvoke $r14.<java.util.StringTokenizer: java.lang.String nextToken()>();
+
+        $r20 = new java.lang.StringBuilder;
+
+        specialinvoke $r20.<java.lang.StringBuilder: void <init>(java.lang.String)>("Level token is [");
+
+        $r21 = virtualinvoke $r20.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r28);
+
+        $r22 = virtualinvoke $r21.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("].");
+
+        $r23 = virtualinvoke $r22.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.apache.log4j.helpers.LogLog: void debug(java.lang.String)>($r23);
+
+        $r24 = "inherited";
+
+        $z4 = virtualinvoke $r24.<java.lang.String: boolean equalsIgnoreCase(java.lang.String)>(r28);
+
+        if $z4 != 0 goto label2;
+
+        $r25 = "null";
+
+        $z6 = virtualinvoke $r25.<java.lang.String: boolean equalsIgnoreCase(java.lang.String)>(r28);
+
+        if $z6 == 0 goto label4;
+
+     label2:
+        $z5 = virtualinvoke r4.<java.lang.String: boolean equals(java.lang.Object)>("root");
+
+        if $z5 == 0 goto label3;
+
+        staticinvoke <org.apache.log4j.helpers.LogLog: void warn(java.lang.String)>("The root logger cannot be set to null.");
+
+        goto label5;
+
+     label3:
+        virtualinvoke r2.<org.apache.log4j.Logger: void setLevel(org.apache.log4j.Level)>(null);
+
+        goto label5;
+
+     label4:
+        $r26 = <org.apache.log4j.Level: org.apache.log4j.Level DEBUG>;
+
+        $r27 = staticinvoke <org.apache.log4j.helpers.OptionConverter: org.apache.log4j.Level toLevel(java.lang.String,org.apache.log4j.Level)>(r28, $r26);
+
+        virtualinvoke r2.<org.apache.log4j.Logger: void setLevel(org.apache.log4j.Level)>($r27);
+
+     label5:
+        $r29 = new java.lang.StringBuilder;
+
+        specialinvoke $r29.<java.lang.StringBuilder: void <init>(java.lang.String)>("Category ");
+
+        $r30 = virtualinvoke $r29.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r4);
+
+        $r31 = virtualinvoke $r30.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" set to ");
+
+        $r32 = virtualinvoke r2.<org.apache.log4j.Logger: org.apache.log4j.Level getLevel()>();
+
+        $r33 = virtualinvoke $r31.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r32);
+
+        $r34 = virtualinvoke $r33.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.apache.log4j.helpers.LogLog: void debug(java.lang.String)>($r34);
+
+     label6:
+        virtualinvoke r2.<org.apache.log4j.Logger: void removeAllAppenders()>();
+
+        goto label9;
+
+     label7:
+        $r15 = virtualinvoke $r14.<java.util.StringTokenizer: java.lang.String nextToken()>();
+
+        r7 = virtualinvoke $r15.<java.lang.String: java.lang.String trim()>();
+
+        if r7 == null goto label9;
+
+        $z1 = virtualinvoke r7.<java.lang.String: boolean equals(java.lang.Object)>(",");
+
+        if $z1 == 0 goto label8;
+
+        goto label9;
+
+     label8:
+        $r16 = new java.lang.StringBuilder;
+
+        specialinvoke $r16.<java.lang.StringBuilder: void <init>(java.lang.String)>("Parsing appender named \"");
+
+        $r17 = virtualinvoke $r16.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r7);
+
+        $r18 = virtualinvoke $r17.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\".");
+
+        $r19 = virtualinvoke $r18.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.apache.log4j.helpers.LogLog: void debug(java.lang.String)>($r19);
+
+        r35 = virtualinvoke r0.<org.apache.log4j.PropertyConfigurator: org.apache.log4j.Appender parseAppender(java.util.Properties,java.lang.String)>(r1, r7);
+
+        if r35 == null goto label9;
+
+        virtualinvoke r2.<org.apache.log4j.Logger: void addAppender(org.apache.log4j.Appender)>(r35);
+
+     label9:
+        $z7 = virtualinvoke $r14.<java.util.StringTokenizer: boolean hasMoreTokens()>();
+
+        if $z7 != 0 goto label7;
+
+        return;
+    }
+
+    org.apache.log4j.Appender parseAppender(java.util.Properties, java.lang.String)
+    {
+        org.apache.log4j.PropertyConfigurator r0;
+        java.util.Properties r1, $r23;
+        java.lang.String r2, r3, r4, r5, $r14, $r21, $r26, $r29, $r31, $r34, $r36, $r39, $r42, $r48, $r50, $r54, $r59, $r61, $r63, $r67, $r71, $r75, $r80, r82, $r84, $r86, $r90;
+        org.apache.log4j.spi.ErrorHandler r6;
+        java.util.Iterator r9;
+        java.util.Map$Entry r10;
+        java.lang.StringBuilder $r11, $r12, $r13, $r15, $r18, $r19, $r20, $r25, $r27, $r28, $r30, $r32, $r33, $r35, $r37, $r38, $r47, $r49, $r51, $r52, $r53, $r56, $r57, $r58, $r60, $r62, $r64, $r65, $r66, $r68, $r69, $r70, $r72, $r73, $r74, $r79, $r81, $r83, $r85, $r87, $r88, $r89;
+        java.lang.Object $r16, $r17, $r41, $r43, $r44, $r45, $r55;
+        boolean $z0, $z1, $z2, $z3;
+        org.apache.log4j.spi.LoggerRepository $r22;
+        java.lang.String[] $r24;
+        java.util.Set $r40;
+        int $i0, $i1, i2;
+        org.apache.log4j.Appender r76, r77;
+        org.apache.log4j.Layout r78;
+
+        r0 := @this: org.apache.log4j.PropertyConfigurator;
+
+        r1 := @parameter0: java.util.Properties;
+
+        r2 := @parameter1: java.lang.String;
+
+        r76 = virtualinvoke r0.<org.apache.log4j.PropertyConfigurator: org.apache.log4j.Appender registryGet(java.lang.String)>(r2);
+
+        if r76 == null goto label01;
+
+        $r72 = new java.lang.StringBuilder;
+
+        specialinvoke $r72.<java.lang.StringBuilder: void <init>(java.lang.String)>("Appender \"");
+
+        $r73 = virtualinvoke $r72.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r2);
+
+        $r74 = virtualinvoke $r73.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\" was already parsed.");
+
+        $r75 = virtualinvoke $r74.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.apache.log4j.helpers.LogLog: void debug(java.lang.String)>($r75);
+
+        return r76;
+
+     label01:
+        $r11 = new java.lang.StringBuilder;
+
+        specialinvoke $r11.<java.lang.StringBuilder: void <init>(java.lang.String)>("log4j.appender.");
+
+        $r12 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r2);
+
+        r3 = virtualinvoke $r12.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r13 = new java.lang.StringBuilder;
+
+        $r14 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>(r3);
+
+        specialinvoke $r13.<java.lang.StringBuilder: void <init>(java.lang.String)>($r14);
+
+        $r15 = virtualinvoke $r13.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(".layout");
+
+        r4 = virtualinvoke $r15.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r16 = staticinvoke <org.apache.log4j.helpers.OptionConverter: java.lang.Object instantiateByKey(java.util.Properties,java.lang.String,java.lang.Class,java.lang.Object)>(r1, r3, class "org/apache/log4j/Appender", null);
+
+        r77 = (org.apache.log4j.Appender) $r16;
+
+        if r77 != null goto label02;
+
+        $r68 = new java.lang.StringBuilder;
+
+        specialinvoke $r68.<java.lang.StringBuilder: void <init>(java.lang.String)>("Could not instantiate appender named \"");
+
+        $r69 = virtualinvoke $r68.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r2);
+
+        $r70 = virtualinvoke $r69.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\".");
+
+        $r71 = virtualinvoke $r70.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.apache.log4j.helpers.LogLog: void error(java.lang.String)>($r71);
+
+        return null;
+
+     label02:
+        interfaceinvoke r77.<org.apache.log4j.Appender: void setName(java.lang.String)>(r2);
+
+        $z0 = r77 instanceof org.apache.log4j.spi.OptionHandler;
+
+        if $z0 == 0 goto label11;
+
+        $z1 = interfaceinvoke r77.<org.apache.log4j.Appender: boolean requiresLayout()>();
+
+        if $z1 == 0 goto label03;
+
+        $r55 = staticinvoke <org.apache.log4j.helpers.OptionConverter: java.lang.Object instantiateByKey(java.util.Properties,java.lang.String,java.lang.Class,java.lang.Object)>(r1, r4, class "org/apache/log4j/Layout", null);
+
+        r78 = (org.apache.log4j.Layout) $r55;
+
+        if r78 == null goto label03;
+
+        interfaceinvoke r77.<org.apache.log4j.Appender: void setLayout(org.apache.log4j.Layout)>(r78);
+
+        $r56 = new java.lang.StringBuilder;
+
+        specialinvoke $r56.<java.lang.StringBuilder: void <init>(java.lang.String)>("Parsing layout options for \"");
+
+        $r57 = virtualinvoke $r56.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r2);
+
+        $r58 = virtualinvoke $r57.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\".");
+
+        $r59 = virtualinvoke $r58.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.apache.log4j.helpers.LogLog: void debug(java.lang.String)>($r59);
+
+        $r60 = new java.lang.StringBuilder;
+
+        $r61 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>(r4);
+
+        specialinvoke $r60.<java.lang.StringBuilder: void <init>(java.lang.String)>($r61);
+
+        $r62 = virtualinvoke $r60.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(".");
+
+        $r63 = virtualinvoke $r62.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.apache.log4j.config.PropertySetter: void setProperties(java.lang.Object,java.util.Properties,java.lang.String)>(r78, r1, $r63);
+
+        $r64 = new java.lang.StringBuilder;
+
+        specialinvoke $r64.<java.lang.StringBuilder: void <init>(java.lang.String)>("End of parsing for \"");
+
+        $r65 = virtualinvoke $r64.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r2);
+
+        $r66 = virtualinvoke $r65.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\".");
+
+        $r67 = virtualinvoke $r66.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.apache.log4j.helpers.LogLog: void debug(java.lang.String)>($r67);
+
+     label03:
+        $r79 = new java.lang.StringBuilder;
+
+        $r80 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>(r3);
+
+        specialinvoke $r79.<java.lang.StringBuilder: void <init>(java.lang.String)>($r80);
+
+        $r81 = virtualinvoke $r79.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(".errorhandler");
+
+        r82 = virtualinvoke $r81.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        r5 = staticinvoke <org.apache.log4j.helpers.OptionConverter: java.lang.String findAndSubst(java.lang.String,java.util.Properties)>(r82, r1);
+
+        if r5 == null goto label10;
+
+        $r17 = staticinvoke <org.apache.log4j.helpers.OptionConverter: java.lang.Object instantiateByKey(java.util.Properties,java.lang.String,java.lang.Class,java.lang.Object)>(r1, r82, class "org/apache/log4j/spi/ErrorHandler", null);
+
+        r6 = (org.apache.log4j.spi.ErrorHandler) $r17;
+
+        if r6 == null goto label10;
+
+        interfaceinvoke r77.<org.apache.log4j.Appender: void setErrorHandler(org.apache.log4j.spi.ErrorHandler)>(r6);
+
+        $r18 = new java.lang.StringBuilder;
+
+        specialinvoke $r18.<java.lang.StringBuilder: void <init>(java.lang.String)>("Parsing errorhandler options for \"");
+
+        $r19 = virtualinvoke $r18.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r2);
+
+        $r20 = virtualinvoke $r19.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\".");
+
+        $r21 = virtualinvoke $r20.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.apache.log4j.helpers.LogLog: void debug(java.lang.String)>($r21);
+
+        $r22 = r0.<org.apache.log4j.PropertyConfigurator: org.apache.log4j.spi.LoggerRepository repository>;
+
+        specialinvoke r0.<org.apache.log4j.PropertyConfigurator: void parseErrorHandler(org.apache.log4j.spi.ErrorHandler,java.lang.String,java.util.Properties,org.apache.log4j.spi.LoggerRepository)>(r6, r82, r1, $r22);
+
+        $r23 = new java.util.Properties;
+
+        specialinvoke $r23.<java.util.Properties: void <init>()>();
+
+        $r24 = newarray (java.lang.String)[3];
+
+        $r25 = new java.lang.StringBuilder;
+
+        $r26 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>(r82);
+
+        specialinvoke $r25.<java.lang.StringBuilder: void <init>(java.lang.String)>($r26);
+
+        $r27 = virtualinvoke $r25.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(".");
+
+        $r28 = virtualinvoke $r27.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("root-ref");
+
+        $r29 = virtualinvoke $r28.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r24[0] = $r29;
+
+        $r30 = new java.lang.StringBuilder;
+
+        $r31 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>(r82);
+
+        specialinvoke $r30.<java.lang.StringBuilder: void <init>(java.lang.String)>($r31);
+
+        $r32 = virtualinvoke $r30.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(".");
+
+        $r33 = virtualinvoke $r32.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("logger-ref");
+
+        $r34 = virtualinvoke $r33.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r24[1] = $r34;
+
+        $r35 = new java.lang.StringBuilder;
+
+        $r36 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>(r82);
+
+        specialinvoke $r35.<java.lang.StringBuilder: void <init>(java.lang.String)>($r36);
+
+        $r37 = virtualinvoke $r35.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(".");
+
+        $r38 = virtualinvoke $r37.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("appender-ref");
+
+        $r39 = virtualinvoke $r38.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r24[2] = $r39;
+
+        $r40 = virtualinvoke r1.<java.util.Properties: java.util.Set entrySet()>();
+
+        r9 = interfaceinvoke $r40.<java.util.Set: java.util.Iterator iterator()>();
+
+        goto label09;
+
+     label04:
+        $r41 = interfaceinvoke r9.<java.util.Iterator: java.lang.Object next()>();
+
+        r10 = (java.util.Map$Entry) $r41;
+
+        i2 = 0;
+
+        goto label07;
+
+     label05:
+        $r42 = $r24[i2];
+
+        $r43 = interfaceinvoke r10.<java.util.Map$Entry: java.lang.Object getKey()>();
+
+        $z2 = virtualinvoke $r42.<java.lang.String: boolean equals(java.lang.Object)>($r43);
+
+        if $z2 == 0 goto label06;
+
+        goto label08;
+
+     label06:
+        i2 = i2 + 1;
+
+     label07:
+        $i0 = lengthof $r24;
+
+        if i2 < $i0 goto label05;
+
+     label08:
+        $i1 = lengthof $r24;
+
+        if i2 != $i1 goto label09;
+
+        $r44 = interfaceinvoke r10.<java.util.Map$Entry: java.lang.Object getKey()>();
+
+        $r45 = interfaceinvoke r10.<java.util.Map$Entry: java.lang.Object getValue()>();
+
+        virtualinvoke $r23.<java.util.Properties: java.lang.Object put(java.lang.Object,java.lang.Object)>($r44, $r45);
+
+     label09:
+        $z3 = interfaceinvoke r9.<java.util.Iterator: boolean hasNext()>();
+
+        if $z3 != 0 goto label04;
+
+        $r47 = new java.lang.StringBuilder;
+
+        $r48 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>(r82);
+
+        specialinvoke $r47.<java.lang.StringBuilder: void <init>(java.lang.String)>($r48);
+
+        $r49 = virtualinvoke $r47.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(".");
+
+        $r50 = virtualinvoke $r49.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.apache.log4j.config.PropertySetter: void setProperties(java.lang.Object,java.util.Properties,java.lang.String)>(r6, $r23, $r50);
+
+        $r51 = new java.lang.StringBuilder;
+
+        specialinvoke $r51.<java.lang.StringBuilder: void <init>(java.lang.String)>("End of errorhandler parsing for \"");
+
+        $r52 = virtualinvoke $r51.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r2);
+
+        $r53 = virtualinvoke $r52.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\".");
+
+        $r54 = virtualinvoke $r53.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.apache.log4j.helpers.LogLog: void debug(java.lang.String)>($r54);
+
+     label10:
+        $r83 = new java.lang.StringBuilder;
+
+        $r84 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>(r3);
+
+        specialinvoke $r83.<java.lang.StringBuilder: void <init>(java.lang.String)>($r84);
+
+        $r85 = virtualinvoke $r83.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(".");
+
+        $r86 = virtualinvoke $r85.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.apache.log4j.config.PropertySetter: void setProperties(java.lang.Object,java.util.Properties,java.lang.String)>(r77, r1, $r86);
+
+        $r87 = new java.lang.StringBuilder;
+
+        specialinvoke $r87.<java.lang.StringBuilder: void <init>(java.lang.String)>("Parsed \"");
+
+        $r88 = virtualinvoke $r87.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r2);
+
+        $r89 = virtualinvoke $r88.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\" options.");
+
+        $r90 = virtualinvoke $r89.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.apache.log4j.helpers.LogLog: void debug(java.lang.String)>($r90);
+
+     label11:
+        virtualinvoke r0.<org.apache.log4j.PropertyConfigurator: void parseAppenderFilters(java.util.Properties,java.lang.String,org.apache.log4j.Appender)>(r1, r2, r77);
+
+        virtualinvoke r0.<org.apache.log4j.PropertyConfigurator: void registryPut(org.apache.log4j.Appender)>(r77);
+
+        return r77;
+    }
+
+    private void parseErrorHandler(org.apache.log4j.spi.ErrorHandler, java.lang.String, java.util.Properties, org.apache.log4j.spi.LoggerRepository)
+    {
+        org.apache.log4j.PropertyConfigurator r0;
+        org.apache.log4j.spi.ErrorHandler r1;
+        java.lang.String r2, r5, $r8, $r10, $r11, $r13, $r15, $r22, $r24, r25;
+        java.util.Properties r3;
+        org.apache.log4j.spi.LoggerRepository r4;
+        boolean z0;
+        org.apache.log4j.Appender r6;
+        java.lang.StringBuilder $r7, $r9, $r12, $r14, $r21, $r23;
+        org.apache.log4j.spi.LoggerFactory $r16, $r17;
+        org.apache.log4j.Logger $r18, $r19;
+
+        r0 := @this: org.apache.log4j.PropertyConfigurator;
+
+        r1 := @parameter0: org.apache.log4j.spi.ErrorHandler;
+
+        r2 := @parameter1: java.lang.String;
+
+        r3 := @parameter2: java.util.Properties;
+
+        r4 := @parameter3: org.apache.log4j.spi.LoggerRepository;
+
+        $r7 = new java.lang.StringBuilder;
+
+        $r8 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>(r2);
+
+        specialinvoke $r7.<java.lang.StringBuilder: void <init>(java.lang.String)>($r8);
+
+        $r9 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("root-ref");
+
+        $r10 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r11 = staticinvoke <org.apache.log4j.helpers.OptionConverter: java.lang.String findAndSubst(java.lang.String,java.util.Properties)>($r10, r3);
+
+        z0 = staticinvoke <org.apache.log4j.helpers.OptionConverter: boolean toBoolean(java.lang.String,boolean)>($r11, 0);
+
+        if z0 == 0 goto label1;
+
+        $r18 = interfaceinvoke r4.<org.apache.log4j.spi.LoggerRepository: org.apache.log4j.Logger getRootLogger()>();
+
+        interfaceinvoke r1.<org.apache.log4j.spi.ErrorHandler: void setLogger(org.apache.log4j.Logger)>($r18);
+
+     label1:
+        $r12 = new java.lang.StringBuilder;
+
+        $r13 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>(r2);
+
+        specialinvoke $r12.<java.lang.StringBuilder: void <init>(java.lang.String)>($r13);
+
+        $r14 = virtualinvoke $r12.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("logger-ref");
+
+        $r15 = virtualinvoke $r14.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        r5 = staticinvoke <org.apache.log4j.helpers.OptionConverter: java.lang.String findAndSubst(java.lang.String,java.util.Properties)>($r15, r3);
+
+        if r5 == null goto label4;
+
+        $r16 = r0.<org.apache.log4j.PropertyConfigurator: org.apache.log4j.spi.LoggerFactory loggerFactory>;
+
+        if $r16 != null goto label2;
+
+        $r19 = interfaceinvoke r4.<org.apache.log4j.spi.LoggerRepository: org.apache.log4j.Logger getLogger(java.lang.String)>(r5);
+
+        goto label3;
+
+     label2:
+        $r17 = r0.<org.apache.log4j.PropertyConfigurator: org.apache.log4j.spi.LoggerFactory loggerFactory>;
+
+        $r19 = interfaceinvoke r4.<org.apache.log4j.spi.LoggerRepository: org.apache.log4j.Logger getLogger(java.lang.String,org.apache.log4j.spi.LoggerFactory)>(r5, $r17);
+
+     label3:
+        interfaceinvoke r1.<org.apache.log4j.spi.ErrorHandler: void setLogger(org.apache.log4j.Logger)>($r19);
+
+     label4:
+        $r21 = new java.lang.StringBuilder;
+
+        $r22 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>(r2);
+
+        specialinvoke $r21.<java.lang.StringBuilder: void <init>(java.lang.String)>($r22);
+
+        $r23 = virtualinvoke $r21.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("appender-ref");
+
+        $r24 = virtualinvoke $r23.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        r25 = staticinvoke <org.apache.log4j.helpers.OptionConverter: java.lang.String findAndSubst(java.lang.String,java.util.Properties)>($r24, r3);
+
+        if r25 == null goto label5;
+
+        r6 = virtualinvoke r0.<org.apache.log4j.PropertyConfigurator: org.apache.log4j.Appender parseAppender(java.util.Properties,java.lang.String)>(r3, r25);
+
+        if r6 == null goto label5;
+
+        interfaceinvoke r1.<org.apache.log4j.spi.ErrorHandler: void setBackupAppender(org.apache.log4j.Appender)>(r6);
+
+     label5:
+        return;
+    }
+
+    void parseAppenderFilters(java.util.Properties, java.lang.String, org.apache.log4j.Appender)
+    {
+        org.apache.log4j.PropertyConfigurator r0;
+        java.util.Properties r1;
+        java.lang.String r2, r4, $r24, $r28, $r33, $r38, $r39, $r44, $r47, r48, r49, r50, r52, r54, r55;
+        org.apache.log4j.Appender r3;
+        int i0, $i1, i2;
+        java.util.Enumeration r6, r8;
+        java.util.Vector r7, $r17, r51;
+        org.apache.log4j.NameValue r9, $r16;
+        java.lang.StringBuilder $r10, $r11, $r12, $r21, $r22, $r23, $r25, $r26, $r27, $r29, $r30, $r32, $r40, $r42, $r43, $r45, $r46;
+        java.util.Hashtable $r13;
+        java.lang.Object $r14, $r15, $r20, $r31, $r34, $r36, $r37;
+        boolean $z0, $z2, $z3, $z4;
+        org.apache.log4j.SortedKeyEnumeration $r19;
+        org.apache.log4j.config.PropertySetter $r35;
+        java.lang.Class $r41;
+        org.apache.log4j.spi.Filter r56;
+
+        r0 := @this: org.apache.log4j.PropertyConfigurator;
+
+        r1 := @parameter0: java.util.Properties;
+
+        r2 := @parameter1: java.lang.String;
+
+        r3 := @parameter2: org.apache.log4j.Appender;
+
+        $r10 = new java.lang.StringBuilder;
+
+        specialinvoke $r10.<java.lang.StringBuilder: void <init>(java.lang.String)>("log4j.appender.");
+
+        $r11 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r2);
+
+        $r12 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(".filter.");
+
+        r4 = virtualinvoke $r12.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        i0 = virtualinvoke r4.<java.lang.String: int length()>();
+
+        $r13 = new java.util.Hashtable;
+
+        specialinvoke $r13.<java.util.Hashtable: void <init>()>();
+
+        r6 = virtualinvoke r1.<java.util.Properties: java.util.Enumeration keys()>();
+
+        r48 = "";
+
+        goto label4;
+
+     label1:
+        $r14 = interfaceinvoke r6.<java.util.Enumeration: java.lang.Object nextElement()>();
+
+        r49 = (java.lang.String) $r14;
+
+        $z0 = virtualinvoke r49.<java.lang.String: boolean startsWith(java.lang.String)>(r4);
+
+        if $z0 == 0 goto label4;
+
+        i2 = virtualinvoke r49.<java.lang.String: int indexOf(int,int)>(46, i0);
+
+        r50 = r49;
+
+        if i2 == -1 goto label2;
+
+        r50 = virtualinvoke r49.<java.lang.String: java.lang.String substring(int,int)>(0, i2);
+
+        $i1 = i2 + 1;
+
+        r48 = virtualinvoke r49.<java.lang.String: java.lang.String substring(int)>($i1);
+
+     label2:
+        $r15 = virtualinvoke $r13.<java.util.Hashtable: java.lang.Object get(java.lang.Object)>(r50);
+
+        r51 = (java.util.Vector) $r15;
+
+        if r51 != null goto label3;
+
+        $r17 = new java.util.Vector;
+
+        specialinvoke $r17.<java.util.Vector: void <init>()>();
+
+        r51 = $r17;
+
+        virtualinvoke $r13.<java.util.Hashtable: java.lang.Object put(java.lang.Object,java.lang.Object)>(r50, $r17);
+
+     label3:
+        if i2 == -1 goto label4;
+
+        r52 = staticinvoke <org.apache.log4j.helpers.OptionConverter: java.lang.String findAndSubst(java.lang.String,java.util.Properties)>(r49, r1);
+
+        $r16 = new org.apache.log4j.NameValue;
+
+        specialinvoke $r16.<org.apache.log4j.NameValue: void <init>(java.lang.String,java.lang.String)>(r48, r52);
+
+        virtualinvoke r51.<java.util.Vector: boolean add(java.lang.Object)>($r16);
+
+     label4:
+        $z3 = interfaceinvoke r6.<java.util.Enumeration: boolean hasMoreElements()>();
+
+        if $z3 != 0 goto label1;
+
+        $r19 = new org.apache.log4j.SortedKeyEnumeration;
+
+        specialinvoke $r19.<org.apache.log4j.SortedKeyEnumeration: void <init>(java.util.Hashtable)>($r13);
+
+        goto label9;
+
+     label5:
+        $r20 = interfaceinvoke $r19.<java.util.Enumeration: java.lang.Object nextElement()>();
+
+        r54 = (java.lang.String) $r20;
+
+        r55 = virtualinvoke r1.<java.util.Properties: java.lang.String getProperty(java.lang.String)>(r54);
+
+        if r55 == null goto label8;
+
+        $r25 = new java.lang.StringBuilder;
+
+        specialinvoke $r25.<java.lang.StringBuilder: void <init>(java.lang.String)>("Filter key: [");
+
+        $r26 = virtualinvoke $r25.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r54);
+
+        $r27 = virtualinvoke $r26.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("] class: [");
+
+        $r28 = virtualinvoke r1.<java.util.Properties: java.lang.String getProperty(java.lang.String)>(r54);
+
+        $r29 = virtualinvoke $r27.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r28);
+
+        $r30 = virtualinvoke $r29.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("] props: ");
+
+        $r31 = virtualinvoke $r13.<java.util.Hashtable: java.lang.Object get(java.lang.Object)>(r54);
+
+        $r32 = virtualinvoke $r30.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r31);
+
+        $r33 = virtualinvoke $r32.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.apache.log4j.helpers.LogLog: void debug(java.lang.String)>($r33);
+
+        $r34 = staticinvoke <org.apache.log4j.helpers.OptionConverter: java.lang.Object instantiateByClassName(java.lang.String,java.lang.Class,java.lang.Object)>(r55, class "org/apache/log4j/spi/Filter", null);
+
+        r56 = (org.apache.log4j.spi.Filter) $r34;
+
+        if r56 == null goto label9;
+
+        $r35 = new org.apache.log4j.config.PropertySetter;
+
+        specialinvoke $r35.<org.apache.log4j.config.PropertySetter: void <init>(java.lang.Object)>(r56);
+
+        $r36 = virtualinvoke $r13.<java.util.Hashtable: java.lang.Object get(java.lang.Object)>(r54);
+
+        r7 = (java.util.Vector) $r36;
+
+        r8 = virtualinvoke r7.<java.util.Vector: java.util.Enumeration elements()>();
+
+        goto label7;
+
+     label6:
+        $r37 = interfaceinvoke r8.<java.util.Enumeration: java.lang.Object nextElement()>();
+
+        r9 = (org.apache.log4j.NameValue) $r37;
+
+        $r39 = r9.<org.apache.log4j.NameValue: java.lang.String key>;
+
+        $r38 = r9.<org.apache.log4j.NameValue: java.lang.String value>;
+
+        virtualinvoke $r35.<org.apache.log4j.config.PropertySetter: void setProperty(java.lang.String,java.lang.String)>($r39, $r38);
+
+     label7:
+        $z2 = interfaceinvoke r8.<java.util.Enumeration: boolean hasMoreElements()>();
+
+        if $z2 != 0 goto label6;
+
+        virtualinvoke $r35.<org.apache.log4j.config.PropertySetter: void activate()>();
+
+        $r40 = new java.lang.StringBuilder;
+
+        specialinvoke $r40.<java.lang.StringBuilder: void <init>(java.lang.String)>("Adding filter of type [");
+
+        $r41 = virtualinvoke r56.<java.lang.Object: java.lang.Class getClass()>();
+
+        $r42 = virtualinvoke $r40.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r41);
+
+        $r43 = virtualinvoke $r42.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("] to appender named [");
+
+        $r44 = interfaceinvoke r3.<org.apache.log4j.Appender: java.lang.String getName()>();
+
+        $r45 = virtualinvoke $r43.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r44);
+
+        $r46 = virtualinvoke $r45.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("].");
+
+        $r47 = virtualinvoke $r46.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.apache.log4j.helpers.LogLog: void debug(java.lang.String)>($r47);
+
+        interfaceinvoke r3.<org.apache.log4j.Appender: void addFilter(org.apache.log4j.spi.Filter)>(r56);
+
+        goto label9;
+
+     label8:
+        $r21 = new java.lang.StringBuilder;
+
+        specialinvoke $r21.<java.lang.StringBuilder: void <init>(java.lang.String)>("Missing class definition for filter: [");
+
+        $r22 = virtualinvoke $r21.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r54);
+
+        $r23 = virtualinvoke $r22.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("]");
+
+        $r24 = virtualinvoke $r23.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.apache.log4j.helpers.LogLog: void warn(java.lang.String)>($r24);
+
+     label9:
+        $z4 = interfaceinvoke $r19.<java.util.Enumeration: boolean hasMoreElements()>();
+
+        if $z4 != 0 goto label5;
+
+        return;
+    }
+
+    void registryPut(org.apache.log4j.Appender)
+    {
+        org.apache.log4j.PropertyConfigurator r0;
+        org.apache.log4j.Appender r1;
+        java.util.Hashtable $r2;
+        java.lang.String $r3;
+
+        r0 := @this: org.apache.log4j.PropertyConfigurator;
+
+        r1 := @parameter0: org.apache.log4j.Appender;
+
+        $r2 = r0.<org.apache.log4j.PropertyConfigurator: java.util.Hashtable registry>;
+
+        $r3 = interfaceinvoke r1.<org.apache.log4j.Appender: java.lang.String getName()>();
+
+        virtualinvoke $r2.<java.util.Hashtable: java.lang.Object put(java.lang.Object,java.lang.Object)>($r3, r1);
+
+        return;
+    }
+
+    org.apache.log4j.Appender registryGet(java.lang.String)
+    {
+        org.apache.log4j.PropertyConfigurator r0;
+        java.lang.String r1;
+        java.util.Hashtable $r2;
+        java.lang.Object $r3;
+        org.apache.log4j.Appender $r4;
+
+        r0 := @this: org.apache.log4j.PropertyConfigurator;
+
+        r1 := @parameter0: java.lang.String;
+
+        $r2 = r0.<org.apache.log4j.PropertyConfigurator: java.util.Hashtable registry>;
+
+        $r3 = virtualinvoke $r2.<java.util.Hashtable: java.lang.Object get(java.lang.Object)>(r1);
+
+        $r4 = (org.apache.log4j.Appender) $r3;
+
+        return $r4;
+    }
+
+    public static void <clinit>()
+    {
+        <org.apache.log4j.PropertyConfigurator: java.lang.String INTERNAL_ROOT_NAME> = "root";
+
+        <org.apache.log4j.PropertyConfigurator: java.lang.String RESET_KEY> = "log4j.reset";
+
+        <org.apache.log4j.PropertyConfigurator: java.lang.String LOGGER_FACTORY_KEY> = "log4j.loggerFactory";
+
+        <org.apache.log4j.PropertyConfigurator: java.lang.String APPENDER_REF_TAG> = "appender-ref";
+
+        <org.apache.log4j.PropertyConfigurator: java.lang.String ROOT_REF> = "root-ref";
+
+        <org.apache.log4j.PropertyConfigurator: java.lang.String LOGGER_REF> = "logger-ref";
+
+        <org.apache.log4j.PropertyConfigurator: java.lang.String THROWABLE_RENDERER_PREFIX> = "log4j.throwableRenderer";
+
+        <org.apache.log4j.PropertyConfigurator: java.lang.String THRESHOLD_PREFIX> = "log4j.threshold";
+
+        <org.apache.log4j.PropertyConfigurator: java.lang.String RENDERER_PREFIX> = "log4j.renderer.";
+
+        <org.apache.log4j.PropertyConfigurator: java.lang.String APPENDER_PREFIX> = "log4j.appender.";
+
+        <org.apache.log4j.PropertyConfigurator: java.lang.String ROOT_LOGGER_PREFIX> = "log4j.rootLogger";
+
+        <org.apache.log4j.PropertyConfigurator: java.lang.String ROOT_CATEGORY_PREFIX> = "log4j.rootCategory";
+
+        <org.apache.log4j.PropertyConfigurator: java.lang.String ADDITIVITY_PREFIX> = "log4j.additivity.";
+
+        <org.apache.log4j.PropertyConfigurator: java.lang.String FACTORY_PREFIX> = "log4j.factory";
+
+        <org.apache.log4j.PropertyConfigurator: java.lang.String LOGGER_PREFIX> = "log4j.logger.";
+
+        <org.apache.log4j.PropertyConfigurator: java.lang.String CATEGORY_PREFIX> = "log4j.category.";
+
+        return;
+    }
+}

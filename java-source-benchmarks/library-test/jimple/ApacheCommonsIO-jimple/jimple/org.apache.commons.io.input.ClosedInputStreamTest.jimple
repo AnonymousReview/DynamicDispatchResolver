@@ -1,0 +1,38 @@
+public class org.apache.commons.io.input.ClosedInputStreamTest extends java.lang.Object
+{
+
+    public void <init>()
+    {
+        org.apache.commons.io.input.ClosedInputStreamTest r0;
+
+        r0 := @this: org.apache.commons.io.input.ClosedInputStreamTest;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void testRead() throws java.lang.Exception
+    {
+        org.apache.commons.io.input.ClosedInputStreamTest r0;
+        org.apache.commons.io.input.ClosedInputStream $r2;
+        int $i0;
+        long $l1;
+
+        r0 := @this: org.apache.commons.io.input.ClosedInputStreamTest;
+
+        $r2 = new org.apache.commons.io.input.ClosedInputStream;
+
+        specialinvoke $r2.<org.apache.commons.io.input.ClosedInputStream: void <init>()>();
+
+        $i0 = virtualinvoke $r2.<org.apache.commons.io.input.ClosedInputStream: int read()>();
+
+        $l1 = (long) $i0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("read()", -1L, $l1);
+
+        virtualinvoke $r2.<org.apache.commons.io.input.ClosedInputStream: void close()>();
+
+        return;
+    }
+}

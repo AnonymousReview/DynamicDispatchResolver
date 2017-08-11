@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<attributes>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="0" eline="0" spos="0" epos="0"/>
+<text info="[inner=org/slf4j/MDC$MDCCloseable, outer=org/slf4j/MDC, name=MDCCloseable,flags=9]" aType="InnerClassTag"/>
+<text info="soot.tagkit.InnerClassAttribute@5be850c4" aType="InnerClassAttribute"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="3" eline="3" spos="0" epos="0"/>
+<text info="ConstantValue: http://www.slf4j.org/codes.html#null_MDCA" aType="StringConstantValueTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="4" eline="4" spos="0" epos="0"/>
+<text info="ConstantValue: http://www.slf4j.org/codes.html#no_static_mdc_binder" aType="StringConstantValueTag"/>
+</attribute>
+<attribute>
+<srcPos sline="218" eline="218" spos="0" epos="0"/>
+<jmpPos sline="204" eline="204" spos="0" epos="0"/>
+<text info="Signature: ()Ljava/util/Map&lt;Ljava/lang/String;Ljava/lang/String;&gt;;" aType="SignatureTag"/>
+</attribute>
+<attribute>
+<srcPos sline="234" eline="234" spos="0" epos="0"/>
+<jmpPos sline="228" eline="228" spos="0" epos="0"/>
+<text info="Signature: (Ljava/util/Map&lt;Ljava/lang/String;Ljava/lang/String;&gt;;)V" aType="SignatureTag"/>
+</attribute>
+</attributes>

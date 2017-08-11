@@ -1,0 +1,41 @@
+final class org.apache.log4j.spi.ThrowableInformationTest$NastyThrowable extends java.lang.Throwable
+{
+    private static final long serialVersionUID;
+
+    public void <init>()
+    {
+        org.apache.log4j.spi.ThrowableInformationTest$NastyThrowable r0;
+
+        r0 := @this: org.apache.log4j.spi.ThrowableInformationTest$NastyThrowable;
+
+        specialinvoke r0.<java.lang.Throwable: void <init>()>();
+
+        return;
+    }
+
+    public void printStackTrace(java.io.PrintWriter)
+    {
+        org.apache.log4j.spi.ThrowableInformationTest$NastyThrowable r0;
+        java.io.PrintWriter r1;
+        java.lang.RuntimeException $r2;
+
+        r0 := @this: org.apache.log4j.spi.ThrowableInformationTest$NastyThrowable;
+
+        r1 := @parameter0: java.io.PrintWriter;
+
+        virtualinvoke r1.<java.io.PrintWriter: void print(java.lang.String)>("NastyException");
+
+        $r2 = new java.lang.RuntimeException;
+
+        specialinvoke $r2.<java.lang.RuntimeException: void <init>(java.lang.String)>("Intentional exception");
+
+        throw $r2;
+    }
+
+    public static void <clinit>()
+    {
+        <org.apache.log4j.spi.ThrowableInformationTest$NastyThrowable: long serialVersionUID> = 1L;
+
+        return;
+    }
+}

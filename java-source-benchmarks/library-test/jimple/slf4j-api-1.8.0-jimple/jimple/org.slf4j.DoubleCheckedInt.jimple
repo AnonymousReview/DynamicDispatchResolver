@@ -1,0 +1,407 @@
+public class org.slf4j.DoubleCheckedInt extends java.lang.Object
+{
+    static final int THREAD_COUNT;
+    static final int UNINITIALIZED_STATE;
+    static final int ONGOING_INITIALIZATION;
+    static final int SUCCESS;
+    static final int FAILURE;
+    static final int NUMBER_OF_STATES;
+    private static int STATE;
+
+    static void <clinit>()
+    {
+        java.lang.Runtime $r0;
+        int $i0, $i1, $i2;
+
+        <org.slf4j.DoubleCheckedInt: int NUMBER_OF_STATES> = 4;
+
+        <org.slf4j.DoubleCheckedInt: int FAILURE> = 3;
+
+        <org.slf4j.DoubleCheckedInt: int SUCCESS> = 2;
+
+        <org.slf4j.DoubleCheckedInt: int ONGOING_INITIALIZATION> = 1;
+
+        <org.slf4j.DoubleCheckedInt: int UNINITIALIZED_STATE> = 0;
+
+        $r0 = staticinvoke <java.lang.Runtime: java.lang.Runtime getRuntime()>();
+
+        $i0 = virtualinvoke $r0.<java.lang.Runtime: int availableProcessors()>();
+
+        $i1 = $i0 * 2;
+
+        $i2 = 10 + $i1;
+
+        <org.slf4j.DoubleCheckedInt: int THREAD_COUNT> = $i2;
+
+        <org.slf4j.DoubleCheckedInt: int STATE> = 0;
+
+        return;
+    }
+
+    public void <init>()
+    {
+        org.slf4j.DoubleCheckedInt r0;
+
+        r0 := @this: org.slf4j.DoubleCheckedInt;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static int getState()
+    {
+        long l0, $l4;
+        int $i1, $i2, $i3;
+        byte $b5;
+        java.lang.Throwable $r2;
+        java.lang.InterruptedException $r3;
+
+        $i1 = <org.slf4j.DoubleCheckedInt: int STATE>;
+
+        if $i1 != 0 goto label11;
+
+        entermonitor class "org/slf4j/DoubleCheckedInt";
+
+     label01:
+        $i3 = <org.slf4j.DoubleCheckedInt: int STATE>;
+
+        if $i3 != 0 goto label07;
+
+        <org.slf4j.DoubleCheckedInt: int STATE> = 1;
+
+        l0 = staticinvoke <java.lang.System: long nanoTime()>();
+
+     label02:
+        staticinvoke <java.lang.Thread: void sleep(long)>(10L);
+
+     label03:
+        goto label05;
+
+     label04:
+        $r3 := @caughtexception;
+
+     label05:
+        $l4 = l0 % 2L;
+
+        $b5 = $l4 cmp 0L;
+
+        if $b5 != 0 goto label06;
+
+        <org.slf4j.DoubleCheckedInt: int STATE> = 2;
+
+        goto label07;
+
+     label06:
+        <org.slf4j.DoubleCheckedInt: int STATE> = 3;
+
+     label07:
+        exitmonitor class "org/slf4j/DoubleCheckedInt";
+
+     label08:
+        goto label11;
+
+     label09:
+        $r2 := @caughtexception;
+
+        exitmonitor class "org/slf4j/DoubleCheckedInt";
+
+     label10:
+        throw $r2;
+
+     label11:
+        $i2 = <org.slf4j.DoubleCheckedInt: int STATE>;
+
+        return $i2;
+
+        catch java.lang.InterruptedException from label02 to label03 with label04;
+        catch java.lang.Throwable from label01 to label08 with label09;
+        catch java.lang.Throwable from label09 to label10 with label09;
+    }
+
+    public static void main(java.lang.String[]) throws java.lang.InterruptedException, java.util.concurrent.BrokenBarrierException
+    {
+        java.lang.String[] r0;
+        org.slf4j.DoubleCheckedInt$StateAccessingThread[] r1, r2;
+        java.io.PrintStream $r3;
+
+        r0 := @parameter0: java.lang.String[];
+
+        r1 = staticinvoke <org.slf4j.DoubleCheckedInt: org.slf4j.DoubleCheckedInt$StateAccessingThread[] harness()>();
+
+        staticinvoke <org.slf4j.DoubleCheckedInt: void check(org.slf4j.DoubleCheckedInt$StateAccessingThread[],boolean)>(r1, 0);
+
+        $r3 = <java.lang.System: java.io.PrintStream out>;
+
+        virtualinvoke $r3.<java.io.PrintStream: void println(java.lang.String)>("============");
+
+        r2 = staticinvoke <org.slf4j.DoubleCheckedInt: org.slf4j.DoubleCheckedInt$StateAccessingThread[] harness()>();
+
+        staticinvoke <org.slf4j.DoubleCheckedInt: void check(org.slf4j.DoubleCheckedInt$StateAccessingThread[],boolean)>(r2, 1);
+
+        return;
+    }
+
+    private static org.slf4j.DoubleCheckedInt$StateAccessingThread[] harness() throws java.lang.InterruptedException, java.util.concurrent.BrokenBarrierException
+    {
+        org.slf4j.DoubleCheckedInt$StateAccessingThread[] r0;
+        int $i0, $i1, $i2, $i3, $i5, i6, i7;
+        java.util.concurrent.CyclicBarrier $r2;
+        org.slf4j.DoubleCheckedInt$StateAccessingThread $r3, $r4, $r5;
+
+        $i0 = <org.slf4j.DoubleCheckedInt: int THREAD_COUNT>;
+
+        r0 = newarray (org.slf4j.DoubleCheckedInt$StateAccessingThread)[$i0];
+
+        $r2 = new java.util.concurrent.CyclicBarrier;
+
+        $i1 = <org.slf4j.DoubleCheckedInt: int THREAD_COUNT>;
+
+        $i2 = $i1 + 1;
+
+        specialinvoke $r2.<java.util.concurrent.CyclicBarrier: void <init>(int)>($i2);
+
+        i6 = 0;
+
+        goto label2;
+
+     label1:
+        $r3 = new org.slf4j.DoubleCheckedInt$StateAccessingThread;
+
+        specialinvoke $r3.<org.slf4j.DoubleCheckedInt$StateAccessingThread: void <init>(java.util.concurrent.CyclicBarrier)>($r2);
+
+        r0[i6] = $r3;
+
+        $r4 = r0[i6];
+
+        virtualinvoke $r4.<org.slf4j.DoubleCheckedInt$StateAccessingThread: void start()>();
+
+        i6 = i6 + 1;
+
+     label2:
+        $i3 = <org.slf4j.DoubleCheckedInt: int THREAD_COUNT>;
+
+        if i6 < $i3 goto label1;
+
+        virtualinvoke $r2.<java.util.concurrent.CyclicBarrier: int await()>();
+
+        i7 = 0;
+
+        goto label4;
+
+     label3:
+        $r5 = r0[i7];
+
+        virtualinvoke $r5.<org.slf4j.DoubleCheckedInt$StateAccessingThread: void join()>();
+
+        i7 = i7 + 1;
+
+     label4:
+        $i5 = <org.slf4j.DoubleCheckedInt: int THREAD_COUNT>;
+
+        if i7 < $i5 goto label3;
+
+        return r0;
+    }
+
+    private static void check(org.slf4j.DoubleCheckedInt$StateAccessingThread[], boolean)
+    {
+        org.slf4j.DoubleCheckedInt$StateAccessingThread[] r0;
+        boolean z0;
+        int[] r1;
+        int $i0, $i1, $i2, $i3, $i4, $i5, $i6;
+        java.lang.IllegalStateException $r2, $r3, $r4;
+
+        r0 := @parameter0: org.slf4j.DoubleCheckedInt$StateAccessingThread[];
+
+        z0 := @parameter1: boolean;
+
+        r1 = staticinvoke <org.slf4j.DoubleCheckedInt: int[] getStateCount(org.slf4j.DoubleCheckedInt$StateAccessingThread[])>(r0);
+
+        staticinvoke <org.slf4j.DoubleCheckedInt: void printStateCount(int[])>(r1);
+
+        $i0 = r1[0];
+
+        if $i0 == 0 goto label1;
+
+        $r4 = new java.lang.IllegalStateException;
+
+        specialinvoke $r4.<java.lang.IllegalStateException: void <init>(java.lang.String)>("getState() should never return a zero value");
+
+        throw $r4;
+
+     label1:
+        $i1 = r1[2];
+
+        if $i1 == 0 goto label2;
+
+        $i6 = r1[3];
+
+        if $i6 == 0 goto label2;
+
+        $r3 = new java.lang.IllegalStateException;
+
+        specialinvoke $r3.<java.lang.IllegalStateException: void <init>(java.lang.String)>("getState() should return consistent values");
+
+        throw $r3;
+
+     label2:
+        if z0 == 0 goto label3;
+
+        $i3 = r1[2];
+
+        $i2 = <org.slf4j.DoubleCheckedInt: int THREAD_COUNT>;
+
+        if $i3 == $i2 goto label3;
+
+        $i5 = r1[3];
+
+        $i4 = <org.slf4j.DoubleCheckedInt: int THREAD_COUNT>;
+
+        if $i5 == $i4 goto label3;
+
+        $r2 = new java.lang.IllegalStateException;
+
+        specialinvoke $r2.<java.lang.IllegalStateException: void <init>(java.lang.String)>("getState() should return consistent values");
+
+        throw $r2;
+
+     label3:
+        return;
+    }
+
+    private static void printStateCount(int[])
+    {
+        int[] r0;
+        java.lang.StringBuilder $r1, $r3, $r5, $r7, $r9, $r11, $r13, $r15;
+        java.io.PrintStream $r2, $r6, $r10, $r14;
+        int $i0, $i1, $i2, $i3, i4;
+        java.lang.String $r4, $r8, $r12, $r16;
+
+        r0 := @parameter0: int[];
+
+        i4 = 0;
+
+        goto label7;
+
+     label1:
+        tableswitch(i4)
+        {
+            case 0: goto label2;
+            case 1: goto label3;
+            case 2: goto label4;
+            case 3: goto label5;
+            default: goto label6;
+        };
+
+     label2:
+        $r2 = <java.lang.System: java.io.PrintStream out>;
+
+        $r1 = new java.lang.StringBuilder;
+
+        specialinvoke $r1.<java.lang.StringBuilder: void <init>(java.lang.String)>("UNINITIALIZED_STATE count: ");
+
+        $i0 = r0[i4];
+
+        $r3 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        $r4 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r2.<java.io.PrintStream: void println(java.lang.String)>($r4);
+
+        goto label6;
+
+     label3:
+        $r14 = <java.lang.System: java.io.PrintStream out>;
+
+        $r13 = new java.lang.StringBuilder;
+
+        specialinvoke $r13.<java.lang.StringBuilder: void <init>(java.lang.String)>("ONGOING_INITIALIZATION count: ");
+
+        $i3 = r0[i4];
+
+        $r15 = virtualinvoke $r13.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i3);
+
+        $r16 = virtualinvoke $r15.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r14.<java.io.PrintStream: void println(java.lang.String)>($r16);
+
+        goto label6;
+
+     label4:
+        $r10 = <java.lang.System: java.io.PrintStream out>;
+
+        $r9 = new java.lang.StringBuilder;
+
+        specialinvoke $r9.<java.lang.StringBuilder: void <init>(java.lang.String)>("SUCCESS count: ");
+
+        $i2 = r0[i4];
+
+        $r11 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i2);
+
+        $r12 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r10.<java.io.PrintStream: void println(java.lang.String)>($r12);
+
+        goto label6;
+
+     label5:
+        $r6 = <java.lang.System: java.io.PrintStream out>;
+
+        $r5 = new java.lang.StringBuilder;
+
+        specialinvoke $r5.<java.lang.StringBuilder: void <init>(java.lang.String)>("FAILURE count: ");
+
+        $i1 = r0[i4];
+
+        $r7 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i1);
+
+        $r8 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r6.<java.io.PrintStream: void println(java.lang.String)>($r8);
+
+     label6:
+        i4 = i4 + 1;
+
+     label7:
+        if i4 < 4 goto label1;
+
+        return;
+    }
+
+    private static int[] getStateCount(org.slf4j.DoubleCheckedInt$StateAccessingThread[])
+    {
+        org.slf4j.DoubleCheckedInt$StateAccessingThread[] r0;
+        int[] r1;
+        int i0, $i1, $i2, $i3, i4;
+        org.slf4j.DoubleCheckedInt$StateAccessingThread $r2;
+
+        r0 := @parameter0: org.slf4j.DoubleCheckedInt$StateAccessingThread[];
+
+        r1 = newarray (int)[4];
+
+        i4 = 0;
+
+        goto label2;
+
+     label1:
+        $r2 = r0[i4];
+
+        i0 = $r2.<org.slf4j.DoubleCheckedInt$StateAccessingThread: int state>;
+
+        $i2 = r1[i0];
+
+        $i3 = $i2 + 1;
+
+        r1[i0] = $i3;
+
+        i4 = i4 + 1;
+
+     label2:
+        $i1 = lengthof r0;
+
+        if i4 < $i1 goto label1;
+
+        return r1;
+    }
+}

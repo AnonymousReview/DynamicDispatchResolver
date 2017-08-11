@@ -1,0 +1,43 @@
+public class org.apache.commons.logging.log4j.log4j12.Log4j12StandardTests extends org.apache.commons.logging.log4j.StandardTests
+{
+
+    public void <init>()
+    {
+        org.apache.commons.logging.log4j.log4j12.Log4j12StandardTests r0;
+
+        r0 := @this: org.apache.commons.logging.log4j.log4j12.Log4j12StandardTests;
+
+        specialinvoke r0.<org.apache.commons.logging.log4j.StandardTests: void <init>()>();
+
+        return;
+    }
+
+    public void setUpTestAppender(java.util.List)
+    {
+        org.apache.commons.logging.log4j.log4j12.Log4j12StandardTests r0;
+        java.util.List r1;
+        org.apache.log4j.Logger r3;
+        org.apache.commons.logging.log4j.log4j12.TestAppender $r4;
+        org.apache.log4j.Level $r5;
+
+        r0 := @this: org.apache.commons.logging.log4j.log4j12.Log4j12StandardTests;
+
+        r1 := @parameter0: java.util.List;
+
+        $r4 = new org.apache.commons.logging.log4j.log4j12.TestAppender;
+
+        specialinvoke $r4.<org.apache.commons.logging.log4j.log4j12.TestAppender: void <init>(java.util.List)>(r1);
+
+        r3 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getRootLogger()>();
+
+        virtualinvoke r3.<org.apache.log4j.Logger: void removeAllAppenders()>();
+
+        virtualinvoke r3.<org.apache.log4j.Logger: void addAppender(org.apache.log4j.Appender)>($r4);
+
+        $r5 = <org.apache.log4j.Level: org.apache.log4j.Level INFO>;
+
+        virtualinvoke r3.<org.apache.log4j.Logger: void setLevel(org.apache.log4j.Level)>($r5);
+
+        return;
+    }
+}

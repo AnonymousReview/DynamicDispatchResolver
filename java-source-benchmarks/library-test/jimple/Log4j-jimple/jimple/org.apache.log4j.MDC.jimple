@@ -1,0 +1,406 @@
+public class org.apache.log4j.MDC extends java.lang.Object
+{
+    static final org.apache.log4j.MDC mdc;
+    static final int HT_SIZE;
+    boolean java1;
+    java.lang.Object tlm;
+    private java.lang.reflect.Method removeMethod;
+
+    static void <clinit>()
+    {
+        org.apache.log4j.MDC $r0;
+
+        <org.apache.log4j.MDC: int HT_SIZE> = 7;
+
+        $r0 = new org.apache.log4j.MDC;
+
+        specialinvoke $r0.<org.apache.log4j.MDC: void <init>()>();
+
+        <org.apache.log4j.MDC: org.apache.log4j.MDC mdc> = $r0;
+
+        return;
+    }
+
+    private void <init>()
+    {
+        org.apache.log4j.MDC r0;
+        boolean $z0, $z1;
+        java.lang.Class $r2;
+        java.lang.reflect.Method $r3;
+        org.apache.log4j.helpers.ThreadLocalMap $r4;
+        java.lang.NoSuchMethodException $r5;
+
+        r0 := @this: org.apache.log4j.MDC;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $z0 = staticinvoke <org.apache.log4j.helpers.Loader: boolean isJava1()>();
+
+        r0.<org.apache.log4j.MDC: boolean java1> = $z0;
+
+        $z1 = r0.<org.apache.log4j.MDC: boolean java1>;
+
+        if $z1 != 0 goto label1;
+
+        $r4 = new org.apache.log4j.helpers.ThreadLocalMap;
+
+        specialinvoke $r4.<org.apache.log4j.helpers.ThreadLocalMap: void <init>()>();
+
+        r0.<org.apache.log4j.MDC: java.lang.Object tlm> = $r4;
+
+     label1:
+        $r2 = class "java/lang/ThreadLocal";
+
+        $r3 = virtualinvoke $r2.<java.lang.Class: java.lang.reflect.Method getMethod(java.lang.String,java.lang.Class[])>("remove", null);
+
+        r0.<org.apache.log4j.MDC: java.lang.reflect.Method removeMethod> = $r3;
+
+     label2:
+        goto label4;
+
+     label3:
+        $r5 := @caughtexception;
+
+     label4:
+        return;
+
+        catch java.lang.NoSuchMethodException from label1 to label2 with label3;
+    }
+
+    public static void put(java.lang.String, java.lang.Object)
+    {
+        java.lang.String r0;
+        java.lang.Object r1;
+        org.apache.log4j.MDC $r2, $r3;
+
+        r0 := @parameter0: java.lang.String;
+
+        r1 := @parameter1: java.lang.Object;
+
+        $r2 = <org.apache.log4j.MDC: org.apache.log4j.MDC mdc>;
+
+        if $r2 == null goto label1;
+
+        $r3 = <org.apache.log4j.MDC: org.apache.log4j.MDC mdc>;
+
+        specialinvoke $r3.<org.apache.log4j.MDC: void put0(java.lang.String,java.lang.Object)>(r0, r1);
+
+     label1:
+        return;
+    }
+
+    public static java.lang.Object get(java.lang.String)
+    {
+        java.lang.String r0;
+        org.apache.log4j.MDC $r1, $r2;
+        java.lang.Object $r3;
+
+        r0 := @parameter0: java.lang.String;
+
+        $r1 = <org.apache.log4j.MDC: org.apache.log4j.MDC mdc>;
+
+        if $r1 == null goto label1;
+
+        $r2 = <org.apache.log4j.MDC: org.apache.log4j.MDC mdc>;
+
+        $r3 = specialinvoke $r2.<org.apache.log4j.MDC: java.lang.Object get0(java.lang.String)>(r0);
+
+        return $r3;
+
+     label1:
+        return null;
+    }
+
+    public static void remove(java.lang.String)
+    {
+        java.lang.String r0;
+        org.apache.log4j.MDC $r1, $r2;
+
+        r0 := @parameter0: java.lang.String;
+
+        $r1 = <org.apache.log4j.MDC: org.apache.log4j.MDC mdc>;
+
+        if $r1 == null goto label1;
+
+        $r2 = <org.apache.log4j.MDC: org.apache.log4j.MDC mdc>;
+
+        specialinvoke $r2.<org.apache.log4j.MDC: void remove0(java.lang.String)>(r0);
+
+     label1:
+        return;
+    }
+
+    public static java.util.Hashtable getContext()
+    {
+        org.apache.log4j.MDC $r0, $r1;
+        java.util.Hashtable $r2;
+
+        $r0 = <org.apache.log4j.MDC: org.apache.log4j.MDC mdc>;
+
+        if $r0 == null goto label1;
+
+        $r1 = <org.apache.log4j.MDC: org.apache.log4j.MDC mdc>;
+
+        $r2 = specialinvoke $r1.<org.apache.log4j.MDC: java.util.Hashtable getContext0()>();
+
+        return $r2;
+
+     label1:
+        return null;
+    }
+
+    public static void clear()
+    {
+        org.apache.log4j.MDC $r0, $r1;
+
+        $r0 = <org.apache.log4j.MDC: org.apache.log4j.MDC mdc>;
+
+        if $r0 == null goto label1;
+
+        $r1 = <org.apache.log4j.MDC: org.apache.log4j.MDC mdc>;
+
+        specialinvoke $r1.<org.apache.log4j.MDC: void clear0()>();
+
+     label1:
+        return;
+    }
+
+    private void put0(java.lang.String, java.lang.Object)
+    {
+        org.apache.log4j.MDC r0;
+        java.lang.String r1;
+        java.lang.Object r2, $r3, $r4, $r6, $r9;
+        boolean $z0;
+        org.apache.log4j.helpers.ThreadLocalMap $r5, $r10;
+        java.util.Hashtable $r8, r11;
+
+        r0 := @this: org.apache.log4j.MDC;
+
+        r1 := @parameter0: java.lang.String;
+
+        r2 := @parameter1: java.lang.Object;
+
+        $z0 = r0.<org.apache.log4j.MDC: boolean java1>;
+
+        if $z0 != 0 goto label1;
+
+        $r3 = r0.<org.apache.log4j.MDC: java.lang.Object tlm>;
+
+        if $r3 != null goto label2;
+
+     label1:
+        return;
+
+     label2:
+        $r4 = r0.<org.apache.log4j.MDC: java.lang.Object tlm>;
+
+        $r5 = (org.apache.log4j.helpers.ThreadLocalMap) $r4;
+
+        $r6 = virtualinvoke $r5.<org.apache.log4j.helpers.ThreadLocalMap: java.lang.Object get()>();
+
+        r11 = (java.util.Hashtable) $r6;
+
+        if r11 != null goto label3;
+
+        $r8 = new java.util.Hashtable;
+
+        specialinvoke $r8.<java.util.Hashtable: void <init>(int)>(7);
+
+        r11 = $r8;
+
+        $r9 = r0.<org.apache.log4j.MDC: java.lang.Object tlm>;
+
+        $r10 = (org.apache.log4j.helpers.ThreadLocalMap) $r9;
+
+        virtualinvoke $r10.<org.apache.log4j.helpers.ThreadLocalMap: void set(java.lang.Object)>($r8);
+
+     label3:
+        virtualinvoke r11.<java.util.Hashtable: java.lang.Object put(java.lang.Object,java.lang.Object)>(r1, r2);
+
+        return;
+    }
+
+    private java.lang.Object get0(java.lang.String)
+    {
+        org.apache.log4j.MDC r0;
+        java.lang.String r1;
+        java.util.Hashtable r2;
+        boolean $z0;
+        java.lang.Object $r3, $r4, $r6, $r7;
+        org.apache.log4j.helpers.ThreadLocalMap $r5;
+
+        r0 := @this: org.apache.log4j.MDC;
+
+        r1 := @parameter0: java.lang.String;
+
+        $z0 = r0.<org.apache.log4j.MDC: boolean java1>;
+
+        if $z0 != 0 goto label1;
+
+        $r3 = r0.<org.apache.log4j.MDC: java.lang.Object tlm>;
+
+        if $r3 != null goto label2;
+
+     label1:
+        return null;
+
+     label2:
+        $r4 = r0.<org.apache.log4j.MDC: java.lang.Object tlm>;
+
+        $r5 = (org.apache.log4j.helpers.ThreadLocalMap) $r4;
+
+        $r6 = virtualinvoke $r5.<org.apache.log4j.helpers.ThreadLocalMap: java.lang.Object get()>();
+
+        r2 = (java.util.Hashtable) $r6;
+
+        if r2 == null goto label3;
+
+        if r1 == null goto label3;
+
+        $r7 = virtualinvoke r2.<java.util.Hashtable: java.lang.Object get(java.lang.Object)>(r1);
+
+        return $r7;
+
+     label3:
+        return null;
+    }
+
+    private void remove0(java.lang.String)
+    {
+        org.apache.log4j.MDC r0;
+        java.lang.String r1;
+        java.util.Hashtable r2;
+        boolean $z0, $z1;
+        java.lang.Object $r3, $r4, $r6;
+        org.apache.log4j.helpers.ThreadLocalMap $r5;
+
+        r0 := @this: org.apache.log4j.MDC;
+
+        r1 := @parameter0: java.lang.String;
+
+        $z0 = r0.<org.apache.log4j.MDC: boolean java1>;
+
+        if $z0 != 0 goto label1;
+
+        $r3 = r0.<org.apache.log4j.MDC: java.lang.Object tlm>;
+
+        if $r3 == null goto label1;
+
+        $r4 = r0.<org.apache.log4j.MDC: java.lang.Object tlm>;
+
+        $r5 = (org.apache.log4j.helpers.ThreadLocalMap) $r4;
+
+        $r6 = virtualinvoke $r5.<org.apache.log4j.helpers.ThreadLocalMap: java.lang.Object get()>();
+
+        r2 = (java.util.Hashtable) $r6;
+
+        if r2 == null goto label1;
+
+        virtualinvoke r2.<java.util.Hashtable: java.lang.Object remove(java.lang.Object)>(r1);
+
+        $z1 = virtualinvoke r2.<java.util.Hashtable: boolean isEmpty()>();
+
+        if $z1 == 0 goto label1;
+
+        specialinvoke r0.<org.apache.log4j.MDC: void clear0()>();
+
+     label1:
+        return;
+    }
+
+    private java.util.Hashtable getContext0()
+    {
+        org.apache.log4j.MDC r0;
+        boolean $z0;
+        java.lang.Object $r1, $r2, $r4;
+        org.apache.log4j.helpers.ThreadLocalMap $r3;
+        java.util.Hashtable $r5;
+
+        r0 := @this: org.apache.log4j.MDC;
+
+        $z0 = r0.<org.apache.log4j.MDC: boolean java1>;
+
+        if $z0 != 0 goto label1;
+
+        $r1 = r0.<org.apache.log4j.MDC: java.lang.Object tlm>;
+
+        if $r1 != null goto label2;
+
+     label1:
+        return null;
+
+     label2:
+        $r2 = r0.<org.apache.log4j.MDC: java.lang.Object tlm>;
+
+        $r3 = (org.apache.log4j.helpers.ThreadLocalMap) $r2;
+
+        $r4 = virtualinvoke $r3.<org.apache.log4j.helpers.ThreadLocalMap: java.lang.Object get()>();
+
+        $r5 = (java.util.Hashtable) $r4;
+
+        return $r5;
+    }
+
+    private void clear0()
+    {
+        org.apache.log4j.MDC r0;
+        java.util.Hashtable r1;
+        boolean $z0;
+        java.lang.Object $r2, $r3, $r5, $r7;
+        org.apache.log4j.helpers.ThreadLocalMap $r4;
+        java.lang.reflect.Method $r6, $r8;
+        java.lang.reflect.InvocationTargetException $r10;
+        java.lang.IllegalAccessException $r11;
+
+        r0 := @this: org.apache.log4j.MDC;
+
+        $z0 = r0.<org.apache.log4j.MDC: boolean java1>;
+
+        if $z0 != 0 goto label6;
+
+        $r2 = r0.<org.apache.log4j.MDC: java.lang.Object tlm>;
+
+        if $r2 == null goto label6;
+
+        $r3 = r0.<org.apache.log4j.MDC: java.lang.Object tlm>;
+
+        $r4 = (org.apache.log4j.helpers.ThreadLocalMap) $r3;
+
+        $r5 = virtualinvoke $r4.<org.apache.log4j.helpers.ThreadLocalMap: java.lang.Object get()>();
+
+        r1 = (java.util.Hashtable) $r5;
+
+        if r1 == null goto label1;
+
+        virtualinvoke r1.<java.util.Hashtable: void clear()>();
+
+     label1:
+        $r6 = r0.<org.apache.log4j.MDC: java.lang.reflect.Method removeMethod>;
+
+        if $r6 == null goto label6;
+
+     label2:
+        $r8 = r0.<org.apache.log4j.MDC: java.lang.reflect.Method removeMethod>;
+
+        $r7 = r0.<org.apache.log4j.MDC: java.lang.Object tlm>;
+
+        virtualinvoke $r8.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>($r7, null);
+
+     label3:
+        goto label6;
+
+     label4:
+        $r11 := @caughtexception;
+
+        goto label6;
+
+     label5:
+        $r10 := @caughtexception;
+
+     label6:
+        return;
+
+        catch java.lang.IllegalAccessException from label2 to label3 with label4;
+        catch java.lang.reflect.InvocationTargetException from label2 to label3 with label5;
+    }
+}

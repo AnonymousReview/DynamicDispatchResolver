@@ -1,0 +1,59 @@
+final class org.apache.log4j.helpers.DateLayoutTest$MockLayout extends org.apache.log4j.helpers.DateLayout
+{
+
+    public void <init>()
+    {
+        org.apache.log4j.helpers.DateLayoutTest$MockLayout r0;
+        java.text.FieldPosition $r1;
+        java.util.Date $r2;
+        java.text.DateFormat $r3;
+
+        r0 := @this: org.apache.log4j.helpers.DateLayoutTest$MockLayout;
+
+        specialinvoke r0.<org.apache.log4j.helpers.DateLayout: void <init>()>();
+
+        $r1 = r0.<org.apache.log4j.helpers.DateLayoutTest$MockLayout: java.text.FieldPosition pos>;
+
+        staticinvoke <org.apache.log4j.helpers.DateLayoutTest: void assertNotNull(java.lang.Object)>($r1);
+
+        $r2 = r0.<org.apache.log4j.helpers.DateLayoutTest$MockLayout: java.util.Date date>;
+
+        staticinvoke <org.apache.log4j.helpers.DateLayoutTest: void assertNotNull(java.lang.Object)>($r2);
+
+        $r3 = r0.<org.apache.log4j.helpers.DateLayoutTest$MockLayout: java.text.DateFormat dateFormat>;
+
+        staticinvoke <org.apache.log4j.helpers.DateLayoutTest: void assertNull(java.lang.Object)>($r3);
+
+        return;
+    }
+
+    public java.lang.String format(org.apache.log4j.spi.LoggingEvent)
+    {
+        org.apache.log4j.helpers.DateLayoutTest$MockLayout r0;
+        org.apache.log4j.spi.LoggingEvent r1;
+
+        r0 := @this: org.apache.log4j.helpers.DateLayoutTest$MockLayout;
+
+        r1 := @parameter0: org.apache.log4j.spi.LoggingEvent;
+
+        return "Mock";
+    }
+
+    public void activateOptions()
+    {
+        org.apache.log4j.helpers.DateLayoutTest$MockLayout r0;
+
+        r0 := @this: org.apache.log4j.helpers.DateLayoutTest$MockLayout;
+
+        return;
+    }
+
+    public boolean ignoresThrowable()
+    {
+        org.apache.log4j.helpers.DateLayoutTest$MockLayout r0;
+
+        r0 := @this: org.apache.log4j.helpers.DateLayoutTest$MockLayout;
+
+        return 1;
+    }
+}

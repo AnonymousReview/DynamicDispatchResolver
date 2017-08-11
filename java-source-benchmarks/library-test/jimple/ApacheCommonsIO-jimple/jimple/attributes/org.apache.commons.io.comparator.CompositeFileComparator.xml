@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<attributes>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="3" eline="3" spos="0" epos="0"/>
+<text info="ConstantValue: -2224170307287243428" aType="LongConstantValueTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="4" eline="4" spos="0" epos="0"/>
+<text info="Signature: [Ljava/util/Comparator&lt;*&gt;;" aType="SignatureTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="5" eline="5" spos="0" epos="0"/>
+<text info="Signature: [Ljava/util/Comparator&lt;Ljava/io/File;&gt;;" aType="SignatureTag"/>
+</attribute>
+<attribute>
+<srcPos sline="56" eline="56" spos="0" epos="0"/>
+<jmpPos sline="20" eline="20" spos="0" epos="0"/>
+<text info="Signature: ([Ljava/util/Comparator&lt;Ljava/io/File;&gt;;)V" aType="SignatureTag"/>
+</attribute>
+<attribute>
+<srcPos sline="71" eline="71" spos="0" epos="0"/>
+<jmpPos sline="57" eline="57" spos="0" epos="0"/>
+<text info="Signature: (Ljava/lang/Iterable&lt;Ljava/util/Comparator&lt;Ljava/io/File;&gt;;&gt;;)V" aType="SignatureTag"/>
+</attribute>
+</attributes>

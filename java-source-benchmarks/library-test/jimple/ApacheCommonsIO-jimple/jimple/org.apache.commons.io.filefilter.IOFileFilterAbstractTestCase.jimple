@@ -1,0 +1,456 @@
+public abstract class org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase extends java.lang.Object
+{
+
+    public void <init>()
+    {
+        org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase r0;
+
+        r0 := @this: org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static void assertFileFiltering(int, org.apache.commons.io.filefilter.IOFileFilter, java.io.File, boolean) throws java.lang.Exception
+    {
+        int i0;
+        org.apache.commons.io.filefilter.IOFileFilter r0;
+        java.io.File r1;
+        boolean z0, $z1;
+        java.lang.StringBuilder $r2, $r3, $r4, $r7, $r8, $r9, $r10, $r11;
+        java.lang.Class $r5;
+        java.lang.String $r6, $r12;
+        java.lang.Boolean $r13, $r14;
+
+        i0 := @parameter0: int;
+
+        r0 := @parameter1: org.apache.commons.io.filefilter.IOFileFilter;
+
+        r1 := @parameter2: java.io.File;
+
+        z0 := @parameter3: boolean;
+
+        $r2 = new java.lang.StringBuilder;
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>(java.lang.String)>("test ");
+
+        $r3 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i0);
+
+        $r4 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" Filter(File) ");
+
+        $r5 = virtualinvoke r0.<java.lang.Object: java.lang.Class getClass()>();
+
+        $r6 = virtualinvoke $r5.<java.lang.Class: java.lang.String getName()>();
+
+        $r7 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r6);
+
+        $r8 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" not ");
+
+        $r9 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(boolean)>(z0);
+
+        $r10 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" for ");
+
+        $r11 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(r1);
+
+        $r12 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r13 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>(z0);
+
+        $z1 = interfaceinvoke r0.<org.apache.commons.io.filefilter.IOFileFilter: boolean accept(java.io.File)>(r1);
+
+        $r14 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($z1);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,java.lang.Object,java.lang.Object)>($r12, $r13, $r14);
+
+        return;
+    }
+
+    public static void assertFilenameFiltering(int, org.apache.commons.io.filefilter.IOFileFilter, java.io.File, boolean) throws java.lang.Exception
+    {
+        int i0;
+        org.apache.commons.io.filefilter.IOFileFilter r0;
+        java.io.File r1, $r14;
+        boolean z0, $z1;
+        java.lang.StringBuilder $r2, $r3, $r4, $r7, $r8, $r9, $r10, $r11;
+        java.lang.Class $r5;
+        java.lang.String $r6, $r12, $r15;
+        java.lang.Boolean $r13, $r16;
+
+        i0 := @parameter0: int;
+
+        r0 := @parameter1: org.apache.commons.io.filefilter.IOFileFilter;
+
+        r1 := @parameter2: java.io.File;
+
+        z0 := @parameter3: boolean;
+
+        $r2 = new java.lang.StringBuilder;
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>(java.lang.String)>("test ");
+
+        $r3 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i0);
+
+        $r4 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" Filter(File, String) ");
+
+        $r5 = virtualinvoke r0.<java.lang.Object: java.lang.Class getClass()>();
+
+        $r6 = virtualinvoke $r5.<java.lang.Class: java.lang.String getName()>();
+
+        $r7 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r6);
+
+        $r8 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" not ");
+
+        $r9 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(boolean)>(z0);
+
+        $r10 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" for ");
+
+        $r11 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(r1);
+
+        $r12 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r13 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>(z0);
+
+        $r14 = virtualinvoke r1.<java.io.File: java.io.File getParentFile()>();
+
+        $r15 = virtualinvoke r1.<java.io.File: java.lang.String getName()>();
+
+        $z1 = interfaceinvoke r0.<org.apache.commons.io.filefilter.IOFileFilter: boolean accept(java.io.File,java.lang.String)>($r14, $r15);
+
+        $r16 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($z1);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,java.lang.Object,java.lang.Object)>($r12, $r13, $r16);
+
+        return;
+    }
+
+    public static void assertFiltering(int, org.apache.commons.io.filefilter.IOFileFilter, java.io.File, boolean) throws java.lang.Exception
+    {
+        int i0;
+        org.apache.commons.io.filefilter.IOFileFilter r0;
+        java.io.File r1, $r27, $r40;
+        boolean z0, $z1, $z2, $z3;
+        java.lang.StringBuilder $r2, $r3, $r4, $r7, $r8, $r9, $r10, $r11, $r15, $r16, $r17, $r20, $r21, $r22, $r23, $r28, $r29, $r30, $r33, $r34, $r35, $r36, $r37;
+        java.lang.Class $r5, $r18, $r31;
+        java.lang.String $r6, $r12, $r19, $r24, $r32, $r38, $r41;
+        java.lang.Boolean $r13, $r14, $r25, $r26, $r39, $r42;
+
+        i0 := @parameter0: int;
+
+        r0 := @parameter1: org.apache.commons.io.filefilter.IOFileFilter;
+
+        r1 := @parameter2: java.io.File;
+
+        z0 := @parameter3: boolean;
+
+        $r2 = new java.lang.StringBuilder;
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>(java.lang.String)>("test ");
+
+        $r3 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i0);
+
+        $r4 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" Filter(File) ");
+
+        $r5 = virtualinvoke r0.<java.lang.Object: java.lang.Class getClass()>();
+
+        $r6 = virtualinvoke $r5.<java.lang.Class: java.lang.String getName()>();
+
+        $r7 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r6);
+
+        $r8 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" not ");
+
+        $r9 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(boolean)>(z0);
+
+        $r10 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" for ");
+
+        $r11 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(r1);
+
+        $r12 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r13 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>(z0);
+
+        $z1 = interfaceinvoke r0.<org.apache.commons.io.filefilter.IOFileFilter: boolean accept(java.io.File)>(r1);
+
+        $r14 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($z1);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,java.lang.Object,java.lang.Object)>($r12, $r13, $r14);
+
+        if r1 == null goto label1;
+
+        $r27 = virtualinvoke r1.<java.io.File: java.io.File getParentFile()>();
+
+        if $r27 == null goto label1;
+
+        $r28 = new java.lang.StringBuilder;
+
+        specialinvoke $r28.<java.lang.StringBuilder: void <init>(java.lang.String)>("test ");
+
+        $r29 = virtualinvoke $r28.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i0);
+
+        $r30 = virtualinvoke $r29.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" Filter(File, String) ");
+
+        $r31 = virtualinvoke r0.<java.lang.Object: java.lang.Class getClass()>();
+
+        $r32 = virtualinvoke $r31.<java.lang.Class: java.lang.String getName()>();
+
+        $r33 = virtualinvoke $r30.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r32);
+
+        $r34 = virtualinvoke $r33.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" not ");
+
+        $r35 = virtualinvoke $r34.<java.lang.StringBuilder: java.lang.StringBuilder append(boolean)>(z0);
+
+        $r36 = virtualinvoke $r35.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" for ");
+
+        $r37 = virtualinvoke $r36.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(r1);
+
+        $r38 = virtualinvoke $r37.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r39 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>(z0);
+
+        $r40 = virtualinvoke r1.<java.io.File: java.io.File getParentFile()>();
+
+        $r41 = virtualinvoke r1.<java.io.File: java.lang.String getName()>();
+
+        $z3 = interfaceinvoke r0.<org.apache.commons.io.filefilter.IOFileFilter: boolean accept(java.io.File,java.lang.String)>($r40, $r41);
+
+        $r42 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($z3);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,java.lang.Object,java.lang.Object)>($r38, $r39, $r42);
+
+        goto label2;
+
+     label1:
+        if r1 != null goto label2;
+
+        $r15 = new java.lang.StringBuilder;
+
+        specialinvoke $r15.<java.lang.StringBuilder: void <init>(java.lang.String)>("test ");
+
+        $r16 = virtualinvoke $r15.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i0);
+
+        $r17 = virtualinvoke $r16.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" Filter(File, String) ");
+
+        $r18 = virtualinvoke r0.<java.lang.Object: java.lang.Class getClass()>();
+
+        $r19 = virtualinvoke $r18.<java.lang.Class: java.lang.String getName()>();
+
+        $r20 = virtualinvoke $r17.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r19);
+
+        $r21 = virtualinvoke $r20.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" not ");
+
+        $r22 = virtualinvoke $r21.<java.lang.StringBuilder: java.lang.StringBuilder append(boolean)>(z0);
+
+        $r23 = virtualinvoke $r22.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" for null");
+
+        $r24 = virtualinvoke $r23.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r25 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>(z0);
+
+        $z2 = interfaceinvoke r0.<org.apache.commons.io.filefilter.IOFileFilter: boolean accept(java.io.File)>(r1);
+
+        $r26 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($z2);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,java.lang.Object,java.lang.Object)>($r24, $r25, $r26);
+
+     label2:
+        return;
+    }
+
+    public static void assertTrueFiltersInvoked(int, org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterTrueFileFilter[], boolean[])
+    {
+        int i0, $i1, $i2, i3;
+        org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterTrueFileFilter[] r0;
+        boolean[] r1;
+        java.lang.StringBuilder $r2, $r3, $r4, $r5, $r6;
+        java.lang.String $r7;
+        boolean $z0, $z1;
+        java.lang.Boolean $r8, $r10;
+        org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterTrueFileFilter $r9;
+
+        i0 := @parameter0: int;
+
+        r0 := @parameter1: org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterTrueFileFilter[];
+
+        r1 := @parameter2: boolean[];
+
+        i3 = 1;
+
+        goto label2;
+
+     label1:
+        $r2 = new java.lang.StringBuilder;
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>(java.lang.String)>("test ");
+
+        $r3 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i0);
+
+        $r4 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" filter ");
+
+        $r5 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i3);
+
+        $r6 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" invoked");
+
+        $r7 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $i2 = i3 - 1;
+
+        $z0 = r1[$i2];
+
+        $r8 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($z0);
+
+        $r9 = r0[i3];
+
+        $z1 = virtualinvoke $r9.<org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterTrueFileFilter: boolean isInvoked()>();
+
+        $r10 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($z1);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,java.lang.Object,java.lang.Object)>($r7, $r8, $r10);
+
+        i3 = i3 + 1;
+
+     label2:
+        $i1 = lengthof r0;
+
+        if i3 < $i1 goto label1;
+
+        return;
+    }
+
+    public static void assertFalseFiltersInvoked(int, org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterFalseFileFilter[], boolean[])
+    {
+        int i0, $i1, $i2, i3;
+        org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterFalseFileFilter[] r0;
+        boolean[] r1;
+        java.lang.StringBuilder $r2, $r3, $r4, $r5, $r6;
+        java.lang.String $r7;
+        boolean $z0, $z1;
+        java.lang.Boolean $r8, $r10;
+        org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterFalseFileFilter $r9;
+
+        i0 := @parameter0: int;
+
+        r0 := @parameter1: org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterFalseFileFilter[];
+
+        r1 := @parameter2: boolean[];
+
+        i3 = 1;
+
+        goto label2;
+
+     label1:
+        $r2 = new java.lang.StringBuilder;
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>(java.lang.String)>("test ");
+
+        $r3 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i0);
+
+        $r4 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" filter ");
+
+        $r5 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i3);
+
+        $r6 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" invoked");
+
+        $r7 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $i2 = i3 - 1;
+
+        $z0 = r1[$i2];
+
+        $r8 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($z0);
+
+        $r9 = r0[i3];
+
+        $z1 = virtualinvoke $r9.<org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterFalseFileFilter: boolean isInvoked()>();
+
+        $r10 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($z1);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,java.lang.Object,java.lang.Object)>($r7, $r8, $r10);
+
+        i3 = i3 + 1;
+
+     label2:
+        $i1 = lengthof r0;
+
+        if i3 < $i1 goto label1;
+
+        return;
+    }
+
+    public static java.io.File determineWorkingDirectoryPath(java.lang.String, java.lang.String)
+    {
+        java.lang.String r0, r1, r2;
+        java.io.File $r3;
+
+        r0 := @parameter0: java.lang.String;
+
+        r1 := @parameter1: java.lang.String;
+
+        r2 = staticinvoke <java.lang.System: java.lang.String getProperty(java.lang.String,java.lang.String)>(r0, r1);
+
+        $r3 = new java.io.File;
+
+        specialinvoke $r3.<java.io.File: void <init>(java.lang.String)>(r2);
+
+        return $r3;
+    }
+
+    public static void resetFalseFilters(org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterFalseFileFilter[])
+    {
+        org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterFalseFileFilter[] r0;
+        org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterFalseFileFilter r1;
+        int i0, i1;
+
+        r0 := @parameter0: org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterFalseFileFilter[];
+
+        i0 = lengthof r0;
+
+        i1 = 0;
+
+        goto label3;
+
+     label1:
+        r1 = r0[i1];
+
+        if r1 == null goto label2;
+
+        virtualinvoke r1.<org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterFalseFileFilter: void reset()>();
+
+     label2:
+        i1 = i1 + 1;
+
+     label3:
+        if i1 < i0 goto label1;
+
+        return;
+    }
+
+    public static void resetTrueFilters(org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterTrueFileFilter[])
+    {
+        org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterTrueFileFilter[] r0;
+        org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterTrueFileFilter r1;
+        int i0, i1;
+
+        r0 := @parameter0: org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterTrueFileFilter[];
+
+        i0 = lengthof r0;
+
+        i1 = 0;
+
+        goto label3;
+
+     label1:
+        r1 = r0[i1];
+
+        if r1 == null goto label2;
+
+        virtualinvoke r1.<org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterTrueFileFilter: void reset()>();
+
+     label2:
+        i1 = i1 + 1;
+
+     label3:
+        if i1 < i0 goto label1;
+
+        return;
+    }
+}

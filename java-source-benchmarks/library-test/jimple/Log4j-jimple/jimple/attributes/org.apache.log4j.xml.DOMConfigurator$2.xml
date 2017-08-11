@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<attributes>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="0" eline="0" spos="0" epos="0"/>
+<text info="Enclosing Class: org/apache/log4j/xml/DOMConfigurator Enclosing Method: doConfigure Sig: (Ljava/net/URL;Lorg/apache/log4j/spi/LoggerRepository;)V" aType="EnclosingMethodTag"/>
+<text info="[inner=org/apache/log4j/xml/DOMConfigurator$2, outer=null, name=null,flags=0]" aType="InnerClassTag"/>
+<text info="[inner=org/apache/log4j/xml/DOMConfigurator$ParseAction, outer=org/apache/log4j/xml/DOMConfigurator, name=ParseAction,flags=1546]" aType="InnerClassTag"/>
+<text info="soot.tagkit.InnerClassAttribute@1244f324" aType="InnerClassAttribute"/>
+</attribute>
+</attributes>

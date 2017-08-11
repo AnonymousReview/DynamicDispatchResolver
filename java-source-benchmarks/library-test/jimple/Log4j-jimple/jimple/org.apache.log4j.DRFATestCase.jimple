@@ -1,0 +1,1224 @@
+public class org.apache.log4j.DRFATestCase extends junit.framework.TestCase
+{
+
+    public void <init>(java.lang.String)
+    {
+        org.apache.log4j.DRFATestCase r0;
+        java.lang.String r1;
+
+        r0 := @this: org.apache.log4j.DRFATestCase;
+
+        r1 := @parameter0: java.lang.String;
+
+        specialinvoke r0.<junit.framework.TestCase: void <init>(java.lang.String)>(r1);
+
+        return;
+    }
+
+    public void tearDown()
+    {
+        org.apache.log4j.DRFATestCase r0;
+
+        r0 := @this: org.apache.log4j.DRFATestCase;
+
+        staticinvoke <org.apache.log4j.LogManager: void resetConfiguration()>();
+
+        return;
+    }
+
+    public void testComputeCheckPeriod()
+    {
+        org.apache.log4j.DRFATestCase r0;
+        org.apache.log4j.DailyRollingFileAppender $r2;
+        int $i1, $i2, $i3, $i4, $i5, $i6;
+
+        r0 := @this: org.apache.log4j.DRFATestCase;
+
+        $r2 = new org.apache.log4j.DailyRollingFileAppender;
+
+        specialinvoke $r2.<org.apache.log4j.DailyRollingFileAppender: void <init>()>();
+
+        virtualinvoke $r2.<org.apache.log4j.DailyRollingFileAppender: void setName(java.lang.String)>("testComputeCheckPeriod");
+
+        virtualinvoke $r2.<org.apache.log4j.DailyRollingFileAppender: void setDatePattern(java.lang.String)>("yyyy-MM-dd.\'log\'");
+
+        virtualinvoke $r2.<org.apache.log4j.DailyRollingFileAppender: void activateOptions()>();
+
+        virtualinvoke $r2.<org.apache.log4j.DailyRollingFileAppender: int computeCheckPeriod()>();
+
+        $i1 = virtualinvoke $r2.<org.apache.log4j.DailyRollingFileAppender: int computeCheckPeriod()>();
+
+        staticinvoke <org.apache.log4j.DRFATestCase: void assertEquals(int,int)>($i1, 3);
+
+        virtualinvoke $r2.<org.apache.log4j.DailyRollingFileAppender: void setDatePattern(java.lang.String)>("yyyy-MM-dd mm.\'log\'");
+
+        $i2 = virtualinvoke $r2.<org.apache.log4j.DailyRollingFileAppender: int computeCheckPeriod()>();
+
+        staticinvoke <org.apache.log4j.DRFATestCase: void assertEquals(int,int)>($i2, 0);
+
+        virtualinvoke $r2.<org.apache.log4j.DailyRollingFileAppender: void setDatePattern(java.lang.String)>("yyyy-MM-dd a.\'log\'");
+
+        $i3 = virtualinvoke $r2.<org.apache.log4j.DailyRollingFileAppender: int computeCheckPeriod()>();
+
+        staticinvoke <org.apache.log4j.DRFATestCase: void assertEquals(int,int)>($i3, 2);
+
+        virtualinvoke $r2.<org.apache.log4j.DailyRollingFileAppender: void setDatePattern(java.lang.String)>("yyyy-MM-dd HH.\'log\'");
+
+        $i4 = virtualinvoke $r2.<org.apache.log4j.DailyRollingFileAppender: int computeCheckPeriod()>();
+
+        staticinvoke <org.apache.log4j.DRFATestCase: void assertEquals(int,int)>($i4, 1);
+
+        virtualinvoke $r2.<org.apache.log4j.DailyRollingFileAppender: void setDatePattern(java.lang.String)>("yyyy-MM.\'log\'");
+
+        $i5 = virtualinvoke $r2.<org.apache.log4j.DailyRollingFileAppender: int computeCheckPeriod()>();
+
+        staticinvoke <org.apache.log4j.DRFATestCase: void assertEquals(int,int)>($i5, 5);
+
+        virtualinvoke $r2.<org.apache.log4j.DailyRollingFileAppender: void setDatePattern(java.lang.String)>("\'log\'HH\'log\'");
+
+        $i6 = virtualinvoke $r2.<org.apache.log4j.DailyRollingFileAppender: int computeCheckPeriod()>();
+
+        staticinvoke <org.apache.log4j.DRFATestCase: void assertEquals(int,int)>($i6, 1);
+
+        return;
+    }
+
+    public void testRC1()
+    {
+        org.apache.log4j.DRFATestCase r0;
+        java.util.Calendar r2;
+        org.apache.log4j.RollingCalendar $r4;
+        int[] $r5;
+        int $i0, $i1, $i2, $i3, $i4, $i5, $i6, $i7, $i8, $i9, $i10, $i11, $i12, $i13, $i14, $i15, $i16, $i17, i18, i19, i20;
+        java.util.Date $r6, $r7;
+
+        r0 := @this: org.apache.log4j.DRFATestCase;
+
+        $r4 = new org.apache.log4j.RollingCalendar;
+
+        specialinvoke $r4.<org.apache.log4j.RollingCalendar: void <init>()>();
+
+        virtualinvoke $r4.<org.apache.log4j.RollingCalendar: void setType(int)>(3);
+
+        r2 = staticinvoke <java.util.Calendar: java.util.Calendar getInstance()>();
+
+        $r5 = newarray (int)[7];
+
+        $r5[1] = 2;
+
+        $r5[2] = 4;
+
+        $r5[3] = 6;
+
+        $r5[4] = 7;
+
+        $r5[5] = 9;
+
+        $r5[6] = 11;
+
+        i18 = 0;
+
+        goto label8;
+
+     label1:
+        i19 = 1;
+
+        goto label7;
+
+     label2:
+        i20 = 0;
+
+        goto label6;
+
+     label3:
+        virtualinvoke r2.<java.util.Calendar: void clear()>();
+
+        virtualinvoke r2.<java.util.Calendar: void set(int,int)>(1, 20);
+
+        $i1 = $r5[i18];
+
+        $i2 = 0 + $i1;
+
+        virtualinvoke r2.<java.util.Calendar: void set(int,int)>(2, $i2);
+
+        virtualinvoke r2.<java.util.Calendar: void set(int,int)>(5, i19);
+
+        virtualinvoke r2.<java.util.Calendar: void set(int,int)>(11, i20);
+
+        virtualinvoke r2.<java.util.Calendar: void set(int,int)>(12, 10);
+
+        virtualinvoke r2.<java.util.Calendar: void set(int,int)>(13, 10);
+
+        virtualinvoke r2.<java.util.Calendar: void set(int,int)>(14, 88);
+
+        $r6 = virtualinvoke r2.<java.util.Calendar: java.util.Date getTime()>();
+
+        $r7 = virtualinvoke $r4.<org.apache.log4j.RollingCalendar: java.util.Date getNextCheckDate(java.util.Date)>($r6);
+
+        virtualinvoke r2.<java.util.Calendar: void setTime(java.util.Date)>($r7);
+
+        if i19 != 31 goto label4;
+
+        $i12 = virtualinvoke r2.<java.util.Calendar: int get(int)>(2);
+
+        $i13 = $r5[i18];
+
+        $i14 = 0 + $i13;
+
+        $i15 = $i14 + 1;
+
+        $i16 = $i15 % 12;
+
+        staticinvoke <org.apache.log4j.DRFATestCase: void assertEquals(int,int)>($i12, $i16);
+
+        $i17 = virtualinvoke r2.<java.util.Calendar: int get(int)>(5);
+
+        staticinvoke <org.apache.log4j.DRFATestCase: void assertEquals(int,int)>($i17, 1);
+
+        goto label5;
+
+     label4:
+        $i3 = virtualinvoke r2.<java.util.Calendar: int get(int)>(2);
+
+        $i4 = $r5[i18];
+
+        $i5 = 0 + $i4;
+
+        staticinvoke <org.apache.log4j.DRFATestCase: void assertEquals(int,int)>($i3, $i5);
+
+        $i6 = virtualinvoke r2.<java.util.Calendar: int get(int)>(5);
+
+        $i7 = i19 + 1;
+
+        staticinvoke <org.apache.log4j.DRFATestCase: void assertEquals(int,int)>($i6, $i7);
+
+     label5:
+        $i8 = virtualinvoke r2.<java.util.Calendar: int get(int)>(11);
+
+        staticinvoke <org.apache.log4j.DRFATestCase: void assertEquals(int,int)>($i8, 0);
+
+        $i9 = virtualinvoke r2.<java.util.Calendar: int get(int)>(12);
+
+        staticinvoke <org.apache.log4j.DRFATestCase: void assertEquals(int,int)>($i9, 0);
+
+        $i10 = virtualinvoke r2.<java.util.Calendar: int get(int)>(13);
+
+        staticinvoke <org.apache.log4j.DRFATestCase: void assertEquals(int,int)>($i10, 0);
+
+        $i11 = virtualinvoke r2.<java.util.Calendar: int get(int)>(14);
+
+        staticinvoke <org.apache.log4j.DRFATestCase: void assertEquals(int,int)>($i11, 0);
+
+        i20 = i20 + 1;
+
+     label6:
+        if i20 < 23 goto label3;
+
+        i19 = i19 + 1;
+
+     label7:
+        if i19 <= 31 goto label2;
+
+        i18 = i18 + 1;
+
+     label8:
+        $i0 = lengthof $r5;
+
+        if i18 < $i0 goto label1;
+
+        return;
+    }
+
+    public void testRC2()
+    {
+        org.apache.log4j.DRFATestCase r0;
+        java.util.Calendar r2;
+        boolean z0, z1;
+        org.apache.log4j.RollingCalendar $r4;
+        int[] $r5;
+        int $i0, $i1, $i2, $i3, $i4, $i5, $i6, $i7, $i8, $i9, $i10, $i11, $i12, $i13, $i14, $i15, $i16, $i17, $i18, $i19, $i20, $i21, $i22, $i23, $i24, $i25, $i26, i27, i28, i29, i30;
+        java.lang.StringBuilder $r6, $r8;
+        java.io.PrintStream $r7;
+        java.lang.String $r9;
+        java.util.TimeZone $r10, $r14;
+        java.util.Date $r11, $r12, $r13, $r15;
+
+        r0 := @this: org.apache.log4j.DRFATestCase;
+
+        $r4 = new org.apache.log4j.RollingCalendar;
+
+        specialinvoke $r4.<org.apache.log4j.RollingCalendar: void <init>()>();
+
+        virtualinvoke $r4.<org.apache.log4j.RollingCalendar: void setType(int)>(1);
+
+        r2 = staticinvoke <java.util.Calendar: java.util.Calendar getInstance()>();
+
+        $r5 = newarray (int)[7];
+
+        $r5[1] = 2;
+
+        $r5[2] = 4;
+
+        $r5[3] = 6;
+
+        $r5[4] = 7;
+
+        $r5[5] = 9;
+
+        $r5[6] = 11;
+
+        i27 = 0;
+
+        goto label13;
+
+     label01:
+        $r7 = <java.lang.System: java.io.PrintStream out>;
+
+        $r6 = new java.lang.StringBuilder;
+
+        specialinvoke $r6.<java.lang.StringBuilder: void <init>(java.lang.String)>("Month = ");
+
+        $i1 = $r5[i27];
+
+        $i2 = $i1 + 1;
+
+        $r8 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i2);
+
+        $r9 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r7.<java.io.PrintStream: void println(java.lang.String)>($r9);
+
+        i28 = 1;
+
+        goto label12;
+
+     label02:
+        i29 = 0;
+
+        goto label11;
+
+     label03:
+        i30 = 0;
+
+        goto label10;
+
+     label04:
+        virtualinvoke r2.<java.util.Calendar: void clear()>();
+
+        virtualinvoke r2.<java.util.Calendar: void set(int,int)>(1, 20);
+
+        $i3 = $r5[i27];
+
+        $i4 = 0 + $i3;
+
+        virtualinvoke r2.<java.util.Calendar: void set(int,int)>(2, $i4);
+
+        virtualinvoke r2.<java.util.Calendar: void set(int,int)>(5, i28);
+
+        virtualinvoke r2.<java.util.Calendar: void set(int,int)>(11, i29);
+
+        virtualinvoke r2.<java.util.Calendar: void set(int,int)>(12, i30);
+
+        virtualinvoke r2.<java.util.Calendar: void set(int,int)>(13, 12);
+
+        virtualinvoke r2.<java.util.Calendar: void set(int,int)>(14, 88);
+
+        $r10 = virtualinvoke r2.<java.util.Calendar: java.util.TimeZone getTimeZone()>();
+
+        $r11 = virtualinvoke r2.<java.util.Calendar: java.util.Date getTime()>();
+
+        z0 = virtualinvoke $r10.<java.util.TimeZone: boolean inDaylightTime(java.util.Date)>($r11);
+
+        $r12 = virtualinvoke r2.<java.util.Calendar: java.util.Date getTime()>();
+
+        $r13 = virtualinvoke $r4.<org.apache.log4j.RollingCalendar: java.util.Date getNextCheckDate(java.util.Date)>($r12);
+
+        virtualinvoke r2.<java.util.Calendar: void setTime(java.util.Date)>($r13);
+
+        $r14 = virtualinvoke r2.<java.util.Calendar: java.util.TimeZone getTimeZone()>();
+
+        $r15 = virtualinvoke r2.<java.util.Calendar: java.util.Date getTime()>();
+
+        z1 = virtualinvoke $r14.<java.util.TimeZone: boolean inDaylightTime(java.util.Date)>($r15);
+
+        $i5 = virtualinvoke r2.<java.util.Calendar: int get(int)>(14);
+
+        staticinvoke <org.apache.log4j.DRFATestCase: void assertEquals(int,int)>($i5, 0);
+
+        $i6 = virtualinvoke r2.<java.util.Calendar: int get(int)>(13);
+
+        staticinvoke <org.apache.log4j.DRFATestCase: void assertEquals(int,int)>($i6, 0);
+
+        $i7 = virtualinvoke r2.<java.util.Calendar: int get(int)>(12);
+
+        staticinvoke <org.apache.log4j.DRFATestCase: void assertEquals(int,int)>($i7, 0);
+
+        if z0 != z1 goto label05;
+
+        $i24 = virtualinvoke r2.<java.util.Calendar: int get(int)>(11);
+
+        $i25 = i29 + 1;
+
+        $i26 = $i25 % 24;
+
+        staticinvoke <org.apache.log4j.DRFATestCase: void assertEquals(int,int)>($i24, $i26);
+
+        goto label06;
+
+     label05:
+        if z0 == 0 goto label06;
+
+        $i23 = virtualinvoke r2.<java.util.Calendar: int get(int)>(11);
+
+        staticinvoke <org.apache.log4j.DRFATestCase: void assertEquals(int,int)>($i23, i29);
+
+     label06:
+        if i29 != 23 goto label08;
+
+        $i12 = virtualinvoke r2.<java.util.Calendar: int get(int)>(5);
+
+        $i13 = i28 + 1;
+
+        $i14 = $i13 % 32;
+
+        staticinvoke <org.apache.log4j.DRFATestCase: void assertEquals(int,int)>($i12, $i14);
+
+        if i28 != 31 goto label07;
+
+        $i18 = virtualinvoke r2.<java.util.Calendar: int get(int)>(2);
+
+        $i19 = $r5[i27];
+
+        $i20 = 0 + $i19;
+
+        $i21 = $i20 + 1;
+
+        $i22 = $i21 % 12;
+
+        staticinvoke <org.apache.log4j.DRFATestCase: void assertEquals(int,int)>($i18, $i22);
+
+        goto label09;
+
+     label07:
+        $i15 = virtualinvoke r2.<java.util.Calendar: int get(int)>(2);
+
+        $i16 = $r5[i27];
+
+        $i17 = 0 + $i16;
+
+        staticinvoke <org.apache.log4j.DRFATestCase: void assertEquals(int,int)>($i15, $i17);
+
+        goto label09;
+
+     label08:
+        $i8 = virtualinvoke r2.<java.util.Calendar: int get(int)>(5);
+
+        staticinvoke <org.apache.log4j.DRFATestCase: void assertEquals(int,int)>($i8, i28);
+
+        $i9 = virtualinvoke r2.<java.util.Calendar: int get(int)>(2);
+
+        $i10 = $r5[i27];
+
+        $i11 = 0 + $i10;
+
+        staticinvoke <org.apache.log4j.DRFATestCase: void assertEquals(int,int)>($i9, $i11);
+
+     label09:
+        i30 = i30 + 1;
+
+     label10:
+        if i30 <= 59 goto label04;
+
+        i29 = i29 + 1;
+
+     label11:
+        if i29 < 23 goto label03;
+
+        i28 = i28 + 1;
+
+     label12:
+        if i28 <= 31 goto label02;
+
+        i27 = i27 + 1;
+
+     label13:
+        $i0 = lengthof $r5;
+
+        if i27 < $i0 goto label01;
+
+        return;
+    }
+
+    public void testRC3()
+    {
+        org.apache.log4j.DRFATestCase r0;
+        java.util.Calendar r4;
+        boolean z0, z1, z2;
+        org.apache.log4j.RollingCalendar $r6;
+        int[] $r7, $r8, $r9;
+        int $i0, $i1, $i2, $i3, $i4, $i5, $i6, $i7, $i8, $i9, $i10, $i11, $i12, $i13, $i14, $i15, $i16, $i17, $i18, $i19, $i20, $i21, $i22, $i23, $i24, $i25, $i26, $i27, $i28, $i29, $i30, i31, i32, i33, i34, i35, $i36, $i37, $i38, $i39, $i40;
+        java.lang.StringBuilder $r10, $r12;
+        java.io.PrintStream $r11;
+        java.lang.String $r13;
+        java.util.TimeZone $r14, $r18, $r20;
+        java.util.Date $r15, $r16, $r17, $r19, $r21;
+
+        r0 := @this: org.apache.log4j.DRFATestCase;
+
+        $r6 = new org.apache.log4j.RollingCalendar;
+
+        specialinvoke $r6.<org.apache.log4j.RollingCalendar: void <init>()>();
+
+        virtualinvoke $r6.<org.apache.log4j.RollingCalendar: void setType(int)>(0);
+
+        $r7 = newarray (int)[7];
+
+        $r7[1] = 1;
+
+        $r7[2] = 5;
+
+        $r7[3] = 10;
+
+        $r7[4] = 21;
+
+        $r7[5] = 30;
+
+        $r7[6] = 59;
+
+        $r8 = newarray (int)[7];
+
+        $r8[1] = 1;
+
+        $r8[2] = 5;
+
+        $r8[3] = 10;
+
+        $r8[4] = 21;
+
+        $r8[5] = 30;
+
+        $r8[6] = 59;
+
+        r4 = staticinvoke <java.util.Calendar: java.util.Calendar getInstance()>();
+
+        $r9 = newarray (int)[7];
+
+        $r9[0] = 2;
+
+        $r9[1] = 9;
+
+        $r9[3] = 4;
+
+        $r9[4] = 6;
+
+        $r9[5] = 7;
+
+        $r9[6] = 11;
+
+        i31 = 0;
+
+        goto label16;
+
+     label01:
+        $r11 = <java.lang.System: java.io.PrintStream out>;
+
+        $r10 = new java.lang.StringBuilder;
+
+        specialinvoke $r10.<java.lang.StringBuilder: void <init>(java.lang.String)>("Month = ");
+
+        $i1 = $r9[i31];
+
+        $i2 = $i1 + 1;
+
+        $r12 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i2);
+
+        $r13 = virtualinvoke $r12.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r11.<java.io.PrintStream: void println(java.lang.String)>($r13);
+
+        i32 = 1;
+
+        goto label15;
+
+     label02:
+        i33 = 0;
+
+        goto label14;
+
+     label03:
+        i34 = 0;
+
+        goto label13;
+
+     label04:
+        i35 = 0;
+
+        goto label12;
+
+     label05:
+        virtualinvoke r4.<java.util.Calendar: void clear()>();
+
+        virtualinvoke r4.<java.util.Calendar: void set(int,int)>(1, 20);
+
+        $i4 = $r9[i31];
+
+        $i5 = 0 + $i4;
+
+        virtualinvoke r4.<java.util.Calendar: void set(int,int)>(2, $i5);
+
+        virtualinvoke r4.<java.util.Calendar: void set(int,int)>(5, i32);
+
+        virtualinvoke r4.<java.util.Calendar: void set(int,int)>(11, i33);
+
+        $i6 = $r8[i34];
+
+        virtualinvoke r4.<java.util.Calendar: void set(int,int)>(12, $i6);
+
+        $i7 = $r7[i35];
+
+        virtualinvoke r4.<java.util.Calendar: void set(int,int)>(13, $i7);
+
+        virtualinvoke r4.<java.util.Calendar: void set(int,int)>(14, 88);
+
+        virtualinvoke r4.<java.util.Calendar: void add(int,int)>(14, 1);
+
+        $r14 = virtualinvoke r4.<java.util.Calendar: java.util.TimeZone getTimeZone()>();
+
+        $r15 = virtualinvoke r4.<java.util.Calendar: java.util.Date getTime()>();
+
+        z0 = virtualinvoke $r14.<java.util.TimeZone: boolean inDaylightTime(java.util.Date)>($r15);
+
+        $r16 = virtualinvoke r4.<java.util.Calendar: java.util.Date getTime()>();
+
+        $r17 = virtualinvoke $r6.<org.apache.log4j.RollingCalendar: java.util.Date getNextCheckDate(java.util.Date)>($r16);
+
+        virtualinvoke r4.<java.util.Calendar: void setTime(java.util.Date)>($r17);
+
+        virtualinvoke r4.<java.util.Calendar: void add(int,int)>(14, 0);
+
+        $r18 = virtualinvoke r4.<java.util.Calendar: java.util.TimeZone getTimeZone()>();
+
+        $r19 = virtualinvoke r4.<java.util.Calendar: java.util.Date getTime()>();
+
+        z1 = virtualinvoke $r18.<java.util.TimeZone: boolean inDaylightTime(java.util.Date)>($r19);
+
+        $i8 = virtualinvoke r4.<java.util.Calendar: int get(int)>(14);
+
+        staticinvoke <org.apache.log4j.DRFATestCase: void assertEquals(int,int)>($i8, 0);
+
+        $i9 = virtualinvoke r4.<java.util.Calendar: int get(int)>(13);
+
+        staticinvoke <org.apache.log4j.DRFATestCase: void assertEquals(int,int)>($i9, 0);
+
+        $i10 = virtualinvoke r4.<java.util.Calendar: int get(int)>(12);
+
+        $i11 = $r8[i34];
+
+        $i12 = $i11 + 1;
+
+        $i13 = $i12 % 60;
+
+        staticinvoke <org.apache.log4j.DRFATestCase: void assertEquals(int,int)>($i10, $i13);
+
+        $i14 = $r8[i34];
+
+        if $i14 != 59 goto label09;
+
+        if z0 != z1 goto label06;
+
+        $i28 = virtualinvoke r4.<java.util.Calendar: int get(int)>(11);
+
+        $i29 = i33 + 1;
+
+        $i30 = $i29 % 24;
+
+        staticinvoke <org.apache.log4j.DRFATestCase: void assertEquals(int,int)>($i28, $i30);
+
+     label06:
+        if i33 != 23 goto label08;
+
+        $i17 = virtualinvoke r4.<java.util.Calendar: int get(int)>(5);
+
+        $i18 = i32 + 1;
+
+        $i19 = $i18 % 32;
+
+        staticinvoke <org.apache.log4j.DRFATestCase: void assertEquals(int,int)>($i17, $i19);
+
+        if i32 != 31 goto label07;
+
+        $i23 = virtualinvoke r4.<java.util.Calendar: int get(int)>(2);
+
+        $i24 = $r9[i31];
+
+        $i25 = 0 + $i24;
+
+        $i26 = $i25 + 1;
+
+        $i27 = $i26 % 12;
+
+        staticinvoke <org.apache.log4j.DRFATestCase: void assertEquals(int,int)>($i23, $i27);
+
+        goto label11;
+
+     label07:
+        $i20 = virtualinvoke r4.<java.util.Calendar: int get(int)>(2);
+
+        $i21 = $r9[i31];
+
+        $i22 = 0 + $i21;
+
+        staticinvoke <org.apache.log4j.DRFATestCase: void assertEquals(int,int)>($i20, $i22);
+
+        goto label11;
+
+     label08:
+        $i16 = virtualinvoke r4.<java.util.Calendar: int get(int)>(5);
+
+        staticinvoke <org.apache.log4j.DRFATestCase: void assertEquals(int,int)>($i16, i32);
+
+        goto label11;
+
+     label09:
+        $i15 = virtualinvoke r4.<java.util.Calendar: int get(int)>(11);
+
+        if $i15 == i33 goto label10;
+
+        virtualinvoke r4.<java.util.Calendar: void add(int,int)>(11, 1);
+
+        $r20 = virtualinvoke r4.<java.util.Calendar: java.util.TimeZone getTimeZone()>();
+
+        $r21 = virtualinvoke r4.<java.util.Calendar: java.util.Date getTime()>();
+
+        z2 = virtualinvoke $r20.<java.util.TimeZone: boolean inDaylightTime(java.util.Date)>($r21);
+
+        if z1 != z2 goto label10;
+
+        staticinvoke <org.apache.log4j.DRFATestCase: void fail(java.lang.String)>("No switch");
+
+     label10:
+        $i36 = virtualinvoke r4.<java.util.Calendar: int get(int)>(5);
+
+        staticinvoke <org.apache.log4j.DRFATestCase: void assertEquals(int,int)>($i36, i32);
+
+        $i37 = virtualinvoke r4.<java.util.Calendar: int get(int)>(2);
+
+        $i38 = $r9[i31];
+
+        $i39 = 0 + $i38;
+
+        staticinvoke <org.apache.log4j.DRFATestCase: void assertEquals(int,int)>($i37, $i39);
+
+     label11:
+        i35 = i35 + 1;
+
+     label12:
+        $i40 = lengthof $r7;
+
+        if i35 < $i40 goto label05;
+
+        i34 = i34 + 1;
+
+     label13:
+        $i3 = lengthof $r8;
+
+        if i34 < $i3 goto label04;
+
+        i33 = i33 + 1;
+
+     label14:
+        if i33 < 23 goto label03;
+
+        i32 = i32 + 1;
+
+     label15:
+        if i32 <= 31 goto label02;
+
+        i31 = i31 + 1;
+
+     label16:
+        $i0 = lengthof $r9;
+
+        if i31 < $i0 goto label01;
+
+        return;
+    }
+
+    public void test3Param(java.lang.String, java.lang.String) throws java.io.IOException
+    {
+        org.apache.log4j.DRFATestCase r0;
+        java.lang.String r1, r2, $r8;
+        org.apache.log4j.Logger r5;
+        org.apache.log4j.SimpleLayout $r6;
+        org.apache.log4j.DailyRollingFileAppender $r7;
+        java.io.File $r9;
+        boolean $z0;
+
+        r0 := @this: org.apache.log4j.DRFATestCase;
+
+        r1 := @parameter0: java.lang.String;
+
+        r2 := @parameter1: java.lang.String;
+
+        $r6 = new org.apache.log4j.SimpleLayout;
+
+        specialinvoke $r6.<org.apache.log4j.SimpleLayout: void <init>()>();
+
+        $r7 = new org.apache.log4j.DailyRollingFileAppender;
+
+        specialinvoke $r7.<org.apache.log4j.DailyRollingFileAppender: void <init>(org.apache.log4j.Layout,java.lang.String,java.lang.String)>($r6, r2, r1);
+
+        $r8 = virtualinvoke $r7.<org.apache.log4j.DailyRollingFileAppender: java.lang.String getDatePattern()>();
+
+        staticinvoke <org.apache.log4j.DRFATestCase: void assertEquals(java.lang.String,java.lang.String)>(r1, $r8);
+
+        r5 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getRootLogger()>();
+
+        virtualinvoke r5.<org.apache.log4j.Logger: void addAppender(org.apache.log4j.Appender)>($r7);
+
+        virtualinvoke r5.<org.apache.log4j.Logger: void info(java.lang.Object)>("Hello, World");
+
+        $r9 = new java.io.File;
+
+        specialinvoke $r9.<java.io.File: void <init>(java.lang.String)>(r2);
+
+        $z0 = virtualinvoke $r9.<java.io.File: boolean exists()>();
+
+        staticinvoke <org.apache.log4j.DRFATestCase: void assertTrue(boolean)>($z0);
+
+        return;
+    }
+
+    public void testTopOfYear() throws java.io.IOException
+    {
+        org.apache.log4j.DRFATestCase r0;
+        java.lang.IllegalStateException $r2;
+
+        r0 := @this: org.apache.log4j.DRFATestCase;
+
+     label1:
+        virtualinvoke r0.<org.apache.log4j.DRFATestCase: void test3Param(java.lang.String,java.lang.String)>("\'.\'yyyy", "output/drfa_topOfYear.log");
+
+        staticinvoke <org.apache.log4j.DRFATestCase: void fail(java.lang.String)>("Expected illegal state exception.");
+
+     label2:
+        goto label4;
+
+     label3:
+        $r2 := @caughtexception;
+
+        staticinvoke <org.apache.log4j.DRFATestCase: void assertNotNull(java.lang.Object)>($r2);
+
+     label4:
+        return;
+
+        catch java.lang.IllegalStateException from label1 to label2 with label3;
+    }
+
+    public void testTopOfMonth() throws java.io.IOException
+    {
+        org.apache.log4j.DRFATestCase r0;
+
+        r0 := @this: org.apache.log4j.DRFATestCase;
+
+        virtualinvoke r0.<org.apache.log4j.DRFATestCase: void test3Param(java.lang.String,java.lang.String)>("\'.\'yyyy-MM", "output/drfa_topOfMonth.log");
+
+        return;
+    }
+
+    public void testTopOfWeek() throws java.io.IOException
+    {
+        org.apache.log4j.DRFATestCase r0;
+
+        r0 := @this: org.apache.log4j.DRFATestCase;
+
+        virtualinvoke r0.<org.apache.log4j.DRFATestCase: void test3Param(java.lang.String,java.lang.String)>("\'.\'yyyy-w", "output/drfa_topOfWeek.log");
+
+        return;
+    }
+
+    public void testTopOfDay() throws java.io.IOException
+    {
+        org.apache.log4j.DRFATestCase r0;
+
+        r0 := @this: org.apache.log4j.DRFATestCase;
+
+        virtualinvoke r0.<org.apache.log4j.DRFATestCase: void test3Param(java.lang.String,java.lang.String)>("\'.\'yyyy-MM-dd", "output/drfa_topOfDay.log");
+
+        return;
+    }
+
+    public void testHalfDay() throws java.io.IOException
+    {
+        org.apache.log4j.DRFATestCase r0;
+
+        r0 := @this: org.apache.log4j.DRFATestCase;
+
+        virtualinvoke r0.<org.apache.log4j.DRFATestCase: void test3Param(java.lang.String,java.lang.String)>("\'.\'yyyy-MM-dd-a", "output/drfa_halfDay.log");
+
+        return;
+    }
+
+    public void testTopOfHour() throws java.io.IOException
+    {
+        org.apache.log4j.DRFATestCase r0;
+
+        r0 := @this: org.apache.log4j.DRFATestCase;
+
+        virtualinvoke r0.<org.apache.log4j.DRFATestCase: void test3Param(java.lang.String,java.lang.String)>("\'.\'yyyy-MM-dd-HH", "output/drfa_topOfHour.log");
+
+        return;
+    }
+
+    public void testTopOfMinute() throws java.io.IOException
+    {
+        org.apache.log4j.DRFATestCase r0;
+
+        r0 := @this: org.apache.log4j.DRFATestCase;
+
+        virtualinvoke r0.<org.apache.log4j.DRFATestCase: void test3Param(java.lang.String,java.lang.String)>("\'.\'yyyy-MM-dd-HH-mm", "output/drfa_topOfMinute.log");
+
+        return;
+    }
+
+    public void testRolloverNoPattern() throws java.io.IOException
+    {
+        org.apache.log4j.DRFATestCase r0;
+        org.apache.log4j.SimpleLayout $r4;
+        org.apache.log4j.DailyRollingFileAppender $r5;
+        org.apache.log4j.VectorErrorHandler $r6;
+        int $i0;
+        java.lang.String $r7;
+
+        r0 := @this: org.apache.log4j.DRFATestCase;
+
+        $r4 = new org.apache.log4j.SimpleLayout;
+
+        specialinvoke $r4.<org.apache.log4j.SimpleLayout: void <init>()>();
+
+        $r5 = new org.apache.log4j.DailyRollingFileAppender;
+
+        specialinvoke $r5.<org.apache.log4j.DailyRollingFileAppender: void <init>(org.apache.log4j.Layout,java.lang.String,java.lang.String)>($r4, "output/drfa_nopattern.log", null);
+
+        $r6 = new org.apache.log4j.VectorErrorHandler;
+
+        specialinvoke $r6.<org.apache.log4j.VectorErrorHandler: void <init>()>();
+
+        virtualinvoke $r5.<org.apache.log4j.DailyRollingFileAppender: void setErrorHandler(org.apache.log4j.spi.ErrorHandler)>($r6);
+
+        virtualinvoke $r5.<org.apache.log4j.DailyRollingFileAppender: void rollOver()>();
+
+        $i0 = virtualinvoke $r6.<org.apache.log4j.VectorErrorHandler: int size()>();
+
+        staticinvoke <org.apache.log4j.DRFATestCase: void assertEquals(int,int)>(1, $i0);
+
+        $r7 = virtualinvoke $r6.<org.apache.log4j.VectorErrorHandler: java.lang.String getMessage(int)>(0);
+
+        staticinvoke <org.apache.log4j.DRFATestCase: void assertEquals(java.lang.String,java.lang.String)>("Missing DatePattern option in rollOver().", $r7);
+
+        return;
+    }
+
+    public void testMinuteRollover() throws java.io.IOException, java.lang.InterruptedException
+    {
+        org.apache.log4j.DRFATestCase r0;
+        org.apache.log4j.Logger r5;
+        java.util.Calendar r7;
+        long l0, l1, $l2, $l3, $l4;
+        org.apache.log4j.SimpleLayout $r8;
+        org.apache.log4j.DailyRollingFileAppender $r9;
+        java.io.File $r10;
+        java.lang.StringBuilder $r11, $r16;
+        java.lang.String $r12, $r15, $r17;
+        java.text.SimpleDateFormat $r13;
+        java.util.Date $r14, $r18, $r19;
+        boolean $z1, $z2, $z3;
+        byte $b5;
+
+        r0 := @this: org.apache.log4j.DRFATestCase;
+
+        $r8 = new org.apache.log4j.SimpleLayout;
+
+        specialinvoke $r8.<org.apache.log4j.SimpleLayout: void <init>()>();
+
+        $r9 = new org.apache.log4j.DailyRollingFileAppender;
+
+        specialinvoke $r9.<org.apache.log4j.DailyRollingFileAppender: void <init>(org.apache.log4j.Layout,java.lang.String,java.lang.String)>($r8, "output/drfa_minuteRollover.log", "\'.\'yyyy-MM-dd-HH-mm");
+
+        r5 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getRootLogger()>();
+
+        virtualinvoke r5.<org.apache.log4j.Logger: void addAppender(org.apache.log4j.Appender)>($r9);
+
+        $r10 = new java.io.File;
+
+        $r11 = new java.lang.StringBuilder;
+
+        $r12 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>("output/drfa_minuteRollover.log");
+
+        specialinvoke $r11.<java.lang.StringBuilder: void <init>(java.lang.String)>($r12);
+
+        $r13 = new java.text.SimpleDateFormat;
+
+        specialinvoke $r13.<java.text.SimpleDateFormat: void <init>(java.lang.String)>("\'.\'yyyy-MM-dd-HH-mm");
+
+        $r14 = new java.util.Date;
+
+        specialinvoke $r14.<java.util.Date: void <init>()>();
+
+        $r15 = virtualinvoke $r13.<java.text.SimpleDateFormat: java.lang.String format(java.util.Date)>($r14);
+
+        $r16 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r15);
+
+        $r17 = virtualinvoke $r16.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r10.<java.io.File: void <init>(java.lang.String)>($r17);
+
+        virtualinvoke r5.<org.apache.log4j.Logger: void info(java.lang.Object)>("Hello, World");
+
+        virtualinvoke $r10.<java.io.File: boolean createNewFile()>();
+
+        $z1 = virtualinvoke $r10.<java.io.File: boolean exists()>();
+
+        staticinvoke <org.apache.log4j.DRFATestCase: void assertTrue(boolean)>($z1);
+
+        $l2 = virtualinvoke $r10.<java.io.File: long length()>();
+
+        staticinvoke <org.apache.log4j.DRFATestCase: void assertEquals(long,long)>(0L, $l2);
+
+        r7 = staticinvoke <java.util.Calendar: java.util.Calendar getInstance()>();
+
+        $r18 = virtualinvoke r7.<java.util.Calendar: java.util.Date getTime()>();
+
+        l0 = virtualinvoke $r18.<java.util.Date: long getTime()>();
+
+        virtualinvoke r7.<java.util.Calendar: void set(int,int)>(13, 3);
+
+        virtualinvoke r7.<java.util.Calendar: void set(int,int)>(14, 0);
+
+        virtualinvoke r7.<java.util.Calendar: void add(int,int)>(12, 1);
+
+        $r19 = virtualinvoke r7.<java.util.Calendar: java.util.Date getTime()>();
+
+        l1 = virtualinvoke $r19.<java.util.Date: long getTime()>();
+
+        $l3 = l1 - l0;
+
+        staticinvoke <java.lang.Thread: void sleep(long)>($l3);
+
+        virtualinvoke r5.<org.apache.log4j.Logger: void info(java.lang.Object)>("Hello, World");
+
+        $z2 = virtualinvoke $r10.<java.io.File: boolean exists()>();
+
+        staticinvoke <org.apache.log4j.DRFATestCase: void assertTrue(boolean)>($z2);
+
+        $l4 = virtualinvoke $r10.<java.io.File: long length()>();
+
+        $b5 = $l4 cmp 0L;
+
+        if $b5 <= 0 goto label1;
+
+        $z3 = 1;
+
+        goto label2;
+
+     label1:
+        $z3 = 0;
+
+     label2:
+        staticinvoke <org.apache.log4j.DRFATestCase: void assertTrue(boolean)>($z3);
+
+        return;
+    }
+
+    private static void append(java.io.FileOutputStream, java.io.FileInputStream, byte[]) throws java.io.IOException
+    {
+        java.io.FileOutputStream r0;
+        java.io.FileInputStream r1;
+        byte[] r2;
+        int i0;
+
+        r0 := @parameter0: java.io.FileOutputStream;
+
+        r1 := @parameter1: java.io.FileInputStream;
+
+        r2 := @parameter2: byte[];
+
+        i0 = virtualinvoke r1.<java.io.FileInputStream: int read(byte[])>(r2);
+
+        if i0 <= 0 goto label1;
+
+        virtualinvoke r0.<java.io.FileOutputStream: void write(byte[],int,int)>(r2, 0, i0);
+
+     label1:
+        virtualinvoke r1.<java.io.FileInputStream: void close()>();
+
+        return;
+    }
+
+    public void testBlockedRollover() throws java.io.IOException, java.lang.InterruptedException
+    {
+        org.apache.log4j.DRFATestCase r0;
+        org.apache.log4j.Logger r6;
+        byte[] r13;
+        org.apache.log4j.SimpleLayout $r14;
+        java.util.Date $r15, $r28;
+        org.apache.log4j.DailyRollingFileAppender $r16;
+        java.io.File $r17, $r24;
+        java.lang.StringBuilder $r18, $r22, $r25, $r30;
+        java.lang.String $r19, $r21, $r23, $r26, $r29, $r31;
+        java.text.SimpleDateFormat $r20, $r27;
+        long $l0, $l1, $l2, $l3, $l4;
+        java.io.FileOutputStream $r32, $r33, $r34;
+        java.io.FileInputStream $r35, $r36, $r37;
+        boolean $z0;
+
+        r0 := @this: org.apache.log4j.DRFATestCase;
+
+        $r14 = new org.apache.log4j.SimpleLayout;
+
+        specialinvoke $r14.<org.apache.log4j.SimpleLayout: void <init>()>();
+
+        $r15 = new java.util.Date;
+
+        specialinvoke $r15.<java.util.Date: void <init>()>();
+
+        $r16 = new org.apache.log4j.DailyRollingFileAppender;
+
+        specialinvoke $r16.<org.apache.log4j.DailyRollingFileAppender: void <init>(org.apache.log4j.Layout,java.lang.String,java.lang.String)>($r14, "output/drfa_blockedRollover.log", "\'.\'yyyy-MM-dd-HH-mm");
+
+        virtualinvoke $r16.<org.apache.log4j.DailyRollingFileAppender: void setAppend(boolean)>(0);
+
+        r6 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getRootLogger()>();
+
+        virtualinvoke r6.<org.apache.log4j.Logger: void addAppender(org.apache.log4j.Appender)>($r16);
+
+        $r17 = new java.io.File;
+
+        $r18 = new java.lang.StringBuilder;
+
+        $r19 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>("output/drfa_blockedRollover.log");
+
+        specialinvoke $r18.<java.lang.StringBuilder: void <init>(java.lang.String)>($r19);
+
+        $r20 = new java.text.SimpleDateFormat;
+
+        specialinvoke $r20.<java.text.SimpleDateFormat: void <init>(java.lang.String)>("\'.\'yyyy-MM-dd-HH-mm");
+
+        $r21 = virtualinvoke $r20.<java.text.SimpleDateFormat: java.lang.String format(java.util.Date)>($r15);
+
+        $r22 = virtualinvoke $r18.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r21);
+
+        $r23 = virtualinvoke $r22.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r17.<java.io.File: void <init>(java.lang.String)>($r23);
+
+        $r24 = new java.io.File;
+
+        $r25 = new java.lang.StringBuilder;
+
+        $r26 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>("output/drfa_blockedRollover.log");
+
+        specialinvoke $r25.<java.lang.StringBuilder: void <init>(java.lang.String)>($r26);
+
+        $r27 = new java.text.SimpleDateFormat;
+
+        specialinvoke $r27.<java.text.SimpleDateFormat: void <init>(java.lang.String)>("\'.\'yyyy-MM-dd-HH-mm");
+
+        $r28 = new java.util.Date;
+
+        $l0 = virtualinvoke $r15.<java.util.Date: long getTime()>();
+
+        $l1 = $l0 + 60000L;
+
+        specialinvoke $r28.<java.util.Date: void <init>(long)>($l1);
+
+        $r29 = virtualinvoke $r27.<java.text.SimpleDateFormat: java.lang.String format(java.util.Date)>($r28);
+
+        $r30 = virtualinvoke $r25.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r29);
+
+        $r31 = virtualinvoke $r30.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r24.<java.io.File: void <init>(java.lang.String)>($r31);
+
+        $r32 = new java.io.FileOutputStream;
+
+        specialinvoke $r32.<java.io.FileOutputStream: void <init>(java.io.File)>($r17);
+
+        $r33 = new java.io.FileOutputStream;
+
+        specialinvoke $r33.<java.io.FileOutputStream: void <init>(java.io.File)>($r24);
+
+        virtualinvoke r6.<org.apache.log4j.Logger: void info(java.lang.Object)>("Prior to rollover");
+
+        $l2 = virtualinvoke $r15.<java.util.Date: long getTime()>();
+
+        $l3 = $l2 % 60000L;
+
+        $l4 = 63000L - $l3;
+
+        staticinvoke <java.lang.Thread: void sleep(long)>($l4);
+
+        virtualinvoke r6.<org.apache.log4j.Logger: void info(java.lang.Object)>("Rollover attempt while blocked");
+
+        virtualinvoke $r32.<java.io.FileOutputStream: void close()>();
+
+        virtualinvoke $r33.<java.io.FileOutputStream: void close()>();
+
+        virtualinvoke r6.<org.apache.log4j.Logger: void info(java.lang.Object)>("Message after block removed");
+
+        virtualinvoke $r16.<org.apache.log4j.DailyRollingFileAppender: void close()>();
+
+        $r34 = new java.io.FileOutputStream;
+
+        specialinvoke $r34.<java.io.FileOutputStream: void <init>(java.lang.String)>("output/drfa_blockedRollover.combined");
+
+        r13 = newarray (byte)[500];
+
+        $r35 = new java.io.FileInputStream;
+
+        specialinvoke $r35.<java.io.FileInputStream: void <init>(java.io.File)>($r17);
+
+        staticinvoke <org.apache.log4j.DRFATestCase: void append(java.io.FileOutputStream,java.io.FileInputStream,byte[])>($r34, $r35, r13);
+
+        $r36 = new java.io.FileInputStream;
+
+        specialinvoke $r36.<java.io.FileInputStream: void <init>(java.io.File)>($r24);
+
+        staticinvoke <org.apache.log4j.DRFATestCase: void append(java.io.FileOutputStream,java.io.FileInputStream,byte[])>($r34, $r36, r13);
+
+        $r37 = new java.io.FileInputStream;
+
+        specialinvoke $r37.<java.io.FileInputStream: void <init>(java.lang.String)>("output/drfa_blockedRollover.log");
+
+        staticinvoke <org.apache.log4j.DRFATestCase: void append(java.io.FileOutputStream,java.io.FileInputStream,byte[])>($r34, $r37, r13);
+
+        virtualinvoke $r34.<java.io.FileOutputStream: void close()>();
+
+        $z0 = staticinvoke <org.apache.log4j.util.Compare: boolean compare(java.lang.String,java.lang.String)>("output/drfa_blockedRollover.combined", "witness/drfa_blockedRollover.log");
+
+        staticinvoke <org.apache.log4j.DRFATestCase: void assertTrue(boolean)>($z0);
+
+        return;
+    }
+
+    public void testWeeklyRollover()
+    {
+        org.apache.log4j.DRFATestCase r0;
+        int i0;
+        org.apache.log4j.DailyRollingFileAppender $r2;
+
+        r0 := @this: org.apache.log4j.DRFATestCase;
+
+        $r2 = new org.apache.log4j.DailyRollingFileAppender;
+
+        specialinvoke $r2.<org.apache.log4j.DailyRollingFileAppender: void <init>()>();
+
+        virtualinvoke $r2.<org.apache.log4j.DailyRollingFileAppender: void setDatePattern(java.lang.String)>("\'.\'yyyy-ww");
+
+        i0 = virtualinvoke $r2.<org.apache.log4j.DailyRollingFileAppender: int computeCheckPeriod()>();
+
+        staticinvoke <org.apache.log4j.DRFATestCase: void assertEquals(int,int)>(4, i0);
+
+        return;
+    }
+}

@@ -1,0 +1,41 @@
+class org.apache.log4j.helpers.PatternParser$CategoryPatternConverter extends org.apache.log4j.helpers.PatternParser$NamedPatternConverter
+{
+    final org.apache.log4j.helpers.PatternParser this$0;
+
+    void <init>(org.apache.log4j.helpers.PatternParser, org.apache.log4j.helpers.FormattingInfo, int)
+    {
+        org.apache.log4j.helpers.PatternParser$CategoryPatternConverter r0;
+        org.apache.log4j.helpers.PatternParser r1;
+        org.apache.log4j.helpers.FormattingInfo r2;
+        int i0;
+
+        r0 := @this: org.apache.log4j.helpers.PatternParser$CategoryPatternConverter;
+
+        r1 := @parameter0: org.apache.log4j.helpers.PatternParser;
+
+        r2 := @parameter1: org.apache.log4j.helpers.FormattingInfo;
+
+        i0 := @parameter2: int;
+
+        r0.<org.apache.log4j.helpers.PatternParser$CategoryPatternConverter: org.apache.log4j.helpers.PatternParser this$0> = r1;
+
+        specialinvoke r0.<org.apache.log4j.helpers.PatternParser$NamedPatternConverter: void <init>(org.apache.log4j.helpers.FormattingInfo,int)>(r2, i0);
+
+        return;
+    }
+
+    java.lang.String getFullyQualifiedName(org.apache.log4j.spi.LoggingEvent)
+    {
+        org.apache.log4j.helpers.PatternParser$CategoryPatternConverter r0;
+        org.apache.log4j.spi.LoggingEvent r1;
+        java.lang.String $r2;
+
+        r0 := @this: org.apache.log4j.helpers.PatternParser$CategoryPatternConverter;
+
+        r1 := @parameter0: org.apache.log4j.spi.LoggingEvent;
+
+        $r2 = virtualinvoke r1.<org.apache.log4j.spi.LoggingEvent: java.lang.String getLoggerName()>();
+
+        return $r2;
+    }
+}

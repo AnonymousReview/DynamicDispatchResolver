@@ -1,0 +1,262 @@
+public class org.slf4j.MDC extends java.lang.Object
+{
+    static final java.lang.String NULL_MDCA_URL;
+    static final java.lang.String NO_STATIC_MDC_BINDER_URL;
+    static org.slf4j.spi.MDCAdapter mdcAdapter;
+
+    static void <clinit>()
+    {
+        org.slf4j.spi.SLF4JServiceProvider r0;
+        org.slf4j.helpers.NOPMDCAdapter $r1;
+        org.slf4j.spi.MDCAdapter $r2;
+
+        <org.slf4j.MDC: java.lang.String NO_STATIC_MDC_BINDER_URL> = "http://www.slf4j.org/codes.html#no_static_mdc_binder";
+
+        <org.slf4j.MDC: java.lang.String NULL_MDCA_URL> = "http://www.slf4j.org/codes.html#null_MDCA";
+
+        r0 = staticinvoke <org.slf4j.LoggerFactory: org.slf4j.spi.SLF4JServiceProvider getProvider()>();
+
+        if r0 == null goto label1;
+
+        $r2 = interfaceinvoke r0.<org.slf4j.spi.SLF4JServiceProvider: org.slf4j.spi.MDCAdapter getMDCAdapter()>();
+
+        <org.slf4j.MDC: org.slf4j.spi.MDCAdapter mdcAdapter> = $r2;
+
+        goto label2;
+
+     label1:
+        staticinvoke <org.slf4j.helpers.Util: void report(java.lang.String)>("Failed to find provider.");
+
+        staticinvoke <org.slf4j.helpers.Util: void report(java.lang.String)>("Defaulting to no-operation MDCAdapter implementation.");
+
+        $r1 = new org.slf4j.helpers.NOPMDCAdapter;
+
+        specialinvoke $r1.<org.slf4j.helpers.NOPMDCAdapter: void <init>()>();
+
+        <org.slf4j.MDC: org.slf4j.spi.MDCAdapter mdcAdapter> = $r1;
+
+     label2:
+        return;
+    }
+
+    private void <init>()
+    {
+        org.slf4j.MDC r0;
+
+        r0 := @this: org.slf4j.MDC;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static void put(java.lang.String, java.lang.String) throws java.lang.IllegalArgumentException
+    {
+        java.lang.String r0, r1;
+        org.slf4j.spi.MDCAdapter $r2, $r3;
+        java.lang.IllegalStateException $r4;
+        java.lang.IllegalArgumentException $r5;
+
+        r0 := @parameter0: java.lang.String;
+
+        r1 := @parameter1: java.lang.String;
+
+        if r0 != null goto label1;
+
+        $r5 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r5.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("key parameter cannot be null");
+
+        throw $r5;
+
+     label1:
+        $r2 = <org.slf4j.MDC: org.slf4j.spi.MDCAdapter mdcAdapter>;
+
+        if $r2 != null goto label2;
+
+        $r4 = new java.lang.IllegalStateException;
+
+        specialinvoke $r4.<java.lang.IllegalStateException: void <init>(java.lang.String)>("MDCAdapter cannot be null. See also http://www.slf4j.org/codes.html#null_MDCA");
+
+        throw $r4;
+
+     label2:
+        $r3 = <org.slf4j.MDC: org.slf4j.spi.MDCAdapter mdcAdapter>;
+
+        interfaceinvoke $r3.<org.slf4j.spi.MDCAdapter: void put(java.lang.String,java.lang.String)>(r0, r1);
+
+        return;
+    }
+
+    public static org.slf4j.MDC$MDCCloseable putCloseable(java.lang.String, java.lang.String) throws java.lang.IllegalArgumentException
+    {
+        java.lang.String r0, r1;
+        org.slf4j.MDC$MDCCloseable $r2;
+
+        r0 := @parameter0: java.lang.String;
+
+        r1 := @parameter1: java.lang.String;
+
+        staticinvoke <org.slf4j.MDC: void put(java.lang.String,java.lang.String)>(r0, r1);
+
+        $r2 = new org.slf4j.MDC$MDCCloseable;
+
+        specialinvoke $r2.<org.slf4j.MDC$MDCCloseable: void <init>(java.lang.String,org.slf4j.MDC$MDCCloseable)>(r0, null);
+
+        return $r2;
+    }
+
+    public static java.lang.String get(java.lang.String) throws java.lang.IllegalArgumentException
+    {
+        java.lang.String r0, $r3;
+        org.slf4j.spi.MDCAdapter $r1, $r2;
+        java.lang.IllegalStateException $r4;
+        java.lang.IllegalArgumentException $r5;
+
+        r0 := @parameter0: java.lang.String;
+
+        if r0 != null goto label1;
+
+        $r5 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r5.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("key parameter cannot be null");
+
+        throw $r5;
+
+     label1:
+        $r1 = <org.slf4j.MDC: org.slf4j.spi.MDCAdapter mdcAdapter>;
+
+        if $r1 != null goto label2;
+
+        $r4 = new java.lang.IllegalStateException;
+
+        specialinvoke $r4.<java.lang.IllegalStateException: void <init>(java.lang.String)>("MDCAdapter cannot be null. See also http://www.slf4j.org/codes.html#null_MDCA");
+
+        throw $r4;
+
+     label2:
+        $r2 = <org.slf4j.MDC: org.slf4j.spi.MDCAdapter mdcAdapter>;
+
+        $r3 = interfaceinvoke $r2.<org.slf4j.spi.MDCAdapter: java.lang.String get(java.lang.String)>(r0);
+
+        return $r3;
+    }
+
+    public static void remove(java.lang.String) throws java.lang.IllegalArgumentException
+    {
+        java.lang.String r0;
+        org.slf4j.spi.MDCAdapter $r1, $r2;
+        java.lang.IllegalStateException $r3;
+        java.lang.IllegalArgumentException $r4;
+
+        r0 := @parameter0: java.lang.String;
+
+        if r0 != null goto label1;
+
+        $r4 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r4.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("key parameter cannot be null");
+
+        throw $r4;
+
+     label1:
+        $r1 = <org.slf4j.MDC: org.slf4j.spi.MDCAdapter mdcAdapter>;
+
+        if $r1 != null goto label2;
+
+        $r3 = new java.lang.IllegalStateException;
+
+        specialinvoke $r3.<java.lang.IllegalStateException: void <init>(java.lang.String)>("MDCAdapter cannot be null. See also http://www.slf4j.org/codes.html#null_MDCA");
+
+        throw $r3;
+
+     label2:
+        $r2 = <org.slf4j.MDC: org.slf4j.spi.MDCAdapter mdcAdapter>;
+
+        interfaceinvoke $r2.<org.slf4j.spi.MDCAdapter: void remove(java.lang.String)>(r0);
+
+        return;
+    }
+
+    public static void clear()
+    {
+        org.slf4j.spi.MDCAdapter $r0, $r1;
+        java.lang.IllegalStateException $r2;
+
+        $r0 = <org.slf4j.MDC: org.slf4j.spi.MDCAdapter mdcAdapter>;
+
+        if $r0 != null goto label1;
+
+        $r2 = new java.lang.IllegalStateException;
+
+        specialinvoke $r2.<java.lang.IllegalStateException: void <init>(java.lang.String)>("MDCAdapter cannot be null. See also http://www.slf4j.org/codes.html#null_MDCA");
+
+        throw $r2;
+
+     label1:
+        $r1 = <org.slf4j.MDC: org.slf4j.spi.MDCAdapter mdcAdapter>;
+
+        interfaceinvoke $r1.<org.slf4j.spi.MDCAdapter: void clear()>();
+
+        return;
+    }
+
+    public static java.util.Map getCopyOfContextMap()
+    {
+        org.slf4j.spi.MDCAdapter $r0, $r1;
+        java.util.Map $r2;
+        java.lang.IllegalStateException $r3;
+
+        $r0 = <org.slf4j.MDC: org.slf4j.spi.MDCAdapter mdcAdapter>;
+
+        if $r0 != null goto label1;
+
+        $r3 = new java.lang.IllegalStateException;
+
+        specialinvoke $r3.<java.lang.IllegalStateException: void <init>(java.lang.String)>("MDCAdapter cannot be null. See also http://www.slf4j.org/codes.html#null_MDCA");
+
+        throw $r3;
+
+     label1:
+        $r1 = <org.slf4j.MDC: org.slf4j.spi.MDCAdapter mdcAdapter>;
+
+        $r2 = interfaceinvoke $r1.<org.slf4j.spi.MDCAdapter: java.util.Map getCopyOfContextMap()>();
+
+        return $r2;
+    }
+
+    public static void setContextMap(java.util.Map)
+    {
+        java.util.Map r0;
+        org.slf4j.spi.MDCAdapter $r1, $r2;
+        java.lang.IllegalStateException $r3;
+
+        r0 := @parameter0: java.util.Map;
+
+        $r1 = <org.slf4j.MDC: org.slf4j.spi.MDCAdapter mdcAdapter>;
+
+        if $r1 != null goto label1;
+
+        $r3 = new java.lang.IllegalStateException;
+
+        specialinvoke $r3.<java.lang.IllegalStateException: void <init>(java.lang.String)>("MDCAdapter cannot be null. See also http://www.slf4j.org/codes.html#null_MDCA");
+
+        throw $r3;
+
+     label1:
+        $r2 = <org.slf4j.MDC: org.slf4j.spi.MDCAdapter mdcAdapter>;
+
+        interfaceinvoke $r2.<org.slf4j.spi.MDCAdapter: void setContextMap(java.util.Map)>(r0);
+
+        return;
+    }
+
+    public static org.slf4j.spi.MDCAdapter getMDCAdapter()
+    {
+        org.slf4j.spi.MDCAdapter $r0;
+
+        $r0 = <org.slf4j.MDC: org.slf4j.spi.MDCAdapter mdcAdapter>;
+
+        return $r0;
+    }
+}

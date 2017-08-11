@@ -1,0 +1,177 @@
+public class org.apache.commons.codec.language.bm.CacheSubSequencePerformanceTest extends java.lang.Object
+{
+
+    public void <init>()
+    {
+        org.apache.commons.codec.language.bm.CacheSubSequencePerformanceTest r0;
+
+        r0 := @this: org.apache.commons.codec.language.bm.CacheSubSequencePerformanceTest;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void test()
+    {
+        org.apache.commons.codec.language.bm.CacheSubSequencePerformanceTest r0;
+        java.io.PrintStream $r1, $r2, $r4, $r6;
+        java.lang.StringBuilder $r3, $r7;
+        java.lang.CharSequence $r5, $r8;
+
+        r0 := @this: org.apache.commons.codec.language.bm.CacheSubSequencePerformanceTest;
+
+        $r1 = <java.lang.System: java.io.PrintStream out>;
+
+        virtualinvoke $r1.<java.io.PrintStream: void print(java.lang.String)>("Test with String : ");
+
+        specialinvoke r0.<org.apache.commons.codec.language.bm.CacheSubSequencePerformanceTest: void test(java.lang.CharSequence,int)>("Angelo", 10000000);
+
+        $r2 = <java.lang.System: java.io.PrintStream out>;
+
+        virtualinvoke $r2.<java.io.PrintStream: void print(java.lang.String)>("Test with StringBuilder : ");
+
+        $r3 = new java.lang.StringBuilder;
+
+        specialinvoke $r3.<java.lang.StringBuilder: void <init>(java.lang.String)>("Angelo");
+
+        specialinvoke r0.<org.apache.commons.codec.language.bm.CacheSubSequencePerformanceTest: void test(java.lang.CharSequence,int)>($r3, 10000000);
+
+        $r4 = <java.lang.System: java.io.PrintStream out>;
+
+        virtualinvoke $r4.<java.io.PrintStream: void print(java.lang.String)>("Test with cached String : ");
+
+        $r5 = specialinvoke r0.<org.apache.commons.codec.language.bm.CacheSubSequencePerformanceTest: java.lang.CharSequence cacheSubSequence(java.lang.CharSequence)>("Angelo");
+
+        specialinvoke r0.<org.apache.commons.codec.language.bm.CacheSubSequencePerformanceTest: void test(java.lang.CharSequence,int)>($r5, 10000000);
+
+        $r6 = <java.lang.System: java.io.PrintStream out>;
+
+        virtualinvoke $r6.<java.io.PrintStream: void print(java.lang.String)>("Test with cached StringBuilder : ");
+
+        $r7 = new java.lang.StringBuilder;
+
+        specialinvoke $r7.<java.lang.StringBuilder: void <init>(java.lang.String)>("Angelo");
+
+        $r8 = specialinvoke r0.<org.apache.commons.codec.language.bm.CacheSubSequencePerformanceTest: java.lang.CharSequence cacheSubSequence(java.lang.CharSequence)>($r7);
+
+        specialinvoke r0.<org.apache.commons.codec.language.bm.CacheSubSequencePerformanceTest: void test(java.lang.CharSequence,int)>($r8, 10000000);
+
+        return;
+    }
+
+    private void test(java.lang.CharSequence, int)
+    {
+        org.apache.commons.codec.language.bm.CacheSubSequencePerformanceTest r0;
+        java.lang.CharSequence r1;
+        int i0, i4;
+        long l1, $l2, $l3;
+        java.lang.StringBuilder $r2, $r5;
+        java.io.PrintStream $r3;
+        java.lang.String $r4, $r6;
+
+        r0 := @this: org.apache.commons.codec.language.bm.CacheSubSequencePerformanceTest;
+
+        r1 := @parameter0: java.lang.CharSequence;
+
+        i0 := @parameter1: int;
+
+        l1 = staticinvoke <java.lang.System: long currentTimeMillis()>();
+
+        i4 = 0;
+
+        goto label2;
+
+     label1:
+        specialinvoke r0.<org.apache.commons.codec.language.bm.CacheSubSequencePerformanceTest: void test(java.lang.CharSequence)>(r1);
+
+        i4 = i4 + 1;
+
+     label2:
+        if i4 < i0 goto label1;
+
+        $r3 = <java.lang.System: java.io.PrintStream out>;
+
+        $r2 = new java.lang.StringBuilder;
+
+        $l2 = staticinvoke <java.lang.System: long currentTimeMillis()>();
+
+        $l3 = $l2 - l1;
+
+        $r4 = staticinvoke <java.lang.String: java.lang.String valueOf(long)>($l3);
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>(java.lang.String)>($r4);
+
+        $r5 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" millis");
+
+        $r6 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r3.<java.io.PrintStream: void println(java.lang.String)>($r6);
+
+        return;
+    }
+
+    private void test(java.lang.CharSequence)
+    {
+        org.apache.commons.codec.language.bm.CacheSubSequencePerformanceTest r0;
+        java.lang.CharSequence r1;
+        int $i0, $i1, i2, i3;
+
+        r0 := @this: org.apache.commons.codec.language.bm.CacheSubSequencePerformanceTest;
+
+        r1 := @parameter0: java.lang.CharSequence;
+
+        i2 = 0;
+
+        goto label4;
+
+     label1:
+        i3 = i2;
+
+        goto label3;
+
+     label2:
+        interfaceinvoke r1.<java.lang.CharSequence: java.lang.CharSequence subSequence(int,int)>(i2, i3);
+
+        i3 = i3 + 1;
+
+     label3:
+        $i1 = interfaceinvoke r1.<java.lang.CharSequence: int length()>();
+
+        if i3 <= $i1 goto label2;
+
+        i2 = i2 + 1;
+
+     label4:
+        $i0 = interfaceinvoke r1.<java.lang.CharSequence: int length()>();
+
+        if i2 < $i0 goto label1;
+
+        return;
+    }
+
+    private java.lang.CharSequence cacheSubSequence(java.lang.CharSequence)
+    {
+        org.apache.commons.codec.language.bm.CacheSubSequencePerformanceTest r0;
+        java.lang.CharSequence r1;
+        java.lang.CharSequence[][] r2;
+        int $i0, $i1;
+        org.apache.commons.codec.language.bm.CacheSubSequencePerformanceTest$1 $r3;
+
+        r0 := @this: org.apache.commons.codec.language.bm.CacheSubSequencePerformanceTest;
+
+        r1 := @parameter0: java.lang.CharSequence;
+
+        $i0 = interfaceinvoke r1.<java.lang.CharSequence: int length()>();
+
+        $i1 = interfaceinvoke r1.<java.lang.CharSequence: int length()>();
+
+        r2 = newmultiarray (java.lang.CharSequence)[$i0][$i1];
+
+        $r3 = new org.apache.commons.codec.language.bm.CacheSubSequencePerformanceTest$1;
+
+        specialinvoke $r3.<org.apache.commons.codec.language.bm.CacheSubSequencePerformanceTest$1: void <init>(org.apache.commons.codec.language.bm.CacheSubSequencePerformanceTest,java.lang.CharSequence,java.lang.CharSequence[][])>(r0, r1, r2);
+
+        return $r3;
+    }
+}

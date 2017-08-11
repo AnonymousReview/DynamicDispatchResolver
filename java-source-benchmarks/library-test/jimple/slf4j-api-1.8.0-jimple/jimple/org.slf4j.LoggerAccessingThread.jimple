@@ -1,0 +1,128 @@
+public class org.slf4j.LoggerAccessingThread extends java.lang.Thread
+{
+    private static int LOOP_LEN;
+    final java.util.concurrent.CyclicBarrier barrier;
+    final int count;
+    final java.util.concurrent.atomic.AtomicLong eventCount;
+    java.util.List loggerList;
+
+    static void <clinit>()
+    {
+        <org.slf4j.LoggerAccessingThread: int LOOP_LEN> = 64;
+
+        return;
+    }
+
+    public void <init>(java.util.concurrent.CyclicBarrier, java.util.List, int, java.util.concurrent.atomic.AtomicLong)
+    {
+        org.slf4j.LoggerAccessingThread r0;
+        java.util.concurrent.CyclicBarrier r1;
+        java.util.List r2;
+        int i0;
+        java.util.concurrent.atomic.AtomicLong r3;
+
+        r0 := @this: org.slf4j.LoggerAccessingThread;
+
+        r1 := @parameter0: java.util.concurrent.CyclicBarrier;
+
+        r2 := @parameter1: java.util.List;
+
+        i0 := @parameter2: int;
+
+        r3 := @parameter3: java.util.concurrent.atomic.AtomicLong;
+
+        specialinvoke r0.<java.lang.Thread: void <init>()>();
+
+        r0.<org.slf4j.LoggerAccessingThread: java.util.concurrent.CyclicBarrier barrier> = r1;
+
+        r0.<org.slf4j.LoggerAccessingThread: java.util.List loggerList> = r2;
+
+        r0.<org.slf4j.LoggerAccessingThread: int count> = i0;
+
+        r0.<org.slf4j.LoggerAccessingThread: java.util.concurrent.atomic.AtomicLong eventCount> = r3;
+
+        return;
+    }
+
+    public void run()
+    {
+        org.slf4j.LoggerAccessingThread r0;
+        org.slf4j.Logger r1;
+        java.util.concurrent.CyclicBarrier $r2;
+        java.lang.Class $r3;
+        int $i1, $i2, i4;
+        java.lang.StringBuilder $r4, $r6, $r7, $r8, $r9;
+        java.lang.String $r5, $r10, r15;
+        java.util.List $r11;
+        java.util.concurrent.atomic.AtomicLong $r12;
+        java.lang.Exception $r13;
+
+        r0 := @this: org.slf4j.LoggerAccessingThread;
+
+     label1:
+        $r2 = r0.<org.slf4j.LoggerAccessingThread: java.util.concurrent.CyclicBarrier barrier>;
+
+        virtualinvoke $r2.<java.util.concurrent.CyclicBarrier: int await()>();
+
+     label2:
+        goto label4;
+
+     label3:
+        $r13 := @caughtexception;
+
+        virtualinvoke $r13.<java.lang.Exception: void printStackTrace()>();
+
+     label4:
+        $r3 = virtualinvoke r0.<java.lang.Object: java.lang.Class getClass()>();
+
+        r15 = virtualinvoke $r3.<java.lang.Class: java.lang.String getName()>();
+
+        i4 = 0;
+
+        goto label6;
+
+     label5:
+        $r4 = new java.lang.StringBuilder;
+
+        $r5 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>(r15);
+
+        specialinvoke $r4.<java.lang.StringBuilder: void <init>(java.lang.String)>($r5);
+
+        $r6 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("-");
+
+        $i2 = r0.<org.slf4j.LoggerAccessingThread: int count>;
+
+        $r7 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i2);
+
+        $r8 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("-");
+
+        $r9 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i4);
+
+        $r10 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        r1 = staticinvoke <org.slf4j.LoggerFactory: org.slf4j.Logger getLogger(java.lang.String)>($r10);
+
+        $r11 = r0.<org.slf4j.LoggerAccessingThread: java.util.List loggerList>;
+
+        interfaceinvoke $r11.<java.util.List: boolean add(java.lang.Object)>(r1);
+
+        staticinvoke <java.lang.Thread: void yield()>();
+
+        interfaceinvoke r1.<org.slf4j.Logger: void info(java.lang.String)>("in run method");
+
+        $r12 = r0.<org.slf4j.LoggerAccessingThread: java.util.concurrent.atomic.AtomicLong eventCount>;
+
+        virtualinvoke $r12.<java.util.concurrent.atomic.AtomicLong: long getAndIncrement()>();
+
+        i4 = i4 + 1;
+
+     label6:
+        $i1 = <org.slf4j.LoggerAccessingThread: int LOOP_LEN>;
+
+        if i4 < $i1 goto label5;
+
+        return;
+
+        catch java.lang.Exception from label1 to label2 with label3;
+    }
+}

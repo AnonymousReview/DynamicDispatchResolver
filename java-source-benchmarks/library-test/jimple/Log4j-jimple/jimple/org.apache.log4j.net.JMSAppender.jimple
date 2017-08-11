@@ -1,0 +1,892 @@
+public class org.apache.log4j.net.JMSAppender extends org.apache.log4j.AppenderSkeleton
+{
+    java.lang.String securityPrincipalName;
+    java.lang.String securityCredentials;
+    java.lang.String initialContextFactoryName;
+    java.lang.String urlPkgPrefixes;
+    java.lang.String providerURL;
+    java.lang.String topicBindingName;
+    java.lang.String tcfBindingName;
+    java.lang.String userName;
+    java.lang.String password;
+    boolean locationInfo;
+    javax.jms.TopicConnection topicConnection;
+    javax.jms.TopicSession topicSession;
+    javax.jms.TopicPublisher topicPublisher;
+
+    public void <init>()
+    {
+        org.apache.log4j.net.JMSAppender r0;
+
+        r0 := @this: org.apache.log4j.net.JMSAppender;
+
+        specialinvoke r0.<org.apache.log4j.AppenderSkeleton: void <init>()>();
+
+        return;
+    }
+
+    public void setTopicConnectionFactoryBindingName(java.lang.String)
+    {
+        org.apache.log4j.net.JMSAppender r0;
+        java.lang.String r1;
+
+        r0 := @this: org.apache.log4j.net.JMSAppender;
+
+        r1 := @parameter0: java.lang.String;
+
+        r0.<org.apache.log4j.net.JMSAppender: java.lang.String tcfBindingName> = r1;
+
+        return;
+    }
+
+    public java.lang.String getTopicConnectionFactoryBindingName()
+    {
+        org.apache.log4j.net.JMSAppender r0;
+        java.lang.String $r1;
+
+        r0 := @this: org.apache.log4j.net.JMSAppender;
+
+        $r1 = r0.<org.apache.log4j.net.JMSAppender: java.lang.String tcfBindingName>;
+
+        return $r1;
+    }
+
+    public void setTopicBindingName(java.lang.String)
+    {
+        org.apache.log4j.net.JMSAppender r0;
+        java.lang.String r1;
+
+        r0 := @this: org.apache.log4j.net.JMSAppender;
+
+        r1 := @parameter0: java.lang.String;
+
+        r0.<org.apache.log4j.net.JMSAppender: java.lang.String topicBindingName> = r1;
+
+        return;
+    }
+
+    public java.lang.String getTopicBindingName()
+    {
+        org.apache.log4j.net.JMSAppender r0;
+        java.lang.String $r1;
+
+        r0 := @this: org.apache.log4j.net.JMSAppender;
+
+        $r1 = r0.<org.apache.log4j.net.JMSAppender: java.lang.String topicBindingName>;
+
+        return $r1;
+    }
+
+    public boolean getLocationInfo()
+    {
+        org.apache.log4j.net.JMSAppender r0;
+        boolean $z0;
+
+        r0 := @this: org.apache.log4j.net.JMSAppender;
+
+        $z0 = r0.<org.apache.log4j.net.JMSAppender: boolean locationInfo>;
+
+        return $z0;
+    }
+
+    public void activateOptions()
+    {
+        org.apache.log4j.net.JMSAppender r0;
+        javax.jms.TopicConnectionFactory r1;
+        java.lang.String $r2, $r5, $r8, $r9, $r11, $r16, $r19, $r20, $r25, $r26, $r29, $r31, $r32, $r33, $r34, $r36, $r37, $r39, $r41, $r46, $r49, $r53, $r56, $r60, $r63;
+        javax.naming.InitialContext $r3, $r65, r66;
+        java.lang.StringBuilder $r4, $r6, $r7, $r15, $r17, $r18, $r44, $r47, $r48, $r51, $r54, $r55, $r58, $r61, $r62;
+        java.lang.Object $r10, $r21;
+        javax.jms.TopicConnection $r12, $r13, $r24, $r27;
+        javax.jms.TopicSession $r14, $r22;
+        javax.jms.TopicPublisher $r23;
+        java.util.Properties $r28;
+        java.lang.RuntimeException $r43;
+        org.apache.log4j.spi.ErrorHandler $r45, $r52, $r59;
+        javax.naming.NamingException $r50;
+        javax.jms.JMSException $r57;
+        javax.jms.Topic r67;
+
+        r0 := @this: org.apache.log4j.net.JMSAppender;
+
+     label01:
+        staticinvoke <org.apache.log4j.helpers.LogLog: void debug(java.lang.String)>("Getting initial context.");
+
+        $r2 = r0.<org.apache.log4j.net.JMSAppender: java.lang.String initialContextFactoryName>;
+
+        if $r2 == null goto label07;
+
+        $r28 = new java.util.Properties;
+
+        specialinvoke $r28.<java.util.Properties: void <init>()>();
+
+        $r29 = r0.<org.apache.log4j.net.JMSAppender: java.lang.String initialContextFactoryName>;
+
+        virtualinvoke $r28.<java.util.Properties: java.lang.Object put(java.lang.Object,java.lang.Object)>("java.naming.factory.initial", $r29);
+
+        $r31 = r0.<org.apache.log4j.net.JMSAppender: java.lang.String providerURL>;
+
+        if $r31 == null goto label02;
+
+        $r41 = r0.<org.apache.log4j.net.JMSAppender: java.lang.String providerURL>;
+
+        virtualinvoke $r28.<java.util.Properties: java.lang.Object put(java.lang.Object,java.lang.Object)>("java.naming.provider.url", $r41);
+
+        goto label03;
+
+     label02:
+        staticinvoke <org.apache.log4j.helpers.LogLog: void warn(java.lang.String)>("You have set InitialContextFactoryName option but not the ProviderURL. This is likely to cause problems.");
+
+     label03:
+        $r32 = r0.<org.apache.log4j.net.JMSAppender: java.lang.String urlPkgPrefixes>;
+
+        if $r32 == null goto label04;
+
+        $r39 = r0.<org.apache.log4j.net.JMSAppender: java.lang.String urlPkgPrefixes>;
+
+        virtualinvoke $r28.<java.util.Properties: java.lang.Object put(java.lang.Object,java.lang.Object)>("java.naming.factory.url.pkgs", $r39);
+
+     label04:
+        $r33 = r0.<org.apache.log4j.net.JMSAppender: java.lang.String securityPrincipalName>;
+
+        if $r33 == null goto label06;
+
+        $r34 = r0.<org.apache.log4j.net.JMSAppender: java.lang.String securityPrincipalName>;
+
+        virtualinvoke $r28.<java.util.Properties: java.lang.Object put(java.lang.Object,java.lang.Object)>("java.naming.security.principal", $r34);
+
+        $r36 = r0.<org.apache.log4j.net.JMSAppender: java.lang.String securityCredentials>;
+
+        if $r36 == null goto label05;
+
+        $r37 = r0.<org.apache.log4j.net.JMSAppender: java.lang.String securityCredentials>;
+
+        virtualinvoke $r28.<java.util.Properties: java.lang.Object put(java.lang.Object,java.lang.Object)>("java.naming.security.credentials", $r37);
+
+        goto label06;
+
+     label05:
+        staticinvoke <org.apache.log4j.helpers.LogLog: void warn(java.lang.String)>("You have set SecurityPrincipalName option but not the SecurityCredentials. This is likely to cause problems.");
+
+     label06:
+        $r65 = new javax.naming.InitialContext;
+
+        specialinvoke $r65.<javax.naming.InitialContext: void <init>(java.util.Hashtable)>($r28);
+
+        r66 = $r65;
+
+        goto label08;
+
+     label07:
+        $r3 = new javax.naming.InitialContext;
+
+        specialinvoke $r3.<javax.naming.InitialContext: void <init>()>();
+
+        r66 = $r3;
+
+     label08:
+        $r4 = new java.lang.StringBuilder;
+
+        specialinvoke $r4.<java.lang.StringBuilder: void <init>(java.lang.String)>("Looking up [");
+
+        $r5 = r0.<org.apache.log4j.net.JMSAppender: java.lang.String tcfBindingName>;
+
+        $r6 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r5);
+
+        $r7 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("]");
+
+        $r8 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.apache.log4j.helpers.LogLog: void debug(java.lang.String)>($r8);
+
+        $r9 = r0.<org.apache.log4j.net.JMSAppender: java.lang.String tcfBindingName>;
+
+        $r10 = virtualinvoke r0.<org.apache.log4j.net.JMSAppender: java.lang.Object lookup(javax.naming.Context,java.lang.String)>(r66, $r9);
+
+        r1 = (javax.jms.TopicConnectionFactory) $r10;
+
+        staticinvoke <org.apache.log4j.helpers.LogLog: void debug(java.lang.String)>("About to create TopicConnection.");
+
+        $r11 = r0.<org.apache.log4j.net.JMSAppender: java.lang.String userName>;
+
+        if $r11 == null goto label09;
+
+        $r26 = r0.<org.apache.log4j.net.JMSAppender: java.lang.String userName>;
+
+        $r25 = r0.<org.apache.log4j.net.JMSAppender: java.lang.String password>;
+
+        $r27 = interfaceinvoke r1.<javax.jms.TopicConnectionFactory: javax.jms.TopicConnection createTopicConnection(java.lang.String,java.lang.String)>($r26, $r25);
+
+        r0.<org.apache.log4j.net.JMSAppender: javax.jms.TopicConnection topicConnection> = $r27;
+
+        goto label10;
+
+     label09:
+        $r12 = interfaceinvoke r1.<javax.jms.TopicConnectionFactory: javax.jms.TopicConnection createTopicConnection()>();
+
+        r0.<org.apache.log4j.net.JMSAppender: javax.jms.TopicConnection topicConnection> = $r12;
+
+     label10:
+        staticinvoke <org.apache.log4j.helpers.LogLog: void debug(java.lang.String)>("Creating TopicSession, non-transactional, in AUTO_ACKNOWLEDGE mode.");
+
+        $r13 = r0.<org.apache.log4j.net.JMSAppender: javax.jms.TopicConnection topicConnection>;
+
+        $r14 = interfaceinvoke $r13.<javax.jms.TopicConnection: javax.jms.TopicSession createTopicSession(boolean,int)>(0, 1);
+
+        r0.<org.apache.log4j.net.JMSAppender: javax.jms.TopicSession topicSession> = $r14;
+
+        $r15 = new java.lang.StringBuilder;
+
+        specialinvoke $r15.<java.lang.StringBuilder: void <init>(java.lang.String)>("Looking up topic name [");
+
+        $r16 = r0.<org.apache.log4j.net.JMSAppender: java.lang.String topicBindingName>;
+
+        $r17 = virtualinvoke $r15.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r16);
+
+        $r18 = virtualinvoke $r17.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("].");
+
+        $r19 = virtualinvoke $r18.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.apache.log4j.helpers.LogLog: void debug(java.lang.String)>($r19);
+
+        $r20 = r0.<org.apache.log4j.net.JMSAppender: java.lang.String topicBindingName>;
+
+        $r21 = virtualinvoke r0.<org.apache.log4j.net.JMSAppender: java.lang.Object lookup(javax.naming.Context,java.lang.String)>(r66, $r20);
+
+        r67 = (javax.jms.Topic) $r21;
+
+        staticinvoke <org.apache.log4j.helpers.LogLog: void debug(java.lang.String)>("Creating TopicPublisher.");
+
+        $r22 = r0.<org.apache.log4j.net.JMSAppender: javax.jms.TopicSession topicSession>;
+
+        $r23 = interfaceinvoke $r22.<javax.jms.TopicSession: javax.jms.TopicPublisher createPublisher(javax.jms.Topic)>(r67);
+
+        r0.<org.apache.log4j.net.JMSAppender: javax.jms.TopicPublisher topicPublisher> = $r23;
+
+        staticinvoke <org.apache.log4j.helpers.LogLog: void debug(java.lang.String)>("Starting TopicConnection.");
+
+        $r24 = r0.<org.apache.log4j.net.JMSAppender: javax.jms.TopicConnection topicConnection>;
+
+        interfaceinvoke $r24.<javax.jms.TopicConnection: void start()>();
+
+        interfaceinvoke r66.<javax.naming.Context: void close()>();
+
+     label11:
+        goto label15;
+
+     label12:
+        $r57 := @caughtexception;
+
+        $r59 = r0.<org.apache.log4j.net.JMSAppender: org.apache.log4j.spi.ErrorHandler errorHandler>;
+
+        $r58 = new java.lang.StringBuilder;
+
+        specialinvoke $r58.<java.lang.StringBuilder: void <init>(java.lang.String)>("Error while activating options for appender named [");
+
+        $r60 = r0.<org.apache.log4j.net.JMSAppender: java.lang.String name>;
+
+        $r61 = virtualinvoke $r58.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r60);
+
+        $r62 = virtualinvoke $r61.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("].");
+
+        $r63 = virtualinvoke $r62.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        interfaceinvoke $r59.<org.apache.log4j.spi.ErrorHandler: void error(java.lang.String,java.lang.Exception,int)>($r63, $r57, 0);
+
+        goto label15;
+
+     label13:
+        $r50 := @caughtexception;
+
+        $r52 = r0.<org.apache.log4j.net.JMSAppender: org.apache.log4j.spi.ErrorHandler errorHandler>;
+
+        $r51 = new java.lang.StringBuilder;
+
+        specialinvoke $r51.<java.lang.StringBuilder: void <init>(java.lang.String)>("Error while activating options for appender named [");
+
+        $r53 = r0.<org.apache.log4j.net.JMSAppender: java.lang.String name>;
+
+        $r54 = virtualinvoke $r51.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r53);
+
+        $r55 = virtualinvoke $r54.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("].");
+
+        $r56 = virtualinvoke $r55.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        interfaceinvoke $r52.<org.apache.log4j.spi.ErrorHandler: void error(java.lang.String,java.lang.Exception,int)>($r56, $r50, 0);
+
+        goto label15;
+
+     label14:
+        $r43 := @caughtexception;
+
+        $r45 = r0.<org.apache.log4j.net.JMSAppender: org.apache.log4j.spi.ErrorHandler errorHandler>;
+
+        $r44 = new java.lang.StringBuilder;
+
+        specialinvoke $r44.<java.lang.StringBuilder: void <init>(java.lang.String)>("Error while activating options for appender named [");
+
+        $r46 = r0.<org.apache.log4j.net.JMSAppender: java.lang.String name>;
+
+        $r47 = virtualinvoke $r44.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r46);
+
+        $r48 = virtualinvoke $r47.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("].");
+
+        $r49 = virtualinvoke $r48.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        interfaceinvoke $r45.<org.apache.log4j.spi.ErrorHandler: void error(java.lang.String,java.lang.Exception,int)>($r49, $r43, 0);
+
+     label15:
+        return;
+
+        catch javax.jms.JMSException from label01 to label11 with label12;
+        catch javax.naming.NamingException from label01 to label11 with label13;
+        catch java.lang.RuntimeException from label01 to label11 with label14;
+    }
+
+    protected java.lang.Object lookup(javax.naming.Context, java.lang.String) throws javax.naming.NamingException
+    {
+        org.apache.log4j.net.JMSAppender r0;
+        javax.naming.Context r1;
+        java.lang.String r2, $r9;
+        java.lang.Object $r4;
+        javax.naming.NameNotFoundException $r5;
+        java.lang.StringBuilder $r6, $r7, $r8;
+
+        r0 := @this: org.apache.log4j.net.JMSAppender;
+
+        r1 := @parameter0: javax.naming.Context;
+
+        r2 := @parameter1: java.lang.String;
+
+     label1:
+        $r4 = interfaceinvoke r1.<javax.naming.Context: java.lang.Object lookup(java.lang.String)>(r2);
+
+     label2:
+        return $r4;
+
+     label3:
+        $r5 := @caughtexception;
+
+        $r6 = new java.lang.StringBuilder;
+
+        specialinvoke $r6.<java.lang.StringBuilder: void <init>(java.lang.String)>("Could not find name [");
+
+        $r7 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r2);
+
+        $r8 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("].");
+
+        $r9 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.apache.log4j.helpers.LogLog: void error(java.lang.String)>($r9);
+
+        throw $r5;
+
+        catch javax.naming.NameNotFoundException from label1 to label2 with label3;
+    }
+
+    protected boolean checkEntryConditions()
+    {
+        org.apache.log4j.net.JMSAppender r0;
+        javax.jms.TopicConnection $r1;
+        javax.jms.TopicSession $r2;
+        javax.jms.TopicPublisher $r3;
+        java.lang.StringBuilder $r4, $r7, $r9, $r10;
+        org.apache.log4j.spi.ErrorHandler $r5;
+        java.lang.String $r6, $r8, $r11, r12;
+
+        r0 := @this: org.apache.log4j.net.JMSAppender;
+
+        r12 = null;
+
+        $r1 = r0.<org.apache.log4j.net.JMSAppender: javax.jms.TopicConnection topicConnection>;
+
+        if $r1 != null goto label1;
+
+        r12 = "No TopicConnection";
+
+        goto label3;
+
+     label1:
+        $r2 = r0.<org.apache.log4j.net.JMSAppender: javax.jms.TopicSession topicSession>;
+
+        if $r2 != null goto label2;
+
+        r12 = "No TopicSession";
+
+        goto label3;
+
+     label2:
+        $r3 = r0.<org.apache.log4j.net.JMSAppender: javax.jms.TopicPublisher topicPublisher>;
+
+        if $r3 != null goto label3;
+
+        r12 = "No TopicPublisher";
+
+     label3:
+        if r12 == null goto label4;
+
+        $r5 = r0.<org.apache.log4j.net.JMSAppender: org.apache.log4j.spi.ErrorHandler errorHandler>;
+
+        $r4 = new java.lang.StringBuilder;
+
+        $r6 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>(r12);
+
+        specialinvoke $r4.<java.lang.StringBuilder: void <init>(java.lang.String)>($r6);
+
+        $r7 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" for JMSAppender named [");
+
+        $r8 = r0.<org.apache.log4j.net.JMSAppender: java.lang.String name>;
+
+        $r9 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r8);
+
+        $r10 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("].");
+
+        $r11 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        interfaceinvoke $r5.<org.apache.log4j.spi.ErrorHandler: void error(java.lang.String)>($r11);
+
+        return 0;
+
+     label4:
+        return 1;
+    }
+
+    public synchronized void close()
+    {
+        org.apache.log4j.net.JMSAppender r0;
+        boolean $z0;
+        java.lang.StringBuilder $r1, $r3, $r4, $r11, $r13, $r14, $r17, $r19, $r20;
+        java.lang.String $r2, $r5, $r12, $r15, $r18, $r21;
+        javax.jms.TopicSession $r6, $r9;
+        javax.jms.TopicConnection $r7, $r8;
+        javax.jms.JMSException $r10;
+        java.lang.RuntimeException $r16;
+
+        r0 := @this: org.apache.log4j.net.JMSAppender;
+
+        $z0 = r0.<org.apache.log4j.net.JMSAppender: boolean closed>;
+
+        if $z0 == 0 goto label1;
+
+        return;
+
+     label1:
+        $r1 = new java.lang.StringBuilder;
+
+        specialinvoke $r1.<java.lang.StringBuilder: void <init>(java.lang.String)>("Closing appender [");
+
+        $r2 = r0.<org.apache.log4j.net.JMSAppender: java.lang.String name>;
+
+        $r3 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        $r4 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("].");
+
+        $r5 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.apache.log4j.helpers.LogLog: void debug(java.lang.String)>($r5);
+
+        r0.<org.apache.log4j.net.JMSAppender: boolean closed> = 1;
+
+     label2:
+        $r6 = r0.<org.apache.log4j.net.JMSAppender: javax.jms.TopicSession topicSession>;
+
+        if $r6 == null goto label3;
+
+        $r9 = r0.<org.apache.log4j.net.JMSAppender: javax.jms.TopicSession topicSession>;
+
+        interfaceinvoke $r9.<javax.jms.TopicSession: void close()>();
+
+     label3:
+        $r7 = r0.<org.apache.log4j.net.JMSAppender: javax.jms.TopicConnection topicConnection>;
+
+        if $r7 == null goto label7;
+
+        $r8 = r0.<org.apache.log4j.net.JMSAppender: javax.jms.TopicConnection topicConnection>;
+
+        interfaceinvoke $r8.<javax.jms.TopicConnection: void close()>();
+
+     label4:
+        goto label7;
+
+     label5:
+        $r10 := @caughtexception;
+
+        $r11 = new java.lang.StringBuilder;
+
+        specialinvoke $r11.<java.lang.StringBuilder: void <init>(java.lang.String)>("Error while closing JMSAppender [");
+
+        $r12 = r0.<org.apache.log4j.net.JMSAppender: java.lang.String name>;
+
+        $r13 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r12);
+
+        $r14 = virtualinvoke $r13.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("].");
+
+        $r15 = virtualinvoke $r14.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.apache.log4j.helpers.LogLog: void error(java.lang.String,java.lang.Throwable)>($r15, $r10);
+
+        goto label7;
+
+     label6:
+        $r16 := @caughtexception;
+
+        $r17 = new java.lang.StringBuilder;
+
+        specialinvoke $r17.<java.lang.StringBuilder: void <init>(java.lang.String)>("Error while closing JMSAppender [");
+
+        $r18 = r0.<org.apache.log4j.net.JMSAppender: java.lang.String name>;
+
+        $r19 = virtualinvoke $r17.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r18);
+
+        $r20 = virtualinvoke $r19.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("].");
+
+        $r21 = virtualinvoke $r20.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.apache.log4j.helpers.LogLog: void error(java.lang.String,java.lang.Throwable)>($r21, $r16);
+
+     label7:
+        r0.<org.apache.log4j.net.JMSAppender: javax.jms.TopicPublisher topicPublisher> = null;
+
+        r0.<org.apache.log4j.net.JMSAppender: javax.jms.TopicSession topicSession> = null;
+
+        r0.<org.apache.log4j.net.JMSAppender: javax.jms.TopicConnection topicConnection> = null;
+
+        return;
+
+        catch javax.jms.JMSException from label2 to label4 with label5;
+        catch java.lang.RuntimeException from label2 to label4 with label6;
+    }
+
+    public void append(org.apache.log4j.spi.LoggingEvent)
+    {
+        org.apache.log4j.net.JMSAppender r0;
+        org.apache.log4j.spi.LoggingEvent r1;
+        boolean $z0, $z1;
+        javax.jms.TopicSession $r2;
+        javax.jms.TopicPublisher $r3;
+        javax.jms.JMSException $r5;
+        java.lang.StringBuilder $r6, $r9, $r10, $r13, $r16, $r17;
+        org.apache.log4j.spi.ErrorHandler $r7, $r14;
+        java.lang.String $r8, $r11, $r15, $r18;
+        java.lang.RuntimeException $r12;
+        javax.jms.ObjectMessage r19;
+
+        r0 := @this: org.apache.log4j.net.JMSAppender;
+
+        r1 := @parameter0: org.apache.log4j.spi.LoggingEvent;
+
+        $z0 = virtualinvoke r0.<org.apache.log4j.net.JMSAppender: boolean checkEntryConditions()>();
+
+        if $z0 != 0 goto label1;
+
+        return;
+
+     label1:
+        $r2 = r0.<org.apache.log4j.net.JMSAppender: javax.jms.TopicSession topicSession>;
+
+        r19 = interfaceinvoke $r2.<javax.jms.TopicSession: javax.jms.ObjectMessage createObjectMessage()>();
+
+        $z1 = r0.<org.apache.log4j.net.JMSAppender: boolean locationInfo>;
+
+        if $z1 == 0 goto label2;
+
+        virtualinvoke r1.<org.apache.log4j.spi.LoggingEvent: org.apache.log4j.spi.LocationInfo getLocationInformation()>();
+
+     label2:
+        interfaceinvoke r19.<javax.jms.ObjectMessage: void setObject(java.io.Serializable)>(r1);
+
+        $r3 = r0.<org.apache.log4j.net.JMSAppender: javax.jms.TopicPublisher topicPublisher>;
+
+        interfaceinvoke $r3.<javax.jms.TopicPublisher: void publish(javax.jms.Message)>(r19);
+
+     label3:
+        goto label6;
+
+     label4:
+        $r5 := @caughtexception;
+
+        $r7 = r0.<org.apache.log4j.net.JMSAppender: org.apache.log4j.spi.ErrorHandler errorHandler>;
+
+        $r6 = new java.lang.StringBuilder;
+
+        specialinvoke $r6.<java.lang.StringBuilder: void <init>(java.lang.String)>("Could not publish message in JMSAppender [");
+
+        $r8 = r0.<org.apache.log4j.net.JMSAppender: java.lang.String name>;
+
+        $r9 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r8);
+
+        $r10 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("].");
+
+        $r11 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        interfaceinvoke $r7.<org.apache.log4j.spi.ErrorHandler: void error(java.lang.String,java.lang.Exception,int)>($r11, $r5, 0);
+
+        goto label6;
+
+     label5:
+        $r12 := @caughtexception;
+
+        $r14 = r0.<org.apache.log4j.net.JMSAppender: org.apache.log4j.spi.ErrorHandler errorHandler>;
+
+        $r13 = new java.lang.StringBuilder;
+
+        specialinvoke $r13.<java.lang.StringBuilder: void <init>(java.lang.String)>("Could not publish message in JMSAppender [");
+
+        $r15 = r0.<org.apache.log4j.net.JMSAppender: java.lang.String name>;
+
+        $r16 = virtualinvoke $r13.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r15);
+
+        $r17 = virtualinvoke $r16.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("].");
+
+        $r18 = virtualinvoke $r17.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        interfaceinvoke $r14.<org.apache.log4j.spi.ErrorHandler: void error(java.lang.String,java.lang.Exception,int)>($r18, $r12, 0);
+
+     label6:
+        return;
+
+        catch javax.jms.JMSException from label1 to label3 with label4;
+        catch java.lang.RuntimeException from label1 to label3 with label5;
+    }
+
+    public java.lang.String getInitialContextFactoryName()
+    {
+        org.apache.log4j.net.JMSAppender r0;
+        java.lang.String $r1;
+
+        r0 := @this: org.apache.log4j.net.JMSAppender;
+
+        $r1 = r0.<org.apache.log4j.net.JMSAppender: java.lang.String initialContextFactoryName>;
+
+        return $r1;
+    }
+
+    public void setInitialContextFactoryName(java.lang.String)
+    {
+        org.apache.log4j.net.JMSAppender r0;
+        java.lang.String r1;
+
+        r0 := @this: org.apache.log4j.net.JMSAppender;
+
+        r1 := @parameter0: java.lang.String;
+
+        r0.<org.apache.log4j.net.JMSAppender: java.lang.String initialContextFactoryName> = r1;
+
+        return;
+    }
+
+    public java.lang.String getProviderURL()
+    {
+        org.apache.log4j.net.JMSAppender r0;
+        java.lang.String $r1;
+
+        r0 := @this: org.apache.log4j.net.JMSAppender;
+
+        $r1 = r0.<org.apache.log4j.net.JMSAppender: java.lang.String providerURL>;
+
+        return $r1;
+    }
+
+    public void setProviderURL(java.lang.String)
+    {
+        org.apache.log4j.net.JMSAppender r0;
+        java.lang.String r1;
+
+        r0 := @this: org.apache.log4j.net.JMSAppender;
+
+        r1 := @parameter0: java.lang.String;
+
+        r0.<org.apache.log4j.net.JMSAppender: java.lang.String providerURL> = r1;
+
+        return;
+    }
+
+    java.lang.String getURLPkgPrefixes()
+    {
+        org.apache.log4j.net.JMSAppender r0;
+        java.lang.String $r1;
+
+        r0 := @this: org.apache.log4j.net.JMSAppender;
+
+        $r1 = r0.<org.apache.log4j.net.JMSAppender: java.lang.String urlPkgPrefixes>;
+
+        return $r1;
+    }
+
+    public void setURLPkgPrefixes(java.lang.String)
+    {
+        org.apache.log4j.net.JMSAppender r0;
+        java.lang.String r1;
+
+        r0 := @this: org.apache.log4j.net.JMSAppender;
+
+        r1 := @parameter0: java.lang.String;
+
+        r0.<org.apache.log4j.net.JMSAppender: java.lang.String urlPkgPrefixes> = r1;
+
+        return;
+    }
+
+    public java.lang.String getSecurityCredentials()
+    {
+        org.apache.log4j.net.JMSAppender r0;
+        java.lang.String $r1;
+
+        r0 := @this: org.apache.log4j.net.JMSAppender;
+
+        $r1 = r0.<org.apache.log4j.net.JMSAppender: java.lang.String securityCredentials>;
+
+        return $r1;
+    }
+
+    public void setSecurityCredentials(java.lang.String)
+    {
+        org.apache.log4j.net.JMSAppender r0;
+        java.lang.String r1;
+
+        r0 := @this: org.apache.log4j.net.JMSAppender;
+
+        r1 := @parameter0: java.lang.String;
+
+        r0.<org.apache.log4j.net.JMSAppender: java.lang.String securityCredentials> = r1;
+
+        return;
+    }
+
+    public java.lang.String getSecurityPrincipalName()
+    {
+        org.apache.log4j.net.JMSAppender r0;
+        java.lang.String $r1;
+
+        r0 := @this: org.apache.log4j.net.JMSAppender;
+
+        $r1 = r0.<org.apache.log4j.net.JMSAppender: java.lang.String securityPrincipalName>;
+
+        return $r1;
+    }
+
+    public void setSecurityPrincipalName(java.lang.String)
+    {
+        org.apache.log4j.net.JMSAppender r0;
+        java.lang.String r1;
+
+        r0 := @this: org.apache.log4j.net.JMSAppender;
+
+        r1 := @parameter0: java.lang.String;
+
+        r0.<org.apache.log4j.net.JMSAppender: java.lang.String securityPrincipalName> = r1;
+
+        return;
+    }
+
+    public java.lang.String getUserName()
+    {
+        org.apache.log4j.net.JMSAppender r0;
+        java.lang.String $r1;
+
+        r0 := @this: org.apache.log4j.net.JMSAppender;
+
+        $r1 = r0.<org.apache.log4j.net.JMSAppender: java.lang.String userName>;
+
+        return $r1;
+    }
+
+    public void setUserName(java.lang.String)
+    {
+        org.apache.log4j.net.JMSAppender r0;
+        java.lang.String r1;
+
+        r0 := @this: org.apache.log4j.net.JMSAppender;
+
+        r1 := @parameter0: java.lang.String;
+
+        r0.<org.apache.log4j.net.JMSAppender: java.lang.String userName> = r1;
+
+        return;
+    }
+
+    public java.lang.String getPassword()
+    {
+        org.apache.log4j.net.JMSAppender r0;
+        java.lang.String $r1;
+
+        r0 := @this: org.apache.log4j.net.JMSAppender;
+
+        $r1 = r0.<org.apache.log4j.net.JMSAppender: java.lang.String password>;
+
+        return $r1;
+    }
+
+    public void setPassword(java.lang.String)
+    {
+        org.apache.log4j.net.JMSAppender r0;
+        java.lang.String r1;
+
+        r0 := @this: org.apache.log4j.net.JMSAppender;
+
+        r1 := @parameter0: java.lang.String;
+
+        r0.<org.apache.log4j.net.JMSAppender: java.lang.String password> = r1;
+
+        return;
+    }
+
+    public void setLocationInfo(boolean)
+    {
+        org.apache.log4j.net.JMSAppender r0;
+        boolean z0;
+
+        r0 := @this: org.apache.log4j.net.JMSAppender;
+
+        z0 := @parameter0: boolean;
+
+        r0.<org.apache.log4j.net.JMSAppender: boolean locationInfo> = z0;
+
+        return;
+    }
+
+    protected javax.jms.TopicConnection getTopicConnection()
+    {
+        org.apache.log4j.net.JMSAppender r0;
+        javax.jms.TopicConnection $r1;
+
+        r0 := @this: org.apache.log4j.net.JMSAppender;
+
+        $r1 = r0.<org.apache.log4j.net.JMSAppender: javax.jms.TopicConnection topicConnection>;
+
+        return $r1;
+    }
+
+    protected javax.jms.TopicSession getTopicSession()
+    {
+        org.apache.log4j.net.JMSAppender r0;
+        javax.jms.TopicSession $r1;
+
+        r0 := @this: org.apache.log4j.net.JMSAppender;
+
+        $r1 = r0.<org.apache.log4j.net.JMSAppender: javax.jms.TopicSession topicSession>;
+
+        return $r1;
+    }
+
+    protected javax.jms.TopicPublisher getTopicPublisher()
+    {
+        org.apache.log4j.net.JMSAppender r0;
+        javax.jms.TopicPublisher $r1;
+
+        r0 := @this: org.apache.log4j.net.JMSAppender;
+
+        $r1 = r0.<org.apache.log4j.net.JMSAppender: javax.jms.TopicPublisher topicPublisher>;
+
+        return $r1;
+    }
+
+    public boolean requiresLayout()
+    {
+        org.apache.log4j.net.JMSAppender r0;
+
+        r0 := @this: org.apache.log4j.net.JMSAppender;
+
+        return 0;
+    }
+}

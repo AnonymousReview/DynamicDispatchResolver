@@ -1,0 +1,76 @@
+class org.apache.commons.io.FileUtilsTestCase$ListDirectoryWalker extends org.apache.commons.io.DirectoryWalker
+{
+
+    void <init>()
+    {
+        org.apache.commons.io.FileUtilsTestCase$ListDirectoryWalker r0;
+
+        r0 := @this: org.apache.commons.io.FileUtilsTestCase$ListDirectoryWalker;
+
+        specialinvoke r0.<org.apache.commons.io.DirectoryWalker: void <init>()>();
+
+        return;
+    }
+
+    java.util.List list(java.io.File) throws java.io.IOException
+    {
+        org.apache.commons.io.FileUtilsTestCase$ListDirectoryWalker r0;
+        java.io.File r1;
+        java.util.ArrayList $r3;
+
+        r0 := @this: org.apache.commons.io.FileUtilsTestCase$ListDirectoryWalker;
+
+        r1 := @parameter0: java.io.File;
+
+        $r3 = new java.util.ArrayList;
+
+        specialinvoke $r3.<java.util.ArrayList: void <init>()>();
+
+        virtualinvoke r0.<org.apache.commons.io.FileUtilsTestCase$ListDirectoryWalker: void walk(java.io.File,java.util.Collection)>(r1, $r3);
+
+        return $r3;
+    }
+
+    protected void handleDirectoryStart(java.io.File, int, java.util.Collection) throws java.io.IOException
+    {
+        org.apache.commons.io.FileUtilsTestCase$ListDirectoryWalker r0;
+        java.io.File r1;
+        int i0;
+        java.util.Collection r2;
+
+        r0 := @this: org.apache.commons.io.FileUtilsTestCase$ListDirectoryWalker;
+
+        r1 := @parameter0: java.io.File;
+
+        i0 := @parameter1: int;
+
+        r2 := @parameter2: java.util.Collection;
+
+        if i0 <= 0 goto label1;
+
+        interfaceinvoke r2.<java.util.Collection: boolean add(java.lang.Object)>(r1);
+
+     label1:
+        return;
+    }
+
+    protected void handleFile(java.io.File, int, java.util.Collection) throws java.io.IOException
+    {
+        org.apache.commons.io.FileUtilsTestCase$ListDirectoryWalker r0;
+        java.io.File r1;
+        int i0;
+        java.util.Collection r2;
+
+        r0 := @this: org.apache.commons.io.FileUtilsTestCase$ListDirectoryWalker;
+
+        r1 := @parameter0: java.io.File;
+
+        i0 := @parameter1: int;
+
+        r2 := @parameter2: java.util.Collection;
+
+        interfaceinvoke r2.<java.util.Collection: boolean add(java.lang.Object)>(r1);
+
+        return;
+    }
+}

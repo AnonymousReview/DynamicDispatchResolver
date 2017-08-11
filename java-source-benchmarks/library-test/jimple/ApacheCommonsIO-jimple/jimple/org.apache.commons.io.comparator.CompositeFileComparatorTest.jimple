@@ -1,0 +1,465 @@
+public class org.apache.commons.io.comparator.CompositeFileComparatorTest extends org.apache.commons.io.comparator.ComparatorAbstractTestCase
+{
+
+    public void <init>()
+    {
+        org.apache.commons.io.comparator.CompositeFileComparatorTest r0;
+
+        r0 := @this: org.apache.commons.io.comparator.CompositeFileComparatorTest;
+
+        specialinvoke r0.<org.apache.commons.io.comparator.ComparatorAbstractTestCase: void <init>()>();
+
+        return;
+    }
+
+    public void setUp() throws java.lang.Exception
+    {
+        org.apache.commons.io.comparator.CompositeFileComparatorTest r0;
+        java.io.File r1, $r12, $r13, $r14, $r15, $r16, $r17, $r20, $r21, $r22, $r25, $r26, $r27, $r30, $r31, $r32, $r35, $r38, $r44, $r50, $r56;
+        org.apache.commons.io.comparator.CompositeFileComparator $r4;
+        org.apache.commons.io.comparator.AbstractFileComparator[] $r5;
+        java.util.Comparator $r6, $r8;
+        org.apache.commons.io.comparator.AbstractFileComparator $r7, $r9, $r11;
+        org.apache.commons.io.comparator.ReverseComparator $r10;
+        boolean $z0, $z1, $z2, $z3;
+        java.io.BufferedOutputStream $r18, $r23, $r28, $r33;
+        java.io.FileOutputStream $r19, $r24, $r29, $r34;
+        java.io.IOException $r36, $r42, $r48, $r54;
+        java.lang.StringBuilder $r37, $r39, $r40, $r43, $r45, $r46, $r49, $r51, $r52, $r55, $r57, $r58;
+        java.lang.String $r41, $r47, $r53, $r59;
+        java.lang.Throwable $r60, $r61, $r62, $r63;
+
+        r0 := @this: org.apache.commons.io.comparator.CompositeFileComparatorTest;
+
+        $r4 = new org.apache.commons.io.comparator.CompositeFileComparator;
+
+        $r5 = newarray (org.apache.commons.io.comparator.AbstractFileComparator)[2];
+
+        $r6 = <org.apache.commons.io.comparator.SizeFileComparator: java.util.Comparator SIZE_COMPARATOR>;
+
+        $r7 = (org.apache.commons.io.comparator.AbstractFileComparator) $r6;
+
+        $r5[0] = $r7;
+
+        $r8 = <org.apache.commons.io.comparator.ExtensionFileComparator: java.util.Comparator EXTENSION_COMPARATOR>;
+
+        $r9 = (org.apache.commons.io.comparator.AbstractFileComparator) $r8;
+
+        $r5[1] = $r9;
+
+        specialinvoke $r4.<org.apache.commons.io.comparator.CompositeFileComparator: void <init>(java.util.Comparator[])>($r5);
+
+        r0.<org.apache.commons.io.comparator.CompositeFileComparatorTest: org.apache.commons.io.comparator.AbstractFileComparator comparator> = $r4;
+
+        $r10 = new org.apache.commons.io.comparator.ReverseComparator;
+
+        $r11 = r0.<org.apache.commons.io.comparator.CompositeFileComparatorTest: org.apache.commons.io.comparator.AbstractFileComparator comparator>;
+
+        specialinvoke $r10.<org.apache.commons.io.comparator.ReverseComparator: void <init>(java.util.Comparator)>($r11);
+
+        r0.<org.apache.commons.io.comparator.CompositeFileComparatorTest: java.util.Comparator reverse> = $r10;
+
+        r1 = staticinvoke <org.apache.commons.io.comparator.CompositeFileComparatorTest: java.io.File getTestDirectory()>();
+
+        $r12 = new java.io.File;
+
+        specialinvoke $r12.<java.io.File: void <init>(java.io.File,java.lang.String)>(r1, "xyz.txt");
+
+        r0.<org.apache.commons.io.comparator.CompositeFileComparatorTest: java.io.File lessFile> = $r12;
+
+        $r13 = new java.io.File;
+
+        specialinvoke $r13.<java.io.File: void <init>(java.io.File,java.lang.String)>(r1, "foo.txt");
+
+        r0.<org.apache.commons.io.comparator.CompositeFileComparatorTest: java.io.File equalFile1> = $r13;
+
+        $r14 = new java.io.File;
+
+        specialinvoke $r14.<java.io.File: void <init>(java.io.File,java.lang.String)>(r1, "bar.txt");
+
+        r0.<org.apache.commons.io.comparator.CompositeFileComparatorTest: java.io.File equalFile2> = $r14;
+
+        $r15 = new java.io.File;
+
+        specialinvoke $r15.<java.io.File: void <init>(java.io.File,java.lang.String)>(r1, "foo.xyz");
+
+        r0.<org.apache.commons.io.comparator.CompositeFileComparatorTest: java.io.File moreFile> = $r15;
+
+        $r16 = r0.<org.apache.commons.io.comparator.CompositeFileComparatorTest: java.io.File lessFile>;
+
+        $r17 = virtualinvoke $r16.<java.io.File: java.io.File getParentFile()>();
+
+        $z0 = virtualinvoke $r17.<java.io.File: boolean exists()>();
+
+        if $z0 != 0 goto label01;
+
+        $r54 = new java.io.IOException;
+
+        $r55 = new java.lang.StringBuilder;
+
+        specialinvoke $r55.<java.lang.StringBuilder: void <init>(java.lang.String)>("Cannot create file ");
+
+        $r56 = r0.<org.apache.commons.io.comparator.CompositeFileComparatorTest: java.io.File lessFile>;
+
+        $r57 = virtualinvoke $r55.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r56);
+
+        $r58 = virtualinvoke $r57.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" as the parent directory does not exist");
+
+        $r59 = virtualinvoke $r58.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r54.<java.io.IOException: void <init>(java.lang.String)>($r59);
+
+        throw $r54;
+
+     label01:
+        $r18 = new java.io.BufferedOutputStream;
+
+        $r19 = new java.io.FileOutputStream;
+
+        $r20 = r0.<org.apache.commons.io.comparator.CompositeFileComparatorTest: java.io.File lessFile>;
+
+        specialinvoke $r19.<java.io.FileOutputStream: void <init>(java.io.File)>($r20);
+
+        specialinvoke $r18.<java.io.BufferedOutputStream: void <init>(java.io.OutputStream)>($r19);
+
+     label02:
+        staticinvoke <org.apache.commons.io.testtools.TestUtils: void generateTestData(java.io.OutputStream,long)>($r18, 32L);
+
+        goto label04;
+
+     label03:
+        $r61 := @caughtexception;
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.OutputStream)>($r18);
+
+        throw $r61;
+
+     label04:
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.OutputStream)>($r18);
+
+        $r21 = r0.<org.apache.commons.io.comparator.CompositeFileComparatorTest: java.io.File equalFile1>;
+
+        $r22 = virtualinvoke $r21.<java.io.File: java.io.File getParentFile()>();
+
+        $z1 = virtualinvoke $r22.<java.io.File: boolean exists()>();
+
+        if $z1 != 0 goto label05;
+
+        $r48 = new java.io.IOException;
+
+        $r49 = new java.lang.StringBuilder;
+
+        specialinvoke $r49.<java.lang.StringBuilder: void <init>(java.lang.String)>("Cannot create file ");
+
+        $r50 = r0.<org.apache.commons.io.comparator.CompositeFileComparatorTest: java.io.File equalFile1>;
+
+        $r51 = virtualinvoke $r49.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r50);
+
+        $r52 = virtualinvoke $r51.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" as the parent directory does not exist");
+
+        $r53 = virtualinvoke $r52.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r48.<java.io.IOException: void <init>(java.lang.String)>($r53);
+
+        throw $r48;
+
+     label05:
+        $r23 = new java.io.BufferedOutputStream;
+
+        $r24 = new java.io.FileOutputStream;
+
+        $r25 = r0.<org.apache.commons.io.comparator.CompositeFileComparatorTest: java.io.File equalFile1>;
+
+        specialinvoke $r24.<java.io.FileOutputStream: void <init>(java.io.File)>($r25);
+
+        specialinvoke $r23.<java.io.BufferedOutputStream: void <init>(java.io.OutputStream)>($r24);
+
+     label06:
+        staticinvoke <org.apache.commons.io.testtools.TestUtils: void generateTestData(java.io.OutputStream,long)>($r23, 48L);
+
+        goto label08;
+
+     label07:
+        $r63 := @caughtexception;
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.OutputStream)>($r23);
+
+        throw $r63;
+
+     label08:
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.OutputStream)>($r23);
+
+        $r26 = r0.<org.apache.commons.io.comparator.CompositeFileComparatorTest: java.io.File equalFile2>;
+
+        $r27 = virtualinvoke $r26.<java.io.File: java.io.File getParentFile()>();
+
+        $z2 = virtualinvoke $r27.<java.io.File: boolean exists()>();
+
+        if $z2 != 0 goto label09;
+
+        $r42 = new java.io.IOException;
+
+        $r43 = new java.lang.StringBuilder;
+
+        specialinvoke $r43.<java.lang.StringBuilder: void <init>(java.lang.String)>("Cannot create file ");
+
+        $r44 = r0.<org.apache.commons.io.comparator.CompositeFileComparatorTest: java.io.File equalFile2>;
+
+        $r45 = virtualinvoke $r43.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r44);
+
+        $r46 = virtualinvoke $r45.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" as the parent directory does not exist");
+
+        $r47 = virtualinvoke $r46.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r42.<java.io.IOException: void <init>(java.lang.String)>($r47);
+
+        throw $r42;
+
+     label09:
+        $r28 = new java.io.BufferedOutputStream;
+
+        $r29 = new java.io.FileOutputStream;
+
+        $r30 = r0.<org.apache.commons.io.comparator.CompositeFileComparatorTest: java.io.File equalFile2>;
+
+        specialinvoke $r29.<java.io.FileOutputStream: void <init>(java.io.File)>($r30);
+
+        specialinvoke $r28.<java.io.BufferedOutputStream: void <init>(java.io.OutputStream)>($r29);
+
+     label10:
+        staticinvoke <org.apache.commons.io.testtools.TestUtils: void generateTestData(java.io.OutputStream,long)>($r28, 48L);
+
+        goto label12;
+
+     label11:
+        $r60 := @caughtexception;
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.OutputStream)>($r28);
+
+        throw $r60;
+
+     label12:
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.OutputStream)>($r28);
+
+        $r31 = r0.<org.apache.commons.io.comparator.CompositeFileComparatorTest: java.io.File moreFile>;
+
+        $r32 = virtualinvoke $r31.<java.io.File: java.io.File getParentFile()>();
+
+        $z3 = virtualinvoke $r32.<java.io.File: boolean exists()>();
+
+        if $z3 != 0 goto label13;
+
+        $r36 = new java.io.IOException;
+
+        $r37 = new java.lang.StringBuilder;
+
+        specialinvoke $r37.<java.lang.StringBuilder: void <init>(java.lang.String)>("Cannot create file ");
+
+        $r38 = r0.<org.apache.commons.io.comparator.CompositeFileComparatorTest: java.io.File moreFile>;
+
+        $r39 = virtualinvoke $r37.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r38);
+
+        $r40 = virtualinvoke $r39.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" as the parent directory does not exist");
+
+        $r41 = virtualinvoke $r40.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r36.<java.io.IOException: void <init>(java.lang.String)>($r41);
+
+        throw $r36;
+
+     label13:
+        $r33 = new java.io.BufferedOutputStream;
+
+        $r34 = new java.io.FileOutputStream;
+
+        $r35 = r0.<org.apache.commons.io.comparator.CompositeFileComparatorTest: java.io.File moreFile>;
+
+        specialinvoke $r34.<java.io.FileOutputStream: void <init>(java.io.File)>($r35);
+
+        specialinvoke $r33.<java.io.BufferedOutputStream: void <init>(java.io.OutputStream)>($r34);
+
+     label14:
+        staticinvoke <org.apache.commons.io.testtools.TestUtils: void generateTestData(java.io.OutputStream,long)>($r33, 48L);
+
+        goto label16;
+
+     label15:
+        $r62 := @caughtexception;
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.OutputStream)>($r33);
+
+        throw $r62;
+
+     label16:
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.OutputStream)>($r33);
+
+        return;
+
+        catch java.lang.Throwable from label02 to label03 with label03;
+        catch java.lang.Throwable from label06 to label07 with label07;
+        catch java.lang.Throwable from label10 to label11 with label11;
+        catch java.lang.Throwable from label14 to label15 with label15;
+    }
+
+    public void constructorIterable_order()
+    {
+        org.apache.commons.io.comparator.CompositeFileComparatorTest r0;
+        java.util.ArrayList $r3;
+        java.util.Comparator $r4, $r5;
+        org.apache.commons.io.comparator.CompositeFileComparator $r6;
+        java.io.File $r7, $r8, $r9, $r10, $r12, $r13;
+        int $i0, $i2, $i3;
+        long $l1;
+        boolean $z2, $z3;
+
+        r0 := @this: org.apache.commons.io.comparator.CompositeFileComparatorTest;
+
+        $r3 = new java.util.ArrayList;
+
+        specialinvoke $r3.<java.util.ArrayList: void <init>()>();
+
+        $r4 = <org.apache.commons.io.comparator.SizeFileComparator: java.util.Comparator SIZE_COMPARATOR>;
+
+        interfaceinvoke $r3.<java.util.List: boolean add(java.lang.Object)>($r4);
+
+        $r5 = <org.apache.commons.io.comparator.ExtensionFileComparator: java.util.Comparator EXTENSION_COMPARATOR>;
+
+        interfaceinvoke $r3.<java.util.List: boolean add(java.lang.Object)>($r5);
+
+        $r6 = new org.apache.commons.io.comparator.CompositeFileComparator;
+
+        specialinvoke $r6.<org.apache.commons.io.comparator.CompositeFileComparator: void <init>(java.lang.Iterable)>($r3);
+
+        $r8 = r0.<org.apache.commons.io.comparator.CompositeFileComparatorTest: java.io.File equalFile1>;
+
+        $r7 = r0.<org.apache.commons.io.comparator.CompositeFileComparatorTest: java.io.File equalFile2>;
+
+        $i0 = interfaceinvoke $r6.<java.util.Comparator: int compare(java.lang.Object,java.lang.Object)>($r8, $r7);
+
+        $l1 = (long) $i0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("equal", 0L, $l1);
+
+        $r10 = r0.<org.apache.commons.io.comparator.CompositeFileComparatorTest: java.io.File lessFile>;
+
+        $r9 = r0.<org.apache.commons.io.comparator.CompositeFileComparatorTest: java.io.File moreFile>;
+
+        $i2 = interfaceinvoke $r6.<java.util.Comparator: int compare(java.lang.Object,java.lang.Object)>($r10, $r9);
+
+        if $i2 >= 0 goto label1;
+
+        $z2 = 1;
+
+        goto label2;
+
+     label1:
+        $z2 = 0;
+
+     label2:
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>("less", $z2);
+
+        $r13 = r0.<org.apache.commons.io.comparator.CompositeFileComparatorTest: java.io.File moreFile>;
+
+        $r12 = r0.<org.apache.commons.io.comparator.CompositeFileComparatorTest: java.io.File lessFile>;
+
+        $i3 = interfaceinvoke $r6.<java.util.Comparator: int compare(java.lang.Object,java.lang.Object)>($r13, $r12);
+
+        if $i3 <= 0 goto label3;
+
+        $z3 = 1;
+
+        goto label4;
+
+     label3:
+        $z3 = 0;
+
+     label4:
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>("more", $z3);
+
+        return;
+    }
+
+    public void constructorIterable_Null()
+    {
+        org.apache.commons.io.comparator.CompositeFileComparatorTest r0;
+        org.apache.commons.io.comparator.CompositeFileComparator $r2;
+        java.io.File $r3, $r4, $r5, $r6;
+        int $i0, $i2;
+        long $l1, $l3;
+        java.lang.String $r7;
+
+        r0 := @this: org.apache.commons.io.comparator.CompositeFileComparatorTest;
+
+        $r2 = new org.apache.commons.io.comparator.CompositeFileComparator;
+
+        specialinvoke $r2.<org.apache.commons.io.comparator.CompositeFileComparator: void <init>(java.lang.Iterable)>(null);
+
+        $r4 = r0.<org.apache.commons.io.comparator.CompositeFileComparatorTest: java.io.File lessFile>;
+
+        $r3 = r0.<org.apache.commons.io.comparator.CompositeFileComparatorTest: java.io.File moreFile>;
+
+        $i0 = interfaceinvoke $r2.<java.util.Comparator: int compare(java.lang.Object,java.lang.Object)>($r4, $r3);
+
+        $l1 = (long) $i0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("less,more", 0L, $l1);
+
+        $r6 = r0.<org.apache.commons.io.comparator.CompositeFileComparatorTest: java.io.File moreFile>;
+
+        $r5 = r0.<org.apache.commons.io.comparator.CompositeFileComparatorTest: java.io.File lessFile>;
+
+        $i2 = interfaceinvoke $r2.<java.util.Comparator: int compare(java.lang.Object,java.lang.Object)>($r6, $r5);
+
+        $l3 = (long) $i2;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("more,less", 0L, $l3);
+
+        $r7 = virtualinvoke $r2.<java.lang.Object: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,java.lang.Object,java.lang.Object)>("toString", "CompositeFileComparator{}", $r7);
+
+        return;
+    }
+
+    public void constructorArray_Null()
+    {
+        org.apache.commons.io.comparator.CompositeFileComparatorTest r0;
+        org.apache.commons.io.comparator.CompositeFileComparator $r2;
+        java.io.File $r3, $r4, $r5, $r6;
+        int $i0, $i2;
+        long $l1, $l3;
+        java.lang.String $r7;
+
+        r0 := @this: org.apache.commons.io.comparator.CompositeFileComparatorTest;
+
+        $r2 = new org.apache.commons.io.comparator.CompositeFileComparator;
+
+        specialinvoke $r2.<org.apache.commons.io.comparator.CompositeFileComparator: void <init>(java.util.Comparator[])>(null);
+
+        $r4 = r0.<org.apache.commons.io.comparator.CompositeFileComparatorTest: java.io.File lessFile>;
+
+        $r3 = r0.<org.apache.commons.io.comparator.CompositeFileComparatorTest: java.io.File moreFile>;
+
+        $i0 = interfaceinvoke $r2.<java.util.Comparator: int compare(java.lang.Object,java.lang.Object)>($r4, $r3);
+
+        $l1 = (long) $i0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("less,more", 0L, $l1);
+
+        $r6 = r0.<org.apache.commons.io.comparator.CompositeFileComparatorTest: java.io.File moreFile>;
+
+        $r5 = r0.<org.apache.commons.io.comparator.CompositeFileComparatorTest: java.io.File lessFile>;
+
+        $i2 = interfaceinvoke $r2.<java.util.Comparator: int compare(java.lang.Object,java.lang.Object)>($r6, $r5);
+
+        $l3 = (long) $i2;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("more,less", 0L, $l3);
+
+        $r7 = virtualinvoke $r2.<java.lang.Object: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,java.lang.Object,java.lang.Object)>("toString", "CompositeFileComparator{}", $r7);
+
+        return;
+    }
+}

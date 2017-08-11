@@ -1,0 +1,126 @@
+public class org.apache.commons.io.input.ProxyReaderTest extends java.lang.Object
+{
+
+    public void <init>()
+    {
+        org.apache.commons.io.input.ProxyReaderTest r0;
+
+        r0 := @this: org.apache.commons.io.input.ProxyReaderTest;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void testNullCharArray() throws java.lang.Exception
+    {
+        org.apache.commons.io.input.ProxyReaderTest r0;
+        org.apache.commons.io.input.ProxyReaderTest$ProxyReaderImpl $r2;
+        org.apache.commons.io.input.ProxyReaderTest$CustomNullReader $r3;
+        java.lang.Exception $r4, $r8;
+        java.lang.StringBuilder $r5, $r6, $r9, $r10;
+        java.lang.String $r7, $r11;
+
+        r0 := @this: org.apache.commons.io.input.ProxyReaderTest;
+
+        $r2 = new org.apache.commons.io.input.ProxyReaderTest$ProxyReaderImpl;
+
+        $r3 = new org.apache.commons.io.input.ProxyReaderTest$CustomNullReader;
+
+        specialinvoke $r3.<org.apache.commons.io.input.ProxyReaderTest$CustomNullReader: void <init>(int)>(0);
+
+        specialinvoke $r2.<org.apache.commons.io.input.ProxyReaderTest$ProxyReaderImpl: void <init>(java.io.Reader)>($r3);
+
+     label1:
+        virtualinvoke $r2.<org.apache.commons.io.input.ProxyReader: int read(char[])>(null);
+
+     label2:
+        goto label4;
+
+     label3:
+        $r8 := @caughtexception;
+
+        $r9 = new java.lang.StringBuilder;
+
+        specialinvoke $r9.<java.lang.StringBuilder: void <init>(java.lang.String)>("Writing null String threw ");
+
+        $r10 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r8);
+
+        $r11 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>($r11);
+
+     label4:
+        virtualinvoke $r2.<org.apache.commons.io.input.ProxyReader: int read(char[],int,int)>(null, 0, 0);
+
+     label5:
+        goto label7;
+
+     label6:
+        $r4 := @caughtexception;
+
+        $r5 = new java.lang.StringBuilder;
+
+        specialinvoke $r5.<java.lang.StringBuilder: void <init>(java.lang.String)>("Writing null String threw ");
+
+        $r6 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r4);
+
+        $r7 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>($r7);
+
+     label7:
+        virtualinvoke $r2.<org.apache.commons.io.input.ProxyReader: void close()>();
+
+        return;
+
+        catch java.lang.Exception from label1 to label2 with label3;
+        catch java.lang.Exception from label4 to label5 with label6;
+    }
+
+    public void testNullCharBuffer() throws java.lang.Exception
+    {
+        org.apache.commons.io.input.ProxyReaderTest r0;
+        org.apache.commons.io.input.ProxyReaderTest$ProxyReaderImpl $r3;
+        org.apache.commons.io.input.ProxyReaderTest$CustomNullReader $r4;
+        java.lang.Exception $r5;
+        java.lang.StringBuilder $r6, $r7;
+        java.lang.String $r8;
+
+        r0 := @this: org.apache.commons.io.input.ProxyReaderTest;
+
+        $r3 = new org.apache.commons.io.input.ProxyReaderTest$ProxyReaderImpl;
+
+        $r4 = new org.apache.commons.io.input.ProxyReaderTest$CustomNullReader;
+
+        specialinvoke $r4.<org.apache.commons.io.input.ProxyReaderTest$CustomNullReader: void <init>(int)>(0);
+
+        specialinvoke $r3.<org.apache.commons.io.input.ProxyReaderTest$ProxyReaderImpl: void <init>(java.io.Reader)>($r4);
+
+     label1:
+        virtualinvoke $r3.<org.apache.commons.io.input.ProxyReader: int read(java.nio.CharBuffer)>(null);
+
+     label2:
+        goto label4;
+
+     label3:
+        $r5 := @caughtexception;
+
+        $r6 = new java.lang.StringBuilder;
+
+        specialinvoke $r6.<java.lang.StringBuilder: void <init>(java.lang.String)>("Writing null String threw ");
+
+        $r7 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r5);
+
+        $r8 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>($r8);
+
+     label4:
+        virtualinvoke $r3.<org.apache.commons.io.input.ProxyReader: void close()>();
+
+        return;
+
+        catch java.lang.Exception from label1 to label2 with label3;
+    }
+}

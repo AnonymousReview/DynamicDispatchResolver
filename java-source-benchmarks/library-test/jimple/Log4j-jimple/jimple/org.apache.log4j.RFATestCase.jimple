@@ -1,0 +1,710 @@
+public class org.apache.log4j.RFATestCase extends junit.framework.TestCase
+{
+
+    public void <init>(java.lang.String)
+    {
+        org.apache.log4j.RFATestCase r0;
+        java.lang.String r1;
+
+        r0 := @this: org.apache.log4j.RFATestCase;
+
+        r1 := @parameter0: java.lang.String;
+
+        specialinvoke r0.<junit.framework.TestCase: void <init>(java.lang.String)>(r1);
+
+        return;
+    }
+
+    public void tearDown()
+    {
+        org.apache.log4j.RFATestCase r0;
+
+        r0 := @this: org.apache.log4j.RFATestCase;
+
+        staticinvoke <org.apache.log4j.LogManager: void resetConfiguration()>();
+
+        return;
+    }
+
+    public void test1() throws java.lang.Exception
+    {
+        org.apache.log4j.RFATestCase r0;
+        org.apache.log4j.Logger r1;
+        java.lang.StringBuilder $r2, $r3, $r5, $r6;
+        java.lang.String $r4, $r7;
+        java.io.File $r8, $r9;
+        boolean $z0, $z1;
+        int i0;
+
+        r0 := @this: org.apache.log4j.RFATestCase;
+
+        r1 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getLogger(java.lang.Class)>(class "org/apache/log4j/RFATestCase");
+
+        staticinvoke <org.apache.log4j.PropertyConfigurator: void configure(java.lang.String)>("input/RFA1.properties");
+
+        i0 = 0;
+
+        goto label4;
+
+     label1:
+        if i0 >= 10 goto label2;
+
+        $r5 = new java.lang.StringBuilder;
+
+        specialinvoke $r5.<java.lang.StringBuilder: void <init>(java.lang.String)>("Hello---");
+
+        $r6 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i0);
+
+        $r7 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke r1.<org.apache.log4j.Logger: void debug(java.lang.Object)>($r7);
+
+        goto label3;
+
+     label2:
+        if i0 >= 100 goto label3;
+
+        $r2 = new java.lang.StringBuilder;
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>(java.lang.String)>("Hello--");
+
+        $r3 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i0);
+
+        $r4 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke r1.<org.apache.log4j.Logger: void debug(java.lang.Object)>($r4);
+
+     label3:
+        i0 = i0 + 1;
+
+     label4:
+        if i0 < 25 goto label1;
+
+        $r8 = new java.io.File;
+
+        specialinvoke $r8.<java.io.File: void <init>(java.lang.String)>("output/RFA-test1.log");
+
+        $z0 = virtualinvoke $r8.<java.io.File: boolean exists()>();
+
+        staticinvoke <org.apache.log4j.RFATestCase: void assertTrue(boolean)>($z0);
+
+        $r9 = new java.io.File;
+
+        specialinvoke $r9.<java.io.File: void <init>(java.lang.String)>("output/RFA-test1.log.1");
+
+        $z1 = virtualinvoke $r9.<java.io.File: boolean exists()>();
+
+        staticinvoke <org.apache.log4j.RFATestCase: void assertTrue(boolean)>($z1);
+
+        return;
+    }
+
+    public void test2() throws java.lang.Exception
+    {
+        org.apache.log4j.RFATestCase r0;
+        org.apache.log4j.Logger r1, r2;
+        org.apache.log4j.PatternLayout $r5;
+        org.apache.log4j.RollingFileAppender $r6;
+        java.lang.StringBuilder $r7, $r8, $r10, $r11;
+        java.lang.String $r9, $r12;
+        java.io.File $r13, $r14, $r15, $r16, $r17;
+        boolean $z0, $z1, $z2, $z3, $z4;
+        int i0;
+
+        r0 := @this: org.apache.log4j.RFATestCase;
+
+        r1 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getLogger(java.lang.Class)>(class "org/apache/log4j/RFATestCase");
+
+        r2 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getRootLogger()>();
+
+        $r5 = new org.apache.log4j.PatternLayout;
+
+        specialinvoke $r5.<org.apache.log4j.PatternLayout: void <init>(java.lang.String)>("%m\n");
+
+        $r6 = new org.apache.log4j.RollingFileAppender;
+
+        specialinvoke $r6.<org.apache.log4j.RollingFileAppender: void <init>()>();
+
+        virtualinvoke $r6.<org.apache.log4j.RollingFileAppender: void setName(java.lang.String)>("ROLLING");
+
+        virtualinvoke $r6.<org.apache.log4j.RollingFileAppender: void setLayout(org.apache.log4j.Layout)>($r5);
+
+        virtualinvoke $r6.<org.apache.log4j.RollingFileAppender: void setAppend(boolean)>(0);
+
+        virtualinvoke $r6.<org.apache.log4j.RollingFileAppender: void setMaxBackupIndex(int)>(3);
+
+        virtualinvoke $r6.<org.apache.log4j.RollingFileAppender: void setMaximumFileSize(long)>(100L);
+
+        virtualinvoke $r6.<org.apache.log4j.RollingFileAppender: void setFile(java.lang.String)>("output/RFA-test2.log");
+
+        virtualinvoke $r6.<org.apache.log4j.RollingFileAppender: void activateOptions()>();
+
+        virtualinvoke r2.<org.apache.log4j.Logger: void addAppender(org.apache.log4j.Appender)>($r6);
+
+        i0 = 0;
+
+        goto label4;
+
+     label1:
+        if i0 >= 10 goto label2;
+
+        $r10 = new java.lang.StringBuilder;
+
+        specialinvoke $r10.<java.lang.StringBuilder: void <init>(java.lang.String)>("Hello---");
+
+        $r11 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i0);
+
+        $r12 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke r1.<org.apache.log4j.Logger: void debug(java.lang.Object)>($r12);
+
+        goto label3;
+
+     label2:
+        if i0 >= 100 goto label3;
+
+        $r7 = new java.lang.StringBuilder;
+
+        specialinvoke $r7.<java.lang.StringBuilder: void <init>(java.lang.String)>("Hello--");
+
+        $r8 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i0);
+
+        $r9 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke r1.<org.apache.log4j.Logger: void debug(java.lang.Object)>($r9);
+
+     label3:
+        i0 = i0 + 1;
+
+     label4:
+        if i0 < 55 goto label1;
+
+        $r13 = new java.io.File;
+
+        specialinvoke $r13.<java.io.File: void <init>(java.lang.String)>("output/RFA-test2.log");
+
+        $z0 = virtualinvoke $r13.<java.io.File: boolean exists()>();
+
+        staticinvoke <org.apache.log4j.RFATestCase: void assertTrue(boolean)>($z0);
+
+        $r14 = new java.io.File;
+
+        specialinvoke $r14.<java.io.File: void <init>(java.lang.String)>("output/RFA-test2.log.1");
+
+        $z1 = virtualinvoke $r14.<java.io.File: boolean exists()>();
+
+        staticinvoke <org.apache.log4j.RFATestCase: void assertTrue(boolean)>($z1);
+
+        $r15 = new java.io.File;
+
+        specialinvoke $r15.<java.io.File: void <init>(java.lang.String)>("output/RFA-test2.log.2");
+
+        $z2 = virtualinvoke $r15.<java.io.File: boolean exists()>();
+
+        staticinvoke <org.apache.log4j.RFATestCase: void assertTrue(boolean)>($z2);
+
+        $r16 = new java.io.File;
+
+        specialinvoke $r16.<java.io.File: void <init>(java.lang.String)>("output/RFA-test2.log.3");
+
+        $z3 = virtualinvoke $r16.<java.io.File: boolean exists()>();
+
+        staticinvoke <org.apache.log4j.RFATestCase: void assertTrue(boolean)>($z3);
+
+        $r17 = new java.io.File;
+
+        specialinvoke $r17.<java.io.File: void <init>(java.lang.String)>("output/RFA-test2.log.4");
+
+        $z4 = virtualinvoke $r17.<java.io.File: boolean exists()>();
+
+        staticinvoke <org.apache.log4j.RFATestCase: void assertFalse(boolean)>($z4);
+
+        return;
+    }
+
+    public void test2ParamConstructor() throws java.io.IOException
+    {
+        org.apache.log4j.RFATestCase r0;
+        org.apache.log4j.SimpleLayout $r3;
+        org.apache.log4j.RollingFileAppender $r4;
+        int $i0;
+        long $l1;
+
+        r0 := @this: org.apache.log4j.RFATestCase;
+
+        $r3 = new org.apache.log4j.SimpleLayout;
+
+        specialinvoke $r3.<org.apache.log4j.SimpleLayout: void <init>()>();
+
+        $r4 = new org.apache.log4j.RollingFileAppender;
+
+        specialinvoke $r4.<org.apache.log4j.RollingFileAppender: void <init>(org.apache.log4j.Layout,java.lang.String)>($r3, "output/rfa_2param.log");
+
+        $i0 = virtualinvoke $r4.<org.apache.log4j.RollingFileAppender: int getMaxBackupIndex()>();
+
+        staticinvoke <org.apache.log4j.RFATestCase: void assertEquals(int,int)>(1, $i0);
+
+        $l1 = virtualinvoke $r4.<org.apache.log4j.RollingFileAppender: long getMaximumFileSize()>();
+
+        staticinvoke <org.apache.log4j.RFATestCase: void assertEquals(long,long)>(10485760L, $l1);
+
+        return;
+    }
+
+    public void test3ParamConstructor() throws java.io.IOException
+    {
+        org.apache.log4j.RFATestCase r0;
+        org.apache.log4j.SimpleLayout $r3;
+        org.apache.log4j.RollingFileAppender $r4;
+        int $i0;
+
+        r0 := @this: org.apache.log4j.RFATestCase;
+
+        $r3 = new org.apache.log4j.SimpleLayout;
+
+        specialinvoke $r3.<org.apache.log4j.SimpleLayout: void <init>()>();
+
+        $r4 = new org.apache.log4j.RollingFileAppender;
+
+        specialinvoke $r4.<org.apache.log4j.RollingFileAppender: void <init>(org.apache.log4j.Layout,java.lang.String,boolean)>($r3, "output/rfa_3param.log", 0);
+
+        $i0 = virtualinvoke $r4.<org.apache.log4j.RollingFileAppender: int getMaxBackupIndex()>();
+
+        staticinvoke <org.apache.log4j.RFATestCase: void assertEquals(int,int)>(1, $i0);
+
+        return;
+    }
+
+    public void testLockDotOne() throws java.lang.Exception
+    {
+        org.apache.log4j.RFATestCase r0;
+        org.apache.log4j.Logger r1, r2;
+        org.apache.log4j.PatternLayout $r7;
+        org.apache.log4j.RollingFileAppender $r8;
+        java.io.File $r9, $r21, $r22, $r23, $r24, $r25, $r26, $r27, $r28, $r29;
+        java.io.FileWriter $r10, $r11;
+        java.lang.StringBuilder $r12, $r13, $r15, $r16, $r18, $r19;
+        java.lang.String $r14, $r17, $r20;
+        boolean $z1, $z2, $z3, $z4, $z5, $z6;
+        long $l0, $l2, $l3;
+        byte $b1;
+        int i4, i5;
+
+        r0 := @this: org.apache.log4j.RFATestCase;
+
+        r1 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getLogger(java.lang.Class)>(class "org/apache/log4j/RFATestCase");
+
+        r2 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getRootLogger()>();
+
+        $r7 = new org.apache.log4j.PatternLayout;
+
+        specialinvoke $r7.<org.apache.log4j.PatternLayout: void <init>(java.lang.String)>("%m\n");
+
+        $r8 = new org.apache.log4j.RollingFileAppender;
+
+        specialinvoke $r8.<org.apache.log4j.RollingFileAppender: void <init>()>();
+
+        virtualinvoke $r8.<org.apache.log4j.RollingFileAppender: void setName(java.lang.String)>("ROLLING");
+
+        virtualinvoke $r8.<org.apache.log4j.RollingFileAppender: void setLayout(org.apache.log4j.Layout)>($r7);
+
+        virtualinvoke $r8.<org.apache.log4j.RollingFileAppender: void setAppend(boolean)>(0);
+
+        virtualinvoke $r8.<org.apache.log4j.RollingFileAppender: void setMaxBackupIndex(int)>(10);
+
+        virtualinvoke $r8.<org.apache.log4j.RollingFileAppender: void setMaximumFileSize(long)>(100L);
+
+        virtualinvoke $r8.<org.apache.log4j.RollingFileAppender: void setFile(java.lang.String)>("output/RFA-dot1.log");
+
+        virtualinvoke $r8.<org.apache.log4j.RollingFileAppender: void activateOptions()>();
+
+        virtualinvoke r2.<org.apache.log4j.Logger: void addAppender(org.apache.log4j.Appender)>($r8);
+
+        $r9 = new java.io.File;
+
+        specialinvoke $r9.<java.io.File: void <init>(java.lang.String)>("output/RFA-dot1.log.2");
+
+        virtualinvoke $r9.<java.io.File: boolean delete()>();
+
+        $r10 = new java.io.FileWriter;
+
+        specialinvoke $r10.<java.io.FileWriter: void <init>(java.lang.String)>("output/RFA-dot1.log.1");
+
+        virtualinvoke $r10.<java.io.FileWriter: void write(java.lang.String)>("Locked file");
+
+        $r11 = new java.io.FileWriter;
+
+        specialinvoke $r11.<java.io.FileWriter: void <init>(java.lang.String)>("output/RFA-dot1.log.5");
+
+        virtualinvoke $r11.<java.io.FileWriter: void write(java.lang.String)>("Unlocked file");
+
+        virtualinvoke $r11.<java.io.FileWriter: void close()>();
+
+        i4 = 0;
+
+        goto label4;
+
+     label1:
+        if i4 >= 10 goto label2;
+
+        $r15 = new java.lang.StringBuilder;
+
+        specialinvoke $r15.<java.lang.StringBuilder: void <init>(java.lang.String)>("Hello---");
+
+        $r16 = virtualinvoke $r15.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i4);
+
+        $r17 = virtualinvoke $r16.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke r1.<org.apache.log4j.Logger: void debug(java.lang.Object)>($r17);
+
+        goto label3;
+
+     label2:
+        if i4 >= 100 goto label3;
+
+        $r12 = new java.lang.StringBuilder;
+
+        specialinvoke $r12.<java.lang.StringBuilder: void <init>(java.lang.String)>("Hello--");
+
+        $r13 = virtualinvoke $r12.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i4);
+
+        $r14 = virtualinvoke $r13.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke r1.<org.apache.log4j.Logger: void debug(java.lang.Object)>($r14);
+
+     label3:
+        i4 = i4 + 1;
+
+     label4:
+        if i4 < 15 goto label1;
+
+        virtualinvoke $r10.<java.io.FileWriter: void close()>();
+
+        i5 = 15;
+
+        goto label6;
+
+     label5:
+        $r18 = new java.lang.StringBuilder;
+
+        specialinvoke $r18.<java.lang.StringBuilder: void <init>(java.lang.String)>("Hello--");
+
+        $r19 = virtualinvoke $r18.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i5);
+
+        $r20 = virtualinvoke $r19.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke r1.<org.apache.log4j.Logger: void debug(java.lang.Object)>($r20);
+
+        i5 = i5 + 1;
+
+     label6:
+        if i5 < 25 goto label5;
+
+        virtualinvoke $r8.<org.apache.log4j.RollingFileAppender: void close()>();
+
+        $r21 = new java.io.File;
+
+        specialinvoke $r21.<java.io.File: void <init>(java.lang.String)>("output/RFA-dot1.log.7");
+
+        $z1 = virtualinvoke $r21.<java.io.File: boolean exists()>();
+
+        staticinvoke <org.apache.log4j.RFATestCase: void assertTrue(boolean)>($z1);
+
+        $r22 = new java.io.File;
+
+        specialinvoke $r22.<java.io.File: void <init>(java.lang.String)>("output/RFA-dot1.log.2");
+
+        $l0 = virtualinvoke $r22.<java.io.File: long length()>();
+
+        $b1 = $l0 cmp 15L;
+
+        if $b1 >= 0 goto label7;
+
+        $r28 = new java.io.File;
+
+        specialinvoke $r28.<java.io.File: void <init>(java.lang.String)>("output/RFA-dot1.log");
+
+        $l2 = virtualinvoke $r28.<java.io.File: long length()>();
+
+        staticinvoke <org.apache.log4j.RFATestCase: void assertEquals(long,long)>(50L, $l2);
+
+        $r29 = new java.io.File;
+
+        specialinvoke $r29.<java.io.File: void <init>(java.lang.String)>("output/RFA-dot1.log.1");
+
+        $l3 = virtualinvoke $r29.<java.io.File: long length()>();
+
+        staticinvoke <org.apache.log4j.RFATestCase: void assertEquals(long,long)>(200L, $l3);
+
+        goto label8;
+
+     label7:
+        $r23 = new java.io.File;
+
+        specialinvoke $r23.<java.io.File: void <init>(java.lang.String)>("output/RFA-dot1.log");
+
+        $z2 = virtualinvoke $r23.<java.io.File: boolean exists()>();
+
+        staticinvoke <org.apache.log4j.RFATestCase: void assertTrue(boolean)>($z2);
+
+        $r24 = new java.io.File;
+
+        specialinvoke $r24.<java.io.File: void <init>(java.lang.String)>("output/RFA-dot1.log.1");
+
+        $z3 = virtualinvoke $r24.<java.io.File: boolean exists()>();
+
+        staticinvoke <org.apache.log4j.RFATestCase: void assertTrue(boolean)>($z3);
+
+        $r25 = new java.io.File;
+
+        specialinvoke $r25.<java.io.File: void <init>(java.lang.String)>("output/RFA-dot1.log.2");
+
+        $z4 = virtualinvoke $r25.<java.io.File: boolean exists()>();
+
+        staticinvoke <org.apache.log4j.RFATestCase: void assertTrue(boolean)>($z4);
+
+        $r26 = new java.io.File;
+
+        specialinvoke $r26.<java.io.File: void <init>(java.lang.String)>("output/RFA-dot1.log.3");
+
+        $z5 = virtualinvoke $r26.<java.io.File: boolean exists()>();
+
+        staticinvoke <org.apache.log4j.RFATestCase: void assertTrue(boolean)>($z5);
+
+        $r27 = new java.io.File;
+
+        specialinvoke $r27.<java.io.File: void <init>(java.lang.String)>("output/RFA-dot1.log.4");
+
+        $z6 = virtualinvoke $r27.<java.io.File: boolean exists()>();
+
+        staticinvoke <org.apache.log4j.RFATestCase: void assertFalse(boolean)>($z6);
+
+     label8:
+        return;
+    }
+
+    public void testLockDotThree() throws java.lang.Exception
+    {
+        org.apache.log4j.RFATestCase r0;
+        org.apache.log4j.Logger r1, r2;
+        org.apache.log4j.PatternLayout $r7;
+        org.apache.log4j.RollingFileAppender $r8;
+        java.io.File $r9, $r10, $r11, $r23, $r24, $r25, $r26, $r27, $r28, $r29, $r30, $r31, $r32;
+        java.io.FileWriter $r12, $r13;
+        java.lang.StringBuilder $r14, $r15, $r17, $r18, $r20, $r21;
+        java.lang.String $r16, $r19, $r22;
+        boolean $z3, $z4, $z5, $z6, $z7, $z8, $z9;
+        long $l0, $l1, $l2;
+        int i3, i4;
+
+        r0 := @this: org.apache.log4j.RFATestCase;
+
+        r1 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getLogger(java.lang.Class)>(class "org/apache/log4j/RFATestCase");
+
+        r2 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getRootLogger()>();
+
+        $r7 = new org.apache.log4j.PatternLayout;
+
+        specialinvoke $r7.<org.apache.log4j.PatternLayout: void <init>(java.lang.String)>("%m\n");
+
+        $r8 = new org.apache.log4j.RollingFileAppender;
+
+        specialinvoke $r8.<org.apache.log4j.RollingFileAppender: void <init>()>();
+
+        virtualinvoke $r8.<org.apache.log4j.RollingFileAppender: void setName(java.lang.String)>("ROLLING");
+
+        virtualinvoke $r8.<org.apache.log4j.RollingFileAppender: void setLayout(org.apache.log4j.Layout)>($r7);
+
+        virtualinvoke $r8.<org.apache.log4j.RollingFileAppender: void setAppend(boolean)>(0);
+
+        virtualinvoke $r8.<org.apache.log4j.RollingFileAppender: void setMaxBackupIndex(int)>(10);
+
+        virtualinvoke $r8.<org.apache.log4j.RollingFileAppender: void setMaximumFileSize(long)>(100L);
+
+        virtualinvoke $r8.<org.apache.log4j.RollingFileAppender: void setFile(java.lang.String)>("output/RFA-dot3.log");
+
+        virtualinvoke $r8.<org.apache.log4j.RollingFileAppender: void activateOptions()>();
+
+        virtualinvoke r2.<org.apache.log4j.Logger: void addAppender(org.apache.log4j.Appender)>($r8);
+
+        $r9 = new java.io.File;
+
+        specialinvoke $r9.<java.io.File: void <init>(java.lang.String)>("output/RFA-dot3.log.1");
+
+        virtualinvoke $r9.<java.io.File: boolean delete()>();
+
+        $r10 = new java.io.File;
+
+        specialinvoke $r10.<java.io.File: void <init>(java.lang.String)>("output/RFA-dot3.log.2");
+
+        virtualinvoke $r10.<java.io.File: boolean delete()>();
+
+        $r11 = new java.io.File;
+
+        specialinvoke $r11.<java.io.File: void <init>(java.lang.String)>("output/RFA-dot3.log.4");
+
+        virtualinvoke $r11.<java.io.File: boolean delete()>();
+
+        $r12 = new java.io.FileWriter;
+
+        specialinvoke $r12.<java.io.FileWriter: void <init>(java.lang.String)>("output/RFA-dot3.log.3");
+
+        virtualinvoke $r12.<java.io.FileWriter: void write(java.lang.String)>("Locked file");
+
+        $r13 = new java.io.FileWriter;
+
+        specialinvoke $r13.<java.io.FileWriter: void <init>(java.lang.String)>("output/RFA-dot3.log.5");
+
+        virtualinvoke $r13.<java.io.FileWriter: void write(java.lang.String)>("Unlocked file");
+
+        virtualinvoke $r13.<java.io.FileWriter: void close()>();
+
+        i3 = 0;
+
+        goto label4;
+
+     label1:
+        if i3 >= 10 goto label2;
+
+        $r17 = new java.lang.StringBuilder;
+
+        specialinvoke $r17.<java.lang.StringBuilder: void <init>(java.lang.String)>("Hello---");
+
+        $r18 = virtualinvoke $r17.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i3);
+
+        $r19 = virtualinvoke $r18.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke r1.<org.apache.log4j.Logger: void debug(java.lang.Object)>($r19);
+
+        goto label3;
+
+     label2:
+        if i3 >= 100 goto label3;
+
+        $r14 = new java.lang.StringBuilder;
+
+        specialinvoke $r14.<java.lang.StringBuilder: void <init>(java.lang.String)>("Hello--");
+
+        $r15 = virtualinvoke $r14.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i3);
+
+        $r16 = virtualinvoke $r15.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke r1.<org.apache.log4j.Logger: void debug(java.lang.Object)>($r16);
+
+     label3:
+        i3 = i3 + 1;
+
+     label4:
+        if i3 < 15 goto label1;
+
+        virtualinvoke $r12.<java.io.FileWriter: void close()>();
+
+        i4 = 15;
+
+        goto label6;
+
+     label5:
+        $r20 = new java.lang.StringBuilder;
+
+        specialinvoke $r20.<java.lang.StringBuilder: void <init>(java.lang.String)>("Hello--");
+
+        $r21 = virtualinvoke $r20.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i4);
+
+        $r22 = virtualinvoke $r21.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke r1.<org.apache.log4j.Logger: void debug(java.lang.Object)>($r22);
+
+        i4 = i4 + 1;
+
+     label6:
+        if i4 < 35 goto label5;
+
+        virtualinvoke $r8.<org.apache.log4j.RollingFileAppender: void close()>();
+
+        $r23 = new java.io.File;
+
+        specialinvoke $r23.<java.io.File: void <init>(java.lang.String)>("output/RFA-dot3.log.8");
+
+        $z3 = virtualinvoke $r23.<java.io.File: boolean exists()>();
+
+        staticinvoke <org.apache.log4j.RFATestCase: void assertTrue(boolean)>($z3);
+
+        $r24 = new java.io.File;
+
+        specialinvoke $r24.<java.io.File: void <init>(java.lang.String)>("output/RFA-dot3.log.5");
+
+        $z4 = virtualinvoke $r24.<java.io.File: boolean exists()>();
+
+        if $z4 == 0 goto label7;
+
+        $r30 = new java.io.File;
+
+        specialinvoke $r30.<java.io.File: void <init>(java.lang.String)>("output/RFA-dot3.log");
+
+        $l0 = virtualinvoke $r30.<java.io.File: long length()>();
+
+        staticinvoke <org.apache.log4j.RFATestCase: void assertEquals(long,long)>(50L, $l0);
+
+        $r31 = new java.io.File;
+
+        specialinvoke $r31.<java.io.File: void <init>(java.lang.String)>("output/RFA-dot3.log.1");
+
+        $l1 = virtualinvoke $r31.<java.io.File: long length()>();
+
+        staticinvoke <org.apache.log4j.RFATestCase: void assertEquals(long,long)>(100L, $l1);
+
+        $r32 = new java.io.File;
+
+        specialinvoke $r32.<java.io.File: void <init>(java.lang.String)>("output/RFA-dot3.log.2");
+
+        $l2 = virtualinvoke $r32.<java.io.File: long length()>();
+
+        staticinvoke <org.apache.log4j.RFATestCase: void assertEquals(long,long)>(200L, $l2);
+
+        goto label8;
+
+     label7:
+        $r25 = new java.io.File;
+
+        specialinvoke $r25.<java.io.File: void <init>(java.lang.String)>("output/RFA-dot3.log");
+
+        $z5 = virtualinvoke $r25.<java.io.File: boolean exists()>();
+
+        staticinvoke <org.apache.log4j.RFATestCase: void assertTrue(boolean)>($z5);
+
+        $r26 = new java.io.File;
+
+        specialinvoke $r26.<java.io.File: void <init>(java.lang.String)>("output/RFA-dot3.log.1");
+
+        $z6 = virtualinvoke $r26.<java.io.File: boolean exists()>();
+
+        staticinvoke <org.apache.log4j.RFATestCase: void assertTrue(boolean)>($z6);
+
+        $r27 = new java.io.File;
+
+        specialinvoke $r27.<java.io.File: void <init>(java.lang.String)>("output/RFA-dot3.log.2");
+
+        $z7 = virtualinvoke $r27.<java.io.File: boolean exists()>();
+
+        staticinvoke <org.apache.log4j.RFATestCase: void assertTrue(boolean)>($z7);
+
+        $r28 = new java.io.File;
+
+        specialinvoke $r28.<java.io.File: void <init>(java.lang.String)>("output/RFA-dot3.log.3");
+
+        $z8 = virtualinvoke $r28.<java.io.File: boolean exists()>();
+
+        staticinvoke <org.apache.log4j.RFATestCase: void assertTrue(boolean)>($z8);
+
+        $r29 = new java.io.File;
+
+        specialinvoke $r29.<java.io.File: void <init>(java.lang.String)>("output/RFA-dot3.log.4");
+
+        $z9 = virtualinvoke $r29.<java.io.File: boolean exists()>();
+
+        staticinvoke <org.apache.log4j.RFATestCase: void assertFalse(boolean)>($z9);
+
+     label8:
+        return;
+    }
+}

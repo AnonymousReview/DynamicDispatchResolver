@@ -1,0 +1,57 @@
+final class org.apache.log4j.LayoutTest$MockLayout extends org.apache.log4j.Layout
+{
+
+    private void <init>()
+    {
+        org.apache.log4j.LayoutTest$MockLayout r0;
+
+        r0 := @this: org.apache.log4j.LayoutTest$MockLayout;
+
+        specialinvoke r0.<org.apache.log4j.Layout: void <init>()>();
+
+        return;
+    }
+
+    public java.lang.String format(org.apache.log4j.spi.LoggingEvent)
+    {
+        org.apache.log4j.LayoutTest$MockLayout r0;
+        org.apache.log4j.spi.LoggingEvent r1;
+
+        r0 := @this: org.apache.log4j.LayoutTest$MockLayout;
+
+        r1 := @parameter0: org.apache.log4j.spi.LoggingEvent;
+
+        return "Mock";
+    }
+
+    public void activateOptions()
+    {
+        org.apache.log4j.LayoutTest$MockLayout r0;
+
+        r0 := @this: org.apache.log4j.LayoutTest$MockLayout;
+
+        return;
+    }
+
+    public boolean ignoresThrowable()
+    {
+        org.apache.log4j.LayoutTest$MockLayout r0;
+
+        r0 := @this: org.apache.log4j.LayoutTest$MockLayout;
+
+        return 1;
+    }
+
+    void <init>(org.apache.log4j.LayoutTest$MockLayout)
+    {
+        org.apache.log4j.LayoutTest$MockLayout r0, r1;
+
+        r0 := @this: org.apache.log4j.LayoutTest$MockLayout;
+
+        r1 := @parameter0: org.apache.log4j.LayoutTest$MockLayout;
+
+        specialinvoke r0.<org.apache.log4j.LayoutTest$MockLayout: void <init>()>();
+
+        return;
+    }
+}

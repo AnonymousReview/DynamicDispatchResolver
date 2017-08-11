@@ -1,0 +1,46 @@
+public class org.apache.commons.logging.log4j.log4j12.AppClasspathStandardTestCase extends junit.framework.TestCase
+{
+
+    public void <init>()
+    {
+        org.apache.commons.logging.log4j.log4j12.AppClasspathStandardTestCase r0;
+
+        r0 := @this: org.apache.commons.logging.log4j.log4j12.AppClasspathStandardTestCase;
+
+        specialinvoke r0.<junit.framework.TestCase: void <init>()>();
+
+        return;
+    }
+
+    public static junit.framework.Test suite() throws java.lang.Exception
+    {
+        java.lang.Class r1, $r3;
+        org.apache.commons.logging.PathableClassLoader $r2;
+        java.lang.ClassLoader $r4;
+        org.apache.commons.logging.PathableTestSuite $r5;
+
+        $r2 = new org.apache.commons.logging.PathableClassLoader;
+
+        specialinvoke $r2.<org.apache.commons.logging.PathableClassLoader: void <init>(java.lang.ClassLoader)>(null);
+
+        $r3 = class "junit/framework/Test";
+
+        $r4 = virtualinvoke $r3.<java.lang.Class: java.lang.ClassLoader getClassLoader()>();
+
+        virtualinvoke $r2.<org.apache.commons.logging.PathableClassLoader: void useExplicitLoader(java.lang.String,java.lang.ClassLoader)>("junit.", $r4);
+
+        virtualinvoke $r2.<org.apache.commons.logging.PathableClassLoader: void addLogicalLib(java.lang.String)>("testclasses");
+
+        virtualinvoke $r2.<org.apache.commons.logging.PathableClassLoader: void addLogicalLib(java.lang.String)>("log4j12");
+
+        virtualinvoke $r2.<org.apache.commons.logging.PathableClassLoader: void addLogicalLib(java.lang.String)>("commons-logging");
+
+        r1 = virtualinvoke $r2.<org.apache.commons.logging.PathableClassLoader: java.lang.Class loadClass(java.lang.String)>("org.apache.commons.logging.log4j.log4j12.Log4j12StandardTests");
+
+        $r5 = new org.apache.commons.logging.PathableTestSuite;
+
+        specialinvoke $r5.<org.apache.commons.logging.PathableTestSuite: void <init>(java.lang.Class,java.lang.ClassLoader)>(r1, $r2);
+
+        return $r5;
+    }
+}

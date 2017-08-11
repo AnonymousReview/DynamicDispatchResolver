@@ -1,0 +1,351 @@
+public class org.apache.commons.logging.LogSource extends java.lang.Object
+{
+    protected static java.util.Hashtable logs;
+    protected static boolean log4jIsAvailable;
+    protected static boolean jdk14IsAvailable;
+    protected static java.lang.reflect.Constructor logImplctor;
+
+    static void <clinit>()
+    {
+        java.util.Hashtable $r0;
+        java.lang.Class $r1, $r2, $r3;
+        boolean $z0, $z1, $z2, $z3;
+        java.lang.Throwable $r4, $r5, $r6, $r7, $r8, $r9, $r10;
+        java.lang.String r13;
+
+        $r0 = new java.util.Hashtable;
+
+        specialinvoke $r0.<java.util.Hashtable: void <init>()>();
+
+        <org.apache.commons.logging.LogSource: java.util.Hashtable logs> = $r0;
+
+        <org.apache.commons.logging.LogSource: boolean log4jIsAvailable> = 0;
+
+        <org.apache.commons.logging.LogSource: boolean jdk14IsAvailable> = 0;
+
+        <org.apache.commons.logging.LogSource: java.lang.reflect.Constructor logImplctor> = null;
+
+     label01:
+        $r1 = staticinvoke <java.lang.Class: java.lang.Class forName(java.lang.String)>("org.apache.log4j.Logger");
+
+        if $r1 == null goto label02;
+
+        $z2 = 1;
+
+        goto label03;
+
+     label02:
+        $z2 = 0;
+
+     label03:
+        <org.apache.commons.logging.LogSource: boolean log4jIsAvailable> = $z2;
+
+     label04:
+        goto label06;
+
+     label05:
+        $r8 := @caughtexception;
+
+        <org.apache.commons.logging.LogSource: boolean log4jIsAvailable> = 0;
+
+     label06:
+        $r2 = staticinvoke <java.lang.Class: java.lang.Class forName(java.lang.String)>("java.util.logging.Logger");
+
+        if $r2 == null goto label07;
+
+        $r3 = staticinvoke <java.lang.Class: java.lang.Class forName(java.lang.String)>("org.apache.commons.logging.impl.Jdk14Logger");
+
+        if $r3 == null goto label07;
+
+        $z3 = 1;
+
+        goto label08;
+
+     label07:
+        $z3 = 0;
+
+     label08:
+        <org.apache.commons.logging.LogSource: boolean jdk14IsAvailable> = $z3;
+
+     label09:
+        goto label11;
+
+     label10:
+        $r4 := @caughtexception;
+
+        <org.apache.commons.logging.LogSource: boolean jdk14IsAvailable> = 0;
+
+     label11:
+        r13 = null;
+
+     label12:
+        r13 = staticinvoke <java.lang.System: java.lang.String getProperty(java.lang.String)>("org.apache.commons.logging.log");
+
+        if r13 != null goto label15;
+
+        r13 = staticinvoke <java.lang.System: java.lang.String getProperty(java.lang.String)>("org.apache.commons.logging.Log");
+
+     label13:
+        goto label15;
+
+     label14:
+        $r10 := @caughtexception;
+
+     label15:
+        if r13 == null goto label22;
+
+     label16:
+        staticinvoke <org.apache.commons.logging.LogSource: void setLogImplementation(java.lang.String)>(r13);
+
+     label17:
+        goto label30;
+
+     label18:
+        $r6 := @caughtexception;
+
+     label19:
+        staticinvoke <org.apache.commons.logging.LogSource: void setLogImplementation(java.lang.String)>("org.apache.commons.logging.impl.NoOpLog");
+
+     label20:
+        goto label30;
+
+     label21:
+        $r7 := @caughtexception;
+
+        goto label30;
+
+     label22:
+        $z0 = <org.apache.commons.logging.LogSource: boolean log4jIsAvailable>;
+
+        if $z0 == 0 goto label23;
+
+        staticinvoke <org.apache.commons.logging.LogSource: void setLogImplementation(java.lang.String)>("org.apache.commons.logging.impl.Log4JLogger");
+
+        goto label30;
+
+     label23:
+        $z1 = <org.apache.commons.logging.LogSource: boolean jdk14IsAvailable>;
+
+        if $z1 == 0 goto label24;
+
+        staticinvoke <org.apache.commons.logging.LogSource: void setLogImplementation(java.lang.String)>("org.apache.commons.logging.impl.Jdk14Logger");
+
+        goto label30;
+
+     label24:
+        staticinvoke <org.apache.commons.logging.LogSource: void setLogImplementation(java.lang.String)>("org.apache.commons.logging.impl.NoOpLog");
+
+     label25:
+        goto label30;
+
+     label26:
+        $r5 := @caughtexception;
+
+     label27:
+        staticinvoke <org.apache.commons.logging.LogSource: void setLogImplementation(java.lang.String)>("org.apache.commons.logging.impl.NoOpLog");
+
+     label28:
+        goto label30;
+
+     label29:
+        $r9 := @caughtexception;
+
+     label30:
+        return;
+
+        catch java.lang.Throwable from label01 to label04 with label05;
+        catch java.lang.Throwable from label06 to label09 with label10;
+        catch java.lang.Throwable from label12 to label13 with label14;
+        catch java.lang.Throwable from label16 to label17 with label18;
+        catch java.lang.Throwable from label19 to label20 with label21;
+        catch java.lang.Throwable from label22 to label25 with label26;
+        catch java.lang.Throwable from label27 to label28 with label29;
+    }
+
+    private void <init>()
+    {
+        org.apache.commons.logging.LogSource r0;
+
+        r0 := @this: org.apache.commons.logging.LogSource;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static void setLogImplementation(java.lang.String) throws java.lang.LinkageError, java.lang.NoSuchMethodException, java.lang.SecurityException, java.lang.ClassNotFoundException
+    {
+        java.lang.String r0, $r2;
+        java.lang.Class[] r1;
+        java.lang.Class $r3, r6;
+        java.lang.reflect.Constructor $r4;
+        java.lang.Throwable $r5;
+
+        r0 := @parameter0: java.lang.String;
+
+     label1:
+        r6 = staticinvoke <java.lang.Class: java.lang.Class forName(java.lang.String)>(r0);
+
+        r1 = newarray (java.lang.Class)[1];
+
+        $r2 = "";
+
+        $r3 = virtualinvoke $r2.<java.lang.Object: java.lang.Class getClass()>();
+
+        r1[0] = $r3;
+
+        $r4 = virtualinvoke r6.<java.lang.Class: java.lang.reflect.Constructor getConstructor(java.lang.Class[])>(r1);
+
+        <org.apache.commons.logging.LogSource: java.lang.reflect.Constructor logImplctor> = $r4;
+
+     label2:
+        goto label4;
+
+     label3:
+        $r5 := @caughtexception;
+
+        <org.apache.commons.logging.LogSource: java.lang.reflect.Constructor logImplctor> = null;
+
+     label4:
+        return;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+    }
+
+    public static void setLogImplementation(java.lang.Class) throws java.lang.LinkageError, java.lang.ExceptionInInitializerError, java.lang.NoSuchMethodException, java.lang.SecurityException
+    {
+        java.lang.Class r0, $r3;
+        java.lang.Class[] r1;
+        java.lang.String $r2;
+        java.lang.reflect.Constructor $r4;
+
+        r0 := @parameter0: java.lang.Class;
+
+        r1 = newarray (java.lang.Class)[1];
+
+        $r2 = "";
+
+        $r3 = virtualinvoke $r2.<java.lang.Object: java.lang.Class getClass()>();
+
+        r1[0] = $r3;
+
+        $r4 = virtualinvoke r0.<java.lang.Class: java.lang.reflect.Constructor getConstructor(java.lang.Class[])>(r1);
+
+        <org.apache.commons.logging.LogSource: java.lang.reflect.Constructor logImplctor> = $r4;
+
+        return;
+    }
+
+    public static org.apache.commons.logging.Log getInstance(java.lang.String)
+    {
+        java.lang.String r0;
+        java.util.Hashtable $r1, $r3;
+        java.lang.Object $r2;
+        org.apache.commons.logging.Log r5;
+
+        r0 := @parameter0: java.lang.String;
+
+        $r1 = <org.apache.commons.logging.LogSource: java.util.Hashtable logs>;
+
+        $r2 = virtualinvoke $r1.<java.util.Hashtable: java.lang.Object get(java.lang.Object)>(r0);
+
+        r5 = (org.apache.commons.logging.Log) $r2;
+
+        if r5 != null goto label1;
+
+        r5 = staticinvoke <org.apache.commons.logging.LogSource: org.apache.commons.logging.Log makeNewLogInstance(java.lang.String)>(r0);
+
+        $r3 = <org.apache.commons.logging.LogSource: java.util.Hashtable logs>;
+
+        virtualinvoke $r3.<java.util.Hashtable: java.lang.Object put(java.lang.Object,java.lang.Object)>(r0, r5);
+
+     label1:
+        return r5;
+    }
+
+    public static org.apache.commons.logging.Log getInstance(java.lang.Class)
+    {
+        java.lang.Class r0;
+        java.lang.String $r1;
+        org.apache.commons.logging.Log $r2;
+
+        r0 := @parameter0: java.lang.Class;
+
+        $r1 = virtualinvoke r0.<java.lang.Class: java.lang.String getName()>();
+
+        $r2 = staticinvoke <org.apache.commons.logging.LogSource: org.apache.commons.logging.Log getInstance(java.lang.String)>($r1);
+
+        return $r2;
+    }
+
+    public static org.apache.commons.logging.Log makeNewLogInstance(java.lang.String)
+    {
+        java.lang.String r0;
+        java.lang.Object[] $r1;
+        java.lang.reflect.Constructor $r2;
+        java.lang.Object $r3;
+        org.apache.commons.logging.impl.NoOpLog $r4;
+        java.lang.Throwable $r5;
+        org.apache.commons.logging.Log r7;
+
+        r0 := @parameter0: java.lang.String;
+
+     label1:
+        $r1 = newarray (java.lang.Object)[1];
+
+        $r1[0] = r0;
+
+        $r2 = <org.apache.commons.logging.LogSource: java.lang.reflect.Constructor logImplctor>;
+
+        $r3 = virtualinvoke $r2.<java.lang.reflect.Constructor: java.lang.Object newInstance(java.lang.Object[])>($r1);
+
+        r7 = (org.apache.commons.logging.Log) $r3;
+
+     label2:
+        goto label4;
+
+     label3:
+        $r5 := @caughtexception;
+
+        r7 = null;
+
+     label4:
+        if r7 != null goto label5;
+
+        $r4 = new org.apache.commons.logging.impl.NoOpLog;
+
+        specialinvoke $r4.<org.apache.commons.logging.impl.NoOpLog: void <init>(java.lang.String)>(r0);
+
+        r7 = $r4;
+
+     label5:
+        return r7;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+    }
+
+    public static java.lang.String[] getLogNames()
+    {
+        java.util.Hashtable $r0, $r2;
+        java.util.Set $r1;
+        int $i0;
+        java.lang.String[] $r3, $r5;
+        java.lang.Object[] $r4;
+
+        $r0 = <org.apache.commons.logging.LogSource: java.util.Hashtable logs>;
+
+        $r1 = virtualinvoke $r0.<java.util.Hashtable: java.util.Set keySet()>();
+
+        $r2 = <org.apache.commons.logging.LogSource: java.util.Hashtable logs>;
+
+        $i0 = virtualinvoke $r2.<java.util.Hashtable: int size()>();
+
+        $r3 = newarray (java.lang.String)[$i0];
+
+        $r4 = interfaceinvoke $r1.<java.util.Set: java.lang.Object[] toArray(java.lang.Object[])>($r3);
+
+        $r5 = (java.lang.String[]) $r4;
+
+        return $r5;
+    }
+}

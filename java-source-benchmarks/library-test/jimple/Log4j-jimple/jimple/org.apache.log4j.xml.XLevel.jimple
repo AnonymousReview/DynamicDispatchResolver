@@ -1,0 +1,154 @@
+public class org.apache.log4j.xml.XLevel extends org.apache.log4j.Level
+{
+    private static final long serialVersionUID;
+    public static final int TRACE_INT;
+    public static final int LETHAL_INT;
+    private static java.lang.String TRACE_STR;
+    private static java.lang.String LETHAL_STR;
+    public static final org.apache.log4j.xml.XLevel TRACE;
+    public static final org.apache.log4j.xml.XLevel LETHAL;
+
+    static void <clinit>()
+    {
+        org.apache.log4j.xml.XLevel $r0, $r2;
+        java.lang.String $r1, $r3;
+
+        <org.apache.log4j.xml.XLevel: int LETHAL_INT> = 50001;
+
+        <org.apache.log4j.xml.XLevel: int TRACE_INT> = 9999;
+
+        <org.apache.log4j.xml.XLevel: long serialVersionUID> = 7288304330257085144L;
+
+        <org.apache.log4j.xml.XLevel: java.lang.String TRACE_STR> = "TRACE";
+
+        <org.apache.log4j.xml.XLevel: java.lang.String LETHAL_STR> = "LETHAL";
+
+        $r0 = new org.apache.log4j.xml.XLevel;
+
+        $r1 = <org.apache.log4j.xml.XLevel: java.lang.String TRACE_STR>;
+
+        specialinvoke $r0.<org.apache.log4j.xml.XLevel: void <init>(int,java.lang.String,int)>(9999, $r1, 7);
+
+        <org.apache.log4j.xml.XLevel: org.apache.log4j.xml.XLevel TRACE> = $r0;
+
+        $r2 = new org.apache.log4j.xml.XLevel;
+
+        $r3 = <org.apache.log4j.xml.XLevel: java.lang.String LETHAL_STR>;
+
+        specialinvoke $r2.<org.apache.log4j.xml.XLevel: void <init>(int,java.lang.String,int)>(50001, $r3, 0);
+
+        <org.apache.log4j.xml.XLevel: org.apache.log4j.xml.XLevel LETHAL> = $r2;
+
+        return;
+    }
+
+    protected void <init>(int, java.lang.String, int)
+    {
+        org.apache.log4j.xml.XLevel r0;
+        int i0, i1;
+        java.lang.String r1;
+
+        r0 := @this: org.apache.log4j.xml.XLevel;
+
+        i0 := @parameter0: int;
+
+        r1 := @parameter1: java.lang.String;
+
+        i1 := @parameter2: int;
+
+        specialinvoke r0.<org.apache.log4j.Level: void <init>(int,java.lang.String,int)>(i0, r1, i1);
+
+        return;
+    }
+
+    public static org.apache.log4j.Level toLevel(java.lang.String)
+    {
+        java.lang.String r0;
+        org.apache.log4j.xml.XLevel $r1;
+        org.apache.log4j.Level $r2;
+
+        r0 := @parameter0: java.lang.String;
+
+        $r1 = <org.apache.log4j.xml.XLevel: org.apache.log4j.xml.XLevel TRACE>;
+
+        $r2 = staticinvoke <org.apache.log4j.xml.XLevel: org.apache.log4j.Level toLevel(java.lang.String,org.apache.log4j.Level)>(r0, $r1);
+
+        return $r2;
+    }
+
+    public static org.apache.log4j.Level toLevel(java.lang.String, org.apache.log4j.Level)
+    {
+        java.lang.String r0, r2, $r3, $r4;
+        org.apache.log4j.Level r1, $r5;
+        boolean $z0, $z1;
+        org.apache.log4j.xml.XLevel $r6, $r7;
+
+        r0 := @parameter0: java.lang.String;
+
+        r1 := @parameter1: org.apache.log4j.Level;
+
+        if r0 != null goto label1;
+
+        return r1;
+
+     label1:
+        r2 = virtualinvoke r0.<java.lang.String: java.lang.String toUpperCase()>();
+
+        $r3 = <org.apache.log4j.xml.XLevel: java.lang.String TRACE_STR>;
+
+        $z0 = virtualinvoke r2.<java.lang.String: boolean equals(java.lang.Object)>($r3);
+
+        if $z0 == 0 goto label2;
+
+        $r7 = <org.apache.log4j.xml.XLevel: org.apache.log4j.xml.XLevel TRACE>;
+
+        return $r7;
+
+     label2:
+        $r4 = <org.apache.log4j.xml.XLevel: java.lang.String LETHAL_STR>;
+
+        $z1 = virtualinvoke r2.<java.lang.String: boolean equals(java.lang.Object)>($r4);
+
+        if $z1 == 0 goto label3;
+
+        $r6 = <org.apache.log4j.xml.XLevel: org.apache.log4j.xml.XLevel LETHAL>;
+
+        return $r6;
+
+     label3:
+        $r5 = staticinvoke <org.apache.log4j.Level: org.apache.log4j.Level toLevel(java.lang.String,org.apache.log4j.Level)>(r0, r1);
+
+        return $r5;
+    }
+
+    public static org.apache.log4j.Level toLevel(int) throws java.lang.IllegalArgumentException
+    {
+        int i0;
+        org.apache.log4j.xml.XLevel $r0, $r1;
+        org.apache.log4j.Level $r2;
+
+        i0 := @parameter0: int;
+
+        lookupswitch(i0)
+        {
+            case 9999: goto label1;
+            case 50001: goto label2;
+            default: goto label3;
+        };
+
+     label1:
+        $r1 = <org.apache.log4j.xml.XLevel: org.apache.log4j.xml.XLevel TRACE>;
+
+        return $r1;
+
+     label2:
+        $r0 = <org.apache.log4j.xml.XLevel: org.apache.log4j.xml.XLevel LETHAL>;
+
+        return $r0;
+
+     label3:
+        $r2 = staticinvoke <org.apache.log4j.Level: org.apache.log4j.Level toLevel(int)>(i0);
+
+        return $r2;
+    }
+}

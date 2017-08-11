@@ -1,0 +1,1046 @@
+public class org.apache.commons.io.FileSystemUtils extends java.lang.Object
+{
+    private static final org.apache.commons.io.FileSystemUtils INSTANCE;
+    private static final int INIT_PROBLEM;
+    private static final int OTHER;
+    private static final int WINDOWS;
+    private static final int UNIX;
+    private static final int POSIX_UNIX;
+    private static final int OS;
+    private static final java.lang.String DF;
+
+    static void <clinit>()
+    {
+        org.apache.commons.io.FileSystemUtils $r0;
+        java.util.Locale $r1;
+        boolean $z0, $z1, $z2, $z3, $z4, $z5, $z6, $z7, $z8, $z9, $z10, $z11, $z12;
+        java.io.IOException $r2;
+        java.lang.Exception $r3;
+        java.lang.String r4, r5, r6;
+        byte b0;
+
+        <org.apache.commons.io.FileSystemUtils: int POSIX_UNIX> = 3;
+
+        <org.apache.commons.io.FileSystemUtils: int UNIX> = 2;
+
+        <org.apache.commons.io.FileSystemUtils: int WINDOWS> = 1;
+
+        <org.apache.commons.io.FileSystemUtils: int OTHER> = 0;
+
+        <org.apache.commons.io.FileSystemUtils: int INIT_PROBLEM> = -1;
+
+        $r0 = new org.apache.commons.io.FileSystemUtils;
+
+        specialinvoke $r0.<org.apache.commons.io.FileSystemUtils: void <init>()>();
+
+        <org.apache.commons.io.FileSystemUtils: org.apache.commons.io.FileSystemUtils INSTANCE> = $r0;
+
+        r4 = "df";
+
+     label01:
+        r5 = staticinvoke <java.lang.System: java.lang.String getProperty(java.lang.String)>("os.name");
+
+        if r5 != null goto label02;
+
+        $r2 = new java.io.IOException;
+
+        specialinvoke $r2.<java.io.IOException: void <init>(java.lang.String)>("os.name not found");
+
+        throw $r2;
+
+     label02:
+        $r1 = <java.util.Locale: java.util.Locale ENGLISH>;
+
+        r6 = virtualinvoke r5.<java.lang.String: java.lang.String toLowerCase(java.util.Locale)>($r1);
+
+        $z0 = virtualinvoke r6.<java.lang.String: boolean contains(java.lang.CharSequence)>("windows");
+
+        if $z0 == 0 goto label03;
+
+        b0 = 1;
+
+        goto label12;
+
+     label03:
+        $z1 = virtualinvoke r6.<java.lang.String: boolean contains(java.lang.CharSequence)>("linux");
+
+        if $z1 != 0 goto label04;
+
+        $z2 = virtualinvoke r6.<java.lang.String: boolean contains(java.lang.CharSequence)>("mpe/ix");
+
+        if $z2 != 0 goto label04;
+
+        $z3 = virtualinvoke r6.<java.lang.String: boolean contains(java.lang.CharSequence)>("freebsd");
+
+        if $z3 != 0 goto label04;
+
+        $z4 = virtualinvoke r6.<java.lang.String: boolean contains(java.lang.CharSequence)>("irix");
+
+        if $z4 != 0 goto label04;
+
+        $z5 = virtualinvoke r6.<java.lang.String: boolean contains(java.lang.CharSequence)>("digital unix");
+
+        if $z5 != 0 goto label04;
+
+        $z6 = virtualinvoke r6.<java.lang.String: boolean contains(java.lang.CharSequence)>("unix");
+
+        if $z6 != 0 goto label04;
+
+        $z7 = virtualinvoke r6.<java.lang.String: boolean contains(java.lang.CharSequence)>("mac os x");
+
+        if $z7 == 0 goto label05;
+
+     label04:
+        b0 = 2;
+
+        goto label12;
+
+     label05:
+        $z8 = virtualinvoke r6.<java.lang.String: boolean contains(java.lang.CharSequence)>("sun os");
+
+        if $z8 != 0 goto label06;
+
+        $z9 = virtualinvoke r6.<java.lang.String: boolean contains(java.lang.CharSequence)>("sunos");
+
+        if $z9 != 0 goto label06;
+
+        $z10 = virtualinvoke r6.<java.lang.String: boolean contains(java.lang.CharSequence)>("solaris");
+
+        if $z10 == 0 goto label07;
+
+     label06:
+        b0 = 3;
+
+        r4 = "/usr/xpg4/bin/df";
+
+        goto label12;
+
+     label07:
+        $z11 = virtualinvoke r6.<java.lang.String: boolean contains(java.lang.CharSequence)>("hp-ux");
+
+        if $z11 != 0 goto label08;
+
+        $z12 = virtualinvoke r6.<java.lang.String: boolean contains(java.lang.CharSequence)>("aix");
+
+        if $z12 == 0 goto label09;
+
+     label08:
+        b0 = 3;
+
+        goto label12;
+
+     label09:
+        b0 = 0;
+
+     label10:
+        goto label12;
+
+     label11:
+        $r3 := @caughtexception;
+
+        b0 = -1;
+
+     label12:
+        <org.apache.commons.io.FileSystemUtils: int OS> = b0;
+
+        <org.apache.commons.io.FileSystemUtils: java.lang.String DF> = r4;
+
+        return;
+
+        catch java.lang.Exception from label01 to label10 with label11;
+    }
+
+    public void <init>()
+    {
+        org.apache.commons.io.FileSystemUtils r0;
+
+        r0 := @this: org.apache.commons.io.FileSystemUtils;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static long freeSpace(java.lang.String) throws java.io.IOException
+    {
+        java.lang.String r0;
+        int $i0;
+        org.apache.commons.io.FileSystemUtils $r1;
+        long $l1;
+
+        r0 := @parameter0: java.lang.String;
+
+        $r1 = <org.apache.commons.io.FileSystemUtils: org.apache.commons.io.FileSystemUtils INSTANCE>;
+
+        $i0 = <org.apache.commons.io.FileSystemUtils: int OS>;
+
+        $l1 = virtualinvoke $r1.<org.apache.commons.io.FileSystemUtils: long freeSpaceOS(java.lang.String,int,boolean,long)>(r0, $i0, 0, -1L);
+
+        return $l1;
+    }
+
+    public static long freeSpaceKb(java.lang.String) throws java.io.IOException
+    {
+        java.lang.String r0;
+        long $l0;
+
+        r0 := @parameter0: java.lang.String;
+
+        $l0 = staticinvoke <org.apache.commons.io.FileSystemUtils: long freeSpaceKb(java.lang.String,long)>(r0, -1L);
+
+        return $l0;
+    }
+
+    public static long freeSpaceKb(java.lang.String, long) throws java.io.IOException
+    {
+        java.lang.String r0;
+        long l0, $l2;
+        int $i1;
+        org.apache.commons.io.FileSystemUtils $r1;
+
+        r0 := @parameter0: java.lang.String;
+
+        l0 := @parameter1: long;
+
+        $r1 = <org.apache.commons.io.FileSystemUtils: org.apache.commons.io.FileSystemUtils INSTANCE>;
+
+        $i1 = <org.apache.commons.io.FileSystemUtils: int OS>;
+
+        $l2 = virtualinvoke $r1.<org.apache.commons.io.FileSystemUtils: long freeSpaceOS(java.lang.String,int,boolean,long)>(r0, $i1, 1, l0);
+
+        return $l2;
+    }
+
+    public static long freeSpaceKb() throws java.io.IOException
+    {
+        long $l0;
+
+        $l0 = staticinvoke <org.apache.commons.io.FileSystemUtils: long freeSpaceKb(long)>(-1L);
+
+        return $l0;
+    }
+
+    public static long freeSpaceKb(long) throws java.io.IOException
+    {
+        long l0, $l1;
+        java.io.File $r0;
+        java.lang.String $r1;
+
+        l0 := @parameter0: long;
+
+        $r0 = new java.io.File;
+
+        specialinvoke $r0.<java.io.File: void <init>(java.lang.String)>(".");
+
+        $r1 = virtualinvoke $r0.<java.io.File: java.lang.String getAbsolutePath()>();
+
+        $l1 = staticinvoke <org.apache.commons.io.FileSystemUtils: long freeSpaceKb(java.lang.String,long)>($r1, l0);
+
+        return $l1;
+    }
+
+    long freeSpaceOS(java.lang.String, int, boolean, long) throws java.io.IOException
+    {
+        org.apache.commons.io.FileSystemUtils r0;
+        java.lang.String r1;
+        int i0;
+        boolean z0;
+        long l1, $l2, $l3, $l4, $l5;
+        java.lang.IllegalStateException $r2, $r3;
+        java.lang.IllegalArgumentException $r4;
+
+        r0 := @this: org.apache.commons.io.FileSystemUtils;
+
+        r1 := @parameter0: java.lang.String;
+
+        i0 := @parameter1: int;
+
+        z0 := @parameter2: boolean;
+
+        l1 := @parameter3: long;
+
+        if r1 != null goto label1;
+
+        $r4 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r4.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Path must not be null");
+
+        throw $r4;
+
+     label1:
+        tableswitch(i0)
+        {
+            case 0: goto label7;
+            case 1: goto label2;
+            case 2: goto label5;
+            case 3: goto label6;
+            default: goto label8;
+        };
+
+     label2:
+        if z0 == 0 goto label3;
+
+        $l2 = virtualinvoke r0.<org.apache.commons.io.FileSystemUtils: long freeSpaceWindows(java.lang.String,long)>(r1, l1);
+
+        $l5 = $l2 / 1024L;
+
+        goto label4;
+
+     label3:
+        $l5 = virtualinvoke r0.<org.apache.commons.io.FileSystemUtils: long freeSpaceWindows(java.lang.String,long)>(r1, l1);
+
+     label4:
+        return $l5;
+
+     label5:
+        $l4 = virtualinvoke r0.<org.apache.commons.io.FileSystemUtils: long freeSpaceUnix(java.lang.String,boolean,boolean,long)>(r1, z0, 0, l1);
+
+        return $l4;
+
+     label6:
+        $l3 = virtualinvoke r0.<org.apache.commons.io.FileSystemUtils: long freeSpaceUnix(java.lang.String,boolean,boolean,long)>(r1, z0, 1, l1);
+
+        return $l3;
+
+     label7:
+        $r2 = new java.lang.IllegalStateException;
+
+        specialinvoke $r2.<java.lang.IllegalStateException: void <init>(java.lang.String)>("Unsupported operating system");
+
+        throw $r2;
+
+     label8:
+        $r3 = new java.lang.IllegalStateException;
+
+        specialinvoke $r3.<java.lang.IllegalStateException: void <init>(java.lang.String)>("Exception caught when determining operating system");
+
+        throw $r3;
+    }
+
+    long freeSpaceWindows(java.lang.String, long) throws java.io.IOException
+    {
+        org.apache.commons.io.FileSystemUtils r0;
+        long l0, $l3;
+        java.util.List r2;
+        java.lang.String r3, $r9, r13, r14, $r18;
+        int $i1, $i2, $i5, i6;
+        java.lang.Object $r4;
+        java.io.IOException $r5;
+        java.lang.StringBuilder $r6, $r7, $r8, $r10, $r11, $r12, $r16, $r17;
+        char $c4;
+        java.lang.String[] $r15;
+
+        r0 := @this: org.apache.commons.io.FileSystemUtils;
+
+        r13 := @parameter0: java.lang.String;
+
+        l0 := @parameter1: long;
+
+        r14 = staticinvoke <org.apache.commons.io.FilenameUtils: java.lang.String normalize(java.lang.String,boolean)>(r13, 0);
+
+        $i1 = virtualinvoke r14.<java.lang.String: int length()>();
+
+        if $i1 <= 0 goto label1;
+
+        $c4 = virtualinvoke r14.<java.lang.String: char charAt(int)>(0);
+
+        if $c4 == 34 goto label1;
+
+        $r10 = new java.lang.StringBuilder;
+
+        specialinvoke $r10.<java.lang.StringBuilder: void <init>(java.lang.String)>("\"");
+
+        $r11 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r14);
+
+        $r12 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\"");
+
+        r14 = virtualinvoke $r12.<java.lang.StringBuilder: java.lang.String toString()>();
+
+     label1:
+        $r15 = newarray (java.lang.String)[3];
+
+        $r15[0] = "cmd.exe";
+
+        $r15[1] = "/C";
+
+        $r16 = new java.lang.StringBuilder;
+
+        specialinvoke $r16.<java.lang.StringBuilder: void <init>(java.lang.String)>("dir /a /-c ");
+
+        $r17 = virtualinvoke $r16.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r14);
+
+        $r18 = virtualinvoke $r17.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r15[2] = $r18;
+
+        r2 = virtualinvoke r0.<org.apache.commons.io.FileSystemUtils: java.util.List performCommand(java.lang.String[],int,long)>($r15, 2147483647, l0);
+
+        $i5 = interfaceinvoke r2.<java.util.List: int size()>();
+
+        i6 = $i5 - 1;
+
+        goto label4;
+
+     label2:
+        $r4 = interfaceinvoke r2.<java.util.List: java.lang.Object get(int)>(i6);
+
+        r3 = (java.lang.String) $r4;
+
+        $i2 = virtualinvoke r3.<java.lang.String: int length()>();
+
+        if $i2 <= 0 goto label3;
+
+        $l3 = virtualinvoke r0.<org.apache.commons.io.FileSystemUtils: long parseDir(java.lang.String,java.lang.String)>(r3, r14);
+
+        return $l3;
+
+     label3:
+        i6 = i6 + -1;
+
+     label4:
+        if i6 >= 0 goto label2;
+
+        $r5 = new java.io.IOException;
+
+        $r6 = new java.lang.StringBuilder;
+
+        specialinvoke $r6.<java.lang.StringBuilder: void <init>(java.lang.String)>("Command line \'dir /-c\' did not return any info for path \'");
+
+        $r7 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r14);
+
+        $r8 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\'");
+
+        $r9 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r5.<java.io.IOException: void <init>(java.lang.String)>($r9);
+
+        throw $r5;
+    }
+
+    long parseDir(java.lang.String, java.lang.String) throws java.io.IOException
+    {
+        org.apache.commons.io.FileSystemUtils r0;
+        java.lang.String r1, r2, $r4, $r6, $r11;
+        int $i0, $i2, i5, i6, i7, i10, $i11;
+        boolean $z0, $z1;
+        java.lang.StringBuilder $r3, $r8, $r9, $r10;
+        char $c1, $c3, c8, c9;
+        long $l4;
+        java.io.IOException $r7;
+
+        r0 := @this: org.apache.commons.io.FileSystemUtils;
+
+        r1 := @parameter0: java.lang.String;
+
+        r2 := @parameter1: java.lang.String;
+
+        i5 = 0;
+
+        i6 = 0;
+
+        $i0 = virtualinvoke r1.<java.lang.String: int length()>();
+
+        i7 = $i0 - 1;
+
+        goto label03;
+
+     label01:
+        c8 = virtualinvoke r1.<java.lang.String: char charAt(int)>(i7);
+
+        $z0 = staticinvoke <java.lang.Character: boolean isDigit(char)>(c8);
+
+        if $z0 == 0 goto label02;
+
+        i6 = i7 + 1;
+
+        goto label06;
+
+     label02:
+        i7 = i7 + -1;
+
+     label03:
+        if i7 >= 0 goto label01;
+
+        goto label06;
+
+     label04:
+        c9 = virtualinvoke r1.<java.lang.String: char charAt(int)>(i7);
+
+        $z1 = staticinvoke <java.lang.Character: boolean isDigit(char)>(c9);
+
+        if $z1 != 0 goto label05;
+
+        if c9 == 44 goto label05;
+
+        if c9 == 46 goto label05;
+
+        i5 = i7 + 1;
+
+        goto label07;
+
+     label05:
+        i7 = i7 + -1;
+
+     label06:
+        if i7 >= 0 goto label04;
+
+     label07:
+        if i7 >= 0 goto label08;
+
+        $r7 = new java.io.IOException;
+
+        $r8 = new java.lang.StringBuilder;
+
+        specialinvoke $r8.<java.lang.StringBuilder: void <init>(java.lang.String)>("Command line \'dir /-c\' did not return valid info for path \'");
+
+        $r9 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r2);
+
+        $r10 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\'");
+
+        $r11 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r7.<java.io.IOException: void <init>(java.lang.String)>($r11);
+
+        throw $r7;
+
+     label08:
+        $r3 = new java.lang.StringBuilder;
+
+        $r4 = virtualinvoke r1.<java.lang.String: java.lang.String substring(int,int)>(i5, i6);
+
+        specialinvoke $r3.<java.lang.StringBuilder: void <init>(java.lang.String)>($r4);
+
+        i10 = 0;
+
+        goto label12;
+
+     label09:
+        $c1 = virtualinvoke $r3.<java.lang.StringBuilder: char charAt(int)>(i10);
+
+        if $c1 == 44 goto label10;
+
+        $c3 = virtualinvoke $r3.<java.lang.StringBuilder: char charAt(int)>(i10);
+
+        if $c3 != 46 goto label11;
+
+     label10:
+        $i2 = i10;
+
+        i10 = i10 + -1;
+
+        virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder deleteCharAt(int)>($i2);
+
+     label11:
+        i10 = i10 + 1;
+
+     label12:
+        $i11 = virtualinvoke $r3.<java.lang.StringBuilder: int length()>();
+
+        if i10 < $i11 goto label09;
+
+        $r6 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $l4 = virtualinvoke r0.<org.apache.commons.io.FileSystemUtils: long parseBytes(java.lang.String,java.lang.String)>($r6, r2);
+
+        return $l4;
+    }
+
+    long freeSpaceUnix(java.lang.String, boolean, boolean, long) throws java.io.IOException
+    {
+        org.apache.commons.io.FileSystemUtils r0;
+        java.lang.String r1, r4, $r5, $r13, $r19, $r24, $r31, $r32, $r34, $r37, r40, r43, r44;
+        boolean z0, z1, $z2;
+        long l0, $l4;
+        java.util.List r3;
+        int $i1, $i2, $i3, $i5, $i6;
+        java.lang.Object $r6, $r20;
+        java.util.StringTokenizer $r7, $r21, r42;
+        java.io.IOException $r11, $r22;
+        java.lang.StringBuilder $r12, $r14, $r15, $r16, $r17, $r18, $r23, $r25, $r26, $r27, $r28, $r29, $r30, $r33, $r35, $r36, $r38;
+        java.lang.IllegalArgumentException $r39;
+        java.lang.String[] $r41;
+
+        r0 := @this: org.apache.commons.io.FileSystemUtils;
+
+        r1 := @parameter0: java.lang.String;
+
+        z0 := @parameter1: boolean;
+
+        z1 := @parameter2: boolean;
+
+        l0 := @parameter3: long;
+
+        $z2 = virtualinvoke r1.<java.lang.String: boolean isEmpty()>();
+
+        if $z2 == 0 goto label1;
+
+        $r39 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r39.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Path must not be empty");
+
+        throw $r39;
+
+     label1:
+        r40 = "-";
+
+        if z0 == 0 goto label2;
+
+        $r36 = new java.lang.StringBuilder;
+
+        $r37 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>("-");
+
+        specialinvoke $r36.<java.lang.StringBuilder: void <init>(java.lang.String)>($r37);
+
+        $r38 = virtualinvoke $r36.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("k");
+
+        r40 = virtualinvoke $r38.<java.lang.StringBuilder: java.lang.String toString()>();
+
+     label2:
+        if z1 == 0 goto label3;
+
+        $r33 = new java.lang.StringBuilder;
+
+        $r34 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>(r40);
+
+        specialinvoke $r33.<java.lang.StringBuilder: void <init>(java.lang.String)>($r34);
+
+        $r35 = virtualinvoke $r33.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("P");
+
+        r40 = virtualinvoke $r35.<java.lang.StringBuilder: java.lang.String toString()>();
+
+     label3:
+        $i1 = virtualinvoke r40.<java.lang.String: int length()>();
+
+        if $i1 <= 1 goto label4;
+
+        $r41 = newarray (java.lang.String)[3];
+
+        $r32 = <org.apache.commons.io.FileSystemUtils: java.lang.String DF>;
+
+        $r41[0] = $r32;
+
+        $r41[1] = r40;
+
+        $r41[2] = r1;
+
+        goto label5;
+
+     label4:
+        $r41 = newarray (java.lang.String)[2];
+
+        $r5 = <org.apache.commons.io.FileSystemUtils: java.lang.String DF>;
+
+        $r41[0] = $r5;
+
+        $r41[1] = r1;
+
+     label5:
+        r3 = virtualinvoke r0.<org.apache.commons.io.FileSystemUtils: java.util.List performCommand(java.lang.String[],int,long)>($r41, 3, l0);
+
+        $i2 = interfaceinvoke r3.<java.util.List: int size()>();
+
+        if $i2 >= 2 goto label6;
+
+        $r22 = new java.io.IOException;
+
+        $r23 = new java.lang.StringBuilder;
+
+        specialinvoke $r23.<java.lang.StringBuilder: void <init>(java.lang.String)>("Command line \'");
+
+        $r24 = <org.apache.commons.io.FileSystemUtils: java.lang.String DF>;
+
+        $r25 = virtualinvoke $r23.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r24);
+
+        $r26 = virtualinvoke $r25.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\' did not return info as expected ");
+
+        $r27 = virtualinvoke $r26.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("for path \'");
+
+        $r28 = virtualinvoke $r27.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r1);
+
+        $r29 = virtualinvoke $r28.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\'- response was ");
+
+        $r30 = virtualinvoke $r29.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(r3);
+
+        $r31 = virtualinvoke $r30.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r22.<java.io.IOException: void <init>(java.lang.String)>($r31);
+
+        throw $r22;
+
+     label6:
+        $r6 = interfaceinvoke r3.<java.util.List: java.lang.Object get(int)>(1);
+
+        r4 = (java.lang.String) $r6;
+
+        $r7 = new java.util.StringTokenizer;
+
+        specialinvoke $r7.<java.util.StringTokenizer: void <init>(java.lang.String,java.lang.String)>(r4, " ");
+
+        r42 = $r7;
+
+        $i3 = virtualinvoke $r7.<java.util.StringTokenizer: int countTokens()>();
+
+        if $i3 >= 4 goto label8;
+
+        $i5 = virtualinvoke $r7.<java.util.StringTokenizer: int countTokens()>();
+
+        if $i5 != 1 goto label7;
+
+        $i6 = interfaceinvoke r3.<java.util.List: int size()>();
+
+        if $i6 < 3 goto label7;
+
+        $r20 = interfaceinvoke r3.<java.util.List: java.lang.Object get(int)>(2);
+
+        r43 = (java.lang.String) $r20;
+
+        $r21 = new java.util.StringTokenizer;
+
+        specialinvoke $r21.<java.util.StringTokenizer: void <init>(java.lang.String,java.lang.String)>(r43, " ");
+
+        r42 = $r21;
+
+        goto label9;
+
+     label7:
+        $r11 = new java.io.IOException;
+
+        $r12 = new java.lang.StringBuilder;
+
+        specialinvoke $r12.<java.lang.StringBuilder: void <init>(java.lang.String)>("Command line \'");
+
+        $r13 = <org.apache.commons.io.FileSystemUtils: java.lang.String DF>;
+
+        $r14 = virtualinvoke $r12.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r13);
+
+        $r15 = virtualinvoke $r14.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\' did not return data as expected ");
+
+        $r16 = virtualinvoke $r15.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("for path \'");
+
+        $r17 = virtualinvoke $r16.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r1);
+
+        $r18 = virtualinvoke $r17.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\'- check path is valid");
+
+        $r19 = virtualinvoke $r18.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r11.<java.io.IOException: void <init>(java.lang.String)>($r19);
+
+        throw $r11;
+
+     label8:
+        virtualinvoke $r7.<java.util.StringTokenizer: java.lang.String nextToken()>();
+
+     label9:
+        virtualinvoke r42.<java.util.StringTokenizer: java.lang.String nextToken()>();
+
+        virtualinvoke r42.<java.util.StringTokenizer: java.lang.String nextToken()>();
+
+        r44 = virtualinvoke r42.<java.util.StringTokenizer: java.lang.String nextToken()>();
+
+        $l4 = virtualinvoke r0.<org.apache.commons.io.FileSystemUtils: long parseBytes(java.lang.String,java.lang.String)>(r44, r1);
+
+        return $l4;
+    }
+
+    long parseBytes(java.lang.String, java.lang.String) throws java.io.IOException
+    {
+        org.apache.commons.io.FileSystemUtils r0;
+        java.lang.String r1, r2, $r5, $r11, $r15, $r21;
+        byte $b0;
+        java.io.IOException $r3, $r13;
+        java.lang.StringBuilder $r4, $r6, $r7, $r8, $r9, $r10, $r14, $r16, $r17, $r18, $r19, $r20;
+        java.lang.NumberFormatException $r12;
+        long l1;
+
+        r0 := @this: org.apache.commons.io.FileSystemUtils;
+
+        r1 := @parameter0: java.lang.String;
+
+        r2 := @parameter1: java.lang.String;
+
+     label1:
+        l1 = staticinvoke <java.lang.Long: long parseLong(java.lang.String)>(r1);
+
+        $b0 = l1 cmp 0L;
+
+        if $b0 >= 0 goto label2;
+
+        $r3 = new java.io.IOException;
+
+        $r4 = new java.lang.StringBuilder;
+
+        specialinvoke $r4.<java.lang.StringBuilder: void <init>(java.lang.String)>("Command line \'");
+
+        $r5 = <org.apache.commons.io.FileSystemUtils: java.lang.String DF>;
+
+        $r6 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r5);
+
+        $r7 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\' did not find free space in response ");
+
+        $r8 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("for path \'");
+
+        $r9 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r2);
+
+        $r10 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\'- check path is valid");
+
+        $r11 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r3.<java.io.IOException: void <init>(java.lang.String)>($r11);
+
+        throw $r3;
+
+     label2:
+        return l1;
+
+     label3:
+        $r12 := @caughtexception;
+
+        $r13 = new java.io.IOException;
+
+        $r14 = new java.lang.StringBuilder;
+
+        specialinvoke $r14.<java.lang.StringBuilder: void <init>(java.lang.String)>("Command line \'");
+
+        $r15 = <org.apache.commons.io.FileSystemUtils: java.lang.String DF>;
+
+        $r16 = virtualinvoke $r14.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r15);
+
+        $r17 = virtualinvoke $r16.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\' did not return numeric data as expected ");
+
+        $r18 = virtualinvoke $r17.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("for path \'");
+
+        $r19 = virtualinvoke $r18.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r2);
+
+        $r20 = virtualinvoke $r19.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\'- check path is valid");
+
+        $r21 = virtualinvoke $r20.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r13.<java.io.IOException: void <init>(java.lang.String,java.lang.Throwable)>($r21, $r12);
+
+        throw $r13;
+
+        catch java.lang.NumberFormatException from label1 to label2 with label3;
+    }
+
+    java.util.List performCommand(java.lang.String[], int, long) throws java.io.IOException
+    {
+        org.apache.commons.io.FileSystemUtils r0;
+        java.lang.String[] r1;
+        int i0, $i3, $i4, $i5;
+        long l1;
+        java.util.ArrayList $r5;
+        java.io.BufferedReader $r6, r36;
+        java.io.InputStreamReader $r7;
+        java.nio.charset.Charset $r8;
+        boolean $z0;
+        java.io.IOException $r9, $r14, $r25;
+        java.lang.StringBuilder $r10, $r12, $r15, $r16, $r17, $r19, $r26, $r28, $r29, $r30;
+        java.util.List $r11, $r18, $r27;
+        java.lang.String $r13, $r20, $r22, $r31, r38, r39;
+        java.util.Locale $r21;
+        java.lang.Throwable $r23;
+        java.lang.InterruptedException $r24;
+        java.lang.Process r32;
+        java.io.InputStream r33, r35;
+        java.io.OutputStream r34;
+        java.lang.Thread r37;
+
+        r0 := @this: org.apache.commons.io.FileSystemUtils;
+
+        r1 := @parameter0: java.lang.String[];
+
+        i0 := @parameter1: int;
+
+        l1 := @parameter2: long;
+
+        $r5 = new java.util.ArrayList;
+
+        specialinvoke $r5.<java.util.ArrayList: void <init>(int)>(20);
+
+        r32 = null;
+
+        r33 = null;
+
+        r34 = null;
+
+        r35 = null;
+
+        r36 = null;
+
+     label01:
+        r37 = staticinvoke <org.apache.commons.io.ThreadMonitor: java.lang.Thread start(long)>(l1);
+
+        r32 = virtualinvoke r0.<org.apache.commons.io.FileSystemUtils: java.lang.Process openProcess(java.lang.String[])>(r1);
+
+        r33 = virtualinvoke r32.<java.lang.Process: java.io.InputStream getInputStream()>();
+
+        r34 = virtualinvoke r32.<java.lang.Process: java.io.OutputStream getOutputStream()>();
+
+        r35 = virtualinvoke r32.<java.lang.Process: java.io.InputStream getErrorStream()>();
+
+        $r6 = new java.io.BufferedReader;
+
+        $r7 = new java.io.InputStreamReader;
+
+        $r8 = staticinvoke <java.nio.charset.Charset: java.nio.charset.Charset defaultCharset()>();
+
+        specialinvoke $r7.<java.io.InputStreamReader: void <init>(java.io.InputStream,java.nio.charset.Charset)>(r33, $r8);
+
+        specialinvoke $r6.<java.io.BufferedReader: void <init>(java.io.Reader)>($r7);
+
+        r36 = $r6;
+
+        r38 = virtualinvoke $r6.<java.io.BufferedReader: java.lang.String readLine()>();
+
+        goto label03;
+
+     label02:
+        $r21 = <java.util.Locale: java.util.Locale ENGLISH>;
+
+        $r22 = virtualinvoke r38.<java.lang.String: java.lang.String toLowerCase(java.util.Locale)>($r21);
+
+        r39 = virtualinvoke $r22.<java.lang.String: java.lang.String trim()>();
+
+        interfaceinvoke $r5.<java.util.List: boolean add(java.lang.Object)>(r39);
+
+        r38 = virtualinvoke $r6.<java.io.BufferedReader: java.lang.String readLine()>();
+
+     label03:
+        if r38 == null goto label04;
+
+        $i5 = interfaceinvoke $r5.<java.util.List: int size()>();
+
+        if $i5 < i0 goto label02;
+
+     label04:
+        virtualinvoke r32.<java.lang.Process: int waitFor()>();
+
+        staticinvoke <org.apache.commons.io.ThreadMonitor: void stop(java.lang.Thread)>(r37);
+
+        $i3 = virtualinvoke r32.<java.lang.Process: int exitValue()>();
+
+        if $i3 == 0 goto label05;
+
+        $r14 = new java.io.IOException;
+
+        $r15 = new java.lang.StringBuilder;
+
+        specialinvoke $r15.<java.lang.StringBuilder: void <init>(java.lang.String)>("Command line returned OS error code \'");
+
+        $i4 = virtualinvoke r32.<java.lang.Process: int exitValue()>();
+
+        $r16 = virtualinvoke $r15.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i4);
+
+        $r17 = virtualinvoke $r16.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\' for command ");
+
+        $r18 = staticinvoke <java.util.Arrays: java.util.List asList(java.lang.Object[])>(r1);
+
+        $r19 = virtualinvoke $r17.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r18);
+
+        $r20 = virtualinvoke $r19.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r14.<java.io.IOException: void <init>(java.lang.String)>($r20);
+
+        throw $r14;
+
+     label05:
+        $z0 = interfaceinvoke $r5.<java.util.List: boolean isEmpty()>();
+
+        if $z0 == 0 goto label06;
+
+        $r9 = new java.io.IOException;
+
+        $r10 = new java.lang.StringBuilder;
+
+        specialinvoke $r10.<java.lang.StringBuilder: void <init>(java.lang.String)>("Command line did not return any info for command ");
+
+        $r11 = staticinvoke <java.util.Arrays: java.util.List asList(java.lang.Object[])>(r1);
+
+        $r12 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r11);
+
+        $r13 = virtualinvoke $r12.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r9.<java.io.IOException: void <init>(java.lang.String)>($r13);
+
+        throw $r9;
+
+     label06:
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.InputStream)>(r33);
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.OutputStream)>(r34);
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.InputStream)>(r35);
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.Reader)>($r6);
+
+        if r32 == null goto label07;
+
+        virtualinvoke r32.<java.lang.Process: void destroy()>();
+
+     label07:
+        return $r5;
+
+     label08:
+        $r24 := @caughtexception;
+
+        $r25 = new java.io.IOException;
+
+        $r26 = new java.lang.StringBuilder;
+
+        specialinvoke $r26.<java.lang.StringBuilder: void <init>(java.lang.String)>("Command line threw an InterruptedException for command ");
+
+        $r27 = staticinvoke <java.util.Arrays: java.util.List asList(java.lang.Object[])>(r1);
+
+        $r28 = virtualinvoke $r26.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r27);
+
+        $r29 = virtualinvoke $r28.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" timeout=");
+
+        $r30 = virtualinvoke $r29.<java.lang.StringBuilder: java.lang.StringBuilder append(long)>(l1);
+
+        $r31 = virtualinvoke $r30.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r25.<java.io.IOException: void <init>(java.lang.String,java.lang.Throwable)>($r31, $r24);
+
+        throw $r25;
+
+     label09:
+        $r23 := @caughtexception;
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.InputStream)>(r33);
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.OutputStream)>(r34);
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.InputStream)>(r35);
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.Reader)>(r36);
+
+        if r32 == null goto label10;
+
+        virtualinvoke r32.<java.lang.Process: void destroy()>();
+
+     label10:
+        throw $r23;
+
+        catch java.lang.InterruptedException from label01 to label06 with label08;
+        catch java.lang.Throwable from label01 to label06 with label09;
+        catch java.lang.Throwable from label08 to label09 with label09;
+    }
+
+    java.lang.Process openProcess(java.lang.String[]) throws java.io.IOException
+    {
+        org.apache.commons.io.FileSystemUtils r0;
+        java.lang.String[] r1;
+        java.lang.Runtime $r2;
+        java.lang.Process $r3;
+
+        r0 := @this: org.apache.commons.io.FileSystemUtils;
+
+        r1 := @parameter0: java.lang.String[];
+
+        $r2 = staticinvoke <java.lang.Runtime: java.lang.Runtime getRuntime()>();
+
+        $r3 = virtualinvoke $r2.<java.lang.Runtime: java.lang.Process exec(java.lang.String[])>(r1);
+
+        return $r3;
+    }
+}

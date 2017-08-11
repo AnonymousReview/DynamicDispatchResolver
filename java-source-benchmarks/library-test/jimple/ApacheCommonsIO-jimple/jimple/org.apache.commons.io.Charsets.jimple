@@ -1,0 +1,157 @@
+public class org.apache.commons.io.Charsets extends java.lang.Object
+{
+    public static final java.nio.charset.Charset ISO_8859_1;
+    public static final java.nio.charset.Charset US_ASCII;
+    public static final java.nio.charset.Charset UTF_16;
+    public static final java.nio.charset.Charset UTF_16BE;
+    public static final java.nio.charset.Charset UTF_16LE;
+    public static final java.nio.charset.Charset UTF_8;
+
+    static void <clinit>()
+    {
+        java.nio.charset.Charset $r0, $r1, $r2, $r3, $r4, $r5;
+
+        $r0 = staticinvoke <java.nio.charset.Charset: java.nio.charset.Charset forName(java.lang.String)>("ISO-8859-1");
+
+        <org.apache.commons.io.Charsets: java.nio.charset.Charset ISO_8859_1> = $r0;
+
+        $r1 = staticinvoke <java.nio.charset.Charset: java.nio.charset.Charset forName(java.lang.String)>("US-ASCII");
+
+        <org.apache.commons.io.Charsets: java.nio.charset.Charset US_ASCII> = $r1;
+
+        $r2 = staticinvoke <java.nio.charset.Charset: java.nio.charset.Charset forName(java.lang.String)>("UTF-16");
+
+        <org.apache.commons.io.Charsets: java.nio.charset.Charset UTF_16> = $r2;
+
+        $r3 = staticinvoke <java.nio.charset.Charset: java.nio.charset.Charset forName(java.lang.String)>("UTF-16BE");
+
+        <org.apache.commons.io.Charsets: java.nio.charset.Charset UTF_16BE> = $r3;
+
+        $r4 = staticinvoke <java.nio.charset.Charset: java.nio.charset.Charset forName(java.lang.String)>("UTF-16LE");
+
+        <org.apache.commons.io.Charsets: java.nio.charset.Charset UTF_16LE> = $r4;
+
+        $r5 = staticinvoke <java.nio.charset.Charset: java.nio.charset.Charset forName(java.lang.String)>("UTF-8");
+
+        <org.apache.commons.io.Charsets: java.nio.charset.Charset UTF_8> = $r5;
+
+        return;
+    }
+
+    public void <init>()
+    {
+        org.apache.commons.io.Charsets r0;
+
+        r0 := @this: org.apache.commons.io.Charsets;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static java.util.SortedMap requiredCharsets()
+    {
+        java.util.TreeMap $r1;
+        java.util.Comparator $r2;
+        java.nio.charset.Charset $r3, $r5, $r7, $r9, $r11, $r13, $r15, $r17, $r19, $r21, $r23, $r25;
+        java.lang.String $r4, $r8, $r12, $r16, $r20, $r24;
+        java.util.SortedMap $r27;
+
+        $r1 = new java.util.TreeMap;
+
+        $r2 = <java.lang.String: java.util.Comparator CASE_INSENSITIVE_ORDER>;
+
+        specialinvoke $r1.<java.util.TreeMap: void <init>(java.util.Comparator)>($r2);
+
+        $r3 = <org.apache.commons.io.Charsets: java.nio.charset.Charset ISO_8859_1>;
+
+        $r4 = virtualinvoke $r3.<java.nio.charset.Charset: java.lang.String name()>();
+
+        $r5 = <org.apache.commons.io.Charsets: java.nio.charset.Charset ISO_8859_1>;
+
+        virtualinvoke $r1.<java.util.TreeMap: java.lang.Object put(java.lang.Object,java.lang.Object)>($r4, $r5);
+
+        $r7 = <org.apache.commons.io.Charsets: java.nio.charset.Charset US_ASCII>;
+
+        $r8 = virtualinvoke $r7.<java.nio.charset.Charset: java.lang.String name()>();
+
+        $r9 = <org.apache.commons.io.Charsets: java.nio.charset.Charset US_ASCII>;
+
+        virtualinvoke $r1.<java.util.TreeMap: java.lang.Object put(java.lang.Object,java.lang.Object)>($r8, $r9);
+
+        $r11 = <org.apache.commons.io.Charsets: java.nio.charset.Charset UTF_16>;
+
+        $r12 = virtualinvoke $r11.<java.nio.charset.Charset: java.lang.String name()>();
+
+        $r13 = <org.apache.commons.io.Charsets: java.nio.charset.Charset UTF_16>;
+
+        virtualinvoke $r1.<java.util.TreeMap: java.lang.Object put(java.lang.Object,java.lang.Object)>($r12, $r13);
+
+        $r15 = <org.apache.commons.io.Charsets: java.nio.charset.Charset UTF_16BE>;
+
+        $r16 = virtualinvoke $r15.<java.nio.charset.Charset: java.lang.String name()>();
+
+        $r17 = <org.apache.commons.io.Charsets: java.nio.charset.Charset UTF_16BE>;
+
+        virtualinvoke $r1.<java.util.TreeMap: java.lang.Object put(java.lang.Object,java.lang.Object)>($r16, $r17);
+
+        $r19 = <org.apache.commons.io.Charsets: java.nio.charset.Charset UTF_16LE>;
+
+        $r20 = virtualinvoke $r19.<java.nio.charset.Charset: java.lang.String name()>();
+
+        $r21 = <org.apache.commons.io.Charsets: java.nio.charset.Charset UTF_16LE>;
+
+        virtualinvoke $r1.<java.util.TreeMap: java.lang.Object put(java.lang.Object,java.lang.Object)>($r20, $r21);
+
+        $r23 = <org.apache.commons.io.Charsets: java.nio.charset.Charset UTF_8>;
+
+        $r24 = virtualinvoke $r23.<java.nio.charset.Charset: java.lang.String name()>();
+
+        $r25 = <org.apache.commons.io.Charsets: java.nio.charset.Charset UTF_8>;
+
+        virtualinvoke $r1.<java.util.TreeMap: java.lang.Object put(java.lang.Object,java.lang.Object)>($r24, $r25);
+
+        $r27 = staticinvoke <java.util.Collections: java.util.SortedMap unmodifiableSortedMap(java.util.SortedMap)>($r1);
+
+        return $r27;
+    }
+
+    public static java.nio.charset.Charset toCharset(java.nio.charset.Charset)
+    {
+        java.nio.charset.Charset r0, $r1;
+
+        r0 := @parameter0: java.nio.charset.Charset;
+
+        if r0 != null goto label1;
+
+        $r1 = staticinvoke <java.nio.charset.Charset: java.nio.charset.Charset defaultCharset()>();
+
+        goto label2;
+
+     label1:
+        $r1 = r0;
+
+     label2:
+        return $r1;
+    }
+
+    public static java.nio.charset.Charset toCharset(java.lang.String)
+    {
+        java.lang.String r0;
+        java.nio.charset.Charset $r1;
+
+        r0 := @parameter0: java.lang.String;
+
+        if r0 != null goto label1;
+
+        $r1 = staticinvoke <java.nio.charset.Charset: java.nio.charset.Charset defaultCharset()>();
+
+        goto label2;
+
+     label1:
+        $r1 = staticinvoke <java.nio.charset.Charset: java.nio.charset.Charset forName(java.lang.String)>(r0);
+
+     label2:
+        return $r1;
+    }
+}

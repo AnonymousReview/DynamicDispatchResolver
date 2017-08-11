@@ -1,0 +1,807 @@
+public class org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize extends java.lang.Object
+{
+    private static final java.lang.String UTF_8;
+    private static final java.lang.String ISO_8859_1;
+    private org.apache.commons.io.input.ReversedLinesFileReader reversedLinesFileReader;
+    private final int testParamBlockSize;
+    private static final java.lang.String TEST_LINE;
+    private static final java.lang.String TEST_LINE_SHIFT_JIS1;
+    private static final java.lang.String TEST_LINE_SHIFT_JIS2;
+    private static final java.lang.String TEST_LINE_WINDOWS_31J_1;
+    private static final java.lang.String TEST_LINE_WINDOWS_31J_2;
+    private static final java.lang.String TEST_LINE_GBK_1;
+    private static final java.lang.String TEST_LINE_GBK_2;
+    private static final java.lang.String TEST_LINE_X_WINDOWS_949_1;
+    private static final java.lang.String TEST_LINE_X_WINDOWS_949_2;
+    private static final java.lang.String TEST_LINE_X_WINDOWS_950_1;
+    private static final java.lang.String TEST_LINE_X_WINDOWS_950_2;
+
+    public static java.util.Collection blockSizes()
+    {
+        java.lang.Integer[][] $r0;
+        java.lang.Integer[] $r1, $r3, $r5, $r7, $r9;
+        java.lang.Integer $r2, $r4, $r6, $r8, $r10;
+        java.util.List $r11;
+
+        $r0 = newarray (java.lang.Integer[])[5];
+
+        $r1 = newarray (java.lang.Integer)[1];
+
+        $r2 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(1);
+
+        $r1[0] = $r2;
+
+        $r0[0] = $r1;
+
+        $r3 = newarray (java.lang.Integer)[1];
+
+        $r4 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(3);
+
+        $r3[0] = $r4;
+
+        $r0[1] = $r3;
+
+        $r5 = newarray (java.lang.Integer)[1];
+
+        $r6 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(8);
+
+        $r5[0] = $r6;
+
+        $r0[2] = $r5;
+
+        $r7 = newarray (java.lang.Integer)[1];
+
+        $r8 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(256);
+
+        $r7[0] = $r8;
+
+        $r0[3] = $r7;
+
+        $r9 = newarray (java.lang.Integer)[1];
+
+        $r10 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(4096);
+
+        $r9[0] = $r10;
+
+        $r0[4] = $r9;
+
+        $r11 = staticinvoke <java.util.Arrays: java.util.List asList(java.lang.Object[])>($r0);
+
+        return $r11;
+    }
+
+    public void <init>(java.lang.Integer)
+    {
+        org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize r0;
+        java.lang.Integer r1;
+        int $i0;
+
+        r0 := @this: org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize;
+
+        r1 := @parameter0: java.lang.Integer;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $i0 = virtualinvoke r1.<java.lang.Integer: int intValue()>();
+
+        r0.<org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize: int testParamBlockSize> = $i0;
+
+        return;
+    }
+
+    public void closeReader()
+    {
+        org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize r0;
+        org.apache.commons.io.input.ReversedLinesFileReader $r2;
+        java.lang.Exception $r3;
+
+        r0 := @this: org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize;
+
+     label1:
+        $r2 = r0.<org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize: org.apache.commons.io.input.ReversedLinesFileReader reversedLinesFileReader>;
+
+        virtualinvoke $r2.<org.apache.commons.io.input.ReversedLinesFileReader: void close()>();
+
+     label2:
+        goto label4;
+
+     label3:
+        $r3 := @caughtexception;
+
+     label4:
+        return;
+
+        catch java.lang.Exception from label1 to label2 with label3;
+    }
+
+    public void testIsoFileDefaults() throws java.net.URISyntaxException, java.io.IOException
+    {
+        org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize r0;
+        java.io.File $r2;
+        org.apache.commons.io.input.ReversedLinesFileReader $r3, $r4;
+        int $i0;
+
+        r0 := @this: org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize;
+
+        $r2 = new java.io.File;
+
+        specialinvoke $r2.<java.io.File: void <init>(java.lang.String)>("resources/test-file-iso8859-1.bin");
+
+        $r3 = new org.apache.commons.io.input.ReversedLinesFileReader;
+
+        $i0 = r0.<org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize: int testParamBlockSize>;
+
+        specialinvoke $r3.<org.apache.commons.io.input.ReversedLinesFileReader: void <init>(java.io.File,int,java.lang.String)>($r2, $i0, "ISO-8859-1");
+
+        r0.<org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize: org.apache.commons.io.input.ReversedLinesFileReader reversedLinesFileReader> = $r3;
+
+        $r4 = r0.<org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize: org.apache.commons.io.input.ReversedLinesFileReader reversedLinesFileReader>;
+
+        specialinvoke r0.<org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize: void assertFileWithShrinkingTestLines(org.apache.commons.io.input.ReversedLinesFileReader)>($r4);
+
+        return;
+    }
+
+    public void testUTF8FileWindowsBreaks() throws java.net.URISyntaxException, java.io.IOException
+    {
+        org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize r0;
+        java.io.File $r2;
+        org.apache.commons.io.input.ReversedLinesFileReader $r3, $r4;
+        int $i0;
+
+        r0 := @this: org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize;
+
+        $r2 = new java.io.File;
+
+        specialinvoke $r2.<java.io.File: void <init>(java.lang.String)>("resources/test-file-utf8-win-linebr.bin");
+
+        $r3 = new org.apache.commons.io.input.ReversedLinesFileReader;
+
+        $i0 = r0.<org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize: int testParamBlockSize>;
+
+        specialinvoke $r3.<org.apache.commons.io.input.ReversedLinesFileReader: void <init>(java.io.File,int,java.lang.String)>($r2, $i0, "UTF-8");
+
+        r0.<org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize: org.apache.commons.io.input.ReversedLinesFileReader reversedLinesFileReader> = $r3;
+
+        $r4 = r0.<org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize: org.apache.commons.io.input.ReversedLinesFileReader reversedLinesFileReader>;
+
+        specialinvoke r0.<org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize: void assertFileWithShrinkingTestLines(org.apache.commons.io.input.ReversedLinesFileReader)>($r4);
+
+        return;
+    }
+
+    public void testUTF8FileCRBreaks() throws java.net.URISyntaxException, java.io.IOException
+    {
+        org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize r0;
+        java.io.File $r2;
+        org.apache.commons.io.input.ReversedLinesFileReader $r3, $r4;
+        int $i0;
+
+        r0 := @this: org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize;
+
+        $r2 = new java.io.File;
+
+        specialinvoke $r2.<java.io.File: void <init>(java.lang.String)>("resources/test-file-utf8-cr-only.bin");
+
+        $r3 = new org.apache.commons.io.input.ReversedLinesFileReader;
+
+        $i0 = r0.<org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize: int testParamBlockSize>;
+
+        specialinvoke $r3.<org.apache.commons.io.input.ReversedLinesFileReader: void <init>(java.io.File,int,java.lang.String)>($r2, $i0, "UTF-8");
+
+        r0.<org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize: org.apache.commons.io.input.ReversedLinesFileReader reversedLinesFileReader> = $r3;
+
+        $r4 = r0.<org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize: org.apache.commons.io.input.ReversedLinesFileReader reversedLinesFileReader>;
+
+        specialinvoke r0.<org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize: void assertFileWithShrinkingTestLines(org.apache.commons.io.input.ReversedLinesFileReader)>($r4);
+
+        return;
+    }
+
+    public void testUTF8File() throws java.net.URISyntaxException, java.io.IOException
+    {
+        org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize r0;
+        java.io.File $r2;
+        org.apache.commons.io.input.ReversedLinesFileReader $r3, $r4;
+        int $i0;
+
+        r0 := @this: org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize;
+
+        $r2 = new java.io.File;
+
+        specialinvoke $r2.<java.io.File: void <init>(java.lang.String)>("resources/test-file-utf8.bin");
+
+        $r3 = new org.apache.commons.io.input.ReversedLinesFileReader;
+
+        $i0 = r0.<org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize: int testParamBlockSize>;
+
+        specialinvoke $r3.<org.apache.commons.io.input.ReversedLinesFileReader: void <init>(java.io.File,int,java.lang.String)>($r2, $i0, "UTF-8");
+
+        r0.<org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize: org.apache.commons.io.input.ReversedLinesFileReader reversedLinesFileReader> = $r3;
+
+        $r4 = r0.<org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize: org.apache.commons.io.input.ReversedLinesFileReader reversedLinesFileReader>;
+
+        specialinvoke r0.<org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize: void assertFileWithShrinkingTestLines(org.apache.commons.io.input.ReversedLinesFileReader)>($r4);
+
+        return;
+    }
+
+    public void testEmptyFile() throws java.net.URISyntaxException, java.io.IOException
+    {
+        org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize r0;
+        java.io.File $r2;
+        org.apache.commons.io.input.ReversedLinesFileReader $r3, $r4;
+        int $i0;
+        java.lang.String $r5;
+
+        r0 := @this: org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize;
+
+        $r2 = new java.io.File;
+
+        specialinvoke $r2.<java.io.File: void <init>(java.lang.String)>("resources/test-file-empty.bin");
+
+        $r3 = new org.apache.commons.io.input.ReversedLinesFileReader;
+
+        $i0 = r0.<org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize: int testParamBlockSize>;
+
+        specialinvoke $r3.<org.apache.commons.io.input.ReversedLinesFileReader: void <init>(java.io.File,int,java.lang.String)>($r2, $i0, "UTF-8");
+
+        r0.<org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize: org.apache.commons.io.input.ReversedLinesFileReader reversedLinesFileReader> = $r3;
+
+        $r4 = r0.<org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize: org.apache.commons.io.input.ReversedLinesFileReader reversedLinesFileReader>;
+
+        $r5 = virtualinvoke $r4.<org.apache.commons.io.input.ReversedLinesFileReader: java.lang.String readLine()>();
+
+        staticinvoke <org.junit.Assert: void assertNull(java.lang.Object)>($r5);
+
+        return;
+    }
+
+    public void testUTF16BEFile() throws java.net.URISyntaxException, java.io.IOException
+    {
+        org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize r0;
+        java.io.File $r2;
+        org.apache.commons.io.input.ReversedLinesFileReader $r3, $r4;
+        int $i0;
+
+        r0 := @this: org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize;
+
+        $r2 = new java.io.File;
+
+        specialinvoke $r2.<java.io.File: void <init>(java.lang.String)>("resources/test-file-utf16be.bin");
+
+        $r3 = new org.apache.commons.io.input.ReversedLinesFileReader;
+
+        $i0 = r0.<org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize: int testParamBlockSize>;
+
+        specialinvoke $r3.<org.apache.commons.io.input.ReversedLinesFileReader: void <init>(java.io.File,int,java.lang.String)>($r2, $i0, "UTF-16BE");
+
+        r0.<org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize: org.apache.commons.io.input.ReversedLinesFileReader reversedLinesFileReader> = $r3;
+
+        $r4 = r0.<org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize: org.apache.commons.io.input.ReversedLinesFileReader reversedLinesFileReader>;
+
+        specialinvoke r0.<org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize: void assertFileWithShrinkingTestLines(org.apache.commons.io.input.ReversedLinesFileReader)>($r4);
+
+        return;
+    }
+
+    public void testUTF16LEFile() throws java.net.URISyntaxException, java.io.IOException
+    {
+        org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize r0;
+        java.io.File $r2;
+        org.apache.commons.io.input.ReversedLinesFileReader $r3, $r4;
+        int $i0;
+
+        r0 := @this: org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize;
+
+        $r2 = new java.io.File;
+
+        specialinvoke $r2.<java.io.File: void <init>(java.lang.String)>("resources/test-file-utf16le.bin");
+
+        $r3 = new org.apache.commons.io.input.ReversedLinesFileReader;
+
+        $i0 = r0.<org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize: int testParamBlockSize>;
+
+        specialinvoke $r3.<org.apache.commons.io.input.ReversedLinesFileReader: void <init>(java.io.File,int,java.lang.String)>($r2, $i0, "UTF-16LE");
+
+        r0.<org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize: org.apache.commons.io.input.ReversedLinesFileReader reversedLinesFileReader> = $r3;
+
+        $r4 = r0.<org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize: org.apache.commons.io.input.ReversedLinesFileReader reversedLinesFileReader>;
+
+        specialinvoke r0.<org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize: void assertFileWithShrinkingTestLines(org.apache.commons.io.input.ReversedLinesFileReader)>($r4);
+
+        return;
+    }
+
+    public void testShiftJISFile() throws java.net.URISyntaxException, java.io.IOException
+    {
+        org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize r0;
+        java.io.File $r2;
+        org.apache.commons.io.input.ReversedLinesFileReader $r3, $r4, $r6;
+        int $i0;
+        java.lang.String $r5, $r7;
+
+        r0 := @this: org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize;
+
+        $r2 = new java.io.File;
+
+        specialinvoke $r2.<java.io.File: void <init>(java.lang.String)>("resources/test-file-shiftjis.bin");
+
+        $r3 = new org.apache.commons.io.input.ReversedLinesFileReader;
+
+        $i0 = r0.<org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize: int testParamBlockSize>;
+
+        specialinvoke $r3.<org.apache.commons.io.input.ReversedLinesFileReader: void <init>(java.io.File,int,java.lang.String)>($r2, $i0, "Shift_JIS");
+
+        r0.<org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize: org.apache.commons.io.input.ReversedLinesFileReader reversedLinesFileReader> = $r3;
+
+        $r4 = r0.<org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize: org.apache.commons.io.input.ReversedLinesFileReader reversedLinesFileReader>;
+
+        $r5 = virtualinvoke $r4.<org.apache.commons.io.input.ReversedLinesFileReader: java.lang.String readLine()>();
+
+        staticinvoke <org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize: void assertEqualsAndNoLineBreaks(java.lang.String,java.lang.String)>("Kanji letters: \u660e\u8f38\u5b50\u4eac", $r5);
+
+        $r6 = r0.<org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize: org.apache.commons.io.input.ReversedLinesFileReader reversedLinesFileReader>;
+
+        $r7 = virtualinvoke $r6.<org.apache.commons.io.input.ReversedLinesFileReader: java.lang.String readLine()>();
+
+        staticinvoke <org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize: void assertEqualsAndNoLineBreaks(java.lang.String,java.lang.String)>("Hiragana letters: \u3041\u3042\u3043\u3044\u3045", $r7);
+
+        return;
+    }
+
+    public void testWindows31jFile() throws java.net.URISyntaxException, java.io.IOException
+    {
+        org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize r0;
+        java.io.File $r2;
+        org.apache.commons.io.input.ReversedLinesFileReader $r3, $r4, $r6;
+        int $i0;
+        java.lang.String $r5, $r7;
+
+        r0 := @this: org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize;
+
+        $r2 = new java.io.File;
+
+        specialinvoke $r2.<java.io.File: void <init>(java.lang.String)>("resources/test-file-windows-31j.bin");
+
+        $r3 = new org.apache.commons.io.input.ReversedLinesFileReader;
+
+        $i0 = r0.<org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize: int testParamBlockSize>;
+
+        specialinvoke $r3.<org.apache.commons.io.input.ReversedLinesFileReader: void <init>(java.io.File,int,java.lang.String)>($r2, $i0, "windows-31j");
+
+        r0.<org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize: org.apache.commons.io.input.ReversedLinesFileReader reversedLinesFileReader> = $r3;
+
+        $r4 = r0.<org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize: org.apache.commons.io.input.ReversedLinesFileReader reversedLinesFileReader>;
+
+        $r5 = virtualinvoke $r4.<org.apache.commons.io.input.ReversedLinesFileReader: java.lang.String readLine()>();
+
+        staticinvoke <org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize: void assertEqualsAndNoLineBreaks(java.lang.String,java.lang.String)>("\u660e\u8f38\u5b50\u4eac", $r5);
+
+        $r6 = r0.<org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize: org.apache.commons.io.input.ReversedLinesFileReader reversedLinesFileReader>;
+
+        $r7 = virtualinvoke $r6.<org.apache.commons.io.input.ReversedLinesFileReader: java.lang.String readLine()>();
+
+        staticinvoke <org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize: void assertEqualsAndNoLineBreaks(java.lang.String,java.lang.String)>("\u3041\u3042\u3043\u3044\u3045", $r7);
+
+        return;
+    }
+
+    public void testGBK() throws java.net.URISyntaxException, java.io.IOException
+    {
+        org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize r0;
+        java.io.File $r2;
+        org.apache.commons.io.input.ReversedLinesFileReader $r3, $r4, $r6;
+        int $i0;
+        java.lang.String $r5, $r7;
+
+        r0 := @this: org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize;
+
+        $r2 = new java.io.File;
+
+        specialinvoke $r2.<java.io.File: void <init>(java.lang.String)>("resources/test-file-gbk.bin");
+
+        $r3 = new org.apache.commons.io.input.ReversedLinesFileReader;
+
+        $i0 = r0.<org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize: int testParamBlockSize>;
+
+        specialinvoke $r3.<org.apache.commons.io.input.ReversedLinesFileReader: void <init>(java.io.File,int,java.lang.String)>($r2, $i0, "GBK");
+
+        r0.<org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize: org.apache.commons.io.input.ReversedLinesFileReader reversedLinesFileReader> = $r3;
+
+        $r4 = r0.<org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize: org.apache.commons.io.input.ReversedLinesFileReader reversedLinesFileReader>;
+
+        $r5 = virtualinvoke $r4.<org.apache.commons.io.input.ReversedLinesFileReader: java.lang.String readLine()>();
+
+        staticinvoke <org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize: void assertEqualsAndNoLineBreaks(java.lang.String,java.lang.String)>("\u7b80\u4f53\u4e2d\u6587", $r5);
+
+        $r6 = r0.<org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize: org.apache.commons.io.input.ReversedLinesFileReader reversedLinesFileReader>;
+
+        $r7 = virtualinvoke $r6.<org.apache.commons.io.input.ReversedLinesFileReader: java.lang.String readLine()>();
+
+        staticinvoke <org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize: void assertEqualsAndNoLineBreaks(java.lang.String,java.lang.String)>("\u660e\u8f38\u5b50\u4eac", $r7);
+
+        return;
+    }
+
+    public void testxWindows949File() throws java.net.URISyntaxException, java.io.IOException
+    {
+        org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize r0;
+        java.io.File $r2;
+        org.apache.commons.io.input.ReversedLinesFileReader $r3, $r4, $r6;
+        int $i0;
+        java.lang.String $r5, $r7;
+
+        r0 := @this: org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize;
+
+        $r2 = new java.io.File;
+
+        specialinvoke $r2.<java.io.File: void <init>(java.lang.String)>("resources/test-file-x-windows-949.bin");
+
+        $r3 = new org.apache.commons.io.input.ReversedLinesFileReader;
+
+        $i0 = r0.<org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize: int testParamBlockSize>;
+
+        specialinvoke $r3.<org.apache.commons.io.input.ReversedLinesFileReader: void <init>(java.io.File,int,java.lang.String)>($r2, $i0, "x-windows-949");
+
+        r0.<org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize: org.apache.commons.io.input.ReversedLinesFileReader reversedLinesFileReader> = $r3;
+
+        $r4 = r0.<org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize: org.apache.commons.io.input.ReversedLinesFileReader reversedLinesFileReader>;
+
+        $r5 = virtualinvoke $r4.<org.apache.commons.io.input.ReversedLinesFileReader: java.lang.String readLine()>();
+
+        staticinvoke <org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize: void assertEqualsAndNoLineBreaks(java.lang.String,java.lang.String)>("\ub300\ud55c\ubbfc\uad6d", $r5);
+
+        $r6 = r0.<org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize: org.apache.commons.io.input.ReversedLinesFileReader reversedLinesFileReader>;
+
+        $r7 = virtualinvoke $r6.<org.apache.commons.io.input.ReversedLinesFileReader: java.lang.String readLine()>();
+
+        staticinvoke <org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize: void assertEqualsAndNoLineBreaks(java.lang.String,java.lang.String)>("\ud55c\uad6d\uc5b4", $r7);
+
+        return;
+    }
+
+    public void testxWindows950File() throws java.net.URISyntaxException, java.io.IOException
+    {
+        org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize r0;
+        java.io.File $r2;
+        org.apache.commons.io.input.ReversedLinesFileReader $r3, $r4, $r6;
+        int $i0;
+        java.lang.String $r5, $r7;
+
+        r0 := @this: org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize;
+
+        $r2 = new java.io.File;
+
+        specialinvoke $r2.<java.io.File: void <init>(java.lang.String)>("resources/test-file-x-windows-950.bin");
+
+        $r3 = new org.apache.commons.io.input.ReversedLinesFileReader;
+
+        $i0 = r0.<org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize: int testParamBlockSize>;
+
+        specialinvoke $r3.<org.apache.commons.io.input.ReversedLinesFileReader: void <init>(java.io.File,int,java.lang.String)>($r2, $i0, "x-windows-950");
+
+        r0.<org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize: org.apache.commons.io.input.ReversedLinesFileReader reversedLinesFileReader> = $r3;
+
+        $r4 = r0.<org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize: org.apache.commons.io.input.ReversedLinesFileReader reversedLinesFileReader>;
+
+        $r5 = virtualinvoke $r4.<org.apache.commons.io.input.ReversedLinesFileReader: java.lang.String readLine()>();
+
+        staticinvoke <org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize: void assertEqualsAndNoLineBreaks(java.lang.String,java.lang.String)>("\u7e41\u9ad4\u4e2d\u6587", $r5);
+
+        $r6 = r0.<org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize: org.apache.commons.io.input.ReversedLinesFileReader reversedLinesFileReader>;
+
+        $r7 = virtualinvoke $r6.<org.apache.commons.io.input.ReversedLinesFileReader: java.lang.String readLine()>();
+
+        staticinvoke <org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize: void assertEqualsAndNoLineBreaks(java.lang.String,java.lang.String)>("\u660e\u8f38\u5b50\u4eac", $r7);
+
+        return;
+    }
+
+    public void testFileSizeIsExactMultipleOfBlockSize() throws java.net.URISyntaxException, java.io.IOException
+    {
+        org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize r0;
+        java.io.File $r3;
+        org.apache.commons.io.input.ReversedLinesFileReader $r4, $r5, $r7;
+        java.lang.String $r6, $r8;
+
+        r0 := @this: org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize;
+
+        $r3 = new java.io.File;
+
+        specialinvoke $r3.<java.io.File: void <init>(java.lang.String)>("resources/test-file-20byteslength.bin");
+
+        $r4 = new org.apache.commons.io.input.ReversedLinesFileReader;
+
+        specialinvoke $r4.<org.apache.commons.io.input.ReversedLinesFileReader: void <init>(java.io.File,int,java.lang.String)>($r3, 10, "ISO-8859-1");
+
+        r0.<org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize: org.apache.commons.io.input.ReversedLinesFileReader reversedLinesFileReader> = $r4;
+
+        $r5 = r0.<org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize: org.apache.commons.io.input.ReversedLinesFileReader reversedLinesFileReader>;
+
+        $r6 = virtualinvoke $r5.<org.apache.commons.io.input.ReversedLinesFileReader: java.lang.String readLine()>();
+
+        staticinvoke <org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize: void assertEqualsAndNoLineBreaks(java.lang.String,java.lang.String)>("123456789", $r6);
+
+        $r7 = r0.<org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize: org.apache.commons.io.input.ReversedLinesFileReader reversedLinesFileReader>;
+
+        $r8 = virtualinvoke $r7.<org.apache.commons.io.input.ReversedLinesFileReader: java.lang.String readLine()>();
+
+        staticinvoke <org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize: void assertEqualsAndNoLineBreaks(java.lang.String,java.lang.String)>("123456789", $r8);
+
+        return;
+    }
+
+    public void testUTF8FileWindowsBreaksSmallBlockSize2VerifyBlockSpanningNewLines() throws java.net.URISyntaxException, java.io.IOException
+    {
+        org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize r0;
+        java.io.File $r2;
+        org.apache.commons.io.input.ReversedLinesFileReader $r3, $r4;
+        int $i0;
+
+        r0 := @this: org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize;
+
+        $r2 = new java.io.File;
+
+        specialinvoke $r2.<java.io.File: void <init>(java.lang.String)>("resources/test-file-utf8-win-linebr.bin");
+
+        $r3 = new org.apache.commons.io.input.ReversedLinesFileReader;
+
+        $i0 = r0.<org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize: int testParamBlockSize>;
+
+        specialinvoke $r3.<org.apache.commons.io.input.ReversedLinesFileReader: void <init>(java.io.File,int,java.lang.String)>($r2, $i0, "UTF-8");
+
+        r0.<org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize: org.apache.commons.io.input.ReversedLinesFileReader reversedLinesFileReader> = $r3;
+
+        $r4 = r0.<org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize: org.apache.commons.io.input.ReversedLinesFileReader reversedLinesFileReader>;
+
+        specialinvoke r0.<org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize: void assertFileWithShrinkingTestLines(org.apache.commons.io.input.ReversedLinesFileReader)>($r4);
+
+        return;
+    }
+
+    public void testIsoFileManyWindowsBreaksSmallBlockSize2VerifyBlockSpanningNewLines() throws java.net.URISyntaxException, java.io.IOException
+    {
+        org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize r0;
+        java.io.File $r2;
+        org.apache.commons.io.input.ReversedLinesFileReader $r3, $r4, $r9;
+        int $i0, i1, i2;
+        java.lang.String $r5, $r8, $r10;
+        java.lang.StringBuilder $r6, $r7;
+
+        r0 := @this: org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize;
+
+        $r2 = new java.io.File;
+
+        specialinvoke $r2.<java.io.File: void <init>(java.lang.String)>("resources/test-file-iso8859-1-shortlines-win-linebr.bin");
+
+        $r3 = new org.apache.commons.io.input.ReversedLinesFileReader;
+
+        $i0 = r0.<org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize: int testParamBlockSize>;
+
+        specialinvoke $r3.<org.apache.commons.io.input.ReversedLinesFileReader: void <init>(java.io.File,int,java.lang.String)>($r2, $i0, "ISO-8859-1");
+
+        r0.<org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize: org.apache.commons.io.input.ReversedLinesFileReader reversedLinesFileReader> = $r3;
+
+        i1 = 3;
+
+        goto label4;
+
+     label1:
+        i2 = 1;
+
+        goto label3;
+
+     label2:
+        $r4 = r0.<org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize: org.apache.commons.io.input.ReversedLinesFileReader reversedLinesFileReader>;
+
+        $r5 = virtualinvoke $r4.<org.apache.commons.io.input.ReversedLinesFileReader: java.lang.String readLine()>();
+
+        staticinvoke <org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize: void assertEqualsAndNoLineBreaks(java.lang.String,java.lang.String)>("", $r5);
+
+        i2 = i2 + 1;
+
+     label3:
+        if i2 <= 3 goto label2;
+
+        $r6 = new java.lang.StringBuilder;
+
+        specialinvoke $r6.<java.lang.StringBuilder: void <init>()>();
+
+        $r7 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i1);
+
+        $r8 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r9 = r0.<org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize: org.apache.commons.io.input.ReversedLinesFileReader reversedLinesFileReader>;
+
+        $r10 = virtualinvoke $r9.<org.apache.commons.io.input.ReversedLinesFileReader: java.lang.String readLine()>();
+
+        staticinvoke <org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize: void assertEqualsAndNoLineBreaks(java.lang.String,java.lang.String)>($r8, $r10);
+
+        i1 = i1 + -1;
+
+     label4:
+        if i1 > 0 goto label1;
+
+        return;
+    }
+
+    public void testUnsupportedEncodingUTF16() throws java.net.URISyntaxException, java.io.IOException
+    {
+        org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize r0;
+        java.io.File $r2;
+        org.apache.commons.io.input.ReversedLinesFileReader $r3;
+        int $i0;
+
+        r0 := @this: org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize;
+
+        $r2 = new java.io.File;
+
+        specialinvoke $r2.<java.io.File: void <init>(java.lang.String)>("resources/test-file-empty.bin");
+
+        $r3 = new org.apache.commons.io.input.ReversedLinesFileReader;
+
+        $i0 = r0.<org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize: int testParamBlockSize>;
+
+        specialinvoke $r3.<org.apache.commons.io.input.ReversedLinesFileReader: void <init>(java.io.File,int,java.lang.String)>($r2, $i0, "UTF-16");
+
+        virtualinvoke $r3.<org.apache.commons.io.input.ReversedLinesFileReader: void close()>();
+
+        return;
+    }
+
+    public void testUnsupportedEncodingBig5() throws java.net.URISyntaxException, java.io.IOException
+    {
+        org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize r0;
+        java.io.File $r2;
+        org.apache.commons.io.input.ReversedLinesFileReader $r3;
+        int $i0;
+
+        r0 := @this: org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize;
+
+        $r2 = new java.io.File;
+
+        specialinvoke $r2.<java.io.File: void <init>(java.lang.String)>("resources/test-file-empty.bin");
+
+        $r3 = new org.apache.commons.io.input.ReversedLinesFileReader;
+
+        $i0 = r0.<org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize: int testParamBlockSize>;
+
+        specialinvoke $r3.<org.apache.commons.io.input.ReversedLinesFileReader: void <init>(java.io.File,int,java.lang.String)>($r2, $i0, "Big5");
+
+        virtualinvoke $r3.<org.apache.commons.io.input.ReversedLinesFileReader: void close()>();
+
+        return;
+    }
+
+    private void assertFileWithShrinkingTestLines(org.apache.commons.io.input.ReversedLinesFileReader) throws java.io.IOException
+    {
+        org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize r0;
+        org.apache.commons.io.input.ReversedLinesFileReader r1;
+        java.lang.String $r2, $r6, $r7, $r8;
+        java.lang.StringBuilder $r3, $r4, $r5;
+        int i0;
+
+        r0 := @this: org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize;
+
+        r1 := @parameter0: org.apache.commons.io.input.ReversedLinesFileReader;
+
+        i0 = 0;
+
+        goto label2;
+
+     label1:
+        i0 = i0 + 1;
+
+        $r3 = new java.lang.StringBuilder;
+
+        specialinvoke $r3.<java.lang.StringBuilder: void <init>(java.lang.String)>("Line ");
+
+        $r4 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i0);
+
+        $r5 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" is not matching");
+
+        $r6 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r7 = "A Test Line. Special chars: \u00c4\u00e4\u00dc\u00fc\u00d6\u00f6\u00df \u00c3\u00e1\u00e9\u00ed\u00ef\u00e7\u00f1\u00c2 \u00a9\u00b5\u00a5\u00a3\u00b1\u00b2\u00ae";
+
+        $r8 = virtualinvoke $r7.<java.lang.String: java.lang.String substring(int,int)>(0, i0);
+
+        staticinvoke <org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize: void assertEqualsAndNoLineBreaks(java.lang.String,java.lang.String,java.lang.String)>($r6, $r8, $r2);
+
+     label2:
+        $r2 = virtualinvoke r1.<org.apache.commons.io.input.ReversedLinesFileReader: java.lang.String readLine()>();
+
+        if $r2 != null goto label1;
+
+        return;
+    }
+
+    static void assertEqualsAndNoLineBreaks(java.lang.String, java.lang.String, java.lang.String)
+    {
+        java.lang.String r0, r1, r2, $r5, $r8;
+        java.lang.StringBuilder $r3, $r4, $r6, $r7;
+        boolean $z0, $z1;
+
+        r0 := @parameter0: java.lang.String;
+
+        r1 := @parameter1: java.lang.String;
+
+        r2 := @parameter2: java.lang.String;
+
+        if r2 == null goto label1;
+
+        $r3 = new java.lang.StringBuilder;
+
+        specialinvoke $r3.<java.lang.StringBuilder: void <init>(java.lang.String)>("Line contains \\n: line=");
+
+        $r4 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r2);
+
+        $r5 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $z0 = virtualinvoke r2.<java.lang.String: boolean contains(java.lang.CharSequence)>("\n");
+
+        staticinvoke <org.junit.Assert: void assertFalse(java.lang.String,boolean)>($r5, $z0);
+
+        $r6 = new java.lang.StringBuilder;
+
+        specialinvoke $r6.<java.lang.StringBuilder: void <init>(java.lang.String)>("Line contains \\r: line=");
+
+        $r7 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r2);
+
+        $r8 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $z1 = virtualinvoke r2.<java.lang.String: boolean contains(java.lang.CharSequence)>("\r");
+
+        staticinvoke <org.junit.Assert: void assertFalse(java.lang.String,boolean)>($r8, $z1);
+
+     label1:
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,java.lang.Object,java.lang.Object)>(r0, r1, r2);
+
+        return;
+    }
+
+    static void assertEqualsAndNoLineBreaks(java.lang.String, java.lang.String)
+    {
+        java.lang.String r0, r1;
+
+        r0 := @parameter0: java.lang.String;
+
+        r1 := @parameter1: java.lang.String;
+
+        staticinvoke <org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize: void assertEqualsAndNoLineBreaks(java.lang.String,java.lang.String,java.lang.String)>(null, r0, r1);
+
+        return;
+    }
+
+    public static void <clinit>()
+    {
+        <org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize: java.lang.String TEST_LINE_X_WINDOWS_950_2> = "\u7e41\u9ad4\u4e2d\u6587";
+
+        <org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize: java.lang.String TEST_LINE_X_WINDOWS_950_1> = "\u660e\u8f38\u5b50\u4eac";
+
+        <org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize: java.lang.String TEST_LINE_X_WINDOWS_949_2> = "\ub300\ud55c\ubbfc\uad6d";
+
+        <org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize: java.lang.String TEST_LINE_X_WINDOWS_949_1> = "\ud55c\uad6d\uc5b4";
+
+        <org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize: java.lang.String TEST_LINE_GBK_2> = "\u7b80\u4f53\u4e2d\u6587";
+
+        <org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize: java.lang.String TEST_LINE_GBK_1> = "\u660e\u8f38\u5b50\u4eac";
+
+        <org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize: java.lang.String TEST_LINE_WINDOWS_31J_2> = "\u660e\u8f38\u5b50\u4eac";
+
+        <org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize: java.lang.String TEST_LINE_WINDOWS_31J_1> = "\u3041\u3042\u3043\u3044\u3045";
+
+        <org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize: java.lang.String TEST_LINE_SHIFT_JIS2> = "Kanji letters: \u660e\u8f38\u5b50\u4eac";
+
+        <org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize: java.lang.String TEST_LINE_SHIFT_JIS1> = "Hiragana letters: \u3041\u3042\u3043\u3044\u3045";
+
+        <org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize: java.lang.String TEST_LINE> = "A Test Line. Special chars: \u00c4\u00e4\u00dc\u00fc\u00d6\u00f6\u00df \u00c3\u00e1\u00e9\u00ed\u00ef\u00e7\u00f1\u00c2 \u00a9\u00b5\u00a5\u00a3\u00b1\u00b2\u00ae";
+
+        <org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize: java.lang.String ISO_8859_1> = "ISO-8859-1";
+
+        <org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize: java.lang.String UTF_8> = "UTF-8";
+
+        return;
+    }
+}

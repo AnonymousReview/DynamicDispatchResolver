@@ -1,0 +1,422 @@
+public class org.apache.commons.codec.language.DaitchMokotoffSoundexTest extends org.apache.commons.codec.StringEncoderAbstractTest
+{
+
+    public void <init>()
+    {
+        org.apache.commons.codec.language.DaitchMokotoffSoundexTest r0;
+
+        r0 := @this: org.apache.commons.codec.language.DaitchMokotoffSoundexTest;
+
+        specialinvoke r0.<org.apache.commons.codec.StringEncoderAbstractTest: void <init>()>();
+
+        return;
+    }
+
+    protected org.apache.commons.codec.language.DaitchMokotoffSoundex createStringEncoder()
+    {
+        org.apache.commons.codec.language.DaitchMokotoffSoundexTest r0;
+        org.apache.commons.codec.language.DaitchMokotoffSoundex $r1;
+
+        r0 := @this: org.apache.commons.codec.language.DaitchMokotoffSoundexTest;
+
+        $r1 = new org.apache.commons.codec.language.DaitchMokotoffSoundex;
+
+        specialinvoke $r1.<org.apache.commons.codec.language.DaitchMokotoffSoundex: void <init>()>();
+
+        return $r1;
+    }
+
+    private java.lang.String soundex(java.lang.String)
+    {
+        org.apache.commons.codec.language.DaitchMokotoffSoundexTest r0;
+        java.lang.String r1, $r4;
+        org.apache.commons.codec.StringEncoder $r2;
+        org.apache.commons.codec.language.DaitchMokotoffSoundex $r3;
+
+        r0 := @this: org.apache.commons.codec.language.DaitchMokotoffSoundexTest;
+
+        r1 := @parameter0: java.lang.String;
+
+        $r2 = virtualinvoke r0.<org.apache.commons.codec.language.DaitchMokotoffSoundexTest: org.apache.commons.codec.StringEncoder getStringEncoder()>();
+
+        $r3 = (org.apache.commons.codec.language.DaitchMokotoffSoundex) $r2;
+
+        $r4 = virtualinvoke $r3.<org.apache.commons.codec.language.DaitchMokotoffSoundex: java.lang.String soundex(java.lang.String)>(r1);
+
+        return $r4;
+    }
+
+    private java.lang.String encode(java.lang.String)
+    {
+        org.apache.commons.codec.language.DaitchMokotoffSoundexTest r0;
+        java.lang.String r1, $r4;
+        org.apache.commons.codec.StringEncoder $r2;
+        org.apache.commons.codec.language.DaitchMokotoffSoundex $r3;
+
+        r0 := @this: org.apache.commons.codec.language.DaitchMokotoffSoundexTest;
+
+        r1 := @parameter0: java.lang.String;
+
+        $r2 = virtualinvoke r0.<org.apache.commons.codec.language.DaitchMokotoffSoundexTest: org.apache.commons.codec.StringEncoder getStringEncoder()>();
+
+        $r3 = (org.apache.commons.codec.language.DaitchMokotoffSoundex) $r2;
+
+        $r4 = virtualinvoke $r3.<org.apache.commons.codec.language.DaitchMokotoffSoundex: java.lang.String encode(java.lang.String)>(r1);
+
+        return $r4;
+    }
+
+    public void testAccentedCharacterFolding()
+    {
+        org.apache.commons.codec.language.DaitchMokotoffSoundexTest r0;
+        java.lang.String $r1, $r2, $r3, $r4;
+
+        r0 := @this: org.apache.commons.codec.language.DaitchMokotoffSoundexTest;
+
+        $r1 = specialinvoke r0.<org.apache.commons.codec.language.DaitchMokotoffSoundexTest: java.lang.String soundex(java.lang.String)>("Stra\u00dfburg");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("294795", $r1);
+
+        $r2 = specialinvoke r0.<org.apache.commons.codec.language.DaitchMokotoffSoundexTest: java.lang.String soundex(java.lang.String)>("Strasburg");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("294795", $r2);
+
+        $r3 = specialinvoke r0.<org.apache.commons.codec.language.DaitchMokotoffSoundexTest: java.lang.String soundex(java.lang.String)>("\u00c9regon");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("095600", $r3);
+
+        $r4 = specialinvoke r0.<org.apache.commons.codec.language.DaitchMokotoffSoundexTest: java.lang.String soundex(java.lang.String)>("Eregon");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("095600", $r4);
+
+        return;
+    }
+
+    public void testAdjacentCodes()
+    {
+        org.apache.commons.codec.language.DaitchMokotoffSoundexTest r0;
+        java.lang.String $r1, $r2;
+
+        r0 := @this: org.apache.commons.codec.language.DaitchMokotoffSoundexTest;
+
+        $r1 = specialinvoke r0.<org.apache.commons.codec.language.DaitchMokotoffSoundexTest: java.lang.String soundex(java.lang.String)>("AKSSOL");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("054800", $r1);
+
+        $r2 = specialinvoke r0.<org.apache.commons.codec.language.DaitchMokotoffSoundexTest: java.lang.String soundex(java.lang.String)>("GERSCHFELD");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("547830|545783|594783|594578", $r2);
+
+        return;
+    }
+
+    public void testEncodeBasic()
+    {
+        org.apache.commons.codec.language.DaitchMokotoffSoundexTest r0;
+        java.lang.String $r1, $r2, $r3, $r4, $r5, $r6, $r7, $r8;
+
+        r0 := @this: org.apache.commons.codec.language.DaitchMokotoffSoundexTest;
+
+        $r1 = specialinvoke r0.<org.apache.commons.codec.language.DaitchMokotoffSoundexTest: java.lang.String encode(java.lang.String)>("AUERBACH");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("097400", $r1);
+
+        $r2 = specialinvoke r0.<org.apache.commons.codec.language.DaitchMokotoffSoundexTest: java.lang.String encode(java.lang.String)>("OHRBACH");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("097400", $r2);
+
+        $r3 = specialinvoke r0.<org.apache.commons.codec.language.DaitchMokotoffSoundexTest: java.lang.String encode(java.lang.String)>("LIPSHITZ");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("874400", $r3);
+
+        $r4 = specialinvoke r0.<org.apache.commons.codec.language.DaitchMokotoffSoundexTest: java.lang.String encode(java.lang.String)>("LIPPSZYC");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("874400", $r4);
+
+        $r5 = specialinvoke r0.<org.apache.commons.codec.language.DaitchMokotoffSoundexTest: java.lang.String encode(java.lang.String)>("LEWINSKY");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("876450", $r5);
+
+        $r6 = specialinvoke r0.<org.apache.commons.codec.language.DaitchMokotoffSoundexTest: java.lang.String encode(java.lang.String)>("LEVINSKI");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("876450", $r6);
+
+        $r7 = specialinvoke r0.<org.apache.commons.codec.language.DaitchMokotoffSoundexTest: java.lang.String encode(java.lang.String)>("SZLAMAWICZ");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("486740", $r7);
+
+        $r8 = specialinvoke r0.<org.apache.commons.codec.language.DaitchMokotoffSoundexTest: java.lang.String encode(java.lang.String)>("SHLAMOVITZ");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("486740", $r8);
+
+        return;
+    }
+
+    public void testEncodeIgnoreApostrophes() throws org.apache.commons.codec.EncoderException
+    {
+        org.apache.commons.codec.language.DaitchMokotoffSoundexTest r0;
+        java.lang.String[] $r1;
+
+        r0 := @this: org.apache.commons.codec.language.DaitchMokotoffSoundexTest;
+
+        $r1 = newarray (java.lang.String)[8];
+
+        $r1[0] = "OBrien";
+
+        $r1[1] = "\'OBrien";
+
+        $r1[2] = "O\'Brien";
+
+        $r1[3] = "OB\'rien";
+
+        $r1[4] = "OBr\'ien";
+
+        $r1[5] = "OBri\'en";
+
+        $r1[6] = "OBrie\'n";
+
+        $r1[7] = "OBrien\'";
+
+        virtualinvoke r0.<org.apache.commons.codec.language.DaitchMokotoffSoundexTest: void checkEncodingVariations(java.lang.String,java.lang.String[])>("079600", $r1);
+
+        return;
+    }
+
+    public void testEncodeIgnoreHyphens() throws org.apache.commons.codec.EncoderException
+    {
+        org.apache.commons.codec.language.DaitchMokotoffSoundexTest r0;
+        java.lang.String[] $r1;
+
+        r0 := @this: org.apache.commons.codec.language.DaitchMokotoffSoundexTest;
+
+        $r1 = newarray (java.lang.String)[11];
+
+        $r1[0] = "KINGSMITH";
+
+        $r1[1] = "-KINGSMITH";
+
+        $r1[2] = "K-INGSMITH";
+
+        $r1[3] = "KI-NGSMITH";
+
+        $r1[4] = "KIN-GSMITH";
+
+        $r1[5] = "KING-SMITH";
+
+        $r1[6] = "KINGS-MITH";
+
+        $r1[7] = "KINGSM-ITH";
+
+        $r1[8] = "KINGSMI-TH";
+
+        $r1[9] = "KINGSMIT-H";
+
+        $r1[10] = "KINGSMITH-";
+
+        virtualinvoke r0.<org.apache.commons.codec.language.DaitchMokotoffSoundexTest: void checkEncodingVariations(java.lang.String,java.lang.String[])>("565463", $r1);
+
+        return;
+    }
+
+    public void testEncodeIgnoreTrimmable()
+    {
+        org.apache.commons.codec.language.DaitchMokotoffSoundexTest r0;
+        java.lang.String $r1, $r2;
+
+        r0 := @this: org.apache.commons.codec.language.DaitchMokotoffSoundexTest;
+
+        $r1 = specialinvoke r0.<org.apache.commons.codec.language.DaitchMokotoffSoundexTest: java.lang.String encode(java.lang.String)>(" \t\n\r Washington \t\n\r ");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("746536", $r1);
+
+        $r2 = specialinvoke r0.<org.apache.commons.codec.language.DaitchMokotoffSoundexTest: java.lang.String encode(java.lang.String)>("Washington");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("746536", $r2);
+
+        return;
+    }
+
+    public void testSoundexBasic()
+    {
+        org.apache.commons.codec.language.DaitchMokotoffSoundexTest r0;
+        java.lang.String $r1, $r2, $r3, $r4, $r5, $r6, $r7, $r8, $r9, $r10, $r11, $r12, $r13, $r14, $r15, $r16, $r17;
+
+        r0 := @this: org.apache.commons.codec.language.DaitchMokotoffSoundexTest;
+
+        $r1 = specialinvoke r0.<org.apache.commons.codec.language.DaitchMokotoffSoundexTest: java.lang.String soundex(java.lang.String)>("GOLDEN");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("583600", $r1);
+
+        $r2 = specialinvoke r0.<org.apache.commons.codec.language.DaitchMokotoffSoundexTest: java.lang.String soundex(java.lang.String)>("Alpert");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("087930", $r2);
+
+        $r3 = specialinvoke r0.<org.apache.commons.codec.language.DaitchMokotoffSoundexTest: java.lang.String soundex(java.lang.String)>("Breuer");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("791900", $r3);
+
+        $r4 = specialinvoke r0.<org.apache.commons.codec.language.DaitchMokotoffSoundexTest: java.lang.String soundex(java.lang.String)>("Haber");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("579000", $r4);
+
+        $r5 = specialinvoke r0.<org.apache.commons.codec.language.DaitchMokotoffSoundexTest: java.lang.String soundex(java.lang.String)>("Mannheim");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("665600", $r5);
+
+        $r6 = specialinvoke r0.<org.apache.commons.codec.language.DaitchMokotoffSoundexTest: java.lang.String soundex(java.lang.String)>("Mintz");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("664000", $r6);
+
+        $r7 = specialinvoke r0.<org.apache.commons.codec.language.DaitchMokotoffSoundexTest: java.lang.String soundex(java.lang.String)>("Topf");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("370000", $r7);
+
+        $r8 = specialinvoke r0.<org.apache.commons.codec.language.DaitchMokotoffSoundexTest: java.lang.String soundex(java.lang.String)>("Kleinmann");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("586660", $r8);
+
+        $r9 = specialinvoke r0.<org.apache.commons.codec.language.DaitchMokotoffSoundexTest: java.lang.String soundex(java.lang.String)>("Ben Aron");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("769600", $r9);
+
+        $r10 = specialinvoke r0.<org.apache.commons.codec.language.DaitchMokotoffSoundexTest: java.lang.String soundex(java.lang.String)>("AUERBACH");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("097400|097500", $r10);
+
+        $r11 = specialinvoke r0.<org.apache.commons.codec.language.DaitchMokotoffSoundexTest: java.lang.String soundex(java.lang.String)>("OHRBACH");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("097400|097500", $r11);
+
+        $r12 = specialinvoke r0.<org.apache.commons.codec.language.DaitchMokotoffSoundexTest: java.lang.String soundex(java.lang.String)>("LIPSHITZ");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("874400", $r12);
+
+        $r13 = specialinvoke r0.<org.apache.commons.codec.language.DaitchMokotoffSoundexTest: java.lang.String soundex(java.lang.String)>("LIPPSZYC");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("874400|874500", $r13);
+
+        $r14 = specialinvoke r0.<org.apache.commons.codec.language.DaitchMokotoffSoundexTest: java.lang.String soundex(java.lang.String)>("LEWINSKY");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("876450", $r14);
+
+        $r15 = specialinvoke r0.<org.apache.commons.codec.language.DaitchMokotoffSoundexTest: java.lang.String soundex(java.lang.String)>("LEVINSKI");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("876450", $r15);
+
+        $r16 = specialinvoke r0.<org.apache.commons.codec.language.DaitchMokotoffSoundexTest: java.lang.String soundex(java.lang.String)>("SZLAMAWICZ");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("486740", $r16);
+
+        $r17 = specialinvoke r0.<org.apache.commons.codec.language.DaitchMokotoffSoundexTest: java.lang.String soundex(java.lang.String)>("SHLAMOVITZ");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("486740", $r17);
+
+        return;
+    }
+
+    public void testSoundexBasic2()
+    {
+        org.apache.commons.codec.language.DaitchMokotoffSoundexTest r0;
+        java.lang.String $r1, $r2, $r3, $r4, $r5, $r6, $r7, $r8;
+
+        r0 := @this: org.apache.commons.codec.language.DaitchMokotoffSoundexTest;
+
+        $r1 = specialinvoke r0.<org.apache.commons.codec.language.DaitchMokotoffSoundexTest: java.lang.String soundex(java.lang.String)>("Ceniow");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("467000|567000", $r1);
+
+        $r2 = specialinvoke r0.<org.apache.commons.codec.language.DaitchMokotoffSoundexTest: java.lang.String soundex(java.lang.String)>("Tsenyuv");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("467000", $r2);
+
+        $r3 = specialinvoke r0.<org.apache.commons.codec.language.DaitchMokotoffSoundexTest: java.lang.String soundex(java.lang.String)>("Holubica");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("587400|587500", $r3);
+
+        $r4 = specialinvoke r0.<org.apache.commons.codec.language.DaitchMokotoffSoundexTest: java.lang.String soundex(java.lang.String)>("Golubitsa");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("587400", $r4);
+
+        $r5 = specialinvoke r0.<org.apache.commons.codec.language.DaitchMokotoffSoundexTest: java.lang.String soundex(java.lang.String)>("Przemysl");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("746480|794648", $r5);
+
+        $r6 = specialinvoke r0.<org.apache.commons.codec.language.DaitchMokotoffSoundexTest: java.lang.String soundex(java.lang.String)>("Pshemeshil");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("746480", $r6);
+
+        $r7 = specialinvoke r0.<org.apache.commons.codec.language.DaitchMokotoffSoundexTest: java.lang.String soundex(java.lang.String)>("Rosochowaciec");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("944744|944745|944754|944755|945744|945745|945754|945755", $r7);
+
+        $r8 = specialinvoke r0.<org.apache.commons.codec.language.DaitchMokotoffSoundexTest: java.lang.String soundex(java.lang.String)>("Rosokhovatsets");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("945744", $r8);
+
+        return;
+    }
+
+    public void testSoundexBasic3()
+    {
+        org.apache.commons.codec.language.DaitchMokotoffSoundexTest r0;
+        java.lang.String $r1, $r2, $r3, $r4, $r5, $r6;
+
+        r0 := @this: org.apache.commons.codec.language.DaitchMokotoffSoundexTest;
+
+        $r1 = specialinvoke r0.<org.apache.commons.codec.language.DaitchMokotoffSoundexTest: java.lang.String soundex(java.lang.String)>("Peters");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("734000|739400", $r1);
+
+        $r2 = specialinvoke r0.<org.apache.commons.codec.language.DaitchMokotoffSoundexTest: java.lang.String soundex(java.lang.String)>("Peterson");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("734600|739460", $r2);
+
+        $r3 = specialinvoke r0.<org.apache.commons.codec.language.DaitchMokotoffSoundexTest: java.lang.String soundex(java.lang.String)>("Moskowitz");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("645740", $r3);
+
+        $r4 = specialinvoke r0.<org.apache.commons.codec.language.DaitchMokotoffSoundexTest: java.lang.String soundex(java.lang.String)>("Moskovitz");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("645740", $r4);
+
+        $r5 = specialinvoke r0.<org.apache.commons.codec.language.DaitchMokotoffSoundexTest: java.lang.String soundex(java.lang.String)>("Jackson");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("154600|145460|454600|445460", $r5);
+
+        $r6 = specialinvoke r0.<org.apache.commons.codec.language.DaitchMokotoffSoundexTest: java.lang.String soundex(java.lang.String)>("Jackson-Jackson");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("154654|154645|154644|145465|145464|454654|454645|454644|445465|445464", $r6);
+
+        return;
+    }
+
+    public void testSpecialRomanianCharacters()
+    {
+        org.apache.commons.codec.language.DaitchMokotoffSoundexTest r0;
+        java.lang.String $r1, $r2;
+
+        r0 := @this: org.apache.commons.codec.language.DaitchMokotoffSoundexTest;
+
+        $r1 = specialinvoke r0.<org.apache.commons.codec.language.DaitchMokotoffSoundexTest: java.lang.String soundex(java.lang.String)>("\u0163amas");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("364000|464000", $r1);
+
+        $r2 = specialinvoke r0.<org.apache.commons.codec.language.DaitchMokotoffSoundexTest: java.lang.String soundex(java.lang.String)>("\u021bamas");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("364000|464000", $r2);
+
+        return;
+    }
+
+    protected volatile org.apache.commons.codec.StringEncoder createStringEncoder()
+    {
+        org.apache.commons.codec.language.DaitchMokotoffSoundexTest r0;
+        org.apache.commons.codec.language.DaitchMokotoffSoundex $r1;
+
+        r0 := @this: org.apache.commons.codec.language.DaitchMokotoffSoundexTest;
+
+        $r1 = virtualinvoke r0.<org.apache.commons.codec.language.DaitchMokotoffSoundexTest: org.apache.commons.codec.language.DaitchMokotoffSoundex createStringEncoder()>();
+
+        return $r1;
+    }
+}

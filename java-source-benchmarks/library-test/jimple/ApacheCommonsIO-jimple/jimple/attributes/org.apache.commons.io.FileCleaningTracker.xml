@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<attributes>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="0" eline="0" spos="0" epos="0"/>
+<text info="[inner=org/apache/commons/io/FileCleaningTracker$Reaper, outer=org/apache/commons/io/FileCleaningTracker, name=Reaper,flags=18]" aType="InnerClassTag"/>
+<text info="[inner=org/apache/commons/io/FileCleaningTracker$Tracker, outer=org/apache/commons/io/FileCleaningTracker, name=Tracker,flags=26]" aType="InnerClassTag"/>
+<text info="soot.tagkit.InnerClassAttribute@16d501b4" aType="InnerClassAttribute"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="3" eline="3" spos="0" epos="0"/>
+<text info="Signature: Ljava/lang/ref/ReferenceQueue&lt;Ljava/lang/Object;&gt;;" aType="SignatureTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="4" eline="4" spos="0" epos="0"/>
+<text info="Signature: Ljava/util/Collection&lt;Lorg/apache/commons/io/FileCleaningTracker$Tracker;&gt;;" aType="SignatureTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="5" eline="5" spos="0" epos="0"/>
+<text info="Signature: Ljava/util/List&lt;Ljava/lang/String;&gt;;" aType="SignatureTag"/>
+</attribute>
+<attribute>
+<srcPos sline="167" eline="167" spos="0" epos="0"/>
+<jmpPos sline="222" eline="222" spos="0" epos="0"/>
+<text info="Signature: ()Ljava/util/List&lt;Ljava/lang/String;&gt;;" aType="SignatureTag"/>
+</attribute>
+</attributes>

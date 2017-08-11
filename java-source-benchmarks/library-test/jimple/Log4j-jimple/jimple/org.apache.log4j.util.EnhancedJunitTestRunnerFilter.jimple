@@ -1,0 +1,135 @@
+public class org.apache.log4j.util.EnhancedJunitTestRunnerFilter extends java.lang.Object implements org.apache.log4j.util.Filter
+{
+    private org.apache.oro.text.perl.Perl5Util util;
+    private static final java.lang.String[] PATTERNS;
+
+    static void <clinit>()
+    {
+        java.lang.String[] $r0;
+
+        $r0 = newarray (java.lang.String)[9];
+
+        $r0[0] = "at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner";
+
+        $r0[1] = "at org.apache.tools.ant";
+
+        $r0[2] = "at junit.textui.TestRunner";
+
+        $r0[3] = "at com.intellij.rt.execution.junit";
+
+        $r0[4] = "at java.lang.reflect.Method.invoke";
+
+        $r0[5] = "at org.apache.maven.";
+
+        $r0[6] = "at org.codehaus.";
+
+        $r0[7] = "at org.junit.internal.runners.";
+
+        $r0[8] = "at junit.framework.JUnit4TestAdapter";
+
+        <org.apache.log4j.util.EnhancedJunitTestRunnerFilter: java.lang.String[] PATTERNS> = $r0;
+
+        return;
+    }
+
+    public void <init>()
+    {
+        org.apache.log4j.util.EnhancedJunitTestRunnerFilter r0;
+        org.apache.oro.text.perl.Perl5Util $r1;
+
+        r0 := @this: org.apache.log4j.util.EnhancedJunitTestRunnerFilter;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r1 = new org.apache.oro.text.perl.Perl5Util;
+
+        specialinvoke $r1.<org.apache.oro.text.perl.Perl5Util: void <init>()>();
+
+        r0.<org.apache.log4j.util.EnhancedJunitTestRunnerFilter: org.apache.oro.text.perl.Perl5Util util> = $r1;
+
+        return;
+    }
+
+    public java.lang.String filter(java.lang.String)
+    {
+        org.apache.log4j.util.EnhancedJunitTestRunnerFilter r0;
+        java.lang.String r1, $r4, $r7, $r9, $r11, $r13;
+        int $i0, $i1, $i2, i3;
+        java.lang.String[] $r2, $r3;
+        org.apache.oro.text.perl.Perl5Util $r5;
+        boolean $z0;
+        java.lang.StringBuilder $r6, $r8, $r10, $r12;
+
+        r0 := @this: org.apache.log4j.util.EnhancedJunitTestRunnerFilter;
+
+        r1 := @parameter0: java.lang.String;
+
+        if r1 != null goto label1;
+
+        return null;
+
+     label1:
+        $i0 = virtualinvoke r1.<java.lang.String: int indexOf(java.lang.String)>("at junit.framework.TestCase.runTest");
+
+        if $i0 == -1 goto label2;
+
+        $r10 = new java.lang.StringBuilder;
+
+        specialinvoke $r10.<java.lang.StringBuilder: void <init>(java.lang.String)>("\tat java.lang.reflect.Method.invoke(X)\n\t");
+
+        $r11 = virtualinvoke r1.<java.lang.String: java.lang.String trim()>();
+
+        $r12 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r11);
+
+        $r13 = virtualinvoke $r12.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $r13;
+
+     label2:
+        i3 = 0;
+
+        goto label5;
+
+     label3:
+        $r3 = <org.apache.log4j.util.EnhancedJunitTestRunnerFilter: java.lang.String[] PATTERNS>;
+
+        $r4 = $r3[i3];
+
+        $i2 = virtualinvoke r1.<java.lang.String: int indexOf(java.lang.String)>($r4);
+
+        if $i2 == -1 goto label4;
+
+        return null;
+
+     label4:
+        i3 = i3 + 1;
+
+     label5:
+        $r2 = <org.apache.log4j.util.EnhancedJunitTestRunnerFilter: java.lang.String[] PATTERNS>;
+
+        $i1 = lengthof $r2;
+
+        if i3 < $i1 goto label3;
+
+        $r5 = r0.<org.apache.log4j.util.EnhancedJunitTestRunnerFilter: org.apache.oro.text.perl.Perl5Util util>;
+
+        $z0 = virtualinvoke $r5.<org.apache.oro.text.perl.Perl5Util: boolean match(java.lang.String,java.lang.String)>("/\\sat /", r1);
+
+        if $z0 == 0 goto label6;
+
+        $r6 = new java.lang.StringBuilder;
+
+        specialinvoke $r6.<java.lang.StringBuilder: void <init>(java.lang.String)>("\t");
+
+        $r7 = virtualinvoke r1.<java.lang.String: java.lang.String trim()>();
+
+        $r8 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r7);
+
+        $r9 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $r9;
+
+     label6:
+        return r1;
+    }
+}

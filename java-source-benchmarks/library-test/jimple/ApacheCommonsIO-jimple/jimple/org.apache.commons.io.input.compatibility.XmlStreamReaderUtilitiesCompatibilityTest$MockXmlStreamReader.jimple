@@ -1,0 +1,27 @@
+class org.apache.commons.io.input.compatibility.XmlStreamReaderUtilitiesCompatibilityTest$MockXmlStreamReader extends org.apache.commons.io.input.compatibility.XmlStreamReader
+{
+
+    void <init>(java.lang.String) throws java.io.IOException
+    {
+        org.apache.commons.io.input.compatibility.XmlStreamReaderUtilitiesCompatibilityTest$MockXmlStreamReader r0;
+        java.lang.String r1, $r3;
+        java.io.ByteArrayInputStream $r2;
+        byte[] $r4;
+
+        r0 := @this: org.apache.commons.io.input.compatibility.XmlStreamReaderUtilitiesCompatibilityTest$MockXmlStreamReader;
+
+        r1 := @parameter0: java.lang.String;
+
+        $r2 = new java.io.ByteArrayInputStream;
+
+        $r3 = "";
+
+        $r4 = virtualinvoke $r3.<java.lang.String: byte[] getBytes()>();
+
+        specialinvoke $r2.<java.io.ByteArrayInputStream: void <init>(byte[])>($r4);
+
+        specialinvoke r0.<org.apache.commons.io.input.compatibility.XmlStreamReader: void <init>(java.io.InputStream,java.lang.String,boolean,java.lang.String)>($r2, null, 1, r1);
+
+        return;
+    }
+}

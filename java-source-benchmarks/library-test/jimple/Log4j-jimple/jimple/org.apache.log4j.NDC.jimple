@@ -1,0 +1,459 @@
+public class org.apache.log4j.NDC extends java.lang.Object
+{
+    static java.util.Hashtable ht;
+    static int pushCounter;
+    static final int REAP_THRESHOLD;
+
+    static void <clinit>()
+    {
+        java.util.Hashtable $r0;
+
+        <org.apache.log4j.NDC: int REAP_THRESHOLD> = 5;
+
+        $r0 = new java.util.Hashtable;
+
+        specialinvoke $r0.<java.util.Hashtable: void <init>()>();
+
+        <org.apache.log4j.NDC: java.util.Hashtable ht> = $r0;
+
+        <org.apache.log4j.NDC: int pushCounter> = 0;
+
+        return;
+    }
+
+    private void <init>()
+    {
+        org.apache.log4j.NDC r0;
+
+        r0 := @this: org.apache.log4j.NDC;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    private static java.util.Stack getCurrentStack()
+    {
+        java.util.Hashtable $r0, $r1;
+        java.lang.Thread $r2;
+        java.lang.Object $r3;
+        java.util.Stack $r4;
+
+        $r0 = <org.apache.log4j.NDC: java.util.Hashtable ht>;
+
+        if $r0 == null goto label1;
+
+        $r1 = <org.apache.log4j.NDC: java.util.Hashtable ht>;
+
+        $r2 = staticinvoke <java.lang.Thread: java.lang.Thread currentThread()>();
+
+        $r3 = virtualinvoke $r1.<java.util.Hashtable: java.lang.Object get(java.lang.Object)>($r2);
+
+        $r4 = (java.util.Stack) $r3;
+
+        return $r4;
+
+     label1:
+        return null;
+    }
+
+    public static void clear()
+    {
+        java.util.Stack r0;
+
+        r0 = staticinvoke <org.apache.log4j.NDC: java.util.Stack getCurrentStack()>();
+
+        if r0 == null goto label1;
+
+        virtualinvoke r0.<java.util.Stack: void setSize(int)>(0);
+
+     label1:
+        return;
+    }
+
+    public static java.util.Stack cloneStack()
+    {
+        java.util.Stack r0, $r2;
+        java.lang.Object $r1;
+
+        r0 = staticinvoke <org.apache.log4j.NDC: java.util.Stack getCurrentStack()>();
+
+        if r0 != null goto label1;
+
+        return null;
+
+     label1:
+        $r1 = virtualinvoke r0.<java.util.Stack: java.lang.Object clone()>();
+
+        $r2 = (java.util.Stack) $r1;
+
+        return $r2;
+    }
+
+    public static void inherit(java.util.Stack)
+    {
+        java.util.Stack r0;
+        java.util.Hashtable $r1;
+        java.lang.Thread $r2;
+
+        r0 := @parameter0: java.util.Stack;
+
+        if r0 == null goto label1;
+
+        $r1 = <org.apache.log4j.NDC: java.util.Hashtable ht>;
+
+        $r2 = staticinvoke <java.lang.Thread: java.lang.Thread currentThread()>();
+
+        virtualinvoke $r1.<java.util.Hashtable: java.lang.Object put(java.lang.Object,java.lang.Object)>($r2, r0);
+
+     label1:
+        return;
+    }
+
+    public static java.lang.String get()
+    {
+        java.util.Stack r0;
+        boolean $z0;
+        java.lang.Object $r1;
+        org.apache.log4j.NDC$DiagnosticContext $r2;
+        java.lang.String $r3;
+
+        r0 = staticinvoke <org.apache.log4j.NDC: java.util.Stack getCurrentStack()>();
+
+        if r0 == null goto label1;
+
+        $z0 = virtualinvoke r0.<java.util.Stack: boolean isEmpty()>();
+
+        if $z0 != 0 goto label1;
+
+        $r1 = virtualinvoke r0.<java.util.Stack: java.lang.Object peek()>();
+
+        $r2 = (org.apache.log4j.NDC$DiagnosticContext) $r1;
+
+        $r3 = $r2.<org.apache.log4j.NDC$DiagnosticContext: java.lang.String fullMessage>;
+
+        return $r3;
+
+     label1:
+        return null;
+    }
+
+    public static int getDepth()
+    {
+        java.util.Stack r0;
+        int $i0;
+
+        r0 = staticinvoke <org.apache.log4j.NDC: java.util.Stack getCurrentStack()>();
+
+        if r0 != null goto label1;
+
+        return 0;
+
+     label1:
+        $i0 = virtualinvoke r0.<java.util.Stack: int size()>();
+
+        return $i0;
+    }
+
+    private static void lazyRemove()
+    {
+        java.lang.Thread r1, r21;
+        java.util.Hashtable $r2, $r3, $r5, $r11, $r15;
+        int $i0, $i1, $i2, i3, i4, i5;
+        java.util.Vector $r4;
+        java.lang.Object $r6, $r17;
+        java.lang.StringBuilder $r7, $r9, $r10, $r12, $r13;
+        java.lang.String $r8, $r14;
+        boolean $z0, $z1;
+        java.lang.Throwable $r18;
+        java.util.Enumeration r20;
+
+        $r2 = <org.apache.log4j.NDC: java.util.Hashtable ht>;
+
+        if $r2 != null goto label01;
+
+        return;
+
+     label01:
+        $r3 = <org.apache.log4j.NDC: java.util.Hashtable ht>;
+
+        entermonitor $r3;
+
+     label02:
+        $i0 = <org.apache.log4j.NDC: int pushCounter>;
+
+        $i1 = $i0 + 1;
+
+        <org.apache.log4j.NDC: int pushCounter> = $i1;
+
+        if $i1 > 5 goto label04;
+
+        exitmonitor $r3;
+
+     label03:
+        return;
+
+     label04:
+        <org.apache.log4j.NDC: int pushCounter> = 0;
+
+        i3 = 0;
+
+        $r4 = new java.util.Vector;
+
+        specialinvoke $r4.<java.util.Vector: void <init>()>();
+
+        $r5 = <org.apache.log4j.NDC: java.util.Hashtable ht>;
+
+        r20 = virtualinvoke $r5.<java.util.Hashtable: java.util.Enumeration keys()>();
+
+        goto label07;
+
+     label05:
+        $r17 = interfaceinvoke r20.<java.util.Enumeration: java.lang.Object nextElement()>();
+
+        r1 = (java.lang.Thread) $r17;
+
+        $z0 = virtualinvoke r1.<java.lang.Thread: boolean isAlive()>();
+
+        if $z0 == 0 goto label06;
+
+        i3 = i3 + 1;
+
+        goto label07;
+
+     label06:
+        i3 = 0;
+
+        virtualinvoke $r4.<java.util.Vector: void addElement(java.lang.Object)>(r1);
+
+     label07:
+        $z1 = interfaceinvoke r20.<java.util.Enumeration: boolean hasMoreElements()>();
+
+        if $z1 == 0 goto label08;
+
+        if i3 <= 4 goto label05;
+
+     label08:
+        exitmonitor $r3;
+
+     label09:
+        goto label12;
+
+     label10:
+        $r18 := @caughtexception;
+
+        exitmonitor $r3;
+
+     label11:
+        throw $r18;
+
+     label12:
+        i4 = virtualinvoke $r4.<java.util.Vector: int size()>();
+
+        i5 = 0;
+
+        goto label14;
+
+     label13:
+        $r6 = virtualinvoke $r4.<java.util.Vector: java.lang.Object elementAt(int)>(i5);
+
+        r21 = (java.lang.Thread) $r6;
+
+        $r7 = new java.lang.StringBuilder;
+
+        specialinvoke $r7.<java.lang.StringBuilder: void <init>(java.lang.String)>("Lazy NDC removal for thread [");
+
+        $r8 = virtualinvoke r21.<java.lang.Thread: java.lang.String getName()>();
+
+        $r9 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r8);
+
+        $r10 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("] (");
+
+        $r11 = <org.apache.log4j.NDC: java.util.Hashtable ht>;
+
+        $i2 = virtualinvoke $r11.<java.util.Hashtable: int size()>();
+
+        $r12 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i2);
+
+        $r13 = virtualinvoke $r12.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(").");
+
+        $r14 = virtualinvoke $r13.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.apache.log4j.helpers.LogLog: void debug(java.lang.String)>($r14);
+
+        $r15 = <org.apache.log4j.NDC: java.util.Hashtable ht>;
+
+        virtualinvoke $r15.<java.util.Hashtable: java.lang.Object remove(java.lang.Object)>(r21);
+
+        i5 = i5 + 1;
+
+     label14:
+        if i5 < i4 goto label13;
+
+        return;
+
+        catch java.lang.Throwable from label02 to label03 with label10;
+        catch java.lang.Throwable from label04 to label09 with label10;
+        catch java.lang.Throwable from label10 to label11 with label10;
+    }
+
+    public static java.lang.String pop()
+    {
+        java.util.Stack r0;
+        boolean $z0;
+        java.lang.Object $r1;
+        org.apache.log4j.NDC$DiagnosticContext $r2;
+        java.lang.String $r3;
+
+        r0 = staticinvoke <org.apache.log4j.NDC: java.util.Stack getCurrentStack()>();
+
+        if r0 == null goto label1;
+
+        $z0 = virtualinvoke r0.<java.util.Stack: boolean isEmpty()>();
+
+        if $z0 != 0 goto label1;
+
+        $r1 = virtualinvoke r0.<java.util.Stack: java.lang.Object pop()>();
+
+        $r2 = (org.apache.log4j.NDC$DiagnosticContext) $r1;
+
+        $r3 = $r2.<org.apache.log4j.NDC$DiagnosticContext: java.lang.String message>;
+
+        return $r3;
+
+     label1:
+        return "";
+    }
+
+    public static java.lang.String peek()
+    {
+        java.util.Stack r0;
+        boolean $z0;
+        java.lang.Object $r1;
+        org.apache.log4j.NDC$DiagnosticContext $r2;
+        java.lang.String $r3;
+
+        r0 = staticinvoke <org.apache.log4j.NDC: java.util.Stack getCurrentStack()>();
+
+        if r0 == null goto label1;
+
+        $z0 = virtualinvoke r0.<java.util.Stack: boolean isEmpty()>();
+
+        if $z0 != 0 goto label1;
+
+        $r1 = virtualinvoke r0.<java.util.Stack: java.lang.Object peek()>();
+
+        $r2 = (org.apache.log4j.NDC$DiagnosticContext) $r1;
+
+        $r3 = $r2.<org.apache.log4j.NDC$DiagnosticContext: java.lang.String message>;
+
+        return $r3;
+
+     label1:
+        return "";
+    }
+
+    public static void push(java.lang.String)
+    {
+        java.lang.String r0;
+        java.lang.Thread r1;
+        boolean $z0;
+        java.lang.Object $r2;
+        org.apache.log4j.NDC$DiagnosticContext $r3, $r5, $r7, r16;
+        java.util.Stack $r8, r12;
+        java.util.Hashtable $r9;
+
+        r0 := @parameter0: java.lang.String;
+
+        r12 = staticinvoke <org.apache.log4j.NDC: java.util.Stack getCurrentStack()>();
+
+        if r12 != null goto label1;
+
+        $r7 = new org.apache.log4j.NDC$DiagnosticContext;
+
+        specialinvoke $r7.<org.apache.log4j.NDC$DiagnosticContext: void <init>(java.lang.String,org.apache.log4j.NDC$DiagnosticContext)>(r0, null);
+
+        $r8 = new java.util.Stack;
+
+        specialinvoke $r8.<java.util.Stack: void <init>()>();
+
+        r1 = staticinvoke <java.lang.Thread: java.lang.Thread currentThread()>();
+
+        $r9 = <org.apache.log4j.NDC: java.util.Hashtable ht>;
+
+        virtualinvoke $r9.<java.util.Hashtable: java.lang.Object put(java.lang.Object,java.lang.Object)>(r1, $r8);
+
+        virtualinvoke $r8.<java.util.Stack: java.lang.Object push(java.lang.Object)>($r7);
+
+        goto label3;
+
+     label1:
+        $z0 = virtualinvoke r12.<java.util.Stack: boolean isEmpty()>();
+
+        if $z0 == 0 goto label2;
+
+        $r5 = new org.apache.log4j.NDC$DiagnosticContext;
+
+        specialinvoke $r5.<org.apache.log4j.NDC$DiagnosticContext: void <init>(java.lang.String,org.apache.log4j.NDC$DiagnosticContext)>(r0, null);
+
+        virtualinvoke r12.<java.util.Stack: java.lang.Object push(java.lang.Object)>($r5);
+
+        goto label3;
+
+     label2:
+        $r2 = virtualinvoke r12.<java.util.Stack: java.lang.Object peek()>();
+
+        r16 = (org.apache.log4j.NDC$DiagnosticContext) $r2;
+
+        $r3 = new org.apache.log4j.NDC$DiagnosticContext;
+
+        specialinvoke $r3.<org.apache.log4j.NDC$DiagnosticContext: void <init>(java.lang.String,org.apache.log4j.NDC$DiagnosticContext)>(r0, r16);
+
+        virtualinvoke r12.<java.util.Stack: java.lang.Object push(java.lang.Object)>($r3);
+
+     label3:
+        return;
+    }
+
+    public static void remove()
+    {
+        java.util.Hashtable $r0, $r1;
+        java.lang.Thread $r2;
+
+        $r0 = <org.apache.log4j.NDC: java.util.Hashtable ht>;
+
+        if $r0 == null goto label1;
+
+        $r1 = <org.apache.log4j.NDC: java.util.Hashtable ht>;
+
+        $r2 = staticinvoke <java.lang.Thread: java.lang.Thread currentThread()>();
+
+        virtualinvoke $r1.<java.util.Hashtable: java.lang.Object remove(java.lang.Object)>($r2);
+
+        staticinvoke <org.apache.log4j.NDC: void lazyRemove()>();
+
+     label1:
+        return;
+    }
+
+    public static void setMaxDepth(int)
+    {
+        int i0, $i1;
+        java.util.Stack r0;
+
+        i0 := @parameter0: int;
+
+        r0 = staticinvoke <org.apache.log4j.NDC: java.util.Stack getCurrentStack()>();
+
+        if r0 == null goto label1;
+
+        $i1 = virtualinvoke r0.<java.util.Stack: int size()>();
+
+        if i0 >= $i1 goto label1;
+
+        virtualinvoke r0.<java.util.Stack: void setSize(int)>(i0);
+
+     label1:
+        return;
+    }
+}

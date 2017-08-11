@@ -1,0 +1,680 @@
+public class org.apache.commons.codec.digest.DigestUtilsTest extends java.lang.Object
+{
+    private final byte[] testData;
+
+    public void <init>()
+    {
+        org.apache.commons.codec.digest.DigestUtilsTest r0;
+        byte[] $r1;
+
+        r0 := @this: org.apache.commons.codec.digest.DigestUtilsTest;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r1 = newarray (byte)[1048576];
+
+        r0.<org.apache.commons.codec.digest.DigestUtilsTest: byte[] testData> = $r1;
+
+        return;
+    }
+
+    protected void setUp() throws java.lang.Exception
+    {
+        org.apache.commons.codec.digest.DigestUtilsTest r0;
+        java.util.Random $r1;
+        byte[] $r2;
+
+        r0 := @this: org.apache.commons.codec.digest.DigestUtilsTest;
+
+        $r1 = new java.util.Random;
+
+        specialinvoke $r1.<java.util.Random: void <init>()>();
+
+        $r2 = r0.<org.apache.commons.codec.digest.DigestUtilsTest: byte[] testData>;
+
+        virtualinvoke $r1.<java.util.Random: void nextBytes(byte[])>($r2);
+
+        return;
+    }
+
+    public void testConstructable()
+    {
+        org.apache.commons.codec.digest.DigestUtilsTest r0;
+        org.apache.commons.codec.digest.DigestUtils $r1;
+
+        r0 := @this: org.apache.commons.codec.digest.DigestUtilsTest;
+
+        $r1 = new org.apache.commons.codec.digest.DigestUtils;
+
+        specialinvoke $r1.<org.apache.commons.codec.digest.DigestUtils: void <init>()>();
+
+        staticinvoke <org.junit.Assert: void assertNotNull(java.lang.Object)>($r1);
+
+        return;
+    }
+
+    public void testInternalNoSuchAlgorithmException()
+    {
+        org.apache.commons.codec.digest.DigestUtilsTest r0;
+
+        r0 := @this: org.apache.commons.codec.digest.DigestUtilsTest;
+
+        staticinvoke <org.apache.commons.codec.digest.DigestUtils: java.security.MessageDigest getDigest(java.lang.String)>("Bogus Bogus");
+
+        return;
+    }
+
+    public void testMd2Hex() throws java.io.IOException
+    {
+        org.apache.commons.codec.digest.DigestUtilsTest r0;
+        java.lang.String $r1, $r2, $r3, $r4, $r5, $r6, $r7, $r9, $r12;
+        byte[] $r8, $r11;
+        java.io.ByteArrayInputStream $r10;
+
+        r0 := @this: org.apache.commons.codec.digest.DigestUtilsTest;
+
+        $r1 = staticinvoke <org.apache.commons.codec.digest.DigestUtils: java.lang.String md2Hex(java.lang.String)>("");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("8350e5a3e24c153df2275c9f80692773", $r1);
+
+        $r2 = staticinvoke <org.apache.commons.codec.digest.DigestUtils: java.lang.String md2Hex(java.lang.String)>("a");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("32ec01ec4a6dac72c0ab96fb34c0b5d1", $r2);
+
+        $r3 = staticinvoke <org.apache.commons.codec.digest.DigestUtils: java.lang.String md2Hex(java.lang.String)>("abc");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("da853b0d3f88d99b30283a69e6ded6bb", $r3);
+
+        $r4 = staticinvoke <org.apache.commons.codec.digest.DigestUtils: java.lang.String md2Hex(java.lang.String)>("message digest");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("ab4f496bfb2a530b219ff33031fe06b0", $r4);
+
+        $r5 = staticinvoke <org.apache.commons.codec.digest.DigestUtils: java.lang.String md2Hex(java.lang.String)>("abcdefghijklmnopqrstuvwxyz");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("4e8ddff3650292ab5a4108c3aa47940b", $r5);
+
+        $r6 = staticinvoke <org.apache.commons.codec.digest.DigestUtils: java.lang.String md2Hex(java.lang.String)>("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("da33def2a42df13975352846c30338cd", $r6);
+
+        $r7 = staticinvoke <org.apache.commons.codec.digest.DigestUtils: java.lang.String md2Hex(java.lang.String)>("12345678901234567890123456789012345678901234567890123456789012345678901234567890");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("d5976f79d83d3a0dc9806c3c66f3efd8", $r7);
+
+        $r8 = r0.<org.apache.commons.codec.digest.DigestUtilsTest: byte[] testData>;
+
+        $r9 = staticinvoke <org.apache.commons.codec.digest.DigestUtils: java.lang.String md2Hex(byte[])>($r8);
+
+        $r10 = new java.io.ByteArrayInputStream;
+
+        $r11 = r0.<org.apache.commons.codec.digest.DigestUtilsTest: byte[] testData>;
+
+        specialinvoke $r10.<java.io.ByteArrayInputStream: void <init>(byte[])>($r11);
+
+        $r12 = staticinvoke <org.apache.commons.codec.digest.DigestUtils: java.lang.String md2Hex(java.io.InputStream)>($r10);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r9, $r12);
+
+        return;
+    }
+
+    public void testMd2HexLength()
+    {
+        org.apache.commons.codec.digest.DigestUtilsTest r0;
+        byte[] $r1, $r2;
+        int $i0, $i2;
+        long $l1, $l3;
+        java.lang.String r4, r6;
+
+        r0 := @this: org.apache.commons.codec.digest.DigestUtilsTest;
+
+        $r1 = staticinvoke <org.apache.commons.codec.binary.StringUtils: byte[] getBytesUtf8(java.lang.String)>("this is some string that is longer than 32 characters");
+
+        r4 = staticinvoke <org.apache.commons.codec.digest.DigestUtils: java.lang.String md2Hex(byte[])>($r1);
+
+        $i0 = virtualinvoke r4.<java.lang.String: int length()>();
+
+        $l1 = (long) $i0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(32L, $l1);
+
+        $r2 = staticinvoke <org.apache.commons.codec.binary.StringUtils: byte[] getBytesUtf8(java.lang.String)>("length < 32");
+
+        r6 = staticinvoke <org.apache.commons.codec.digest.DigestUtils: java.lang.String md2Hex(byte[])>($r2);
+
+        $i2 = virtualinvoke r6.<java.lang.String: int length()>();
+
+        $l3 = (long) $i2;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(32L, $l3);
+
+        return;
+    }
+
+    public void testMd2Length()
+    {
+        org.apache.commons.codec.digest.DigestUtilsTest r0;
+        byte[] $r1, $r2, r4, r6;
+        int $i0, $i2;
+        long $l1, $l3;
+
+        r0 := @this: org.apache.commons.codec.digest.DigestUtilsTest;
+
+        $r1 = staticinvoke <org.apache.commons.codec.binary.StringUtils: byte[] getBytesUtf8(java.lang.String)>("this is some string that is longer than 16 characters");
+
+        r4 = staticinvoke <org.apache.commons.codec.digest.DigestUtils: byte[] md2(byte[])>($r1);
+
+        $i0 = lengthof r4;
+
+        $l1 = (long) $i0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(16L, $l1);
+
+        $r2 = staticinvoke <org.apache.commons.codec.binary.StringUtils: byte[] getBytesUtf8(java.lang.String)>("length < 16");
+
+        r6 = staticinvoke <org.apache.commons.codec.digest.DigestUtils: byte[] md2(byte[])>($r2);
+
+        $i2 = lengthof r6;
+
+        $l3 = (long) $i2;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(16L, $l3);
+
+        return;
+    }
+
+    public void testMd5Hex() throws java.io.IOException
+    {
+        org.apache.commons.codec.digest.DigestUtilsTest r0;
+        java.lang.String $r1, $r2, $r3, $r4, $r5, $r6, $r7, $r9, $r12;
+        byte[] $r8, $r11;
+        java.io.ByteArrayInputStream $r10;
+
+        r0 := @this: org.apache.commons.codec.digest.DigestUtilsTest;
+
+        $r1 = staticinvoke <org.apache.commons.codec.digest.DigestUtils: java.lang.String md5Hex(java.lang.String)>("");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("d41d8cd98f00b204e9800998ecf8427e", $r1);
+
+        $r2 = staticinvoke <org.apache.commons.codec.digest.DigestUtils: java.lang.String md5Hex(java.lang.String)>("a");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("0cc175b9c0f1b6a831c399e269772661", $r2);
+
+        $r3 = staticinvoke <org.apache.commons.codec.digest.DigestUtils: java.lang.String md5Hex(java.lang.String)>("abc");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("900150983cd24fb0d6963f7d28e17f72", $r3);
+
+        $r4 = staticinvoke <org.apache.commons.codec.digest.DigestUtils: java.lang.String md5Hex(java.lang.String)>("message digest");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("f96b697d7cb7938d525a2f31aaf161d0", $r4);
+
+        $r5 = staticinvoke <org.apache.commons.codec.digest.DigestUtils: java.lang.String md5Hex(java.lang.String)>("abcdefghijklmnopqrstuvwxyz");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("c3fcd3d76192e4007dfb496cca67e13b", $r5);
+
+        $r6 = staticinvoke <org.apache.commons.codec.digest.DigestUtils: java.lang.String md5Hex(java.lang.String)>("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("d174ab98d277d9f5a5611c2c9f419d9f", $r6);
+
+        $r7 = staticinvoke <org.apache.commons.codec.digest.DigestUtils: java.lang.String md5Hex(java.lang.String)>("12345678901234567890123456789012345678901234567890123456789012345678901234567890");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("57edf4a22be3c955ac49da2e2107b67a", $r7);
+
+        $r8 = r0.<org.apache.commons.codec.digest.DigestUtilsTest: byte[] testData>;
+
+        $r9 = staticinvoke <org.apache.commons.codec.digest.DigestUtils: java.lang.String md5Hex(byte[])>($r8);
+
+        $r10 = new java.io.ByteArrayInputStream;
+
+        $r11 = r0.<org.apache.commons.codec.digest.DigestUtilsTest: byte[] testData>;
+
+        specialinvoke $r10.<java.io.ByteArrayInputStream: void <init>(byte[])>($r11);
+
+        $r12 = staticinvoke <org.apache.commons.codec.digest.DigestUtils: java.lang.String md5Hex(java.io.InputStream)>($r10);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r9, $r12);
+
+        return;
+    }
+
+    public void testMd5HexLength()
+    {
+        org.apache.commons.codec.digest.DigestUtilsTest r0;
+        byte[] $r1, $r2;
+        int $i0, $i2;
+        long $l1, $l3;
+        java.lang.String r4, r6;
+
+        r0 := @this: org.apache.commons.codec.digest.DigestUtilsTest;
+
+        $r1 = staticinvoke <org.apache.commons.codec.binary.StringUtils: byte[] getBytesUtf8(java.lang.String)>("this is some string that is longer than 32 characters");
+
+        r4 = staticinvoke <org.apache.commons.codec.digest.DigestUtils: java.lang.String md5Hex(byte[])>($r1);
+
+        $i0 = virtualinvoke r4.<java.lang.String: int length()>();
+
+        $l1 = (long) $i0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(32L, $l1);
+
+        $r2 = staticinvoke <org.apache.commons.codec.binary.StringUtils: byte[] getBytesUtf8(java.lang.String)>("length < 32");
+
+        r6 = staticinvoke <org.apache.commons.codec.digest.DigestUtils: java.lang.String md5Hex(byte[])>($r2);
+
+        $i2 = virtualinvoke r6.<java.lang.String: int length()>();
+
+        $l3 = (long) $i2;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(32L, $l3);
+
+        return;
+    }
+
+    public void testMd5Length()
+    {
+        org.apache.commons.codec.digest.DigestUtilsTest r0;
+        byte[] $r1, $r2, r4, r6;
+        int $i0, $i2;
+        long $l1, $l3;
+
+        r0 := @this: org.apache.commons.codec.digest.DigestUtilsTest;
+
+        $r1 = staticinvoke <org.apache.commons.codec.binary.StringUtils: byte[] getBytesUtf8(java.lang.String)>("this is some string that is longer than 16 characters");
+
+        r4 = staticinvoke <org.apache.commons.codec.digest.DigestUtils: byte[] md5(byte[])>($r1);
+
+        $i0 = lengthof r4;
+
+        $l1 = (long) $i0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(16L, $l1);
+
+        $r2 = staticinvoke <org.apache.commons.codec.binary.StringUtils: byte[] getBytesUtf8(java.lang.String)>("length < 16");
+
+        r6 = staticinvoke <org.apache.commons.codec.digest.DigestUtils: byte[] md5(byte[])>($r2);
+
+        $i2 = lengthof r6;
+
+        $l3 = (long) $i2;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(16L, $l3);
+
+        return;
+    }
+
+    public void testSha1Hex() throws java.io.IOException
+    {
+        org.apache.commons.codec.digest.DigestUtilsTest r0;
+        java.lang.String $r1, $r3, $r4, $r6, $r9;
+        byte[] $r2, $r5, $r8;
+        java.io.ByteArrayInputStream $r7;
+
+        r0 := @this: org.apache.commons.codec.digest.DigestUtilsTest;
+
+        $r1 = staticinvoke <org.apache.commons.codec.digest.DigestUtils: java.lang.String sha1Hex(java.lang.String)>("abc");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("a9993e364706816aba3e25717850c26c9cd0d89d", $r1);
+
+        $r2 = staticinvoke <org.apache.commons.codec.binary.StringUtils: byte[] getBytesUtf8(java.lang.String)>("abc");
+
+        $r3 = staticinvoke <org.apache.commons.codec.digest.DigestUtils: java.lang.String sha1Hex(byte[])>($r2);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("a9993e364706816aba3e25717850c26c9cd0d89d", $r3);
+
+        $r4 = staticinvoke <org.apache.commons.codec.digest.DigestUtils: java.lang.String sha1Hex(java.lang.String)>("abcdbcdecdefdefgefghfghighijhijkijkljklmklmnlmnomnopnopq");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("84983e441c3bd26ebaae4aa1f95129e5e54670f1", $r4);
+
+        $r5 = r0.<org.apache.commons.codec.digest.DigestUtilsTest: byte[] testData>;
+
+        $r6 = staticinvoke <org.apache.commons.codec.digest.DigestUtils: java.lang.String sha1Hex(byte[])>($r5);
+
+        $r7 = new java.io.ByteArrayInputStream;
+
+        $r8 = r0.<org.apache.commons.codec.digest.DigestUtilsTest: byte[] testData>;
+
+        specialinvoke $r7.<java.io.ByteArrayInputStream: void <init>(byte[])>($r8);
+
+        $r9 = staticinvoke <org.apache.commons.codec.digest.DigestUtils: java.lang.String sha1Hex(java.io.InputStream)>($r7);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r6, $r9);
+
+        return;
+    }
+
+    public void testSha1UpdateWithByteArray()
+    {
+        org.apache.commons.codec.digest.DigestUtilsTest r0;
+        java.lang.String r3, r4, $r5, $r7, $r10, $r13;
+        byte[] $r6, $r8, $r9, $r11, $r14, $r16;
+        java.security.MessageDigest r17, r18;
+
+        r0 := @this: org.apache.commons.codec.digest.DigestUtilsTest;
+
+        r17 = staticinvoke <org.apache.commons.codec.digest.DigestUtils: java.security.MessageDigest getSha1Digest()>();
+
+        $r5 = "C\'est un homme qui rentre dans un caf\u00e9, et plouf";
+
+        $r6 = virtualinvoke $r5.<java.lang.String: byte[] getBytes()>();
+
+        virtualinvoke r17.<java.security.MessageDigest: void update(byte[])>($r6);
+
+        $r7 = "C\'est un homme, c\'est qu\'une t\u00eate, on lui offre un cadeau: \'oh... encore un chapeau!\'";
+
+        $r8 = virtualinvoke $r7.<java.lang.String: byte[] getBytes()>();
+
+        virtualinvoke r17.<java.security.MessageDigest: void update(byte[])>($r8);
+
+        $r9 = virtualinvoke r17.<java.security.MessageDigest: byte[] digest()>();
+
+        r3 = staticinvoke <org.apache.commons.codec.binary.Hex: java.lang.String encodeHexString(byte[])>($r9);
+
+        r18 = staticinvoke <org.apache.commons.codec.digest.DigestUtils: java.security.MessageDigest getSha1Digest()>();
+
+        $r10 = "C\'est un homme qui rentre dans un caf\u00e9, et plouf";
+
+        $r11 = virtualinvoke $r10.<java.lang.String: byte[] getBytes()>();
+
+        staticinvoke <org.apache.commons.codec.digest.DigestUtils: java.security.MessageDigest updateDigest(java.security.MessageDigest,byte[])>(r18, $r11);
+
+        $r13 = "C\'est un homme, c\'est qu\'une t\u00eate, on lui offre un cadeau: \'oh... encore un chapeau!\'";
+
+        $r14 = virtualinvoke $r13.<java.lang.String: byte[] getBytes()>();
+
+        staticinvoke <org.apache.commons.codec.digest.DigestUtils: java.security.MessageDigest updateDigest(java.security.MessageDigest,byte[])>(r18, $r14);
+
+        $r16 = virtualinvoke r18.<java.security.MessageDigest: byte[] digest()>();
+
+        r4 = staticinvoke <org.apache.commons.codec.binary.Hex: java.lang.String encodeHexString(byte[])>($r16);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>(r3, r4);
+
+        return;
+    }
+
+    public void testSha1UpdateWithString()
+    {
+        org.apache.commons.codec.digest.DigestUtilsTest r0;
+        java.lang.String r3, r4;
+        byte[] $r5, $r6, $r7, $r10;
+        java.security.MessageDigest r11, r12;
+
+        r0 := @this: org.apache.commons.codec.digest.DigestUtilsTest;
+
+        r11 = staticinvoke <org.apache.commons.codec.digest.DigestUtils: java.security.MessageDigest getSha1Digest()>();
+
+        $r5 = staticinvoke <org.apache.commons.codec.binary.StringUtils: byte[] getBytesUtf8(java.lang.String)>("C\'est un homme qui rentre dans un caf\u00e9, et plouf");
+
+        virtualinvoke r11.<java.security.MessageDigest: void update(byte[])>($r5);
+
+        $r6 = staticinvoke <org.apache.commons.codec.binary.StringUtils: byte[] getBytesUtf8(java.lang.String)>("C\'est un homme, c\'est qu\'une t\u00eate, on lui offre un cadeau: \'oh... encore un chapeau!\'");
+
+        virtualinvoke r11.<java.security.MessageDigest: void update(byte[])>($r6);
+
+        $r7 = virtualinvoke r11.<java.security.MessageDigest: byte[] digest()>();
+
+        r3 = staticinvoke <org.apache.commons.codec.binary.Hex: java.lang.String encodeHexString(byte[])>($r7);
+
+        r12 = staticinvoke <org.apache.commons.codec.digest.DigestUtils: java.security.MessageDigest getSha1Digest()>();
+
+        staticinvoke <org.apache.commons.codec.digest.DigestUtils: java.security.MessageDigest updateDigest(java.security.MessageDigest,java.lang.String)>(r12, "C\'est un homme qui rentre dans un caf\u00e9, et plouf");
+
+        staticinvoke <org.apache.commons.codec.digest.DigestUtils: java.security.MessageDigest updateDigest(java.security.MessageDigest,java.lang.String)>(r12, "C\'est un homme, c\'est qu\'une t\u00eate, on lui offre un cadeau: \'oh... encore un chapeau!\'");
+
+        $r10 = virtualinvoke r12.<java.security.MessageDigest: byte[] digest()>();
+
+        r4 = staticinvoke <org.apache.commons.codec.binary.Hex: java.lang.String encodeHexString(byte[])>($r10);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>(r3, r4);
+
+        return;
+    }
+
+    public void testSha256() throws java.io.IOException
+    {
+        org.apache.commons.codec.digest.DigestUtilsTest r0;
+        java.lang.String $r1, $r3, $r4, $r6, $r9;
+        byte[] $r2, $r5, $r8;
+        java.io.ByteArrayInputStream $r7;
+
+        r0 := @this: org.apache.commons.codec.digest.DigestUtilsTest;
+
+        $r1 = staticinvoke <org.apache.commons.codec.digest.DigestUtils: java.lang.String sha256Hex(java.lang.String)>("abc");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad", $r1);
+
+        $r2 = staticinvoke <org.apache.commons.codec.binary.StringUtils: byte[] getBytesUtf8(java.lang.String)>("abc");
+
+        $r3 = staticinvoke <org.apache.commons.codec.digest.DigestUtils: java.lang.String sha256Hex(byte[])>($r2);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad", $r3);
+
+        $r4 = staticinvoke <org.apache.commons.codec.digest.DigestUtils: java.lang.String sha256Hex(java.lang.String)>("abcdbcdecdefdefgefghfghighijhijkijkljklmklmnlmnomnopnopq");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("248d6a61d20638b8e5c026930c3e6039a33ce45964ff2167f6ecedd419db06c1", $r4);
+
+        $r5 = r0.<org.apache.commons.codec.digest.DigestUtilsTest: byte[] testData>;
+
+        $r6 = staticinvoke <org.apache.commons.codec.digest.DigestUtils: java.lang.String sha256Hex(byte[])>($r5);
+
+        $r7 = new java.io.ByteArrayInputStream;
+
+        $r8 = r0.<org.apache.commons.codec.digest.DigestUtilsTest: byte[] testData>;
+
+        specialinvoke $r7.<java.io.ByteArrayInputStream: void <init>(byte[])>($r8);
+
+        $r9 = staticinvoke <org.apache.commons.codec.digest.DigestUtils: java.lang.String sha256Hex(java.io.InputStream)>($r7);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r6, $r9);
+
+        return;
+    }
+
+    public void testSha384() throws java.io.IOException
+    {
+        org.apache.commons.codec.digest.DigestUtilsTest r0;
+        java.lang.String $r1, $r3, $r4, $r6, $r9;
+        byte[] $r2, $r5, $r8;
+        java.io.ByteArrayInputStream $r7;
+
+        r0 := @this: org.apache.commons.codec.digest.DigestUtilsTest;
+
+        $r1 = staticinvoke <org.apache.commons.codec.digest.DigestUtils: java.lang.String sha384Hex(java.lang.String)>("abc");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("cb00753f45a35e8bb5a03d699ac65007272c32ab0eded1631a8b605a43ff5bed8086072ba1e7cc2358baeca134c825a7", $r1);
+
+        $r2 = staticinvoke <org.apache.commons.codec.binary.StringUtils: byte[] getBytesUtf8(java.lang.String)>("abc");
+
+        $r3 = staticinvoke <org.apache.commons.codec.digest.DigestUtils: java.lang.String sha384Hex(byte[])>($r2);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("cb00753f45a35e8bb5a03d699ac65007272c32ab0eded1631a8b605a43ff5bed8086072ba1e7cc2358baeca134c825a7", $r3);
+
+        $r4 = staticinvoke <org.apache.commons.codec.digest.DigestUtils: java.lang.String sha384Hex(java.lang.String)>("abcdefghbcdefghicdefghijdefghijkefghijklfghijklmghijklmnhijklmnoijklmnopjklmnopqklmnopqrlmnopqrsmnopqrstnopqrstu");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("09330c33f71147e83d192fc782cd1b4753111b173b3b05d22fa08086e3b0f712fcc7c71a557e2db966c3e9fa91746039", $r4);
+
+        $r5 = r0.<org.apache.commons.codec.digest.DigestUtilsTest: byte[] testData>;
+
+        $r6 = staticinvoke <org.apache.commons.codec.digest.DigestUtils: java.lang.String sha384Hex(byte[])>($r5);
+
+        $r7 = new java.io.ByteArrayInputStream;
+
+        $r8 = r0.<org.apache.commons.codec.digest.DigestUtilsTest: byte[] testData>;
+
+        specialinvoke $r7.<java.io.ByteArrayInputStream: void <init>(byte[])>($r8);
+
+        $r9 = staticinvoke <org.apache.commons.codec.digest.DigestUtils: java.lang.String sha384Hex(java.io.InputStream)>($r7);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r6, $r9);
+
+        return;
+    }
+
+    public void testSha512() throws java.io.IOException
+    {
+        org.apache.commons.codec.digest.DigestUtilsTest r0;
+        java.lang.String $r1, $r3, $r4, $r6, $r9;
+        byte[] $r2, $r5, $r8;
+        java.io.ByteArrayInputStream $r7;
+
+        r0 := @this: org.apache.commons.codec.digest.DigestUtilsTest;
+
+        $r1 = staticinvoke <org.apache.commons.codec.digest.DigestUtils: java.lang.String sha512Hex(java.lang.String)>("abc");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("ddaf35a193617abacc417349ae20413112e6fa4e89a97ea20a9eeee64b55d39a2192992a274fc1a836ba3c23a3feebbd454d4423643ce80e2a9ac94fa54ca49f", $r1);
+
+        $r2 = staticinvoke <org.apache.commons.codec.binary.StringUtils: byte[] getBytesUtf8(java.lang.String)>("abc");
+
+        $r3 = staticinvoke <org.apache.commons.codec.digest.DigestUtils: java.lang.String sha512Hex(byte[])>($r2);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("ddaf35a193617abacc417349ae20413112e6fa4e89a97ea20a9eeee64b55d39a2192992a274fc1a836ba3c23a3feebbd454d4423643ce80e2a9ac94fa54ca49f", $r3);
+
+        $r4 = staticinvoke <org.apache.commons.codec.digest.DigestUtils: java.lang.String sha512Hex(java.lang.String)>("abcdefghbcdefghicdefghijdefghijkefghijklfghijklmghijklmnhijklmnoijklmnopjklmnopqklmnopqrlmnopqrsmnopqrstnopqrstu");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("8e959b75dae313da8cf4f72814fc143f8f7779c6eb9f7fa17299aeadb6889018501d289e4900f7e4331b99dec4b5433ac7d329eeb6dd26545e96e55b874be909", $r4);
+
+        $r5 = r0.<org.apache.commons.codec.digest.DigestUtilsTest: byte[] testData>;
+
+        $r6 = staticinvoke <org.apache.commons.codec.digest.DigestUtils: java.lang.String sha512Hex(byte[])>($r5);
+
+        $r7 = new java.io.ByteArrayInputStream;
+
+        $r8 = r0.<org.apache.commons.codec.digest.DigestUtilsTest: byte[] testData>;
+
+        specialinvoke $r7.<java.io.ByteArrayInputStream: void <init>(byte[])>($r8);
+
+        $r9 = staticinvoke <org.apache.commons.codec.digest.DigestUtils: java.lang.String sha512Hex(java.io.InputStream)>($r7);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r6, $r9);
+
+        return;
+    }
+
+    public void testShaHex() throws java.io.IOException
+    {
+        org.apache.commons.codec.digest.DigestUtilsTest r0;
+        java.lang.String $r1, $r3, $r4, $r6, $r9;
+        byte[] $r2, $r5, $r8;
+        java.io.ByteArrayInputStream $r7;
+
+        r0 := @this: org.apache.commons.codec.digest.DigestUtilsTest;
+
+        $r1 = staticinvoke <org.apache.commons.codec.digest.DigestUtils: java.lang.String shaHex(java.lang.String)>("abc");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("a9993e364706816aba3e25717850c26c9cd0d89d", $r1);
+
+        $r2 = staticinvoke <org.apache.commons.codec.binary.StringUtils: byte[] getBytesUtf8(java.lang.String)>("abc");
+
+        $r3 = staticinvoke <org.apache.commons.codec.digest.DigestUtils: java.lang.String shaHex(byte[])>($r2);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("a9993e364706816aba3e25717850c26c9cd0d89d", $r3);
+
+        $r4 = staticinvoke <org.apache.commons.codec.digest.DigestUtils: java.lang.String shaHex(java.lang.String)>("abcdbcdecdefdefgefghfghighijhijkijkljklmklmnlmnomnopnopq");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("84983e441c3bd26ebaae4aa1f95129e5e54670f1", $r4);
+
+        $r5 = r0.<org.apache.commons.codec.digest.DigestUtilsTest: byte[] testData>;
+
+        $r6 = staticinvoke <org.apache.commons.codec.digest.DigestUtils: java.lang.String shaHex(byte[])>($r5);
+
+        $r7 = new java.io.ByteArrayInputStream;
+
+        $r8 = r0.<org.apache.commons.codec.digest.DigestUtilsTest: byte[] testData>;
+
+        specialinvoke $r7.<java.io.ByteArrayInputStream: void <init>(byte[])>($r8);
+
+        $r9 = staticinvoke <org.apache.commons.codec.digest.DigestUtils: java.lang.String shaHex(java.io.InputStream)>($r7);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r6, $r9);
+
+        return;
+    }
+
+    public void testShaUpdateWithByteArray()
+    {
+        org.apache.commons.codec.digest.DigestUtilsTest r0;
+        java.lang.String r3, r4, $r5, $r7, $r10, $r13;
+        byte[] $r6, $r8, $r9, $r11, $r14, $r16;
+        java.security.MessageDigest r17, r18;
+
+        r0 := @this: org.apache.commons.codec.digest.DigestUtilsTest;
+
+        r17 = staticinvoke <org.apache.commons.codec.digest.DigestUtils: java.security.MessageDigest getShaDigest()>();
+
+        $r5 = "C\'est un homme qui rentre dans un caf\u00e9, et plouf";
+
+        $r6 = virtualinvoke $r5.<java.lang.String: byte[] getBytes()>();
+
+        virtualinvoke r17.<java.security.MessageDigest: void update(byte[])>($r6);
+
+        $r7 = "C\'est un homme, c\'est qu\'une t\u00eate, on lui offre un cadeau: \'oh... encore un chapeau!\'";
+
+        $r8 = virtualinvoke $r7.<java.lang.String: byte[] getBytes()>();
+
+        virtualinvoke r17.<java.security.MessageDigest: void update(byte[])>($r8);
+
+        $r9 = virtualinvoke r17.<java.security.MessageDigest: byte[] digest()>();
+
+        r3 = staticinvoke <org.apache.commons.codec.binary.Hex: java.lang.String encodeHexString(byte[])>($r9);
+
+        r18 = staticinvoke <org.apache.commons.codec.digest.DigestUtils: java.security.MessageDigest getShaDigest()>();
+
+        $r10 = "C\'est un homme qui rentre dans un caf\u00e9, et plouf";
+
+        $r11 = virtualinvoke $r10.<java.lang.String: byte[] getBytes()>();
+
+        staticinvoke <org.apache.commons.codec.digest.DigestUtils: java.security.MessageDigest updateDigest(java.security.MessageDigest,byte[])>(r18, $r11);
+
+        $r13 = "C\'est un homme, c\'est qu\'une t\u00eate, on lui offre un cadeau: \'oh... encore un chapeau!\'";
+
+        $r14 = virtualinvoke $r13.<java.lang.String: byte[] getBytes()>();
+
+        staticinvoke <org.apache.commons.codec.digest.DigestUtils: java.security.MessageDigest updateDigest(java.security.MessageDigest,byte[])>(r18, $r14);
+
+        $r16 = virtualinvoke r18.<java.security.MessageDigest: byte[] digest()>();
+
+        r4 = staticinvoke <org.apache.commons.codec.binary.Hex: java.lang.String encodeHexString(byte[])>($r16);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>(r3, r4);
+
+        return;
+    }
+
+    public void testShaUpdateWithString()
+    {
+        org.apache.commons.codec.digest.DigestUtilsTest r0;
+        java.lang.String r3, r4;
+        byte[] $r5, $r6, $r7, $r10;
+        java.security.MessageDigest r11, r12;
+
+        r0 := @this: org.apache.commons.codec.digest.DigestUtilsTest;
+
+        r11 = staticinvoke <org.apache.commons.codec.digest.DigestUtils: java.security.MessageDigest getShaDigest()>();
+
+        $r5 = staticinvoke <org.apache.commons.codec.binary.StringUtils: byte[] getBytesUtf8(java.lang.String)>("C\'est un homme qui rentre dans un caf\u00e9, et plouf");
+
+        virtualinvoke r11.<java.security.MessageDigest: void update(byte[])>($r5);
+
+        $r6 = staticinvoke <org.apache.commons.codec.binary.StringUtils: byte[] getBytesUtf8(java.lang.String)>("C\'est un homme, c\'est qu\'une t\u00eate, on lui offre un cadeau: \'oh... encore un chapeau!\'");
+
+        virtualinvoke r11.<java.security.MessageDigest: void update(byte[])>($r6);
+
+        $r7 = virtualinvoke r11.<java.security.MessageDigest: byte[] digest()>();
+
+        r3 = staticinvoke <org.apache.commons.codec.binary.Hex: java.lang.String encodeHexString(byte[])>($r7);
+
+        r12 = staticinvoke <org.apache.commons.codec.digest.DigestUtils: java.security.MessageDigest getShaDigest()>();
+
+        staticinvoke <org.apache.commons.codec.digest.DigestUtils: java.security.MessageDigest updateDigest(java.security.MessageDigest,java.lang.String)>(r12, "C\'est un homme qui rentre dans un caf\u00e9, et plouf");
+
+        staticinvoke <org.apache.commons.codec.digest.DigestUtils: java.security.MessageDigest updateDigest(java.security.MessageDigest,java.lang.String)>(r12, "C\'est un homme, c\'est qu\'une t\u00eate, on lui offre un cadeau: \'oh... encore un chapeau!\'");
+
+        $r10 = virtualinvoke r12.<java.security.MessageDigest: byte[] digest()>();
+
+        r4 = staticinvoke <org.apache.commons.codec.binary.Hex: java.lang.String encodeHexString(byte[])>($r10);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>(r3, r4);
+
+        return;
+    }
+}

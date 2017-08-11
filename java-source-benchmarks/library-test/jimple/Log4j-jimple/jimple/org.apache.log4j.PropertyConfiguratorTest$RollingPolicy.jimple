@@ -1,0 +1,40 @@
+public class org.apache.log4j.PropertyConfiguratorTest$RollingPolicy extends java.lang.Object implements org.apache.log4j.spi.OptionHandler
+{
+    private boolean activated;
+
+    public void <init>()
+    {
+        org.apache.log4j.PropertyConfiguratorTest$RollingPolicy r0;
+
+        r0 := @this: org.apache.log4j.PropertyConfiguratorTest$RollingPolicy;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<org.apache.log4j.PropertyConfiguratorTest$RollingPolicy: boolean activated> = 0;
+
+        return;
+    }
+
+    public void activateOptions()
+    {
+        org.apache.log4j.PropertyConfiguratorTest$RollingPolicy r0;
+
+        r0 := @this: org.apache.log4j.PropertyConfiguratorTest$RollingPolicy;
+
+        r0.<org.apache.log4j.PropertyConfiguratorTest$RollingPolicy: boolean activated> = 1;
+
+        return;
+    }
+
+    public final boolean isActivated()
+    {
+        org.apache.log4j.PropertyConfiguratorTest$RollingPolicy r0;
+        boolean $z0;
+
+        r0 := @this: org.apache.log4j.PropertyConfiguratorTest$RollingPolicy;
+
+        $z0 = r0.<org.apache.log4j.PropertyConfiguratorTest$RollingPolicy: boolean activated>;
+
+        return $z0;
+    }
+}

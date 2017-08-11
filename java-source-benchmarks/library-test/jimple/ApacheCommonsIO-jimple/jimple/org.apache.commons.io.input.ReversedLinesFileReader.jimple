@@ -1,0 +1,429 @@
+public class org.apache.commons.io.input.ReversedLinesFileReader extends java.lang.Object implements java.io.Closeable
+{
+    private final int blockSize;
+    private final java.nio.charset.Charset encoding;
+    private final java.io.RandomAccessFile randomAccessFile;
+    private final long totalByteLength;
+    private final long totalBlockCount;
+    private final byte[][] newLineSequences;
+    private final int avoidNewlineSplitBufferSize;
+    private final int byteDecrement;
+    private org.apache.commons.io.input.ReversedLinesFileReader$FilePart currentFilePart;
+    private boolean trailingNewlineOfFileSkipped;
+
+    public void <init>(java.io.File) throws java.io.IOException
+    {
+        org.apache.commons.io.input.ReversedLinesFileReader r0;
+        java.io.File r1;
+        java.nio.charset.Charset $r2;
+
+        r0 := @this: org.apache.commons.io.input.ReversedLinesFileReader;
+
+        r1 := @parameter0: java.io.File;
+
+        $r2 = staticinvoke <java.nio.charset.Charset: java.nio.charset.Charset defaultCharset()>();
+
+        specialinvoke r0.<org.apache.commons.io.input.ReversedLinesFileReader: void <init>(java.io.File,int,java.nio.charset.Charset)>(r1, 4096, $r2);
+
+        return;
+    }
+
+    public void <init>(java.io.File, java.nio.charset.Charset) throws java.io.IOException
+    {
+        org.apache.commons.io.input.ReversedLinesFileReader r0;
+        java.io.File r1;
+        java.nio.charset.Charset r2;
+
+        r0 := @this: org.apache.commons.io.input.ReversedLinesFileReader;
+
+        r1 := @parameter0: java.io.File;
+
+        r2 := @parameter1: java.nio.charset.Charset;
+
+        specialinvoke r0.<org.apache.commons.io.input.ReversedLinesFileReader: void <init>(java.io.File,int,java.nio.charset.Charset)>(r1, 4096, r2);
+
+        return;
+    }
+
+    public void <init>(java.io.File, int, java.nio.charset.Charset) throws java.io.IOException
+    {
+        org.apache.commons.io.input.ReversedLinesFileReader r0;
+        java.io.File r1;
+        int i0, $i11, i16;
+        java.nio.charset.Charset r2, r3, $r5, $r6, $r7, $r8, $r9, $r10, $r11, $r12, $r13;
+        java.nio.charset.CharsetEncoder r4;
+        float f0;
+        byte $b1, $b6;
+        long $l2, $l3, $l4, $l5, $l7, $l8, $l9, $l10, $l12, $l13, $l14, $l15, $l17;
+        java.io.UnsupportedEncodingException $r14, $r20;
+        java.lang.StringBuilder $r15, $r16, $r17, $r18;
+        java.lang.String $r19, $r22, $r24, $r26;
+        byte[][] $r21, $r28;
+        byte[] $r23, $r25, $r27, $r29;
+        java.io.RandomAccessFile $r30, $r31;
+        org.apache.commons.io.input.ReversedLinesFileReader$FilePart $r32;
+
+        r0 := @this: org.apache.commons.io.input.ReversedLinesFileReader;
+
+        r1 := @parameter0: java.io.File;
+
+        i0 := @parameter1: int;
+
+        r2 := @parameter2: java.nio.charset.Charset;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<org.apache.commons.io.input.ReversedLinesFileReader: boolean trailingNewlineOfFileSkipped> = 0;
+
+        r0.<org.apache.commons.io.input.ReversedLinesFileReader: int blockSize> = i0;
+
+        r0.<org.apache.commons.io.input.ReversedLinesFileReader: java.nio.charset.Charset encoding> = r2;
+
+        r3 = staticinvoke <org.apache.commons.io.Charsets: java.nio.charset.Charset toCharset(java.nio.charset.Charset)>(r2);
+
+        r4 = virtualinvoke r3.<java.nio.charset.Charset: java.nio.charset.CharsetEncoder newEncoder()>();
+
+        f0 = virtualinvoke r4.<java.nio.charset.CharsetEncoder: float maxBytesPerChar()>();
+
+        $b1 = f0 cmpl 1.0F;
+
+        if $b1 != 0 goto label01;
+
+        r0.<org.apache.commons.io.input.ReversedLinesFileReader: int byteDecrement> = 1;
+
+        goto label08;
+
+     label01:
+        $r5 = <org.apache.commons.io.Charsets: java.nio.charset.Charset UTF_8>;
+
+        if r3 != $r5 goto label02;
+
+        r0.<org.apache.commons.io.input.ReversedLinesFileReader: int byteDecrement> = 1;
+
+        goto label08;
+
+     label02:
+        $r6 = staticinvoke <java.nio.charset.Charset: java.nio.charset.Charset forName(java.lang.String)>("Shift_JIS");
+
+        if r3 == $r6 goto label03;
+
+        $r7 = staticinvoke <java.nio.charset.Charset: java.nio.charset.Charset forName(java.lang.String)>("windows-31j");
+
+        if r3 == $r7 goto label03;
+
+        $r8 = staticinvoke <java.nio.charset.Charset: java.nio.charset.Charset forName(java.lang.String)>("x-windows-949");
+
+        if r3 == $r8 goto label03;
+
+        $r9 = staticinvoke <java.nio.charset.Charset: java.nio.charset.Charset forName(java.lang.String)>("gbk");
+
+        if r3 == $r9 goto label03;
+
+        $r10 = staticinvoke <java.nio.charset.Charset: java.nio.charset.Charset forName(java.lang.String)>("x-windows-950");
+
+        if r3 != $r10 goto label04;
+
+     label03:
+        r0.<org.apache.commons.io.input.ReversedLinesFileReader: int byteDecrement> = 1;
+
+        goto label08;
+
+     label04:
+        $r11 = <org.apache.commons.io.Charsets: java.nio.charset.Charset UTF_16BE>;
+
+        if r3 == $r11 goto label05;
+
+        $r12 = <org.apache.commons.io.Charsets: java.nio.charset.Charset UTF_16LE>;
+
+        if r3 != $r12 goto label06;
+
+     label05:
+        r0.<org.apache.commons.io.input.ReversedLinesFileReader: int byteDecrement> = 2;
+
+        goto label08;
+
+     label06:
+        $r13 = <org.apache.commons.io.Charsets: java.nio.charset.Charset UTF_16>;
+
+        if r3 != $r13 goto label07;
+
+        $r20 = new java.io.UnsupportedEncodingException;
+
+        specialinvoke $r20.<java.io.UnsupportedEncodingException: void <init>(java.lang.String)>("For UTF-16, you need to specify the byte order (use UTF-16BE or UTF-16LE)");
+
+        throw $r20;
+
+     label07:
+        $r14 = new java.io.UnsupportedEncodingException;
+
+        $r15 = new java.lang.StringBuilder;
+
+        specialinvoke $r15.<java.lang.StringBuilder: void <init>(java.lang.String)>("Encoding ");
+
+        $r16 = virtualinvoke $r15.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(r2);
+
+        $r17 = virtualinvoke $r16.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" is not supported yet (feel free to ");
+
+        $r18 = virtualinvoke $r17.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("submit a patch)");
+
+        $r19 = virtualinvoke $r18.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r14.<java.io.UnsupportedEncodingException: void <init>(java.lang.String)>($r19);
+
+        throw $r14;
+
+     label08:
+        $r21 = newarray (byte[])[3];
+
+        $r22 = "\r\n";
+
+        $r23 = virtualinvoke $r22.<java.lang.String: byte[] getBytes(java.nio.charset.Charset)>(r2);
+
+        $r21[0] = $r23;
+
+        $r24 = "\n";
+
+        $r25 = virtualinvoke $r24.<java.lang.String: byte[] getBytes(java.nio.charset.Charset)>(r2);
+
+        $r21[1] = $r25;
+
+        $r26 = "\r";
+
+        $r27 = virtualinvoke $r26.<java.lang.String: byte[] getBytes(java.nio.charset.Charset)>(r2);
+
+        $r21[2] = $r27;
+
+        r0.<org.apache.commons.io.input.ReversedLinesFileReader: byte[][] newLineSequences> = $r21;
+
+        $r28 = r0.<org.apache.commons.io.input.ReversedLinesFileReader: byte[][] newLineSequences>;
+
+        $r29 = $r28[0];
+
+        $i11 = lengthof $r29;
+
+        r0.<org.apache.commons.io.input.ReversedLinesFileReader: int avoidNewlineSplitBufferSize> = $i11;
+
+        $r30 = new java.io.RandomAccessFile;
+
+        specialinvoke $r30.<java.io.RandomAccessFile: void <init>(java.io.File,java.lang.String)>(r1, "r");
+
+        r0.<org.apache.commons.io.input.ReversedLinesFileReader: java.io.RandomAccessFile randomAccessFile> = $r30;
+
+        $r31 = r0.<org.apache.commons.io.input.ReversedLinesFileReader: java.io.RandomAccessFile randomAccessFile>;
+
+        $l12 = virtualinvoke $r31.<java.io.RandomAccessFile: long length()>();
+
+        r0.<org.apache.commons.io.input.ReversedLinesFileReader: long totalByteLength> = $l12;
+
+        $l13 = r0.<org.apache.commons.io.input.ReversedLinesFileReader: long totalByteLength>;
+
+        $l14 = (long) i0;
+
+        $l15 = $l13 % $l14;
+
+        i16 = (int) $l15;
+
+        if i16 <= 0 goto label09;
+
+        $l8 = r0.<org.apache.commons.io.input.ReversedLinesFileReader: long totalByteLength>;
+
+        $l7 = (long) i0;
+
+        $l9 = $l8 / $l7;
+
+        $l10 = $l9 + 1L;
+
+        r0.<org.apache.commons.io.input.ReversedLinesFileReader: long totalBlockCount> = $l10;
+
+        goto label10;
+
+     label09:
+        $l3 = r0.<org.apache.commons.io.input.ReversedLinesFileReader: long totalByteLength>;
+
+        $l2 = (long) i0;
+
+        $l4 = $l3 / $l2;
+
+        r0.<org.apache.commons.io.input.ReversedLinesFileReader: long totalBlockCount> = $l4;
+
+        $l5 = r0.<org.apache.commons.io.input.ReversedLinesFileReader: long totalByteLength>;
+
+        $b6 = $l5 cmp 0L;
+
+        if $b6 <= 0 goto label10;
+
+        i16 = i0;
+
+     label10:
+        $r32 = new org.apache.commons.io.input.ReversedLinesFileReader$FilePart;
+
+        $l17 = r0.<org.apache.commons.io.input.ReversedLinesFileReader: long totalBlockCount>;
+
+        specialinvoke $r32.<org.apache.commons.io.input.ReversedLinesFileReader$FilePart: void <init>(org.apache.commons.io.input.ReversedLinesFileReader,long,int,byte[],org.apache.commons.io.input.ReversedLinesFileReader$FilePart)>(r0, $l17, i16, null, null);
+
+        r0.<org.apache.commons.io.input.ReversedLinesFileReader: org.apache.commons.io.input.ReversedLinesFileReader$FilePart currentFilePart> = $r32;
+
+        return;
+    }
+
+    public void <init>(java.io.File, int, java.lang.String) throws java.io.IOException
+    {
+        org.apache.commons.io.input.ReversedLinesFileReader r0;
+        java.io.File r1;
+        int i0;
+        java.lang.String r2;
+        java.nio.charset.Charset $r3;
+
+        r0 := @this: org.apache.commons.io.input.ReversedLinesFileReader;
+
+        r1 := @parameter0: java.io.File;
+
+        i0 := @parameter1: int;
+
+        r2 := @parameter2: java.lang.String;
+
+        $r3 = staticinvoke <org.apache.commons.io.Charsets: java.nio.charset.Charset toCharset(java.lang.String)>(r2);
+
+        specialinvoke r0.<org.apache.commons.io.input.ReversedLinesFileReader: void <init>(java.io.File,int,java.nio.charset.Charset)>(r1, i0, $r3);
+
+        return;
+    }
+
+    public java.lang.String readLine() throws java.io.IOException
+    {
+        org.apache.commons.io.input.ReversedLinesFileReader r0;
+        org.apache.commons.io.input.ReversedLinesFileReader$FilePart $r1, $r2, $r3, $r4, $r6;
+        java.lang.String $r5, r7;
+        boolean $z0, $z1;
+
+        r0 := @this: org.apache.commons.io.input.ReversedLinesFileReader;
+
+        $r1 = r0.<org.apache.commons.io.input.ReversedLinesFileReader: org.apache.commons.io.input.ReversedLinesFileReader$FilePart currentFilePart>;
+
+        r7 = staticinvoke <org.apache.commons.io.input.ReversedLinesFileReader$FilePart: java.lang.String access$1(org.apache.commons.io.input.ReversedLinesFileReader$FilePart)>($r1);
+
+        goto label2;
+
+     label1:
+        $r2 = r0.<org.apache.commons.io.input.ReversedLinesFileReader: org.apache.commons.io.input.ReversedLinesFileReader$FilePart currentFilePart>;
+
+        $r3 = staticinvoke <org.apache.commons.io.input.ReversedLinesFileReader$FilePart: org.apache.commons.io.input.ReversedLinesFileReader$FilePart access$2(org.apache.commons.io.input.ReversedLinesFileReader$FilePart)>($r2);
+
+        r0.<org.apache.commons.io.input.ReversedLinesFileReader: org.apache.commons.io.input.ReversedLinesFileReader$FilePart currentFilePart> = $r3;
+
+        $r4 = r0.<org.apache.commons.io.input.ReversedLinesFileReader: org.apache.commons.io.input.ReversedLinesFileReader$FilePart currentFilePart>;
+
+        if $r4 == null goto label3;
+
+        $r6 = r0.<org.apache.commons.io.input.ReversedLinesFileReader: org.apache.commons.io.input.ReversedLinesFileReader$FilePart currentFilePart>;
+
+        r7 = staticinvoke <org.apache.commons.io.input.ReversedLinesFileReader$FilePart: java.lang.String access$1(org.apache.commons.io.input.ReversedLinesFileReader$FilePart)>($r6);
+
+     label2:
+        if r7 == null goto label1;
+
+     label3:
+        $r5 = "";
+
+        $z0 = virtualinvoke $r5.<java.lang.String: boolean equals(java.lang.Object)>(r7);
+
+        if $z0 == 0 goto label4;
+
+        $z1 = r0.<org.apache.commons.io.input.ReversedLinesFileReader: boolean trailingNewlineOfFileSkipped>;
+
+        if $z1 != 0 goto label4;
+
+        r0.<org.apache.commons.io.input.ReversedLinesFileReader: boolean trailingNewlineOfFileSkipped> = 1;
+
+        r7 = virtualinvoke r0.<org.apache.commons.io.input.ReversedLinesFileReader: java.lang.String readLine()>();
+
+     label4:
+        return r7;
+    }
+
+    public void close() throws java.io.IOException
+    {
+        org.apache.commons.io.input.ReversedLinesFileReader r0;
+        java.io.RandomAccessFile $r1;
+
+        r0 := @this: org.apache.commons.io.input.ReversedLinesFileReader;
+
+        $r1 = r0.<org.apache.commons.io.input.ReversedLinesFileReader: java.io.RandomAccessFile randomAccessFile>;
+
+        virtualinvoke $r1.<java.io.RandomAccessFile: void close()>();
+
+        return;
+    }
+
+    static int access$0(org.apache.commons.io.input.ReversedLinesFileReader)
+    {
+        org.apache.commons.io.input.ReversedLinesFileReader r0;
+        int $i0;
+
+        r0 := @parameter0: org.apache.commons.io.input.ReversedLinesFileReader;
+
+        $i0 = r0.<org.apache.commons.io.input.ReversedLinesFileReader: int blockSize>;
+
+        return $i0;
+    }
+
+    static java.io.RandomAccessFile access$1(org.apache.commons.io.input.ReversedLinesFileReader)
+    {
+        org.apache.commons.io.input.ReversedLinesFileReader r0;
+        java.io.RandomAccessFile $r1;
+
+        r0 := @parameter0: org.apache.commons.io.input.ReversedLinesFileReader;
+
+        $r1 = r0.<org.apache.commons.io.input.ReversedLinesFileReader: java.io.RandomAccessFile randomAccessFile>;
+
+        return $r1;
+    }
+
+    static java.nio.charset.Charset access$2(org.apache.commons.io.input.ReversedLinesFileReader)
+    {
+        org.apache.commons.io.input.ReversedLinesFileReader r0;
+        java.nio.charset.Charset $r1;
+
+        r0 := @parameter0: org.apache.commons.io.input.ReversedLinesFileReader;
+
+        $r1 = r0.<org.apache.commons.io.input.ReversedLinesFileReader: java.nio.charset.Charset encoding>;
+
+        return $r1;
+    }
+
+    static int access$3(org.apache.commons.io.input.ReversedLinesFileReader)
+    {
+        org.apache.commons.io.input.ReversedLinesFileReader r0;
+        int $i0;
+
+        r0 := @parameter0: org.apache.commons.io.input.ReversedLinesFileReader;
+
+        $i0 = r0.<org.apache.commons.io.input.ReversedLinesFileReader: int avoidNewlineSplitBufferSize>;
+
+        return $i0;
+    }
+
+    static int access$4(org.apache.commons.io.input.ReversedLinesFileReader)
+    {
+        org.apache.commons.io.input.ReversedLinesFileReader r0;
+        int $i0;
+
+        r0 := @parameter0: org.apache.commons.io.input.ReversedLinesFileReader;
+
+        $i0 = r0.<org.apache.commons.io.input.ReversedLinesFileReader: int byteDecrement>;
+
+        return $i0;
+    }
+
+    static byte[][] access$5(org.apache.commons.io.input.ReversedLinesFileReader)
+    {
+        org.apache.commons.io.input.ReversedLinesFileReader r0;
+        byte[][] $r1;
+
+        r0 := @parameter0: org.apache.commons.io.input.ReversedLinesFileReader;
+
+        $r1 = r0.<org.apache.commons.io.input.ReversedLinesFileReader: byte[][] newLineSequences>;
+
+        return $r1;
+    }
+}

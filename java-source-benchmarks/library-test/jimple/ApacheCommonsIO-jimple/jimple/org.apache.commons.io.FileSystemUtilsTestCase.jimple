@@ -1,0 +1,1051 @@
+public class org.apache.commons.io.FileSystemUtilsTestCase extends org.apache.commons.io.testtools.FileBasedTestCase
+{
+
+    public void <init>()
+    {
+        org.apache.commons.io.FileSystemUtilsTestCase r0;
+
+        r0 := @this: org.apache.commons.io.FileSystemUtilsTestCase;
+
+        specialinvoke r0.<org.apache.commons.io.testtools.FileBasedTestCase: void <init>()>();
+
+        return;
+    }
+
+    public void testGetFreeSpace_String() throws java.lang.Exception
+    {
+        org.apache.commons.io.FileSystemUtilsTestCase r0;
+        long l0, l2, l3, l4;
+        char $c1;
+        double $d0, $d1, $d2, $d3, $d4, $d5, $d6, $d7;
+        java.util.Locale $r2;
+        boolean $z0, $z1, $z2, $z3, $z4, z5, $z6;
+        java.lang.String[] $r3, $r4, r8, $r9;
+        java.lang.Throwable $r5;
+        java.lang.String r6, r7, r16;
+        java.lang.Runtime $r10;
+        java.lang.Process r11;
+        java.io.BufferedReader r12, $r13;
+        java.io.InputStreamReader $r14;
+        java.io.InputStream $r15;
+
+        r0 := @this: org.apache.commons.io.FileSystemUtilsTestCase;
+
+        $c1 = <java.io.File: char separatorChar>;
+
+        if $c1 != 47 goto label10;
+
+        r6 = staticinvoke <java.lang.System: java.lang.String getProperty(java.lang.String)>("os.name");
+
+        $r2 = <java.util.Locale: java.util.Locale ENGLISH>;
+
+        r7 = virtualinvoke r6.<java.lang.String: java.lang.String toLowerCase(java.util.Locale)>($r2);
+
+        $z0 = virtualinvoke r7.<java.lang.String: boolean contains(java.lang.CharSequence)>("hp-ux");
+
+        if $z0 != 0 goto label01;
+
+        $z1 = virtualinvoke r7.<java.lang.String: boolean contains(java.lang.CharSequence)>("aix");
+
+        if $z1 == 0 goto label02;
+
+     label01:
+        $r3 = newarray (java.lang.String)[3];
+
+        $r3[0] = "df";
+
+        $r3[1] = "-P";
+
+        $r3[2] = "/";
+
+        r8 = $r3;
+
+        goto label05;
+
+     label02:
+        $z2 = virtualinvoke r7.<java.lang.String: boolean contains(java.lang.CharSequence)>("sunos");
+
+        if $z2 != 0 goto label03;
+
+        $z3 = virtualinvoke r7.<java.lang.String: boolean contains(java.lang.CharSequence)>("sun os");
+
+        if $z3 != 0 goto label03;
+
+        $z4 = virtualinvoke r7.<java.lang.String: boolean contains(java.lang.CharSequence)>("solaris");
+
+        if $z4 == 0 goto label04;
+
+     label03:
+        $r9 = newarray (java.lang.String)[3];
+
+        $r9[0] = "/usr/xpg4/bin/df";
+
+        $r9[1] = "-P";
+
+        $r9[2] = "/";
+
+        r8 = $r9;
+
+        goto label05;
+
+     label04:
+        $r4 = newarray (java.lang.String)[2];
+
+        $r4[0] = "df";
+
+        $r4[1] = "/";
+
+        r8 = $r4;
+
+     label05:
+        $r10 = staticinvoke <java.lang.Runtime: java.lang.Runtime getRuntime()>();
+
+        r11 = virtualinvoke $r10.<java.lang.Runtime: java.lang.Process exec(java.lang.String[])>(r8);
+
+        z5 = 1;
+
+        r12 = null;
+
+     label06:
+        $r13 = new java.io.BufferedReader;
+
+        $r14 = new java.io.InputStreamReader;
+
+        $r15 = virtualinvoke r11.<java.lang.Process: java.io.InputStream getInputStream()>();
+
+        specialinvoke $r14.<java.io.InputStreamReader: void <init>(java.io.InputStream)>($r15);
+
+        specialinvoke $r13.<java.io.BufferedReader: void <init>(java.io.Reader)>($r14);
+
+        r12 = $r13;
+
+        r16 = virtualinvoke $r13.<java.io.BufferedReader: java.lang.String readLine()>();
+
+        staticinvoke <org.junit.Assert: void assertNotNull(java.lang.String,java.lang.Object)>("Unexpected null line", r16);
+
+        $z6 = virtualinvoke r16.<java.lang.String: boolean contains(java.lang.CharSequence)>("512");
+
+        if $z6 == 0 goto label08;
+
+        z5 = 0;
+
+        goto label08;
+
+     label07:
+        $r5 := @caughtexception;
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.Reader)>(r12);
+
+        throw $r5;
+
+     label08:
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.Reader)>($r13);
+
+        l2 = staticinvoke <org.apache.commons.io.FileSystemUtils: long freeSpace(java.lang.String)>("/");
+
+        l0 = staticinvoke <org.apache.commons.io.FileSystemUtils: long freeSpaceKb(java.lang.String)>("/");
+
+        if z5 == 0 goto label09;
+
+        $d7 = (double) l2;
+
+        $d6 = (double) l0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(double,double,double)>($d7, $d6, 256.0);
+
+        goto label11;
+
+     label09:
+        $d3 = (double) l2;
+
+        $d5 = $d3 / 2.0;
+
+        $d4 = (double) l0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(double,double,double)>($d5, $d4, 256.0);
+
+        goto label11;
+
+     label10:
+        l3 = staticinvoke <org.apache.commons.io.FileSystemUtils: long freeSpace(java.lang.String)>("");
+
+        l4 = staticinvoke <org.apache.commons.io.FileSystemUtils: long freeSpaceKb(java.lang.String)>("");
+
+        $d0 = (double) l3;
+
+        $d2 = $d0 / 1024.0;
+
+        $d1 = (double) l4;
+
+        staticinvoke <org.junit.Assert: void assertEquals(double,double,double)>($d2, $d1, 256.0);
+
+     label11:
+        return;
+
+        catch java.lang.Throwable from label06 to label07 with label07;
+    }
+
+    public void testGetFreeSpaceOS_String_NullPath() throws java.lang.Exception
+    {
+        org.apache.commons.io.FileSystemUtilsTestCase r0;
+        org.apache.commons.io.FileSystemUtils $r2;
+        java.lang.IllegalArgumentException $r3, $r4;
+
+        r0 := @this: org.apache.commons.io.FileSystemUtilsTestCase;
+
+        $r2 = new org.apache.commons.io.FileSystemUtils;
+
+        specialinvoke $r2.<org.apache.commons.io.FileSystemUtils: void <init>()>();
+
+     label1:
+        virtualinvoke $r2.<org.apache.commons.io.FileSystemUtils: long freeSpaceOS(java.lang.String,int,boolean,long)>(null, 1, 0, -1L);
+
+        staticinvoke <org.junit.Assert: void fail()>();
+
+     label2:
+        goto label4;
+
+     label3:
+        $r4 := @caughtexception;
+
+     label4:
+        virtualinvoke $r2.<org.apache.commons.io.FileSystemUtils: long freeSpaceOS(java.lang.String,int,boolean,long)>(null, 1, 1, -1L);
+
+        staticinvoke <org.junit.Assert: void fail()>();
+
+     label5:
+        goto label7;
+
+     label6:
+        $r3 := @caughtexception;
+
+     label7:
+        return;
+
+        catch java.lang.IllegalArgumentException from label1 to label2 with label3;
+        catch java.lang.IllegalArgumentException from label4 to label5 with label6;
+    }
+
+    public void testGetFreeSpaceOS_String_InitError() throws java.lang.Exception
+    {
+        org.apache.commons.io.FileSystemUtilsTestCase r0;
+        org.apache.commons.io.FileSystemUtils $r2;
+        java.lang.IllegalStateException $r3, $r4;
+
+        r0 := @this: org.apache.commons.io.FileSystemUtilsTestCase;
+
+        $r2 = new org.apache.commons.io.FileSystemUtils;
+
+        specialinvoke $r2.<org.apache.commons.io.FileSystemUtils: void <init>()>();
+
+     label1:
+        virtualinvoke $r2.<org.apache.commons.io.FileSystemUtils: long freeSpaceOS(java.lang.String,int,boolean,long)>("", -1, 0, -1L);
+
+        staticinvoke <org.junit.Assert: void fail()>();
+
+     label2:
+        goto label4;
+
+     label3:
+        $r4 := @caughtexception;
+
+     label4:
+        virtualinvoke $r2.<org.apache.commons.io.FileSystemUtils: long freeSpaceOS(java.lang.String,int,boolean,long)>("", -1, 1, -1L);
+
+        staticinvoke <org.junit.Assert: void fail()>();
+
+     label5:
+        goto label7;
+
+     label6:
+        $r3 := @caughtexception;
+
+     label7:
+        return;
+
+        catch java.lang.IllegalStateException from label1 to label2 with label3;
+        catch java.lang.IllegalStateException from label4 to label5 with label6;
+    }
+
+    public void testGetFreeSpaceOS_String_Other() throws java.lang.Exception
+    {
+        org.apache.commons.io.FileSystemUtilsTestCase r0;
+        org.apache.commons.io.FileSystemUtils $r2;
+        java.lang.IllegalStateException $r3, $r4;
+
+        r0 := @this: org.apache.commons.io.FileSystemUtilsTestCase;
+
+        $r2 = new org.apache.commons.io.FileSystemUtils;
+
+        specialinvoke $r2.<org.apache.commons.io.FileSystemUtils: void <init>()>();
+
+     label1:
+        virtualinvoke $r2.<org.apache.commons.io.FileSystemUtils: long freeSpaceOS(java.lang.String,int,boolean,long)>("", 0, 0, -1L);
+
+        staticinvoke <org.junit.Assert: void fail()>();
+
+     label2:
+        goto label4;
+
+     label3:
+        $r4 := @caughtexception;
+
+     label4:
+        virtualinvoke $r2.<org.apache.commons.io.FileSystemUtils: long freeSpaceOS(java.lang.String,int,boolean,long)>("", 0, 1, -1L);
+
+        staticinvoke <org.junit.Assert: void fail()>();
+
+     label5:
+        goto label7;
+
+     label6:
+        $r3 := @caughtexception;
+
+     label7:
+        return;
+
+        catch java.lang.IllegalStateException from label1 to label2 with label3;
+        catch java.lang.IllegalStateException from label4 to label5 with label6;
+    }
+
+    public void testGetFreeSpaceOS_String_Windows() throws java.lang.Exception
+    {
+        org.apache.commons.io.FileSystemUtilsTestCase r0;
+        org.apache.commons.io.FileSystemUtilsTestCase$1 $r2;
+        long $l0, $l1;
+
+        r0 := @this: org.apache.commons.io.FileSystemUtilsTestCase;
+
+        $r2 = new org.apache.commons.io.FileSystemUtilsTestCase$1;
+
+        specialinvoke $r2.<org.apache.commons.io.FileSystemUtilsTestCase$1: void <init>(org.apache.commons.io.FileSystemUtilsTestCase)>(r0);
+
+        $l0 = virtualinvoke $r2.<org.apache.commons.io.FileSystemUtils: long freeSpaceOS(java.lang.String,int,boolean,long)>("", 1, 0, -1L);
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(12345L, $l0);
+
+        $l1 = virtualinvoke $r2.<org.apache.commons.io.FileSystemUtils: long freeSpaceOS(java.lang.String,int,boolean,long)>("", 1, 1, -1L);
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(12L, $l1);
+
+        return;
+    }
+
+    public void testGetFreeSpaceOS_String_Unix() throws java.lang.Exception
+    {
+        org.apache.commons.io.FileSystemUtilsTestCase r0;
+        org.apache.commons.io.FileSystemUtilsTestCase$2 $r2;
+        long $l0, $l1;
+
+        r0 := @this: org.apache.commons.io.FileSystemUtilsTestCase;
+
+        $r2 = new org.apache.commons.io.FileSystemUtilsTestCase$2;
+
+        specialinvoke $r2.<org.apache.commons.io.FileSystemUtilsTestCase$2: void <init>(org.apache.commons.io.FileSystemUtilsTestCase)>(r0);
+
+        $l0 = virtualinvoke $r2.<org.apache.commons.io.FileSystemUtils: long freeSpaceOS(java.lang.String,int,boolean,long)>("", 2, 0, -1L);
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(54321L, $l0);
+
+        $l1 = virtualinvoke $r2.<org.apache.commons.io.FileSystemUtils: long freeSpaceOS(java.lang.String,int,boolean,long)>("", 2, 1, -1L);
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(12345L, $l1);
+
+        return;
+    }
+
+    public void testGetFreeSpaceWindows_String_ParseCommaFormatBytes() throws java.lang.Exception
+    {
+        org.apache.commons.io.FileSystemUtilsTestCase r0;
+        org.apache.commons.io.FileSystemUtilsTestCase$MockFileSystemUtils $r3;
+        long $l0;
+
+        r0 := @this: org.apache.commons.io.FileSystemUtilsTestCase;
+
+        $r3 = new org.apache.commons.io.FileSystemUtilsTestCase$MockFileSystemUtils;
+
+        specialinvoke $r3.<org.apache.commons.io.FileSystemUtilsTestCase$MockFileSystemUtils: void <init>(int,java.lang.String)>(0, " Volume in drive C is HDD\n Volume Serial Number is XXXX-YYYY\n\n Directory of C:\\Documents and Settings\\Xxxx\n\n19/08/2005  22:43    <DIR>          .\n19/08/2005  22:43    <DIR>          ..\n11/08/2005  01:07                81 build.properties\n17/08/2005  21:44    <DIR>          Desktop\n               7 File(s)        180,260 bytes\n              10 Dir(s)  41,411,551,232 bytes free");
+
+        $l0 = virtualinvoke $r3.<org.apache.commons.io.FileSystemUtils: long freeSpaceWindows(java.lang.String,long)>("", -1L);
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(41411551232L, $l0);
+
+        return;
+    }
+
+    public void testGetFreeSpaceWindows_String_EmptyPath() throws java.lang.Exception
+    {
+        org.apache.commons.io.FileSystemUtilsTestCase r0;
+        org.apache.commons.io.FileSystemUtilsTestCase$MockFileSystemUtils $r3;
+        long $l0;
+
+        r0 := @this: org.apache.commons.io.FileSystemUtilsTestCase;
+
+        $r3 = new org.apache.commons.io.FileSystemUtilsTestCase$MockFileSystemUtils;
+
+        specialinvoke $r3.<org.apache.commons.io.FileSystemUtilsTestCase$MockFileSystemUtils: void <init>(int,java.lang.String,java.lang.String)>(0, " Volume in drive C is HDD\n Volume Serial Number is XXXX-YYYY\n\n Directory of C:\\Documents and Settings\\Xxxx\n\n19/08/2005  22:43    <DIR>          .\n19/08/2005  22:43    <DIR>          ..\n11/08/2005  01:07                81 build.properties\n17/08/2005  21:44    <DIR>          Desktop\n               7 File(s)         180260 bytes\n              10 Dir(s)     41411551232 bytes free", "dir /a /-c ");
+
+        $l0 = virtualinvoke $r3.<org.apache.commons.io.FileSystemUtils: long freeSpaceWindows(java.lang.String,long)>("", -1L);
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(41411551232L, $l0);
+
+        return;
+    }
+
+    public void testGetFreeSpaceWindows_String_NormalResponse() throws java.lang.Exception
+    {
+        org.apache.commons.io.FileSystemUtilsTestCase r0;
+        org.apache.commons.io.FileSystemUtilsTestCase$MockFileSystemUtils $r3;
+        long $l0;
+
+        r0 := @this: org.apache.commons.io.FileSystemUtilsTestCase;
+
+        $r3 = new org.apache.commons.io.FileSystemUtilsTestCase$MockFileSystemUtils;
+
+        specialinvoke $r3.<org.apache.commons.io.FileSystemUtilsTestCase$MockFileSystemUtils: void <init>(int,java.lang.String,java.lang.String)>(0, " Volume in drive C is HDD\n Volume Serial Number is XXXX-YYYY\n\n Directory of C:\\Documents and Settings\\Xxxx\n\n19/08/2005  22:43    <DIR>          .\n19/08/2005  22:43    <DIR>          ..\n11/08/2005  01:07                81 build.properties\n17/08/2005  21:44    <DIR>          Desktop\n               7 File(s)         180260 bytes\n              10 Dir(s)     41411551232 bytes free", "dir /a /-c \"C:\"");
+
+        $l0 = virtualinvoke $r3.<org.apache.commons.io.FileSystemUtils: long freeSpaceWindows(java.lang.String,long)>("C:", -1L);
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(41411551232L, $l0);
+
+        return;
+    }
+
+    public void testGetFreeSpaceWindows_String_StripDrive() throws java.lang.Exception
+    {
+        org.apache.commons.io.FileSystemUtilsTestCase r0;
+        org.apache.commons.io.FileSystemUtilsTestCase$MockFileSystemUtils $r3;
+        long $l0;
+
+        r0 := @this: org.apache.commons.io.FileSystemUtilsTestCase;
+
+        $r3 = new org.apache.commons.io.FileSystemUtilsTestCase$MockFileSystemUtils;
+
+        specialinvoke $r3.<org.apache.commons.io.FileSystemUtilsTestCase$MockFileSystemUtils: void <init>(int,java.lang.String,java.lang.String)>(0, " Volume in drive C is HDD\n Volume Serial Number is XXXX-YYYY\n\n Directory of C:\\Documents and Settings\\Xxxx\n\n19/08/2005  22:43    <DIR>          .\n19/08/2005  22:43    <DIR>          ..\n11/08/2005  01:07                81 build.properties\n17/08/2005  21:44    <DIR>          Desktop\n               7 File(s)         180260 bytes\n              10 Dir(s)     41411551232 bytes free", "dir /a /-c \"C:\\somedir\"");
+
+        $l0 = virtualinvoke $r3.<org.apache.commons.io.FileSystemUtils: long freeSpaceWindows(java.lang.String,long)>("C:\\somedir", -1L);
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(41411551232L, $l0);
+
+        return;
+    }
+
+    public void testGetFreeSpaceWindows_String_quoted() throws java.lang.Exception
+    {
+        org.apache.commons.io.FileSystemUtilsTestCase r0;
+        org.apache.commons.io.FileSystemUtilsTestCase$MockFileSystemUtils $r3;
+        long $l0;
+
+        r0 := @this: org.apache.commons.io.FileSystemUtilsTestCase;
+
+        $r3 = new org.apache.commons.io.FileSystemUtilsTestCase$MockFileSystemUtils;
+
+        specialinvoke $r3.<org.apache.commons.io.FileSystemUtilsTestCase$MockFileSystemUtils: void <init>(int,java.lang.String,java.lang.String)>(0, " Volume in drive C is HDD\n Volume Serial Number is XXXX-YYYY\n\n Directory of C:\\Documents and Settings\\Xxxx\n\n19/08/2005  22:43    <DIR>          .\n19/08/2005  22:43    <DIR>          ..\n11/08/2005  01:07                81 build.properties\n17/08/2005  21:44    <DIR>          Desktop\n               7 File(s)         180260 bytes\n              10 Dir(s)     41411551232 bytes free", "dir /a /-c \"C:\\somedir\"");
+
+        $l0 = virtualinvoke $r3.<org.apache.commons.io.FileSystemUtils: long freeSpaceWindows(java.lang.String,long)>("\"C:\\somedir\"", -1L);
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(41411551232L, $l0);
+
+        return;
+    }
+
+    public void testGetFreeSpaceWindows_String_EmptyResponse() throws java.lang.Exception
+    {
+        org.apache.commons.io.FileSystemUtilsTestCase r0;
+        org.apache.commons.io.FileSystemUtilsTestCase$MockFileSystemUtils $r4;
+        java.io.IOException $r5;
+
+        r0 := @this: org.apache.commons.io.FileSystemUtilsTestCase;
+
+        $r4 = new org.apache.commons.io.FileSystemUtilsTestCase$MockFileSystemUtils;
+
+        specialinvoke $r4.<org.apache.commons.io.FileSystemUtilsTestCase$MockFileSystemUtils: void <init>(int,java.lang.String)>(0, "");
+
+     label1:
+        virtualinvoke $r4.<org.apache.commons.io.FileSystemUtils: long freeSpaceWindows(java.lang.String,long)>("C:", -1L);
+
+        staticinvoke <org.junit.Assert: void fail()>();
+
+     label2:
+        goto label4;
+
+     label3:
+        $r5 := @caughtexception;
+
+     label4:
+        return;
+
+        catch java.io.IOException from label1 to label2 with label3;
+    }
+
+    public void testGetFreeSpaceWindows_String_EmptyMultiLineResponse() throws java.lang.Exception
+    {
+        org.apache.commons.io.FileSystemUtilsTestCase r0;
+        org.apache.commons.io.FileSystemUtilsTestCase$MockFileSystemUtils $r3;
+
+        r0 := @this: org.apache.commons.io.FileSystemUtilsTestCase;
+
+        $r3 = new org.apache.commons.io.FileSystemUtilsTestCase$MockFileSystemUtils;
+
+        specialinvoke $r3.<org.apache.commons.io.FileSystemUtilsTestCase$MockFileSystemUtils: void <init>(int,java.lang.String)>(0, "\n\n");
+
+        virtualinvoke $r3.<org.apache.commons.io.FileSystemUtils: long freeSpaceWindows(java.lang.String,long)>("C:", -1L);
+
+        return;
+    }
+
+    public void testGetFreeSpaceWindows_String_InvalidTextResponse() throws java.lang.Exception
+    {
+        org.apache.commons.io.FileSystemUtilsTestCase r0;
+        org.apache.commons.io.FileSystemUtilsTestCase$MockFileSystemUtils $r3;
+
+        r0 := @this: org.apache.commons.io.FileSystemUtilsTestCase;
+
+        $r3 = new org.apache.commons.io.FileSystemUtilsTestCase$MockFileSystemUtils;
+
+        specialinvoke $r3.<org.apache.commons.io.FileSystemUtilsTestCase$MockFileSystemUtils: void <init>(int,java.lang.String)>(0, "BlueScreenOfDeath");
+
+        virtualinvoke $r3.<org.apache.commons.io.FileSystemUtils: long freeSpaceWindows(java.lang.String,long)>("C:", -1L);
+
+        return;
+    }
+
+    public void testGetFreeSpaceWindows_String_NoSuchDirectoryResponse() throws java.lang.Exception
+    {
+        org.apache.commons.io.FileSystemUtilsTestCase r0;
+        org.apache.commons.io.FileSystemUtilsTestCase$MockFileSystemUtils $r3;
+
+        r0 := @this: org.apache.commons.io.FileSystemUtilsTestCase;
+
+        $r3 = new org.apache.commons.io.FileSystemUtilsTestCase$MockFileSystemUtils;
+
+        specialinvoke $r3.<org.apache.commons.io.FileSystemUtilsTestCase$MockFileSystemUtils: void <init>(int,java.lang.String)>(1, " Volume in drive C is HDD\n Volume Serial Number is XXXX-YYYY\n\n Directory of C:\\Documents and Settings\\empty\n");
+
+        virtualinvoke $r3.<org.apache.commons.io.FileSystemUtils: long freeSpaceWindows(java.lang.String,long)>("C:", -1L);
+
+        return;
+    }
+
+    public void testGetFreeSpaceUnix_String_EmptyPath() throws java.lang.Exception
+    {
+        org.apache.commons.io.FileSystemUtilsTestCase r0;
+        org.apache.commons.io.FileSystemUtilsTestCase$MockFileSystemUtils $r3;
+        java.lang.IllegalArgumentException $r4, $r5, $r6, $r7;
+
+        r0 := @this: org.apache.commons.io.FileSystemUtilsTestCase;
+
+        $r3 = new org.apache.commons.io.FileSystemUtilsTestCase$MockFileSystemUtils;
+
+        specialinvoke $r3.<org.apache.commons.io.FileSystemUtilsTestCase$MockFileSystemUtils: void <init>(int,java.lang.String)>(0, "Filesystem           1K-blocks      Used Available Use% Mounted on\nxxx:/home/users/s     14428928  12956424   1472504  90% /home/users/s");
+
+     label01:
+        virtualinvoke $r3.<org.apache.commons.io.FileSystemUtils: long freeSpaceUnix(java.lang.String,boolean,boolean,long)>("", 0, 0, -1L);
+
+        staticinvoke <org.junit.Assert: void fail()>();
+
+     label02:
+        goto label04;
+
+     label03:
+        $r5 := @caughtexception;
+
+     label04:
+        virtualinvoke $r3.<org.apache.commons.io.FileSystemUtils: long freeSpaceUnix(java.lang.String,boolean,boolean,long)>("", 1, 0, -1L);
+
+        staticinvoke <org.junit.Assert: void fail()>();
+
+     label05:
+        goto label07;
+
+     label06:
+        $r4 := @caughtexception;
+
+     label07:
+        virtualinvoke $r3.<org.apache.commons.io.FileSystemUtils: long freeSpaceUnix(java.lang.String,boolean,boolean,long)>("", 1, 1, -1L);
+
+        staticinvoke <org.junit.Assert: void fail()>();
+
+     label08:
+        goto label10;
+
+     label09:
+        $r6 := @caughtexception;
+
+     label10:
+        virtualinvoke $r3.<org.apache.commons.io.FileSystemUtils: long freeSpaceUnix(java.lang.String,boolean,boolean,long)>("", 0, 1, -1L);
+
+        staticinvoke <org.junit.Assert: void fail()>();
+
+     label11:
+        goto label13;
+
+     label12:
+        $r7 := @caughtexception;
+
+     label13:
+        return;
+
+        catch java.lang.IllegalArgumentException from label01 to label02 with label03;
+        catch java.lang.IllegalArgumentException from label04 to label05 with label06;
+        catch java.lang.IllegalArgumentException from label07 to label08 with label09;
+        catch java.lang.IllegalArgumentException from label10 to label11 with label12;
+    }
+
+    public void testGetFreeSpaceUnix_String_NormalResponseLinux() throws java.lang.Exception
+    {
+        org.apache.commons.io.FileSystemUtilsTestCase r0;
+        org.apache.commons.io.FileSystemUtilsTestCase$MockFileSystemUtils $r3;
+        long $l0;
+
+        r0 := @this: org.apache.commons.io.FileSystemUtilsTestCase;
+
+        $r3 = new org.apache.commons.io.FileSystemUtilsTestCase$MockFileSystemUtils;
+
+        specialinvoke $r3.<org.apache.commons.io.FileSystemUtilsTestCase$MockFileSystemUtils: void <init>(int,java.lang.String)>(0, "Filesystem           1K-blocks      Used Available Use% Mounted on\n/dev/xxx                497944    308528    189416  62% /");
+
+        $l0 = virtualinvoke $r3.<org.apache.commons.io.FileSystemUtils: long freeSpaceUnix(java.lang.String,boolean,boolean,long)>("/", 0, 0, -1L);
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(189416L, $l0);
+
+        return;
+    }
+
+    public void testGetFreeSpaceUnix_String_NormalResponseFreeBSD() throws java.lang.Exception
+    {
+        org.apache.commons.io.FileSystemUtilsTestCase r0;
+        org.apache.commons.io.FileSystemUtilsTestCase$MockFileSystemUtils $r3;
+        long $l0;
+
+        r0 := @this: org.apache.commons.io.FileSystemUtilsTestCase;
+
+        $r3 = new org.apache.commons.io.FileSystemUtilsTestCase$MockFileSystemUtils;
+
+        specialinvoke $r3.<org.apache.commons.io.FileSystemUtilsTestCase$MockFileSystemUtils: void <init>(int,java.lang.String)>(0, "Filesystem  1K-blocks      Used    Avail Capacity  Mounted on\n/dev/xxxxxx    128990    102902    15770    87%    /");
+
+        $l0 = virtualinvoke $r3.<org.apache.commons.io.FileSystemUtils: long freeSpaceUnix(java.lang.String,boolean,boolean,long)>("/", 0, 0, -1L);
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(15770L, $l0);
+
+        return;
+    }
+
+    public void testGetFreeSpaceUnix_String_NormalResponseKbLinux() throws java.lang.Exception
+    {
+        org.apache.commons.io.FileSystemUtilsTestCase r0;
+        org.apache.commons.io.FileSystemUtilsTestCase$MockFileSystemUtils $r3;
+        long $l0;
+
+        r0 := @this: org.apache.commons.io.FileSystemUtilsTestCase;
+
+        $r3 = new org.apache.commons.io.FileSystemUtilsTestCase$MockFileSystemUtils;
+
+        specialinvoke $r3.<org.apache.commons.io.FileSystemUtilsTestCase$MockFileSystemUtils: void <init>(int,java.lang.String)>(0, "Filesystem           1K-blocks      Used Available Use% Mounted on\n/dev/xxx                497944    308528    189416  62% /");
+
+        $l0 = virtualinvoke $r3.<org.apache.commons.io.FileSystemUtils: long freeSpaceUnix(java.lang.String,boolean,boolean,long)>("/", 1, 0, -1L);
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(189416L, $l0);
+
+        return;
+    }
+
+    public void testGetFreeSpaceUnix_String_NormalResponseKbFreeBSD() throws java.lang.Exception
+    {
+        org.apache.commons.io.FileSystemUtilsTestCase r0;
+        org.apache.commons.io.FileSystemUtilsTestCase$MockFileSystemUtils $r3;
+        long $l0;
+
+        r0 := @this: org.apache.commons.io.FileSystemUtilsTestCase;
+
+        $r3 = new org.apache.commons.io.FileSystemUtilsTestCase$MockFileSystemUtils;
+
+        specialinvoke $r3.<org.apache.commons.io.FileSystemUtilsTestCase$MockFileSystemUtils: void <init>(int,java.lang.String)>(0, "Filesystem  1K-blocks      Used    Avail Capacity  Mounted on\n/dev/xxxxxx    128990    102902    15770    87%    /");
+
+        $l0 = virtualinvoke $r3.<org.apache.commons.io.FileSystemUtils: long freeSpaceUnix(java.lang.String,boolean,boolean,long)>("/", 1, 0, -1L);
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(15770L, $l0);
+
+        return;
+    }
+
+    public void testGetFreeSpaceUnix_String_NormalResponseKbSolaris() throws java.lang.Exception
+    {
+        org.apache.commons.io.FileSystemUtilsTestCase r0;
+        org.apache.commons.io.FileSystemUtilsTestCase$MockFileSystemUtils $r3;
+        long $l0;
+
+        r0 := @this: org.apache.commons.io.FileSystemUtilsTestCase;
+
+        $r3 = new org.apache.commons.io.FileSystemUtilsTestCase$MockFileSystemUtils;
+
+        specialinvoke $r3.<org.apache.commons.io.FileSystemUtilsTestCase$MockFileSystemUtils: void <init>(int,java.lang.String)>(0, "Filesystem            kbytes    used   avail capacity  Mounted on\n/dev/dsk/x0x0x0x0    1350955  815754  481163    63%");
+
+        $l0 = virtualinvoke $r3.<org.apache.commons.io.FileSystemUtils: long freeSpaceUnix(java.lang.String,boolean,boolean,long)>("/dev/dsk/x0x0x0x0", 1, 0, -1L);
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(481163L, $l0);
+
+        return;
+    }
+
+    public void testGetFreeSpaceUnix_String_LongResponse() throws java.lang.Exception
+    {
+        org.apache.commons.io.FileSystemUtilsTestCase r0;
+        org.apache.commons.io.FileSystemUtilsTestCase$MockFileSystemUtils $r3;
+        long $l0;
+
+        r0 := @this: org.apache.commons.io.FileSystemUtilsTestCase;
+
+        $r3 = new org.apache.commons.io.FileSystemUtilsTestCase$MockFileSystemUtils;
+
+        specialinvoke $r3.<org.apache.commons.io.FileSystemUtilsTestCase$MockFileSystemUtils: void <init>(int,java.lang.String)>(0, "Filesystem           1K-blocks      Used Available Use% Mounted on\nxxx-yyyyyyy-zzz:/home/users/s\n                      14428928  12956424   1472504  90% /home/users/s");
+
+        $l0 = virtualinvoke $r3.<org.apache.commons.io.FileSystemUtils: long freeSpaceUnix(java.lang.String,boolean,boolean,long)>("/home/users/s", 0, 0, -1L);
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(1472504L, $l0);
+
+        return;
+    }
+
+    public void testGetFreeSpaceUnix_String_LongResponseKb() throws java.lang.Exception
+    {
+        org.apache.commons.io.FileSystemUtilsTestCase r0;
+        org.apache.commons.io.FileSystemUtilsTestCase$MockFileSystemUtils $r3;
+        long $l0;
+
+        r0 := @this: org.apache.commons.io.FileSystemUtilsTestCase;
+
+        $r3 = new org.apache.commons.io.FileSystemUtilsTestCase$MockFileSystemUtils;
+
+        specialinvoke $r3.<org.apache.commons.io.FileSystemUtilsTestCase$MockFileSystemUtils: void <init>(int,java.lang.String)>(0, "Filesystem           1K-blocks      Used Available Use% Mounted on\nxxx-yyyyyyy-zzz:/home/users/s\n                      14428928  12956424   1472504  90% /home/users/s");
+
+        $l0 = virtualinvoke $r3.<org.apache.commons.io.FileSystemUtils: long freeSpaceUnix(java.lang.String,boolean,boolean,long)>("/home/users/s", 1, 0, -1L);
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(1472504L, $l0);
+
+        return;
+    }
+
+    public void testGetFreeSpaceUnix_String_EmptyResponse() throws java.lang.Exception
+    {
+        org.apache.commons.io.FileSystemUtilsTestCase r0;
+        org.apache.commons.io.FileSystemUtilsTestCase$MockFileSystemUtils $r3;
+        java.io.IOException $r4, $r5, $r6, $r7;
+
+        r0 := @this: org.apache.commons.io.FileSystemUtilsTestCase;
+
+        $r3 = new org.apache.commons.io.FileSystemUtilsTestCase$MockFileSystemUtils;
+
+        specialinvoke $r3.<org.apache.commons.io.FileSystemUtilsTestCase$MockFileSystemUtils: void <init>(int,java.lang.String)>(0, "");
+
+     label01:
+        virtualinvoke $r3.<org.apache.commons.io.FileSystemUtils: long freeSpaceUnix(java.lang.String,boolean,boolean,long)>("/home/users/s", 0, 0, -1L);
+
+        staticinvoke <org.junit.Assert: void fail()>();
+
+     label02:
+        goto label04;
+
+     label03:
+        $r5 := @caughtexception;
+
+     label04:
+        virtualinvoke $r3.<org.apache.commons.io.FileSystemUtils: long freeSpaceUnix(java.lang.String,boolean,boolean,long)>("/home/users/s", 1, 0, -1L);
+
+        staticinvoke <org.junit.Assert: void fail()>();
+
+     label05:
+        goto label07;
+
+     label06:
+        $r4 := @caughtexception;
+
+     label07:
+        virtualinvoke $r3.<org.apache.commons.io.FileSystemUtils: long freeSpaceUnix(java.lang.String,boolean,boolean,long)>("/home/users/s", 0, 1, -1L);
+
+        staticinvoke <org.junit.Assert: void fail()>();
+
+     label08:
+        goto label10;
+
+     label09:
+        $r7 := @caughtexception;
+
+     label10:
+        virtualinvoke $r3.<org.apache.commons.io.FileSystemUtils: long freeSpaceUnix(java.lang.String,boolean,boolean,long)>("/home/users/s", 1, 1, -1L);
+
+        staticinvoke <org.junit.Assert: void fail()>();
+
+     label11:
+        goto label13;
+
+     label12:
+        $r6 := @caughtexception;
+
+     label13:
+        return;
+
+        catch java.io.IOException from label01 to label02 with label03;
+        catch java.io.IOException from label04 to label05 with label06;
+        catch java.io.IOException from label07 to label08 with label09;
+        catch java.io.IOException from label10 to label11 with label12;
+    }
+
+    public void testGetFreeSpaceUnix_String_InvalidResponse1() throws java.lang.Exception
+    {
+        org.apache.commons.io.FileSystemUtilsTestCase r0;
+        org.apache.commons.io.FileSystemUtilsTestCase$MockFileSystemUtils $r3;
+        java.io.IOException $r4, $r5, $r6, $r7;
+
+        r0 := @this: org.apache.commons.io.FileSystemUtilsTestCase;
+
+        $r3 = new org.apache.commons.io.FileSystemUtilsTestCase$MockFileSystemUtils;
+
+        specialinvoke $r3.<org.apache.commons.io.FileSystemUtilsTestCase$MockFileSystemUtils: void <init>(int,java.lang.String)>(0, "Filesystem           1K-blocks      Used Available Use% Mounted on\n                      14428928  12956424       100");
+
+     label01:
+        virtualinvoke $r3.<org.apache.commons.io.FileSystemUtils: long freeSpaceUnix(java.lang.String,boolean,boolean,long)>("/home/users/s", 0, 0, -1L);
+
+        staticinvoke <org.junit.Assert: void fail()>();
+
+     label02:
+        goto label04;
+
+     label03:
+        $r4 := @caughtexception;
+
+     label04:
+        virtualinvoke $r3.<org.apache.commons.io.FileSystemUtils: long freeSpaceUnix(java.lang.String,boolean,boolean,long)>("/home/users/s", 1, 0, -1L);
+
+        staticinvoke <org.junit.Assert: void fail()>();
+
+     label05:
+        goto label07;
+
+     label06:
+        $r6 := @caughtexception;
+
+     label07:
+        virtualinvoke $r3.<org.apache.commons.io.FileSystemUtils: long freeSpaceUnix(java.lang.String,boolean,boolean,long)>("/home/users/s", 0, 1, -1L);
+
+        staticinvoke <org.junit.Assert: void fail()>();
+
+     label08:
+        goto label10;
+
+     label09:
+        $r7 := @caughtexception;
+
+     label10:
+        virtualinvoke $r3.<org.apache.commons.io.FileSystemUtils: long freeSpaceUnix(java.lang.String,boolean,boolean,long)>("/home/users/s", 1, 1, -1L);
+
+        staticinvoke <org.junit.Assert: void fail()>();
+
+     label11:
+        goto label13;
+
+     label12:
+        $r5 := @caughtexception;
+
+     label13:
+        return;
+
+        catch java.io.IOException from label01 to label02 with label03;
+        catch java.io.IOException from label04 to label05 with label06;
+        catch java.io.IOException from label07 to label08 with label09;
+        catch java.io.IOException from label10 to label11 with label12;
+    }
+
+    public void testGetFreeSpaceUnix_String_InvalidResponse2() throws java.lang.Exception
+    {
+        org.apache.commons.io.FileSystemUtilsTestCase r0;
+        org.apache.commons.io.FileSystemUtilsTestCase$MockFileSystemUtils $r3;
+        java.io.IOException $r4, $r5, $r6, $r7;
+
+        r0 := @this: org.apache.commons.io.FileSystemUtilsTestCase;
+
+        $r3 = new org.apache.commons.io.FileSystemUtilsTestCase$MockFileSystemUtils;
+
+        specialinvoke $r3.<org.apache.commons.io.FileSystemUtilsTestCase$MockFileSystemUtils: void <init>(int,java.lang.String)>(0, "Filesystem           1K-blocks      Used Available Use% Mounted on\nxxx:/home/users/s     14428928  12956424   nnnnnnn  90% /home/users/s");
+
+     label01:
+        virtualinvoke $r3.<org.apache.commons.io.FileSystemUtils: long freeSpaceUnix(java.lang.String,boolean,boolean,long)>("/home/users/s", 0, 0, -1L);
+
+        staticinvoke <org.junit.Assert: void fail()>();
+
+     label02:
+        goto label04;
+
+     label03:
+        $r4 := @caughtexception;
+
+     label04:
+        virtualinvoke $r3.<org.apache.commons.io.FileSystemUtils: long freeSpaceUnix(java.lang.String,boolean,boolean,long)>("/home/users/s", 1, 0, -1L);
+
+        staticinvoke <org.junit.Assert: void fail()>();
+
+     label05:
+        goto label07;
+
+     label06:
+        $r5 := @caughtexception;
+
+     label07:
+        virtualinvoke $r3.<org.apache.commons.io.FileSystemUtils: long freeSpaceUnix(java.lang.String,boolean,boolean,long)>("/home/users/s", 0, 1, -1L);
+
+        staticinvoke <org.junit.Assert: void fail()>();
+
+     label08:
+        goto label10;
+
+     label09:
+        $r6 := @caughtexception;
+
+     label10:
+        virtualinvoke $r3.<org.apache.commons.io.FileSystemUtils: long freeSpaceUnix(java.lang.String,boolean,boolean,long)>("/home/users/s", 1, 1, -1L);
+
+        staticinvoke <org.junit.Assert: void fail()>();
+
+     label11:
+        goto label13;
+
+     label12:
+        $r7 := @caughtexception;
+
+     label13:
+        return;
+
+        catch java.io.IOException from label01 to label02 with label03;
+        catch java.io.IOException from label04 to label05 with label06;
+        catch java.io.IOException from label07 to label08 with label09;
+        catch java.io.IOException from label10 to label11 with label12;
+    }
+
+    public void testGetFreeSpaceUnix_String_InvalidResponse3() throws java.lang.Exception
+    {
+        org.apache.commons.io.FileSystemUtilsTestCase r0;
+        org.apache.commons.io.FileSystemUtilsTestCase$MockFileSystemUtils $r3;
+        java.io.IOException $r4, $r5, $r6, $r7;
+
+        r0 := @this: org.apache.commons.io.FileSystemUtilsTestCase;
+
+        $r3 = new org.apache.commons.io.FileSystemUtilsTestCase$MockFileSystemUtils;
+
+        specialinvoke $r3.<org.apache.commons.io.FileSystemUtilsTestCase$MockFileSystemUtils: void <init>(int,java.lang.String)>(0, "Filesystem           1K-blocks      Used Available Use% Mounted on\nxxx:/home/users/s     14428928  12956424        -1  90% /home/users/s");
+
+     label01:
+        virtualinvoke $r3.<org.apache.commons.io.FileSystemUtils: long freeSpaceUnix(java.lang.String,boolean,boolean,long)>("/home/users/s", 0, 0, -1L);
+
+        staticinvoke <org.junit.Assert: void fail()>();
+
+     label02:
+        goto label04;
+
+     label03:
+        $r5 := @caughtexception;
+
+     label04:
+        virtualinvoke $r3.<org.apache.commons.io.FileSystemUtils: long freeSpaceUnix(java.lang.String,boolean,boolean,long)>("/home/users/s", 1, 0, -1L);
+
+        staticinvoke <org.junit.Assert: void fail()>();
+
+     label05:
+        goto label07;
+
+     label06:
+        $r4 := @caughtexception;
+
+     label07:
+        virtualinvoke $r3.<org.apache.commons.io.FileSystemUtils: long freeSpaceUnix(java.lang.String,boolean,boolean,long)>("/home/users/s", 0, 1, -1L);
+
+        staticinvoke <org.junit.Assert: void fail()>();
+
+     label08:
+        goto label10;
+
+     label09:
+        $r7 := @caughtexception;
+
+     label10:
+        virtualinvoke $r3.<org.apache.commons.io.FileSystemUtils: long freeSpaceUnix(java.lang.String,boolean,boolean,long)>("/home/users/s", 1, 1, -1L);
+
+        staticinvoke <org.junit.Assert: void fail()>();
+
+     label11:
+        goto label13;
+
+     label12:
+        $r6 := @caughtexception;
+
+     label13:
+        return;
+
+        catch java.io.IOException from label01 to label02 with label03;
+        catch java.io.IOException from label04 to label05 with label06;
+        catch java.io.IOException from label07 to label08 with label09;
+        catch java.io.IOException from label10 to label11 with label12;
+    }
+
+    public void testGetFreeSpaceUnix_String_InvalidResponse4() throws java.lang.Exception
+    {
+        org.apache.commons.io.FileSystemUtilsTestCase r0;
+        org.apache.commons.io.FileSystemUtilsTestCase$MockFileSystemUtils $r3;
+        java.io.IOException $r4, $r5, $r6, $r7;
+
+        r0 := @this: org.apache.commons.io.FileSystemUtilsTestCase;
+
+        $r3 = new org.apache.commons.io.FileSystemUtilsTestCase$MockFileSystemUtils;
+
+        specialinvoke $r3.<org.apache.commons.io.FileSystemUtilsTestCase$MockFileSystemUtils: void <init>(int,java.lang.String)>(0, "Filesystem           1K-blocks      Used Available Use% Mounted on\nxxx-yyyyyyy-zzz:/home/users/s");
+
+     label01:
+        virtualinvoke $r3.<org.apache.commons.io.FileSystemUtils: long freeSpaceUnix(java.lang.String,boolean,boolean,long)>("/home/users/s", 0, 0, -1L);
+
+        staticinvoke <org.junit.Assert: void fail()>();
+
+     label02:
+        goto label04;
+
+     label03:
+        $r6 := @caughtexception;
+
+     label04:
+        virtualinvoke $r3.<org.apache.commons.io.FileSystemUtils: long freeSpaceUnix(java.lang.String,boolean,boolean,long)>("/home/users/s", 1, 0, -1L);
+
+        staticinvoke <org.junit.Assert: void fail()>();
+
+     label05:
+        goto label07;
+
+     label06:
+        $r5 := @caughtexception;
+
+     label07:
+        virtualinvoke $r3.<org.apache.commons.io.FileSystemUtils: long freeSpaceUnix(java.lang.String,boolean,boolean,long)>("/home/users/s", 0, 1, -1L);
+
+        staticinvoke <org.junit.Assert: void fail()>();
+
+     label08:
+        goto label10;
+
+     label09:
+        $r4 := @caughtexception;
+
+     label10:
+        virtualinvoke $r3.<org.apache.commons.io.FileSystemUtils: long freeSpaceUnix(java.lang.String,boolean,boolean,long)>("/home/users/s", 1, 1, -1L);
+
+        staticinvoke <org.junit.Assert: void fail()>();
+
+     label11:
+        goto label13;
+
+     label12:
+        $r7 := @caughtexception;
+
+     label13:
+        return;
+
+        catch java.io.IOException from label01 to label02 with label03;
+        catch java.io.IOException from label04 to label05 with label06;
+        catch java.io.IOException from label07 to label08 with label09;
+        catch java.io.IOException from label10 to label11 with label12;
+    }
+}

@@ -1,0 +1,407 @@
+public class org.apache.commons.io.FileUtilsFileNewerTestCase extends org.apache.commons.io.testtools.FileBasedTestCase
+{
+    private static final int FILE1_SIZE;
+    private static final int FILE2_SIZE;
+    private final java.io.File m_testFile1;
+    private final java.io.File m_testFile2;
+
+    public void <init>()
+    {
+        org.apache.commons.io.FileUtilsFileNewerTestCase r0;
+        java.io.File $r1, $r2, $r3, $r4;
+
+        r0 := @this: org.apache.commons.io.FileUtilsFileNewerTestCase;
+
+        specialinvoke r0.<org.apache.commons.io.testtools.FileBasedTestCase: void <init>()>();
+
+        $r1 = new java.io.File;
+
+        $r2 = staticinvoke <org.apache.commons.io.FileUtilsFileNewerTestCase: java.io.File getTestDirectory()>();
+
+        specialinvoke $r1.<java.io.File: void <init>(java.io.File,java.lang.String)>($r2, "file1-test.txt");
+
+        r0.<org.apache.commons.io.FileUtilsFileNewerTestCase: java.io.File m_testFile1> = $r1;
+
+        $r3 = new java.io.File;
+
+        $r4 = staticinvoke <org.apache.commons.io.FileUtilsFileNewerTestCase: java.io.File getTestDirectory()>();
+
+        specialinvoke $r3.<java.io.File: void <init>(java.io.File,java.lang.String)>($r4, "file2-test.txt");
+
+        r0.<org.apache.commons.io.FileUtilsFileNewerTestCase: java.io.File m_testFile2> = $r3;
+
+        return;
+    }
+
+    public void setUp() throws java.lang.Exception
+    {
+        org.apache.commons.io.FileUtilsFileNewerTestCase r0;
+        java.io.File $r3, $r4, $r5, $r8, $r9, $r10, $r13, $r16, $r22;
+        boolean $z1, $z2;
+        java.io.BufferedOutputStream $r6, $r11;
+        java.io.FileOutputStream $r7, $r12;
+        java.io.IOException $r14, $r20;
+        java.lang.StringBuilder $r15, $r17, $r18, $r21, $r23, $r24;
+        java.lang.String $r19, $r25;
+        java.lang.Throwable $r26, $r27;
+
+        r0 := @this: org.apache.commons.io.FileUtilsFileNewerTestCase;
+
+        $r3 = staticinvoke <org.apache.commons.io.FileUtilsFileNewerTestCase: java.io.File getTestDirectory()>();
+
+        virtualinvoke $r3.<java.io.File: boolean mkdirs()>();
+
+        $r4 = r0.<org.apache.commons.io.FileUtilsFileNewerTestCase: java.io.File m_testFile1>;
+
+        $r5 = virtualinvoke $r4.<java.io.File: java.io.File getParentFile()>();
+
+        $z1 = virtualinvoke $r5.<java.io.File: boolean exists()>();
+
+        if $z1 != 0 goto label1;
+
+        $r20 = new java.io.IOException;
+
+        $r21 = new java.lang.StringBuilder;
+
+        specialinvoke $r21.<java.lang.StringBuilder: void <init>(java.lang.String)>("Cannot create file ");
+
+        $r22 = r0.<org.apache.commons.io.FileUtilsFileNewerTestCase: java.io.File m_testFile1>;
+
+        $r23 = virtualinvoke $r21.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r22);
+
+        $r24 = virtualinvoke $r23.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" as the parent directory does not exist");
+
+        $r25 = virtualinvoke $r24.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r20.<java.io.IOException: void <init>(java.lang.String)>($r25);
+
+        throw $r20;
+
+     label1:
+        $r6 = new java.io.BufferedOutputStream;
+
+        $r7 = new java.io.FileOutputStream;
+
+        $r8 = r0.<org.apache.commons.io.FileUtilsFileNewerTestCase: java.io.File m_testFile1>;
+
+        specialinvoke $r7.<java.io.FileOutputStream: void <init>(java.io.File)>($r8);
+
+        specialinvoke $r6.<java.io.BufferedOutputStream: void <init>(java.io.OutputStream)>($r7);
+
+     label2:
+        staticinvoke <org.apache.commons.io.testtools.TestUtils: void generateTestData(java.io.OutputStream,long)>($r6, 1L);
+
+        goto label4;
+
+     label3:
+        $r26 := @caughtexception;
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.OutputStream)>($r6);
+
+        throw $r26;
+
+     label4:
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.OutputStream)>($r6);
+
+        $r9 = r0.<org.apache.commons.io.FileUtilsFileNewerTestCase: java.io.File m_testFile2>;
+
+        $r10 = virtualinvoke $r9.<java.io.File: java.io.File getParentFile()>();
+
+        $z2 = virtualinvoke $r10.<java.io.File: boolean exists()>();
+
+        if $z2 != 0 goto label5;
+
+        $r14 = new java.io.IOException;
+
+        $r15 = new java.lang.StringBuilder;
+
+        specialinvoke $r15.<java.lang.StringBuilder: void <init>(java.lang.String)>("Cannot create file ");
+
+        $r16 = r0.<org.apache.commons.io.FileUtilsFileNewerTestCase: java.io.File m_testFile2>;
+
+        $r17 = virtualinvoke $r15.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r16);
+
+        $r18 = virtualinvoke $r17.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" as the parent directory does not exist");
+
+        $r19 = virtualinvoke $r18.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r14.<java.io.IOException: void <init>(java.lang.String)>($r19);
+
+        throw $r14;
+
+     label5:
+        $r11 = new java.io.BufferedOutputStream;
+
+        $r12 = new java.io.FileOutputStream;
+
+        $r13 = r0.<org.apache.commons.io.FileUtilsFileNewerTestCase: java.io.File m_testFile2>;
+
+        specialinvoke $r12.<java.io.FileOutputStream: void <init>(java.io.File)>($r13);
+
+        specialinvoke $r11.<java.io.BufferedOutputStream: void <init>(java.io.OutputStream)>($r12);
+
+     label6:
+        staticinvoke <org.apache.commons.io.testtools.TestUtils: void generateTestData(java.io.OutputStream,long)>($r11, 4097L);
+
+        goto label8;
+
+     label7:
+        $r27 := @caughtexception;
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.OutputStream)>($r11);
+
+        throw $r27;
+
+     label8:
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.OutputStream)>($r11);
+
+        return;
+
+        catch java.lang.Throwable from label2 to label3 with label3;
+        catch java.lang.Throwable from label6 to label7 with label7;
+    }
+
+    public void tearDown() throws java.lang.Exception
+    {
+        org.apache.commons.io.FileUtilsFileNewerTestCase r0;
+        java.io.File $r1, $r2;
+
+        r0 := @this: org.apache.commons.io.FileUtilsFileNewerTestCase;
+
+        $r1 = r0.<org.apache.commons.io.FileUtilsFileNewerTestCase: java.io.File m_testFile1>;
+
+        virtualinvoke $r1.<java.io.File: boolean delete()>();
+
+        $r2 = r0.<org.apache.commons.io.FileUtilsFileNewerTestCase: java.io.File m_testFile2>;
+
+        virtualinvoke $r2.<java.io.File: boolean delete()>();
+
+        return;
+    }
+
+    public void testIsFileNewer()
+    {
+        org.apache.commons.io.FileUtilsFileNewerTestCase r0;
+        long l0, $l2, $l3;
+        java.io.File $r1, $r2, $r3, $r4, $r5;
+        boolean $z0;
+        java.lang.IllegalStateException $r6;
+
+        r0 := @this: org.apache.commons.io.FileUtilsFileNewerTestCase;
+
+        $r1 = r0.<org.apache.commons.io.FileUtilsFileNewerTestCase: java.io.File m_testFile1>;
+
+        $z0 = virtualinvoke $r1.<java.io.File: boolean exists()>();
+
+        if $z0 != 0 goto label1;
+
+        $r6 = new java.lang.IllegalStateException;
+
+        specialinvoke $r6.<java.lang.IllegalStateException: void <init>(java.lang.String)>("The m_testFile1 should exist");
+
+        throw $r6;
+
+     label1:
+        $r2 = r0.<org.apache.commons.io.FileUtilsFileNewerTestCase: java.io.File m_testFile1>;
+
+        l0 = virtualinvoke $r2.<java.io.File: long lastModified()>();
+
+        $r3 = r0.<org.apache.commons.io.FileUtilsFileNewerTestCase: java.io.File m_testFile1>;
+
+        $l2 = l0 + 2000L;
+
+        virtualinvoke r0.<org.apache.commons.io.FileUtilsFileNewerTestCase: void testIsFileNewer(java.lang.String,java.io.File,long,boolean)>("two second earlier is not newer", $r3, $l2, 0);
+
+        $r4 = r0.<org.apache.commons.io.FileUtilsFileNewerTestCase: java.io.File m_testFile1>;
+
+        virtualinvoke r0.<org.apache.commons.io.FileUtilsFileNewerTestCase: void testIsFileNewer(java.lang.String,java.io.File,long,boolean)>("same time is not newer", $r4, l0, 0);
+
+        $r5 = r0.<org.apache.commons.io.FileUtilsFileNewerTestCase: java.io.File m_testFile1>;
+
+        $l3 = l0 - 2000L;
+
+        virtualinvoke r0.<org.apache.commons.io.FileUtilsFileNewerTestCase: void testIsFileNewer(java.lang.String,java.io.File,long,boolean)>("two second later is newer", $r5, $l3, 1);
+
+        return;
+    }
+
+    public void testIsFileNewerImaginaryFile()
+    {
+        org.apache.commons.io.FileUtilsFileNewerTestCase r0;
+        java.io.File $r2, $r3, $r4;
+        boolean $z0;
+        long $l0;
+        java.lang.IllegalStateException $r5;
+
+        r0 := @this: org.apache.commons.io.FileUtilsFileNewerTestCase;
+
+        $r2 = new java.io.File;
+
+        $r3 = staticinvoke <org.apache.commons.io.FileUtilsFileNewerTestCase: java.io.File getTestDirectory()>();
+
+        specialinvoke $r2.<java.io.File: void <init>(java.io.File,java.lang.String)>($r3, "imaginaryFile");
+
+        $z0 = virtualinvoke $r2.<java.io.File: boolean exists()>();
+
+        if $z0 == 0 goto label1;
+
+        $r5 = new java.lang.IllegalStateException;
+
+        specialinvoke $r5.<java.lang.IllegalStateException: void <init>(java.lang.String)>("The imaginary File exists");
+
+        throw $r5;
+
+     label1:
+        $r4 = r0.<org.apache.commons.io.FileUtilsFileNewerTestCase: java.io.File m_testFile2>;
+
+        $l0 = virtualinvoke $r4.<java.io.File: long lastModified()>();
+
+        virtualinvoke r0.<org.apache.commons.io.FileUtilsFileNewerTestCase: void testIsFileNewer(java.lang.String,java.io.File,long,boolean)>("imaginary file can be newer", $r2, $l0, 0);
+
+        return;
+    }
+
+    protected void testIsFileNewer(java.lang.String, java.io.File, long, boolean)
+    {
+        org.apache.commons.io.FileUtilsFileNewerTestCase r0;
+        java.lang.String r1, $r5, $r7, $r11, $r13, $r18, $r20;
+        java.io.File r2, r3;
+        long l0, $l1;
+        boolean z0, $z1, $z2, $z4;
+        java.lang.StringBuilder $r4, $r6, $r10, $r12, $r17, $r19;
+        java.lang.Boolean $r8, $r9, $r14, $r16, $r21, $r22;
+        java.util.Date $r15;
+
+        r0 := @this: org.apache.commons.io.FileUtilsFileNewerTestCase;
+
+        r1 := @parameter0: java.lang.String;
+
+        r2 := @parameter1: java.io.File;
+
+        l0 := @parameter2: long;
+
+        z0 := @parameter3: boolean;
+
+        $r4 = new java.lang.StringBuilder;
+
+        $r5 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>(r1);
+
+        specialinvoke $r4.<java.lang.StringBuilder: void <init>(java.lang.String)>($r5);
+
+        $r6 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" - time");
+
+        $r7 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r8 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>(z0);
+
+        $z1 = staticinvoke <org.apache.commons.io.FileUtils: boolean isFileNewer(java.io.File,long)>(r2, l0);
+
+        $r9 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($z1);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,java.lang.Object,java.lang.Object)>($r7, $r8, $r9);
+
+        $r10 = new java.lang.StringBuilder;
+
+        $r11 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>(r1);
+
+        specialinvoke $r10.<java.lang.StringBuilder: void <init>(java.lang.String)>($r11);
+
+        $r12 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" - date");
+
+        $r13 = virtualinvoke $r12.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r14 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>(z0);
+
+        $r15 = new java.util.Date;
+
+        specialinvoke $r15.<java.util.Date: void <init>(long)>(l0);
+
+        $z2 = staticinvoke <org.apache.commons.io.FileUtils: boolean isFileNewer(java.io.File,java.util.Date)>(r2, $r15);
+
+        $r16 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($z2);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,java.lang.Object,java.lang.Object)>($r13, $r14, $r16);
+
+        r3 = r0.<org.apache.commons.io.FileUtilsFileNewerTestCase: java.io.File m_testFile2>;
+
+        virtualinvoke r3.<java.io.File: boolean setLastModified(long)>(l0);
+
+        $l1 = virtualinvoke r3.<java.io.File: long lastModified()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("The temporary file hasn\'t the right last modification date", l0, $l1);
+
+        $r17 = new java.lang.StringBuilder;
+
+        $r18 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>(r1);
+
+        specialinvoke $r17.<java.lang.StringBuilder: void <init>(java.lang.String)>($r18);
+
+        $r19 = virtualinvoke $r17.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" - file");
+
+        $r20 = virtualinvoke $r19.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r21 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>(z0);
+
+        $z4 = staticinvoke <org.apache.commons.io.FileUtils: boolean isFileNewer(java.io.File,java.io.File)>(r2, r3);
+
+        $r22 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($z4);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,java.lang.Object,java.lang.Object)>($r20, $r21, $r22);
+
+        return;
+    }
+
+    public void testIsFileNewerNoFile()
+    {
+        org.apache.commons.io.FileUtilsFileNewerTestCase r0;
+
+        r0 := @this: org.apache.commons.io.FileUtilsFileNewerTestCase;
+
+        staticinvoke <org.apache.commons.io.FileUtils: boolean isFileNewer(java.io.File,long)>(null, 0L);
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("File not specified");
+
+        return;
+    }
+
+    public void testIsFileNewerNoDate()
+    {
+        org.apache.commons.io.FileUtilsFileNewerTestCase r0;
+        java.io.File $r1;
+
+        r0 := @this: org.apache.commons.io.FileUtilsFileNewerTestCase;
+
+        $r1 = r0.<org.apache.commons.io.FileUtilsFileNewerTestCase: java.io.File m_testFile1>;
+
+        staticinvoke <org.apache.commons.io.FileUtils: boolean isFileNewer(java.io.File,java.util.Date)>($r1, null);
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("Date not specified");
+
+        return;
+    }
+
+    public void testIsFileNewerNoFileReference()
+    {
+        org.apache.commons.io.FileUtilsFileNewerTestCase r0;
+        java.io.File $r1;
+
+        r0 := @this: org.apache.commons.io.FileUtilsFileNewerTestCase;
+
+        $r1 = r0.<org.apache.commons.io.FileUtilsFileNewerTestCase: java.io.File m_testFile1>;
+
+        staticinvoke <org.apache.commons.io.FileUtils: boolean isFileNewer(java.io.File,java.io.File)>($r1, null);
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("Reference file not specified");
+
+        return;
+    }
+
+    public static void <clinit>()
+    {
+        <org.apache.commons.io.FileUtilsFileNewerTestCase: int FILE2_SIZE> = 4097;
+
+        <org.apache.commons.io.FileUtilsFileNewerTestCase: int FILE1_SIZE> = 1;
+
+        return;
+    }
+}

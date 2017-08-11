@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<attributes>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="0" eline="0" spos="0" epos="0"/>
+<text info="Signature: Lorg/apache/commons/io/DirectoryWalker&lt;Ljava/io/File;&gt;;" aType="SignatureTag"/>
+<text info="[inner=org/apache/commons/io/FileUtilsTestCase$ListDirectoryWalker, outer=org/apache/commons/io/FileUtilsTestCase, name=ListDirectoryWalker,flags=8]" aType="InnerClassTag"/>
+<text info="soot.tagkit.InnerClassAttribute@5e52406b" aType="InnerClassAttribute"/>
+</attribute>
+<attribute>
+<srcPos sline="3065" eline="3065" spos="0" epos="0"/>
+<jmpPos sline="15" eline="15" spos="0" epos="0"/>
+<text info="Signature: (Ljava/io/File;)Ljava/util/List&lt;Ljava/io/File;&gt;;" aType="SignatureTag"/>
+</attribute>
+<attribute>
+<srcPos sline="3073" eline="3073" spos="0" epos="0"/>
+<jmpPos sline="34" eline="34" spos="0" epos="0"/>
+<text info="Signature: (Ljava/io/File;ILjava/util/Collection&lt;Ljava/io/File;&gt;;)V" aType="SignatureTag"/>
+</attribute>
+<attribute>
+<srcPos sline="3080" eline="3080" spos="0" epos="0"/>
+<jmpPos sline="57" eline="57" spos="0" epos="0"/>
+<text info="Signature: (Ljava/io/File;ILjava/util/Collection&lt;Ljava/io/File;&gt;;)V" aType="SignatureTag"/>
+</attribute>
+</attributes>

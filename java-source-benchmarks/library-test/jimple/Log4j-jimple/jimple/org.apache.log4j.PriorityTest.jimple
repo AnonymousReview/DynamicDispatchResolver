@@ -1,0 +1,392 @@
+public class org.apache.log4j.PriorityTest extends junit.framework.TestCase
+{
+
+    public void <init>(java.lang.String)
+    {
+        org.apache.log4j.PriorityTest r0;
+        java.lang.String r1;
+
+        r0 := @this: org.apache.log4j.PriorityTest;
+
+        r1 := @parameter0: java.lang.String;
+
+        specialinvoke r0.<junit.framework.TestCase: void <init>(java.lang.String)>(r1);
+
+        return;
+    }
+
+    public void testOffInt()
+    {
+        org.apache.log4j.PriorityTest r0;
+
+        r0 := @this: org.apache.log4j.PriorityTest;
+
+        staticinvoke <org.apache.log4j.PriorityTest: void assertEquals(int,int)>(2147483647, 2147483647);
+
+        return;
+    }
+
+    public void testFatalInt()
+    {
+        org.apache.log4j.PriorityTest r0;
+
+        r0 := @this: org.apache.log4j.PriorityTest;
+
+        staticinvoke <org.apache.log4j.PriorityTest: void assertEquals(int,int)>(50000, 50000);
+
+        return;
+    }
+
+    public void testErrorInt()
+    {
+        org.apache.log4j.PriorityTest r0;
+
+        r0 := @this: org.apache.log4j.PriorityTest;
+
+        staticinvoke <org.apache.log4j.PriorityTest: void assertEquals(int,int)>(40000, 40000);
+
+        return;
+    }
+
+    public void testWarnInt()
+    {
+        org.apache.log4j.PriorityTest r0;
+
+        r0 := @this: org.apache.log4j.PriorityTest;
+
+        staticinvoke <org.apache.log4j.PriorityTest: void assertEquals(int,int)>(30000, 30000);
+
+        return;
+    }
+
+    public void testInfoInt()
+    {
+        org.apache.log4j.PriorityTest r0;
+
+        r0 := @this: org.apache.log4j.PriorityTest;
+
+        staticinvoke <org.apache.log4j.PriorityTest: void assertEquals(int,int)>(20000, 20000);
+
+        return;
+    }
+
+    public void testDebugInt()
+    {
+        org.apache.log4j.PriorityTest r0;
+
+        r0 := @this: org.apache.log4j.PriorityTest;
+
+        staticinvoke <org.apache.log4j.PriorityTest: void assertEquals(int,int)>(10000, 10000);
+
+        return;
+    }
+
+    public void testAllInt()
+    {
+        org.apache.log4j.PriorityTest r0;
+
+        r0 := @this: org.apache.log4j.PriorityTest;
+
+        staticinvoke <org.apache.log4j.PriorityTest: void assertEquals(int,int)>(-2147483648, -2147483648);
+
+        return;
+    }
+
+    public void testFatal()
+    {
+        org.apache.log4j.PriorityTest r0;
+        org.apache.log4j.Priority $r1;
+        boolean $z0;
+
+        r0 := @this: org.apache.log4j.PriorityTest;
+
+        $r1 = <org.apache.log4j.Priority: org.apache.log4j.Priority FATAL>;
+
+        $z0 = $r1 instanceof org.apache.log4j.Level;
+
+        staticinvoke <org.apache.log4j.PriorityTest: void assertTrue(boolean)>($z0);
+
+        return;
+    }
+
+    public void testERROR()
+    {
+        org.apache.log4j.PriorityTest r0;
+        org.apache.log4j.Priority $r1;
+        boolean $z0;
+
+        r0 := @this: org.apache.log4j.PriorityTest;
+
+        $r1 = <org.apache.log4j.Priority: org.apache.log4j.Priority ERROR>;
+
+        $z0 = $r1 instanceof org.apache.log4j.Level;
+
+        staticinvoke <org.apache.log4j.PriorityTest: void assertTrue(boolean)>($z0);
+
+        return;
+    }
+
+    public void testWARN()
+    {
+        org.apache.log4j.PriorityTest r0;
+        org.apache.log4j.Priority $r1;
+        boolean $z0;
+
+        r0 := @this: org.apache.log4j.PriorityTest;
+
+        $r1 = <org.apache.log4j.Priority: org.apache.log4j.Priority WARN>;
+
+        $z0 = $r1 instanceof org.apache.log4j.Level;
+
+        staticinvoke <org.apache.log4j.PriorityTest: void assertTrue(boolean)>($z0);
+
+        return;
+    }
+
+    public void testINFO()
+    {
+        org.apache.log4j.PriorityTest r0;
+        org.apache.log4j.Priority $r1;
+        boolean $z0;
+
+        r0 := @this: org.apache.log4j.PriorityTest;
+
+        $r1 = <org.apache.log4j.Priority: org.apache.log4j.Priority INFO>;
+
+        $z0 = $r1 instanceof org.apache.log4j.Level;
+
+        staticinvoke <org.apache.log4j.PriorityTest: void assertTrue(boolean)>($z0);
+
+        return;
+    }
+
+    public void testDEBUG()
+    {
+        org.apache.log4j.PriorityTest r0;
+        org.apache.log4j.Priority $r1;
+        boolean $z0;
+
+        r0 := @this: org.apache.log4j.PriorityTest;
+
+        $r1 = <org.apache.log4j.Priority: org.apache.log4j.Priority DEBUG>;
+
+        $z0 = $r1 instanceof org.apache.log4j.Level;
+
+        staticinvoke <org.apache.log4j.PriorityTest: void assertTrue(boolean)>($z0);
+
+        return;
+    }
+
+    public void testEqualsNull()
+    {
+        org.apache.log4j.PriorityTest r0;
+        org.apache.log4j.Priority $r1;
+        boolean $z0;
+
+        r0 := @this: org.apache.log4j.PriorityTest;
+
+        $r1 = <org.apache.log4j.Priority: org.apache.log4j.Priority DEBUG>;
+
+        $z0 = virtualinvoke $r1.<org.apache.log4j.Priority: boolean equals(java.lang.Object)>(null);
+
+        staticinvoke <org.apache.log4j.PriorityTest: void assertFalse(boolean)>($z0);
+
+        return;
+    }
+
+    public void testEqualsLevel()
+    {
+        org.apache.log4j.PriorityTest r0;
+        org.apache.log4j.Level $r1;
+        org.apache.log4j.Priority $r2;
+        boolean $z0;
+
+        r0 := @this: org.apache.log4j.PriorityTest;
+
+        $r2 = <org.apache.log4j.Priority: org.apache.log4j.Priority DEBUG>;
+
+        $r1 = <org.apache.log4j.Level: org.apache.log4j.Level DEBUG>;
+
+        $z0 = virtualinvoke $r2.<org.apache.log4j.Priority: boolean equals(java.lang.Object)>($r1);
+
+        staticinvoke <org.apache.log4j.PriorityTest: void assertTrue(boolean)>($z0);
+
+        return;
+    }
+
+    public void testGetAllPossiblePriorities()
+    {
+        org.apache.log4j.PriorityTest r0;
+        org.apache.log4j.Priority[] r1;
+        int $i0;
+
+        r0 := @this: org.apache.log4j.PriorityTest;
+
+        r1 = staticinvoke <org.apache.log4j.Priority: org.apache.log4j.Priority[] getAllPossiblePriorities()>();
+
+        $i0 = lengthof r1;
+
+        staticinvoke <org.apache.log4j.PriorityTest: void assertEquals(int,int)>(5, $i0);
+
+        return;
+    }
+
+    public void testToPriorityString()
+    {
+        org.apache.log4j.PriorityTest r0;
+        org.apache.log4j.Priority $r1;
+        org.apache.log4j.Level $r2;
+        boolean $z0;
+
+        r0 := @this: org.apache.log4j.PriorityTest;
+
+        $r1 = staticinvoke <org.apache.log4j.Priority: org.apache.log4j.Priority toPriority(java.lang.String)>("DEBUG");
+
+        $r2 = <org.apache.log4j.Level: org.apache.log4j.Level DEBUG>;
+
+        if $r1 != $r2 goto label1;
+
+        $z0 = 1;
+
+        goto label2;
+
+     label1:
+        $z0 = 0;
+
+     label2:
+        staticinvoke <org.apache.log4j.PriorityTest: void assertTrue(boolean)>($z0);
+
+        return;
+    }
+
+    public void testToPriorityInt()
+    {
+        org.apache.log4j.PriorityTest r0;
+        org.apache.log4j.Priority $r1;
+        org.apache.log4j.Level $r2;
+        boolean $z0;
+
+        r0 := @this: org.apache.log4j.PriorityTest;
+
+        $r1 = staticinvoke <org.apache.log4j.Priority: org.apache.log4j.Priority toPriority(int)>(10000);
+
+        $r2 = <org.apache.log4j.Level: org.apache.log4j.Level DEBUG>;
+
+        if $r1 != $r2 goto label1;
+
+        $z0 = 1;
+
+        goto label2;
+
+     label1:
+        $z0 = 0;
+
+     label2:
+        staticinvoke <org.apache.log4j.PriorityTest: void assertTrue(boolean)>($z0);
+
+        return;
+    }
+
+    public void testToPriorityStringPriority()
+    {
+        org.apache.log4j.PriorityTest r0;
+        org.apache.log4j.Priority $r1, $r2, $r3;
+        boolean $z0;
+
+        r0 := @this: org.apache.log4j.PriorityTest;
+
+        $r1 = <org.apache.log4j.Priority: org.apache.log4j.Priority DEBUG>;
+
+        $r2 = staticinvoke <org.apache.log4j.Priority: org.apache.log4j.Priority toPriority(java.lang.String,org.apache.log4j.Priority)>("foo", $r1);
+
+        $r3 = <org.apache.log4j.Priority: org.apache.log4j.Priority DEBUG>;
+
+        if $r2 != $r3 goto label1;
+
+        $z0 = 1;
+
+        goto label2;
+
+     label1:
+        $z0 = 0;
+
+     label2:
+        staticinvoke <org.apache.log4j.PriorityTest: void assertTrue(boolean)>($z0);
+
+        return;
+    }
+
+    public void testToPriorityIntPriority()
+    {
+        org.apache.log4j.PriorityTest r0;
+        org.apache.log4j.Priority $r1, $r2, $r3;
+        boolean $z0;
+
+        r0 := @this: org.apache.log4j.PriorityTest;
+
+        $r1 = <org.apache.log4j.Priority: org.apache.log4j.Priority DEBUG>;
+
+        $r2 = staticinvoke <org.apache.log4j.Priority: org.apache.log4j.Priority toPriority(int,org.apache.log4j.Priority)>(17, $r1);
+
+        $r3 = <org.apache.log4j.Priority: org.apache.log4j.Priority DEBUG>;
+
+        if $r2 != $r3 goto label1;
+
+        $z0 = 1;
+
+        goto label2;
+
+     label1:
+        $z0 = 0;
+
+     label2:
+        staticinvoke <org.apache.log4j.PriorityTest: void assertTrue(boolean)>($z0);
+
+        return;
+    }
+
+    public void testDotlessLowerI()
+    {
+        org.apache.log4j.PriorityTest r0;
+        org.apache.log4j.Priority r1;
+        java.lang.String $r2;
+
+        r0 := @this: org.apache.log4j.PriorityTest;
+
+        r1 = staticinvoke <org.apache.log4j.Priority: org.apache.log4j.Priority toPriority(java.lang.String)>("\u0131nfo");
+
+        $r2 = virtualinvoke r1.<org.apache.log4j.Priority: java.lang.String toString()>();
+
+        staticinvoke <org.apache.log4j.PriorityTest: void assertEquals(java.lang.String,java.lang.String)>("INFO", $r2);
+
+        return;
+    }
+
+    public void testDottedLowerI()
+    {
+        org.apache.log4j.PriorityTest r0;
+        java.util.Locale r1, $r4;
+        org.apache.log4j.Priority r3;
+        java.lang.String $r5;
+
+        r0 := @this: org.apache.log4j.PriorityTest;
+
+        r1 = staticinvoke <java.util.Locale: java.util.Locale getDefault()>();
+
+        $r4 = new java.util.Locale;
+
+        specialinvoke $r4.<java.util.Locale: void <init>(java.lang.String,java.lang.String)>("tr", "TR");
+
+        staticinvoke <java.util.Locale: void setDefault(java.util.Locale)>($r4);
+
+        r3 = staticinvoke <org.apache.log4j.Priority: org.apache.log4j.Priority toPriority(java.lang.String)>("info");
+
+        staticinvoke <java.util.Locale: void setDefault(java.util.Locale)>(r1);
+
+        $r5 = virtualinvoke r3.<org.apache.log4j.Priority: java.lang.String toString()>();
+
+        staticinvoke <org.apache.log4j.PriorityTest: void assertEquals(java.lang.String,java.lang.String)>("INFO", $r5);
+
+        return;
+    }
+}

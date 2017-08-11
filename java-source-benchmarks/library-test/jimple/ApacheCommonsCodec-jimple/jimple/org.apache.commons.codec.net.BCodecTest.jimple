@@ -1,0 +1,375 @@
+public class org.apache.commons.codec.net.BCodecTest extends java.lang.Object
+{
+    static final int[] SWISS_GERMAN_STUFF_UNICODE;
+    static final int[] RUSSIAN_STUFF_UNICODE;
+
+    static void <clinit>()
+    {
+        int[] $r0, $r1;
+
+        $r0 = newarray (int)[11];
+
+        $r0[0] = 71;
+
+        $r0[1] = 114;
+
+        $r0[2] = 252;
+
+        $r0[3] = 101;
+
+        $r0[4] = 122;
+
+        $r0[5] = 105;
+
+        $r0[6] = 95;
+
+        $r0[7] = 122;
+
+        $r0[8] = 228;
+
+        $r0[9] = 109;
+
+        $r0[10] = 228;
+
+        <org.apache.commons.codec.net.BCodecTest: int[] SWISS_GERMAN_STUFF_UNICODE> = $r0;
+
+        $r1 = newarray (int)[11];
+
+        $r1[0] = 1042;
+
+        $r1[1] = 1089;
+
+        $r1[2] = 1077;
+
+        $r1[3] = 1084;
+
+        $r1[4] = 95;
+
+        $r1[5] = 1087;
+
+        $r1[6] = 1088;
+
+        $r1[7] = 1080;
+
+        $r1[8] = 1074;
+
+        $r1[9] = 1077;
+
+        $r1[10] = 1090;
+
+        <org.apache.commons.codec.net.BCodecTest: int[] RUSSIAN_STUFF_UNICODE> = $r1;
+
+        return;
+    }
+
+    public void <init>()
+    {
+        org.apache.commons.codec.net.BCodecTest r0;
+
+        r0 := @this: org.apache.commons.codec.net.BCodecTest;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    private java.lang.String constructString(int[])
+    {
+        org.apache.commons.codec.net.BCodecTest r0;
+        int[] r1;
+        int i0, i1, i3;
+        java.lang.StringBuilder $r4;
+        java.lang.String $r5;
+        char $c2;
+
+        r0 := @this: org.apache.commons.codec.net.BCodecTest;
+
+        r1 := @parameter0: int[];
+
+        $r4 = new java.lang.StringBuilder;
+
+        specialinvoke $r4.<java.lang.StringBuilder: void <init>()>();
+
+        if r1 == null goto label3;
+
+        i1 = lengthof r1;
+
+        i3 = 0;
+
+        goto label2;
+
+     label1:
+        i0 = r1[i3];
+
+        $c2 = (char) i0;
+
+        virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>($c2);
+
+        i3 = i3 + 1;
+
+     label2:
+        if i3 < i1 goto label1;
+
+     label3:
+        $r5 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $r5;
+    }
+
+    public void testNullInput() throws java.lang.Exception
+    {
+        org.apache.commons.codec.net.BCodecTest r0;
+        org.apache.commons.codec.net.BCodec $r2;
+        byte[] $r3, $r4;
+
+        r0 := @this: org.apache.commons.codec.net.BCodecTest;
+
+        $r2 = new org.apache.commons.codec.net.BCodec;
+
+        specialinvoke $r2.<org.apache.commons.codec.net.BCodec: void <init>()>();
+
+        $r3 = virtualinvoke $r2.<org.apache.commons.codec.net.BCodec: byte[] doDecoding(byte[])>(null);
+
+        staticinvoke <org.junit.Assert: void assertNull(java.lang.Object)>($r3);
+
+        $r4 = virtualinvoke $r2.<org.apache.commons.codec.net.BCodec: byte[] doEncoding(byte[])>(null);
+
+        staticinvoke <org.junit.Assert: void assertNull(java.lang.Object)>($r4);
+
+        return;
+    }
+
+    public void testUTF8RoundTrip() throws java.lang.Exception
+    {
+        org.apache.commons.codec.net.BCodecTest r0;
+        java.lang.String r1, r2, $r7, $r8, $r9, $r10, $r11, $r12;
+        int[] $r4, $r5;
+        org.apache.commons.codec.net.BCodec $r6;
+
+        r0 := @this: org.apache.commons.codec.net.BCodecTest;
+
+        $r4 = <org.apache.commons.codec.net.BCodecTest: int[] RUSSIAN_STUFF_UNICODE>;
+
+        r1 = specialinvoke r0.<org.apache.commons.codec.net.BCodecTest: java.lang.String constructString(int[])>($r4);
+
+        $r5 = <org.apache.commons.codec.net.BCodecTest: int[] SWISS_GERMAN_STUFF_UNICODE>;
+
+        r2 = specialinvoke r0.<org.apache.commons.codec.net.BCodecTest: java.lang.String constructString(int[])>($r5);
+
+        $r6 = new org.apache.commons.codec.net.BCodec;
+
+        specialinvoke $r6.<org.apache.commons.codec.net.BCodec: void <init>(java.lang.String)>("UTF-8");
+
+        $r7 = virtualinvoke $r6.<org.apache.commons.codec.net.BCodec: java.lang.String encode(java.lang.String)>(r1);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("=?UTF-8?B?0JLRgdC10Lxf0L/RgNC40LLQtdGC?=", $r7);
+
+        $r8 = virtualinvoke $r6.<org.apache.commons.codec.net.BCodec: java.lang.String encode(java.lang.String)>(r2);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("=?UTF-8?B?R3LDvGV6aV96w6Rtw6Q=?=", $r8);
+
+        $r9 = virtualinvoke $r6.<org.apache.commons.codec.net.BCodec: java.lang.String encode(java.lang.String)>(r1);
+
+        $r10 = virtualinvoke $r6.<org.apache.commons.codec.net.BCodec: java.lang.String decode(java.lang.String)>($r9);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>(r1, $r10);
+
+        $r11 = virtualinvoke $r6.<org.apache.commons.codec.net.BCodec: java.lang.String encode(java.lang.String)>(r2);
+
+        $r12 = virtualinvoke $r6.<org.apache.commons.codec.net.BCodec: java.lang.String decode(java.lang.String)>($r11);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>(r2, $r12);
+
+        return;
+    }
+
+    public void testBasicEncodeDecode() throws java.lang.Exception
+    {
+        org.apache.commons.codec.net.BCodecTest r0;
+        java.lang.String r3, $r5;
+        org.apache.commons.codec.net.BCodec $r4;
+
+        r0 := @this: org.apache.commons.codec.net.BCodecTest;
+
+        $r4 = new org.apache.commons.codec.net.BCodec;
+
+        specialinvoke $r4.<org.apache.commons.codec.net.BCodec: void <init>()>();
+
+        r3 = virtualinvoke $r4.<org.apache.commons.codec.net.BCodec: java.lang.String encode(java.lang.String)>("Hello there");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,java.lang.Object,java.lang.Object)>("Basic B encoding test", "=?UTF-8?B?SGVsbG8gdGhlcmU=?=", r3);
+
+        $r5 = virtualinvoke $r4.<org.apache.commons.codec.net.BCodec: java.lang.String decode(java.lang.String)>(r3);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,java.lang.Object,java.lang.Object)>("Basic B decoding test", "Hello there", $r5);
+
+        return;
+    }
+
+    public void testEncodeDecodeNull() throws java.lang.Exception
+    {
+        org.apache.commons.codec.net.BCodecTest r0;
+        org.apache.commons.codec.net.BCodec $r2;
+        java.lang.String $r3, $r4;
+
+        r0 := @this: org.apache.commons.codec.net.BCodecTest;
+
+        $r2 = new org.apache.commons.codec.net.BCodec;
+
+        specialinvoke $r2.<org.apache.commons.codec.net.BCodec: void <init>()>();
+
+        $r3 = virtualinvoke $r2.<org.apache.commons.codec.net.BCodec: java.lang.String encode(java.lang.String)>(null);
+
+        staticinvoke <org.junit.Assert: void assertNull(java.lang.String,java.lang.Object)>("Null string B encoding test", $r3);
+
+        $r4 = virtualinvoke $r2.<org.apache.commons.codec.net.BCodec: java.lang.String decode(java.lang.String)>(null);
+
+        staticinvoke <org.junit.Assert: void assertNull(java.lang.String,java.lang.Object)>("Null string B decoding test", $r4);
+
+        return;
+    }
+
+    public void testEncodeStringWithNull() throws java.lang.Exception
+    {
+        org.apache.commons.codec.net.BCodecTest r0;
+        java.lang.String r2;
+        org.apache.commons.codec.net.BCodec $r3;
+
+        r0 := @this: org.apache.commons.codec.net.BCodecTest;
+
+        $r3 = new org.apache.commons.codec.net.BCodec;
+
+        specialinvoke $r3.<org.apache.commons.codec.net.BCodec: void <init>()>();
+
+        r2 = virtualinvoke $r3.<org.apache.commons.codec.net.BCodec: java.lang.String encode(java.lang.String,java.lang.String)>(null, "charset");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,java.lang.Object,java.lang.Object)>("Result should be null", null, r2);
+
+        return;
+    }
+
+    public void testDecodeStringWithNull() throws java.lang.Exception
+    {
+        org.apache.commons.codec.net.BCodecTest r0;
+        java.lang.String r2;
+        org.apache.commons.codec.net.BCodec $r3;
+
+        r0 := @this: org.apache.commons.codec.net.BCodecTest;
+
+        $r3 = new org.apache.commons.codec.net.BCodec;
+
+        specialinvoke $r3.<org.apache.commons.codec.net.BCodec: void <init>()>();
+
+        r2 = virtualinvoke $r3.<org.apache.commons.codec.net.BCodec: java.lang.String decode(java.lang.String)>(null);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,java.lang.Object,java.lang.Object)>("Result should be null", null, r2);
+
+        return;
+    }
+
+    public void testEncodeObjects() throws java.lang.Exception
+    {
+        org.apache.commons.codec.net.BCodecTest r0;
+        java.lang.String r3;
+        java.lang.Object r4, $r6;
+        org.apache.commons.codec.net.BCodec $r5;
+        java.lang.Double $r7;
+        org.apache.commons.codec.EncoderException $r9;
+
+        r0 := @this: org.apache.commons.codec.net.BCodecTest;
+
+        $r5 = new org.apache.commons.codec.net.BCodec;
+
+        specialinvoke $r5.<org.apache.commons.codec.net.BCodec: void <init>()>();
+
+        $r6 = virtualinvoke $r5.<org.apache.commons.codec.net.BCodec: java.lang.Object encode(java.lang.Object)>("what not");
+
+        r3 = (java.lang.String) $r6;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,java.lang.Object,java.lang.Object)>("Basic B encoding test", "=?UTF-8?B?d2hhdCBub3Q=?=", r3);
+
+        r4 = virtualinvoke $r5.<org.apache.commons.codec.net.BCodec: java.lang.Object encode(java.lang.Object)>(null);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,java.lang.Object,java.lang.Object)>("Encoding a null Object should return null", null, r4);
+
+     label1:
+        $r7 = new java.lang.Double;
+
+        specialinvoke $r7.<java.lang.Double: void <init>(double)>(3.0);
+
+        virtualinvoke $r5.<org.apache.commons.codec.net.BCodec: java.lang.Object encode(java.lang.Object)>($r7);
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("Trying to url encode a Double object should cause an exception.");
+
+     label2:
+        goto label4;
+
+     label3:
+        $r9 := @caughtexception;
+
+     label4:
+        return;
+
+        catch org.apache.commons.codec.EncoderException from label1 to label2 with label3;
+    }
+
+    public void testInvalidEncoding()
+    {
+        org.apache.commons.codec.net.BCodecTest r0;
+        org.apache.commons.codec.net.BCodec $r1;
+
+        r0 := @this: org.apache.commons.codec.net.BCodecTest;
+
+        $r1 = new org.apache.commons.codec.net.BCodec;
+
+        specialinvoke $r1.<org.apache.commons.codec.net.BCodec: void <init>(java.lang.String)>("NONSENSE");
+
+        return;
+    }
+
+    public void testDecodeObjects() throws java.lang.Exception
+    {
+        org.apache.commons.codec.net.BCodecTest r0;
+        java.lang.String r3;
+        java.lang.Object r4, $r6;
+        org.apache.commons.codec.net.BCodec $r5;
+        java.lang.Double $r7;
+        org.apache.commons.codec.DecoderException $r9;
+
+        r0 := @this: org.apache.commons.codec.net.BCodecTest;
+
+        $r5 = new org.apache.commons.codec.net.BCodec;
+
+        specialinvoke $r5.<org.apache.commons.codec.net.BCodec: void <init>()>();
+
+        $r6 = virtualinvoke $r5.<org.apache.commons.codec.net.BCodec: java.lang.Object decode(java.lang.Object)>("=?UTF-8?B?d2hhdCBub3Q=?=");
+
+        r3 = (java.lang.String) $r6;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,java.lang.Object,java.lang.Object)>("Basic B decoding test", "what not", r3);
+
+        r4 = virtualinvoke $r5.<org.apache.commons.codec.net.BCodec: java.lang.Object decode(java.lang.Object)>(null);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,java.lang.Object,java.lang.Object)>("Decoding a null Object should return null", null, r4);
+
+     label1:
+        $r7 = new java.lang.Double;
+
+        specialinvoke $r7.<java.lang.Double: void <init>(double)>(3.0);
+
+        virtualinvoke $r5.<org.apache.commons.codec.net.BCodec: java.lang.Object decode(java.lang.Object)>($r7);
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("Trying to url encode a Double object should cause an exception.");
+
+     label2:
+        goto label4;
+
+     label3:
+        $r9 := @caughtexception;
+
+     label4:
+        return;
+
+        catch org.apache.commons.codec.DecoderException from label1 to label2 with label3;
+    }
+}

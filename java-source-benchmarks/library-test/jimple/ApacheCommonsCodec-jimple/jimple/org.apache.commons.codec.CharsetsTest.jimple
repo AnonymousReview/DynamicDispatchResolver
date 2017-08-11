@@ -1,0 +1,154 @@
+public class org.apache.commons.codec.CharsetsTest extends java.lang.Object
+{
+
+    public void <init>()
+    {
+        org.apache.commons.codec.CharsetsTest r0;
+
+        r0 := @this: org.apache.commons.codec.CharsetsTest;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void testToCharset()
+    {
+        org.apache.commons.codec.CharsetsTest r0;
+        java.nio.charset.Charset $r1, $r2, $r3, $r4, $r5, $r6, $r7, $r8, $r9, $r10;
+
+        r0 := @this: org.apache.commons.codec.CharsetsTest;
+
+        $r1 = staticinvoke <java.nio.charset.Charset: java.nio.charset.Charset defaultCharset()>();
+
+        $r2 = staticinvoke <org.apache.commons.codec.Charsets: java.nio.charset.Charset toCharset(java.lang.String)>(null);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r1, $r2);
+
+        $r3 = staticinvoke <java.nio.charset.Charset: java.nio.charset.Charset defaultCharset()>();
+
+        $r4 = staticinvoke <org.apache.commons.codec.Charsets: java.nio.charset.Charset toCharset(java.nio.charset.Charset)>(null);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r3, $r4);
+
+        $r5 = staticinvoke <java.nio.charset.Charset: java.nio.charset.Charset defaultCharset()>();
+
+        $r6 = staticinvoke <java.nio.charset.Charset: java.nio.charset.Charset defaultCharset()>();
+
+        $r7 = staticinvoke <org.apache.commons.codec.Charsets: java.nio.charset.Charset toCharset(java.nio.charset.Charset)>($r6);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r5, $r7);
+
+        $r8 = staticinvoke <java.nio.charset.Charset: java.nio.charset.Charset forName(java.lang.String)>("UTF-8");
+
+        $r9 = staticinvoke <java.nio.charset.Charset: java.nio.charset.Charset forName(java.lang.String)>("UTF-8");
+
+        $r10 = staticinvoke <org.apache.commons.codec.Charsets: java.nio.charset.Charset toCharset(java.nio.charset.Charset)>($r9);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r8, $r10);
+
+        return;
+    }
+
+    public void testIso8859_1()
+    {
+        org.apache.commons.codec.CharsetsTest r0;
+        java.nio.charset.Charset $r1;
+        java.lang.String $r2;
+
+        r0 := @this: org.apache.commons.codec.CharsetsTest;
+
+        $r1 = <org.apache.commons.codec.Charsets: java.nio.charset.Charset ISO_8859_1>;
+
+        $r2 = virtualinvoke $r1.<java.nio.charset.Charset: java.lang.String name()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("ISO-8859-1", $r2);
+
+        return;
+    }
+
+    public void testUsAscii()
+    {
+        org.apache.commons.codec.CharsetsTest r0;
+        java.nio.charset.Charset $r1;
+        java.lang.String $r2;
+
+        r0 := @this: org.apache.commons.codec.CharsetsTest;
+
+        $r1 = <org.apache.commons.codec.Charsets: java.nio.charset.Charset US_ASCII>;
+
+        $r2 = virtualinvoke $r1.<java.nio.charset.Charset: java.lang.String name()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("US-ASCII", $r2);
+
+        return;
+    }
+
+    public void testUtf16()
+    {
+        org.apache.commons.codec.CharsetsTest r0;
+        java.nio.charset.Charset $r1;
+        java.lang.String $r2;
+
+        r0 := @this: org.apache.commons.codec.CharsetsTest;
+
+        $r1 = <org.apache.commons.codec.Charsets: java.nio.charset.Charset UTF_16>;
+
+        $r2 = virtualinvoke $r1.<java.nio.charset.Charset: java.lang.String name()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("UTF-16", $r2);
+
+        return;
+    }
+
+    public void testUtf16Be()
+    {
+        org.apache.commons.codec.CharsetsTest r0;
+        java.nio.charset.Charset $r1;
+        java.lang.String $r2;
+
+        r0 := @this: org.apache.commons.codec.CharsetsTest;
+
+        $r1 = <org.apache.commons.codec.Charsets: java.nio.charset.Charset UTF_16BE>;
+
+        $r2 = virtualinvoke $r1.<java.nio.charset.Charset: java.lang.String name()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("UTF-16BE", $r2);
+
+        return;
+    }
+
+    public void testUtf16Le()
+    {
+        org.apache.commons.codec.CharsetsTest r0;
+        java.nio.charset.Charset $r1;
+        java.lang.String $r2;
+
+        r0 := @this: org.apache.commons.codec.CharsetsTest;
+
+        $r1 = <org.apache.commons.codec.Charsets: java.nio.charset.Charset UTF_16LE>;
+
+        $r2 = virtualinvoke $r1.<java.nio.charset.Charset: java.lang.String name()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("UTF-16LE", $r2);
+
+        return;
+    }
+
+    public void testUtf8()
+    {
+        org.apache.commons.codec.CharsetsTest r0;
+        java.nio.charset.Charset $r1;
+        java.lang.String $r2;
+
+        r0 := @this: org.apache.commons.codec.CharsetsTest;
+
+        $r1 = <org.apache.commons.codec.Charsets: java.nio.charset.Charset UTF_8>;
+
+        $r2 = virtualinvoke $r1.<java.nio.charset.Charset: java.lang.String name()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("UTF-8", $r2);
+
+        return;
+    }
+}

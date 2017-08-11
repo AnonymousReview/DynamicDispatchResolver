@@ -1,0 +1,32 @@
+public final class org.apache.log4j.PatternLayoutTest$DerivedPatternLayout extends org.apache.log4j.PatternLayout
+{
+
+    public void <init>()
+    {
+        org.apache.log4j.PatternLayoutTest$DerivedPatternLayout r0;
+
+        r0 := @this: org.apache.log4j.PatternLayoutTest$DerivedPatternLayout;
+
+        specialinvoke r0.<org.apache.log4j.PatternLayout: void <init>()>();
+
+        return;
+    }
+
+    public int getBufSize()
+    {
+        org.apache.log4j.PatternLayoutTest$DerivedPatternLayout r0;
+
+        r0 := @this: org.apache.log4j.PatternLayoutTest$DerivedPatternLayout;
+
+        return 256;
+    }
+
+    public int getMaxCapacity()
+    {
+        org.apache.log4j.PatternLayoutTest$DerivedPatternLayout r0;
+
+        r0 := @this: org.apache.log4j.PatternLayoutTest$DerivedPatternLayout;
+
+        return 1024;
+    }
+}

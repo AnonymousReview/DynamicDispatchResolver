@@ -1,0 +1,3 @@
+interface  org.apache.log4j.or.X extends java.lang.Object
+{
+}

@@ -1,0 +1,428 @@
+public class org.apache.log4j.PropertyConfiguratorTest extends junit.framework.TestCase
+{
+
+    public void <init>(java.lang.String)
+    {
+        org.apache.log4j.PropertyConfiguratorTest r0;
+        java.lang.String r1;
+
+        r0 := @this: org.apache.log4j.PropertyConfiguratorTest;
+
+        r1 := @parameter0: java.lang.String;
+
+        specialinvoke r0.<junit.framework.TestCase: void <init>(java.lang.String)>(r1);
+
+        return;
+    }
+
+    public void testBadUnicodeEscape() throws java.io.IOException
+    {
+        org.apache.log4j.PropertyConfiguratorTest r0;
+        java.io.FileWriter $r4;
+        java.io.File $r5;
+        boolean $z0, $z1;
+
+        r0 := @this: org.apache.log4j.PropertyConfiguratorTest;
+
+        $r4 = new java.io.FileWriter;
+
+        specialinvoke $r4.<java.io.FileWriter: void <init>(java.lang.String)>("output/badescape.properties");
+
+        virtualinvoke $r4.<java.io.FileWriter: void write(java.lang.String)>("log4j.rootLogger=\\uXX41");
+
+        virtualinvoke $r4.<java.io.FileWriter: void close()>();
+
+        staticinvoke <org.apache.log4j.PropertyConfigurator: void configure(java.lang.String)>("output/badescape.properties");
+
+        $r5 = new java.io.File;
+
+        specialinvoke $r5.<java.io.File: void <init>(java.lang.String)>("output/badescape.properties");
+
+        $z0 = virtualinvoke $r5.<java.io.File: boolean delete()>();
+
+        staticinvoke <org.apache.log4j.PropertyConfiguratorTest: void assertTrue(boolean)>($z0);
+
+        $z1 = virtualinvoke $r5.<java.io.File: boolean exists()>();
+
+        staticinvoke <org.apache.log4j.PropertyConfiguratorTest: void assertFalse(boolean)>($z1);
+
+        return;
+    }
+
+    public void testURL() throws java.io.IOException
+    {
+        org.apache.log4j.PropertyConfiguratorTest r0;
+        java.net.URL r3;
+        java.io.File $r4;
+        java.io.FileWriter $r5;
+        boolean $z0, $z1;
+
+        r0 := @this: org.apache.log4j.PropertyConfiguratorTest;
+
+        $r4 = new java.io.File;
+
+        specialinvoke $r4.<java.io.File: void <init>(java.lang.String)>("output/unclosed.properties");
+
+        $r5 = new java.io.FileWriter;
+
+        specialinvoke $r5.<java.io.FileWriter: void <init>(java.io.File)>($r4);
+
+        virtualinvoke $r5.<java.io.FileWriter: void write(java.lang.String)>("log4j.rootLogger=debug");
+
+        virtualinvoke $r5.<java.io.FileWriter: void close()>();
+
+        r3 = virtualinvoke $r4.<java.io.File: java.net.URL toURL()>();
+
+        staticinvoke <org.apache.log4j.PropertyConfigurator: void configure(java.net.URL)>(r3);
+
+        $z0 = virtualinvoke $r4.<java.io.File: boolean delete()>();
+
+        staticinvoke <org.apache.log4j.PropertyConfiguratorTest: void assertTrue(boolean)>($z0);
+
+        $z1 = virtualinvoke $r4.<java.io.File: boolean exists()>();
+
+        staticinvoke <org.apache.log4j.PropertyConfiguratorTest: void assertFalse(boolean)>($z1);
+
+        return;
+    }
+
+    public void testURLBadEscape() throws java.io.IOException
+    {
+        org.apache.log4j.PropertyConfiguratorTest r0;
+        java.net.URL r3;
+        java.io.File $r4;
+        java.io.FileWriter $r5;
+        boolean $z0, $z1;
+
+        r0 := @this: org.apache.log4j.PropertyConfiguratorTest;
+
+        $r4 = new java.io.File;
+
+        specialinvoke $r4.<java.io.File: void <init>(java.lang.String)>("output/urlbadescape.properties");
+
+        $r5 = new java.io.FileWriter;
+
+        specialinvoke $r5.<java.io.FileWriter: void <init>(java.io.File)>($r4);
+
+        virtualinvoke $r5.<java.io.FileWriter: void write(java.lang.String)>("log4j.rootLogger=\\uXX41");
+
+        virtualinvoke $r5.<java.io.FileWriter: void close()>();
+
+        r3 = virtualinvoke $r4.<java.io.File: java.net.URL toURL()>();
+
+        staticinvoke <org.apache.log4j.PropertyConfigurator: void configure(java.net.URL)>(r3);
+
+        $z0 = virtualinvoke $r4.<java.io.File: boolean delete()>();
+
+        staticinvoke <org.apache.log4j.PropertyConfiguratorTest: void assertTrue(boolean)>($z0);
+
+        $z1 = virtualinvoke $r4.<java.io.File: boolean exists()>();
+
+        staticinvoke <org.apache.log4j.PropertyConfiguratorTest: void assertFalse(boolean)>($z1);
+
+        return;
+    }
+
+    public void testInputStream() throws java.io.IOException
+    {
+        org.apache.log4j.PropertyConfiguratorTest r0;
+        java.io.File $r4;
+        boolean $z0;
+        java.io.FileInputStream $r5;
+        java.lang.Throwable $r6;
+
+        r0 := @this: org.apache.log4j.PropertyConfiguratorTest;
+
+        $r4 = new java.io.File;
+
+        specialinvoke $r4.<java.io.File: void <init>(java.lang.String)>("input/filter1.properties");
+
+        $z0 = virtualinvoke $r4.<java.io.File: boolean exists()>();
+
+        staticinvoke <org.apache.log4j.PropertyConfiguratorTest: void assertTrue(boolean)>($z0);
+
+        $r5 = new java.io.FileInputStream;
+
+        specialinvoke $r5.<java.io.FileInputStream: void <init>(java.io.File)>($r4);
+
+     label1:
+        staticinvoke <org.apache.log4j.PropertyConfigurator: void configure(java.io.InputStream)>($r5);
+
+        goto label3;
+
+     label2:
+        $r6 := @caughtexception;
+
+        virtualinvoke $r5.<java.io.FileInputStream: void close()>();
+
+        throw $r6;
+
+     label3:
+        virtualinvoke $r5.<java.io.FileInputStream: void close()>();
+
+        virtualinvoke r0.<org.apache.log4j.PropertyConfiguratorTest: void validateNested()>();
+
+        staticinvoke <org.apache.log4j.LogManager: void resetConfiguration()>();
+
+        return;
+
+        catch java.lang.Throwable from label1 to label2 with label2;
+    }
+
+    public void validateNested()
+    {
+        org.apache.log4j.PropertyConfiguratorTest r0;
+        org.apache.log4j.PropertyConfiguratorTest$RollingFileAppender r1;
+        org.apache.log4j.PropertyConfiguratorTest$FixedWindowRollingPolicy r2;
+        org.apache.log4j.PropertyConfiguratorTest$FilterBasedTriggeringPolicy r3;
+        org.apache.log4j.varia.LevelRangeFilter r4;
+        org.apache.log4j.Logger $r5;
+        org.apache.log4j.Appender $r6;
+        org.apache.log4j.PropertyConfiguratorTest$RollingPolicy $r7;
+        java.lang.String $r8, $r9;
+        int $i0;
+        boolean $z0, $z1;
+        org.apache.log4j.PropertyConfiguratorTest$TriggeringPolicy $r10;
+        org.apache.log4j.spi.Filter $r11;
+        org.apache.log4j.Level $r12, $r13;
+
+        r0 := @this: org.apache.log4j.PropertyConfiguratorTest;
+
+        $r5 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getLogger(java.lang.String)>("org.apache.log4j.PropertyConfiguratorTest");
+
+        $r6 = virtualinvoke $r5.<org.apache.log4j.Logger: org.apache.log4j.Appender getAppender(java.lang.String)>("ROLLING");
+
+        r1 = (org.apache.log4j.PropertyConfiguratorTest$RollingFileAppender) $r6;
+
+        $r7 = virtualinvoke r1.<org.apache.log4j.PropertyConfiguratorTest$RollingFileAppender: org.apache.log4j.PropertyConfiguratorTest$RollingPolicy getRollingPolicy()>();
+
+        r2 = (org.apache.log4j.PropertyConfiguratorTest$FixedWindowRollingPolicy) $r7;
+
+        $r8 = virtualinvoke r2.<org.apache.log4j.PropertyConfiguratorTest$FixedWindowRollingPolicy: java.lang.String getActiveFileName()>();
+
+        staticinvoke <org.apache.log4j.PropertyConfiguratorTest: void assertEquals(java.lang.String,java.lang.String)>("filterBase-test1.log", $r8);
+
+        $r9 = virtualinvoke r2.<org.apache.log4j.PropertyConfiguratorTest$FixedWindowRollingPolicy: java.lang.String getFileNamePattern()>();
+
+        staticinvoke <org.apache.log4j.PropertyConfiguratorTest: void assertEquals(java.lang.String,java.lang.String)>("filterBased-test1.%i", $r9);
+
+        $i0 = virtualinvoke r2.<org.apache.log4j.PropertyConfiguratorTest$FixedWindowRollingPolicy: int getMinIndex()>();
+
+        staticinvoke <org.apache.log4j.PropertyConfiguratorTest: void assertEquals(int,int)>(0, $i0);
+
+        $z0 = virtualinvoke r2.<org.apache.log4j.PropertyConfiguratorTest$FixedWindowRollingPolicy: boolean isActivated()>();
+
+        staticinvoke <org.apache.log4j.PropertyConfiguratorTest: void assertTrue(boolean)>($z0);
+
+        $r10 = virtualinvoke r1.<org.apache.log4j.PropertyConfiguratorTest$RollingFileAppender: org.apache.log4j.PropertyConfiguratorTest$TriggeringPolicy getTriggeringPolicy()>();
+
+        r3 = (org.apache.log4j.PropertyConfiguratorTest$FilterBasedTriggeringPolicy) $r10;
+
+        $r11 = virtualinvoke r3.<org.apache.log4j.PropertyConfiguratorTest$FilterBasedTriggeringPolicy: org.apache.log4j.spi.Filter getFilter()>();
+
+        r4 = (org.apache.log4j.varia.LevelRangeFilter) $r11;
+
+        $r12 = <org.apache.log4j.Level: org.apache.log4j.Level INFO>;
+
+        $r13 = virtualinvoke r4.<org.apache.log4j.varia.LevelRangeFilter: org.apache.log4j.Level getLevelMin()>();
+
+        $z1 = virtualinvoke $r12.<org.apache.log4j.Level: boolean equals(java.lang.Object)>($r13);
+
+        staticinvoke <org.apache.log4j.PropertyConfiguratorTest: void assertTrue(boolean)>($z1);
+
+        return;
+    }
+
+    public void testJarURL() throws java.io.IOException
+    {
+        org.apache.log4j.PropertyConfiguratorTest r0;
+        java.io.File $r5, $r6;
+        java.util.zip.ZipOutputStream $r7;
+        java.io.FileOutputStream $r8;
+        java.util.zip.ZipEntry $r9;
+        java.lang.String $r10, $r18;
+        byte[] $r11;
+        java.net.URL $r12, $r14;
+        java.lang.StringBuilder $r13, $r15, $r16, $r17;
+        boolean $z1, $z2;
+
+        r0 := @this: org.apache.log4j.PropertyConfiguratorTest;
+
+        $r5 = new java.io.File;
+
+        specialinvoke $r5.<java.io.File: void <init>(java.lang.String)>("output");
+
+        virtualinvoke $r5.<java.io.File: boolean mkdirs()>();
+
+        $r6 = new java.io.File;
+
+        specialinvoke $r6.<java.io.File: void <init>(java.lang.String)>("output/properties.jar");
+
+        $r7 = new java.util.zip.ZipOutputStream;
+
+        $r8 = new java.io.FileOutputStream;
+
+        specialinvoke $r8.<java.io.FileOutputStream: void <init>(java.io.File)>($r6);
+
+        specialinvoke $r7.<java.util.zip.ZipOutputStream: void <init>(java.io.OutputStream)>($r8);
+
+        $r9 = new java.util.zip.ZipEntry;
+
+        specialinvoke $r9.<java.util.zip.ZipEntry: void <init>(java.lang.String)>("log4j.properties");
+
+        virtualinvoke $r7.<java.util.zip.ZipOutputStream: void putNextEntry(java.util.zip.ZipEntry)>($r9);
+
+        $r10 = "log4j.rootLogger=debug";
+
+        $r11 = virtualinvoke $r10.<java.lang.String: byte[] getBytes()>();
+
+        virtualinvoke $r7.<java.util.zip.ZipOutputStream: void write(byte[])>($r11);
+
+        virtualinvoke $r7.<java.util.zip.ZipOutputStream: void closeEntry()>();
+
+        virtualinvoke $r7.<java.util.zip.ZipOutputStream: void close()>();
+
+        $r12 = new java.net.URL;
+
+        $r13 = new java.lang.StringBuilder;
+
+        specialinvoke $r13.<java.lang.StringBuilder: void <init>(java.lang.String)>("jar:");
+
+        $r14 = virtualinvoke $r6.<java.io.File: java.net.URL toURL()>();
+
+        $r15 = virtualinvoke $r13.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r14);
+
+        $r16 = virtualinvoke $r15.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("!/");
+
+        $r17 = virtualinvoke $r16.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("log4j.properties");
+
+        $r18 = virtualinvoke $r17.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r12.<java.net.URL: void <init>(java.lang.String)>($r18);
+
+        staticinvoke <org.apache.log4j.PropertyConfigurator: void configure(java.net.URL)>($r12);
+
+        $z1 = virtualinvoke $r6.<java.io.File: boolean delete()>();
+
+        staticinvoke <org.apache.log4j.PropertyConfiguratorTest: void assertTrue(boolean)>($z1);
+
+        $z2 = virtualinvoke $r6.<java.io.File: boolean exists()>();
+
+        staticinvoke <org.apache.log4j.PropertyConfiguratorTest: void assertFalse(boolean)>($z2);
+
+        return;
+    }
+
+    public void testReset()
+    {
+        org.apache.log4j.PropertyConfiguratorTest r0;
+        org.apache.log4j.VectorAppender $r3;
+        org.apache.log4j.Logger $r4, $r7;
+        java.util.Properties $r5;
+        org.apache.log4j.Appender $r8;
+
+        r0 := @this: org.apache.log4j.PropertyConfiguratorTest;
+
+        $r3 = new org.apache.log4j.VectorAppender;
+
+        specialinvoke $r3.<org.apache.log4j.VectorAppender: void <init>()>();
+
+        virtualinvoke $r3.<org.apache.log4j.VectorAppender: void setName(java.lang.String)>("A1");
+
+        $r4 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getRootLogger()>();
+
+        virtualinvoke $r4.<org.apache.log4j.Logger: void addAppender(org.apache.log4j.Appender)>($r3);
+
+        $r5 = new java.util.Properties;
+
+        specialinvoke $r5.<java.util.Properties: void <init>()>();
+
+        virtualinvoke $r5.<java.util.Properties: java.lang.Object put(java.lang.Object,java.lang.Object)>("log4j.reset", "true");
+
+        staticinvoke <org.apache.log4j.PropertyConfigurator: void configure(java.util.Properties)>($r5);
+
+        $r7 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getRootLogger()>();
+
+        $r8 = virtualinvoke $r7.<org.apache.log4j.Logger: org.apache.log4j.Appender getAppender(java.lang.String)>("A1");
+
+        staticinvoke <org.apache.log4j.PropertyConfiguratorTest: void assertNull(java.lang.Object)>($r8);
+
+        staticinvoke <org.apache.log4j.LogManager: void resetConfiguration()>();
+
+        return;
+    }
+
+    public void testNested()
+    {
+        org.apache.log4j.PropertyConfiguratorTest r0;
+        java.lang.Throwable $r2;
+
+        r0 := @this: org.apache.log4j.PropertyConfiguratorTest;
+
+     label1:
+        staticinvoke <org.apache.log4j.PropertyConfigurator: void configure(java.lang.String)>("input/filter1.properties");
+
+        virtualinvoke r0.<org.apache.log4j.PropertyConfiguratorTest: void validateNested()>();
+
+        goto label3;
+
+     label2:
+        $r2 := @caughtexception;
+
+        staticinvoke <org.apache.log4j.LogManager: void resetConfiguration()>();
+
+        throw $r2;
+
+     label3:
+        staticinvoke <org.apache.log4j.LogManager: void resetConfiguration()>();
+
+        return;
+
+        catch java.lang.Throwable from label1 to label2 with label2;
+    }
+
+    public void testThrowableRenderer()
+    {
+        org.apache.log4j.PropertyConfiguratorTest r0;
+        org.apache.log4j.spi.ThrowableRendererSupport r2;
+        org.apache.log4j.PropertyConfiguratorTest$MockThrowableRenderer r3;
+        java.util.Properties $r4;
+        org.apache.log4j.spi.LoggerRepository $r7;
+        org.apache.log4j.spi.ThrowableRenderer $r8;
+        boolean $z0, $z1;
+
+        r0 := @this: org.apache.log4j.PropertyConfiguratorTest;
+
+        $r4 = new java.util.Properties;
+
+        specialinvoke $r4.<java.util.Properties: void <init>()>();
+
+        virtualinvoke $r4.<java.util.Properties: java.lang.Object put(java.lang.Object,java.lang.Object)>("log4j.throwableRenderer", "org.apache.log4j.PropertyConfiguratorTest$MockThrowableRenderer");
+
+        virtualinvoke $r4.<java.util.Properties: java.lang.Object put(java.lang.Object,java.lang.Object)>("log4j.throwableRenderer.showVersion", "false");
+
+        staticinvoke <org.apache.log4j.PropertyConfigurator: void configure(java.util.Properties)>($r4);
+
+        $r7 = staticinvoke <org.apache.log4j.LogManager: org.apache.log4j.spi.LoggerRepository getLoggerRepository()>();
+
+        r2 = (org.apache.log4j.spi.ThrowableRendererSupport) $r7;
+
+        $r8 = interfaceinvoke r2.<org.apache.log4j.spi.ThrowableRendererSupport: org.apache.log4j.spi.ThrowableRenderer getThrowableRenderer()>();
+
+        r3 = (org.apache.log4j.PropertyConfiguratorTest$MockThrowableRenderer) $r8;
+
+        staticinvoke <org.apache.log4j.LogManager: void resetConfiguration()>();
+
+        staticinvoke <org.apache.log4j.PropertyConfiguratorTest: void assertNotNull(java.lang.Object)>(r3);
+
+        $z0 = virtualinvoke r3.<org.apache.log4j.PropertyConfiguratorTest$MockThrowableRenderer: boolean isActivated()>();
+
+        staticinvoke <org.apache.log4j.PropertyConfiguratorTest: void assertEquals(boolean,boolean)>(1, $z0);
+
+        $z1 = virtualinvoke r3.<org.apache.log4j.PropertyConfiguratorTest$MockThrowableRenderer: boolean getShowVersion()>();
+
+        staticinvoke <org.apache.log4j.PropertyConfiguratorTest: void assertEquals(boolean,boolean)>(0, $z1);
+
+        return;
+    }
+}

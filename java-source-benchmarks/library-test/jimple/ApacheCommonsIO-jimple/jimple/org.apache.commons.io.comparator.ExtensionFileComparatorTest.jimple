@@ -1,0 +1,204 @@
+public class org.apache.commons.io.comparator.ExtensionFileComparatorTest extends org.apache.commons.io.comparator.ComparatorAbstractTestCase
+{
+
+    public void <init>()
+    {
+        org.apache.commons.io.comparator.ExtensionFileComparatorTest r0;
+
+        r0 := @this: org.apache.commons.io.comparator.ExtensionFileComparatorTest;
+
+        specialinvoke r0.<org.apache.commons.io.comparator.ComparatorAbstractTestCase: void <init>()>();
+
+        return;
+    }
+
+    public void setUp() throws java.lang.Exception
+    {
+        org.apache.commons.io.comparator.ExtensionFileComparatorTest r0;
+        java.util.Comparator $r1, $r3;
+        org.apache.commons.io.comparator.AbstractFileComparator $r2;
+        java.io.File $r4, $r5, $r6, $r7;
+
+        r0 := @this: org.apache.commons.io.comparator.ExtensionFileComparatorTest;
+
+        $r1 = <org.apache.commons.io.comparator.ExtensionFileComparator: java.util.Comparator EXTENSION_COMPARATOR>;
+
+        $r2 = (org.apache.commons.io.comparator.AbstractFileComparator) $r1;
+
+        r0.<org.apache.commons.io.comparator.ExtensionFileComparatorTest: org.apache.commons.io.comparator.AbstractFileComparator comparator> = $r2;
+
+        $r3 = <org.apache.commons.io.comparator.ExtensionFileComparator: java.util.Comparator EXTENSION_REVERSE>;
+
+        r0.<org.apache.commons.io.comparator.ExtensionFileComparatorTest: java.util.Comparator reverse> = $r3;
+
+        $r4 = new java.io.File;
+
+        specialinvoke $r4.<java.io.File: void <init>(java.lang.String)>("abc.foo");
+
+        r0.<org.apache.commons.io.comparator.ExtensionFileComparatorTest: java.io.File equalFile1> = $r4;
+
+        $r5 = new java.io.File;
+
+        specialinvoke $r5.<java.io.File: void <init>(java.lang.String)>("def.foo");
+
+        r0.<org.apache.commons.io.comparator.ExtensionFileComparatorTest: java.io.File equalFile2> = $r5;
+
+        $r6 = new java.io.File;
+
+        specialinvoke $r6.<java.io.File: void <init>(java.lang.String)>("abc.abc");
+
+        r0.<org.apache.commons.io.comparator.ExtensionFileComparatorTest: java.io.File lessFile> = $r6;
+
+        $r7 = new java.io.File;
+
+        specialinvoke $r7.<java.io.File: void <init>(java.lang.String)>("abc.xyz");
+
+        r0.<org.apache.commons.io.comparator.ExtensionFileComparatorTest: java.io.File moreFile> = $r7;
+
+        return;
+    }
+
+    public void testCaseSensitivity()
+    {
+        org.apache.commons.io.comparator.ExtensionFileComparatorTest r0;
+        java.util.Comparator r3;
+        java.io.File $r4, $r6, $r7, $r9, $r11, $r12, $r14, $r15, $r17, $r19, $r20, $r22;
+        org.apache.commons.io.comparator.ExtensionFileComparator $r5;
+        int $i0, $i1, $i2, $i3, $i4, $i5, $i6;
+        boolean $z0, $z1, $z2, $z3, $z4, $z5, $z6;
+
+        r0 := @this: org.apache.commons.io.comparator.ExtensionFileComparatorTest;
+
+        $r4 = new java.io.File;
+
+        specialinvoke $r4.<java.io.File: void <init>(java.lang.String)>("abc.FOO");
+
+        $r5 = new org.apache.commons.io.comparator.ExtensionFileComparator;
+
+        specialinvoke $r5.<org.apache.commons.io.comparator.ExtensionFileComparator: void <init>(org.apache.commons.io.IOCase)>(null);
+
+        $r7 = r0.<org.apache.commons.io.comparator.ExtensionFileComparatorTest: java.io.File equalFile1>;
+
+        $r6 = r0.<org.apache.commons.io.comparator.ExtensionFileComparatorTest: java.io.File equalFile2>;
+
+        $i0 = interfaceinvoke $r5.<java.util.Comparator: int compare(java.lang.Object,java.lang.Object)>($r7, $r6);
+
+        if $i0 != 0 goto label01;
+
+        $z0 = 1;
+
+        goto label02;
+
+     label01:
+        $z0 = 0;
+
+     label02:
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>("sensitive file1 & file2 = 0", $z0);
+
+        $r9 = r0.<org.apache.commons.io.comparator.ExtensionFileComparatorTest: java.io.File equalFile1>;
+
+        $i1 = interfaceinvoke $r5.<java.util.Comparator: int compare(java.lang.Object,java.lang.Object)>($r9, $r4);
+
+        if $i1 <= 0 goto label03;
+
+        $z1 = 1;
+
+        goto label04;
+
+     label03:
+        $z1 = 0;
+
+     label04:
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>("sensitive file1 & file3 > 0", $z1);
+
+        $r12 = r0.<org.apache.commons.io.comparator.ExtensionFileComparatorTest: java.io.File equalFile1>;
+
+        $r11 = r0.<org.apache.commons.io.comparator.ExtensionFileComparatorTest: java.io.File lessFile>;
+
+        $i2 = interfaceinvoke $r5.<java.util.Comparator: int compare(java.lang.Object,java.lang.Object)>($r12, $r11);
+
+        if $i2 <= 0 goto label05;
+
+        $z2 = 1;
+
+        goto label06;
+
+     label05:
+        $z2 = 0;
+
+     label06:
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>("sensitive file1 & less  > 0", $z2);
+
+        r3 = <org.apache.commons.io.comparator.ExtensionFileComparator: java.util.Comparator EXTENSION_INSENSITIVE_COMPARATOR>;
+
+        $r15 = r0.<org.apache.commons.io.comparator.ExtensionFileComparatorTest: java.io.File equalFile1>;
+
+        $r14 = r0.<org.apache.commons.io.comparator.ExtensionFileComparatorTest: java.io.File equalFile2>;
+
+        $i3 = interfaceinvoke r3.<java.util.Comparator: int compare(java.lang.Object,java.lang.Object)>($r15, $r14);
+
+        if $i3 != 0 goto label07;
+
+        $z3 = 1;
+
+        goto label08;
+
+     label07:
+        $z3 = 0;
+
+     label08:
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>("insensitive file1 & file2 = 0", $z3);
+
+        $r17 = r0.<org.apache.commons.io.comparator.ExtensionFileComparatorTest: java.io.File equalFile1>;
+
+        $i4 = interfaceinvoke r3.<java.util.Comparator: int compare(java.lang.Object,java.lang.Object)>($r17, $r4);
+
+        if $i4 != 0 goto label09;
+
+        $z4 = 1;
+
+        goto label10;
+
+     label09:
+        $z4 = 0;
+
+     label10:
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>("insensitive file1 & file3 = 0", $z4);
+
+        $r20 = r0.<org.apache.commons.io.comparator.ExtensionFileComparatorTest: java.io.File equalFile1>;
+
+        $r19 = r0.<org.apache.commons.io.comparator.ExtensionFileComparatorTest: java.io.File lessFile>;
+
+        $i5 = interfaceinvoke r3.<java.util.Comparator: int compare(java.lang.Object,java.lang.Object)>($r20, $r19);
+
+        if $i5 <= 0 goto label11;
+
+        $z5 = 1;
+
+        goto label12;
+
+     label11:
+        $z5 = 0;
+
+     label12:
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>("insensitive file1 & file4 > 0", $z5);
+
+        $r22 = r0.<org.apache.commons.io.comparator.ExtensionFileComparatorTest: java.io.File lessFile>;
+
+        $i6 = interfaceinvoke r3.<java.util.Comparator: int compare(java.lang.Object,java.lang.Object)>($r4, $r22);
+
+        if $i6 <= 0 goto label13;
+
+        $z6 = 1;
+
+        goto label14;
+
+     label13:
+        $z6 = 0;
+
+     label14:
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>("insensitive file3 & less  > 0", $z6);
+
+        return;
+    }
+}

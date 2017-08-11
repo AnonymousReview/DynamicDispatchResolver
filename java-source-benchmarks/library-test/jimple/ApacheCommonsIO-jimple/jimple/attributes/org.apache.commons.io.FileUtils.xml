@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<attributes>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="0" eline="0" spos="0" epos="0"/>
+<text info="[inner=org/apache/commons/io/FileUtils$1, outer=null, name=null,flags=0]" aType="InnerClassTag"/>
+<text info="soot.tagkit.InnerClassAttribute@6dcb6d82" aType="InnerClassAttribute"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="3" eline="3" spos="0" epos="0"/>
+<text info="ConstantValue: 1024" aType="LongConstantValueTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="5" eline="5" spos="0" epos="0"/>
+<text info="ConstantValue: 1048576" aType="LongConstantValueTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="7" eline="7" spos="0" epos="0"/>
+<text info="ConstantValue: 31457280" aType="LongConstantValueTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="8" eline="8" spos="0" epos="0"/>
+<text info="ConstantValue: 1073741824" aType="LongConstantValueTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="10" eline="10" spos="0" epos="0"/>
+<text info="ConstantValue: 1099511627776" aType="LongConstantValueTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="12" eline="12" spos="0" epos="0"/>
+<text info="ConstantValue: 1125899906842624" aType="LongConstantValueTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="14" eline="14" spos="0" epos="0"/>
+<text info="ConstantValue: 1152921504606846976" aType="LongConstantValueTag"/>
+</attribute>
+<attribute>
+<srcPos sline="453" eline="453" spos="0" epos="0"/>
+<jmpPos sline="722" eline="722" spos="0" epos="0"/>
+<text info="Signature: (Ljava/util/Collection&lt;Ljava/io/File;&gt;;)[Ljava/io/File;" aType="SignatureTag"/>
+</attribute>
+<attribute>
+<srcPos sline="468" eline="468" spos="0" epos="0"/>
+<jmpPos sline="742" eline="742" spos="0" epos="0"/>
+<text info="Signature: (Ljava/util/Collection&lt;Ljava/io/File;&gt;;Ljava/io/File;Lorg/apache/commons/io/filefilter/IOFileFilter;Z)V" aType="SignatureTag"/>
+</attribute>
+<attribute>
+<srcPos sline="511" eline="511" spos="0" epos="0"/>
+<jmpPos sline="798" eline="798" spos="0" epos="0"/>
+<text info="Signature: (Ljava/io/File;Lorg/apache/commons/io/filefilter/IOFileFilter;Lorg/apache/commons/io/filefilter/IOFileFilter;)Ljava/util/Collection&lt;Ljava/io/File;&gt;;" aType="SignatureTag"/>
+</attribute>
+<attribute>
+<srcPos sline="584" eline="584" spos="0" epos="0"/>
+<jmpPos sline="929" eline="929" spos="0" epos="0"/>
+<text info="Signature: (Ljava/io/File;Lorg/apache/commons/io/filefilter/IOFileFilter;Lorg/apache/commons/io/filefilter/IOFileFilter;)Ljava/util/Collection&lt;Ljava/io/File;&gt;;" aType="SignatureTag"/>
+</attribute>
+<attribute>
+<srcPos sline="619" eline="619" spos="0" epos="0"/>
+<jmpPos sline="973" eline="973" spos="0" epos="0"/>
+<text info="Signature: (Ljava/io/File;Lorg/apache/commons/io/filefilter/IOFileFilter;Lorg/apache/commons/io/filefilter/IOFileFilter;)Ljava/util/Iterator&lt;Ljava/io/File;&gt;;" aType="SignatureTag"/>
+</attribute>
+<attribute>
+<srcPos sline="644" eline="644" spos="0" epos="0"/>
+<jmpPos sline="993" eline="993" spos="0" epos="0"/>
+<text info="Signature: (Ljava/io/File;Lorg/apache/commons/io/filefilter/IOFileFilter;Lorg/apache/commons/io/filefilter/IOFileFilter;)Ljava/util/Iterator&lt;Ljava/io/File;&gt;;" aType="SignatureTag"/>
+</attribute>
+<attribute>
+<srcPos sline="677" eline="677" spos="0" epos="0"/>
+<jmpPos sline="1053" eline="1053" spos="0" epos="0"/>
+<text info="Signature: (Ljava/io/File;[Ljava/lang/String;Z)Ljava/util/Collection&lt;Ljava/io/File;&gt;;" aType="SignatureTag"/>
+</attribute>
+<attribute>
+<srcPos sline="702" eline="702" spos="0" epos="0"/>
+<jmpPos sline="1101" eline="1101" spos="0" epos="0"/>
+<text info="Signature: (Ljava/io/File;[Ljava/lang/String;Z)Ljava/util/Iterator&lt;Ljava/io/File;&gt;;" aType="SignatureTag"/>
+</attribute>
+<attribute>
+<srcPos sline="1423" eline="1423" spos="0" epos="0"/>
+<jmpPos sline="2420" eline="2420" spos="0" epos="0"/>
+<text info="Signature: (Ljava/io/File;Ljava/io/File;Ljava/io/FileFilter;ZLjava/util/List&lt;Ljava/lang/String;&gt;;)V" aType="SignatureTag"/>
+</attribute>
+<attribute>
+<srcPos sline="1799" eline="1799" spos="0" epos="0"/>
+<jmpPos sline="3140" eline="3140" spos="0" epos="0"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation type: Ljava/lang/Deprecated; without elements
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+<attribute>
+<srcPos sline="1832" eline="1832" spos="0" epos="0"/>
+<jmpPos sline="3186" eline="3186" spos="0" epos="0"/>
+<text info="Signature: (Ljava/io/File;Ljava/nio/charset/Charset;)Ljava/util/List&lt;Ljava/lang/String;&gt;;" aType="SignatureTag"/>
+</attribute>
+<attribute>
+<srcPos sline="1853" eline="1853" spos="0" epos="0"/>
+<jmpPos sline="3222" eline="3222" spos="0" epos="0"/>
+<text info="Signature: (Ljava/io/File;Ljava/lang/String;)Ljava/util/List&lt;Ljava/lang/String;&gt;;" aType="SignatureTag"/>
+</attribute>
+<attribute>
+<srcPos sline="1868" eline="1868" spos="0" epos="0"/>
+<jmpPos sline="3240" eline="3240" spos="0" epos="0"/>
+<text info="Signature: (Ljava/io/File;)Ljava/util/List&lt;Ljava/lang/String;&gt;;" aType="SignatureTag"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation type: Ljava/lang/Deprecated; without elements
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+<attribute>
+<srcPos sline="2016" eline="2016" spos="0" epos="0"/>
+<jmpPos sline="3406" eline="3406" spos="0" epos="0"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation type: Ljava/lang/Deprecated; without elements
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+<attribute>
+<srcPos sline="2032" eline="2032" spos="0" epos="0"/>
+<jmpPos sline="3423" eline="3423" spos="0" epos="0"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation type: Ljava/lang/Deprecated; without elements
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+<attribute>
+<srcPos sline="2046" eline="2046" spos="0" epos="0"/>
+<jmpPos sline="3443" eline="3443" spos="0" epos="0"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation type: Ljava/lang/Deprecated; without elements
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+<attribute>
+<srcPos sline="2062" eline="2062" spos="0" epos="0"/>
+<jmpPos sline="3460" eline="3460" spos="0" epos="0"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation type: Ljava/lang/Deprecated; without elements
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+<attribute>
+<srcPos sline="2217" eline="2217" spos="0" epos="0"/>
+<jmpPos sline="3666" eline="3666" spos="0" epos="0"/>
+<text info="Signature: (Ljava/io/File;Ljava/lang/String;Ljava/util/Collection&lt;*&gt;;)V" aType="SignatureTag"/>
+</attribute>
+<attribute>
+<srcPos sline="2236" eline="2236" spos="0" epos="0"/>
+<jmpPos sline="3683" eline="3683" spos="0" epos="0"/>
+<text info="Signature: (Ljava/io/File;Ljava/lang/String;Ljava/util/Collection&lt;*&gt;;Z)V" aType="SignatureTag"/>
+</attribute>
+<attribute>
+<srcPos sline="2250" eline="2250" spos="0" epos="0"/>
+<jmpPos sline="3703" eline="3703" spos="0" epos="0"/>
+<text info="Signature: (Ljava/io/File;Ljava/util/Collection&lt;*&gt;;)V" aType="SignatureTag"/>
+</attribute>
+<attribute>
+<srcPos sline="2266" eline="2266" spos="0" epos="0"/>
+<jmpPos sline="3717" eline="3717" spos="0" epos="0"/>
+<text info="Signature: (Ljava/io/File;Ljava/util/Collection&lt;*&gt;;Z)V" aType="SignatureTag"/>
+</attribute>
+<attribute>
+<srcPos sline="2287" eline="2287" spos="0" epos="0"/>
+<jmpPos sline="3734" eline="3734" spos="0" epos="0"/>
+<text info="Signature: (Ljava/io/File;Ljava/lang/String;Ljava/util/Collection&lt;*&gt;;Ljava/lang/String;)V" aType="SignatureTag"/>
+</attribute>
+<attribute>
+<srcPos sline="2307" eline="2307" spos="0" epos="0"/>
+<jmpPos sline="3753" eline="3753" spos="0" epos="0"/>
+<text info="Signature: (Ljava/io/File;Ljava/lang/String;Ljava/util/Collection&lt;*&gt;;Ljava/lang/String;Z)V" aType="SignatureTag"/>
+</attribute>
+<attribute>
+<srcPos sline="2332" eline="2332" spos="0" epos="0"/>
+<jmpPos sline="3805" eline="3805" spos="0" epos="0"/>
+<text info="Signature: (Ljava/io/File;Ljava/util/Collection&lt;*&gt;;Ljava/lang/String;)V" aType="SignatureTag"/>
+</attribute>
+<attribute>
+<srcPos sline="2350" eline="2350" spos="0" epos="0"/>
+<jmpPos sline="3822" eline="3822" spos="0" epos="0"/>
+<text info="Signature: (Ljava/io/File;Ljava/util/Collection&lt;*&gt;;Ljava/lang/String;Z)V" aType="SignatureTag"/>
+</attribute>
+</attributes>

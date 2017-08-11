@@ -1,0 +1,400 @@
+public class org.apache.log4j.xml.XMLLayout extends org.apache.log4j.Layout
+{
+    private final int DEFAULT_SIZE;
+    private final int UPPER_LIMIT;
+    private java.lang.StringBuffer buf;
+    private boolean locationInfo;
+    private boolean properties;
+
+    public void <init>()
+    {
+        org.apache.log4j.xml.XMLLayout r0;
+        java.lang.StringBuffer $r1;
+
+        r0 := @this: org.apache.log4j.xml.XMLLayout;
+
+        specialinvoke r0.<org.apache.log4j.Layout: void <init>()>();
+
+        r0.<org.apache.log4j.xml.XMLLayout: int DEFAULT_SIZE> = 256;
+
+        r0.<org.apache.log4j.xml.XMLLayout: int UPPER_LIMIT> = 2048;
+
+        $r1 = new java.lang.StringBuffer;
+
+        specialinvoke $r1.<java.lang.StringBuffer: void <init>(int)>(256);
+
+        r0.<org.apache.log4j.xml.XMLLayout: java.lang.StringBuffer buf> = $r1;
+
+        r0.<org.apache.log4j.xml.XMLLayout: boolean locationInfo> = 0;
+
+        r0.<org.apache.log4j.xml.XMLLayout: boolean properties> = 0;
+
+        return;
+    }
+
+    public void setLocationInfo(boolean)
+    {
+        org.apache.log4j.xml.XMLLayout r0;
+        boolean z0;
+
+        r0 := @this: org.apache.log4j.xml.XMLLayout;
+
+        z0 := @parameter0: boolean;
+
+        r0.<org.apache.log4j.xml.XMLLayout: boolean locationInfo> = z0;
+
+        return;
+    }
+
+    public boolean getLocationInfo()
+    {
+        org.apache.log4j.xml.XMLLayout r0;
+        boolean $z0;
+
+        r0 := @this: org.apache.log4j.xml.XMLLayout;
+
+        $z0 = r0.<org.apache.log4j.xml.XMLLayout: boolean locationInfo>;
+
+        return $z0;
+    }
+
+    public void setProperties(boolean)
+    {
+        org.apache.log4j.xml.XMLLayout r0;
+        boolean z0;
+
+        r0 := @this: org.apache.log4j.xml.XMLLayout;
+
+        z0 := @parameter0: boolean;
+
+        r0.<org.apache.log4j.xml.XMLLayout: boolean properties> = z0;
+
+        return;
+    }
+
+    public boolean getProperties()
+    {
+        org.apache.log4j.xml.XMLLayout r0;
+        boolean $z0;
+
+        r0 := @this: org.apache.log4j.xml.XMLLayout;
+
+        $z0 = r0.<org.apache.log4j.xml.XMLLayout: boolean properties>;
+
+        return $z0;
+    }
+
+    public void activateOptions()
+    {
+        org.apache.log4j.xml.XMLLayout r0;
+
+        r0 := @this: org.apache.log4j.xml.XMLLayout;
+
+        return;
+    }
+
+    public java.lang.String format(org.apache.log4j.spi.LoggingEvent)
+    {
+        org.apache.log4j.xml.XMLLayout r0;
+        org.apache.log4j.spi.LoggingEvent r1;
+        java.lang.String r2, r5, $r12, $r13, $r23, $r24, $r29, $r30, $r37, $r47, $r52, $r53, $r62, $r63, $r68, $r69, $r74, $r75, $r80, $r86, $r102;
+        java.lang.String[] r3;
+        java.lang.Object[] r4;
+        java.lang.Object r6, $r43;
+        java.lang.StringBuffer $r7, $r8, $r9, $r11, $r15, $r17, $r19, $r21, $r26, $r28, $r32, $r34, $r36, $r38, $r41, $r44, $r46, $r49, $r51, $r55, $r57, $r59, $r61, $r65, $r67, $r71, $r73, $r77, $r79, $r82, $r84, $r87, $r88, $r90, $r92, $r94, $r95, $r97, $r100, $r101;
+        int $i0, $i2, $i3, i4, i5, $i6;
+        long $l1;
+        org.apache.log4j.Level $r22;
+        boolean $z0, $z1;
+        org.apache.log4j.spi.LocationInfo r98;
+        java.util.Set r99;
+
+        r0 := @this: org.apache.log4j.xml.XMLLayout;
+
+        r1 := @parameter0: org.apache.log4j.spi.LoggingEvent;
+
+        $r7 = r0.<org.apache.log4j.xml.XMLLayout: java.lang.StringBuffer buf>;
+
+        $i0 = virtualinvoke $r7.<java.lang.StringBuffer: int capacity()>();
+
+        if $i0 <= 2048 goto label01;
+
+        $r97 = new java.lang.StringBuffer;
+
+        specialinvoke $r97.<java.lang.StringBuffer: void <init>(int)>(256);
+
+        r0.<org.apache.log4j.xml.XMLLayout: java.lang.StringBuffer buf> = $r97;
+
+        goto label02;
+
+     label01:
+        $r8 = r0.<org.apache.log4j.xml.XMLLayout: java.lang.StringBuffer buf>;
+
+        virtualinvoke $r8.<java.lang.StringBuffer: void setLength(int)>(0);
+
+     label02:
+        $r9 = r0.<org.apache.log4j.xml.XMLLayout: java.lang.StringBuffer buf>;
+
+        virtualinvoke $r9.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>("<log4j:event logger=\"");
+
+        $r11 = r0.<org.apache.log4j.xml.XMLLayout: java.lang.StringBuffer buf>;
+
+        $r12 = virtualinvoke r1.<org.apache.log4j.spi.LoggingEvent: java.lang.String getLoggerName()>();
+
+        $r13 = staticinvoke <org.apache.log4j.helpers.Transform: java.lang.String escapeTags(java.lang.String)>($r12);
+
+        virtualinvoke $r11.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>($r13);
+
+        $r15 = r0.<org.apache.log4j.xml.XMLLayout: java.lang.StringBuffer buf>;
+
+        virtualinvoke $r15.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>("\" timestamp=\"");
+
+        $r17 = r0.<org.apache.log4j.xml.XMLLayout: java.lang.StringBuffer buf>;
+
+        $l1 = r1.<org.apache.log4j.spi.LoggingEvent: long timeStamp>;
+
+        virtualinvoke $r17.<java.lang.StringBuffer: java.lang.StringBuffer append(long)>($l1);
+
+        $r19 = r0.<org.apache.log4j.xml.XMLLayout: java.lang.StringBuffer buf>;
+
+        virtualinvoke $r19.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>("\" level=\"");
+
+        $r21 = r0.<org.apache.log4j.xml.XMLLayout: java.lang.StringBuffer buf>;
+
+        $r22 = virtualinvoke r1.<org.apache.log4j.spi.LoggingEvent: org.apache.log4j.Level getLevel()>();
+
+        $r23 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r22);
+
+        $r24 = staticinvoke <org.apache.log4j.helpers.Transform: java.lang.String escapeTags(java.lang.String)>($r23);
+
+        virtualinvoke $r21.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>($r24);
+
+        $r26 = r0.<org.apache.log4j.xml.XMLLayout: java.lang.StringBuffer buf>;
+
+        virtualinvoke $r26.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>("\" thread=\"");
+
+        $r28 = r0.<org.apache.log4j.xml.XMLLayout: java.lang.StringBuffer buf>;
+
+        $r29 = virtualinvoke r1.<org.apache.log4j.spi.LoggingEvent: java.lang.String getThreadName()>();
+
+        $r30 = staticinvoke <org.apache.log4j.helpers.Transform: java.lang.String escapeTags(java.lang.String)>($r29);
+
+        virtualinvoke $r28.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>($r30);
+
+        $r32 = r0.<org.apache.log4j.xml.XMLLayout: java.lang.StringBuffer buf>;
+
+        virtualinvoke $r32.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>("\">\r\n");
+
+        $r34 = r0.<org.apache.log4j.xml.XMLLayout: java.lang.StringBuffer buf>;
+
+        virtualinvoke $r34.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>("<log4j:message><![CDATA[");
+
+        $r36 = r0.<org.apache.log4j.xml.XMLLayout: java.lang.StringBuffer buf>;
+
+        $r37 = virtualinvoke r1.<org.apache.log4j.spi.LoggingEvent: java.lang.String getRenderedMessage()>();
+
+        staticinvoke <org.apache.log4j.helpers.Transform: void appendEscapingCDATA(java.lang.StringBuffer,java.lang.String)>($r36, $r37);
+
+        $r38 = r0.<org.apache.log4j.xml.XMLLayout: java.lang.StringBuffer buf>;
+
+        virtualinvoke $r38.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>("]]></log4j:message>\r\n");
+
+        r2 = virtualinvoke r1.<org.apache.log4j.spi.LoggingEvent: java.lang.String getNDC()>();
+
+        if r2 == null goto label03;
+
+        $r92 = r0.<org.apache.log4j.xml.XMLLayout: java.lang.StringBuffer buf>;
+
+        virtualinvoke $r92.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>("<log4j:NDC><![CDATA[");
+
+        $r94 = r0.<org.apache.log4j.xml.XMLLayout: java.lang.StringBuffer buf>;
+
+        staticinvoke <org.apache.log4j.helpers.Transform: void appendEscapingCDATA(java.lang.StringBuffer,java.lang.String)>($r94, r2);
+
+        $r95 = r0.<org.apache.log4j.xml.XMLLayout: java.lang.StringBuffer buf>;
+
+        virtualinvoke $r95.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>("]]></log4j:NDC>\r\n");
+
+     label03:
+        r3 = virtualinvoke r1.<org.apache.log4j.spi.LoggingEvent: java.lang.String[] getThrowableStrRep()>();
+
+        if r3 == null goto label06;
+
+        $r84 = r0.<org.apache.log4j.xml.XMLLayout: java.lang.StringBuffer buf>;
+
+        virtualinvoke $r84.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>("<log4j:throwable><![CDATA[");
+
+        i4 = 0;
+
+        goto label05;
+
+     label04:
+        $r87 = r0.<org.apache.log4j.xml.XMLLayout: java.lang.StringBuffer buf>;
+
+        $r86 = r3[i4];
+
+        staticinvoke <org.apache.log4j.helpers.Transform: void appendEscapingCDATA(java.lang.StringBuffer,java.lang.String)>($r87, $r86);
+
+        $r88 = r0.<org.apache.log4j.xml.XMLLayout: java.lang.StringBuffer buf>;
+
+        virtualinvoke $r88.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>("\r\n");
+
+        i4 = i4 + 1;
+
+     label05:
+        $i3 = lengthof r3;
+
+        if i4 < $i3 goto label04;
+
+        $r90 = r0.<org.apache.log4j.xml.XMLLayout: java.lang.StringBuffer buf>;
+
+        virtualinvoke $r90.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>("]]></log4j:throwable>\r\n");
+
+     label06:
+        $z0 = r0.<org.apache.log4j.xml.XMLLayout: boolean locationInfo>;
+
+        if $z0 == 0 goto label07;
+
+        r98 = virtualinvoke r1.<org.apache.log4j.spi.LoggingEvent: org.apache.log4j.spi.LocationInfo getLocationInformation()>();
+
+        $r59 = r0.<org.apache.log4j.xml.XMLLayout: java.lang.StringBuffer buf>;
+
+        virtualinvoke $r59.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>("<log4j:locationInfo class=\"");
+
+        $r61 = r0.<org.apache.log4j.xml.XMLLayout: java.lang.StringBuffer buf>;
+
+        $r62 = virtualinvoke r98.<org.apache.log4j.spi.LocationInfo: java.lang.String getClassName()>();
+
+        $r63 = staticinvoke <org.apache.log4j.helpers.Transform: java.lang.String escapeTags(java.lang.String)>($r62);
+
+        virtualinvoke $r61.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>($r63);
+
+        $r65 = r0.<org.apache.log4j.xml.XMLLayout: java.lang.StringBuffer buf>;
+
+        virtualinvoke $r65.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>("\" method=\"");
+
+        $r67 = r0.<org.apache.log4j.xml.XMLLayout: java.lang.StringBuffer buf>;
+
+        $r68 = virtualinvoke r98.<org.apache.log4j.spi.LocationInfo: java.lang.String getMethodName()>();
+
+        $r69 = staticinvoke <org.apache.log4j.helpers.Transform: java.lang.String escapeTags(java.lang.String)>($r68);
+
+        virtualinvoke $r67.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>($r69);
+
+        $r71 = r0.<org.apache.log4j.xml.XMLLayout: java.lang.StringBuffer buf>;
+
+        virtualinvoke $r71.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>("\" file=\"");
+
+        $r73 = r0.<org.apache.log4j.xml.XMLLayout: java.lang.StringBuffer buf>;
+
+        $r74 = virtualinvoke r98.<org.apache.log4j.spi.LocationInfo: java.lang.String getFileName()>();
+
+        $r75 = staticinvoke <org.apache.log4j.helpers.Transform: java.lang.String escapeTags(java.lang.String)>($r74);
+
+        virtualinvoke $r73.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>($r75);
+
+        $r77 = r0.<org.apache.log4j.xml.XMLLayout: java.lang.StringBuffer buf>;
+
+        virtualinvoke $r77.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>("\" line=\"");
+
+        $r79 = r0.<org.apache.log4j.xml.XMLLayout: java.lang.StringBuffer buf>;
+
+        $r80 = virtualinvoke r98.<org.apache.log4j.spi.LocationInfo: java.lang.String getLineNumber()>();
+
+        virtualinvoke $r79.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>($r80);
+
+        $r82 = r0.<org.apache.log4j.xml.XMLLayout: java.lang.StringBuffer buf>;
+
+        virtualinvoke $r82.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>("\"/>\r\n");
+
+     label07:
+        $z1 = r0.<org.apache.log4j.xml.XMLLayout: boolean properties>;
+
+        if $z1 == 0 goto label11;
+
+        r99 = virtualinvoke r1.<org.apache.log4j.spi.LoggingEvent: java.util.Set getPropertyKeySet()>();
+
+        $i2 = interfaceinvoke r99.<java.util.Set: int size()>();
+
+        if $i2 <= 0 goto label11;
+
+        $r41 = r0.<org.apache.log4j.xml.XMLLayout: java.lang.StringBuffer buf>;
+
+        virtualinvoke $r41.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>("<log4j:properties>\r\n");
+
+        r4 = interfaceinvoke r99.<java.util.Set: java.lang.Object[] toArray()>();
+
+        staticinvoke <java.util.Arrays: void sort(java.lang.Object[])>(r4);
+
+        i5 = 0;
+
+        goto label10;
+
+     label08:
+        $r43 = r4[i5];
+
+        r5 = virtualinvoke $r43.<java.lang.Object: java.lang.String toString()>();
+
+        r6 = virtualinvoke r1.<org.apache.log4j.spi.LoggingEvent: java.lang.Object getMDC(java.lang.String)>(r5);
+
+        if r6 == null goto label09;
+
+        $r44 = r0.<org.apache.log4j.xml.XMLLayout: java.lang.StringBuffer buf>;
+
+        virtualinvoke $r44.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>("<log4j:data name=\"");
+
+        $r46 = r0.<org.apache.log4j.xml.XMLLayout: java.lang.StringBuffer buf>;
+
+        $r47 = staticinvoke <org.apache.log4j.helpers.Transform: java.lang.String escapeTags(java.lang.String)>(r5);
+
+        virtualinvoke $r46.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>($r47);
+
+        $r49 = r0.<org.apache.log4j.xml.XMLLayout: java.lang.StringBuffer buf>;
+
+        virtualinvoke $r49.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>("\" value=\"");
+
+        $r51 = r0.<org.apache.log4j.xml.XMLLayout: java.lang.StringBuffer buf>;
+
+        $r52 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>(r6);
+
+        $r53 = staticinvoke <org.apache.log4j.helpers.Transform: java.lang.String escapeTags(java.lang.String)>($r52);
+
+        virtualinvoke $r51.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>($r53);
+
+        $r55 = r0.<org.apache.log4j.xml.XMLLayout: java.lang.StringBuffer buf>;
+
+        virtualinvoke $r55.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>("\"/>\r\n");
+
+     label09:
+        i5 = i5 + 1;
+
+     label10:
+        $i6 = lengthof r4;
+
+        if i5 < $i6 goto label08;
+
+        $r57 = r0.<org.apache.log4j.xml.XMLLayout: java.lang.StringBuffer buf>;
+
+        virtualinvoke $r57.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>("</log4j:properties>\r\n");
+
+     label11:
+        $r100 = r0.<org.apache.log4j.xml.XMLLayout: java.lang.StringBuffer buf>;
+
+        virtualinvoke $r100.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>("</log4j:event>\r\n\r\n");
+
+        $r101 = r0.<org.apache.log4j.xml.XMLLayout: java.lang.StringBuffer buf>;
+
+        $r102 = virtualinvoke $r101.<java.lang.StringBuffer: java.lang.String toString()>();
+
+        return $r102;
+    }
+
+    public boolean ignoresThrowable()
+    {
+        org.apache.log4j.xml.XMLLayout r0;
+
+        r0 := @this: org.apache.log4j.xml.XMLLayout;
+
+        return 0;
+    }
+}

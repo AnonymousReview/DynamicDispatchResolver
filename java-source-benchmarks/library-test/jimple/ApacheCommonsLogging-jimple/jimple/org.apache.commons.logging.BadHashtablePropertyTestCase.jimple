@@ -1,0 +1,42 @@
+public class org.apache.commons.logging.BadHashtablePropertyTestCase extends junit.framework.TestCase
+{
+
+    public void <init>()
+    {
+        org.apache.commons.logging.BadHashtablePropertyTestCase r0;
+
+        r0 := @this: org.apache.commons.logging.BadHashtablePropertyTestCase;
+
+        specialinvoke r0.<junit.framework.TestCase: void <init>()>();
+
+        return;
+    }
+
+    public void testType()
+    {
+        org.apache.commons.logging.BadHashtablePropertyTestCase r0;
+        java.util.Hashtable $r1;
+        boolean $z0;
+
+        r0 := @this: org.apache.commons.logging.BadHashtablePropertyTestCase;
+
+        $r1 = <org.apache.commons.logging.LogFactory: java.util.Hashtable factories>;
+
+        $z0 = $r1 instanceof java.util.Hashtable;
+
+        staticinvoke <org.apache.commons.logging.BadHashtablePropertyTestCase: void assertTrue(boolean)>($z0);
+
+        return;
+    }
+
+    public void testPutCalled() throws java.lang.Exception
+    {
+        org.apache.commons.logging.BadHashtablePropertyTestCase r0;
+
+        r0 := @this: org.apache.commons.logging.BadHashtablePropertyTestCase;
+
+        staticinvoke <org.apache.commons.logging.LogFactory: org.apache.commons.logging.Log getLog(java.lang.Class)>(class "org/apache/commons/logging/BadHashtablePropertyTestCase");
+
+        return;
+    }
+}

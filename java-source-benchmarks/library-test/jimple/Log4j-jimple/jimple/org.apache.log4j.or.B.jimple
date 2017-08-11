@@ -1,0 +1,14 @@
+class org.apache.log4j.or.B extends org.apache.log4j.or.A
+{
+
+    void <init>()
+    {
+        org.apache.log4j.or.B r0;
+
+        r0 := @this: org.apache.log4j.or.B;
+
+        specialinvoke r0.<org.apache.log4j.or.A: void <init>()>();
+
+        return;
+    }
+}

@@ -1,0 +1,45 @@
+class org.apache.commons.io.input.BoundedReaderTest$1 extends java.io.BufferedReader
+{
+    final org.apache.commons.io.input.BoundedReaderTest this$0;
+    private final java.util.concurrent.atomic.AtomicBoolean val$closed;
+
+    void <init>(org.apache.commons.io.input.BoundedReaderTest, java.io.Reader, java.util.concurrent.atomic.AtomicBoolean)
+    {
+        org.apache.commons.io.input.BoundedReaderTest$1 r0;
+        org.apache.commons.io.input.BoundedReaderTest r1;
+        java.io.Reader $r2;
+        java.util.concurrent.atomic.AtomicBoolean r3;
+
+        r0 := @this: org.apache.commons.io.input.BoundedReaderTest$1;
+
+        r1 := @parameter0: org.apache.commons.io.input.BoundedReaderTest;
+
+        $r2 := @parameter1: java.io.Reader;
+
+        r3 := @parameter2: java.util.concurrent.atomic.AtomicBoolean;
+
+        r0.<org.apache.commons.io.input.BoundedReaderTest$1: org.apache.commons.io.input.BoundedReaderTest this$0> = r1;
+
+        r0.<org.apache.commons.io.input.BoundedReaderTest$1: java.util.concurrent.atomic.AtomicBoolean val$closed> = r3;
+
+        specialinvoke r0.<java.io.BufferedReader: void <init>(java.io.Reader)>($r2);
+
+        return;
+    }
+
+    public void close() throws java.io.IOException
+    {
+        org.apache.commons.io.input.BoundedReaderTest$1 r0;
+        java.util.concurrent.atomic.AtomicBoolean $r1;
+
+        r0 := @this: org.apache.commons.io.input.BoundedReaderTest$1;
+
+        $r1 = r0.<org.apache.commons.io.input.BoundedReaderTest$1: java.util.concurrent.atomic.AtomicBoolean val$closed>;
+
+        virtualinvoke $r1.<java.util.concurrent.atomic.AtomicBoolean: void set(boolean)>(1);
+
+        specialinvoke r0.<java.io.BufferedReader: void close()>();
+
+        return;
+    }
+}

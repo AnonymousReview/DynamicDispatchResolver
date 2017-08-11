@@ -1,0 +1,64 @@
+public class org.apache.commons.io.output.ClosedOutputStreamTest extends java.lang.Object
+{
+
+    public void <init>()
+    {
+        org.apache.commons.io.output.ClosedOutputStreamTest r0;
+
+        r0 := @this: org.apache.commons.io.output.ClosedOutputStreamTest;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void testRead() throws java.lang.Exception
+    {
+        org.apache.commons.io.output.ClosedOutputStreamTest r0;
+        org.apache.commons.io.output.ClosedOutputStream $r3, r6;
+        java.lang.Throwable $r4;
+        java.io.IOException $r5;
+
+        r0 := @this: org.apache.commons.io.output.ClosedOutputStreamTest;
+
+        r6 = null;
+
+     label1:
+        $r3 = new org.apache.commons.io.output.ClosedOutputStream;
+
+        specialinvoke $r3.<org.apache.commons.io.output.ClosedOutputStream: void <init>()>();
+
+        r6 = $r3;
+
+        virtualinvoke $r3.<org.apache.commons.io.output.ClosedOutputStream: void write(int)>(120);
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("write(b)");
+
+     label2:
+        goto label6;
+
+     label3:
+        $r5 := @caughtexception;
+
+     label4:
+        virtualinvoke r6.<org.apache.commons.io.output.ClosedOutputStream: void close()>();
+
+        goto label7;
+
+     label5:
+        $r4 := @caughtexception;
+
+        virtualinvoke r6.<org.apache.commons.io.output.ClosedOutputStream: void close()>();
+
+        throw $r4;
+
+     label6:
+        virtualinvoke $r3.<org.apache.commons.io.output.ClosedOutputStream: void close()>();
+
+     label7:
+        return;
+
+        catch java.io.IOException from label1 to label2 with label3;
+        catch java.lang.Throwable from label1 to label4 with label5;
+    }
+}

@@ -1,0 +1,1262 @@
+public class org.apache.commons.codec.digest.HmacUtilsTest extends java.lang.Object
+{
+    private static final java.lang.String STANDARD_KEY_STRING;
+    private static final byte[] STANDARD_KEY_BYTES;
+    private static final byte[] STANDARD_MD5_RESULT_BYTES;
+    private static final java.lang.String STANDARD_MD5_RESULT_STRING;
+    private static final java.lang.String STANDARD_PHRASE_STRING;
+    private static final byte[] STANDARD_PHRASE_BYTES;
+    private static final byte[] STANDARD_SHA1_RESULT_BYTES;
+    private static final java.lang.String STANDARD_SHA1_RESULT_STRING;
+    private static final byte[] STANDARD_SHA256_RESULT_BYTES;
+    private static final java.lang.String STANDARD_SHA256_RESULT_STRING;
+    private static final byte[] STANDARD_SHA384_RESULT_BYTES;
+    private static final java.lang.String STANDARD_SHA384_RESULT_STRING;
+    private static final byte[] STANDARD_SHA512_RESULT_BYTES;
+    private static final java.lang.String STANDARD_SHA512_RESULT_STRING;
+
+    static void <clinit>()
+    {
+        java.lang.String $r0, $r3, $r8, $r9, $r11, $r12;
+        byte[] $r1, $r2, $r4, $r5, $r6, $r7, $r10;
+
+        <org.apache.commons.codec.digest.HmacUtilsTest: java.lang.String STANDARD_SHA256_RESULT_STRING> = "f7bc83f430538424b13298e6aa6fb143ef4d59a14946175997479dbc2d1a3cd8";
+
+        <org.apache.commons.codec.digest.HmacUtilsTest: java.lang.String STANDARD_SHA1_RESULT_STRING> = "de7c9b85b8b78aa6bc8a7a36f70a90701c9db4d9";
+
+        <org.apache.commons.codec.digest.HmacUtilsTest: java.lang.String STANDARD_PHRASE_STRING> = "The quick brown fox jumps over the lazy dog";
+
+        <org.apache.commons.codec.digest.HmacUtilsTest: java.lang.String STANDARD_MD5_RESULT_STRING> = "80070713463e7749b90c2dc24911e275";
+
+        <org.apache.commons.codec.digest.HmacUtilsTest: java.lang.String STANDARD_KEY_STRING> = "key";
+
+        $r0 = "key";
+
+        $r1 = virtualinvoke $r0.<java.lang.String: byte[] getBytes()>();
+
+        <org.apache.commons.codec.digest.HmacUtilsTest: byte[] STANDARD_KEY_BYTES> = $r1;
+
+        $r2 = newarray (byte)[16];
+
+        $r2[0] = -128;
+
+        $r2[1] = 7;
+
+        $r2[2] = 7;
+
+        $r2[3] = 19;
+
+        $r2[4] = 70;
+
+        $r2[5] = 62;
+
+        $r2[6] = 119;
+
+        $r2[7] = 73;
+
+        $r2[8] = -71;
+
+        $r2[9] = 12;
+
+        $r2[10] = 45;
+
+        $r2[11] = -62;
+
+        $r2[12] = 73;
+
+        $r2[13] = 17;
+
+        $r2[14] = -30;
+
+        $r2[15] = 117;
+
+        <org.apache.commons.codec.digest.HmacUtilsTest: byte[] STANDARD_MD5_RESULT_BYTES> = $r2;
+
+        $r3 = "The quick brown fox jumps over the lazy dog";
+
+        $r4 = virtualinvoke $r3.<java.lang.String: byte[] getBytes()>();
+
+        <org.apache.commons.codec.digest.HmacUtilsTest: byte[] STANDARD_PHRASE_BYTES> = $r4;
+
+        $r5 = newarray (byte)[20];
+
+        $r5[0] = -34;
+
+        $r5[1] = 124;
+
+        $r5[2] = -101;
+
+        $r5[3] = -123;
+
+        $r5[4] = -72;
+
+        $r5[5] = -73;
+
+        $r5[6] = -118;
+
+        $r5[7] = -90;
+
+        $r5[8] = -68;
+
+        $r5[9] = -118;
+
+        $r5[10] = 122;
+
+        $r5[11] = 54;
+
+        $r5[12] = -9;
+
+        $r5[13] = 10;
+
+        $r5[14] = -112;
+
+        $r5[15] = 112;
+
+        $r5[16] = 28;
+
+        $r5[17] = -99;
+
+        $r5[18] = -76;
+
+        $r5[19] = -39;
+
+        <org.apache.commons.codec.digest.HmacUtilsTest: byte[] STANDARD_SHA1_RESULT_BYTES> = $r5;
+
+        $r6 = newarray (byte)[32];
+
+        $r6[0] = -9;
+
+        $r6[1] = -68;
+
+        $r6[2] = -125;
+
+        $r6[3] = -12;
+
+        $r6[4] = 48;
+
+        $r6[5] = 83;
+
+        $r6[6] = -124;
+
+        $r6[7] = 36;
+
+        $r6[8] = -79;
+
+        $r6[9] = 50;
+
+        $r6[10] = -104;
+
+        $r6[11] = -26;
+
+        $r6[12] = -86;
+
+        $r6[13] = 111;
+
+        $r6[14] = -79;
+
+        $r6[15] = 67;
+
+        $r6[16] = -17;
+
+        $r6[17] = 77;
+
+        $r6[18] = 89;
+
+        $r6[19] = -95;
+
+        $r6[20] = 73;
+
+        $r6[21] = 70;
+
+        $r6[22] = 23;
+
+        $r6[23] = 89;
+
+        $r6[24] = -105;
+
+        $r6[25] = 71;
+
+        $r6[26] = -99;
+
+        $r6[27] = -68;
+
+        $r6[28] = 45;
+
+        $r6[29] = 26;
+
+        $r6[30] = 60;
+
+        $r6[31] = -40;
+
+        <org.apache.commons.codec.digest.HmacUtilsTest: byte[] STANDARD_SHA256_RESULT_BYTES> = $r6;
+
+        $r7 = newarray (byte)[48];
+
+        $r7[0] = -41;
+
+        $r7[1] = -12;
+
+        $r7[2] = 114;
+
+        $r7[3] = 126;
+
+        $r7[4] = 44;
+
+        $r7[5] = 11;
+
+        $r7[6] = 57;
+
+        $r7[7] = -82;
+
+        $r7[8] = 15;
+
+        $r7[9] = 30;
+
+        $r7[10] = 64;
+
+        $r7[11] = -52;
+
+        $r7[12] = -106;
+
+        $r7[13] = -10;
+
+        $r7[14] = 2;
+
+        $r7[15] = 66;
+
+        $r7[16] = -43;
+
+        $r7[17] = -73;
+
+        $r7[18] = -128;
+
+        $r7[19] = 24;
+
+        $r7[20] = 65;
+
+        $r7[21] = -50;
+
+        $r7[22] = -90;
+
+        $r7[23] = -4;
+
+        $r7[24] = 89;
+
+        $r7[25] = 44;
+
+        $r7[26] = 93;
+
+        $r7[27] = 62;
+
+        $r7[28] = 26;
+
+        $r7[29] = -27;
+
+        $r7[30] = 7;
+
+        $r7[32] = 88;
+
+        $r7[33] = 42;
+
+        $r7[34] = -106;
+
+        $r7[35] = -49;
+
+        $r7[36] = 53;
+
+        $r7[37] = -31;
+
+        $r7[38] = -27;
+
+        $r7[39] = 84;
+
+        $r7[40] = -103;
+
+        $r7[41] = 95;
+
+        $r7[42] = -28;
+
+        $r7[43] = -32;
+
+        $r7[44] = 51;
+
+        $r7[45] = -127;
+
+        $r7[46] = -62;
+
+        $r7[47] = 55;
+
+        <org.apache.commons.codec.digest.HmacUtilsTest: byte[] STANDARD_SHA384_RESULT_BYTES> = $r7;
+
+        $r8 = "D7F4727E2C0B39AE0F1E40CC96F60242D5B7801841CEA6FC592C5D3E1AE50700582A96CF35E1E554995FE4E03381C237";
+
+        $r9 = virtualinvoke $r8.<java.lang.String: java.lang.String toLowerCase()>();
+
+        <org.apache.commons.codec.digest.HmacUtilsTest: java.lang.String STANDARD_SHA384_RESULT_STRING> = $r9;
+
+        $r10 = newarray (byte)[64];
+
+        $r10[0] = -76;
+
+        $r10[1] = 42;
+
+        $r10[2] = -16;
+
+        $r10[3] = -112;
+
+        $r10[4] = 87;
+
+        $r10[5] = -70;
+
+        $r10[6] = -63;
+
+        $r10[7] = -30;
+
+        $r10[8] = -44;
+
+        $r10[9] = 23;
+
+        $r10[10] = 8;
+
+        $r10[11] = -28;
+
+        $r10[12] = -118;
+
+        $r10[13] = -112;
+
+        $r10[14] = 46;
+
+        $r10[15] = 9;
+
+        $r10[16] = -75;
+
+        $r10[17] = -1;
+
+        $r10[18] = 127;
+
+        $r10[19] = 18;
+
+        $r10[20] = -85;
+
+        $r10[21] = 66;
+
+        $r10[22] = -118;
+
+        $r10[23] = 79;
+
+        $r10[24] = -24;
+
+        $r10[25] = 102;
+
+        $r10[26] = 83;
+
+        $r10[27] = -57;
+
+        $r10[28] = 61;
+
+        $r10[29] = -46;
+
+        $r10[30] = 72;
+
+        $r10[31] = -5;
+
+        $r10[32] = -126;
+
+        $r10[33] = -7;
+
+        $r10[34] = 72;
+
+        $r10[35] = -91;
+
+        $r10[36] = 73;
+
+        $r10[37] = -9;
+
+        $r10[38] = -73;
+
+        $r10[39] = -111;
+
+        $r10[40] = -91;
+
+        $r10[41] = -76;
+
+        $r10[42] = 25;
+
+        $r10[43] = 21;
+
+        $r10[44] = -18;
+
+        $r10[45] = 77;
+
+        $r10[46] = 30;
+
+        $r10[47] = -61;
+
+        $r10[48] = -109;
+
+        $r10[49] = 83;
+
+        $r10[50] = 87;
+
+        $r10[51] = -28;
+
+        $r10[52] = -30;
+
+        $r10[53] = 49;
+
+        $r10[54] = 114;
+
+        $r10[55] = 80;
+
+        $r10[56] = -48;
+
+        $r10[57] = 55;
+
+        $r10[58] = 42;
+
+        $r10[59] = -6;
+
+        $r10[60] = 46;
+
+        $r10[61] = -66;
+
+        $r10[62] = -21;
+
+        $r10[63] = 58;
+
+        <org.apache.commons.codec.digest.HmacUtilsTest: byte[] STANDARD_SHA512_RESULT_BYTES> = $r10;
+
+        $r11 = "B42AF09057BAC1E2D41708E48A902E09B5FF7F12AB428A4FE86653C73DD248FB82F948A549F7B791A5B41915EE4D1EC3935357E4E2317250D0372AFA2EBEEB3A";
+
+        $r12 = virtualinvoke $r11.<java.lang.String: java.lang.String toLowerCase()>();
+
+        <org.apache.commons.codec.digest.HmacUtilsTest: java.lang.String STANDARD_SHA512_RESULT_STRING> = $r12;
+
+        return;
+    }
+
+    public void <init>()
+    {
+        org.apache.commons.codec.digest.HmacUtilsTest r0;
+
+        r0 := @this: org.apache.commons.codec.digest.HmacUtilsTest;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void testConstructor()
+    {
+        org.apache.commons.codec.digest.HmacUtilsTest r0;
+        org.apache.commons.codec.digest.HmacUtils $r1;
+
+        r0 := @this: org.apache.commons.codec.digest.HmacUtilsTest;
+
+        $r1 = new org.apache.commons.codec.digest.HmacUtils;
+
+        specialinvoke $r1.<org.apache.commons.codec.digest.HmacUtils: void <init>()>();
+
+        staticinvoke <org.junit.Assert: void assertNotNull(java.lang.Object)>($r1);
+
+        return;
+    }
+
+    public void testEmptyKey()
+    {
+        org.apache.commons.codec.digest.HmacUtilsTest r0;
+        byte[] $r1;
+
+        r0 := @this: org.apache.commons.codec.digest.HmacUtilsTest;
+
+        $r1 = newarray (byte)[0];
+
+        staticinvoke <org.apache.commons.codec.digest.HmacUtils: javax.crypto.Mac getHmacMd5(byte[])>($r1);
+
+        return;
+    }
+
+    public void testGetHMac() throws java.io.IOException
+    {
+        org.apache.commons.codec.digest.HmacUtilsTest r0;
+        byte[] $r1, $r2, $r4, $r5, $r6, $r7, $r9, $r10, $r11, $r12, $r14, $r15, $r16, $r17, $r19, $r20, $r21, $r22, $r24, $r25;
+        javax.crypto.Mac $r3, $r8, $r13, $r18, $r23;
+
+        r0 := @this: org.apache.commons.codec.digest.HmacUtilsTest;
+
+        $r2 = <org.apache.commons.codec.digest.HmacUtilsTest: byte[] STANDARD_MD5_RESULT_BYTES>;
+
+        $r1 = <org.apache.commons.codec.digest.HmacUtilsTest: byte[] STANDARD_KEY_BYTES>;
+
+        $r3 = staticinvoke <org.apache.commons.codec.digest.HmacUtils: javax.crypto.Mac getHmacMd5(byte[])>($r1);
+
+        $r4 = <org.apache.commons.codec.digest.HmacUtilsTest: byte[] STANDARD_PHRASE_BYTES>;
+
+        $r5 = virtualinvoke $r3.<javax.crypto.Mac: byte[] doFinal(byte[])>($r4);
+
+        staticinvoke <org.junit.Assert: void assertArrayEquals(byte[],byte[])>($r2, $r5);
+
+        $r7 = <org.apache.commons.codec.digest.HmacUtilsTest: byte[] STANDARD_SHA1_RESULT_BYTES>;
+
+        $r6 = <org.apache.commons.codec.digest.HmacUtilsTest: byte[] STANDARD_KEY_BYTES>;
+
+        $r8 = staticinvoke <org.apache.commons.codec.digest.HmacUtils: javax.crypto.Mac getHmacSha1(byte[])>($r6);
+
+        $r9 = <org.apache.commons.codec.digest.HmacUtilsTest: byte[] STANDARD_PHRASE_BYTES>;
+
+        $r10 = virtualinvoke $r8.<javax.crypto.Mac: byte[] doFinal(byte[])>($r9);
+
+        staticinvoke <org.junit.Assert: void assertArrayEquals(byte[],byte[])>($r7, $r10);
+
+        $r12 = <org.apache.commons.codec.digest.HmacUtilsTest: byte[] STANDARD_SHA256_RESULT_BYTES>;
+
+        $r11 = <org.apache.commons.codec.digest.HmacUtilsTest: byte[] STANDARD_KEY_BYTES>;
+
+        $r13 = staticinvoke <org.apache.commons.codec.digest.HmacUtils: javax.crypto.Mac getHmacSha256(byte[])>($r11);
+
+        $r14 = <org.apache.commons.codec.digest.HmacUtilsTest: byte[] STANDARD_PHRASE_BYTES>;
+
+        $r15 = virtualinvoke $r13.<javax.crypto.Mac: byte[] doFinal(byte[])>($r14);
+
+        staticinvoke <org.junit.Assert: void assertArrayEquals(byte[],byte[])>($r12, $r15);
+
+        $r17 = <org.apache.commons.codec.digest.HmacUtilsTest: byte[] STANDARD_SHA384_RESULT_BYTES>;
+
+        $r16 = <org.apache.commons.codec.digest.HmacUtilsTest: byte[] STANDARD_KEY_BYTES>;
+
+        $r18 = staticinvoke <org.apache.commons.codec.digest.HmacUtils: javax.crypto.Mac getHmacSha384(byte[])>($r16);
+
+        $r19 = <org.apache.commons.codec.digest.HmacUtilsTest: byte[] STANDARD_PHRASE_BYTES>;
+
+        $r20 = virtualinvoke $r18.<javax.crypto.Mac: byte[] doFinal(byte[])>($r19);
+
+        staticinvoke <org.junit.Assert: void assertArrayEquals(byte[],byte[])>($r17, $r20);
+
+        $r22 = <org.apache.commons.codec.digest.HmacUtilsTest: byte[] STANDARD_SHA512_RESULT_BYTES>;
+
+        $r21 = <org.apache.commons.codec.digest.HmacUtilsTest: byte[] STANDARD_KEY_BYTES>;
+
+        $r23 = staticinvoke <org.apache.commons.codec.digest.HmacUtils: javax.crypto.Mac getHmacSha512(byte[])>($r21);
+
+        $r24 = <org.apache.commons.codec.digest.HmacUtilsTest: byte[] STANDARD_PHRASE_BYTES>;
+
+        $r25 = virtualinvoke $r23.<javax.crypto.Mac: byte[] doFinal(byte[])>($r24);
+
+        staticinvoke <org.junit.Assert: void assertArrayEquals(byte[],byte[])>($r22, $r25);
+
+        return;
+    }
+
+    public void testHmacMd5Hex() throws java.io.IOException
+    {
+        org.apache.commons.codec.digest.HmacUtilsTest r0;
+        java.lang.String $r1, $r2, $r3, $r6, $r8;
+        byte[] $r4, $r7;
+        java.io.ByteArrayInputStream $r5;
+
+        r0 := @this: org.apache.commons.codec.digest.HmacUtilsTest;
+
+        $r1 = staticinvoke <org.apache.commons.codec.digest.HmacUtils: java.lang.String hmacMd5Hex(java.lang.String,java.lang.String)>("key", "The quick brown fox jumps over the lazy dog");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("80070713463e7749b90c2dc24911e275", $r1);
+
+        $r2 = staticinvoke <org.apache.commons.codec.digest.HmacUtils: java.lang.String hmacMd5Hex(java.lang.String,java.lang.String)>("Jefe", "what do ya want for nothing?");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("750c783e6ab0b503eaa86e310a5db738", $r2);
+
+        $r3 = "Jefe";
+
+        $r4 = virtualinvoke $r3.<java.lang.String: byte[] getBytes()>();
+
+        $r5 = new java.io.ByteArrayInputStream;
+
+        $r6 = "what do ya want for nothing?";
+
+        $r7 = virtualinvoke $r6.<java.lang.String: byte[] getBytes()>();
+
+        specialinvoke $r5.<java.io.ByteArrayInputStream: void <init>(byte[])>($r7);
+
+        $r8 = staticinvoke <org.apache.commons.codec.digest.HmacUtils: java.lang.String hmacMd5Hex(byte[],java.io.InputStream)>($r4, $r5);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("750c783e6ab0b503eaa86e310a5db738", $r8);
+
+        return;
+    }
+
+    public void testHmacSha1Hex() throws java.io.IOException
+    {
+        org.apache.commons.codec.digest.HmacUtilsTest r0;
+        java.lang.String $r1, $r2, $r3, $r4, $r7, $r9;
+        byte[] $r5, $r8;
+        java.io.ByteArrayInputStream $r6;
+
+        r0 := @this: org.apache.commons.codec.digest.HmacUtilsTest;
+
+        $r1 = staticinvoke <org.apache.commons.codec.digest.HmacUtils: java.lang.String hmacSha1Hex(java.lang.String,java.lang.String)>("key", "The quick brown fox jumps over the lazy dog");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("de7c9b85b8b78aa6bc8a7a36f70a90701c9db4d9", $r1);
+
+        $r2 = staticinvoke <org.apache.commons.codec.digest.HmacUtils: java.lang.String hmacSha1Hex(java.lang.String,java.lang.String)>("key", "");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("f42bb0eeb018ebbd4597ae7213711ec60760843f", $r2);
+
+        $r3 = staticinvoke <org.apache.commons.codec.digest.HmacUtils: java.lang.String hmacSha1Hex(java.lang.String,java.lang.String)>("Jefe", "what do ya want for nothing?");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("effcdf6ae5eb2fa2d27416d5f184df9c259a7c79", $r3);
+
+        $r4 = "Jefe";
+
+        $r5 = virtualinvoke $r4.<java.lang.String: byte[] getBytes()>();
+
+        $r6 = new java.io.ByteArrayInputStream;
+
+        $r7 = "what do ya want for nothing?";
+
+        $r8 = virtualinvoke $r7.<java.lang.String: byte[] getBytes()>();
+
+        specialinvoke $r6.<java.io.ByteArrayInputStream: void <init>(byte[])>($r8);
+
+        $r9 = staticinvoke <org.apache.commons.codec.digest.HmacUtils: java.lang.String hmacSha1Hex(byte[],java.io.InputStream)>($r5, $r6);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("effcdf6ae5eb2fa2d27416d5f184df9c259a7c79", $r9);
+
+        return;
+    }
+
+    public void testHmacSha1UpdateWithByteArray() throws java.io.IOException
+    {
+        org.apache.commons.codec.digest.HmacUtilsTest r0;
+        javax.crypto.Mac r1;
+        byte[] $r2, $r3, $r5, $r8, $r10;
+        java.lang.String $r6, $r7, $r11;
+
+        r0 := @this: org.apache.commons.codec.digest.HmacUtilsTest;
+
+        $r2 = <org.apache.commons.codec.digest.HmacUtilsTest: byte[] STANDARD_KEY_BYTES>;
+
+        r1 = staticinvoke <org.apache.commons.codec.digest.HmacUtils: javax.crypto.Mac getHmacSha1(byte[])>($r2);
+
+        $r3 = <org.apache.commons.codec.digest.HmacUtilsTest: byte[] STANDARD_PHRASE_BYTES>;
+
+        staticinvoke <org.apache.commons.codec.digest.HmacUtils: javax.crypto.Mac updateHmac(javax.crypto.Mac,byte[])>(r1, $r3);
+
+        $r5 = virtualinvoke r1.<javax.crypto.Mac: byte[] doFinal()>();
+
+        $r6 = staticinvoke <org.apache.commons.codec.binary.Hex: java.lang.String encodeHexString(byte[])>($r5);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("de7c9b85b8b78aa6bc8a7a36f70a90701c9db4d9", $r6);
+
+        $r7 = "";
+
+        $r8 = virtualinvoke $r7.<java.lang.String: byte[] getBytes()>();
+
+        staticinvoke <org.apache.commons.codec.digest.HmacUtils: javax.crypto.Mac updateHmac(javax.crypto.Mac,byte[])>(r1, $r8);
+
+        $r10 = virtualinvoke r1.<javax.crypto.Mac: byte[] doFinal()>();
+
+        $r11 = staticinvoke <org.apache.commons.codec.binary.Hex: java.lang.String encodeHexString(byte[])>($r10);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("f42bb0eeb018ebbd4597ae7213711ec60760843f", $r11);
+
+        return;
+    }
+
+    public void testHmacSha1UpdateWithInpustream() throws java.io.IOException
+    {
+        org.apache.commons.codec.digest.HmacUtilsTest r0;
+        javax.crypto.Mac r1;
+        byte[] $r2, $r4, $r6, $r10, $r12;
+        java.io.ByteArrayInputStream $r3, $r8;
+        java.lang.String $r7, $r9, $r13;
+
+        r0 := @this: org.apache.commons.codec.digest.HmacUtilsTest;
+
+        $r2 = <org.apache.commons.codec.digest.HmacUtilsTest: byte[] STANDARD_KEY_BYTES>;
+
+        r1 = staticinvoke <org.apache.commons.codec.digest.HmacUtils: javax.crypto.Mac getHmacSha1(byte[])>($r2);
+
+        $r3 = new java.io.ByteArrayInputStream;
+
+        $r4 = <org.apache.commons.codec.digest.HmacUtilsTest: byte[] STANDARD_PHRASE_BYTES>;
+
+        specialinvoke $r3.<java.io.ByteArrayInputStream: void <init>(byte[])>($r4);
+
+        staticinvoke <org.apache.commons.codec.digest.HmacUtils: javax.crypto.Mac updateHmac(javax.crypto.Mac,java.io.InputStream)>(r1, $r3);
+
+        $r6 = virtualinvoke r1.<javax.crypto.Mac: byte[] doFinal()>();
+
+        $r7 = staticinvoke <org.apache.commons.codec.binary.Hex: java.lang.String encodeHexString(byte[])>($r6);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("de7c9b85b8b78aa6bc8a7a36f70a90701c9db4d9", $r7);
+
+        $r8 = new java.io.ByteArrayInputStream;
+
+        $r9 = "";
+
+        $r10 = virtualinvoke $r9.<java.lang.String: byte[] getBytes()>();
+
+        specialinvoke $r8.<java.io.ByteArrayInputStream: void <init>(byte[])>($r10);
+
+        staticinvoke <org.apache.commons.codec.digest.HmacUtils: javax.crypto.Mac updateHmac(javax.crypto.Mac,java.io.InputStream)>(r1, $r8);
+
+        $r12 = virtualinvoke r1.<javax.crypto.Mac: byte[] doFinal()>();
+
+        $r13 = staticinvoke <org.apache.commons.codec.binary.Hex: java.lang.String encodeHexString(byte[])>($r12);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("f42bb0eeb018ebbd4597ae7213711ec60760843f", $r13);
+
+        return;
+    }
+
+    public void testHmacSha1UpdateWithString() throws java.io.IOException
+    {
+        org.apache.commons.codec.digest.HmacUtilsTest r0;
+        javax.crypto.Mac r1;
+        byte[] $r2, $r4, $r7;
+        java.lang.String $r5, $r8;
+
+        r0 := @this: org.apache.commons.codec.digest.HmacUtilsTest;
+
+        $r2 = <org.apache.commons.codec.digest.HmacUtilsTest: byte[] STANDARD_KEY_BYTES>;
+
+        r1 = staticinvoke <org.apache.commons.codec.digest.HmacUtils: javax.crypto.Mac getHmacSha1(byte[])>($r2);
+
+        staticinvoke <org.apache.commons.codec.digest.HmacUtils: javax.crypto.Mac updateHmac(javax.crypto.Mac,java.lang.String)>(r1, "The quick brown fox jumps over the lazy dog");
+
+        $r4 = virtualinvoke r1.<javax.crypto.Mac: byte[] doFinal()>();
+
+        $r5 = staticinvoke <org.apache.commons.codec.binary.Hex: java.lang.String encodeHexString(byte[])>($r4);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("de7c9b85b8b78aa6bc8a7a36f70a90701c9db4d9", $r5);
+
+        staticinvoke <org.apache.commons.codec.digest.HmacUtils: javax.crypto.Mac updateHmac(javax.crypto.Mac,java.lang.String)>(r1, "");
+
+        $r7 = virtualinvoke r1.<javax.crypto.Mac: byte[] doFinal()>();
+
+        $r8 = staticinvoke <org.apache.commons.codec.binary.Hex: java.lang.String encodeHexString(byte[])>($r7);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("f42bb0eeb018ebbd4597ae7213711ec60760843f", $r8);
+
+        return;
+    }
+
+    public void testInitializedMac() throws java.io.IOException
+    {
+        org.apache.commons.codec.digest.HmacUtilsTest r0;
+        javax.crypto.Mac r1, r2, $r7, $r10;
+        byte[] $r3, $r5, $r6, $r8, $r9, $r11;
+        org.apache.commons.codec.digest.HmacAlgorithms $r4;
+
+        r0 := @this: org.apache.commons.codec.digest.HmacUtilsTest;
+
+        $r4 = <org.apache.commons.codec.digest.HmacAlgorithms: org.apache.commons.codec.digest.HmacAlgorithms HMAC_MD5>;
+
+        $r3 = <org.apache.commons.codec.digest.HmacUtilsTest: byte[] STANDARD_KEY_BYTES>;
+
+        r1 = staticinvoke <org.apache.commons.codec.digest.HmacUtils: javax.crypto.Mac getInitializedMac(org.apache.commons.codec.digest.HmacAlgorithms,byte[])>($r4, $r3);
+
+        $r5 = <org.apache.commons.codec.digest.HmacUtilsTest: byte[] STANDARD_KEY_BYTES>;
+
+        r2 = staticinvoke <org.apache.commons.codec.digest.HmacUtils: javax.crypto.Mac getInitializedMac(java.lang.String,byte[])>("HmacMD5", $r5);
+
+        $r6 = <org.apache.commons.codec.digest.HmacUtilsTest: byte[] STANDARD_MD5_RESULT_BYTES>;
+
+        $r7 = staticinvoke <org.apache.commons.codec.digest.HmacUtils: javax.crypto.Mac updateHmac(javax.crypto.Mac,java.lang.String)>(r1, "The quick brown fox jumps over the lazy dog");
+
+        $r8 = virtualinvoke $r7.<javax.crypto.Mac: byte[] doFinal()>();
+
+        staticinvoke <org.junit.Assert: void assertArrayEquals(byte[],byte[])>($r6, $r8);
+
+        $r9 = <org.apache.commons.codec.digest.HmacUtilsTest: byte[] STANDARD_MD5_RESULT_BYTES>;
+
+        $r10 = staticinvoke <org.apache.commons.codec.digest.HmacUtils: javax.crypto.Mac updateHmac(javax.crypto.Mac,java.lang.String)>(r2, "The quick brown fox jumps over the lazy dog");
+
+        $r11 = virtualinvoke $r10.<javax.crypto.Mac: byte[] doFinal()>();
+
+        staticinvoke <org.junit.Assert: void assertArrayEquals(byte[],byte[])>($r9, $r11);
+
+        return;
+    }
+
+    public void testInitializedMacNullAlgo() throws java.io.IOException
+    {
+        org.apache.commons.codec.digest.HmacUtilsTest r0;
+        byte[] $r1;
+
+        r0 := @this: org.apache.commons.codec.digest.HmacUtilsTest;
+
+        $r1 = <org.apache.commons.codec.digest.HmacUtilsTest: byte[] STANDARD_KEY_BYTES>;
+
+        staticinvoke <org.apache.commons.codec.digest.HmacUtils: javax.crypto.Mac getInitializedMac(java.lang.String,byte[])>(null, $r1);
+
+        return;
+    }
+
+    public void testInitializedMacNullKey() throws java.io.IOException
+    {
+        org.apache.commons.codec.digest.HmacUtilsTest r0;
+        org.apache.commons.codec.digest.HmacAlgorithms $r1;
+
+        r0 := @this: org.apache.commons.codec.digest.HmacUtilsTest;
+
+        $r1 = <org.apache.commons.codec.digest.HmacAlgorithms: org.apache.commons.codec.digest.HmacAlgorithms HMAC_MD5>;
+
+        staticinvoke <org.apache.commons.codec.digest.HmacUtils: javax.crypto.Mac getInitializedMac(org.apache.commons.codec.digest.HmacAlgorithms,byte[])>($r1, null);
+
+        return;
+    }
+
+    public void testInternalNoSuchAlgorithmException()
+    {
+        org.apache.commons.codec.digest.HmacUtilsTest r0;
+        byte[] $r1;
+
+        r0 := @this: org.apache.commons.codec.digest.HmacUtilsTest;
+
+        $r1 = staticinvoke <org.apache.commons.codec.binary.StringUtils: byte[] getBytesUtf8(java.lang.String)>("akey");
+
+        staticinvoke <org.apache.commons.codec.digest.HmacUtils: javax.crypto.Mac getInitializedMac(java.lang.String,byte[])>("Bogus Bogus", $r1);
+
+        return;
+    }
+
+    public void testMd5HMac() throws java.io.IOException
+    {
+        org.apache.commons.codec.digest.HmacUtilsTest r0;
+        byte[] $r1, $r2, $r3, $r4, $r6, $r7, $r8, $r9, $r10, $r11, $r12, $r13, $r16, $r17;
+        java.io.ByteArrayInputStream $r5, $r15;
+        java.lang.String $r14, $r18, $r19;
+
+        r0 := @this: org.apache.commons.codec.digest.HmacUtilsTest;
+
+        $r3 = <org.apache.commons.codec.digest.HmacUtilsTest: byte[] STANDARD_MD5_RESULT_BYTES>;
+
+        $r2 = <org.apache.commons.codec.digest.HmacUtilsTest: byte[] STANDARD_KEY_BYTES>;
+
+        $r1 = <org.apache.commons.codec.digest.HmacUtilsTest: byte[] STANDARD_PHRASE_BYTES>;
+
+        $r4 = staticinvoke <org.apache.commons.codec.digest.HmacUtils: byte[] hmacMd5(byte[],byte[])>($r2, $r1);
+
+        staticinvoke <org.junit.Assert: void assertArrayEquals(byte[],byte[])>($r3, $r4);
+
+        $r7 = <org.apache.commons.codec.digest.HmacUtilsTest: byte[] STANDARD_MD5_RESULT_BYTES>;
+
+        $r8 = <org.apache.commons.codec.digest.HmacUtilsTest: byte[] STANDARD_KEY_BYTES>;
+
+        $r5 = new java.io.ByteArrayInputStream;
+
+        $r6 = <org.apache.commons.codec.digest.HmacUtilsTest: byte[] STANDARD_PHRASE_BYTES>;
+
+        specialinvoke $r5.<java.io.ByteArrayInputStream: void <init>(byte[])>($r6);
+
+        $r9 = staticinvoke <org.apache.commons.codec.digest.HmacUtils: byte[] hmacMd5(byte[],java.io.InputStream)>($r8, $r5);
+
+        staticinvoke <org.junit.Assert: void assertArrayEquals(byte[],byte[])>($r7, $r9);
+
+        $r10 = <org.apache.commons.codec.digest.HmacUtilsTest: byte[] STANDARD_MD5_RESULT_BYTES>;
+
+        $r11 = staticinvoke <org.apache.commons.codec.digest.HmacUtils: byte[] hmacMd5(java.lang.String,java.lang.String)>("key", "The quick brown fox jumps over the lazy dog");
+
+        staticinvoke <org.junit.Assert: void assertArrayEquals(byte[],byte[])>($r10, $r11);
+
+        $r13 = <org.apache.commons.codec.digest.HmacUtilsTest: byte[] STANDARD_KEY_BYTES>;
+
+        $r12 = <org.apache.commons.codec.digest.HmacUtilsTest: byte[] STANDARD_PHRASE_BYTES>;
+
+        $r14 = staticinvoke <org.apache.commons.codec.digest.HmacUtils: java.lang.String hmacMd5Hex(byte[],byte[])>($r13, $r12);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("80070713463e7749b90c2dc24911e275", $r14);
+
+        $r17 = <org.apache.commons.codec.digest.HmacUtilsTest: byte[] STANDARD_KEY_BYTES>;
+
+        $r15 = new java.io.ByteArrayInputStream;
+
+        $r16 = <org.apache.commons.codec.digest.HmacUtilsTest: byte[] STANDARD_PHRASE_BYTES>;
+
+        specialinvoke $r15.<java.io.ByteArrayInputStream: void <init>(byte[])>($r16);
+
+        $r18 = staticinvoke <org.apache.commons.codec.digest.HmacUtils: java.lang.String hmacMd5Hex(byte[],java.io.InputStream)>($r17, $r15);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("80070713463e7749b90c2dc24911e275", $r18);
+
+        $r19 = staticinvoke <org.apache.commons.codec.digest.HmacUtils: java.lang.String hmacMd5Hex(java.lang.String,java.lang.String)>("key", "The quick brown fox jumps over the lazy dog");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("80070713463e7749b90c2dc24911e275", $r19);
+
+        return;
+    }
+
+    public void testMd5HMacFail() throws java.io.IOException
+    {
+        org.apache.commons.codec.digest.HmacUtilsTest r0;
+        byte[] $r1;
+
+        r0 := @this: org.apache.commons.codec.digest.HmacUtilsTest;
+
+        $r1 = <org.apache.commons.codec.digest.HmacUtilsTest: byte[] STANDARD_PHRASE_BYTES>;
+
+        staticinvoke <org.apache.commons.codec.digest.HmacUtils: byte[] hmacMd5(byte[],byte[])>(null, $r1);
+
+        return;
+    }
+
+    public void testNullKey()
+    {
+        org.apache.commons.codec.digest.HmacUtilsTest r0;
+
+        r0 := @this: org.apache.commons.codec.digest.HmacUtilsTest;
+
+        staticinvoke <org.apache.commons.codec.digest.HmacUtils: javax.crypto.Mac getHmacMd5(byte[])>(null);
+
+        return;
+    }
+
+    public void testSecretKeySpecAllowsEmtyKeys()
+    {
+        org.apache.commons.codec.digest.HmacUtilsTest r0;
+        byte[] $r1;
+        javax.crypto.spec.SecretKeySpec $r2;
+
+        r0 := @this: org.apache.commons.codec.digest.HmacUtilsTest;
+
+        $r2 = new javax.crypto.spec.SecretKeySpec;
+
+        $r1 = newarray (byte)[0];
+
+        specialinvoke $r2.<javax.crypto.spec.SecretKeySpec: void <init>(byte[],java.lang.String)>($r1, "HmacMD5");
+
+        return;
+    }
+
+    public void testSha1HMac() throws java.io.IOException
+    {
+        org.apache.commons.codec.digest.HmacUtilsTest r0;
+        byte[] $r1, $r2, $r3, $r4, $r6, $r7, $r8, $r9, $r10, $r11, $r12, $r13, $r16, $r17;
+        java.io.ByteArrayInputStream $r5, $r15;
+        java.lang.String $r14, $r18, $r19;
+
+        r0 := @this: org.apache.commons.codec.digest.HmacUtilsTest;
+
+        $r3 = <org.apache.commons.codec.digest.HmacUtilsTest: byte[] STANDARD_SHA1_RESULT_BYTES>;
+
+        $r2 = <org.apache.commons.codec.digest.HmacUtilsTest: byte[] STANDARD_KEY_BYTES>;
+
+        $r1 = <org.apache.commons.codec.digest.HmacUtilsTest: byte[] STANDARD_PHRASE_BYTES>;
+
+        $r4 = staticinvoke <org.apache.commons.codec.digest.HmacUtils: byte[] hmacSha1(byte[],byte[])>($r2, $r1);
+
+        staticinvoke <org.junit.Assert: void assertArrayEquals(byte[],byte[])>($r3, $r4);
+
+        $r7 = <org.apache.commons.codec.digest.HmacUtilsTest: byte[] STANDARD_SHA1_RESULT_BYTES>;
+
+        $r8 = <org.apache.commons.codec.digest.HmacUtilsTest: byte[] STANDARD_KEY_BYTES>;
+
+        $r5 = new java.io.ByteArrayInputStream;
+
+        $r6 = <org.apache.commons.codec.digest.HmacUtilsTest: byte[] STANDARD_PHRASE_BYTES>;
+
+        specialinvoke $r5.<java.io.ByteArrayInputStream: void <init>(byte[])>($r6);
+
+        $r9 = staticinvoke <org.apache.commons.codec.digest.HmacUtils: byte[] hmacSha1(byte[],java.io.InputStream)>($r8, $r5);
+
+        staticinvoke <org.junit.Assert: void assertArrayEquals(byte[],byte[])>($r7, $r9);
+
+        $r10 = <org.apache.commons.codec.digest.HmacUtilsTest: byte[] STANDARD_SHA1_RESULT_BYTES>;
+
+        $r11 = staticinvoke <org.apache.commons.codec.digest.HmacUtils: byte[] hmacSha1(java.lang.String,java.lang.String)>("key", "The quick brown fox jumps over the lazy dog");
+
+        staticinvoke <org.junit.Assert: void assertArrayEquals(byte[],byte[])>($r10, $r11);
+
+        $r13 = <org.apache.commons.codec.digest.HmacUtilsTest: byte[] STANDARD_KEY_BYTES>;
+
+        $r12 = <org.apache.commons.codec.digest.HmacUtilsTest: byte[] STANDARD_PHRASE_BYTES>;
+
+        $r14 = staticinvoke <org.apache.commons.codec.digest.HmacUtils: java.lang.String hmacSha1Hex(byte[],byte[])>($r13, $r12);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("de7c9b85b8b78aa6bc8a7a36f70a90701c9db4d9", $r14);
+
+        $r17 = <org.apache.commons.codec.digest.HmacUtilsTest: byte[] STANDARD_KEY_BYTES>;
+
+        $r15 = new java.io.ByteArrayInputStream;
+
+        $r16 = <org.apache.commons.codec.digest.HmacUtilsTest: byte[] STANDARD_PHRASE_BYTES>;
+
+        specialinvoke $r15.<java.io.ByteArrayInputStream: void <init>(byte[])>($r16);
+
+        $r18 = staticinvoke <org.apache.commons.codec.digest.HmacUtils: java.lang.String hmacSha1Hex(byte[],java.io.InputStream)>($r17, $r15);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("de7c9b85b8b78aa6bc8a7a36f70a90701c9db4d9", $r18);
+
+        $r19 = staticinvoke <org.apache.commons.codec.digest.HmacUtils: java.lang.String hmacSha1Hex(java.lang.String,java.lang.String)>("key", "The quick brown fox jumps over the lazy dog");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("de7c9b85b8b78aa6bc8a7a36f70a90701c9db4d9", $r19);
+
+        return;
+    }
+
+    public void testSha1HMacFail() throws java.io.IOException
+    {
+        org.apache.commons.codec.digest.HmacUtilsTest r0;
+        byte[] $r1;
+
+        r0 := @this: org.apache.commons.codec.digest.HmacUtilsTest;
+
+        $r1 = <org.apache.commons.codec.digest.HmacUtilsTest: byte[] STANDARD_PHRASE_BYTES>;
+
+        staticinvoke <org.apache.commons.codec.digest.HmacUtils: byte[] hmacSha1(byte[],byte[])>(null, $r1);
+
+        return;
+    }
+
+    public void testSha256HMac() throws java.io.IOException
+    {
+        org.apache.commons.codec.digest.HmacUtilsTest r0;
+        byte[] $r1, $r2, $r3, $r4, $r6, $r7, $r8, $r9, $r10, $r11, $r12, $r13, $r16, $r17;
+        java.io.ByteArrayInputStream $r5, $r15;
+        java.lang.String $r14, $r18, $r19;
+
+        r0 := @this: org.apache.commons.codec.digest.HmacUtilsTest;
+
+        $r3 = <org.apache.commons.codec.digest.HmacUtilsTest: byte[] STANDARD_SHA256_RESULT_BYTES>;
+
+        $r2 = <org.apache.commons.codec.digest.HmacUtilsTest: byte[] STANDARD_KEY_BYTES>;
+
+        $r1 = <org.apache.commons.codec.digest.HmacUtilsTest: byte[] STANDARD_PHRASE_BYTES>;
+
+        $r4 = staticinvoke <org.apache.commons.codec.digest.HmacUtils: byte[] hmacSha256(byte[],byte[])>($r2, $r1);
+
+        staticinvoke <org.junit.Assert: void assertArrayEquals(byte[],byte[])>($r3, $r4);
+
+        $r7 = <org.apache.commons.codec.digest.HmacUtilsTest: byte[] STANDARD_SHA256_RESULT_BYTES>;
+
+        $r8 = <org.apache.commons.codec.digest.HmacUtilsTest: byte[] STANDARD_KEY_BYTES>;
+
+        $r5 = new java.io.ByteArrayInputStream;
+
+        $r6 = <org.apache.commons.codec.digest.HmacUtilsTest: byte[] STANDARD_PHRASE_BYTES>;
+
+        specialinvoke $r5.<java.io.ByteArrayInputStream: void <init>(byte[])>($r6);
+
+        $r9 = staticinvoke <org.apache.commons.codec.digest.HmacUtils: byte[] hmacSha256(byte[],java.io.InputStream)>($r8, $r5);
+
+        staticinvoke <org.junit.Assert: void assertArrayEquals(byte[],byte[])>($r7, $r9);
+
+        $r10 = <org.apache.commons.codec.digest.HmacUtilsTest: byte[] STANDARD_SHA256_RESULT_BYTES>;
+
+        $r11 = staticinvoke <org.apache.commons.codec.digest.HmacUtils: byte[] hmacSha256(java.lang.String,java.lang.String)>("key", "The quick brown fox jumps over the lazy dog");
+
+        staticinvoke <org.junit.Assert: void assertArrayEquals(byte[],byte[])>($r10, $r11);
+
+        $r13 = <org.apache.commons.codec.digest.HmacUtilsTest: byte[] STANDARD_KEY_BYTES>;
+
+        $r12 = <org.apache.commons.codec.digest.HmacUtilsTest: byte[] STANDARD_PHRASE_BYTES>;
+
+        $r14 = staticinvoke <org.apache.commons.codec.digest.HmacUtils: java.lang.String hmacSha256Hex(byte[],byte[])>($r13, $r12);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("f7bc83f430538424b13298e6aa6fb143ef4d59a14946175997479dbc2d1a3cd8", $r14);
+
+        $r17 = <org.apache.commons.codec.digest.HmacUtilsTest: byte[] STANDARD_KEY_BYTES>;
+
+        $r15 = new java.io.ByteArrayInputStream;
+
+        $r16 = <org.apache.commons.codec.digest.HmacUtilsTest: byte[] STANDARD_PHRASE_BYTES>;
+
+        specialinvoke $r15.<java.io.ByteArrayInputStream: void <init>(byte[])>($r16);
+
+        $r18 = staticinvoke <org.apache.commons.codec.digest.HmacUtils: java.lang.String hmacSha256Hex(byte[],java.io.InputStream)>($r17, $r15);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("f7bc83f430538424b13298e6aa6fb143ef4d59a14946175997479dbc2d1a3cd8", $r18);
+
+        $r19 = staticinvoke <org.apache.commons.codec.digest.HmacUtils: java.lang.String hmacSha256Hex(java.lang.String,java.lang.String)>("key", "The quick brown fox jumps over the lazy dog");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("f7bc83f430538424b13298e6aa6fb143ef4d59a14946175997479dbc2d1a3cd8", $r19);
+
+        return;
+    }
+
+    public void testSha256HMacFail() throws java.io.IOException
+    {
+        org.apache.commons.codec.digest.HmacUtilsTest r0;
+        byte[] $r1;
+
+        r0 := @this: org.apache.commons.codec.digest.HmacUtilsTest;
+
+        $r1 = <org.apache.commons.codec.digest.HmacUtilsTest: byte[] STANDARD_PHRASE_BYTES>;
+
+        staticinvoke <org.apache.commons.codec.digest.HmacUtils: byte[] hmacSha256(byte[],byte[])>(null, $r1);
+
+        return;
+    }
+
+    public void testSha384HMac() throws java.io.IOException
+    {
+        org.apache.commons.codec.digest.HmacUtilsTest r0;
+        byte[] $r1, $r2, $r3, $r4, $r6, $r7, $r8, $r9, $r10, $r11, $r12, $r13, $r17, $r19;
+        java.io.ByteArrayInputStream $r5, $r16;
+        java.lang.String $r14, $r15, $r18, $r20, $r21, $r22;
+
+        r0 := @this: org.apache.commons.codec.digest.HmacUtilsTest;
+
+        $r3 = <org.apache.commons.codec.digest.HmacUtilsTest: byte[] STANDARD_SHA384_RESULT_BYTES>;
+
+        $r2 = <org.apache.commons.codec.digest.HmacUtilsTest: byte[] STANDARD_KEY_BYTES>;
+
+        $r1 = <org.apache.commons.codec.digest.HmacUtilsTest: byte[] STANDARD_PHRASE_BYTES>;
+
+        $r4 = staticinvoke <org.apache.commons.codec.digest.HmacUtils: byte[] hmacSha384(byte[],byte[])>($r2, $r1);
+
+        staticinvoke <org.junit.Assert: void assertArrayEquals(byte[],byte[])>($r3, $r4);
+
+        $r7 = <org.apache.commons.codec.digest.HmacUtilsTest: byte[] STANDARD_SHA384_RESULT_BYTES>;
+
+        $r8 = <org.apache.commons.codec.digest.HmacUtilsTest: byte[] STANDARD_KEY_BYTES>;
+
+        $r5 = new java.io.ByteArrayInputStream;
+
+        $r6 = <org.apache.commons.codec.digest.HmacUtilsTest: byte[] STANDARD_PHRASE_BYTES>;
+
+        specialinvoke $r5.<java.io.ByteArrayInputStream: void <init>(byte[])>($r6);
+
+        $r9 = staticinvoke <org.apache.commons.codec.digest.HmacUtils: byte[] hmacSha384(byte[],java.io.InputStream)>($r8, $r5);
+
+        staticinvoke <org.junit.Assert: void assertArrayEquals(byte[],byte[])>($r7, $r9);
+
+        $r10 = <org.apache.commons.codec.digest.HmacUtilsTest: byte[] STANDARD_SHA384_RESULT_BYTES>;
+
+        $r11 = staticinvoke <org.apache.commons.codec.digest.HmacUtils: byte[] hmacSha384(java.lang.String,java.lang.String)>("key", "The quick brown fox jumps over the lazy dog");
+
+        staticinvoke <org.junit.Assert: void assertArrayEquals(byte[],byte[])>($r10, $r11);
+
+        $r14 = <org.apache.commons.codec.digest.HmacUtilsTest: java.lang.String STANDARD_SHA384_RESULT_STRING>;
+
+        $r13 = <org.apache.commons.codec.digest.HmacUtilsTest: byte[] STANDARD_KEY_BYTES>;
+
+        $r12 = <org.apache.commons.codec.digest.HmacUtilsTest: byte[] STANDARD_PHRASE_BYTES>;
+
+        $r15 = staticinvoke <org.apache.commons.codec.digest.HmacUtils: java.lang.String hmacSha384Hex(byte[],byte[])>($r13, $r12);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r14, $r15);
+
+        $r18 = <org.apache.commons.codec.digest.HmacUtilsTest: java.lang.String STANDARD_SHA384_RESULT_STRING>;
+
+        $r19 = <org.apache.commons.codec.digest.HmacUtilsTest: byte[] STANDARD_KEY_BYTES>;
+
+        $r16 = new java.io.ByteArrayInputStream;
+
+        $r17 = <org.apache.commons.codec.digest.HmacUtilsTest: byte[] STANDARD_PHRASE_BYTES>;
+
+        specialinvoke $r16.<java.io.ByteArrayInputStream: void <init>(byte[])>($r17);
+
+        $r20 = staticinvoke <org.apache.commons.codec.digest.HmacUtils: java.lang.String hmacSha384Hex(byte[],java.io.InputStream)>($r19, $r16);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r18, $r20);
+
+        $r21 = <org.apache.commons.codec.digest.HmacUtilsTest: java.lang.String STANDARD_SHA384_RESULT_STRING>;
+
+        $r22 = staticinvoke <org.apache.commons.codec.digest.HmacUtils: java.lang.String hmacSha384Hex(java.lang.String,java.lang.String)>("key", "The quick brown fox jumps over the lazy dog");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r21, $r22);
+
+        return;
+    }
+
+    public void testSha384HMacFail() throws java.io.IOException
+    {
+        org.apache.commons.codec.digest.HmacUtilsTest r0;
+        byte[] $r1;
+
+        r0 := @this: org.apache.commons.codec.digest.HmacUtilsTest;
+
+        $r1 = <org.apache.commons.codec.digest.HmacUtilsTest: byte[] STANDARD_PHRASE_BYTES>;
+
+        staticinvoke <org.apache.commons.codec.digest.HmacUtils: byte[] hmacSha384(byte[],byte[])>(null, $r1);
+
+        return;
+    }
+
+    public void testSha512HMac() throws java.io.IOException
+    {
+        org.apache.commons.codec.digest.HmacUtilsTest r0;
+        byte[] $r1, $r2, $r3, $r4, $r6, $r7, $r8, $r9, $r10, $r11, $r12, $r13, $r17, $r19;
+        java.io.ByteArrayInputStream $r5, $r16;
+        java.lang.String $r14, $r15, $r18, $r20, $r21, $r22;
+
+        r0 := @this: org.apache.commons.codec.digest.HmacUtilsTest;
+
+        $r3 = <org.apache.commons.codec.digest.HmacUtilsTest: byte[] STANDARD_SHA512_RESULT_BYTES>;
+
+        $r2 = <org.apache.commons.codec.digest.HmacUtilsTest: byte[] STANDARD_KEY_BYTES>;
+
+        $r1 = <org.apache.commons.codec.digest.HmacUtilsTest: byte[] STANDARD_PHRASE_BYTES>;
+
+        $r4 = staticinvoke <org.apache.commons.codec.digest.HmacUtils: byte[] hmacSha512(byte[],byte[])>($r2, $r1);
+
+        staticinvoke <org.junit.Assert: void assertArrayEquals(byte[],byte[])>($r3, $r4);
+
+        $r7 = <org.apache.commons.codec.digest.HmacUtilsTest: byte[] STANDARD_SHA512_RESULT_BYTES>;
+
+        $r8 = <org.apache.commons.codec.digest.HmacUtilsTest: byte[] STANDARD_KEY_BYTES>;
+
+        $r5 = new java.io.ByteArrayInputStream;
+
+        $r6 = <org.apache.commons.codec.digest.HmacUtilsTest: byte[] STANDARD_PHRASE_BYTES>;
+
+        specialinvoke $r5.<java.io.ByteArrayInputStream: void <init>(byte[])>($r6);
+
+        $r9 = staticinvoke <org.apache.commons.codec.digest.HmacUtils: byte[] hmacSha512(byte[],java.io.InputStream)>($r8, $r5);
+
+        staticinvoke <org.junit.Assert: void assertArrayEquals(byte[],byte[])>($r7, $r9);
+
+        $r10 = <org.apache.commons.codec.digest.HmacUtilsTest: byte[] STANDARD_SHA512_RESULT_BYTES>;
+
+        $r11 = staticinvoke <org.apache.commons.codec.digest.HmacUtils: byte[] hmacSha512(java.lang.String,java.lang.String)>("key", "The quick brown fox jumps over the lazy dog");
+
+        staticinvoke <org.junit.Assert: void assertArrayEquals(byte[],byte[])>($r10, $r11);
+
+        $r14 = <org.apache.commons.codec.digest.HmacUtilsTest: java.lang.String STANDARD_SHA512_RESULT_STRING>;
+
+        $r13 = <org.apache.commons.codec.digest.HmacUtilsTest: byte[] STANDARD_KEY_BYTES>;
+
+        $r12 = <org.apache.commons.codec.digest.HmacUtilsTest: byte[] STANDARD_PHRASE_BYTES>;
+
+        $r15 = staticinvoke <org.apache.commons.codec.digest.HmacUtils: java.lang.String hmacSha512Hex(byte[],byte[])>($r13, $r12);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r14, $r15);
+
+        $r18 = <org.apache.commons.codec.digest.HmacUtilsTest: java.lang.String STANDARD_SHA512_RESULT_STRING>;
+
+        $r19 = <org.apache.commons.codec.digest.HmacUtilsTest: byte[] STANDARD_KEY_BYTES>;
+
+        $r16 = new java.io.ByteArrayInputStream;
+
+        $r17 = <org.apache.commons.codec.digest.HmacUtilsTest: byte[] STANDARD_PHRASE_BYTES>;
+
+        specialinvoke $r16.<java.io.ByteArrayInputStream: void <init>(byte[])>($r17);
+
+        $r20 = staticinvoke <org.apache.commons.codec.digest.HmacUtils: java.lang.String hmacSha512Hex(byte[],java.io.InputStream)>($r19, $r16);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r18, $r20);
+
+        $r21 = <org.apache.commons.codec.digest.HmacUtilsTest: java.lang.String STANDARD_SHA512_RESULT_STRING>;
+
+        $r22 = staticinvoke <org.apache.commons.codec.digest.HmacUtils: java.lang.String hmacSha512Hex(java.lang.String,java.lang.String)>("key", "The quick brown fox jumps over the lazy dog");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r21, $r22);
+
+        return;
+    }
+
+    public void testSha512HMacFail() throws java.io.IOException
+    {
+        org.apache.commons.codec.digest.HmacUtilsTest r0;
+        byte[] $r1;
+
+        r0 := @this: org.apache.commons.codec.digest.HmacUtilsTest;
+
+        $r1 = <org.apache.commons.codec.digest.HmacUtilsTest: byte[] STANDARD_PHRASE_BYTES>;
+
+        staticinvoke <org.apache.commons.codec.digest.HmacUtils: byte[] hmacSha512(byte[],byte[])>(null, $r1);
+
+        return;
+    }
+}

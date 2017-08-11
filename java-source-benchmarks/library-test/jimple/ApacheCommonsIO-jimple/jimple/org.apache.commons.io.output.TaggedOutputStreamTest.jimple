@@ -1,0 +1,290 @@
+public class org.apache.commons.io.output.TaggedOutputStreamTest extends java.lang.Object
+{
+
+    public void <init>()
+    {
+        org.apache.commons.io.output.TaggedOutputStreamTest r0;
+
+        r0 := @this: org.apache.commons.io.output.TaggedOutputStreamTest;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void testNormalStream()
+    {
+        org.apache.commons.io.output.TaggedOutputStreamTest r0;
+        org.apache.commons.io.output.ByteArrayOutputStream $r2;
+        org.apache.commons.io.output.TaggedOutputStream $r3;
+        byte[] $r4, $r5, $r6, $r7, $r8;
+        int $i0;
+        long $l1, $l3, $l5, $l7;
+        byte $b2, $b4, $b6;
+        java.io.IOException $r9;
+
+        r0 := @this: org.apache.commons.io.output.TaggedOutputStreamTest;
+
+     label1:
+        $r2 = new org.apache.commons.io.output.ByteArrayOutputStream;
+
+        specialinvoke $r2.<org.apache.commons.io.output.ByteArrayOutputStream: void <init>()>();
+
+        $r3 = new org.apache.commons.io.output.TaggedOutputStream;
+
+        specialinvoke $r3.<org.apache.commons.io.output.TaggedOutputStream: void <init>(java.io.OutputStream)>($r2);
+
+        virtualinvoke $r3.<java.io.OutputStream: void write(int)>(97);
+
+        $r4 = newarray (byte)[1];
+
+        $r4[0] = 98;
+
+        virtualinvoke $r3.<java.io.OutputStream: void write(byte[])>($r4);
+
+        $r5 = newarray (byte)[1];
+
+        $r5[0] = 99;
+
+        virtualinvoke $r3.<java.io.OutputStream: void write(byte[],int,int)>($r5, 0, 1);
+
+        virtualinvoke $r3.<java.io.OutputStream: void flush()>();
+
+        virtualinvoke $r3.<java.io.OutputStream: void close()>();
+
+        $i0 = virtualinvoke $r2.<org.apache.commons.io.output.ByteArrayOutputStream: int size()>();
+
+        $l1 = (long) $i0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(3L, $l1);
+
+        $r6 = virtualinvoke $r2.<org.apache.commons.io.output.ByteArrayOutputStream: byte[] toByteArray()>();
+
+        $b2 = $r6[0];
+
+        $l3 = (long) $b2;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(97L, $l3);
+
+        $r7 = virtualinvoke $r2.<org.apache.commons.io.output.ByteArrayOutputStream: byte[] toByteArray()>();
+
+        $b4 = $r7[1];
+
+        $l5 = (long) $b4;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(98L, $l5);
+
+        $r8 = virtualinvoke $r2.<org.apache.commons.io.output.ByteArrayOutputStream: byte[] toByteArray()>();
+
+        $b6 = $r8[2];
+
+        $l7 = (long) $b6;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(99L, $l7);
+
+     label2:
+        goto label4;
+
+     label3:
+        $r9 := @caughtexception;
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("Unexpected exception thrown");
+
+     label4:
+        return;
+
+        catch java.io.IOException from label1 to label2 with label3;
+    }
+
+    public void testBrokenStream()
+    {
+        org.apache.commons.io.output.TaggedOutputStreamTest r0;
+        java.io.IOException $r3, $r6, $r7, $r8, $r9, $r10, $r11;
+        org.apache.commons.io.output.TaggedOutputStream $r4;
+        org.apache.commons.io.output.BrokenOutputStream $r5;
+        boolean $z0, $z1, $z2;
+
+        r0 := @this: org.apache.commons.io.output.TaggedOutputStreamTest;
+
+        $r3 = new java.io.IOException;
+
+        specialinvoke $r3.<java.io.IOException: void <init>(java.lang.String)>("test exception");
+
+        $r4 = new org.apache.commons.io.output.TaggedOutputStream;
+
+        $r5 = new org.apache.commons.io.output.BrokenOutputStream;
+
+        specialinvoke $r5.<org.apache.commons.io.output.BrokenOutputStream: void <init>(java.io.IOException)>($r3);
+
+        specialinvoke $r4.<org.apache.commons.io.output.TaggedOutputStream: void <init>(java.io.OutputStream)>($r5);
+
+     label01:
+        virtualinvoke $r4.<org.apache.commons.io.output.TaggedOutputStream: void write(int)>(120);
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("Expected exception not thrown.");
+
+     label02:
+        goto label07;
+
+     label03:
+        $r11 := @caughtexception;
+
+        $z2 = virtualinvoke $r4.<org.apache.commons.io.output.TaggedOutputStream: boolean isCauseOf(java.lang.Exception)>($r11);
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z2);
+
+     label04:
+        virtualinvoke $r4.<org.apache.commons.io.output.TaggedOutputStream: void throwIfCauseOf(java.lang.Exception)>($r11);
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("Expected exception not thrown.");
+
+     label05:
+        goto label07;
+
+     label06:
+        $r9 := @caughtexception;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r3, $r9);
+
+     label07:
+        virtualinvoke $r4.<org.apache.commons.io.output.TaggedOutputStream: void flush()>();
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("Expected exception not thrown.");
+
+     label08:
+        goto label13;
+
+     label09:
+        $r8 := @caughtexception;
+
+        $z1 = virtualinvoke $r4.<org.apache.commons.io.output.TaggedOutputStream: boolean isCauseOf(java.lang.Exception)>($r8);
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z1);
+
+     label10:
+        virtualinvoke $r4.<org.apache.commons.io.output.TaggedOutputStream: void throwIfCauseOf(java.lang.Exception)>($r8);
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("Expected exception not thrown.");
+
+     label11:
+        goto label13;
+
+     label12:
+        $r7 := @caughtexception;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r3, $r7);
+
+     label13:
+        virtualinvoke $r4.<org.apache.commons.io.output.TaggedOutputStream: void close()>();
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("Expected exception not thrown.");
+
+     label14:
+        goto label19;
+
+     label15:
+        $r6 := @caughtexception;
+
+        $z0 = virtualinvoke $r4.<org.apache.commons.io.output.TaggedOutputStream: boolean isCauseOf(java.lang.Exception)>($r6);
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z0);
+
+     label16:
+        virtualinvoke $r4.<org.apache.commons.io.output.TaggedOutputStream: void throwIfCauseOf(java.lang.Exception)>($r6);
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("Expected exception not thrown.");
+
+     label17:
+        goto label19;
+
+     label18:
+        $r10 := @caughtexception;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r3, $r10);
+
+     label19:
+        return;
+
+        catch java.io.IOException from label01 to label02 with label03;
+        catch java.io.IOException from label04 to label05 with label06;
+        catch java.io.IOException from label07 to label08 with label09;
+        catch java.io.IOException from label10 to label11 with label12;
+        catch java.io.IOException from label13 to label14 with label15;
+        catch java.io.IOException from label16 to label17 with label18;
+    }
+
+    public void testOtherException() throws java.lang.Exception
+    {
+        org.apache.commons.io.output.TaggedOutputStreamTest r0;
+        java.io.IOException $r4, $r11, $r12;
+        org.apache.commons.io.output.ClosedOutputStream $r5;
+        org.apache.commons.io.output.TaggedOutputStream $r6;
+        boolean $z0, $z1;
+        org.apache.commons.io.TaggedIOException $r7, $r9;
+        java.util.UUID $r8, $r10;
+
+        r0 := @this: org.apache.commons.io.output.TaggedOutputStreamTest;
+
+        $r4 = new java.io.IOException;
+
+        specialinvoke $r4.<java.io.IOException: void <init>(java.lang.String)>("test exception");
+
+        $r5 = new org.apache.commons.io.output.ClosedOutputStream;
+
+        specialinvoke $r5.<org.apache.commons.io.output.ClosedOutputStream: void <init>()>();
+
+        $r6 = new org.apache.commons.io.output.TaggedOutputStream;
+
+        specialinvoke $r6.<org.apache.commons.io.output.TaggedOutputStream: void <init>(java.io.OutputStream)>($r5);
+
+        $z0 = virtualinvoke $r6.<org.apache.commons.io.output.TaggedOutputStream: boolean isCauseOf(java.lang.Exception)>($r4);
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z0);
+
+        $r7 = new org.apache.commons.io.TaggedIOException;
+
+        $r8 = staticinvoke <java.util.UUID: java.util.UUID randomUUID()>();
+
+        specialinvoke $r7.<org.apache.commons.io.TaggedIOException: void <init>(java.io.IOException,java.io.Serializable)>($r4, $r8);
+
+        $z1 = virtualinvoke $r6.<org.apache.commons.io.output.TaggedOutputStream: boolean isCauseOf(java.lang.Exception)>($r7);
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z1);
+
+     label1:
+        virtualinvoke $r6.<org.apache.commons.io.output.TaggedOutputStream: void throwIfCauseOf(java.lang.Exception)>($r4);
+
+     label2:
+        goto label4;
+
+     label3:
+        $r12 := @caughtexception;
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("Unexpected exception thrown");
+
+     label4:
+        $r9 = new org.apache.commons.io.TaggedIOException;
+
+        $r10 = staticinvoke <java.util.UUID: java.util.UUID randomUUID()>();
+
+        specialinvoke $r9.<org.apache.commons.io.TaggedIOException: void <init>(java.io.IOException,java.io.Serializable)>($r4, $r10);
+
+        virtualinvoke $r6.<org.apache.commons.io.output.TaggedOutputStream: void throwIfCauseOf(java.lang.Exception)>($r9);
+
+     label5:
+        goto label7;
+
+     label6:
+        $r11 := @caughtexception;
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("Unexpected exception thrown");
+
+     label7:
+        virtualinvoke $r6.<org.apache.commons.io.output.TaggedOutputStream: void close()>();
+
+        return;
+
+        catch java.io.IOException from label1 to label2 with label3;
+        catch java.io.IOException from label4 to label5 with label6;
+    }
+}

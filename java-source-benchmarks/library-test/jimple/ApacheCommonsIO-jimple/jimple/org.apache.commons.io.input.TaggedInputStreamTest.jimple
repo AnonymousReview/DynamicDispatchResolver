@@ -1,0 +1,361 @@
+public class org.apache.commons.io.input.TaggedInputStreamTest extends java.lang.Object
+{
+
+    public void <init>()
+    {
+        org.apache.commons.io.input.TaggedInputStreamTest r0;
+
+        r0 := @this: org.apache.commons.io.input.TaggedInputStreamTest;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void testEmptyStream()
+    {
+        org.apache.commons.io.input.TaggedInputStreamTest r0;
+        org.apache.commons.io.input.TaggedInputStream $r1;
+        org.apache.commons.io.input.ClosedInputStream $r2;
+        int $i0, $i2, $i4, $i6;
+        long $l1, $l3, $l5, $l7;
+        byte[] $r3, $r4;
+        java.io.IOException $r5;
+
+        r0 := @this: org.apache.commons.io.input.TaggedInputStreamTest;
+
+     label1:
+        $r1 = new org.apache.commons.io.input.TaggedInputStream;
+
+        $r2 = new org.apache.commons.io.input.ClosedInputStream;
+
+        specialinvoke $r2.<org.apache.commons.io.input.ClosedInputStream: void <init>()>();
+
+        specialinvoke $r1.<org.apache.commons.io.input.TaggedInputStream: void <init>(java.io.InputStream)>($r2);
+
+        $i0 = virtualinvoke $r1.<java.io.InputStream: int available()>();
+
+        $l1 = (long) $i0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(0L, $l1);
+
+        $i2 = virtualinvoke $r1.<java.io.InputStream: int read()>();
+
+        $l3 = (long) $i2;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(-1L, $l3);
+
+        $r3 = newarray (byte)[1];
+
+        $i4 = virtualinvoke $r1.<java.io.InputStream: int read(byte[])>($r3);
+
+        $l5 = (long) $i4;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(-1L, $l5);
+
+        $r4 = newarray (byte)[1];
+
+        $i6 = virtualinvoke $r1.<java.io.InputStream: int read(byte[],int,int)>($r4, 0, 1);
+
+        $l7 = (long) $i6;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(-1L, $l7);
+
+        virtualinvoke $r1.<java.io.InputStream: void close()>();
+
+     label2:
+        goto label4;
+
+     label3:
+        $r5 := @caughtexception;
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("Unexpected exception thrown");
+
+     label4:
+        return;
+
+        catch java.io.IOException from label1 to label2 with label3;
+    }
+
+    public void testNormalStream()
+    {
+        org.apache.commons.io.input.TaggedInputStreamTest r0;
+        byte[] r1, $r4;
+        org.apache.commons.io.input.TaggedInputStream $r2;
+        java.io.ByteArrayInputStream $r3;
+        int $i0, $i2, $i4, $i8, $i12;
+        long $l1, $l3, $l5, $l7, $l9, $l11, $l13;
+        byte $b6, $b10;
+        java.io.IOException $r5;
+
+        r0 := @this: org.apache.commons.io.input.TaggedInputStreamTest;
+
+     label1:
+        $r2 = new org.apache.commons.io.input.TaggedInputStream;
+
+        $r3 = new java.io.ByteArrayInputStream;
+
+        $r4 = newarray (byte)[3];
+
+        $r4[0] = 97;
+
+        $r4[1] = 98;
+
+        $r4[2] = 99;
+
+        specialinvoke $r3.<java.io.ByteArrayInputStream: void <init>(byte[])>($r4);
+
+        specialinvoke $r2.<org.apache.commons.io.input.TaggedInputStream: void <init>(java.io.InputStream)>($r3);
+
+        $i0 = virtualinvoke $r2.<java.io.InputStream: int available()>();
+
+        $l1 = (long) $i0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(3L, $l1);
+
+        $i2 = virtualinvoke $r2.<java.io.InputStream: int read()>();
+
+        $l3 = (long) $i2;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(97L, $l3);
+
+        r1 = newarray (byte)[1];
+
+        $i4 = virtualinvoke $r2.<java.io.InputStream: int read(byte[])>(r1);
+
+        $l5 = (long) $i4;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(1L, $l5);
+
+        $b6 = r1[0];
+
+        $l7 = (long) $b6;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(98L, $l7);
+
+        $i8 = virtualinvoke $r2.<java.io.InputStream: int read(byte[],int,int)>(r1, 0, 1);
+
+        $l9 = (long) $i8;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(1L, $l9);
+
+        $b10 = r1[0];
+
+        $l11 = (long) $b10;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(99L, $l11);
+
+        $i12 = virtualinvoke $r2.<java.io.InputStream: int read()>();
+
+        $l13 = (long) $i12;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(-1L, $l13);
+
+        virtualinvoke $r2.<java.io.InputStream: void close()>();
+
+     label2:
+        goto label4;
+
+     label3:
+        $r5 := @caughtexception;
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("Unexpected exception thrown");
+
+     label4:
+        return;
+
+        catch java.io.IOException from label1 to label2 with label3;
+    }
+
+    public void testBrokenStream()
+    {
+        org.apache.commons.io.input.TaggedInputStreamTest r0;
+        java.io.IOException $r3, $r6, $r7, $r8, $r9, $r10, $r11;
+        org.apache.commons.io.input.TaggedInputStream $r4;
+        org.apache.commons.io.input.BrokenInputStream $r5;
+        boolean $z0, $z1, $z2;
+
+        r0 := @this: org.apache.commons.io.input.TaggedInputStreamTest;
+
+        $r3 = new java.io.IOException;
+
+        specialinvoke $r3.<java.io.IOException: void <init>(java.lang.String)>("test exception");
+
+        $r4 = new org.apache.commons.io.input.TaggedInputStream;
+
+        $r5 = new org.apache.commons.io.input.BrokenInputStream;
+
+        specialinvoke $r5.<org.apache.commons.io.input.BrokenInputStream: void <init>(java.io.IOException)>($r3);
+
+        specialinvoke $r4.<org.apache.commons.io.input.TaggedInputStream: void <init>(java.io.InputStream)>($r5);
+
+     label01:
+        virtualinvoke $r4.<org.apache.commons.io.input.TaggedInputStream: int available()>();
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("Expected exception not thrown.");
+
+     label02:
+        goto label07;
+
+     label03:
+        $r6 := @caughtexception;
+
+        $z0 = virtualinvoke $r4.<org.apache.commons.io.input.TaggedInputStream: boolean isCauseOf(java.lang.Throwable)>($r6);
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z0);
+
+     label04:
+        virtualinvoke $r4.<org.apache.commons.io.input.TaggedInputStream: void throwIfCauseOf(java.lang.Throwable)>($r6);
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("Expected exception not thrown.");
+
+     label05:
+        goto label07;
+
+     label06:
+        $r9 := @caughtexception;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r3, $r9);
+
+     label07:
+        virtualinvoke $r4.<org.apache.commons.io.input.TaggedInputStream: int read()>();
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("Expected exception not thrown.");
+
+     label08:
+        goto label13;
+
+     label09:
+        $r8 := @caughtexception;
+
+        $z1 = virtualinvoke $r4.<org.apache.commons.io.input.TaggedInputStream: boolean isCauseOf(java.lang.Throwable)>($r8);
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z1);
+
+     label10:
+        virtualinvoke $r4.<org.apache.commons.io.input.TaggedInputStream: void throwIfCauseOf(java.lang.Throwable)>($r8);
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("Expected exception not thrown.");
+
+     label11:
+        goto label13;
+
+     label12:
+        $r7 := @caughtexception;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r3, $r7);
+
+     label13:
+        virtualinvoke $r4.<org.apache.commons.io.input.TaggedInputStream: void close()>();
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("Expected exception not thrown.");
+
+     label14:
+        goto label19;
+
+     label15:
+        $r11 := @caughtexception;
+
+        $z2 = virtualinvoke $r4.<org.apache.commons.io.input.TaggedInputStream: boolean isCauseOf(java.lang.Throwable)>($r11);
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z2);
+
+     label16:
+        virtualinvoke $r4.<org.apache.commons.io.input.TaggedInputStream: void throwIfCauseOf(java.lang.Throwable)>($r11);
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("Expected exception not thrown.");
+
+     label17:
+        goto label19;
+
+     label18:
+        $r10 := @caughtexception;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r3, $r10);
+
+     label19:
+        return;
+
+        catch java.io.IOException from label01 to label02 with label03;
+        catch java.io.IOException from label04 to label05 with label06;
+        catch java.io.IOException from label07 to label08 with label09;
+        catch java.io.IOException from label10 to label11 with label12;
+        catch java.io.IOException from label13 to label14 with label15;
+        catch java.io.IOException from label16 to label17 with label18;
+    }
+
+    public void testOtherException() throws java.lang.Exception
+    {
+        org.apache.commons.io.input.TaggedInputStreamTest r0;
+        java.io.IOException $r4, $r11, $r12;
+        org.apache.commons.io.input.ClosedInputStream $r5;
+        org.apache.commons.io.input.TaggedInputStream $r6;
+        boolean $z0, $z1;
+        org.apache.commons.io.TaggedIOException $r7, $r9;
+        java.util.UUID $r8, $r10;
+
+        r0 := @this: org.apache.commons.io.input.TaggedInputStreamTest;
+
+        $r4 = new java.io.IOException;
+
+        specialinvoke $r4.<java.io.IOException: void <init>(java.lang.String)>("test exception");
+
+        $r5 = new org.apache.commons.io.input.ClosedInputStream;
+
+        specialinvoke $r5.<org.apache.commons.io.input.ClosedInputStream: void <init>()>();
+
+        $r6 = new org.apache.commons.io.input.TaggedInputStream;
+
+        specialinvoke $r6.<org.apache.commons.io.input.TaggedInputStream: void <init>(java.io.InputStream)>($r5);
+
+        $z0 = virtualinvoke $r6.<org.apache.commons.io.input.TaggedInputStream: boolean isCauseOf(java.lang.Throwable)>($r4);
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z0);
+
+        $r7 = new org.apache.commons.io.TaggedIOException;
+
+        $r8 = staticinvoke <java.util.UUID: java.util.UUID randomUUID()>();
+
+        specialinvoke $r7.<org.apache.commons.io.TaggedIOException: void <init>(java.io.IOException,java.io.Serializable)>($r4, $r8);
+
+        $z1 = virtualinvoke $r6.<org.apache.commons.io.input.TaggedInputStream: boolean isCauseOf(java.lang.Throwable)>($r7);
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z1);
+
+     label1:
+        virtualinvoke $r6.<org.apache.commons.io.input.TaggedInputStream: void throwIfCauseOf(java.lang.Throwable)>($r4);
+
+     label2:
+        goto label4;
+
+     label3:
+        $r11 := @caughtexception;
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("Unexpected exception thrown");
+
+     label4:
+        $r9 = new org.apache.commons.io.TaggedIOException;
+
+        $r10 = staticinvoke <java.util.UUID: java.util.UUID randomUUID()>();
+
+        specialinvoke $r9.<org.apache.commons.io.TaggedIOException: void <init>(java.io.IOException,java.io.Serializable)>($r4, $r10);
+
+        virtualinvoke $r6.<org.apache.commons.io.input.TaggedInputStream: void throwIfCauseOf(java.lang.Throwable)>($r9);
+
+     label5:
+        goto label7;
+
+     label6:
+        $r12 := @caughtexception;
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("Unexpected exception thrown");
+
+     label7:
+        virtualinvoke $r6.<org.apache.commons.io.input.TaggedInputStream: void close()>();
+
+        return;
+
+        catch java.io.IOException from label1 to label2 with label3;
+        catch java.io.IOException from label4 to label5 with label6;
+    }
+}

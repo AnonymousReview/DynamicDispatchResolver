@@ -1,0 +1,28 @@
+public class org.apache.commons.codec.net.UtilsTest extends java.lang.Object
+{
+
+    public void <init>()
+    {
+        org.apache.commons.codec.net.UtilsTest r0;
+
+        r0 := @this: org.apache.commons.codec.net.UtilsTest;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void testConstructor()
+    {
+        org.apache.commons.codec.net.UtilsTest r0;
+        org.apache.commons.codec.net.Utils $r1;
+
+        r0 := @this: org.apache.commons.codec.net.UtilsTest;
+
+        $r1 = new org.apache.commons.codec.net.Utils;
+
+        specialinvoke $r1.<org.apache.commons.codec.net.Utils: void <init>()>();
+
+        return;
+    }
+}

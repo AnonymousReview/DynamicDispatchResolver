@@ -1,0 +1,49 @@
+class org.apache.log4j.AsyncAppenderTestCase$NullPointerAppender extends org.apache.log4j.AppenderSkeleton
+{
+
+    public void <init>()
+    {
+        org.apache.log4j.AsyncAppenderTestCase$NullPointerAppender r0;
+
+        r0 := @this: org.apache.log4j.AsyncAppenderTestCase$NullPointerAppender;
+
+        specialinvoke r0.<org.apache.log4j.AppenderSkeleton: void <init>()>();
+
+        return;
+    }
+
+    public void append(org.apache.log4j.spi.LoggingEvent)
+    {
+        org.apache.log4j.AsyncAppenderTestCase$NullPointerAppender r0;
+        org.apache.log4j.spi.LoggingEvent r1;
+        java.lang.NullPointerException $r2;
+
+        r0 := @this: org.apache.log4j.AsyncAppenderTestCase$NullPointerAppender;
+
+        r1 := @parameter0: org.apache.log4j.spi.LoggingEvent;
+
+        $r2 = new java.lang.NullPointerException;
+
+        specialinvoke $r2.<java.lang.NullPointerException: void <init>()>();
+
+        throw $r2;
+    }
+
+    public void close()
+    {
+        org.apache.log4j.AsyncAppenderTestCase$NullPointerAppender r0;
+
+        r0 := @this: org.apache.log4j.AsyncAppenderTestCase$NullPointerAppender;
+
+        return;
+    }
+
+    public boolean requiresLayout()
+    {
+        org.apache.log4j.AsyncAppenderTestCase$NullPointerAppender r0;
+
+        r0 := @this: org.apache.log4j.AsyncAppenderTestCase$NullPointerAppender;
+
+        return 0;
+    }
+}

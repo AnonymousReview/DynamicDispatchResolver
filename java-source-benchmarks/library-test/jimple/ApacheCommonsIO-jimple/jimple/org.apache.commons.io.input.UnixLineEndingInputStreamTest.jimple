@@ -1,0 +1,183 @@
+public class org.apache.commons.io.input.UnixLineEndingInputStreamTest extends java.lang.Object
+{
+
+    public void <init>()
+    {
+        org.apache.commons.io.input.UnixLineEndingInputStreamTest r0;
+
+        r0 := @this: org.apache.commons.io.input.UnixLineEndingInputStreamTest;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void simpleString() throws java.lang.Exception
+    {
+        org.apache.commons.io.input.UnixLineEndingInputStreamTest r0;
+        java.lang.String $r1;
+
+        r0 := @this: org.apache.commons.io.input.UnixLineEndingInputStreamTest;
+
+        $r1 = specialinvoke r0.<org.apache.commons.io.input.UnixLineEndingInputStreamTest: java.lang.String roundtrip(java.lang.String)>("abc");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("abc\n", $r1);
+
+        return;
+    }
+
+    public void inTheMiddleOfTheLine() throws java.lang.Exception
+    {
+        org.apache.commons.io.input.UnixLineEndingInputStreamTest r0;
+        java.lang.String $r1;
+
+        r0 := @this: org.apache.commons.io.input.UnixLineEndingInputStreamTest;
+
+        $r1 = specialinvoke r0.<org.apache.commons.io.input.UnixLineEndingInputStreamTest: java.lang.String roundtrip(java.lang.String)>("a\r\nbc");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("a\nbc\n", $r1);
+
+        return;
+    }
+
+    public void multipleBlankLines() throws java.lang.Exception
+    {
+        org.apache.commons.io.input.UnixLineEndingInputStreamTest r0;
+        java.lang.String $r1;
+
+        r0 := @this: org.apache.commons.io.input.UnixLineEndingInputStreamTest;
+
+        $r1 = specialinvoke r0.<org.apache.commons.io.input.UnixLineEndingInputStreamTest: java.lang.String roundtrip(java.lang.String)>("a\r\n\r\nbc");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("a\n\nbc\n", $r1);
+
+        return;
+    }
+
+    public void twoLinesAtEnd() throws java.lang.Exception
+    {
+        org.apache.commons.io.input.UnixLineEndingInputStreamTest r0;
+        java.lang.String $r1;
+
+        r0 := @this: org.apache.commons.io.input.UnixLineEndingInputStreamTest;
+
+        $r1 = specialinvoke r0.<org.apache.commons.io.input.UnixLineEndingInputStreamTest: java.lang.String roundtrip(java.lang.String)>("a\r\n\r\n");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("a\n\n", $r1);
+
+        return;
+    }
+
+    public void crOnlyEnsureAtEof() throws java.lang.Exception
+    {
+        org.apache.commons.io.input.UnixLineEndingInputStreamTest r0;
+        java.lang.String $r1;
+
+        r0 := @this: org.apache.commons.io.input.UnixLineEndingInputStreamTest;
+
+        $r1 = specialinvoke r0.<org.apache.commons.io.input.UnixLineEndingInputStreamTest: java.lang.String roundtrip(java.lang.String)>("a\rb");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("a\nb\n", $r1);
+
+        return;
+    }
+
+    public void crOnlyNotAtEof() throws java.lang.Exception
+    {
+        org.apache.commons.io.input.UnixLineEndingInputStreamTest r0;
+        java.lang.String $r1;
+
+        r0 := @this: org.apache.commons.io.input.UnixLineEndingInputStreamTest;
+
+        $r1 = specialinvoke r0.<org.apache.commons.io.input.UnixLineEndingInputStreamTest: java.lang.String roundtrip(java.lang.String,boolean)>("a\rb", 0);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("a\nb", $r1);
+
+        return;
+    }
+
+    public void crAtEnd() throws java.lang.Exception
+    {
+        org.apache.commons.io.input.UnixLineEndingInputStreamTest r0;
+        java.lang.String $r1;
+
+        r0 := @this: org.apache.commons.io.input.UnixLineEndingInputStreamTest;
+
+        $r1 = specialinvoke r0.<org.apache.commons.io.input.UnixLineEndingInputStreamTest: java.lang.String roundtrip(java.lang.String)>("a\r");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("a\n", $r1);
+
+        return;
+    }
+
+    public void retainLineFeed() throws java.lang.Exception
+    {
+        org.apache.commons.io.input.UnixLineEndingInputStreamTest r0;
+        java.lang.String $r1, $r2;
+
+        r0 := @this: org.apache.commons.io.input.UnixLineEndingInputStreamTest;
+
+        $r1 = specialinvoke r0.<org.apache.commons.io.input.UnixLineEndingInputStreamTest: java.lang.String roundtrip(java.lang.String,boolean)>("a\r\n\r\n", 0);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("a\n\n", $r1);
+
+        $r2 = specialinvoke r0.<org.apache.commons.io.input.UnixLineEndingInputStreamTest: java.lang.String roundtrip(java.lang.String,boolean)>("a", 0);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("a", $r2);
+
+        return;
+    }
+
+    private java.lang.String roundtrip(java.lang.String) throws java.io.IOException
+    {
+        org.apache.commons.io.input.UnixLineEndingInputStreamTest r0;
+        java.lang.String r1, $r2;
+
+        r0 := @this: org.apache.commons.io.input.UnixLineEndingInputStreamTest;
+
+        r1 := @parameter0: java.lang.String;
+
+        $r2 = specialinvoke r0.<org.apache.commons.io.input.UnixLineEndingInputStreamTest: java.lang.String roundtrip(java.lang.String,boolean)>(r1, 1);
+
+        return $r2;
+    }
+
+    private java.lang.String roundtrip(java.lang.String, boolean) throws java.io.IOException
+    {
+        org.apache.commons.io.input.UnixLineEndingInputStreamTest r0;
+        java.lang.String r1, $r8;
+        boolean z0;
+        byte[] r4, $r6;
+        int i0;
+        java.io.ByteArrayInputStream $r5;
+        org.apache.commons.io.input.UnixLineEndingInputStream $r7;
+
+        r0 := @this: org.apache.commons.io.input.UnixLineEndingInputStreamTest;
+
+        r1 := @parameter0: java.lang.String;
+
+        z0 := @parameter1: boolean;
+
+        $r5 = new java.io.ByteArrayInputStream;
+
+        $r6 = virtualinvoke r1.<java.lang.String: byte[] getBytes(java.lang.String)>("UTF-8");
+
+        specialinvoke $r5.<java.io.ByteArrayInputStream: void <init>(byte[])>($r6);
+
+        $r7 = new org.apache.commons.io.input.UnixLineEndingInputStream;
+
+        specialinvoke $r7.<org.apache.commons.io.input.UnixLineEndingInputStream: void <init>(java.io.InputStream,boolean)>($r5, z0);
+
+        r4 = newarray (byte)[100];
+
+        i0 = virtualinvoke $r7.<org.apache.commons.io.input.UnixLineEndingInputStream: int read(byte[])>(r4);
+
+        virtualinvoke $r7.<org.apache.commons.io.input.UnixLineEndingInputStream: void close()>();
+
+        $r8 = new java.lang.String;
+
+        specialinvoke $r8.<java.lang.String: void <init>(byte[],int,int,java.lang.String)>(r4, 0, i0, "UTF-8");
+
+        return $r8;
+    }
+}

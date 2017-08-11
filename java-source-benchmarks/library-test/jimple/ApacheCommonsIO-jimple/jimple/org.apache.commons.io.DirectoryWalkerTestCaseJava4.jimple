@@ -1,0 +1,1463 @@
+public class org.apache.commons.io.DirectoryWalkerTestCaseJava4 extends java.lang.Object
+{
+    private static final java.io.File current;
+    private static final java.io.File javaDir;
+    private static final java.io.File orgDir;
+    private static final java.io.File apacheDir;
+    private static final java.io.File commonsDir;
+    private static final java.io.File ioDir;
+    private static final java.io.File outputDir;
+    private static final java.io.File[] dirs;
+    private static final java.io.File filenameUtils;
+    private static final java.io.File ioUtils;
+    private static final java.io.File proxyWriter;
+    private static final java.io.File nullStream;
+    private static final java.io.File[] ioFiles;
+    private static final java.io.File[] outputFiles;
+    private static final org.apache.commons.io.filefilter.IOFileFilter dirsFilter;
+    private static final org.apache.commons.io.filefilter.IOFileFilter iofilesFilter;
+    private static final org.apache.commons.io.filefilter.IOFileFilter outputFilesFilter;
+    private static final org.apache.commons.io.filefilter.IOFileFilter ioDirAndFilesFilter;
+    private static final org.apache.commons.io.filefilter.IOFileFilter dirsAndFilesFilter;
+    private static final org.apache.commons.io.filefilter.IOFileFilter NOT_SVN;
+
+    static void <clinit>()
+    {
+        java.io.File $r0, $r1, $r2, $r3, $r4, $r5, $r6, $r7, $r8, $r9, $r10, $r11, $r13, $r14, $r15, $r16, $r17, $r18, $r19, $r20, $r21, $r22, $r23, $r24, $r25, $r27, $r28, $r30, $r31;
+        java.io.File[] $r12, $r26, $r29, $r32, $r34, $r36;
+        org.apache.commons.io.filefilter.IOFileFilter $r33, $r35, $r37, $r39, $r40, $r42, $r43, $r44;
+        org.apache.commons.io.filefilter.OrFileFilter $r38, $r41;
+
+        $r0 = new java.io.File;
+
+        specialinvoke $r0.<java.io.File: void <init>(java.lang.String)>(".");
+
+        <org.apache.commons.io.DirectoryWalkerTestCaseJava4: java.io.File current> = $r0;
+
+        $r1 = new java.io.File;
+
+        specialinvoke $r1.<java.io.File: void <init>(java.lang.String)>("src/main/java");
+
+        <org.apache.commons.io.DirectoryWalkerTestCaseJava4: java.io.File javaDir> = $r1;
+
+        $r2 = new java.io.File;
+
+        $r3 = <org.apache.commons.io.DirectoryWalkerTestCaseJava4: java.io.File javaDir>;
+
+        specialinvoke $r2.<java.io.File: void <init>(java.io.File,java.lang.String)>($r3, "org");
+
+        <org.apache.commons.io.DirectoryWalkerTestCaseJava4: java.io.File orgDir> = $r2;
+
+        $r4 = new java.io.File;
+
+        $r5 = <org.apache.commons.io.DirectoryWalkerTestCaseJava4: java.io.File orgDir>;
+
+        specialinvoke $r4.<java.io.File: void <init>(java.io.File,java.lang.String)>($r5, "apache");
+
+        <org.apache.commons.io.DirectoryWalkerTestCaseJava4: java.io.File apacheDir> = $r4;
+
+        $r6 = new java.io.File;
+
+        $r7 = <org.apache.commons.io.DirectoryWalkerTestCaseJava4: java.io.File apacheDir>;
+
+        specialinvoke $r6.<java.io.File: void <init>(java.io.File,java.lang.String)>($r7, "commons");
+
+        <org.apache.commons.io.DirectoryWalkerTestCaseJava4: java.io.File commonsDir> = $r6;
+
+        $r8 = new java.io.File;
+
+        $r9 = <org.apache.commons.io.DirectoryWalkerTestCaseJava4: java.io.File commonsDir>;
+
+        specialinvoke $r8.<java.io.File: void <init>(java.io.File,java.lang.String)>($r9, "io");
+
+        <org.apache.commons.io.DirectoryWalkerTestCaseJava4: java.io.File ioDir> = $r8;
+
+        $r10 = new java.io.File;
+
+        $r11 = <org.apache.commons.io.DirectoryWalkerTestCaseJava4: java.io.File ioDir>;
+
+        specialinvoke $r10.<java.io.File: void <init>(java.io.File,java.lang.String)>($r11, "output");
+
+        <org.apache.commons.io.DirectoryWalkerTestCaseJava4: java.io.File outputDir> = $r10;
+
+        $r12 = newarray (java.io.File)[5];
+
+        $r13 = <org.apache.commons.io.DirectoryWalkerTestCaseJava4: java.io.File orgDir>;
+
+        $r12[0] = $r13;
+
+        $r14 = <org.apache.commons.io.DirectoryWalkerTestCaseJava4: java.io.File apacheDir>;
+
+        $r12[1] = $r14;
+
+        $r15 = <org.apache.commons.io.DirectoryWalkerTestCaseJava4: java.io.File commonsDir>;
+
+        $r12[2] = $r15;
+
+        $r16 = <org.apache.commons.io.DirectoryWalkerTestCaseJava4: java.io.File ioDir>;
+
+        $r12[3] = $r16;
+
+        $r17 = <org.apache.commons.io.DirectoryWalkerTestCaseJava4: java.io.File outputDir>;
+
+        $r12[4] = $r17;
+
+        <org.apache.commons.io.DirectoryWalkerTestCaseJava4: java.io.File[] dirs> = $r12;
+
+        $r18 = new java.io.File;
+
+        $r19 = <org.apache.commons.io.DirectoryWalkerTestCaseJava4: java.io.File ioDir>;
+
+        specialinvoke $r18.<java.io.File: void <init>(java.io.File,java.lang.String)>($r19, "FilenameUtils.java");
+
+        <org.apache.commons.io.DirectoryWalkerTestCaseJava4: java.io.File filenameUtils> = $r18;
+
+        $r20 = new java.io.File;
+
+        $r21 = <org.apache.commons.io.DirectoryWalkerTestCaseJava4: java.io.File ioDir>;
+
+        specialinvoke $r20.<java.io.File: void <init>(java.io.File,java.lang.String)>($r21, "IOUtils.java");
+
+        <org.apache.commons.io.DirectoryWalkerTestCaseJava4: java.io.File ioUtils> = $r20;
+
+        $r22 = new java.io.File;
+
+        $r23 = <org.apache.commons.io.DirectoryWalkerTestCaseJava4: java.io.File outputDir>;
+
+        specialinvoke $r22.<java.io.File: void <init>(java.io.File,java.lang.String)>($r23, "ProxyWriter.java");
+
+        <org.apache.commons.io.DirectoryWalkerTestCaseJava4: java.io.File proxyWriter> = $r22;
+
+        $r24 = new java.io.File;
+
+        $r25 = <org.apache.commons.io.DirectoryWalkerTestCaseJava4: java.io.File outputDir>;
+
+        specialinvoke $r24.<java.io.File: void <init>(java.io.File,java.lang.String)>($r25, "NullOutputStream.java");
+
+        <org.apache.commons.io.DirectoryWalkerTestCaseJava4: java.io.File nullStream> = $r24;
+
+        $r26 = newarray (java.io.File)[2];
+
+        $r27 = <org.apache.commons.io.DirectoryWalkerTestCaseJava4: java.io.File filenameUtils>;
+
+        $r26[0] = $r27;
+
+        $r28 = <org.apache.commons.io.DirectoryWalkerTestCaseJava4: java.io.File ioUtils>;
+
+        $r26[1] = $r28;
+
+        <org.apache.commons.io.DirectoryWalkerTestCaseJava4: java.io.File[] ioFiles> = $r26;
+
+        $r29 = newarray (java.io.File)[2];
+
+        $r30 = <org.apache.commons.io.DirectoryWalkerTestCaseJava4: java.io.File proxyWriter>;
+
+        $r29[0] = $r30;
+
+        $r31 = <org.apache.commons.io.DirectoryWalkerTestCaseJava4: java.io.File nullStream>;
+
+        $r29[1] = $r31;
+
+        <org.apache.commons.io.DirectoryWalkerTestCaseJava4: java.io.File[] outputFiles> = $r29;
+
+        $r32 = <org.apache.commons.io.DirectoryWalkerTestCaseJava4: java.io.File[] dirs>;
+
+        $r33 = staticinvoke <org.apache.commons.io.DirectoryWalkerTestCaseJava4: org.apache.commons.io.filefilter.IOFileFilter createNameFilter(java.io.File[])>($r32);
+
+        <org.apache.commons.io.DirectoryWalkerTestCaseJava4: org.apache.commons.io.filefilter.IOFileFilter dirsFilter> = $r33;
+
+        $r34 = <org.apache.commons.io.DirectoryWalkerTestCaseJava4: java.io.File[] ioFiles>;
+
+        $r35 = staticinvoke <org.apache.commons.io.DirectoryWalkerTestCaseJava4: org.apache.commons.io.filefilter.IOFileFilter createNameFilter(java.io.File[])>($r34);
+
+        <org.apache.commons.io.DirectoryWalkerTestCaseJava4: org.apache.commons.io.filefilter.IOFileFilter iofilesFilter> = $r35;
+
+        $r36 = <org.apache.commons.io.DirectoryWalkerTestCaseJava4: java.io.File[] outputFiles>;
+
+        $r37 = staticinvoke <org.apache.commons.io.DirectoryWalkerTestCaseJava4: org.apache.commons.io.filefilter.IOFileFilter createNameFilter(java.io.File[])>($r36);
+
+        <org.apache.commons.io.DirectoryWalkerTestCaseJava4: org.apache.commons.io.filefilter.IOFileFilter outputFilesFilter> = $r37;
+
+        $r38 = new org.apache.commons.io.filefilter.OrFileFilter;
+
+        $r40 = <org.apache.commons.io.DirectoryWalkerTestCaseJava4: org.apache.commons.io.filefilter.IOFileFilter dirsFilter>;
+
+        $r39 = <org.apache.commons.io.DirectoryWalkerTestCaseJava4: org.apache.commons.io.filefilter.IOFileFilter iofilesFilter>;
+
+        specialinvoke $r38.<org.apache.commons.io.filefilter.OrFileFilter: void <init>(org.apache.commons.io.filefilter.IOFileFilter,org.apache.commons.io.filefilter.IOFileFilter)>($r40, $r39);
+
+        <org.apache.commons.io.DirectoryWalkerTestCaseJava4: org.apache.commons.io.filefilter.IOFileFilter ioDirAndFilesFilter> = $r38;
+
+        $r41 = new org.apache.commons.io.filefilter.OrFileFilter;
+
+        $r43 = <org.apache.commons.io.DirectoryWalkerTestCaseJava4: org.apache.commons.io.filefilter.IOFileFilter ioDirAndFilesFilter>;
+
+        $r42 = <org.apache.commons.io.DirectoryWalkerTestCaseJava4: org.apache.commons.io.filefilter.IOFileFilter outputFilesFilter>;
+
+        specialinvoke $r41.<org.apache.commons.io.filefilter.OrFileFilter: void <init>(org.apache.commons.io.filefilter.IOFileFilter,org.apache.commons.io.filefilter.IOFileFilter)>($r43, $r42);
+
+        <org.apache.commons.io.DirectoryWalkerTestCaseJava4: org.apache.commons.io.filefilter.IOFileFilter dirsAndFilesFilter> = $r41;
+
+        $r44 = staticinvoke <org.apache.commons.io.filefilter.FileFilterUtils: org.apache.commons.io.filefilter.IOFileFilter makeSVNAware(org.apache.commons.io.filefilter.IOFileFilter)>(null);
+
+        <org.apache.commons.io.DirectoryWalkerTestCaseJava4: org.apache.commons.io.filefilter.IOFileFilter NOT_SVN> = $r44;
+
+        return;
+    }
+
+    public void <init>()
+    {
+        org.apache.commons.io.DirectoryWalkerTestCaseJava4 r0;
+
+        r0 := @this: org.apache.commons.io.DirectoryWalkerTestCaseJava4;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void testFilter()
+    {
+        org.apache.commons.io.DirectoryWalkerTestCaseJava4 r0;
+        java.util.List r1;
+        org.apache.commons.io.DirectoryWalkerTestCaseJava4$TestFileFinder $r2;
+        org.apache.commons.io.filefilter.IOFileFilter $r3;
+        java.io.File $r4, $r8;
+        java.io.File[] $r5, $r6, $r7, $r9, $r10, $r11;
+        int $i0, $i1, $i2, $i3, $i4, $i5, $i7;
+        long $l6, $l8;
+        boolean $z0;
+
+        r0 := @this: org.apache.commons.io.DirectoryWalkerTestCaseJava4;
+
+        $r2 = new org.apache.commons.io.DirectoryWalkerTestCaseJava4$TestFileFinder;
+
+        $r3 = <org.apache.commons.io.DirectoryWalkerTestCaseJava4: org.apache.commons.io.filefilter.IOFileFilter dirsAndFilesFilter>;
+
+        specialinvoke $r2.<org.apache.commons.io.DirectoryWalkerTestCaseJava4$TestFileFinder: void <init>(java.io.FileFilter,int)>($r3, -1);
+
+        $r4 = <org.apache.commons.io.DirectoryWalkerTestCaseJava4: java.io.File javaDir>;
+
+        r1 = virtualinvoke $r2.<org.apache.commons.io.DirectoryWalkerTestCaseJava4$TestFileFinder: java.util.List find(java.io.File)>($r4);
+
+        $r5 = <org.apache.commons.io.DirectoryWalkerTestCaseJava4: java.io.File[] dirs>;
+
+        $i0 = lengthof $r5;
+
+        $i2 = 1 + $i0;
+
+        $r6 = <org.apache.commons.io.DirectoryWalkerTestCaseJava4: java.io.File[] ioFiles>;
+
+        $i1 = lengthof $r6;
+
+        $i4 = $i2 + $i1;
+
+        $r7 = <org.apache.commons.io.DirectoryWalkerTestCaseJava4: java.io.File[] outputFiles>;
+
+        $i3 = lengthof $r7;
+
+        $i5 = $i4 + $i3;
+
+        $l6 = (long) $i5;
+
+        $i7 = interfaceinvoke r1.<java.util.List: int size()>();
+
+        $l8 = (long) $i7;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("Result Size", $l6, $l8);
+
+        $r8 = <org.apache.commons.io.DirectoryWalkerTestCaseJava4: java.io.File javaDir>;
+
+        $z0 = interfaceinvoke r1.<java.util.List: boolean contains(java.lang.Object)>($r8);
+
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>("Start Dir", $z0);
+
+        $r9 = <org.apache.commons.io.DirectoryWalkerTestCaseJava4: java.io.File[] dirs>;
+
+        specialinvoke r0.<org.apache.commons.io.DirectoryWalkerTestCaseJava4: void checkContainsFiles(java.lang.String,java.io.File[],java.util.Collection)>("Dir", $r9, r1);
+
+        $r10 = <org.apache.commons.io.DirectoryWalkerTestCaseJava4: java.io.File[] ioFiles>;
+
+        specialinvoke r0.<org.apache.commons.io.DirectoryWalkerTestCaseJava4: void checkContainsFiles(java.lang.String,java.io.File[],java.util.Collection)>("IO File", $r10, r1);
+
+        $r11 = <org.apache.commons.io.DirectoryWalkerTestCaseJava4: java.io.File[] outputFiles>;
+
+        specialinvoke r0.<org.apache.commons.io.DirectoryWalkerTestCaseJava4: void checkContainsFiles(java.lang.String,java.io.File[],java.util.Collection)>("Output File", $r11, r1);
+
+        return;
+    }
+
+    public void testFilterAndLimitA()
+    {
+        org.apache.commons.io.DirectoryWalkerTestCaseJava4 r0;
+        java.util.List r1;
+        org.apache.commons.io.DirectoryWalkerTestCaseJava4$TestFileFinder $r2;
+        org.apache.commons.io.filefilter.IOFileFilter $r3;
+        java.io.File $r4, $r5;
+        int $i0;
+        long $l1;
+        boolean $z0;
+
+        r0 := @this: org.apache.commons.io.DirectoryWalkerTestCaseJava4;
+
+        $r2 = new org.apache.commons.io.DirectoryWalkerTestCaseJava4$TestFileFinder;
+
+        $r3 = <org.apache.commons.io.DirectoryWalkerTestCaseJava4: org.apache.commons.io.filefilter.IOFileFilter NOT_SVN>;
+
+        specialinvoke $r2.<org.apache.commons.io.DirectoryWalkerTestCaseJava4$TestFileFinder: void <init>(java.io.FileFilter,int)>($r3, 0);
+
+        $r4 = <org.apache.commons.io.DirectoryWalkerTestCaseJava4: java.io.File javaDir>;
+
+        r1 = virtualinvoke $r2.<org.apache.commons.io.DirectoryWalkerTestCaseJava4$TestFileFinder: java.util.List find(java.io.File)>($r4);
+
+        $i0 = interfaceinvoke r1.<java.util.List: int size()>();
+
+        $l1 = (long) $i0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("[A] Result Size", 1L, $l1);
+
+        $r5 = <org.apache.commons.io.DirectoryWalkerTestCaseJava4: java.io.File javaDir>;
+
+        $z0 = interfaceinvoke r1.<java.util.List: boolean contains(java.lang.Object)>($r5);
+
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>("[A] Start Dir", $z0);
+
+        return;
+    }
+
+    public void testFilterAndLimitB()
+    {
+        org.apache.commons.io.DirectoryWalkerTestCaseJava4 r0;
+        java.util.List r1;
+        org.apache.commons.io.DirectoryWalkerTestCaseJava4$TestFileFinder $r2;
+        org.apache.commons.io.filefilter.IOFileFilter $r3;
+        java.io.File $r4, $r5, $r6;
+        int $i0;
+        long $l1;
+        boolean $z0, $z1;
+
+        r0 := @this: org.apache.commons.io.DirectoryWalkerTestCaseJava4;
+
+        $r2 = new org.apache.commons.io.DirectoryWalkerTestCaseJava4$TestFileFinder;
+
+        $r3 = <org.apache.commons.io.DirectoryWalkerTestCaseJava4: org.apache.commons.io.filefilter.IOFileFilter NOT_SVN>;
+
+        specialinvoke $r2.<org.apache.commons.io.DirectoryWalkerTestCaseJava4$TestFileFinder: void <init>(java.io.FileFilter,int)>($r3, 1);
+
+        $r4 = <org.apache.commons.io.DirectoryWalkerTestCaseJava4: java.io.File javaDir>;
+
+        r1 = virtualinvoke $r2.<org.apache.commons.io.DirectoryWalkerTestCaseJava4$TestFileFinder: java.util.List find(java.io.File)>($r4);
+
+        $i0 = interfaceinvoke r1.<java.util.List: int size()>();
+
+        $l1 = (long) $i0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("[B] Result Size", 2L, $l1);
+
+        $r5 = <org.apache.commons.io.DirectoryWalkerTestCaseJava4: java.io.File javaDir>;
+
+        $z0 = interfaceinvoke r1.<java.util.List: boolean contains(java.lang.Object)>($r5);
+
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>("[B] Start Dir", $z0);
+
+        $r6 = <org.apache.commons.io.DirectoryWalkerTestCaseJava4: java.io.File orgDir>;
+
+        $z1 = interfaceinvoke r1.<java.util.List: boolean contains(java.lang.Object)>($r6);
+
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>("[B] Org Dir", $z1);
+
+        return;
+    }
+
+    public void testFilterAndLimitC()
+    {
+        org.apache.commons.io.DirectoryWalkerTestCaseJava4 r0;
+        java.util.List r1;
+        org.apache.commons.io.DirectoryWalkerTestCaseJava4$TestFileFinder $r2;
+        org.apache.commons.io.filefilter.IOFileFilter $r3;
+        java.io.File $r4, $r5, $r6, $r7, $r8;
+        int $i0;
+        long $l1;
+        boolean $z0, $z1, $z2, $z3;
+
+        r0 := @this: org.apache.commons.io.DirectoryWalkerTestCaseJava4;
+
+        $r2 = new org.apache.commons.io.DirectoryWalkerTestCaseJava4$TestFileFinder;
+
+        $r3 = <org.apache.commons.io.DirectoryWalkerTestCaseJava4: org.apache.commons.io.filefilter.IOFileFilter NOT_SVN>;
+
+        specialinvoke $r2.<org.apache.commons.io.DirectoryWalkerTestCaseJava4$TestFileFinder: void <init>(java.io.FileFilter,int)>($r3, 3);
+
+        $r4 = <org.apache.commons.io.DirectoryWalkerTestCaseJava4: java.io.File javaDir>;
+
+        r1 = virtualinvoke $r2.<org.apache.commons.io.DirectoryWalkerTestCaseJava4$TestFileFinder: java.util.List find(java.io.File)>($r4);
+
+        $i0 = interfaceinvoke r1.<java.util.List: int size()>();
+
+        $l1 = (long) $i0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("[C] Result Size", 4L, $l1);
+
+        $r5 = <org.apache.commons.io.DirectoryWalkerTestCaseJava4: java.io.File javaDir>;
+
+        $z0 = interfaceinvoke r1.<java.util.List: boolean contains(java.lang.Object)>($r5);
+
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>("[C] Start Dir", $z0);
+
+        $r6 = <org.apache.commons.io.DirectoryWalkerTestCaseJava4: java.io.File orgDir>;
+
+        $z1 = interfaceinvoke r1.<java.util.List: boolean contains(java.lang.Object)>($r6);
+
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>("[C] Org Dir", $z1);
+
+        $r7 = <org.apache.commons.io.DirectoryWalkerTestCaseJava4: java.io.File apacheDir>;
+
+        $z2 = interfaceinvoke r1.<java.util.List: boolean contains(java.lang.Object)>($r7);
+
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>("[C] Apache Dir", $z2);
+
+        $r8 = <org.apache.commons.io.DirectoryWalkerTestCaseJava4: java.io.File commonsDir>;
+
+        $z3 = interfaceinvoke r1.<java.util.List: boolean contains(java.lang.Object)>($r8);
+
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>("[C] Commons Dir", $z3);
+
+        return;
+    }
+
+    public void testFilterAndLimitD()
+    {
+        org.apache.commons.io.DirectoryWalkerTestCaseJava4 r0;
+        java.util.List r1;
+        org.apache.commons.io.DirectoryWalkerTestCaseJava4$TestFileFinder $r2;
+        org.apache.commons.io.filefilter.IOFileFilter $r3;
+        java.io.File $r4, $r7;
+        java.io.File[] $r5, $r6, $r8, $r9;
+        int $i0, $i1, $i2, $i3, $i5;
+        long $l4, $l6;
+        boolean $z0;
+
+        r0 := @this: org.apache.commons.io.DirectoryWalkerTestCaseJava4;
+
+        $r2 = new org.apache.commons.io.DirectoryWalkerTestCaseJava4$TestFileFinder;
+
+        $r3 = <org.apache.commons.io.DirectoryWalkerTestCaseJava4: org.apache.commons.io.filefilter.IOFileFilter dirsAndFilesFilter>;
+
+        specialinvoke $r2.<org.apache.commons.io.DirectoryWalkerTestCaseJava4$TestFileFinder: void <init>(java.io.FileFilter,int)>($r3, 5);
+
+        $r4 = <org.apache.commons.io.DirectoryWalkerTestCaseJava4: java.io.File javaDir>;
+
+        r1 = virtualinvoke $r2.<org.apache.commons.io.DirectoryWalkerTestCaseJava4$TestFileFinder: java.util.List find(java.io.File)>($r4);
+
+        $r5 = <org.apache.commons.io.DirectoryWalkerTestCaseJava4: java.io.File[] dirs>;
+
+        $i0 = lengthof $r5;
+
+        $i2 = 1 + $i0;
+
+        $r6 = <org.apache.commons.io.DirectoryWalkerTestCaseJava4: java.io.File[] ioFiles>;
+
+        $i1 = lengthof $r6;
+
+        $i3 = $i2 + $i1;
+
+        $l4 = (long) $i3;
+
+        $i5 = interfaceinvoke r1.<java.util.List: int size()>();
+
+        $l6 = (long) $i5;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("[D] Result Size", $l4, $l6);
+
+        $r7 = <org.apache.commons.io.DirectoryWalkerTestCaseJava4: java.io.File javaDir>;
+
+        $z0 = interfaceinvoke r1.<java.util.List: boolean contains(java.lang.Object)>($r7);
+
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>("[D] Start Dir", $z0);
+
+        $r8 = <org.apache.commons.io.DirectoryWalkerTestCaseJava4: java.io.File[] dirs>;
+
+        specialinvoke r0.<org.apache.commons.io.DirectoryWalkerTestCaseJava4: void checkContainsFiles(java.lang.String,java.io.File[],java.util.Collection)>("[D] Dir", $r8, r1);
+
+        $r9 = <org.apache.commons.io.DirectoryWalkerTestCaseJava4: java.io.File[] ioFiles>;
+
+        specialinvoke r0.<org.apache.commons.io.DirectoryWalkerTestCaseJava4: void checkContainsFiles(java.lang.String,java.io.File[],java.util.Collection)>("[D] File", $r9, r1);
+
+        return;
+    }
+
+    public void testFilterDirAndFile1()
+    {
+        org.apache.commons.io.DirectoryWalkerTestCaseJava4 r0;
+        java.util.List r1;
+        org.apache.commons.io.DirectoryWalkerTestCaseJava4$TestFileFinder $r2;
+        org.apache.commons.io.filefilter.IOFileFilter $r3, $r4;
+        java.io.File $r5, $r8;
+        java.io.File[] $r6, $r7, $r9, $r10;
+        int $i0, $i1, $i2, $i3, $i5;
+        long $l4, $l6;
+        boolean $z0;
+
+        r0 := @this: org.apache.commons.io.DirectoryWalkerTestCaseJava4;
+
+        $r2 = new org.apache.commons.io.DirectoryWalkerTestCaseJava4$TestFileFinder;
+
+        $r4 = <org.apache.commons.io.DirectoryWalkerTestCaseJava4: org.apache.commons.io.filefilter.IOFileFilter dirsFilter>;
+
+        $r3 = <org.apache.commons.io.DirectoryWalkerTestCaseJava4: org.apache.commons.io.filefilter.IOFileFilter iofilesFilter>;
+
+        specialinvoke $r2.<org.apache.commons.io.DirectoryWalkerTestCaseJava4$TestFileFinder: void <init>(org.apache.commons.io.filefilter.IOFileFilter,org.apache.commons.io.filefilter.IOFileFilter,int)>($r4, $r3, -1);
+
+        $r5 = <org.apache.commons.io.DirectoryWalkerTestCaseJava4: java.io.File javaDir>;
+
+        r1 = virtualinvoke $r2.<org.apache.commons.io.DirectoryWalkerTestCaseJava4$TestFileFinder: java.util.List find(java.io.File)>($r5);
+
+        $r6 = <org.apache.commons.io.DirectoryWalkerTestCaseJava4: java.io.File[] dirs>;
+
+        $i0 = lengthof $r6;
+
+        $i2 = 1 + $i0;
+
+        $r7 = <org.apache.commons.io.DirectoryWalkerTestCaseJava4: java.io.File[] ioFiles>;
+
+        $i1 = lengthof $r7;
+
+        $i3 = $i2 + $i1;
+
+        $l4 = (long) $i3;
+
+        $i5 = interfaceinvoke r1.<java.util.List: int size()>();
+
+        $l6 = (long) $i5;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("[DirAndFile1] Result Size", $l4, $l6);
+
+        $r8 = <org.apache.commons.io.DirectoryWalkerTestCaseJava4: java.io.File javaDir>;
+
+        $z0 = interfaceinvoke r1.<java.util.List: boolean contains(java.lang.Object)>($r8);
+
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>("[DirAndFile1] Start Dir", $z0);
+
+        $r9 = <org.apache.commons.io.DirectoryWalkerTestCaseJava4: java.io.File[] dirs>;
+
+        specialinvoke r0.<org.apache.commons.io.DirectoryWalkerTestCaseJava4: void checkContainsFiles(java.lang.String,java.io.File[],java.util.Collection)>("[DirAndFile1] Dir", $r9, r1);
+
+        $r10 = <org.apache.commons.io.DirectoryWalkerTestCaseJava4: java.io.File[] ioFiles>;
+
+        specialinvoke r0.<org.apache.commons.io.DirectoryWalkerTestCaseJava4: void checkContainsFiles(java.lang.String,java.io.File[],java.util.Collection)>("[DirAndFile1] File", $r10, r1);
+
+        return;
+    }
+
+    public void testFilterDirAndFile2()
+    {
+        org.apache.commons.io.DirectoryWalkerTestCaseJava4 r0;
+        java.util.List r1;
+        org.apache.commons.io.DirectoryWalkerTestCaseJava4$TestFileFinder $r2;
+        java.io.File $r3, $r7;
+        int $i0, $i1, $i2, $i3, $i4;
+        java.io.File[] $r5, $r6, $r8, $r9;
+        boolean $z0, $z1;
+
+        r0 := @this: org.apache.commons.io.DirectoryWalkerTestCaseJava4;
+
+        $r2 = new org.apache.commons.io.DirectoryWalkerTestCaseJava4$TestFileFinder;
+
+        specialinvoke $r2.<org.apache.commons.io.DirectoryWalkerTestCaseJava4$TestFileFinder: void <init>(org.apache.commons.io.filefilter.IOFileFilter,org.apache.commons.io.filefilter.IOFileFilter,int)>(null, null, -1);
+
+        $r3 = <org.apache.commons.io.DirectoryWalkerTestCaseJava4: java.io.File javaDir>;
+
+        r1 = virtualinvoke $r2.<org.apache.commons.io.DirectoryWalkerTestCaseJava4$TestFileFinder: java.util.List find(java.io.File)>($r3);
+
+        $i0 = interfaceinvoke r1.<java.util.List: int size()>();
+
+        $r5 = <org.apache.commons.io.DirectoryWalkerTestCaseJava4: java.io.File[] dirs>;
+
+        $i1 = lengthof $r5;
+
+        $i3 = 1 + $i1;
+
+        $r6 = <org.apache.commons.io.DirectoryWalkerTestCaseJava4: java.io.File[] ioFiles>;
+
+        $i2 = lengthof $r6;
+
+        $i4 = $i3 + $i2;
+
+        if $i0 <= $i4 goto label1;
+
+        $z1 = 1;
+
+        goto label2;
+
+     label1:
+        $z1 = 0;
+
+     label2:
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>("[DirAndFile2] Result Size", $z1);
+
+        $r7 = <org.apache.commons.io.DirectoryWalkerTestCaseJava4: java.io.File javaDir>;
+
+        $z0 = interfaceinvoke r1.<java.util.List: boolean contains(java.lang.Object)>($r7);
+
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>("[DirAndFile2] Start Dir", $z0);
+
+        $r8 = <org.apache.commons.io.DirectoryWalkerTestCaseJava4: java.io.File[] dirs>;
+
+        specialinvoke r0.<org.apache.commons.io.DirectoryWalkerTestCaseJava4: void checkContainsFiles(java.lang.String,java.io.File[],java.util.Collection)>("[DirAndFile2] Dir", $r8, r1);
+
+        $r9 = <org.apache.commons.io.DirectoryWalkerTestCaseJava4: java.io.File[] ioFiles>;
+
+        specialinvoke r0.<org.apache.commons.io.DirectoryWalkerTestCaseJava4: void checkContainsFiles(java.lang.String,java.io.File[],java.util.Collection)>("[DirAndFile2] File", $r9, r1);
+
+        return;
+    }
+
+    public void testFilterDirAndFile3()
+    {
+        org.apache.commons.io.DirectoryWalkerTestCaseJava4 r0;
+        java.util.List r1, r2;
+        org.apache.commons.io.DirectoryWalkerTestCaseJava4$TestFileFinder $r3;
+        org.apache.commons.io.filefilter.IOFileFilter $r4;
+        java.io.File $r5, $r7;
+        java.io.File[] $r6, $r8;
+        int $i0, $i1, $i3;
+        long $l2, $l4;
+        boolean $z0;
+
+        r0 := @this: org.apache.commons.io.DirectoryWalkerTestCaseJava4;
+
+        $r3 = new org.apache.commons.io.DirectoryWalkerTestCaseJava4$TestFileFinder;
+
+        $r4 = <org.apache.commons.io.DirectoryWalkerTestCaseJava4: org.apache.commons.io.filefilter.IOFileFilter dirsFilter>;
+
+        specialinvoke $r3.<org.apache.commons.io.DirectoryWalkerTestCaseJava4$TestFileFinder: void <init>(org.apache.commons.io.filefilter.IOFileFilter,org.apache.commons.io.filefilter.IOFileFilter,int)>($r4, null, -1);
+
+        $r5 = <org.apache.commons.io.DirectoryWalkerTestCaseJava4: java.io.File javaDir>;
+
+        r1 = virtualinvoke $r3.<org.apache.commons.io.DirectoryWalkerTestCaseJava4$TestFileFinder: java.util.List find(java.io.File)>($r5);
+
+        r2 = specialinvoke r0.<org.apache.commons.io.DirectoryWalkerTestCaseJava4: java.util.List directoriesOnly(java.util.Collection)>(r1);
+
+        $r6 = <org.apache.commons.io.DirectoryWalkerTestCaseJava4: java.io.File[] dirs>;
+
+        $i0 = lengthof $r6;
+
+        $i1 = 1 + $i0;
+
+        $l2 = (long) $i1;
+
+        $i3 = interfaceinvoke r2.<java.util.List: int size()>();
+
+        $l4 = (long) $i3;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("[DirAndFile3] Result Size", $l2, $l4);
+
+        $r7 = <org.apache.commons.io.DirectoryWalkerTestCaseJava4: java.io.File javaDir>;
+
+        $z0 = interfaceinvoke r1.<java.util.List: boolean contains(java.lang.Object)>($r7);
+
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>("[DirAndFile3] Start Dir", $z0);
+
+        $r8 = <org.apache.commons.io.DirectoryWalkerTestCaseJava4: java.io.File[] dirs>;
+
+        specialinvoke r0.<org.apache.commons.io.DirectoryWalkerTestCaseJava4: void checkContainsFiles(java.lang.String,java.io.File[],java.util.Collection)>("[DirAndFile3] Dir", $r8, r2);
+
+        return;
+    }
+
+    public void testFilterDirAndFile4()
+    {
+        org.apache.commons.io.DirectoryWalkerTestCaseJava4 r0;
+        java.util.List r1, r2;
+        org.apache.commons.io.DirectoryWalkerTestCaseJava4$TestFileFinder $r3;
+        org.apache.commons.io.filefilter.IOFileFilter $r4;
+        java.io.File $r5, $r7;
+        java.io.File[] $r6, $r8;
+        int $i0, $i2;
+        long $l1, $l3;
+        boolean $z0;
+
+        r0 := @this: org.apache.commons.io.DirectoryWalkerTestCaseJava4;
+
+        $r3 = new org.apache.commons.io.DirectoryWalkerTestCaseJava4$TestFileFinder;
+
+        $r4 = <org.apache.commons.io.DirectoryWalkerTestCaseJava4: org.apache.commons.io.filefilter.IOFileFilter iofilesFilter>;
+
+        specialinvoke $r3.<org.apache.commons.io.DirectoryWalkerTestCaseJava4$TestFileFinder: void <init>(org.apache.commons.io.filefilter.IOFileFilter,org.apache.commons.io.filefilter.IOFileFilter,int)>(null, $r4, -1);
+
+        $r5 = <org.apache.commons.io.DirectoryWalkerTestCaseJava4: java.io.File javaDir>;
+
+        r1 = virtualinvoke $r3.<org.apache.commons.io.DirectoryWalkerTestCaseJava4$TestFileFinder: java.util.List find(java.io.File)>($r5);
+
+        r2 = specialinvoke r0.<org.apache.commons.io.DirectoryWalkerTestCaseJava4: java.util.List filesOnly(java.util.Collection)>(r1);
+
+        $r6 = <org.apache.commons.io.DirectoryWalkerTestCaseJava4: java.io.File[] ioFiles>;
+
+        $i0 = lengthof $r6;
+
+        $l1 = (long) $i0;
+
+        $i2 = interfaceinvoke r2.<java.util.List: int size()>();
+
+        $l3 = (long) $i2;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("[DirAndFile4] Result Size", $l1, $l3);
+
+        $r7 = <org.apache.commons.io.DirectoryWalkerTestCaseJava4: java.io.File javaDir>;
+
+        $z0 = interfaceinvoke r1.<java.util.List: boolean contains(java.lang.Object)>($r7);
+
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>("[DirAndFile4] Start Dir", $z0);
+
+        $r8 = <org.apache.commons.io.DirectoryWalkerTestCaseJava4: java.io.File[] ioFiles>;
+
+        specialinvoke r0.<org.apache.commons.io.DirectoryWalkerTestCaseJava4: void checkContainsFiles(java.lang.String,java.io.File[],java.util.Collection)>("[DirAndFile4] File", $r8, r2);
+
+        return;
+    }
+
+    public void testLimitToCurrent()
+    {
+        org.apache.commons.io.DirectoryWalkerTestCaseJava4 r0;
+        java.util.List r1;
+        org.apache.commons.io.DirectoryWalkerTestCaseJava4$TestFileFinder $r2;
+        java.io.File $r3, $r4;
+        int $i0;
+        long $l1;
+        boolean $z0;
+
+        r0 := @this: org.apache.commons.io.DirectoryWalkerTestCaseJava4;
+
+        $r2 = new org.apache.commons.io.DirectoryWalkerTestCaseJava4$TestFileFinder;
+
+        specialinvoke $r2.<org.apache.commons.io.DirectoryWalkerTestCaseJava4$TestFileFinder: void <init>(java.io.FileFilter,int)>(null, 0);
+
+        $r3 = <org.apache.commons.io.DirectoryWalkerTestCaseJava4: java.io.File current>;
+
+        r1 = virtualinvoke $r2.<org.apache.commons.io.DirectoryWalkerTestCaseJava4$TestFileFinder: java.util.List find(java.io.File)>($r3);
+
+        $i0 = interfaceinvoke r1.<java.util.List: int size()>();
+
+        $l1 = (long) $i0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("Result Size", 1L, $l1);
+
+        $r4 = new java.io.File;
+
+        specialinvoke $r4.<java.io.File: void <init>(java.lang.String)>(".");
+
+        $z0 = interfaceinvoke r1.<java.util.List: boolean contains(java.lang.Object)>($r4);
+
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>("Current Dir", $z0);
+
+        return;
+    }
+
+    public void testMissingStartDirectory()
+    {
+        org.apache.commons.io.DirectoryWalkerTestCaseJava4 r0;
+        java.util.List r2;
+        java.io.File $r4;
+        org.apache.commons.io.DirectoryWalkerTestCaseJava4$TestFileFinder $r5, $r6;
+        int $i0;
+        long $l1;
+        boolean $z0;
+        java.lang.NullPointerException $r8;
+
+        r0 := @this: org.apache.commons.io.DirectoryWalkerTestCaseJava4;
+
+        $r4 = new java.io.File;
+
+        specialinvoke $r4.<java.io.File: void <init>(java.lang.String)>("invalid-dir");
+
+        $r5 = new org.apache.commons.io.DirectoryWalkerTestCaseJava4$TestFileFinder;
+
+        specialinvoke $r5.<org.apache.commons.io.DirectoryWalkerTestCaseJava4$TestFileFinder: void <init>(java.io.FileFilter,int)>(null, -1);
+
+        r2 = virtualinvoke $r5.<org.apache.commons.io.DirectoryWalkerTestCaseJava4$TestFileFinder: java.util.List find(java.io.File)>($r4);
+
+        $i0 = interfaceinvoke r2.<java.util.List: int size()>();
+
+        $l1 = (long) $i0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("Result Size", 1L, $l1);
+
+        $z0 = interfaceinvoke r2.<java.util.List: boolean contains(java.lang.Object)>($r4);
+
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>("Current Dir", $z0);
+
+     label1:
+        $r6 = new org.apache.commons.io.DirectoryWalkerTestCaseJava4$TestFileFinder;
+
+        specialinvoke $r6.<org.apache.commons.io.DirectoryWalkerTestCaseJava4$TestFileFinder: void <init>(java.io.FileFilter,int)>(null, -1);
+
+        virtualinvoke $r6.<org.apache.commons.io.DirectoryWalkerTestCaseJava4$TestFileFinder: java.util.List find(java.io.File)>(null);
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("Null start directory didn\'t throw Exception");
+
+     label2:
+        goto label4;
+
+     label3:
+        $r8 := @caughtexception;
+
+     label4:
+        return;
+
+        catch java.lang.NullPointerException from label1 to label2 with label3;
+    }
+
+    public void testHandleStartDirectoryFalse()
+    {
+        org.apache.commons.io.DirectoryWalkerTestCaseJava4 r0;
+        java.util.List r1;
+        org.apache.commons.io.DirectoryWalkerTestCaseJava4$TestFalseFileFinder $r2;
+        java.io.File $r3;
+        int $i0;
+        long $l1;
+
+        r0 := @this: org.apache.commons.io.DirectoryWalkerTestCaseJava4;
+
+        $r2 = new org.apache.commons.io.DirectoryWalkerTestCaseJava4$TestFalseFileFinder;
+
+        specialinvoke $r2.<org.apache.commons.io.DirectoryWalkerTestCaseJava4$TestFalseFileFinder: void <init>(java.io.FileFilter,int)>(null, -1);
+
+        $r3 = <org.apache.commons.io.DirectoryWalkerTestCaseJava4: java.io.File current>;
+
+        r1 = virtualinvoke $r2.<org.apache.commons.io.DirectoryWalkerTestCaseJava4$TestFalseFileFinder: java.util.List find(java.io.File)>($r3);
+
+        $i0 = interfaceinvoke r1.<java.util.List: int size()>();
+
+        $l1 = (long) $i0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("Result Size", 0L, $l1);
+
+        return;
+    }
+
+    private void checkContainsFiles(java.lang.String, java.io.File[], java.util.Collection)
+    {
+        org.apache.commons.io.DirectoryWalkerTestCaseJava4 r0;
+        java.lang.String r1, $r5, $r11;
+        java.io.File[] r2;
+        java.util.Collection r3;
+        int $i0, i1;
+        java.lang.StringBuilder $r4, $r6, $r7, $r8, $r10;
+        java.io.File $r9, $r12;
+        boolean $z0;
+
+        r0 := @this: org.apache.commons.io.DirectoryWalkerTestCaseJava4;
+
+        r1 := @parameter0: java.lang.String;
+
+        r2 := @parameter1: java.io.File[];
+
+        r3 := @parameter2: java.util.Collection;
+
+        i1 = 0;
+
+        goto label2;
+
+     label1:
+        $r4 = new java.lang.StringBuilder;
+
+        $r5 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>(r1);
+
+        specialinvoke $r4.<java.lang.StringBuilder: void <init>(java.lang.String)>($r5);
+
+        $r6 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("[");
+
+        $r7 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i1);
+
+        $r8 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("] ");
+
+        $r9 = r2[i1];
+
+        $r10 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r9);
+
+        $r11 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r12 = r2[i1];
+
+        $z0 = interfaceinvoke r3.<java.util.Collection: boolean contains(java.lang.Object)>($r12);
+
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>($r11, $z0);
+
+        i1 = i1 + 1;
+
+     label2:
+        $i0 = lengthof r2;
+
+        if i1 < $i0 goto label1;
+
+        return;
+    }
+
+    private java.util.List directoriesOnly(java.util.Collection)
+    {
+        org.apache.commons.io.DirectoryWalkerTestCaseJava4 r0;
+        java.util.Collection r1;
+        java.io.File r3;
+        java.util.Iterator r4;
+        java.util.ArrayList $r5;
+        int $i0;
+        java.lang.Object $r6;
+        boolean $z0, $z2;
+
+        r0 := @this: org.apache.commons.io.DirectoryWalkerTestCaseJava4;
+
+        r1 := @parameter0: java.util.Collection;
+
+        $r5 = new java.util.ArrayList;
+
+        $i0 = interfaceinvoke r1.<java.util.Collection: int size()>();
+
+        specialinvoke $r5.<java.util.ArrayList: void <init>(int)>($i0);
+
+        r4 = interfaceinvoke r1.<java.util.Collection: java.util.Iterator iterator()>();
+
+        goto label2;
+
+     label1:
+        $r6 = interfaceinvoke r4.<java.util.Iterator: java.lang.Object next()>();
+
+        r3 = (java.io.File) $r6;
+
+        $z0 = virtualinvoke r3.<java.io.File: boolean isDirectory()>();
+
+        if $z0 == 0 goto label2;
+
+        interfaceinvoke $r5.<java.util.List: boolean add(java.lang.Object)>(r3);
+
+     label2:
+        $z2 = interfaceinvoke r4.<java.util.Iterator: boolean hasNext()>();
+
+        if $z2 != 0 goto label1;
+
+        return $r5;
+    }
+
+    private java.util.List filesOnly(java.util.Collection)
+    {
+        org.apache.commons.io.DirectoryWalkerTestCaseJava4 r0;
+        java.util.Collection r1;
+        java.io.File r3;
+        java.util.Iterator r4;
+        java.util.ArrayList $r5;
+        int $i0;
+        java.lang.Object $r6;
+        boolean $z0, $z2;
+
+        r0 := @this: org.apache.commons.io.DirectoryWalkerTestCaseJava4;
+
+        r1 := @parameter0: java.util.Collection;
+
+        $r5 = new java.util.ArrayList;
+
+        $i0 = interfaceinvoke r1.<java.util.Collection: int size()>();
+
+        specialinvoke $r5.<java.util.ArrayList: void <init>(int)>($i0);
+
+        r4 = interfaceinvoke r1.<java.util.Collection: java.util.Iterator iterator()>();
+
+        goto label2;
+
+     label1:
+        $r6 = interfaceinvoke r4.<java.util.Iterator: java.lang.Object next()>();
+
+        r3 = (java.io.File) $r6;
+
+        $z0 = virtualinvoke r3.<java.io.File: boolean isFile()>();
+
+        if $z0 == 0 goto label2;
+
+        interfaceinvoke $r5.<java.util.List: boolean add(java.lang.Object)>(r3);
+
+     label2:
+        $z2 = interfaceinvoke r4.<java.util.Iterator: boolean hasNext()>();
+
+        if $z2 != 0 goto label1;
+
+        return $r5;
+    }
+
+    private static org.apache.commons.io.filefilter.IOFileFilter createNameFilter(java.io.File[])
+    {
+        java.io.File[] r0;
+        java.lang.String[] r1;
+        int $i0, $i1, i2;
+        java.io.File $r2;
+        java.lang.String $r3;
+        org.apache.commons.io.filefilter.NameFileFilter $r4;
+
+        r0 := @parameter0: java.io.File[];
+
+        $i0 = lengthof r0;
+
+        r1 = newarray (java.lang.String)[$i0];
+
+        i2 = 0;
+
+        goto label2;
+
+     label1:
+        $r2 = r0[i2];
+
+        $r3 = virtualinvoke $r2.<java.io.File: java.lang.String getName()>();
+
+        r1[i2] = $r3;
+
+        i2 = i2 + 1;
+
+     label2:
+        $i1 = lengthof r0;
+
+        if i2 < $i1 goto label1;
+
+        $r4 = new org.apache.commons.io.filefilter.NameFileFilter;
+
+        specialinvoke $r4.<org.apache.commons.io.filefilter.NameFileFilter: void <init>(java.lang.String[])>(r1);
+
+        return $r4;
+    }
+
+    public void testCancel()
+    {
+        org.apache.commons.io.DirectoryWalkerTestCaseJava4 r0;
+        java.io.File r1, $r3, $r28, $r37, $r45, $r53;
+        org.apache.commons.io.DirectoryWalkerTestCaseJava4$TestCancelWalker $r2, $r44, $r52;
+        java.lang.StringBuilder $r4, $r5, $r6, $r9, $r10, $r13, $r14, $r15, $r16, $r19, $r20, $r21, $r22, $r25, $r26, $r30, $r31, $r34, $r35, $r39, $r40, $r46, $r47, $r48, $r56, $r57;
+        java.lang.String $r7, $r11, $r17, $r23, $r27, $r29, $r32, $r36, $r38, $r41, $r49, $r58, $r59;
+        java.io.IOException $r8, $r12, $r18;
+        org.apache.commons.io.DirectoryWalker$CancelException $r24, $r33;
+        int $i0, $i2, $i4, $i5;
+        long $l1, $l3;
+        java.util.List r54;
+        java.lang.Object $r55;
+
+        r0 := @this: org.apache.commons.io.DirectoryWalkerTestCaseJava4;
+
+     label01:
+        $r2 = new org.apache.commons.io.DirectoryWalkerTestCaseJava4$TestCancelWalker;
+
+        specialinvoke $r2.<org.apache.commons.io.DirectoryWalkerTestCaseJava4$TestCancelWalker: void <init>(java.lang.String,boolean)>("DirectoryWalker.java", 0);
+
+        $r3 = <org.apache.commons.io.DirectoryWalkerTestCaseJava4: java.io.File javaDir>;
+
+        virtualinvoke $r2.<org.apache.commons.io.DirectoryWalkerTestCaseJava4$TestCancelWalker: java.util.List find(java.io.File)>($r3);
+
+        $r4 = new java.lang.StringBuilder;
+
+        specialinvoke $r4.<java.lang.StringBuilder: void <init>(java.lang.String)>("CancelException not thrown for \'");
+
+        $r5 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("DirectoryWalker.java");
+
+        $r6 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\'");
+
+        $r7 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>($r7);
+
+     label02:
+        goto label05;
+
+     label03:
+        $r33 := @caughtexception;
+
+        $r34 = new java.lang.StringBuilder;
+
+        specialinvoke $r34.<java.lang.StringBuilder: void <init>(java.lang.String)>("File:  ");
+
+        $r35 = virtualinvoke $r34.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("DirectoryWalker.java");
+
+        $r36 = virtualinvoke $r35.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r37 = virtualinvoke $r33.<org.apache.commons.io.DirectoryWalker$CancelException: java.io.File getFile()>();
+
+        $r38 = virtualinvoke $r37.<java.io.File: java.lang.String getName()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,java.lang.Object,java.lang.Object)>($r36, "DirectoryWalker.java", $r38);
+
+        $r39 = new java.lang.StringBuilder;
+
+        specialinvoke $r39.<java.lang.StringBuilder: void <init>(java.lang.String)>("Depth: ");
+
+        $r40 = virtualinvoke $r39.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("DirectoryWalker.java");
+
+        $r41 = virtualinvoke $r40.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $i2 = virtualinvoke $r33.<org.apache.commons.io.DirectoryWalker$CancelException: int getDepth()>();
+
+        $l3 = (long) $i2;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>($r41, 5L, $l3);
+
+        goto label05;
+
+     label04:
+        $r12 := @caughtexception;
+
+        $r13 = new java.lang.StringBuilder;
+
+        specialinvoke $r13.<java.lang.StringBuilder: void <init>(java.lang.String)>("IOException: ");
+
+        $r14 = virtualinvoke $r13.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("DirectoryWalker.java");
+
+        $r15 = virtualinvoke $r14.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" ");
+
+        $r16 = virtualinvoke $r15.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r12);
+
+        $r17 = virtualinvoke $r16.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>($r17);
+
+     label05:
+        $r44 = new org.apache.commons.io.DirectoryWalkerTestCaseJava4$TestCancelWalker;
+
+        specialinvoke $r44.<org.apache.commons.io.DirectoryWalkerTestCaseJava4$TestCancelWalker: void <init>(java.lang.String,boolean)>("commons", 0);
+
+        $r45 = <org.apache.commons.io.DirectoryWalkerTestCaseJava4: java.io.File javaDir>;
+
+        virtualinvoke $r44.<org.apache.commons.io.DirectoryWalkerTestCaseJava4$TestCancelWalker: java.util.List find(java.io.File)>($r45);
+
+        $r46 = new java.lang.StringBuilder;
+
+        specialinvoke $r46.<java.lang.StringBuilder: void <init>(java.lang.String)>("CancelException not thrown for \'");
+
+        $r47 = virtualinvoke $r46.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("commons");
+
+        $r48 = virtualinvoke $r47.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\'");
+
+        $r49 = virtualinvoke $r48.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>($r49);
+
+     label06:
+        goto label09;
+
+     label07:
+        $r24 := @caughtexception;
+
+        $r25 = new java.lang.StringBuilder;
+
+        specialinvoke $r25.<java.lang.StringBuilder: void <init>(java.lang.String)>("File:  ");
+
+        $r26 = virtualinvoke $r25.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("commons");
+
+        $r27 = virtualinvoke $r26.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r28 = virtualinvoke $r24.<org.apache.commons.io.DirectoryWalker$CancelException: java.io.File getFile()>();
+
+        $r29 = virtualinvoke $r28.<java.io.File: java.lang.String getName()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,java.lang.Object,java.lang.Object)>($r27, "commons", $r29);
+
+        $r30 = new java.lang.StringBuilder;
+
+        specialinvoke $r30.<java.lang.StringBuilder: void <init>(java.lang.String)>("Depth: ");
+
+        $r31 = virtualinvoke $r30.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("commons");
+
+        $r32 = virtualinvoke $r31.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $i0 = virtualinvoke $r24.<org.apache.commons.io.DirectoryWalker$CancelException: int getDepth()>();
+
+        $l1 = (long) $i0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>($r32, 3L, $l1);
+
+        goto label09;
+
+     label08:
+        $r18 := @caughtexception;
+
+        $r19 = new java.lang.StringBuilder;
+
+        specialinvoke $r19.<java.lang.StringBuilder: void <init>(java.lang.String)>("IOException: ");
+
+        $r20 = virtualinvoke $r19.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("commons");
+
+        $r21 = virtualinvoke $r20.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" ");
+
+        $r22 = virtualinvoke $r21.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r18);
+
+        $r23 = virtualinvoke $r22.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>($r23);
+
+     label09:
+        $r52 = new org.apache.commons.io.DirectoryWalkerTestCaseJava4$TestCancelWalker;
+
+        specialinvoke $r52.<org.apache.commons.io.DirectoryWalkerTestCaseJava4$TestCancelWalker: void <init>(java.lang.String,boolean)>("commons", 1);
+
+        $r53 = <org.apache.commons.io.DirectoryWalkerTestCaseJava4: java.io.File javaDir>;
+
+        r54 = virtualinvoke $r52.<org.apache.commons.io.DirectoryWalkerTestCaseJava4$TestCancelWalker: java.util.List find(java.io.File)>($r53);
+
+        $i4 = interfaceinvoke r54.<java.util.List: int size()>();
+
+        $i5 = $i4 - 1;
+
+        $r55 = interfaceinvoke r54.<java.util.List: java.lang.Object get(int)>($i5);
+
+        r1 = (java.io.File) $r55;
+
+        $r56 = new java.lang.StringBuilder;
+
+        specialinvoke $r56.<java.lang.StringBuilder: void <init>(java.lang.String)>("Suppress:  ");
+
+        $r57 = virtualinvoke $r56.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("commons");
+
+        $r58 = virtualinvoke $r57.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r59 = virtualinvoke r1.<java.io.File: java.lang.String getName()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,java.lang.Object,java.lang.Object)>($r58, "commons", $r59);
+
+     label10:
+        goto label12;
+
+     label11:
+        $r8 := @caughtexception;
+
+        $r9 = new java.lang.StringBuilder;
+
+        specialinvoke $r9.<java.lang.StringBuilder: void <init>(java.lang.String)>("Suppress threw ");
+
+        $r10 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r8);
+
+        $r11 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>($r11);
+
+     label12:
+        return;
+
+        catch org.apache.commons.io.DirectoryWalker$CancelException from label01 to label02 with label03;
+        catch java.io.IOException from label01 to label02 with label04;
+        catch org.apache.commons.io.DirectoryWalker$CancelException from label05 to label06 with label07;
+        catch java.io.IOException from label05 to label06 with label08;
+        catch java.io.IOException from label09 to label10 with label11;
+    }
+
+    public void testMultiThreadCancel()
+    {
+        org.apache.commons.io.DirectoryWalkerTestCaseJava4 r0;
+        org.apache.commons.io.DirectoryWalkerTestCaseJava4$TestMultiThreadCancelWalker $r1, $r48, $r57;
+        java.io.File $r2, $r13, r45, $r50, $r59, r62;
+        java.lang.StringBuilder $r4, $r5, $r6, $r10, $r11, $r15, $r16, $r23, $r24, $r27, $r28, $r29, $r30, $r33, $r34, $r37, $r38, $r39, $r40, $r51, $r52, $r53, $r63, $r64;
+        java.lang.String $r7, $r12, $r14, $r17, $r22, $r25, $r31, $r35, $r41, $r54, $r65, $r66;
+        org.apache.commons.io.DirectoryWalker$CancelException $r9, $r18;
+        int $i0, $i2, $i3, $i4, $i6, $i7;
+        long $l1, $l5;
+        java.util.List $r19, $r20, r60;
+        java.lang.Object $r21, $r61;
+        java.io.IOException $r26, $r32, $r36;
+
+        r0 := @this: org.apache.commons.io.DirectoryWalkerTestCaseJava4;
+
+        $r1 = new org.apache.commons.io.DirectoryWalkerTestCaseJava4$TestMultiThreadCancelWalker;
+
+        specialinvoke $r1.<org.apache.commons.io.DirectoryWalkerTestCaseJava4$TestMultiThreadCancelWalker: void <init>(java.lang.String,boolean)>("DirectoryWalker.java", 0);
+
+     label01:
+        $r2 = <org.apache.commons.io.DirectoryWalkerTestCaseJava4: java.io.File javaDir>;
+
+        virtualinvoke $r1.<org.apache.commons.io.DirectoryWalkerTestCaseJava4$TestMultiThreadCancelWalker: java.util.List find(java.io.File)>($r2);
+
+        $r4 = new java.lang.StringBuilder;
+
+        specialinvoke $r4.<java.lang.StringBuilder: void <init>(java.lang.String)>("CancelException not thrown for \'");
+
+        $r5 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("DirectoryWalker.java");
+
+        $r6 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\'");
+
+        $r7 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>($r7);
+
+     label02:
+        goto label05;
+
+     label03:
+        $r18 := @caughtexception;
+
+        $r20 = $r1.<org.apache.commons.io.DirectoryWalkerTestCaseJava4$TestMultiThreadCancelWalker: java.util.List results>;
+
+        $r19 = $r1.<org.apache.commons.io.DirectoryWalkerTestCaseJava4$TestMultiThreadCancelWalker: java.util.List results>;
+
+        $i2 = interfaceinvoke $r19.<java.util.List: int size()>();
+
+        $i3 = $i2 - 1;
+
+        $r21 = interfaceinvoke $r20.<java.util.List: java.lang.Object get(int)>($i3);
+
+        r45 = (java.io.File) $r21;
+
+        $r22 = virtualinvoke r45.<java.io.File: java.lang.String getName()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("DirectoryWalker.java", $r22);
+
+        $r23 = new java.lang.StringBuilder;
+
+        specialinvoke $r23.<java.lang.StringBuilder: void <init>(java.lang.String)>("Depth: ");
+
+        $r24 = virtualinvoke $r23.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("DirectoryWalker.java");
+
+        $r25 = virtualinvoke $r24.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $i4 = virtualinvoke $r18.<org.apache.commons.io.DirectoryWalker$CancelException: int getDepth()>();
+
+        $l5 = (long) $i4;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>($r25, 5L, $l5);
+
+        goto label05;
+
+     label04:
+        $r36 := @caughtexception;
+
+        $r37 = new java.lang.StringBuilder;
+
+        specialinvoke $r37.<java.lang.StringBuilder: void <init>(java.lang.String)>("IOException: ");
+
+        $r38 = virtualinvoke $r37.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("DirectoryWalker.java");
+
+        $r39 = virtualinvoke $r38.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" ");
+
+        $r40 = virtualinvoke $r39.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r36);
+
+        $r41 = virtualinvoke $r40.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>($r41);
+
+     label05:
+        $r48 = new org.apache.commons.io.DirectoryWalkerTestCaseJava4$TestMultiThreadCancelWalker;
+
+        specialinvoke $r48.<org.apache.commons.io.DirectoryWalkerTestCaseJava4$TestMultiThreadCancelWalker: void <init>(java.lang.String,boolean)>("commons", 0);
+
+        $r50 = <org.apache.commons.io.DirectoryWalkerTestCaseJava4: java.io.File javaDir>;
+
+        virtualinvoke $r48.<org.apache.commons.io.DirectoryWalkerTestCaseJava4$TestMultiThreadCancelWalker: java.util.List find(java.io.File)>($r50);
+
+        $r51 = new java.lang.StringBuilder;
+
+        specialinvoke $r51.<java.lang.StringBuilder: void <init>(java.lang.String)>("CancelException not thrown for \'");
+
+        $r52 = virtualinvoke $r51.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("commons");
+
+        $r53 = virtualinvoke $r52.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\'");
+
+        $r54 = virtualinvoke $r53.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>($r54);
+
+     label06:
+        goto label09;
+
+     label07:
+        $r9 := @caughtexception;
+
+        $r10 = new java.lang.StringBuilder;
+
+        specialinvoke $r10.<java.lang.StringBuilder: void <init>(java.lang.String)>("File:  ");
+
+        $r11 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("commons");
+
+        $r12 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r13 = virtualinvoke $r9.<org.apache.commons.io.DirectoryWalker$CancelException: java.io.File getFile()>();
+
+        $r14 = virtualinvoke $r13.<java.io.File: java.lang.String getName()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,java.lang.Object,java.lang.Object)>($r12, "commons", $r14);
+
+        $r15 = new java.lang.StringBuilder;
+
+        specialinvoke $r15.<java.lang.StringBuilder: void <init>(java.lang.String)>("Depth: ");
+
+        $r16 = virtualinvoke $r15.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("commons");
+
+        $r17 = virtualinvoke $r16.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $i0 = virtualinvoke $r9.<org.apache.commons.io.DirectoryWalker$CancelException: int getDepth()>();
+
+        $l1 = (long) $i0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>($r17, 3L, $l1);
+
+        goto label09;
+
+     label08:
+        $r26 := @caughtexception;
+
+        $r27 = new java.lang.StringBuilder;
+
+        specialinvoke $r27.<java.lang.StringBuilder: void <init>(java.lang.String)>("IOException: ");
+
+        $r28 = virtualinvoke $r27.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("commons");
+
+        $r29 = virtualinvoke $r28.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" ");
+
+        $r30 = virtualinvoke $r29.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r26);
+
+        $r31 = virtualinvoke $r30.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>($r31);
+
+     label09:
+        $r57 = new org.apache.commons.io.DirectoryWalkerTestCaseJava4$TestMultiThreadCancelWalker;
+
+        specialinvoke $r57.<org.apache.commons.io.DirectoryWalkerTestCaseJava4$TestMultiThreadCancelWalker: void <init>(java.lang.String,boolean)>("commons", 1);
+
+        $r59 = <org.apache.commons.io.DirectoryWalkerTestCaseJava4: java.io.File javaDir>;
+
+        r60 = virtualinvoke $r57.<org.apache.commons.io.DirectoryWalkerTestCaseJava4$TestMultiThreadCancelWalker: java.util.List find(java.io.File)>($r59);
+
+        $i6 = interfaceinvoke r60.<java.util.List: int size()>();
+
+        $i7 = $i6 - 1;
+
+        $r61 = interfaceinvoke r60.<java.util.List: java.lang.Object get(int)>($i7);
+
+        r62 = (java.io.File) $r61;
+
+        $r63 = new java.lang.StringBuilder;
+
+        specialinvoke $r63.<java.lang.StringBuilder: void <init>(java.lang.String)>("Suppress:  ");
+
+        $r64 = virtualinvoke $r63.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("commons");
+
+        $r65 = virtualinvoke $r64.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r66 = virtualinvoke r62.<java.io.File: java.lang.String getName()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,java.lang.Object,java.lang.Object)>($r65, "commons", $r66);
+
+     label10:
+        goto label12;
+
+     label11:
+        $r32 := @caughtexception;
+
+        $r33 = new java.lang.StringBuilder;
+
+        specialinvoke $r33.<java.lang.StringBuilder: void <init>(java.lang.String)>("Suppress threw ");
+
+        $r34 = virtualinvoke $r33.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r32);
+
+        $r35 = virtualinvoke $r34.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>($r35);
+
+     label12:
+        return;
+
+        catch org.apache.commons.io.DirectoryWalker$CancelException from label01 to label02 with label03;
+        catch java.io.IOException from label01 to label02 with label04;
+        catch org.apache.commons.io.DirectoryWalker$CancelException from label05 to label06 with label07;
+        catch java.io.IOException from label05 to label06 with label08;
+        catch java.io.IOException from label09 to label10 with label11;
+    }
+}

@@ -1,0 +1,4487 @@
+public class org.apache.commons.io.IOUtilsTestCase extends org.apache.commons.io.testtools.FileBasedTestCase
+{
+    private static final int FILE_SIZE;
+    private static final boolean WINDOWS;
+    private char[] carr;
+    private byte[] iarr;
+    private java.io.File m_testFile;
+
+    static void <clinit>()
+    {
+        char $c0;
+        boolean $z0;
+
+        <org.apache.commons.io.IOUtilsTestCase: int FILE_SIZE> = 4097;
+
+        $c0 = <java.io.File: char separatorChar>;
+
+        if $c0 != 92 goto label1;
+
+        $z0 = 1;
+
+        goto label2;
+
+     label1:
+        $z0 = 0;
+
+     label2:
+        <org.apache.commons.io.IOUtilsTestCase: boolean WINDOWS> = $z0;
+
+        return;
+    }
+
+    public void <init>()
+    {
+        org.apache.commons.io.IOUtilsTestCase r0;
+
+        r0 := @this: org.apache.commons.io.IOUtilsTestCase;
+
+        specialinvoke r0.<org.apache.commons.io.testtools.FileBasedTestCase: void <init>()>();
+
+        r0.<org.apache.commons.io.IOUtilsTestCase: char[] carr> = null;
+
+        r0.<org.apache.commons.io.IOUtilsTestCase: byte[] iarr> = null;
+
+        return;
+    }
+
+    private void assertEqualContent(byte[], byte[])
+    {
+        org.apache.commons.io.IOUtilsTestCase r0;
+        byte[] r1, r2;
+        boolean $z0;
+
+        r0 := @this: org.apache.commons.io.IOUtilsTestCase;
+
+        r1 := @parameter0: byte[];
+
+        r2 := @parameter1: byte[];
+
+        $z0 = staticinvoke <java.util.Arrays: boolean equals(byte[],byte[])>(r1, r2);
+
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>("Content not equal according to java.util.Arrays#equals()", $z0);
+
+        return;
+    }
+
+    public void setUp()
+    {
+        org.apache.commons.io.IOUtilsTestCase r0;
+        java.io.File $r2, $r3, $r4, $r5, $r6, $r9, $r18;
+        boolean $z1;
+        java.io.BufferedOutputStream $r7;
+        java.io.FileOutputStream $r8;
+        byte[] $r10, $r11, $r12;
+        byte $b0;
+        char[] $r13, $r14, $r15;
+        char $c1;
+        java.io.IOException $r16, $r22;
+        java.lang.StringBuilder $r17, $r19, $r20, $r24, $r26;
+        java.lang.String $r21, $r25, $r27;
+        java.lang.RuntimeException $r23;
+        java.lang.Throwable $r28;
+        int i2, i3;
+
+        r0 := @this: org.apache.commons.io.IOUtilsTestCase;
+
+     label01:
+        $r2 = staticinvoke <org.apache.commons.io.IOUtilsTestCase: java.io.File getTestDirectory()>();
+
+        virtualinvoke $r2.<java.io.File: boolean mkdirs()>();
+
+        $r3 = new java.io.File;
+
+        $r4 = staticinvoke <org.apache.commons.io.IOUtilsTestCase: java.io.File getTestDirectory()>();
+
+        specialinvoke $r3.<java.io.File: void <init>(java.io.File,java.lang.String)>($r4, "file2-test.txt");
+
+        r0.<org.apache.commons.io.IOUtilsTestCase: java.io.File m_testFile> = $r3;
+
+        $r5 = r0.<org.apache.commons.io.IOUtilsTestCase: java.io.File m_testFile>;
+
+        $r6 = virtualinvoke $r5.<java.io.File: java.io.File getParentFile()>();
+
+        $z1 = virtualinvoke $r6.<java.io.File: boolean exists()>();
+
+        if $z1 != 0 goto label02;
+
+        $r16 = new java.io.IOException;
+
+        $r17 = new java.lang.StringBuilder;
+
+        specialinvoke $r17.<java.lang.StringBuilder: void <init>(java.lang.String)>("Cannot create file ");
+
+        $r18 = r0.<org.apache.commons.io.IOUtilsTestCase: java.io.File m_testFile>;
+
+        $r19 = virtualinvoke $r17.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r18);
+
+        $r20 = virtualinvoke $r19.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" as the parent directory does not exist");
+
+        $r21 = virtualinvoke $r20.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r16.<java.io.IOException: void <init>(java.lang.String)>($r21);
+
+        throw $r16;
+
+     label02:
+        $r7 = new java.io.BufferedOutputStream;
+
+        $r8 = new java.io.FileOutputStream;
+
+        $r9 = r0.<org.apache.commons.io.IOUtilsTestCase: java.io.File m_testFile>;
+
+        specialinvoke $r8.<java.io.FileOutputStream: void <init>(java.io.File)>($r9);
+
+        specialinvoke $r7.<java.io.BufferedOutputStream: void <init>(java.io.OutputStream)>($r8);
+
+     label03:
+        staticinvoke <org.apache.commons.io.testtools.TestUtils: void generateTestData(java.io.OutputStream,long)>($r7, 4097L);
+
+        goto label05;
+
+     label04:
+        $r28 := @caughtexception;
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.OutputStream)>($r7);
+
+        throw $r28;
+
+     label05:
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.OutputStream)>($r7);
+
+     label06:
+        goto label08;
+
+     label07:
+        $r22 := @caughtexception;
+
+        $r23 = new java.lang.RuntimeException;
+
+        $r24 = new java.lang.StringBuilder;
+
+        specialinvoke $r24.<java.lang.StringBuilder: void <init>(java.lang.String)>("Can\'t run this test because the environment could not be built: ");
+
+        $r25 = virtualinvoke $r22.<java.io.IOException: java.lang.String getMessage()>();
+
+        $r26 = virtualinvoke $r24.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r25);
+
+        $r27 = virtualinvoke $r26.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r23.<java.lang.RuntimeException: void <init>(java.lang.String)>($r27);
+
+        throw $r23;
+
+     label08:
+        $r10 = newarray (byte)[200];
+
+        r0.<org.apache.commons.io.IOUtilsTestCase: byte[] iarr> = $r10;
+
+        $r11 = r0.<org.apache.commons.io.IOUtilsTestCase: byte[] iarr>;
+
+        staticinvoke <java.util.Arrays: void fill(byte[],byte)>($r11, -1);
+
+        i2 = 0;
+
+        goto label10;
+
+     label09:
+        $r12 = r0.<org.apache.commons.io.IOUtilsTestCase: byte[] iarr>;
+
+        $b0 = (byte) i2;
+
+        $r12[i2] = $b0;
+
+        i2 = i2 + 1;
+
+     label10:
+        if i2 < 80 goto label09;
+
+        $r13 = newarray (char)[200];
+
+        r0.<org.apache.commons.io.IOUtilsTestCase: char[] carr> = $r13;
+
+        $r14 = r0.<org.apache.commons.io.IOUtilsTestCase: char[] carr>;
+
+        staticinvoke <java.util.Arrays: void fill(char[],char)>($r14, 65535);
+
+        i3 = 0;
+
+        goto label12;
+
+     label11:
+        $r15 = r0.<org.apache.commons.io.IOUtilsTestCase: char[] carr>;
+
+        $c1 = (char) i3;
+
+        $r15[i3] = $c1;
+
+        i3 = i3 + 1;
+
+     label12:
+        if i3 < 80 goto label11;
+
+        return;
+
+        catch java.lang.Throwable from label03 to label04 with label04;
+        catch java.io.IOException from label01 to label06 with label07;
+    }
+
+    public void tearDown()
+    {
+        org.apache.commons.io.IOUtilsTestCase r0;
+        java.io.File $r2, $r6;
+        java.io.IOException $r3;
+        java.lang.RuntimeException $r4;
+        java.lang.StringBuilder $r5, $r7, $r8, $r9;
+        java.lang.String $r10;
+
+        r0 := @this: org.apache.commons.io.IOUtilsTestCase;
+
+        r0.<org.apache.commons.io.IOUtilsTestCase: char[] carr> = null;
+
+        r0.<org.apache.commons.io.IOUtilsTestCase: byte[] iarr> = null;
+
+     label1:
+        $r2 = staticinvoke <org.apache.commons.io.IOUtilsTestCase: java.io.File getTestDirectory()>();
+
+        staticinvoke <org.apache.commons.io.FileUtils: void deleteDirectory(java.io.File)>($r2);
+
+     label2:
+        goto label4;
+
+     label3:
+        $r3 := @caughtexception;
+
+        $r4 = new java.lang.RuntimeException;
+
+        $r5 = new java.lang.StringBuilder;
+
+        specialinvoke $r5.<java.lang.StringBuilder: void <init>(java.lang.String)>("Could not clear up ");
+
+        $r6 = staticinvoke <org.apache.commons.io.IOUtilsTestCase: java.io.File getTestDirectory()>();
+
+        $r7 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r6);
+
+        $r8 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(": ");
+
+        $r9 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r3);
+
+        $r10 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r4.<java.lang.RuntimeException: void <init>(java.lang.String)>($r10);
+
+        throw $r4;
+
+     label4:
+        return;
+
+        catch java.io.IOException from label1 to label2 with label3;
+    }
+
+    public void testCloseQuietly_AllCloseableIOException()
+    {
+        org.apache.commons.io.IOUtilsTestCase r0;
+        org.apache.commons.io.IOUtilsTestCase$1 $r2;
+        java.io.Closeable[] $r3;
+
+        r0 := @this: org.apache.commons.io.IOUtilsTestCase;
+
+        $r2 = new org.apache.commons.io.IOUtilsTestCase$1;
+
+        specialinvoke $r2.<org.apache.commons.io.IOUtilsTestCase$1: void <init>(org.apache.commons.io.IOUtilsTestCase)>(r0);
+
+        $r3 = newarray (java.io.Closeable)[3];
+
+        $r3[0] = $r2;
+
+        $r3[1] = null;
+
+        $r3[2] = $r2;
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.Closeable[])>($r3);
+
+        return;
+    }
+
+    public void testCloseQuietly_CloseableIOException()
+    {
+        org.apache.commons.io.IOUtilsTestCase r0;
+        org.apache.commons.io.IOUtilsTestCase$2 $r1;
+
+        r0 := @this: org.apache.commons.io.IOUtilsTestCase;
+
+        $r1 = new org.apache.commons.io.IOUtilsTestCase$2;
+
+        specialinvoke $r1.<org.apache.commons.io.IOUtilsTestCase$2: void <init>(org.apache.commons.io.IOUtilsTestCase)>(r0);
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.Closeable)>($r1);
+
+        return;
+    }
+
+    public void testCloseQuietly_Selector()
+    {
+        org.apache.commons.io.IOUtilsTestCase r0;
+        java.lang.Throwable $r3;
+        java.io.IOException $r4;
+        java.nio.channels.Selector r5;
+
+        r0 := @this: org.apache.commons.io.IOUtilsTestCase;
+
+        r5 = null;
+
+     label1:
+        r5 = staticinvoke <java.nio.channels.Selector: java.nio.channels.Selector open()>();
+
+     label2:
+        goto label6;
+
+     label3:
+        $r4 := @caughtexception;
+
+     label4:
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.nio.channels.Selector)>(null);
+
+        goto label7;
+
+     label5:
+        $r3 := @caughtexception;
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.nio.channels.Selector)>(r5);
+
+        throw $r3;
+
+     label6:
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.nio.channels.Selector)>(r5);
+
+     label7:
+        return;
+
+        catch java.io.IOException from label1 to label2 with label3;
+        catch java.lang.Throwable from label1 to label4 with label5;
+    }
+
+    public void testCloseQuietly_SelectorIOException()
+    {
+        org.apache.commons.io.IOUtilsTestCase r0;
+        org.apache.commons.io.IOUtilsTestCase$3 $r2;
+
+        r0 := @this: org.apache.commons.io.IOUtilsTestCase;
+
+        $r2 = new org.apache.commons.io.IOUtilsTestCase$3;
+
+        specialinvoke $r2.<org.apache.commons.io.IOUtilsTestCase$3: void <init>(org.apache.commons.io.IOUtilsTestCase)>(r0);
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.nio.channels.Selector)>($r2);
+
+        return;
+    }
+
+    public void testCloseQuietly_SelectorNull()
+    {
+        org.apache.commons.io.IOUtilsTestCase r0;
+
+        r0 := @this: org.apache.commons.io.IOUtilsTestCase;
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.nio.channels.Selector)>(null);
+
+        return;
+    }
+
+    public void testCloseQuietly_SelectorTwice()
+    {
+        org.apache.commons.io.IOUtilsTestCase r0;
+        java.io.IOException $r3;
+        java.lang.Throwable $r4;
+        java.nio.channels.Selector r5;
+
+        r0 := @this: org.apache.commons.io.IOUtilsTestCase;
+
+        r5 = null;
+
+     label1:
+        r5 = staticinvoke <java.nio.channels.Selector: java.nio.channels.Selector open()>();
+
+     label2:
+        goto label6;
+
+     label3:
+        $r3 := @caughtexception;
+
+     label4:
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.nio.channels.Selector)>(null);
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.nio.channels.Selector)>(null);
+
+        goto label7;
+
+     label5:
+        $r4 := @caughtexception;
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.nio.channels.Selector)>(r5);
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.nio.channels.Selector)>(r5);
+
+        throw $r4;
+
+     label6:
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.nio.channels.Selector)>(r5);
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.nio.channels.Selector)>(r5);
+
+     label7:
+        return;
+
+        catch java.io.IOException from label1 to label2 with label3;
+        catch java.lang.Throwable from label1 to label4 with label5;
+    }
+
+    public void testCloseQuietly_ServerSocket() throws java.io.IOException
+    {
+        org.apache.commons.io.IOUtilsTestCase r0;
+        java.net.ServerSocket $r1;
+
+        r0 := @this: org.apache.commons.io.IOUtilsTestCase;
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.net.ServerSocket)>(null);
+
+        $r1 = new java.net.ServerSocket;
+
+        specialinvoke $r1.<java.net.ServerSocket: void <init>()>();
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.net.ServerSocket)>($r1);
+
+        return;
+    }
+
+    public void testCloseQuietly_ServerSocketIOException() throws java.io.IOException
+    {
+        org.apache.commons.io.IOUtilsTestCase r0;
+        org.apache.commons.io.IOUtilsTestCase$4 $r1;
+
+        r0 := @this: org.apache.commons.io.IOUtilsTestCase;
+
+        $r1 = new org.apache.commons.io.IOUtilsTestCase$4;
+
+        specialinvoke $r1.<org.apache.commons.io.IOUtilsTestCase$4: void <init>(org.apache.commons.io.IOUtilsTestCase)>(r0);
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.net.ServerSocket)>($r1);
+
+        return;
+    }
+
+    public void testCloseQuietly_Socket()
+    {
+        org.apache.commons.io.IOUtilsTestCase r0;
+        java.net.Socket $r1;
+
+        r0 := @this: org.apache.commons.io.IOUtilsTestCase;
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.net.Socket)>(null);
+
+        $r1 = new java.net.Socket;
+
+        specialinvoke $r1.<java.net.Socket: void <init>()>();
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.net.Socket)>($r1);
+
+        return;
+    }
+
+    public void testCloseQuietly_SocketIOException()
+    {
+        org.apache.commons.io.IOUtilsTestCase r0;
+        org.apache.commons.io.IOUtilsTestCase$5 $r1;
+
+        r0 := @this: org.apache.commons.io.IOUtilsTestCase;
+
+        $r1 = new org.apache.commons.io.IOUtilsTestCase$5;
+
+        specialinvoke $r1.<org.apache.commons.io.IOUtilsTestCase$5: void <init>(org.apache.commons.io.IOUtilsTestCase)>(r0);
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.net.Socket)>($r1);
+
+        return;
+    }
+
+    public void testConstants() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsTestCase r0;
+        boolean $z0;
+        char $c0, $c2;
+        long $l1, $l3;
+        java.lang.String $r1, $r2;
+
+        r0 := @this: org.apache.commons.io.IOUtilsTestCase;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(47L, 47L);
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(92L, 92L);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("\n", "\n");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("\r\n", "\r\n");
+
+        $z0 = <org.apache.commons.io.IOUtilsTestCase: boolean WINDOWS>;
+
+        if $z0 == 0 goto label1;
+
+        $c2 = <org.apache.commons.io.IOUtils: char DIR_SEPARATOR>;
+
+        $l3 = (long) $c2;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(92L, $l3);
+
+        $r2 = <org.apache.commons.io.IOUtils: java.lang.String LINE_SEPARATOR>;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("\r\n", $r2);
+
+        goto label2;
+
+     label1:
+        $c0 = <org.apache.commons.io.IOUtils: char DIR_SEPARATOR>;
+
+        $l1 = (long) $c0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(47L, $l1);
+
+        $r1 = <org.apache.commons.io.IOUtils: java.lang.String LINE_SEPARATOR>;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("\n", $r1);
+
+     label2:
+        return;
+    }
+
+    public void testContentEquals_InputStream_InputStream() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsTestCase r0;
+        java.io.ByteArrayInputStream $r1, $r5, $r9, $r13, $r18, $r23, $r27, $r31, $r35, $r39, $r43, $r47;
+        java.nio.charset.Charset $r2, $r6, $r10, $r14, $r19, $r24, $r28, $r32, $r36, $r40, $r44, $r48;
+        java.lang.String $r3, $r7, $r11, $r15, $r20, $r25, $r29, $r33, $r37, $r41, $r45, $r49;
+        byte[] $r4, $r8, $r12, $r16, $r21, $r26, $r30, $r34, $r38, $r42, $r46, $r50;
+        boolean $z0, $z1, $z2, $z3, $z4, $z5, $z6;
+        java.io.BufferedInputStream $r17, $r22;
+
+        r0 := @this: org.apache.commons.io.IOUtilsTestCase;
+
+        $r1 = new java.io.ByteArrayInputStream;
+
+        $r3 = "";
+
+        $r2 = <org.apache.commons.io.Charsets: java.nio.charset.Charset UTF_8>;
+
+        $r4 = virtualinvoke $r3.<java.lang.String: byte[] getBytes(java.nio.charset.Charset)>($r2);
+
+        specialinvoke $r1.<java.io.ByteArrayInputStream: void <init>(byte[])>($r4);
+
+        $z0 = staticinvoke <org.apache.commons.io.IOUtils: boolean contentEquals(java.io.InputStream,java.io.InputStream)>($r1, $r1);
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z0);
+
+        $r5 = new java.io.ByteArrayInputStream;
+
+        $r7 = "ABC";
+
+        $r6 = <org.apache.commons.io.Charsets: java.nio.charset.Charset UTF_8>;
+
+        $r8 = virtualinvoke $r7.<java.lang.String: byte[] getBytes(java.nio.charset.Charset)>($r6);
+
+        specialinvoke $r5.<java.io.ByteArrayInputStream: void <init>(byte[])>($r8);
+
+        $z1 = staticinvoke <org.apache.commons.io.IOUtils: boolean contentEquals(java.io.InputStream,java.io.InputStream)>($r5, $r5);
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z1);
+
+        $r9 = new java.io.ByteArrayInputStream;
+
+        $r11 = "";
+
+        $r10 = <org.apache.commons.io.Charsets: java.nio.charset.Charset UTF_8>;
+
+        $r12 = virtualinvoke $r11.<java.lang.String: byte[] getBytes(java.nio.charset.Charset)>($r10);
+
+        specialinvoke $r9.<java.io.ByteArrayInputStream: void <init>(byte[])>($r12);
+
+        $r13 = new java.io.ByteArrayInputStream;
+
+        $r15 = "";
+
+        $r14 = <org.apache.commons.io.Charsets: java.nio.charset.Charset UTF_8>;
+
+        $r16 = virtualinvoke $r15.<java.lang.String: byte[] getBytes(java.nio.charset.Charset)>($r14);
+
+        specialinvoke $r13.<java.io.ByteArrayInputStream: void <init>(byte[])>($r16);
+
+        $z2 = staticinvoke <org.apache.commons.io.IOUtils: boolean contentEquals(java.io.InputStream,java.io.InputStream)>($r9, $r13);
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z2);
+
+        $r17 = new java.io.BufferedInputStream;
+
+        $r18 = new java.io.ByteArrayInputStream;
+
+        $r20 = "";
+
+        $r19 = <org.apache.commons.io.Charsets: java.nio.charset.Charset UTF_8>;
+
+        $r21 = virtualinvoke $r20.<java.lang.String: byte[] getBytes(java.nio.charset.Charset)>($r19);
+
+        specialinvoke $r18.<java.io.ByteArrayInputStream: void <init>(byte[])>($r21);
+
+        specialinvoke $r17.<java.io.BufferedInputStream: void <init>(java.io.InputStream)>($r18);
+
+        $r22 = new java.io.BufferedInputStream;
+
+        $r23 = new java.io.ByteArrayInputStream;
+
+        $r25 = "";
+
+        $r24 = <org.apache.commons.io.Charsets: java.nio.charset.Charset UTF_8>;
+
+        $r26 = virtualinvoke $r25.<java.lang.String: byte[] getBytes(java.nio.charset.Charset)>($r24);
+
+        specialinvoke $r23.<java.io.ByteArrayInputStream: void <init>(byte[])>($r26);
+
+        specialinvoke $r22.<java.io.BufferedInputStream: void <init>(java.io.InputStream)>($r23);
+
+        $z3 = staticinvoke <org.apache.commons.io.IOUtils: boolean contentEquals(java.io.InputStream,java.io.InputStream)>($r17, $r22);
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z3);
+
+        $r27 = new java.io.ByteArrayInputStream;
+
+        $r29 = "ABC";
+
+        $r28 = <org.apache.commons.io.Charsets: java.nio.charset.Charset UTF_8>;
+
+        $r30 = virtualinvoke $r29.<java.lang.String: byte[] getBytes(java.nio.charset.Charset)>($r28);
+
+        specialinvoke $r27.<java.io.ByteArrayInputStream: void <init>(byte[])>($r30);
+
+        $r31 = new java.io.ByteArrayInputStream;
+
+        $r33 = "ABC";
+
+        $r32 = <org.apache.commons.io.Charsets: java.nio.charset.Charset UTF_8>;
+
+        $r34 = virtualinvoke $r33.<java.lang.String: byte[] getBytes(java.nio.charset.Charset)>($r32);
+
+        specialinvoke $r31.<java.io.ByteArrayInputStream: void <init>(byte[])>($r34);
+
+        $z4 = staticinvoke <org.apache.commons.io.IOUtils: boolean contentEquals(java.io.InputStream,java.io.InputStream)>($r27, $r31);
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z4);
+
+        $r35 = new java.io.ByteArrayInputStream;
+
+        $r37 = "ABCD";
+
+        $r36 = <org.apache.commons.io.Charsets: java.nio.charset.Charset UTF_8>;
+
+        $r38 = virtualinvoke $r37.<java.lang.String: byte[] getBytes(java.nio.charset.Charset)>($r36);
+
+        specialinvoke $r35.<java.io.ByteArrayInputStream: void <init>(byte[])>($r38);
+
+        $r39 = new java.io.ByteArrayInputStream;
+
+        $r41 = "ABC";
+
+        $r40 = <org.apache.commons.io.Charsets: java.nio.charset.Charset UTF_8>;
+
+        $r42 = virtualinvoke $r41.<java.lang.String: byte[] getBytes(java.nio.charset.Charset)>($r40);
+
+        specialinvoke $r39.<java.io.ByteArrayInputStream: void <init>(byte[])>($r42);
+
+        $z5 = staticinvoke <org.apache.commons.io.IOUtils: boolean contentEquals(java.io.InputStream,java.io.InputStream)>($r35, $r39);
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z5);
+
+        $r43 = new java.io.ByteArrayInputStream;
+
+        $r45 = "ABC";
+
+        $r44 = <org.apache.commons.io.Charsets: java.nio.charset.Charset UTF_8>;
+
+        $r46 = virtualinvoke $r45.<java.lang.String: byte[] getBytes(java.nio.charset.Charset)>($r44);
+
+        specialinvoke $r43.<java.io.ByteArrayInputStream: void <init>(byte[])>($r46);
+
+        $r47 = new java.io.ByteArrayInputStream;
+
+        $r49 = "ABCD";
+
+        $r48 = <org.apache.commons.io.Charsets: java.nio.charset.Charset UTF_8>;
+
+        $r50 = virtualinvoke $r49.<java.lang.String: byte[] getBytes(java.nio.charset.Charset)>($r48);
+
+        specialinvoke $r47.<java.io.ByteArrayInputStream: void <init>(byte[])>($r50);
+
+        $z6 = staticinvoke <org.apache.commons.io.IOUtils: boolean contentEquals(java.io.InputStream,java.io.InputStream)>($r43, $r47);
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z6);
+
+        return;
+    }
+
+    public void testContentEquals_Reader_Reader() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsTestCase r0;
+        java.io.StringReader $r1, $r2, $r3, $r4, $r6, $r8, $r9, $r10, $r11, $r12, $r13, $r14;
+        boolean $z0, $z1, $z2, $z3, $z4, $z5, $z6;
+        java.io.BufferedReader $r5, $r7;
+
+        r0 := @this: org.apache.commons.io.IOUtilsTestCase;
+
+        $r1 = new java.io.StringReader;
+
+        specialinvoke $r1.<java.io.StringReader: void <init>(java.lang.String)>("");
+
+        $z0 = staticinvoke <org.apache.commons.io.IOUtils: boolean contentEquals(java.io.Reader,java.io.Reader)>($r1, $r1);
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z0);
+
+        $r2 = new java.io.StringReader;
+
+        specialinvoke $r2.<java.io.StringReader: void <init>(java.lang.String)>("ABC");
+
+        $z1 = staticinvoke <org.apache.commons.io.IOUtils: boolean contentEquals(java.io.Reader,java.io.Reader)>($r2, $r2);
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z1);
+
+        $r3 = new java.io.StringReader;
+
+        specialinvoke $r3.<java.io.StringReader: void <init>(java.lang.String)>("");
+
+        $r4 = new java.io.StringReader;
+
+        specialinvoke $r4.<java.io.StringReader: void <init>(java.lang.String)>("");
+
+        $z2 = staticinvoke <org.apache.commons.io.IOUtils: boolean contentEquals(java.io.Reader,java.io.Reader)>($r3, $r4);
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z2);
+
+        $r5 = new java.io.BufferedReader;
+
+        $r6 = new java.io.StringReader;
+
+        specialinvoke $r6.<java.io.StringReader: void <init>(java.lang.String)>("");
+
+        specialinvoke $r5.<java.io.BufferedReader: void <init>(java.io.Reader)>($r6);
+
+        $r7 = new java.io.BufferedReader;
+
+        $r8 = new java.io.StringReader;
+
+        specialinvoke $r8.<java.io.StringReader: void <init>(java.lang.String)>("");
+
+        specialinvoke $r7.<java.io.BufferedReader: void <init>(java.io.Reader)>($r8);
+
+        $z3 = staticinvoke <org.apache.commons.io.IOUtils: boolean contentEquals(java.io.Reader,java.io.Reader)>($r5, $r7);
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z3);
+
+        $r9 = new java.io.StringReader;
+
+        specialinvoke $r9.<java.io.StringReader: void <init>(java.lang.String)>("ABC");
+
+        $r10 = new java.io.StringReader;
+
+        specialinvoke $r10.<java.io.StringReader: void <init>(java.lang.String)>("ABC");
+
+        $z4 = staticinvoke <org.apache.commons.io.IOUtils: boolean contentEquals(java.io.Reader,java.io.Reader)>($r9, $r10);
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z4);
+
+        $r11 = new java.io.StringReader;
+
+        specialinvoke $r11.<java.io.StringReader: void <init>(java.lang.String)>("ABCD");
+
+        $r12 = new java.io.StringReader;
+
+        specialinvoke $r12.<java.io.StringReader: void <init>(java.lang.String)>("ABC");
+
+        $z5 = staticinvoke <org.apache.commons.io.IOUtils: boolean contentEquals(java.io.Reader,java.io.Reader)>($r11, $r12);
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z5);
+
+        $r13 = new java.io.StringReader;
+
+        specialinvoke $r13.<java.io.StringReader: void <init>(java.lang.String)>("ABC");
+
+        $r14 = new java.io.StringReader;
+
+        specialinvoke $r14.<java.io.StringReader: void <init>(java.lang.String)>("ABCD");
+
+        $z6 = staticinvoke <org.apache.commons.io.IOUtils: boolean contentEquals(java.io.Reader,java.io.Reader)>($r13, $r14);
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z6);
+
+        return;
+    }
+
+    public void testContentEqualsIgnoreEOL() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsTestCase r0;
+        java.io.CharArrayReader $r1, $r4, $r7, $r10, $r13, $r16, $r19, $r22, $r25, $r28, $r31, $r34;
+        java.lang.String $r2, $r5, $r8, $r11, $r14, $r17, $r20, $r23, $r26, $r29, $r32, $r35;
+        char[] $r3, $r6, $r9, $r12, $r15, $r18, $r21, $r24, $r27, $r30, $r33, $r36;
+        boolean $z0, $z1, $z2, $z3, $z4, $z5, $z6;
+
+        r0 := @this: org.apache.commons.io.IOUtilsTestCase;
+
+        $r1 = new java.io.CharArrayReader;
+
+        $r2 = "";
+
+        $r3 = virtualinvoke $r2.<java.lang.String: char[] toCharArray()>();
+
+        specialinvoke $r1.<java.io.CharArrayReader: void <init>(char[])>($r3);
+
+        $z0 = staticinvoke <org.apache.commons.io.IOUtils: boolean contentEqualsIgnoreEOL(java.io.Reader,java.io.Reader)>($r1, $r1);
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z0);
+
+        $r4 = new java.io.CharArrayReader;
+
+        $r5 = "321\r\n";
+
+        $r6 = virtualinvoke $r5.<java.lang.String: char[] toCharArray()>();
+
+        specialinvoke $r4.<java.io.CharArrayReader: void <init>(char[])>($r6);
+
+        $z1 = staticinvoke <org.apache.commons.io.IOUtils: boolean contentEqualsIgnoreEOL(java.io.Reader,java.io.Reader)>($r4, $r4);
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z1);
+
+        $r7 = new java.io.CharArrayReader;
+
+        $r8 = "";
+
+        $r9 = virtualinvoke $r8.<java.lang.String: char[] toCharArray()>();
+
+        specialinvoke $r7.<java.io.CharArrayReader: void <init>(char[])>($r9);
+
+        $r10 = new java.io.CharArrayReader;
+
+        $r11 = "";
+
+        $r12 = virtualinvoke $r11.<java.lang.String: char[] toCharArray()>();
+
+        specialinvoke $r10.<java.io.CharArrayReader: void <init>(char[])>($r12);
+
+        $z2 = staticinvoke <org.apache.commons.io.IOUtils: boolean contentEqualsIgnoreEOL(java.io.Reader,java.io.Reader)>($r7, $r10);
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z2);
+
+        $r13 = new java.io.CharArrayReader;
+
+        $r14 = "1";
+
+        $r15 = virtualinvoke $r14.<java.lang.String: char[] toCharArray()>();
+
+        specialinvoke $r13.<java.io.CharArrayReader: void <init>(char[])>($r15);
+
+        $r16 = new java.io.CharArrayReader;
+
+        $r17 = "1";
+
+        $r18 = virtualinvoke $r17.<java.lang.String: char[] toCharArray()>();
+
+        specialinvoke $r16.<java.io.CharArrayReader: void <init>(char[])>($r18);
+
+        $z3 = staticinvoke <org.apache.commons.io.IOUtils: boolean contentEqualsIgnoreEOL(java.io.Reader,java.io.Reader)>($r13, $r16);
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z3);
+
+        $r19 = new java.io.CharArrayReader;
+
+        $r20 = "1";
+
+        $r21 = virtualinvoke $r20.<java.lang.String: char[] toCharArray()>();
+
+        specialinvoke $r19.<java.io.CharArrayReader: void <init>(char[])>($r21);
+
+        $r22 = new java.io.CharArrayReader;
+
+        $r23 = "2";
+
+        $r24 = virtualinvoke $r23.<java.lang.String: char[] toCharArray()>();
+
+        specialinvoke $r22.<java.io.CharArrayReader: void <init>(char[])>($r24);
+
+        $z4 = staticinvoke <org.apache.commons.io.IOUtils: boolean contentEqualsIgnoreEOL(java.io.Reader,java.io.Reader)>($r19, $r22);
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z4);
+
+        $r25 = new java.io.CharArrayReader;
+
+        $r26 = "123\rabc";
+
+        $r27 = virtualinvoke $r26.<java.lang.String: char[] toCharArray()>();
+
+        specialinvoke $r25.<java.io.CharArrayReader: void <init>(char[])>($r27);
+
+        $r28 = new java.io.CharArrayReader;
+
+        $r29 = "123\nabc";
+
+        $r30 = virtualinvoke $r29.<java.lang.String: char[] toCharArray()>();
+
+        specialinvoke $r28.<java.io.CharArrayReader: void <init>(char[])>($r30);
+
+        $z5 = staticinvoke <org.apache.commons.io.IOUtils: boolean contentEqualsIgnoreEOL(java.io.Reader,java.io.Reader)>($r25, $r28);
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z5);
+
+        $r31 = new java.io.CharArrayReader;
+
+        $r32 = "321";
+
+        $r33 = virtualinvoke $r32.<java.lang.String: char[] toCharArray()>();
+
+        specialinvoke $r31.<java.io.CharArrayReader: void <init>(char[])>($r33);
+
+        $r34 = new java.io.CharArrayReader;
+
+        $r35 = "321\r\n";
+
+        $r36 = virtualinvoke $r35.<java.lang.String: char[] toCharArray()>();
+
+        specialinvoke $r34.<java.io.CharArrayReader: void <init>(char[])>($r36);
+
+        $z6 = staticinvoke <org.apache.commons.io.IOUtils: boolean contentEqualsIgnoreEOL(java.io.Reader,java.io.Reader)>($r31, $r34);
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z6);
+
+        return;
+    }
+
+    public void testCopy_ByteArray_OutputStream() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsTestCase r0;
+        java.io.File r1, $r5, $r7, $r9;
+        byte[] r3;
+        java.io.FileInputStream $r6;
+        java.io.FileOutputStream $r8;
+        java.lang.Throwable $r10, $r11;
+
+        r0 := @this: org.apache.commons.io.IOUtilsTestCase;
+
+        $r5 = staticinvoke <org.apache.commons.io.IOUtilsTestCase: java.io.File getTestDirectory()>();
+
+        r1 = staticinvoke <org.apache.commons.io.testtools.TestUtils: java.io.File newFile(java.io.File,java.lang.String)>($r5, "copy8.txt");
+
+        $r6 = new java.io.FileInputStream;
+
+        $r7 = r0.<org.apache.commons.io.IOUtilsTestCase: java.io.File m_testFile>;
+
+        specialinvoke $r6.<java.io.FileInputStream: void <init>(java.io.File)>($r7);
+
+     label1:
+        r3 = staticinvoke <org.apache.commons.io.IOUtils: byte[] toByteArray(java.io.InputStream)>($r6);
+
+        goto label3;
+
+     label2:
+        $r11 := @caughtexception;
+
+        virtualinvoke $r6.<java.io.FileInputStream: void close()>();
+
+        throw $r11;
+
+     label3:
+        virtualinvoke $r6.<java.io.FileInputStream: void close()>();
+
+        $r8 = new java.io.FileOutputStream;
+
+        specialinvoke $r8.<java.io.FileOutputStream: void <init>(java.io.File)>(r1);
+
+     label4:
+        staticinvoke <org.apache.commons.io.CopyUtils: void copy(byte[],java.io.OutputStream)>(r3, $r8);
+
+        virtualinvoke $r8.<java.io.FileOutputStream: void flush()>();
+
+        $r9 = r0.<org.apache.commons.io.IOUtilsTestCase: java.io.File m_testFile>;
+
+        staticinvoke <org.apache.commons.io.testtools.TestUtils: void checkFile(java.io.File,java.io.File)>(r1, $r9);
+
+        staticinvoke <org.apache.commons.io.testtools.TestUtils: void checkWrite(java.io.OutputStream)>($r8);
+
+        goto label6;
+
+     label5:
+        $r10 := @caughtexception;
+
+        virtualinvoke $r8.<java.io.FileOutputStream: void close()>();
+
+        throw $r10;
+
+     label6:
+        virtualinvoke $r8.<java.io.FileOutputStream: void close()>();
+
+        staticinvoke <org.apache.commons.io.testtools.TestUtils: void deleteFile(java.io.File)>(r1);
+
+        return;
+
+        catch java.lang.Throwable from label1 to label2 with label2;
+        catch java.lang.Throwable from label4 to label5 with label5;
+    }
+
+    public void testCopy_ByteArray_Writer() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsTestCase r0;
+        java.io.File r1, $r5, $r7, $r9;
+        byte[] r3;
+        java.io.FileInputStream $r6;
+        java.io.FileWriter $r8;
+        java.lang.Throwable $r10, $r11;
+
+        r0 := @this: org.apache.commons.io.IOUtilsTestCase;
+
+        $r5 = staticinvoke <org.apache.commons.io.IOUtilsTestCase: java.io.File getTestDirectory()>();
+
+        r1 = staticinvoke <org.apache.commons.io.testtools.TestUtils: java.io.File newFile(java.io.File,java.lang.String)>($r5, "copy7.txt");
+
+        $r6 = new java.io.FileInputStream;
+
+        $r7 = r0.<org.apache.commons.io.IOUtilsTestCase: java.io.File m_testFile>;
+
+        specialinvoke $r6.<java.io.FileInputStream: void <init>(java.io.File)>($r7);
+
+     label1:
+        r3 = staticinvoke <org.apache.commons.io.IOUtils: byte[] toByteArray(java.io.InputStream)>($r6);
+
+        goto label3;
+
+     label2:
+        $r11 := @caughtexception;
+
+        virtualinvoke $r6.<java.io.FileInputStream: void close()>();
+
+        throw $r11;
+
+     label3:
+        virtualinvoke $r6.<java.io.FileInputStream: void close()>();
+
+        $r8 = new java.io.FileWriter;
+
+        specialinvoke $r8.<java.io.FileWriter: void <init>(java.io.File)>(r1);
+
+     label4:
+        staticinvoke <org.apache.commons.io.CopyUtils: void copy(byte[],java.io.Writer)>(r3, $r8);
+
+        virtualinvoke $r8.<java.io.FileWriter: void flush()>();
+
+        $r9 = r0.<org.apache.commons.io.IOUtilsTestCase: java.io.File m_testFile>;
+
+        staticinvoke <org.apache.commons.io.testtools.TestUtils: void checkFile(java.io.File,java.io.File)>(r1, $r9);
+
+        staticinvoke <org.apache.commons.io.testtools.TestUtils: void checkWrite(java.io.Writer)>($r8);
+
+        goto label6;
+
+     label5:
+        $r10 := @caughtexception;
+
+        virtualinvoke $r8.<java.io.FileWriter: void close()>();
+
+        throw $r10;
+
+     label6:
+        virtualinvoke $r8.<java.io.FileWriter: void close()>();
+
+        staticinvoke <org.apache.commons.io.testtools.TestUtils: void deleteFile(java.io.File)>(r1);
+
+        return;
+
+        catch java.lang.Throwable from label1 to label2 with label2;
+        catch java.lang.Throwable from label4 to label5 with label5;
+    }
+
+    public void testCopy_String_Writer() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsTestCase r0;
+        java.io.File r1, $r5, $r7, $r9;
+        java.lang.String r3;
+        java.io.FileReader $r6;
+        java.io.FileWriter $r8;
+        java.lang.Throwable $r10, $r11;
+
+        r0 := @this: org.apache.commons.io.IOUtilsTestCase;
+
+        $r5 = staticinvoke <org.apache.commons.io.IOUtilsTestCase: java.io.File getTestDirectory()>();
+
+        r1 = staticinvoke <org.apache.commons.io.testtools.TestUtils: java.io.File newFile(java.io.File,java.lang.String)>($r5, "copy6.txt");
+
+        $r6 = new java.io.FileReader;
+
+        $r7 = r0.<org.apache.commons.io.IOUtilsTestCase: java.io.File m_testFile>;
+
+        specialinvoke $r6.<java.io.FileReader: void <init>(java.io.File)>($r7);
+
+     label1:
+        r3 = staticinvoke <org.apache.commons.io.IOUtils: java.lang.String toString(java.io.Reader)>($r6);
+
+        goto label3;
+
+     label2:
+        $r11 := @caughtexception;
+
+        virtualinvoke $r6.<java.io.FileReader: void close()>();
+
+        throw $r11;
+
+     label3:
+        virtualinvoke $r6.<java.io.FileReader: void close()>();
+
+        $r8 = new java.io.FileWriter;
+
+        specialinvoke $r8.<java.io.FileWriter: void <init>(java.io.File)>(r1);
+
+     label4:
+        staticinvoke <org.apache.commons.io.CopyUtils: void copy(java.lang.String,java.io.Writer)>(r3, $r8);
+
+        virtualinvoke $r8.<java.io.FileWriter: void flush()>();
+
+        $r9 = r0.<org.apache.commons.io.IOUtilsTestCase: java.io.File m_testFile>;
+
+        staticinvoke <org.apache.commons.io.testtools.TestUtils: void checkFile(java.io.File,java.io.File)>(r1, $r9);
+
+        staticinvoke <org.apache.commons.io.testtools.TestUtils: void checkWrite(java.io.Writer)>($r8);
+
+        goto label6;
+
+     label5:
+        $r10 := @caughtexception;
+
+        virtualinvoke $r8.<java.io.FileWriter: void close()>();
+
+        throw $r10;
+
+     label6:
+        virtualinvoke $r8.<java.io.FileWriter: void close()>();
+
+        staticinvoke <org.apache.commons.io.testtools.TestUtils: void deleteFile(java.io.File)>(r1);
+
+        return;
+
+        catch java.lang.Throwable from label1 to label2 with label2;
+        catch java.lang.Throwable from label4 to label5 with label5;
+    }
+
+    public void testCopyLarge_CharExtraLength() throws java.io.IOException
+    {
+        org.apache.commons.io.IOUtilsTestCase r0;
+        char[] r1, $r4;
+        java.io.CharArrayReader $r3, r7;
+        java.io.CharArrayWriter $r5, r8;
+        long $l0, $l2, $l4, $l6, $l8;
+        int $i1;
+        char $c3, $c5, $c7;
+        java.lang.Throwable $r6;
+
+        r0 := @this: org.apache.commons.io.IOUtilsTestCase;
+
+        r7 = null;
+
+        r8 = null;
+
+     label1:
+        $r3 = new java.io.CharArrayReader;
+
+        $r4 = r0.<org.apache.commons.io.IOUtilsTestCase: char[] carr>;
+
+        specialinvoke $r3.<java.io.CharArrayReader: void <init>(char[])>($r4);
+
+        r7 = $r3;
+
+        $r5 = new java.io.CharArrayWriter;
+
+        specialinvoke $r5.<java.io.CharArrayWriter: void <init>()>();
+
+        r8 = $r5;
+
+        $l0 = staticinvoke <org.apache.commons.io.IOUtils: long copyLarge(java.io.Reader,java.io.Writer,long,long)>($r3, $r5, 0L, 2000L);
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(200L, $l0);
+
+        r1 = virtualinvoke $r5.<java.io.CharArrayWriter: char[] toCharArray()>();
+
+        $i1 = lengthof r1;
+
+        $l2 = (long) $i1;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(200L, $l2);
+
+        $c3 = r1[1];
+
+        $l4 = (long) $c3;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(1L, $l4);
+
+        $c5 = r1[79];
+
+        $l6 = (long) $c5;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(79L, $l6);
+
+        $c7 = r1[80];
+
+        $l8 = (long) $c7;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(65535L, $l8);
+
+        goto label3;
+
+     label2:
+        $r6 := @caughtexception;
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.Reader)>(r7);
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.Writer)>(r8);
+
+        throw $r6;
+
+     label3:
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.Reader)>($r3);
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.Writer)>($r5);
+
+        return;
+
+        catch java.lang.Throwable from label1 to label2 with label2;
+    }
+
+    public void testCopyLarge_CharFullLength() throws java.io.IOException
+    {
+        org.apache.commons.io.IOUtilsTestCase r0;
+        char[] r1, $r4;
+        java.io.CharArrayReader $r3, r7;
+        java.io.CharArrayWriter $r5, r8;
+        long $l0, $l2, $l4, $l6, $l8;
+        int $i1;
+        char $c3, $c5, $c7;
+        java.lang.Throwable $r6;
+
+        r0 := @this: org.apache.commons.io.IOUtilsTestCase;
+
+        r7 = null;
+
+        r8 = null;
+
+     label1:
+        $r3 = new java.io.CharArrayReader;
+
+        $r4 = r0.<org.apache.commons.io.IOUtilsTestCase: char[] carr>;
+
+        specialinvoke $r3.<java.io.CharArrayReader: void <init>(char[])>($r4);
+
+        r7 = $r3;
+
+        $r5 = new java.io.CharArrayWriter;
+
+        specialinvoke $r5.<java.io.CharArrayWriter: void <init>()>();
+
+        r8 = $r5;
+
+        $l0 = staticinvoke <org.apache.commons.io.IOUtils: long copyLarge(java.io.Reader,java.io.Writer,long,long)>($r3, $r5, 0L, -1L);
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(200L, $l0);
+
+        r1 = virtualinvoke $r5.<java.io.CharArrayWriter: char[] toCharArray()>();
+
+        $i1 = lengthof r1;
+
+        $l2 = (long) $i1;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(200L, $l2);
+
+        $c3 = r1[1];
+
+        $l4 = (long) $c3;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(1L, $l4);
+
+        $c5 = r1[79];
+
+        $l6 = (long) $c5;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(79L, $l6);
+
+        $c7 = r1[80];
+
+        $l8 = (long) $c7;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(65535L, $l8);
+
+        goto label3;
+
+     label2:
+        $r6 := @caughtexception;
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.Reader)>(r7);
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.Writer)>(r8);
+
+        throw $r6;
+
+     label3:
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.Reader)>($r3);
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.Writer)>($r5);
+
+        return;
+
+        catch java.lang.Throwable from label1 to label2 with label2;
+    }
+
+    public void testCopyLarge_CharNoSkip() throws java.io.IOException
+    {
+        org.apache.commons.io.IOUtilsTestCase r0;
+        char[] r1, $r4;
+        java.io.CharArrayReader $r3, r7;
+        java.io.CharArrayWriter $r5, r8;
+        long $l0, $l2, $l4, $l6, $l8;
+        int $i1;
+        char $c3, $c5, $c7;
+        java.lang.Throwable $r6;
+
+        r0 := @this: org.apache.commons.io.IOUtilsTestCase;
+
+        r7 = null;
+
+        r8 = null;
+
+     label1:
+        $r3 = new java.io.CharArrayReader;
+
+        $r4 = r0.<org.apache.commons.io.IOUtilsTestCase: char[] carr>;
+
+        specialinvoke $r3.<java.io.CharArrayReader: void <init>(char[])>($r4);
+
+        r7 = $r3;
+
+        $r5 = new java.io.CharArrayWriter;
+
+        specialinvoke $r5.<java.io.CharArrayWriter: void <init>()>();
+
+        r8 = $r5;
+
+        $l0 = staticinvoke <org.apache.commons.io.IOUtils: long copyLarge(java.io.Reader,java.io.Writer,long,long)>($r3, $r5, 0L, 100L);
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(100L, $l0);
+
+        r1 = virtualinvoke $r5.<java.io.CharArrayWriter: char[] toCharArray()>();
+
+        $i1 = lengthof r1;
+
+        $l2 = (long) $i1;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(100L, $l2);
+
+        $c3 = r1[1];
+
+        $l4 = (long) $c3;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(1L, $l4);
+
+        $c5 = r1[79];
+
+        $l6 = (long) $c5;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(79L, $l6);
+
+        $c7 = r1[80];
+
+        $l8 = (long) $c7;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(65535L, $l8);
+
+        goto label3;
+
+     label2:
+        $r6 := @caughtexception;
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.Reader)>(r7);
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.Writer)>(r8);
+
+        throw $r6;
+
+     label3:
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.Reader)>($r3);
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.Writer)>($r5);
+
+        return;
+
+        catch java.lang.Throwable from label1 to label2 with label2;
+    }
+
+    public void testCopyLarge_CharSkip() throws java.io.IOException
+    {
+        org.apache.commons.io.IOUtilsTestCase r0;
+        char[] r1, $r4;
+        java.io.CharArrayReader $r3, r7;
+        java.io.CharArrayWriter $r5, r8;
+        long $l0, $l2, $l4, $l6, $l8;
+        int $i1;
+        char $c3, $c5, $c7;
+        java.lang.Throwable $r6;
+
+        r0 := @this: org.apache.commons.io.IOUtilsTestCase;
+
+        r7 = null;
+
+        r8 = null;
+
+     label1:
+        $r3 = new java.io.CharArrayReader;
+
+        $r4 = r0.<org.apache.commons.io.IOUtilsTestCase: char[] carr>;
+
+        specialinvoke $r3.<java.io.CharArrayReader: void <init>(char[])>($r4);
+
+        r7 = $r3;
+
+        $r5 = new java.io.CharArrayWriter;
+
+        specialinvoke $r5.<java.io.CharArrayWriter: void <init>()>();
+
+        r8 = $r5;
+
+        $l0 = staticinvoke <org.apache.commons.io.IOUtils: long copyLarge(java.io.Reader,java.io.Writer,long,long)>($r3, $r5, 10L, 100L);
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(100L, $l0);
+
+        r1 = virtualinvoke $r5.<java.io.CharArrayWriter: char[] toCharArray()>();
+
+        $i1 = lengthof r1;
+
+        $l2 = (long) $i1;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(100L, $l2);
+
+        $c3 = r1[1];
+
+        $l4 = (long) $c3;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(11L, $l4);
+
+        $c5 = r1[69];
+
+        $l6 = (long) $c5;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(79L, $l6);
+
+        $c7 = r1[70];
+
+        $l8 = (long) $c7;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(65535L, $l8);
+
+        goto label3;
+
+     label2:
+        $r6 := @caughtexception;
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.Reader)>(r7);
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.Writer)>(r8);
+
+        throw $r6;
+
+     label3:
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.Reader)>($r3);
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.Writer)>($r5);
+
+        return;
+
+        catch java.lang.Throwable from label1 to label2 with label2;
+    }
+
+    public void testCopyLarge_CharSkipInvalid() throws java.io.IOException
+    {
+        org.apache.commons.io.IOUtilsTestCase r0;
+        java.io.CharArrayReader $r3, r8;
+        char[] $r4;
+        java.io.CharArrayWriter $r5, r9;
+        java.lang.Throwable $r6;
+        java.io.EOFException $r7;
+
+        r0 := @this: org.apache.commons.io.IOUtilsTestCase;
+
+        r8 = null;
+
+        r9 = null;
+
+     label1:
+        $r3 = new java.io.CharArrayReader;
+
+        $r4 = r0.<org.apache.commons.io.IOUtilsTestCase: char[] carr>;
+
+        specialinvoke $r3.<java.io.CharArrayReader: void <init>(char[])>($r4);
+
+        r8 = $r3;
+
+        $r5 = new java.io.CharArrayWriter;
+
+        specialinvoke $r5.<java.io.CharArrayWriter: void <init>()>();
+
+        r9 = $r5;
+
+        staticinvoke <org.apache.commons.io.IOUtils: long copyLarge(java.io.Reader,java.io.Writer,long,long)>($r3, $r5, 1000L, 100L);
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("Should have thrown EOFException");
+
+     label2:
+        goto label6;
+
+     label3:
+        $r7 := @caughtexception;
+
+     label4:
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.Reader)>(r8);
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.Writer)>(r9);
+
+        goto label7;
+
+     label5:
+        $r6 := @caughtexception;
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.Reader)>(r8);
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.Writer)>(r9);
+
+        throw $r6;
+
+     label6:
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.Reader)>($r3);
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.Writer)>($r5);
+
+     label7:
+        return;
+
+        catch java.io.EOFException from label1 to label2 with label3;
+        catch java.lang.Throwable from label1 to label4 with label5;
+    }
+
+    public void testCopyLarge_ExtraLength() throws java.io.IOException
+    {
+        org.apache.commons.io.IOUtilsTestCase r0;
+        byte[] r1, $r4;
+        java.io.ByteArrayInputStream $r3, r7;
+        java.io.ByteArrayOutputStream $r5, r8;
+        long $l0, $l2, $l4, $l6, $l8;
+        int $i1;
+        byte $b3, $b5, $b7;
+        java.lang.Throwable $r6;
+
+        r0 := @this: org.apache.commons.io.IOUtilsTestCase;
+
+        r7 = null;
+
+        r8 = null;
+
+     label1:
+        $r3 = new java.io.ByteArrayInputStream;
+
+        $r4 = r0.<org.apache.commons.io.IOUtilsTestCase: byte[] iarr>;
+
+        specialinvoke $r3.<java.io.ByteArrayInputStream: void <init>(byte[])>($r4);
+
+        r7 = $r3;
+
+        $r5 = new java.io.ByteArrayOutputStream;
+
+        specialinvoke $r5.<java.io.ByteArrayOutputStream: void <init>()>();
+
+        r8 = $r5;
+
+        $l0 = staticinvoke <org.apache.commons.io.IOUtils: long copyLarge(java.io.InputStream,java.io.OutputStream,long,long)>($r3, $r5, 0L, 2000L);
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(200L, $l0);
+
+        r1 = virtualinvoke $r5.<java.io.ByteArrayOutputStream: byte[] toByteArray()>();
+
+        $i1 = lengthof r1;
+
+        $l2 = (long) $i1;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(200L, $l2);
+
+        $b3 = r1[1];
+
+        $l4 = (long) $b3;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(1L, $l4);
+
+        $b5 = r1[79];
+
+        $l6 = (long) $b5;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(79L, $l6);
+
+        $b7 = r1[80];
+
+        $l8 = (long) $b7;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(-1L, $l8);
+
+        goto label3;
+
+     label2:
+        $r6 := @caughtexception;
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.InputStream)>(r7);
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.OutputStream)>(r8);
+
+        throw $r6;
+
+     label3:
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.InputStream)>($r3);
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.OutputStream)>($r5);
+
+        return;
+
+        catch java.lang.Throwable from label1 to label2 with label2;
+    }
+
+    public void testCopyLarge_FullLength() throws java.io.IOException
+    {
+        org.apache.commons.io.IOUtilsTestCase r0;
+        byte[] r1, $r4;
+        java.io.ByteArrayInputStream $r3, r7;
+        java.io.ByteArrayOutputStream $r5, r8;
+        long $l0, $l2, $l4, $l6, $l8;
+        int $i1;
+        byte $b3, $b5, $b7;
+        java.lang.Throwable $r6;
+
+        r0 := @this: org.apache.commons.io.IOUtilsTestCase;
+
+        r7 = null;
+
+        r8 = null;
+
+     label1:
+        $r3 = new java.io.ByteArrayInputStream;
+
+        $r4 = r0.<org.apache.commons.io.IOUtilsTestCase: byte[] iarr>;
+
+        specialinvoke $r3.<java.io.ByteArrayInputStream: void <init>(byte[])>($r4);
+
+        r7 = $r3;
+
+        $r5 = new java.io.ByteArrayOutputStream;
+
+        specialinvoke $r5.<java.io.ByteArrayOutputStream: void <init>()>();
+
+        r8 = $r5;
+
+        $l0 = staticinvoke <org.apache.commons.io.IOUtils: long copyLarge(java.io.InputStream,java.io.OutputStream,long,long)>($r3, $r5, 0L, -1L);
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(200L, $l0);
+
+        r1 = virtualinvoke $r5.<java.io.ByteArrayOutputStream: byte[] toByteArray()>();
+
+        $i1 = lengthof r1;
+
+        $l2 = (long) $i1;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(200L, $l2);
+
+        $b3 = r1[1];
+
+        $l4 = (long) $b3;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(1L, $l4);
+
+        $b5 = r1[79];
+
+        $l6 = (long) $b5;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(79L, $l6);
+
+        $b7 = r1[80];
+
+        $l8 = (long) $b7;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(-1L, $l8);
+
+        goto label3;
+
+     label2:
+        $r6 := @caughtexception;
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.InputStream)>(r7);
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.OutputStream)>(r8);
+
+        throw $r6;
+
+     label3:
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.InputStream)>($r3);
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.OutputStream)>($r5);
+
+        return;
+
+        catch java.lang.Throwable from label1 to label2 with label2;
+    }
+
+    public void testCopyLarge_NoSkip() throws java.io.IOException
+    {
+        org.apache.commons.io.IOUtilsTestCase r0;
+        byte[] r1, $r4;
+        java.io.ByteArrayInputStream $r3, r7;
+        java.io.ByteArrayOutputStream $r5, r8;
+        long $l0, $l2, $l4, $l6, $l8;
+        int $i1;
+        byte $b3, $b5, $b7;
+        java.lang.Throwable $r6;
+
+        r0 := @this: org.apache.commons.io.IOUtilsTestCase;
+
+        r7 = null;
+
+        r8 = null;
+
+     label1:
+        $r3 = new java.io.ByteArrayInputStream;
+
+        $r4 = r0.<org.apache.commons.io.IOUtilsTestCase: byte[] iarr>;
+
+        specialinvoke $r3.<java.io.ByteArrayInputStream: void <init>(byte[])>($r4);
+
+        r7 = $r3;
+
+        $r5 = new java.io.ByteArrayOutputStream;
+
+        specialinvoke $r5.<java.io.ByteArrayOutputStream: void <init>()>();
+
+        r8 = $r5;
+
+        $l0 = staticinvoke <org.apache.commons.io.IOUtils: long copyLarge(java.io.InputStream,java.io.OutputStream,long,long)>($r3, $r5, 0L, 100L);
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(100L, $l0);
+
+        r1 = virtualinvoke $r5.<java.io.ByteArrayOutputStream: byte[] toByteArray()>();
+
+        $i1 = lengthof r1;
+
+        $l2 = (long) $i1;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(100L, $l2);
+
+        $b3 = r1[1];
+
+        $l4 = (long) $b3;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(1L, $l4);
+
+        $b5 = r1[79];
+
+        $l6 = (long) $b5;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(79L, $l6);
+
+        $b7 = r1[80];
+
+        $l8 = (long) $b7;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(-1L, $l8);
+
+        goto label3;
+
+     label2:
+        $r6 := @caughtexception;
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.InputStream)>(r7);
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.OutputStream)>(r8);
+
+        throw $r6;
+
+     label3:
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.InputStream)>($r3);
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.OutputStream)>($r5);
+
+        return;
+
+        catch java.lang.Throwable from label1 to label2 with label2;
+    }
+
+    public void testCopyLarge_Skip() throws java.io.IOException
+    {
+        org.apache.commons.io.IOUtilsTestCase r0;
+        byte[] r1, $r4;
+        java.io.ByteArrayInputStream $r3, r7;
+        java.io.ByteArrayOutputStream $r5, r8;
+        long $l0, $l2, $l4, $l6, $l8;
+        int $i1;
+        byte $b3, $b5, $b7;
+        java.lang.Throwable $r6;
+
+        r0 := @this: org.apache.commons.io.IOUtilsTestCase;
+
+        r7 = null;
+
+        r8 = null;
+
+     label1:
+        $r3 = new java.io.ByteArrayInputStream;
+
+        $r4 = r0.<org.apache.commons.io.IOUtilsTestCase: byte[] iarr>;
+
+        specialinvoke $r3.<java.io.ByteArrayInputStream: void <init>(byte[])>($r4);
+
+        r7 = $r3;
+
+        $r5 = new java.io.ByteArrayOutputStream;
+
+        specialinvoke $r5.<java.io.ByteArrayOutputStream: void <init>()>();
+
+        r8 = $r5;
+
+        $l0 = staticinvoke <org.apache.commons.io.IOUtils: long copyLarge(java.io.InputStream,java.io.OutputStream,long,long)>($r3, $r5, 10L, 100L);
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(100L, $l0);
+
+        r1 = virtualinvoke $r5.<java.io.ByteArrayOutputStream: byte[] toByteArray()>();
+
+        $i1 = lengthof r1;
+
+        $l2 = (long) $i1;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(100L, $l2);
+
+        $b3 = r1[1];
+
+        $l4 = (long) $b3;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(11L, $l4);
+
+        $b5 = r1[69];
+
+        $l6 = (long) $b5;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(79L, $l6);
+
+        $b7 = r1[70];
+
+        $l8 = (long) $b7;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(-1L, $l8);
+
+        goto label3;
+
+     label2:
+        $r6 := @caughtexception;
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.InputStream)>(r7);
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.OutputStream)>(r8);
+
+        throw $r6;
+
+     label3:
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.InputStream)>($r3);
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.OutputStream)>($r5);
+
+        return;
+
+        catch java.lang.Throwable from label1 to label2 with label2;
+    }
+
+    public void testCopyLarge_SkipInvalid() throws java.io.IOException
+    {
+        org.apache.commons.io.IOUtilsTestCase r0;
+        java.io.ByteArrayInputStream $r3, r8;
+        byte[] $r4;
+        java.io.ByteArrayOutputStream $r5, r9;
+        java.io.EOFException $r6;
+        java.lang.Throwable $r7;
+
+        r0 := @this: org.apache.commons.io.IOUtilsTestCase;
+
+        r8 = null;
+
+        r9 = null;
+
+     label1:
+        $r3 = new java.io.ByteArrayInputStream;
+
+        $r4 = r0.<org.apache.commons.io.IOUtilsTestCase: byte[] iarr>;
+
+        specialinvoke $r3.<java.io.ByteArrayInputStream: void <init>(byte[])>($r4);
+
+        r8 = $r3;
+
+        $r5 = new java.io.ByteArrayOutputStream;
+
+        specialinvoke $r5.<java.io.ByteArrayOutputStream: void <init>()>();
+
+        r9 = $r5;
+
+        staticinvoke <org.apache.commons.io.IOUtils: long copyLarge(java.io.InputStream,java.io.OutputStream,long,long)>($r3, $r5, 1000L, 100L);
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("Should have thrown EOFException");
+
+     label2:
+        goto label6;
+
+     label3:
+        $r6 := @caughtexception;
+
+     label4:
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.InputStream)>(r8);
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.OutputStream)>(r9);
+
+        goto label7;
+
+     label5:
+        $r7 := @caughtexception;
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.InputStream)>(r8);
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.OutputStream)>(r9);
+
+        throw $r7;
+
+     label6:
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.InputStream)>($r3);
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.OutputStream)>($r5);
+
+     label7:
+        return;
+
+        catch java.io.EOFException from label1 to label2 with label3;
+        catch java.lang.Throwable from label1 to label4 with label5;
+    }
+
+    public void testRead_ReadableByteChannel() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsTestCase r0;
+        java.nio.ByteBuffer r1;
+        java.nio.channels.FileChannel r3;
+        java.io.FileInputStream $r6;
+        java.io.File $r7;
+        int $i0, $i2, $i4, $i6;
+        long $l1, $l3, $l5, $l7;
+        java.io.Closeable[] $r9, $r11;
+        java.lang.Throwable $r10;
+        java.io.EOFException $r12;
+
+        r0 := @this: org.apache.commons.io.IOUtilsTestCase;
+
+        r1 = staticinvoke <java.nio.ByteBuffer: java.nio.ByteBuffer allocate(int)>(4097);
+
+        $r6 = new java.io.FileInputStream;
+
+        $r7 = r0.<org.apache.commons.io.IOUtilsTestCase: java.io.File m_testFile>;
+
+        specialinvoke $r6.<java.io.FileInputStream: void <init>(java.io.File)>($r7);
+
+        r3 = virtualinvoke $r6.<java.io.FileInputStream: java.nio.channels.FileChannel getChannel()>();
+
+     label1:
+        $i0 = staticinvoke <org.apache.commons.io.IOUtils: int read(java.nio.channels.ReadableByteChannel,java.nio.ByteBuffer)>(r3, r1);
+
+        $l1 = (long) $i0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(4097L, $l1);
+
+        $i2 = staticinvoke <org.apache.commons.io.IOUtils: int read(java.nio.channels.ReadableByteChannel,java.nio.ByteBuffer)>(r3, r1);
+
+        $l3 = (long) $i2;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(0L, $l3);
+
+        $i4 = virtualinvoke r1.<java.nio.ByteBuffer: int remaining()>();
+
+        $l5 = (long) $i4;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(0L, $l5);
+
+        $i6 = virtualinvoke r3.<java.nio.channels.FileChannel: int read(java.nio.ByteBuffer)>(r1);
+
+        $l7 = (long) $i6;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(0L, $l7);
+
+        virtualinvoke r1.<java.nio.ByteBuffer: java.nio.Buffer clear()>();
+
+     label2:
+        staticinvoke <org.apache.commons.io.IOUtils: void readFully(java.nio.channels.ReadableByteChannel,java.nio.ByteBuffer)>(r3, r1);
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("Should have failed with EOFxception");
+
+     label3:
+        goto label6;
+
+     label4:
+        $r12 := @caughtexception;
+
+        goto label6;
+
+     label5:
+        $r10 := @caughtexception;
+
+        $r11 = newarray (java.io.Closeable)[2];
+
+        $r11[0] = r3;
+
+        $r11[1] = $r6;
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.Closeable[])>($r11);
+
+        throw $r10;
+
+     label6:
+        $r9 = newarray (java.io.Closeable)[2];
+
+        $r9[0] = r3;
+
+        $r9[1] = $r6;
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.Closeable[])>($r9);
+
+        return;
+
+        catch java.io.EOFException from label2 to label3 with label4;
+        catch java.lang.Throwable from label1 to label5 with label5;
+    }
+
+    public void testReadFully_InputStream_ByteArray() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsTestCase r0;
+        byte[] r1, $r4;
+        java.io.ByteArrayInputStream $r3;
+        java.io.EOFException $r5;
+        java.lang.IllegalArgumentException $r6;
+
+        r0 := @this: org.apache.commons.io.IOUtilsTestCase;
+
+        r1 = newarray (byte)[1027];
+
+        $r3 = new java.io.ByteArrayInputStream;
+
+        $r4 = newarray (byte)[1027];
+
+        specialinvoke $r3.<java.io.ByteArrayInputStream: void <init>(byte[])>($r4);
+
+     label1:
+        staticinvoke <org.apache.commons.io.IOUtils: void readFully(java.io.InputStream,byte[],int,int)>($r3, r1, 0, -1);
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("Should have failed with IllegalArgumentException");
+
+     label2:
+        goto label4;
+
+     label3:
+        $r6 := @caughtexception;
+
+     label4:
+        staticinvoke <org.apache.commons.io.IOUtils: void readFully(java.io.InputStream,byte[],int,int)>($r3, r1, 0, 0);
+
+        staticinvoke <org.apache.commons.io.IOUtils: void readFully(java.io.InputStream,byte[],int,int)>($r3, r1, 0, 1026);
+
+     label5:
+        staticinvoke <org.apache.commons.io.IOUtils: void readFully(java.io.InputStream,byte[],int,int)>($r3, r1, 0, 2);
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("Should have failed with EOFxception");
+
+     label6:
+        goto label8;
+
+     label7:
+        $r5 := @caughtexception;
+
+     label8:
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.InputStream)>($r3);
+
+        return;
+
+        catch java.lang.IllegalArgumentException from label1 to label2 with label3;
+        catch java.io.EOFException from label5 to label6 with label7;
+    }
+
+    public void testReadFully_InputStream__ReturnByteArray() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsTestCase r0;
+        byte[] r1, r3;
+        java.lang.String $r4;
+        java.io.ByteArrayInputStream $r5;
+        int $i0;
+
+        r0 := @this: org.apache.commons.io.IOUtilsTestCase;
+
+        $r4 = "abcd1234";
+
+        r1 = virtualinvoke $r4.<java.lang.String: byte[] getBytes(java.lang.String)>("UTF-8");
+
+        $r5 = new java.io.ByteArrayInputStream;
+
+        specialinvoke $r5.<java.io.ByteArrayInputStream: void <init>(byte[])>(r1);
+
+        $i0 = lengthof r1;
+
+        r3 = staticinvoke <org.apache.commons.io.IOUtils: byte[] readFully(java.io.InputStream,int)>($r5, $i0);
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.InputStream)>($r5);
+
+        specialinvoke r0.<org.apache.commons.io.IOUtilsTestCase: void assertEqualContent(byte[],byte[])>(r3, r1);
+
+        return;
+    }
+
+    public void testReadFully_InputStream_Offset() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsTestCase r0;
+        byte[] r1, r3;
+        java.lang.String $r4, $r6, $r7;
+        java.io.ByteArrayInputStream $r5;
+        int $i0;
+
+        r0 := @this: org.apache.commons.io.IOUtilsTestCase;
+
+        $r4 = "abcd1234";
+
+        r1 = virtualinvoke $r4.<java.lang.String: byte[] getBytes(java.lang.String)>("UTF-8");
+
+        $r5 = new java.io.ByteArrayInputStream;
+
+        specialinvoke $r5.<java.io.ByteArrayInputStream: void <init>(byte[])>(r1);
+
+        $r6 = "wx00000000";
+
+        r3 = virtualinvoke $r6.<java.lang.String: byte[] getBytes(java.lang.String)>("UTF-8");
+
+        staticinvoke <org.apache.commons.io.IOUtils: void readFully(java.io.InputStream,byte[],int,int)>($r5, r3, 2, 8);
+
+        $r7 = new java.lang.String;
+
+        $i0 = lengthof r3;
+
+        specialinvoke $r7.<java.lang.String: void <init>(byte[],int,int,java.lang.String)>(r3, 0, $i0, "UTF-8");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("wxabcd1234", $r7);
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.InputStream)>($r5);
+
+        return;
+    }
+
+    public void testReadFully_ReadableByteChannel() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsTestCase r0;
+        java.nio.ByteBuffer r1;
+        java.nio.channels.FileChannel r3;
+        java.io.FileInputStream $r6;
+        java.io.File $r7;
+        int $i0, $i2, $i4, $i6, $i8, $i10;
+        long $l1, $l3, $l5, $l7, $l9, $l11;
+        java.io.Closeable[] $r9, $r12;
+        java.io.EOFException $r10;
+        java.lang.Throwable $r11;
+
+        r0 := @this: org.apache.commons.io.IOUtilsTestCase;
+
+        r1 = staticinvoke <java.nio.ByteBuffer: java.nio.ByteBuffer allocate(int)>(4097);
+
+        $r6 = new java.io.FileInputStream;
+
+        $r7 = r0.<org.apache.commons.io.IOUtilsTestCase: java.io.File m_testFile>;
+
+        specialinvoke $r6.<java.io.FileInputStream: void <init>(java.io.File)>($r7);
+
+        r3 = virtualinvoke $r6.<java.io.FileInputStream: java.nio.channels.FileChannel getChannel()>();
+
+     label1:
+        staticinvoke <org.apache.commons.io.IOUtils: void readFully(java.nio.channels.ReadableByteChannel,java.nio.ByteBuffer)>(r3, r1);
+
+        $i0 = virtualinvoke r1.<java.nio.ByteBuffer: int position()>();
+
+        $l1 = (long) $i0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(4097L, $l1);
+
+        $i2 = virtualinvoke r1.<java.nio.ByteBuffer: int remaining()>();
+
+        $l3 = (long) $i2;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(0L, $l3);
+
+        $i4 = virtualinvoke r3.<java.nio.channels.FileChannel: int read(java.nio.ByteBuffer)>(r1);
+
+        $l5 = (long) $i4;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(0L, $l5);
+
+        staticinvoke <org.apache.commons.io.IOUtils: void readFully(java.nio.channels.ReadableByteChannel,java.nio.ByteBuffer)>(r3, r1);
+
+        $i6 = virtualinvoke r1.<java.nio.ByteBuffer: int position()>();
+
+        $l7 = (long) $i6;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(4097L, $l7);
+
+        $i8 = virtualinvoke r1.<java.nio.ByteBuffer: int remaining()>();
+
+        $l9 = (long) $i8;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(0L, $l9);
+
+        $i10 = virtualinvoke r3.<java.nio.channels.FileChannel: int read(java.nio.ByteBuffer)>(r1);
+
+        $l11 = (long) $i10;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(0L, $l11);
+
+        staticinvoke <org.apache.commons.io.IOUtils: void readFully(java.nio.channels.ReadableByteChannel,java.nio.ByteBuffer)>(r3, r1);
+
+        virtualinvoke r1.<java.nio.ByteBuffer: java.nio.Buffer clear()>();
+
+     label2:
+        staticinvoke <org.apache.commons.io.IOUtils: void readFully(java.nio.channels.ReadableByteChannel,java.nio.ByteBuffer)>(r3, r1);
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("Should have failed with EOFxception");
+
+     label3:
+        goto label6;
+
+     label4:
+        $r10 := @caughtexception;
+
+        goto label6;
+
+     label5:
+        $r11 := @caughtexception;
+
+        $r12 = newarray (java.io.Closeable)[2];
+
+        $r12[0] = r3;
+
+        $r12[1] = $r6;
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.Closeable[])>($r12);
+
+        throw $r11;
+
+     label6:
+        $r9 = newarray (java.io.Closeable)[2];
+
+        $r9[0] = r3;
+
+        $r9[1] = $r6;
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.Closeable[])>($r9);
+
+        return;
+
+        catch java.io.EOFException from label2 to label3 with label4;
+        catch java.lang.Throwable from label1 to label5 with label5;
+    }
+
+    public void testReadFully_Reader() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsTestCase r0;
+        char[] r1, $r4;
+        java.io.CharArrayReader $r3;
+        java.io.EOFException $r5;
+        java.lang.IllegalArgumentException $r6;
+
+        r0 := @this: org.apache.commons.io.IOUtilsTestCase;
+
+        r1 = newarray (char)[1027];
+
+        $r3 = new java.io.CharArrayReader;
+
+        $r4 = newarray (char)[1027];
+
+        specialinvoke $r3.<java.io.CharArrayReader: void <init>(char[])>($r4);
+
+        staticinvoke <org.apache.commons.io.IOUtils: void readFully(java.io.Reader,char[],int,int)>($r3, r1, 0, 0);
+
+        staticinvoke <org.apache.commons.io.IOUtils: void readFully(java.io.Reader,char[],int,int)>($r3, r1, 0, 1024);
+
+     label1:
+        staticinvoke <org.apache.commons.io.IOUtils: void readFully(java.io.Reader,char[],int,int)>($r3, r1, 0, -1);
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("Should have failed with IllegalArgumentException");
+
+     label2:
+        goto label4;
+
+     label3:
+        $r6 := @caughtexception;
+
+     label4:
+        staticinvoke <org.apache.commons.io.IOUtils: void readFully(java.io.Reader,char[],int,int)>($r3, r1, 0, 5);
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("Should have failed with EOFException");
+
+     label5:
+        goto label7;
+
+     label6:
+        $r5 := @caughtexception;
+
+     label7:
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.Reader)>($r3);
+
+        return;
+
+        catch java.lang.IllegalArgumentException from label1 to label2 with label3;
+        catch java.io.EOFException from label4 to label5 with label6;
+    }
+
+    public void testReadFully_Reader_Offset() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsTestCase r0;
+        char[] r2;
+        java.io.StringReader $r3;
+        java.lang.String $r4, $r5;
+
+        r0 := @this: org.apache.commons.io.IOUtilsTestCase;
+
+        $r3 = new java.io.StringReader;
+
+        specialinvoke $r3.<java.io.StringReader: void <init>(java.lang.String)>("abcd1234");
+
+        $r4 = "wx00000000";
+
+        r2 = virtualinvoke $r4.<java.lang.String: char[] toCharArray()>();
+
+        staticinvoke <org.apache.commons.io.IOUtils: void readFully(java.io.Reader,char[],int,int)>($r3, r2, 2, 8);
+
+        $r5 = new java.lang.String;
+
+        specialinvoke $r5.<java.lang.String: void <init>(char[])>(r2);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("wxabcd1234", $r5);
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.Reader)>($r3);
+
+        return;
+    }
+
+    public void testReadLines_InputStream() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsTestCase r0;
+        java.io.File r1, $r5;
+        java.util.List r3, $r8;
+        java.lang.String[] $r6;
+        java.io.FileInputStream $r7, r10;
+        int $i0;
+        long $l1;
+        java.lang.Throwable $r9;
+
+        r0 := @this: org.apache.commons.io.IOUtilsTestCase;
+
+        $r5 = staticinvoke <org.apache.commons.io.IOUtilsTestCase: java.io.File getTestDirectory()>();
+
+        r1 = staticinvoke <org.apache.commons.io.testtools.TestUtils: java.io.File newFile(java.io.File,java.lang.String)>($r5, "lines.txt");
+
+        r10 = null;
+
+     label1:
+        $r6 = newarray (java.lang.String)[5];
+
+        $r6[0] = "hello";
+
+        $r6[1] = "world";
+
+        $r6[2] = "";
+
+        $r6[3] = "this is";
+
+        $r6[4] = "some text";
+
+        staticinvoke <org.apache.commons.io.testtools.TestUtils: void createLineBasedFile(java.io.File,java.lang.String[])>(r1, $r6);
+
+        $r7 = new java.io.FileInputStream;
+
+        specialinvoke $r7.<java.io.FileInputStream: void <init>(java.io.File)>(r1);
+
+        r10 = $r7;
+
+        r3 = staticinvoke <org.apache.commons.io.IOUtils: java.util.List readLines(java.io.InputStream)>($r7);
+
+        $r8 = staticinvoke <java.util.Arrays: java.util.List asList(java.lang.Object[])>($r6);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r8, r3);
+
+        $i0 = virtualinvoke $r7.<java.io.InputStream: int read()>();
+
+        $l1 = (long) $i0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(-1L, $l1);
+
+        goto label3;
+
+     label2:
+        $r9 := @caughtexception;
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.InputStream)>(r10);
+
+        staticinvoke <org.apache.commons.io.testtools.TestUtils: void deleteFile(java.io.File)>(r1);
+
+        throw $r9;
+
+     label3:
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.InputStream)>($r7);
+
+        staticinvoke <org.apache.commons.io.testtools.TestUtils: void deleteFile(java.io.File)>(r1);
+
+        return;
+
+        catch java.lang.Throwable from label1 to label2 with label2;
+    }
+
+    public void testReadLines_InputStream_String() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsTestCase r0;
+        java.io.File r1, $r5;
+        java.util.List r3, $r8;
+        java.lang.String[] $r6;
+        java.io.FileInputStream $r7, r10;
+        int $i0;
+        long $l1;
+        java.lang.Throwable $r9;
+
+        r0 := @this: org.apache.commons.io.IOUtilsTestCase;
+
+        $r5 = staticinvoke <org.apache.commons.io.IOUtilsTestCase: java.io.File getTestDirectory()>();
+
+        r1 = staticinvoke <org.apache.commons.io.testtools.TestUtils: java.io.File newFile(java.io.File,java.lang.String)>($r5, "lines.txt");
+
+        r10 = null;
+
+     label1:
+        $r6 = newarray (java.lang.String)[5];
+
+        $r6[0] = "hello";
+
+        $r6[1] = "/u1234";
+
+        $r6[2] = "";
+
+        $r6[3] = "this is";
+
+        $r6[4] = "some text";
+
+        staticinvoke <org.apache.commons.io.testtools.TestUtils: void createLineBasedFile(java.io.File,java.lang.String[])>(r1, $r6);
+
+        $r7 = new java.io.FileInputStream;
+
+        specialinvoke $r7.<java.io.FileInputStream: void <init>(java.io.File)>(r1);
+
+        r10 = $r7;
+
+        r3 = staticinvoke <org.apache.commons.io.IOUtils: java.util.List readLines(java.io.InputStream,java.lang.String)>($r7, "UTF-8");
+
+        $r8 = staticinvoke <java.util.Arrays: java.util.List asList(java.lang.Object[])>($r6);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r8, r3);
+
+        $i0 = virtualinvoke $r7.<java.io.InputStream: int read()>();
+
+        $l1 = (long) $i0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(-1L, $l1);
+
+        goto label3;
+
+     label2:
+        $r9 := @caughtexception;
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.InputStream)>(r10);
+
+        staticinvoke <org.apache.commons.io.testtools.TestUtils: void deleteFile(java.io.File)>(r1);
+
+        throw $r9;
+
+     label3:
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.InputStream)>($r7);
+
+        staticinvoke <org.apache.commons.io.testtools.TestUtils: void deleteFile(java.io.File)>(r1);
+
+        return;
+
+        catch java.lang.Throwable from label1 to label2 with label2;
+    }
+
+    public void testReadLines_Reader() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsTestCase r0;
+        java.io.File r1, $r5;
+        java.util.List r3, $r9;
+        java.lang.String[] $r6;
+        java.io.InputStreamReader $r7, r11;
+        java.io.FileInputStream $r8;
+        int $i0;
+        long $l1;
+        java.lang.Throwable $r10;
+
+        r0 := @this: org.apache.commons.io.IOUtilsTestCase;
+
+        $r5 = staticinvoke <org.apache.commons.io.IOUtilsTestCase: java.io.File getTestDirectory()>();
+
+        r1 = staticinvoke <org.apache.commons.io.testtools.TestUtils: java.io.File newFile(java.io.File,java.lang.String)>($r5, "lines.txt");
+
+        r11 = null;
+
+     label1:
+        $r6 = newarray (java.lang.String)[5];
+
+        $r6[0] = "hello";
+
+        $r6[1] = "/u1234";
+
+        $r6[2] = "";
+
+        $r6[3] = "this is";
+
+        $r6[4] = "some text";
+
+        staticinvoke <org.apache.commons.io.testtools.TestUtils: void createLineBasedFile(java.io.File,java.lang.String[])>(r1, $r6);
+
+        $r7 = new java.io.InputStreamReader;
+
+        $r8 = new java.io.FileInputStream;
+
+        specialinvoke $r8.<java.io.FileInputStream: void <init>(java.io.File)>(r1);
+
+        specialinvoke $r7.<java.io.InputStreamReader: void <init>(java.io.InputStream)>($r8);
+
+        r11 = $r7;
+
+        r3 = staticinvoke <org.apache.commons.io.IOUtils: java.util.List readLines(java.io.Reader)>($r7);
+
+        $r9 = staticinvoke <java.util.Arrays: java.util.List asList(java.lang.Object[])>($r6);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r9, r3);
+
+        $i0 = virtualinvoke $r7.<java.io.Reader: int read()>();
+
+        $l1 = (long) $i0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(-1L, $l1);
+
+        goto label3;
+
+     label2:
+        $r10 := @caughtexception;
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.Reader)>(r11);
+
+        staticinvoke <org.apache.commons.io.testtools.TestUtils: void deleteFile(java.io.File)>(r1);
+
+        throw $r10;
+
+     label3:
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.Reader)>($r7);
+
+        staticinvoke <org.apache.commons.io.testtools.TestUtils: void deleteFile(java.io.File)>(r1);
+
+        return;
+
+        catch java.lang.Throwable from label1 to label2 with label2;
+    }
+
+    public void testSkip_FileReader() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsTestCase r0;
+        java.io.FileReader $r3;
+        java.io.File $r4;
+        long $l0, $l1, $l2;
+        java.lang.Throwable $r5;
+
+        r0 := @this: org.apache.commons.io.IOUtilsTestCase;
+
+        $r3 = new java.io.FileReader;
+
+        $r4 = r0.<org.apache.commons.io.IOUtilsTestCase: java.io.File m_testFile>;
+
+        specialinvoke $r3.<java.io.FileReader: void <init>(java.io.File)>($r4);
+
+     label1:
+        $l0 = staticinvoke <org.apache.commons.io.IOUtils: long skip(java.io.Reader,long)>($r3, 4087L);
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(4087L, $l0);
+
+        $l1 = staticinvoke <org.apache.commons.io.IOUtils: long skip(java.io.Reader,long)>($r3, 20L);
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(10L, $l1);
+
+        $l2 = staticinvoke <org.apache.commons.io.IOUtils: long skip(java.io.Reader,long)>($r3, 10L);
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(0L, $l2);
+
+        goto label3;
+
+     label2:
+        $r5 := @caughtexception;
+
+        virtualinvoke $r3.<java.io.FileReader: void close()>();
+
+        throw $r5;
+
+     label3:
+        virtualinvoke $r3.<java.io.FileReader: void close()>();
+
+        return;
+
+        catch java.lang.Throwable from label1 to label2 with label2;
+    }
+
+    public void testSkip_InputStream() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsTestCase r0;
+        java.io.FileInputStream $r3;
+        java.io.File $r4;
+        long $l0, $l1, $l2;
+        java.lang.Throwable $r5;
+
+        r0 := @this: org.apache.commons.io.IOUtilsTestCase;
+
+        $r3 = new java.io.FileInputStream;
+
+        $r4 = r0.<org.apache.commons.io.IOUtilsTestCase: java.io.File m_testFile>;
+
+        specialinvoke $r3.<java.io.FileInputStream: void <init>(java.io.File)>($r4);
+
+     label1:
+        $l0 = staticinvoke <org.apache.commons.io.IOUtils: long skip(java.io.InputStream,long)>($r3, 4087L);
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(4087L, $l0);
+
+        $l1 = staticinvoke <org.apache.commons.io.IOUtils: long skip(java.io.InputStream,long)>($r3, 20L);
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(10L, $l1);
+
+        $l2 = staticinvoke <org.apache.commons.io.IOUtils: long skip(java.io.InputStream,long)>($r3, 10L);
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(0L, $l2);
+
+        goto label3;
+
+     label2:
+        $r5 := @caughtexception;
+
+        virtualinvoke $r3.<java.io.InputStream: void close()>();
+
+        throw $r5;
+
+     label3:
+        virtualinvoke $r3.<java.io.InputStream: void close()>();
+
+        return;
+
+        catch java.lang.Throwable from label1 to label2 with label2;
+    }
+
+    public void testSkip_ReadableByteChannel() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsTestCase r0;
+        java.nio.channels.FileChannel r2;
+        java.io.FileInputStream $r4;
+        java.io.File $r5;
+        long $l0, $l1, $l2;
+        java.io.Closeable[] $r6, $r8;
+        java.lang.Throwable $r7;
+
+        r0 := @this: org.apache.commons.io.IOUtilsTestCase;
+
+        $r4 = new java.io.FileInputStream;
+
+        $r5 = r0.<org.apache.commons.io.IOUtilsTestCase: java.io.File m_testFile>;
+
+        specialinvoke $r4.<java.io.FileInputStream: void <init>(java.io.File)>($r5);
+
+        r2 = virtualinvoke $r4.<java.io.FileInputStream: java.nio.channels.FileChannel getChannel()>();
+
+     label1:
+        $l0 = staticinvoke <org.apache.commons.io.IOUtils: long skip(java.nio.channels.ReadableByteChannel,long)>(r2, 4087L);
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(4087L, $l0);
+
+        $l1 = staticinvoke <org.apache.commons.io.IOUtils: long skip(java.nio.channels.ReadableByteChannel,long)>(r2, 20L);
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(10L, $l1);
+
+        $l2 = staticinvoke <org.apache.commons.io.IOUtils: long skip(java.nio.channels.ReadableByteChannel,long)>(r2, 10L);
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(0L, $l2);
+
+        goto label3;
+
+     label2:
+        $r7 := @caughtexception;
+
+        $r8 = newarray (java.io.Closeable)[2];
+
+        $r8[0] = r2;
+
+        $r8[1] = $r4;
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.Closeable[])>($r8);
+
+        throw $r7;
+
+     label3:
+        $r6 = newarray (java.io.Closeable)[2];
+
+        $r6[0] = r2;
+
+        $r6[1] = $r4;
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.Closeable[])>($r6);
+
+        return;
+
+        catch java.lang.Throwable from label1 to label2 with label2;
+    }
+
+    public void testSkipFully_InputStream() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsTestCase r0;
+        java.io.ByteArrayInputStream $r2;
+        byte[] $r3;
+        java.io.IOException $r4;
+        java.lang.IllegalArgumentException $r5;
+
+        r0 := @this: org.apache.commons.io.IOUtilsTestCase;
+
+        $r2 = new java.io.ByteArrayInputStream;
+
+        $r3 = newarray (byte)[1027];
+
+        specialinvoke $r2.<java.io.ByteArrayInputStream: void <init>(byte[])>($r3);
+
+     label1:
+        staticinvoke <org.apache.commons.io.IOUtils: void skipFully(java.io.InputStream,long)>($r2, -1L);
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("Should have failed with IllegalArgumentException");
+
+     label2:
+        goto label4;
+
+     label3:
+        $r5 := @caughtexception;
+
+     label4:
+        staticinvoke <org.apache.commons.io.IOUtils: void skipFully(java.io.InputStream,long)>($r2, 0L);
+
+        staticinvoke <org.apache.commons.io.IOUtils: void skipFully(java.io.InputStream,long)>($r2, 1026L);
+
+     label5:
+        staticinvoke <org.apache.commons.io.IOUtils: void skipFully(java.io.InputStream,long)>($r2, 2L);
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("Should have failed with IOException");
+
+     label6:
+        goto label8;
+
+     label7:
+        $r4 := @caughtexception;
+
+     label8:
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.InputStream)>($r2);
+
+        return;
+
+        catch java.lang.IllegalArgumentException from label1 to label2 with label3;
+        catch java.io.IOException from label5 to label6 with label7;
+    }
+
+    public void testSkipFully_ReadableByteChannel() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsTestCase r0;
+        java.nio.channels.FileChannel r2;
+        java.io.FileInputStream $r4;
+        java.io.File $r5;
+        java.io.Closeable[] $r6, $r9;
+        java.lang.IllegalArgumentException $r7;
+        java.lang.Throwable $r8;
+        java.io.IOException $r10;
+
+        r0 := @this: org.apache.commons.io.IOUtilsTestCase;
+
+        $r4 = new java.io.FileInputStream;
+
+        $r5 = r0.<org.apache.commons.io.IOUtilsTestCase: java.io.File m_testFile>;
+
+        specialinvoke $r4.<java.io.FileInputStream: void <init>(java.io.File)>($r5);
+
+        r2 = virtualinvoke $r4.<java.io.FileInputStream: java.nio.channels.FileChannel getChannel()>();
+
+     label1:
+        staticinvoke <org.apache.commons.io.IOUtils: void skipFully(java.nio.channels.ReadableByteChannel,long)>(r2, -1L);
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("Should have failed with IllegalArgumentException");
+
+     label2:
+        goto label4;
+
+     label3:
+        $r7 := @caughtexception;
+
+     label4:
+        staticinvoke <org.apache.commons.io.IOUtils: void skipFully(java.nio.channels.ReadableByteChannel,long)>(r2, 0L);
+
+        staticinvoke <org.apache.commons.io.IOUtils: void skipFully(java.nio.channels.ReadableByteChannel,long)>(r2, 4096L);
+
+     label5:
+        staticinvoke <org.apache.commons.io.IOUtils: void skipFully(java.nio.channels.ReadableByteChannel,long)>(r2, 2L);
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("Should have failed with IOException");
+
+     label6:
+        goto label9;
+
+     label7:
+        $r10 := @caughtexception;
+
+        goto label9;
+
+     label8:
+        $r8 := @caughtexception;
+
+        $r9 = newarray (java.io.Closeable)[2];
+
+        $r9[0] = r2;
+
+        $r9[1] = $r4;
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.Closeable[])>($r9);
+
+        throw $r8;
+
+     label9:
+        $r6 = newarray (java.io.Closeable)[2];
+
+        $r6[0] = r2;
+
+        $r6[1] = $r4;
+
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.Closeable[])>($r6);
+
+        return;
+
+        catch java.lang.IllegalArgumentException from label1 to label2 with label3;
+        catch java.io.IOException from label5 to label6 with label7;
+        catch java.lang.Throwable from label1 to label8 with label8;
+    }
+
+    public void testSkipFully_Reader() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsTestCase r0;
+        java.io.CharArrayReader $r2;
+        char[] $r3;
+        java.io.IOException $r4;
+        java.lang.IllegalArgumentException $r5;
+
+        r0 := @this: org.apache.commons.io.IOUtilsTestCase;
+
+        $r2 = new java.io.CharArrayReader;
+
+        $r3 = newarray (char)[1027];
+
+        specialinvoke $r2.<java.io.CharArrayReader: void <init>(char[])>($r3);
+
+        staticinvoke <org.apache.commons.io.IOUtils: void skipFully(java.io.Reader,long)>($r2, 0L);
+
+        staticinvoke <org.apache.commons.io.IOUtils: void skipFully(java.io.Reader,long)>($r2, 1024L);
+
+     label1:
+        staticinvoke <org.apache.commons.io.IOUtils: void skipFully(java.io.Reader,long)>($r2, -1L);
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("Should have failed with IllegalArgumentException");
+
+     label2:
+        goto label4;
+
+     label3:
+        $r5 := @caughtexception;
+
+     label4:
+        staticinvoke <org.apache.commons.io.IOUtils: void skipFully(java.io.Reader,long)>($r2, 5L);
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("Should have failed with IOException");
+
+     label5:
+        goto label7;
+
+     label6:
+        $r4 := @caughtexception;
+
+     label7:
+        staticinvoke <org.apache.commons.io.IOUtils: void closeQuietly(java.io.Reader)>($r2);
+
+        return;
+
+        catch java.lang.IllegalArgumentException from label1 to label2 with label3;
+        catch java.io.IOException from label4 to label5 with label6;
+    }
+
+    public void testStringToOutputStream() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsTestCase r0;
+        java.io.File r1, $r5, $r7, $r9;
+        java.lang.String r3;
+        java.io.FileReader $r6;
+        java.io.FileOutputStream $r8;
+        java.lang.Throwable $r10, $r11;
+
+        r0 := @this: org.apache.commons.io.IOUtilsTestCase;
+
+        $r5 = staticinvoke <org.apache.commons.io.IOUtilsTestCase: java.io.File getTestDirectory()>();
+
+        r1 = staticinvoke <org.apache.commons.io.testtools.TestUtils: java.io.File newFile(java.io.File,java.lang.String)>($r5, "copy5.txt");
+
+        $r6 = new java.io.FileReader;
+
+        $r7 = r0.<org.apache.commons.io.IOUtilsTestCase: java.io.File m_testFile>;
+
+        specialinvoke $r6.<java.io.FileReader: void <init>(java.io.File)>($r7);
+
+     label1:
+        r3 = staticinvoke <org.apache.commons.io.IOUtils: java.lang.String toString(java.io.Reader)>($r6);
+
+        goto label3;
+
+     label2:
+        $r11 := @caughtexception;
+
+        virtualinvoke $r6.<java.io.FileReader: void close()>();
+
+        throw $r11;
+
+     label3:
+        virtualinvoke $r6.<java.io.FileReader: void close()>();
+
+        $r8 = new java.io.FileOutputStream;
+
+        specialinvoke $r8.<java.io.FileOutputStream: void <init>(java.io.File)>(r1);
+
+     label4:
+        staticinvoke <org.apache.commons.io.CopyUtils: void copy(java.lang.String,java.io.OutputStream)>(r3, $r8);
+
+        $r9 = r0.<org.apache.commons.io.IOUtilsTestCase: java.io.File m_testFile>;
+
+        staticinvoke <org.apache.commons.io.testtools.TestUtils: void checkFile(java.io.File,java.io.File)>(r1, $r9);
+
+        staticinvoke <org.apache.commons.io.testtools.TestUtils: void checkWrite(java.io.OutputStream)>($r8);
+
+        goto label6;
+
+     label5:
+        $r10 := @caughtexception;
+
+        virtualinvoke $r8.<java.io.FileOutputStream: void close()>();
+
+        throw $r10;
+
+     label6:
+        virtualinvoke $r8.<java.io.FileOutputStream: void close()>();
+
+        staticinvoke <org.apache.commons.io.testtools.TestUtils: void deleteFile(java.io.File)>(r1);
+
+        return;
+
+        catch java.lang.Throwable from label1 to label2 with label2;
+        catch java.lang.Throwable from label4 to label5 with label5;
+    }
+
+    public void testToBufferedInputStream_InputStream() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsTestCase r0;
+        java.io.InputStream r2;
+        byte[] r3;
+        java.io.FileInputStream $r5;
+        java.io.File $r6, $r7;
+        int $i0, $i2;
+        long $l1, $l3;
+        java.lang.Throwable $r8;
+
+        r0 := @this: org.apache.commons.io.IOUtilsTestCase;
+
+        $r5 = new java.io.FileInputStream;
+
+        $r6 = r0.<org.apache.commons.io.IOUtilsTestCase: java.io.File m_testFile>;
+
+        specialinvoke $r5.<java.io.FileInputStream: void <init>(java.io.File)>($r6);
+
+     label1:
+        r2 = staticinvoke <org.apache.commons.io.IOUtils: java.io.InputStream toBufferedInputStream(java.io.InputStream)>($r5);
+
+        r3 = staticinvoke <org.apache.commons.io.IOUtils: byte[] toByteArray(java.io.InputStream)>(r2);
+
+        staticinvoke <org.junit.Assert: void assertNotNull(java.lang.Object)>(r3);
+
+        $i0 = virtualinvoke $r5.<java.io.FileInputStream: int available()>();
+
+        $l1 = (long) $i0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("Not all bytes were read", 0L, $l1);
+
+        $i2 = lengthof r3;
+
+        $l3 = (long) $i2;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("Wrong output size", 4097L, $l3);
+
+        $r7 = r0.<org.apache.commons.io.IOUtilsTestCase: java.io.File m_testFile>;
+
+        staticinvoke <org.apache.commons.io.testtools.TestUtils: void assertEqualContent(byte[],java.io.File)>(r3, $r7);
+
+        goto label3;
+
+     label2:
+        $r8 := @caughtexception;
+
+        virtualinvoke $r5.<java.io.FileInputStream: void close()>();
+
+        throw $r8;
+
+     label3:
+        virtualinvoke $r5.<java.io.FileInputStream: void close()>();
+
+        return;
+
+        catch java.lang.Throwable from label1 to label2 with label2;
+    }
+
+    public void testToBufferedInputStreamWithBufferSize_InputStream() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsTestCase r0;
+        java.io.InputStream r2;
+        byte[] r3;
+        java.io.FileInputStream $r5;
+        java.io.File $r6, $r7;
+        int $i0, $i2;
+        long $l1, $l3;
+        java.lang.Throwable $r8;
+
+        r0 := @this: org.apache.commons.io.IOUtilsTestCase;
+
+        $r5 = new java.io.FileInputStream;
+
+        $r6 = r0.<org.apache.commons.io.IOUtilsTestCase: java.io.File m_testFile>;
+
+        specialinvoke $r5.<java.io.FileInputStream: void <init>(java.io.File)>($r6);
+
+     label1:
+        r2 = staticinvoke <org.apache.commons.io.IOUtils: java.io.InputStream toBufferedInputStream(java.io.InputStream,int)>($r5, 2048);
+
+        r3 = staticinvoke <org.apache.commons.io.IOUtils: byte[] toByteArray(java.io.InputStream)>(r2);
+
+        staticinvoke <org.junit.Assert: void assertNotNull(java.lang.Object)>(r3);
+
+        $i0 = virtualinvoke $r5.<java.io.FileInputStream: int available()>();
+
+        $l1 = (long) $i0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("Not all bytes were read", 0L, $l1);
+
+        $i2 = lengthof r3;
+
+        $l3 = (long) $i2;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("Wrong output size", 4097L, $l3);
+
+        $r7 = r0.<org.apache.commons.io.IOUtilsTestCase: java.io.File m_testFile>;
+
+        staticinvoke <org.apache.commons.io.testtools.TestUtils: void assertEqualContent(byte[],java.io.File)>(r3, $r7);
+
+        goto label3;
+
+     label2:
+        $r8 := @caughtexception;
+
+        virtualinvoke $r5.<java.io.FileInputStream: void close()>();
+
+        throw $r8;
+
+     label3:
+        virtualinvoke $r5.<java.io.FileInputStream: void close()>();
+
+        return;
+
+        catch java.lang.Throwable from label1 to label2 with label2;
+    }
+
+    public void testToByteArray_InputStream() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsTestCase r0;
+        byte[] r2;
+        java.io.FileInputStream $r4;
+        java.io.File $r5, $r6;
+        int $i0, $i2;
+        long $l1, $l3;
+        java.lang.Throwable $r7;
+
+        r0 := @this: org.apache.commons.io.IOUtilsTestCase;
+
+        $r4 = new java.io.FileInputStream;
+
+        $r5 = r0.<org.apache.commons.io.IOUtilsTestCase: java.io.File m_testFile>;
+
+        specialinvoke $r4.<java.io.FileInputStream: void <init>(java.io.File)>($r5);
+
+     label1:
+        r2 = staticinvoke <org.apache.commons.io.IOUtils: byte[] toByteArray(java.io.InputStream)>($r4);
+
+        staticinvoke <org.junit.Assert: void assertNotNull(java.lang.Object)>(r2);
+
+        $i0 = virtualinvoke $r4.<java.io.FileInputStream: int available()>();
+
+        $l1 = (long) $i0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("Not all bytes were read", 0L, $l1);
+
+        $i2 = lengthof r2;
+
+        $l3 = (long) $i2;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("Wrong output size", 4097L, $l3);
+
+        $r6 = r0.<org.apache.commons.io.IOUtilsTestCase: java.io.File m_testFile>;
+
+        staticinvoke <org.apache.commons.io.testtools.TestUtils: void assertEqualContent(byte[],java.io.File)>(r2, $r6);
+
+        goto label3;
+
+     label2:
+        $r7 := @caughtexception;
+
+        virtualinvoke $r4.<java.io.FileInputStream: void close()>();
+
+        throw $r7;
+
+     label3:
+        virtualinvoke $r4.<java.io.FileInputStream: void close()>();
+
+        return;
+
+        catch java.lang.Throwable from label1 to label2 with label2;
+    }
+
+    public void testToByteArray_InputStream_NegativeSize() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsTestCase r0;
+        java.io.FileInputStream $r4;
+        java.io.File $r5;
+        java.lang.IllegalArgumentException $r7;
+        java.lang.String $r8;
+        boolean $z0;
+        java.lang.Throwable $r9;
+
+        r0 := @this: org.apache.commons.io.IOUtilsTestCase;
+
+        $r4 = new java.io.FileInputStream;
+
+        $r5 = r0.<org.apache.commons.io.IOUtilsTestCase: java.io.File m_testFile>;
+
+        specialinvoke $r4.<java.io.FileInputStream: void <init>(java.io.File)>($r5);
+
+     label1:
+        staticinvoke <org.apache.commons.io.IOUtils: byte[] toByteArray(java.io.InputStream,int)>($r4, -1);
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("IllegalArgumentException excepted");
+
+     label2:
+        goto label6;
+
+     label3:
+        $r7 := @caughtexception;
+
+        $r8 = virtualinvoke $r7.<java.lang.IllegalArgumentException: java.lang.String getMessage()>();
+
+        $z0 = virtualinvoke $r8.<java.lang.String: boolean startsWith(java.lang.String)>("Size must be equal or greater than zero");
+
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>("Exception message does not start with \"Size must be equal or greater than zero\"", $z0);
+
+     label4:
+        virtualinvoke $r4.<java.io.FileInputStream: void close()>();
+
+        goto label7;
+
+     label5:
+        $r9 := @caughtexception;
+
+        virtualinvoke $r4.<java.io.FileInputStream: void close()>();
+
+        throw $r9;
+
+     label6:
+        virtualinvoke $r4.<java.io.FileInputStream: void close()>();
+
+     label7:
+        return;
+
+        catch java.lang.IllegalArgumentException from label1 to label2 with label3;
+        catch java.lang.Throwable from label1 to label4 with label5;
+    }
+
+    public void testToByteArray_InputStream_Size() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsTestCase r0;
+        byte[] r2;
+        java.io.FileInputStream $r4;
+        java.io.File $r5, $r6, $r12;
+        long $l0, $l2, $l5;
+        int $i1, $i3, $i4;
+        java.lang.StringBuilder $r7, $r8, $r9, $r10;
+        java.lang.String $r11;
+        java.lang.Throwable $r13;
+
+        r0 := @this: org.apache.commons.io.IOUtilsTestCase;
+
+        $r4 = new java.io.FileInputStream;
+
+        $r5 = r0.<org.apache.commons.io.IOUtilsTestCase: java.io.File m_testFile>;
+
+        specialinvoke $r4.<java.io.FileInputStream: void <init>(java.io.File)>($r5);
+
+     label1:
+        $r6 = r0.<org.apache.commons.io.IOUtilsTestCase: java.io.File m_testFile>;
+
+        $l0 = virtualinvoke $r6.<java.io.File: long length()>();
+
+        r2 = staticinvoke <org.apache.commons.io.IOUtils: byte[] toByteArray(java.io.InputStream,long)>($r4, $l0);
+
+        staticinvoke <org.junit.Assert: void assertNotNull(java.lang.Object)>(r2);
+
+        $i1 = virtualinvoke $r4.<java.io.FileInputStream: int available()>();
+
+        $l2 = (long) $i1;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("Not all bytes were read", 0L, $l2);
+
+        $r7 = new java.lang.StringBuilder;
+
+        specialinvoke $r7.<java.lang.StringBuilder: void <init>(java.lang.String)>("Wrong output size: out.length=");
+
+        $i3 = lengthof r2;
+
+        $r8 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i3);
+
+        $r9 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("!=");
+
+        $r10 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(4097);
+
+        $r11 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $i4 = lengthof r2;
+
+        $l5 = (long) $i4;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>($r11, 4097L, $l5);
+
+        $r12 = r0.<org.apache.commons.io.IOUtilsTestCase: java.io.File m_testFile>;
+
+        staticinvoke <org.apache.commons.io.testtools.TestUtils: void assertEqualContent(byte[],java.io.File)>(r2, $r12);
+
+        goto label3;
+
+     label2:
+        $r13 := @caughtexception;
+
+        virtualinvoke $r4.<java.io.FileInputStream: void close()>();
+
+        throw $r13;
+
+     label3:
+        virtualinvoke $r4.<java.io.FileInputStream: void close()>();
+
+        return;
+
+        catch java.lang.Throwable from label1 to label2 with label2;
+    }
+
+    public void testToByteArray_InputStream_SizeIllegal() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsTestCase r0;
+        java.io.FileInputStream $r4;
+        java.io.File $r5, $r6;
+        long $l0, $l1;
+        java.io.IOException $r8;
+        java.lang.String $r9;
+        boolean $z0;
+        java.lang.Throwable $r10;
+
+        r0 := @this: org.apache.commons.io.IOUtilsTestCase;
+
+        $r4 = new java.io.FileInputStream;
+
+        $r5 = r0.<org.apache.commons.io.IOUtilsTestCase: java.io.File m_testFile>;
+
+        specialinvoke $r4.<java.io.FileInputStream: void <init>(java.io.File)>($r5);
+
+     label1:
+        $r6 = r0.<org.apache.commons.io.IOUtilsTestCase: java.io.File m_testFile>;
+
+        $l0 = virtualinvoke $r6.<java.io.File: long length()>();
+
+        $l1 = $l0 + 1L;
+
+        staticinvoke <org.apache.commons.io.IOUtils: byte[] toByteArray(java.io.InputStream,long)>($r4, $l1);
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("IOException excepted");
+
+     label2:
+        goto label6;
+
+     label3:
+        $r8 := @caughtexception;
+
+        $r9 = virtualinvoke $r8.<java.io.IOException: java.lang.String getMessage()>();
+
+        $z0 = virtualinvoke $r9.<java.lang.String: boolean startsWith(java.lang.String)>("Unexpected readed size");
+
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>("Exception message does not start with \"Unexpected readed size\"", $z0);
+
+     label4:
+        virtualinvoke $r4.<java.io.FileInputStream: void close()>();
+
+        goto label7;
+
+     label5:
+        $r10 := @caughtexception;
+
+        virtualinvoke $r4.<java.io.FileInputStream: void close()>();
+
+        throw $r10;
+
+     label6:
+        virtualinvoke $r4.<java.io.FileInputStream: void close()>();
+
+     label7:
+        return;
+
+        catch java.io.IOException from label1 to label2 with label3;
+        catch java.lang.Throwable from label1 to label4 with label5;
+    }
+
+    public void testToByteArray_InputStream_SizeLong() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsTestCase r0;
+        java.io.FileInputStream $r4;
+        java.io.File $r5;
+        java.lang.IllegalArgumentException $r7;
+        java.lang.String $r8;
+        boolean $z0;
+        java.lang.Throwable $r9;
+
+        r0 := @this: org.apache.commons.io.IOUtilsTestCase;
+
+        $r4 = new java.io.FileInputStream;
+
+        $r5 = r0.<org.apache.commons.io.IOUtilsTestCase: java.io.File m_testFile>;
+
+        specialinvoke $r4.<java.io.FileInputStream: void <init>(java.io.File)>($r5);
+
+     label1:
+        staticinvoke <org.apache.commons.io.IOUtils: byte[] toByteArray(java.io.InputStream,long)>($r4, 2147483648L);
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("IOException excepted");
+
+     label2:
+        goto label6;
+
+     label3:
+        $r7 := @caughtexception;
+
+        $r8 = virtualinvoke $r7.<java.lang.IllegalArgumentException: java.lang.String getMessage()>();
+
+        $z0 = virtualinvoke $r8.<java.lang.String: boolean startsWith(java.lang.String)>("Size cannot be greater than Integer max value");
+
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>("Exception message does not start with \"Size cannot be greater than Integer max value\"", $z0);
+
+     label4:
+        virtualinvoke $r4.<java.io.FileInputStream: void close()>();
+
+        goto label7;
+
+     label5:
+        $r9 := @caughtexception;
+
+        virtualinvoke $r4.<java.io.FileInputStream: void close()>();
+
+        throw $r9;
+
+     label6:
+        virtualinvoke $r4.<java.io.FileInputStream: void close()>();
+
+     label7:
+        return;
+
+        catch java.lang.IllegalArgumentException from label1 to label2 with label3;
+        catch java.lang.Throwable from label1 to label4 with label5;
+    }
+
+    public void testToByteArray_InputStream_SizeZero() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsTestCase r0;
+        byte[] r2;
+        java.io.FileInputStream $r4;
+        java.io.File $r5;
+        int $i0;
+        long $l1;
+        java.lang.Throwable $r6;
+
+        r0 := @this: org.apache.commons.io.IOUtilsTestCase;
+
+        $r4 = new java.io.FileInputStream;
+
+        $r5 = r0.<org.apache.commons.io.IOUtilsTestCase: java.io.File m_testFile>;
+
+        specialinvoke $r4.<java.io.FileInputStream: void <init>(java.io.File)>($r5);
+
+     label1:
+        r2 = staticinvoke <org.apache.commons.io.IOUtils: byte[] toByteArray(java.io.InputStream,int)>($r4, 0);
+
+        staticinvoke <org.junit.Assert: void assertNotNull(java.lang.String,java.lang.Object)>("Out cannot be null", r2);
+
+        $i0 = lengthof r2;
+
+        $l1 = (long) $i0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("Out length must be 0", 0L, $l1);
+
+        goto label3;
+
+     label2:
+        $r6 := @caughtexception;
+
+        virtualinvoke $r4.<java.io.FileInputStream: void close()>();
+
+        throw $r6;
+
+     label3:
+        virtualinvoke $r4.<java.io.FileInputStream: void close()>();
+
+        return;
+
+        catch java.lang.Throwable from label1 to label2 with label2;
+    }
+
+    public void testToByteArray_Reader() throws java.io.IOException
+    {
+        org.apache.commons.io.IOUtilsTestCase r0;
+        byte[] r2, r8, r9;
+        java.lang.String $r3;
+        java.io.InputStreamReader $r4, $r6;
+        java.io.ByteArrayInputStream $r5, $r7;
+
+        r0 := @this: org.apache.commons.io.IOUtilsTestCase;
+
+        $r3 = "UTF-8";
+
+        r2 = virtualinvoke $r3.<java.lang.String: byte[] getBytes(java.lang.String)>("UTF-8");
+
+        $r4 = new java.io.InputStreamReader;
+
+        $r5 = new java.io.ByteArrayInputStream;
+
+        specialinvoke $r5.<java.io.ByteArrayInputStream: void <init>(byte[])>(r2);
+
+        specialinvoke $r4.<java.io.InputStreamReader: void <init>(java.io.InputStream)>($r5);
+
+        r8 = staticinvoke <org.apache.commons.io.IOUtils: byte[] toByteArray(java.io.Reader)>($r4);
+
+        staticinvoke <org.junit.Assert: void assertArrayEquals(byte[],byte[])>(r2, r8);
+
+        $r6 = new java.io.InputStreamReader;
+
+        $r7 = new java.io.ByteArrayInputStream;
+
+        specialinvoke $r7.<java.io.ByteArrayInputStream: void <init>(byte[])>(r2);
+
+        specialinvoke $r6.<java.io.InputStreamReader: void <init>(java.io.InputStream)>($r7);
+
+        r9 = staticinvoke <org.apache.commons.io.IOUtils: byte[] toByteArray(java.io.Reader,java.lang.String)>($r6, "UTF-8");
+
+        staticinvoke <org.junit.Assert: void assertArrayEquals(byte[],byte[])>(r2, r9);
+
+        return;
+    }
+
+    public void testToByteArray_String() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsTestCase r0;
+        java.lang.String r2;
+        byte[] r3, $r7;
+        java.io.FileReader $r5;
+        java.io.File $r6;
+        java.lang.Throwable $r8;
+
+        r0 := @this: org.apache.commons.io.IOUtilsTestCase;
+
+        $r5 = new java.io.FileReader;
+
+        $r6 = r0.<org.apache.commons.io.IOUtilsTestCase: java.io.File m_testFile>;
+
+        specialinvoke $r5.<java.io.FileReader: void <init>(java.io.File)>($r6);
+
+     label1:
+        r2 = staticinvoke <org.apache.commons.io.IOUtils: java.lang.String toString(java.io.Reader)>($r5);
+
+        r3 = staticinvoke <org.apache.commons.io.IOUtils: byte[] toByteArray(java.lang.String)>(r2);
+
+        $r7 = virtualinvoke r2.<java.lang.String: byte[] getBytes()>();
+
+        specialinvoke r0.<org.apache.commons.io.IOUtilsTestCase: void assertEqualContent(byte[],byte[])>($r7, r3);
+
+        goto label3;
+
+     label2:
+        $r8 := @caughtexception;
+
+        virtualinvoke $r5.<java.io.FileReader: void close()>();
+
+        throw $r8;
+
+     label3:
+        virtualinvoke $r5.<java.io.FileReader: void close()>();
+
+        return;
+
+        catch java.lang.Throwable from label1 to label2 with label2;
+    }
+
+    public void testToByteArray_URI() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsTestCase r0;
+        java.net.URI r1;
+        byte[] r2;
+        java.io.File $r3;
+        int $i0;
+        long $l1;
+
+        r0 := @this: org.apache.commons.io.IOUtilsTestCase;
+
+        $r3 = r0.<org.apache.commons.io.IOUtilsTestCase: java.io.File m_testFile>;
+
+        r1 = virtualinvoke $r3.<java.io.File: java.net.URI toURI()>();
+
+        r2 = staticinvoke <org.apache.commons.io.IOUtils: byte[] toByteArray(java.net.URI)>(r1);
+
+        $i0 = lengthof r2;
+
+        $l1 = (long) $i0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(4097L, $l1);
+
+        return;
+    }
+
+    public void testToByteArray_URL() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsTestCase r0;
+        java.net.URL r1;
+        byte[] r2;
+        java.io.File $r3;
+        java.net.URI $r4;
+        int $i0;
+        long $l1;
+
+        r0 := @this: org.apache.commons.io.IOUtilsTestCase;
+
+        $r3 = r0.<org.apache.commons.io.IOUtilsTestCase: java.io.File m_testFile>;
+
+        $r4 = virtualinvoke $r3.<java.io.File: java.net.URI toURI()>();
+
+        r1 = virtualinvoke $r4.<java.net.URI: java.net.URL toURL()>();
+
+        r2 = staticinvoke <org.apache.commons.io.IOUtils: byte[] toByteArray(java.net.URL)>(r1);
+
+        $i0 = lengthof r2;
+
+        $l1 = (long) $i0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(4097L, $l1);
+
+        return;
+    }
+
+    public void testToByteArray_URLConnection() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsTestCase r0;
+        java.net.URLConnection r1;
+        byte[] r2;
+        java.io.File $r4;
+        java.net.URI $r5;
+        java.net.URL $r6;
+        int $i0;
+        long $l1;
+        java.lang.Throwable $r7;
+
+        r0 := @this: org.apache.commons.io.IOUtilsTestCase;
+
+        $r4 = r0.<org.apache.commons.io.IOUtilsTestCase: java.io.File m_testFile>;
+
+        $r5 = virtualinvoke $r4.<java.io.File: java.net.URI toURI()>();
+
+        $r6 = virtualinvoke $r5.<java.net.URI: java.net.URL toURL()>();
+
+        r1 = virtualinvoke $r6.<java.net.URL: java.net.URLConnection openConnection()>();
+
+     label1:
+        r2 = staticinvoke <org.apache.commons.io.IOUtils: byte[] toByteArray(java.net.URLConnection)>(r1);
+
+        goto label3;
+
+     label2:
+        $r7 := @caughtexception;
+
+        staticinvoke <org.apache.commons.io.IOUtils: void close(java.net.URLConnection)>(r1);
+
+        throw $r7;
+
+     label3:
+        staticinvoke <org.apache.commons.io.IOUtils: void close(java.net.URLConnection)>(r1);
+
+        $i0 = lengthof r2;
+
+        $l1 = (long) $i0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(4097L, $l1);
+
+        return;
+
+        catch java.lang.Throwable from label1 to label2 with label2;
+    }
+
+    public void testToCharArray_InputStream() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsTestCase r0;
+        char[] r2;
+        java.io.FileInputStream $r4;
+        java.io.File $r5, $r6;
+        int $i0, $i2;
+        long $l1, $l3;
+        java.lang.Throwable $r7;
+
+        r0 := @this: org.apache.commons.io.IOUtilsTestCase;
+
+        $r4 = new java.io.FileInputStream;
+
+        $r5 = r0.<org.apache.commons.io.IOUtilsTestCase: java.io.File m_testFile>;
+
+        specialinvoke $r4.<java.io.FileInputStream: void <init>(java.io.File)>($r5);
+
+     label1:
+        r2 = staticinvoke <org.apache.commons.io.IOUtils: char[] toCharArray(java.io.InputStream)>($r4);
+
+        staticinvoke <org.junit.Assert: void assertNotNull(java.lang.Object)>(r2);
+
+        $i0 = virtualinvoke $r4.<java.io.FileInputStream: int available()>();
+
+        $l1 = (long) $i0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("Not all chars were read", 0L, $l1);
+
+        $i2 = lengthof r2;
+
+        $l3 = (long) $i2;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("Wrong output size", 4097L, $l3);
+
+        $r6 = r0.<org.apache.commons.io.IOUtilsTestCase: java.io.File m_testFile>;
+
+        staticinvoke <org.apache.commons.io.testtools.TestUtils: void assertEqualContent(char[],java.io.File)>(r2, $r6);
+
+        goto label3;
+
+     label2:
+        $r7 := @caughtexception;
+
+        virtualinvoke $r4.<java.io.FileInputStream: void close()>();
+
+        throw $r7;
+
+     label3:
+        virtualinvoke $r4.<java.io.FileInputStream: void close()>();
+
+        return;
+
+        catch java.lang.Throwable from label1 to label2 with label2;
+    }
+
+    public void testToCharArray_InputStream_CharsetName() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsTestCase r0;
+        char[] r2;
+        java.io.FileInputStream $r4;
+        java.io.File $r5, $r6;
+        int $i0, $i2;
+        long $l1, $l3;
+        java.lang.Throwable $r7;
+
+        r0 := @this: org.apache.commons.io.IOUtilsTestCase;
+
+        $r4 = new java.io.FileInputStream;
+
+        $r5 = r0.<org.apache.commons.io.IOUtilsTestCase: java.io.File m_testFile>;
+
+        specialinvoke $r4.<java.io.FileInputStream: void <init>(java.io.File)>($r5);
+
+     label1:
+        r2 = staticinvoke <org.apache.commons.io.IOUtils: char[] toCharArray(java.io.InputStream,java.lang.String)>($r4, "UTF-8");
+
+        staticinvoke <org.junit.Assert: void assertNotNull(java.lang.Object)>(r2);
+
+        $i0 = virtualinvoke $r4.<java.io.FileInputStream: int available()>();
+
+        $l1 = (long) $i0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("Not all chars were read", 0L, $l1);
+
+        $i2 = lengthof r2;
+
+        $l3 = (long) $i2;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("Wrong output size", 4097L, $l3);
+
+        $r6 = r0.<org.apache.commons.io.IOUtilsTestCase: java.io.File m_testFile>;
+
+        staticinvoke <org.apache.commons.io.testtools.TestUtils: void assertEqualContent(char[],java.io.File)>(r2, $r6);
+
+        goto label3;
+
+     label2:
+        $r7 := @caughtexception;
+
+        virtualinvoke $r4.<java.io.FileInputStream: void close()>();
+
+        throw $r7;
+
+     label3:
+        virtualinvoke $r4.<java.io.FileInputStream: void close()>();
+
+        return;
+
+        catch java.lang.Throwable from label1 to label2 with label2;
+    }
+
+    public void testToCharArray_Reader() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsTestCase r0;
+        char[] r2;
+        java.io.FileReader $r4;
+        java.io.File $r5, $r6;
+        int $i0;
+        long $l1;
+        java.lang.Throwable $r7;
+
+        r0 := @this: org.apache.commons.io.IOUtilsTestCase;
+
+        $r4 = new java.io.FileReader;
+
+        $r5 = r0.<org.apache.commons.io.IOUtilsTestCase: java.io.File m_testFile>;
+
+        specialinvoke $r4.<java.io.FileReader: void <init>(java.io.File)>($r5);
+
+     label1:
+        r2 = staticinvoke <org.apache.commons.io.IOUtils: char[] toCharArray(java.io.Reader)>($r4);
+
+        staticinvoke <org.junit.Assert: void assertNotNull(java.lang.Object)>(r2);
+
+        $i0 = lengthof r2;
+
+        $l1 = (long) $i0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("Wrong output size", 4097L, $l1);
+
+        $r6 = r0.<org.apache.commons.io.IOUtilsTestCase: java.io.File m_testFile>;
+
+        staticinvoke <org.apache.commons.io.testtools.TestUtils: void assertEqualContent(char[],java.io.File)>(r2, $r6);
+
+        goto label3;
+
+     label2:
+        $r7 := @caughtexception;
+
+        virtualinvoke $r4.<java.io.FileReader: void close()>();
+
+        throw $r7;
+
+     label3:
+        virtualinvoke $r4.<java.io.FileReader: void close()>();
+
+        return;
+
+        catch java.lang.Throwable from label1 to label2 with label2;
+    }
+
+    public void testToInputStream_CharSequence() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsTestCase r0;
+        java.lang.StringBuilder $r2;
+        java.lang.String $r3, $r5, $r7;
+        byte[] $r4, $r6, $r8, r10, r12, r14;
+        java.io.InputStream r9, r11, r13;
+
+        r0 := @this: org.apache.commons.io.IOUtilsTestCase;
+
+        $r2 = new java.lang.StringBuilder;
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>(java.lang.String)>("Abc123Xyz!");
+
+        r9 = staticinvoke <org.apache.commons.io.IOUtils: java.io.InputStream toInputStream(java.lang.CharSequence)>($r2);
+
+        r10 = staticinvoke <org.apache.commons.io.IOUtils: byte[] toByteArray(java.io.InputStream)>(r9);
+
+        $r3 = interfaceinvoke $r2.<java.lang.CharSequence: java.lang.String toString()>();
+
+        $r4 = virtualinvoke $r3.<java.lang.String: byte[] getBytes()>();
+
+        specialinvoke r0.<org.apache.commons.io.IOUtilsTestCase: void assertEqualContent(byte[],byte[])>($r4, r10);
+
+        r11 = staticinvoke <org.apache.commons.io.IOUtils: java.io.InputStream toInputStream(java.lang.CharSequence,java.lang.String)>($r2, null);
+
+        r12 = staticinvoke <org.apache.commons.io.IOUtils: byte[] toByteArray(java.io.InputStream)>(r11);
+
+        $r5 = interfaceinvoke $r2.<java.lang.CharSequence: java.lang.String toString()>();
+
+        $r6 = virtualinvoke $r5.<java.lang.String: byte[] getBytes()>();
+
+        specialinvoke r0.<org.apache.commons.io.IOUtilsTestCase: void assertEqualContent(byte[],byte[])>($r6, r12);
+
+        r13 = staticinvoke <org.apache.commons.io.IOUtils: java.io.InputStream toInputStream(java.lang.CharSequence,java.lang.String)>($r2, "UTF-8");
+
+        r14 = staticinvoke <org.apache.commons.io.IOUtils: byte[] toByteArray(java.io.InputStream)>(r13);
+
+        $r7 = interfaceinvoke $r2.<java.lang.CharSequence: java.lang.String toString()>();
+
+        $r8 = virtualinvoke $r7.<java.lang.String: byte[] getBytes(java.lang.String)>("UTF-8");
+
+        specialinvoke r0.<org.apache.commons.io.IOUtilsTestCase: void assertEqualContent(byte[],byte[])>($r8, r14);
+
+        return;
+    }
+
+    public void testToInputStream_String() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsTestCase r0;
+        java.lang.String $r2, $r4, $r6;
+        byte[] $r3, $r5, $r7, r9, r11, r13;
+        java.io.InputStream r8, r10, r12;
+
+        r0 := @this: org.apache.commons.io.IOUtilsTestCase;
+
+        r8 = staticinvoke <org.apache.commons.io.IOUtils: java.io.InputStream toInputStream(java.lang.String)>("Abc123Xyz!");
+
+        r9 = staticinvoke <org.apache.commons.io.IOUtils: byte[] toByteArray(java.io.InputStream)>(r8);
+
+        $r2 = "Abc123Xyz!";
+
+        $r3 = virtualinvoke $r2.<java.lang.String: byte[] getBytes()>();
+
+        specialinvoke r0.<org.apache.commons.io.IOUtilsTestCase: void assertEqualContent(byte[],byte[])>($r3, r9);
+
+        r10 = staticinvoke <org.apache.commons.io.IOUtils: java.io.InputStream toInputStream(java.lang.String,java.lang.String)>("Abc123Xyz!", null);
+
+        r11 = staticinvoke <org.apache.commons.io.IOUtils: byte[] toByteArray(java.io.InputStream)>(r10);
+
+        $r4 = "Abc123Xyz!";
+
+        $r5 = virtualinvoke $r4.<java.lang.String: byte[] getBytes()>();
+
+        specialinvoke r0.<org.apache.commons.io.IOUtilsTestCase: void assertEqualContent(byte[],byte[])>($r5, r11);
+
+        r12 = staticinvoke <org.apache.commons.io.IOUtils: java.io.InputStream toInputStream(java.lang.String,java.lang.String)>("Abc123Xyz!", "UTF-8");
+
+        r13 = staticinvoke <org.apache.commons.io.IOUtils: byte[] toByteArray(java.io.InputStream)>(r12);
+
+        $r6 = "Abc123Xyz!";
+
+        $r7 = virtualinvoke $r6.<java.lang.String: byte[] getBytes(java.lang.String)>("UTF-8");
+
+        specialinvoke r0.<org.apache.commons.io.IOUtilsTestCase: void assertEqualContent(byte[],byte[])>($r7, r13);
+
+        return;
+    }
+
+    public void testToString_ByteArray() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsTestCase r0;
+        byte[] r2, $r7;
+        java.lang.String r3;
+        java.io.FileInputStream $r5;
+        java.io.File $r6;
+        java.lang.Throwable $r8;
+
+        r0 := @this: org.apache.commons.io.IOUtilsTestCase;
+
+        $r5 = new java.io.FileInputStream;
+
+        $r6 = r0.<org.apache.commons.io.IOUtilsTestCase: java.io.File m_testFile>;
+
+        specialinvoke $r5.<java.io.FileInputStream: void <init>(java.io.File)>($r6);
+
+     label1:
+        r2 = staticinvoke <org.apache.commons.io.IOUtils: byte[] toByteArray(java.io.InputStream)>($r5);
+
+        r3 = staticinvoke <org.apache.commons.io.IOUtils: java.lang.String toString(byte[])>(r2);
+
+        $r7 = virtualinvoke r3.<java.lang.String: byte[] getBytes()>();
+
+        specialinvoke r0.<org.apache.commons.io.IOUtilsTestCase: void assertEqualContent(byte[],byte[])>(r2, $r7);
+
+        goto label3;
+
+     label2:
+        $r8 := @caughtexception;
+
+        virtualinvoke $r5.<java.io.FileInputStream: void close()>();
+
+        throw $r8;
+
+     label3:
+        virtualinvoke $r5.<java.io.FileInputStream: void close()>();
+
+        return;
+
+        catch java.lang.Throwable from label1 to label2 with label2;
+    }
+
+    public void testToString_InputStream() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsTestCase r0;
+        java.lang.String r2;
+        java.io.FileInputStream $r4;
+        java.io.File $r5;
+        int $i0, $i2;
+        long $l1, $l3;
+        java.lang.Throwable $r6;
+
+        r0 := @this: org.apache.commons.io.IOUtilsTestCase;
+
+        $r4 = new java.io.FileInputStream;
+
+        $r5 = r0.<org.apache.commons.io.IOUtilsTestCase: java.io.File m_testFile>;
+
+        specialinvoke $r4.<java.io.FileInputStream: void <init>(java.io.File)>($r5);
+
+     label1:
+        r2 = staticinvoke <org.apache.commons.io.IOUtils: java.lang.String toString(java.io.InputStream)>($r4);
+
+        staticinvoke <org.junit.Assert: void assertNotNull(java.lang.Object)>(r2);
+
+        $i0 = virtualinvoke $r4.<java.io.FileInputStream: int available()>();
+
+        $l1 = (long) $i0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("Not all bytes were read", 0L, $l1);
+
+        $i2 = virtualinvoke r2.<java.lang.String: int length()>();
+
+        $l3 = (long) $i2;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("Wrong output size", 4097L, $l3);
+
+        goto label3;
+
+     label2:
+        $r6 := @caughtexception;
+
+        virtualinvoke $r4.<java.io.FileInputStream: void close()>();
+
+        throw $r6;
+
+     label3:
+        virtualinvoke $r4.<java.io.FileInputStream: void close()>();
+
+        return;
+
+        catch java.lang.Throwable from label1 to label2 with label2;
+    }
+
+    public void testToString_Reader() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsTestCase r0;
+        java.lang.String r2;
+        java.io.FileReader $r4;
+        java.io.File $r5;
+        int $i0;
+        long $l1;
+        java.lang.Throwable $r6;
+
+        r0 := @this: org.apache.commons.io.IOUtilsTestCase;
+
+        $r4 = new java.io.FileReader;
+
+        $r5 = r0.<org.apache.commons.io.IOUtilsTestCase: java.io.File m_testFile>;
+
+        specialinvoke $r4.<java.io.FileReader: void <init>(java.io.File)>($r5);
+
+     label1:
+        r2 = staticinvoke <org.apache.commons.io.IOUtils: java.lang.String toString(java.io.Reader)>($r4);
+
+        staticinvoke <org.junit.Assert: void assertNotNull(java.lang.Object)>(r2);
+
+        $i0 = virtualinvoke r2.<java.lang.String: int length()>();
+
+        $l1 = (long) $i0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("Wrong output size", 4097L, $l1);
+
+        goto label3;
+
+     label2:
+        $r6 := @caughtexception;
+
+        virtualinvoke $r4.<java.io.FileReader: void close()>();
+
+        throw $r6;
+
+     label3:
+        virtualinvoke $r4.<java.io.FileReader: void close()>();
+
+        return;
+
+        catch java.lang.Throwable from label1 to label2 with label2;
+    }
+
+    public void testToString_URI() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsTestCase r0;
+        java.net.URI r1;
+        java.lang.String r2;
+        java.io.File $r3;
+        int $i0;
+        long $l1;
+
+        r0 := @this: org.apache.commons.io.IOUtilsTestCase;
+
+        $r3 = r0.<org.apache.commons.io.IOUtilsTestCase: java.io.File m_testFile>;
+
+        r1 = virtualinvoke $r3.<java.io.File: java.net.URI toURI()>();
+
+        r2 = staticinvoke <org.apache.commons.io.IOUtils: java.lang.String toString(java.net.URI)>(r1);
+
+        staticinvoke <org.junit.Assert: void assertNotNull(java.lang.Object)>(r2);
+
+        $i0 = virtualinvoke r2.<java.lang.String: int length()>();
+
+        $l1 = (long) $i0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("Wrong output size", 4097L, $l1);
+
+        return;
+    }
+
+    private void testToString_URI(java.lang.String) throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsTestCase r0;
+        java.lang.String r1, r3;
+        java.net.URI r2;
+        java.io.File $r4;
+        int $i0;
+        long $l1;
+
+        r0 := @this: org.apache.commons.io.IOUtilsTestCase;
+
+        r1 := @parameter0: java.lang.String;
+
+        $r4 = r0.<org.apache.commons.io.IOUtilsTestCase: java.io.File m_testFile>;
+
+        r2 = virtualinvoke $r4.<java.io.File: java.net.URI toURI()>();
+
+        r3 = staticinvoke <org.apache.commons.io.IOUtils: java.lang.String toString(java.net.URI,java.lang.String)>(r2, r1);
+
+        staticinvoke <org.junit.Assert: void assertNotNull(java.lang.Object)>(r3);
+
+        $i0 = virtualinvoke r3.<java.lang.String: int length()>();
+
+        $l1 = (long) $i0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("Wrong output size", 4097L, $l1);
+
+        return;
+    }
+
+    public void testToString_URI_CharsetName() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsTestCase r0;
+
+        r0 := @this: org.apache.commons.io.IOUtilsTestCase;
+
+        specialinvoke r0.<org.apache.commons.io.IOUtilsTestCase: void testToString_URI(java.lang.String)>("US-ASCII");
+
+        return;
+    }
+
+    public void testToString_URI_CharsetNameNull() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsTestCase r0;
+
+        r0 := @this: org.apache.commons.io.IOUtilsTestCase;
+
+        specialinvoke r0.<org.apache.commons.io.IOUtilsTestCase: void testToString_URI(java.lang.String)>(null);
+
+        return;
+    }
+
+    public void testToString_URL() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsTestCase r0;
+        java.net.URL r1;
+        java.lang.String r2;
+        java.io.File $r3;
+        java.net.URI $r4;
+        int $i0;
+        long $l1;
+
+        r0 := @this: org.apache.commons.io.IOUtilsTestCase;
+
+        $r3 = r0.<org.apache.commons.io.IOUtilsTestCase: java.io.File m_testFile>;
+
+        $r4 = virtualinvoke $r3.<java.io.File: java.net.URI toURI()>();
+
+        r1 = virtualinvoke $r4.<java.net.URI: java.net.URL toURL()>();
+
+        r2 = staticinvoke <org.apache.commons.io.IOUtils: java.lang.String toString(java.net.URL)>(r1);
+
+        staticinvoke <org.junit.Assert: void assertNotNull(java.lang.Object)>(r2);
+
+        $i0 = virtualinvoke r2.<java.lang.String: int length()>();
+
+        $l1 = (long) $i0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("Wrong output size", 4097L, $l1);
+
+        return;
+    }
+
+    private void testToString_URL(java.lang.String) throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsTestCase r0;
+        java.lang.String r1, r3;
+        java.net.URL r2;
+        java.io.File $r4;
+        java.net.URI $r5;
+        int $i0;
+        long $l1;
+
+        r0 := @this: org.apache.commons.io.IOUtilsTestCase;
+
+        r1 := @parameter0: java.lang.String;
+
+        $r4 = r0.<org.apache.commons.io.IOUtilsTestCase: java.io.File m_testFile>;
+
+        $r5 = virtualinvoke $r4.<java.io.File: java.net.URI toURI()>();
+
+        r2 = virtualinvoke $r5.<java.net.URI: java.net.URL toURL()>();
+
+        r3 = staticinvoke <org.apache.commons.io.IOUtils: java.lang.String toString(java.net.URL,java.lang.String)>(r2, r1);
+
+        staticinvoke <org.junit.Assert: void assertNotNull(java.lang.Object)>(r3);
+
+        $i0 = virtualinvoke r3.<java.lang.String: int length()>();
+
+        $l1 = (long) $i0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("Wrong output size", 4097L, $l1);
+
+        return;
+    }
+
+    public void testToString_URL_CharsetName() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsTestCase r0;
+
+        r0 := @this: org.apache.commons.io.IOUtilsTestCase;
+
+        specialinvoke r0.<org.apache.commons.io.IOUtilsTestCase: void testToString_URL(java.lang.String)>("US-ASCII");
+
+        return;
+    }
+
+    public void testToString_URL_CharsetNameNull() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsTestCase r0;
+
+        r0 := @this: org.apache.commons.io.IOUtilsTestCase;
+
+        specialinvoke r0.<org.apache.commons.io.IOUtilsTestCase: void testToString_URL(java.lang.String)>(null);
+
+        return;
+    }
+
+    public void testAsBufferedNull()
+    {
+        org.apache.commons.io.IOUtilsTestCase r0;
+        java.lang.NullPointerException $r5, $r6, $r7, $r8;
+
+        r0 := @this: org.apache.commons.io.IOUtilsTestCase;
+
+     label01:
+        staticinvoke <org.apache.commons.io.IOUtils: java.io.BufferedInputStream buffer(java.io.InputStream)>(null);
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("Expected NullPointerException");
+
+     label02:
+        goto label04;
+
+     label03:
+        $r8 := @caughtexception;
+
+     label04:
+        staticinvoke <org.apache.commons.io.IOUtils: java.io.BufferedOutputStream buffer(java.io.OutputStream)>(null);
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("Expected NullPointerException");
+
+     label05:
+        goto label07;
+
+     label06:
+        $r7 := @caughtexception;
+
+     label07:
+        staticinvoke <org.apache.commons.io.IOUtils: java.io.BufferedReader buffer(java.io.Reader)>(null);
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("Expected NullPointerException");
+
+     label08:
+        goto label10;
+
+     label09:
+        $r6 := @caughtexception;
+
+     label10:
+        staticinvoke <org.apache.commons.io.IOUtils: java.io.BufferedWriter buffer(java.io.Writer)>(null);
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("Expected NullPointerException");
+
+     label11:
+        goto label13;
+
+     label12:
+        $r5 := @caughtexception;
+
+     label13:
+        return;
+
+        catch java.lang.NullPointerException from label01 to label02 with label03;
+        catch java.lang.NullPointerException from label04 to label05 with label06;
+        catch java.lang.NullPointerException from label07 to label08 with label09;
+        catch java.lang.NullPointerException from label10 to label11 with label12;
+    }
+
+    public void testAsBufferedInputStream()
+    {
+        org.apache.commons.io.IOUtilsTestCase r0;
+        java.io.BufferedInputStream r2, $r4;
+        org.apache.commons.io.IOUtilsTestCase$6 $r3;
+
+        r0 := @this: org.apache.commons.io.IOUtilsTestCase;
+
+        $r3 = new org.apache.commons.io.IOUtilsTestCase$6;
+
+        specialinvoke $r3.<org.apache.commons.io.IOUtilsTestCase$6: void <init>(org.apache.commons.io.IOUtilsTestCase)>(r0);
+
+        r2 = staticinvoke <org.apache.commons.io.IOUtils: java.io.BufferedInputStream buffer(java.io.InputStream)>($r3);
+
+        staticinvoke <org.junit.Assert: void assertNotSame(java.lang.Object,java.lang.Object)>($r3, r2);
+
+        $r4 = staticinvoke <org.apache.commons.io.IOUtils: java.io.BufferedInputStream buffer(java.io.InputStream)>(r2);
+
+        staticinvoke <org.junit.Assert: void assertSame(java.lang.Object,java.lang.Object)>(r2, $r4);
+
+        return;
+    }
+
+    public void testAsBufferedInputStreamWithBufferSize()
+    {
+        org.apache.commons.io.IOUtilsTestCase r0;
+        java.io.BufferedInputStream r2, $r4, $r5;
+        org.apache.commons.io.IOUtilsTestCase$7 $r3;
+
+        r0 := @this: org.apache.commons.io.IOUtilsTestCase;
+
+        $r3 = new org.apache.commons.io.IOUtilsTestCase$7;
+
+        specialinvoke $r3.<org.apache.commons.io.IOUtilsTestCase$7: void <init>(org.apache.commons.io.IOUtilsTestCase)>(r0);
+
+        r2 = staticinvoke <org.apache.commons.io.IOUtils: java.io.BufferedInputStream buffer(java.io.InputStream,int)>($r3, 2048);
+
+        staticinvoke <org.junit.Assert: void assertNotSame(java.lang.Object,java.lang.Object)>($r3, r2);
+
+        $r4 = staticinvoke <org.apache.commons.io.IOUtils: java.io.BufferedInputStream buffer(java.io.InputStream)>(r2);
+
+        staticinvoke <org.junit.Assert: void assertSame(java.lang.Object,java.lang.Object)>(r2, $r4);
+
+        $r5 = staticinvoke <org.apache.commons.io.IOUtils: java.io.BufferedInputStream buffer(java.io.InputStream,int)>(r2, 1024);
+
+        staticinvoke <org.junit.Assert: void assertSame(java.lang.Object,java.lang.Object)>(r2, $r5);
+
+        return;
+    }
+
+    public void testAsBufferedOutputStream()
+    {
+        org.apache.commons.io.IOUtilsTestCase r0;
+        java.io.BufferedOutputStream r2, $r4;
+        org.apache.commons.io.IOUtilsTestCase$8 $r3;
+
+        r0 := @this: org.apache.commons.io.IOUtilsTestCase;
+
+        $r3 = new org.apache.commons.io.IOUtilsTestCase$8;
+
+        specialinvoke $r3.<org.apache.commons.io.IOUtilsTestCase$8: void <init>(org.apache.commons.io.IOUtilsTestCase)>(r0);
+
+        r2 = staticinvoke <org.apache.commons.io.IOUtils: java.io.BufferedOutputStream buffer(java.io.OutputStream)>($r3);
+
+        staticinvoke <org.junit.Assert: void assertNotSame(java.lang.Object,java.lang.Object)>($r3, r2);
+
+        $r4 = staticinvoke <org.apache.commons.io.IOUtils: java.io.BufferedOutputStream buffer(java.io.OutputStream)>(r2);
+
+        staticinvoke <org.junit.Assert: void assertSame(java.lang.Object,java.lang.Object)>(r2, $r4);
+
+        return;
+    }
+
+    public void testAsBufferedOutputStreamWithBufferSize()
+    {
+        org.apache.commons.io.IOUtilsTestCase r0;
+        java.io.BufferedOutputStream r2, $r4, $r5;
+        org.apache.commons.io.IOUtilsTestCase$9 $r3;
+
+        r0 := @this: org.apache.commons.io.IOUtilsTestCase;
+
+        $r3 = new org.apache.commons.io.IOUtilsTestCase$9;
+
+        specialinvoke $r3.<org.apache.commons.io.IOUtilsTestCase$9: void <init>(org.apache.commons.io.IOUtilsTestCase)>(r0);
+
+        r2 = staticinvoke <org.apache.commons.io.IOUtils: java.io.BufferedOutputStream buffer(java.io.OutputStream,int)>($r3, 2048);
+
+        staticinvoke <org.junit.Assert: void assertNotSame(java.lang.Object,java.lang.Object)>($r3, r2);
+
+        $r4 = staticinvoke <org.apache.commons.io.IOUtils: java.io.BufferedOutputStream buffer(java.io.OutputStream)>(r2);
+
+        staticinvoke <org.junit.Assert: void assertSame(java.lang.Object,java.lang.Object)>(r2, $r4);
+
+        $r5 = staticinvoke <org.apache.commons.io.IOUtils: java.io.BufferedOutputStream buffer(java.io.OutputStream,int)>(r2, 1024);
+
+        staticinvoke <org.junit.Assert: void assertSame(java.lang.Object,java.lang.Object)>(r2, $r5);
+
+        return;
+    }
+
+    public void testAsBufferedReader()
+    {
+        org.apache.commons.io.IOUtilsTestCase r0;
+        java.io.BufferedReader r2, $r4;
+        org.apache.commons.io.IOUtilsTestCase$10 $r3;
+
+        r0 := @this: org.apache.commons.io.IOUtilsTestCase;
+
+        $r3 = new org.apache.commons.io.IOUtilsTestCase$10;
+
+        specialinvoke $r3.<org.apache.commons.io.IOUtilsTestCase$10: void <init>(org.apache.commons.io.IOUtilsTestCase)>(r0);
+
+        r2 = staticinvoke <org.apache.commons.io.IOUtils: java.io.BufferedReader buffer(java.io.Reader)>($r3);
+
+        staticinvoke <org.junit.Assert: void assertNotSame(java.lang.Object,java.lang.Object)>($r3, r2);
+
+        $r4 = staticinvoke <org.apache.commons.io.IOUtils: java.io.BufferedReader buffer(java.io.Reader)>(r2);
+
+        staticinvoke <org.junit.Assert: void assertSame(java.lang.Object,java.lang.Object)>(r2, $r4);
+
+        return;
+    }
+
+    public void testAsBufferedReaderWithBufferSize()
+    {
+        org.apache.commons.io.IOUtilsTestCase r0;
+        java.io.BufferedReader r2, $r4, $r5;
+        org.apache.commons.io.IOUtilsTestCase$11 $r3;
+
+        r0 := @this: org.apache.commons.io.IOUtilsTestCase;
+
+        $r3 = new org.apache.commons.io.IOUtilsTestCase$11;
+
+        specialinvoke $r3.<org.apache.commons.io.IOUtilsTestCase$11: void <init>(org.apache.commons.io.IOUtilsTestCase)>(r0);
+
+        r2 = staticinvoke <org.apache.commons.io.IOUtils: java.io.BufferedReader buffer(java.io.Reader,int)>($r3, 2048);
+
+        staticinvoke <org.junit.Assert: void assertNotSame(java.lang.Object,java.lang.Object)>($r3, r2);
+
+        $r4 = staticinvoke <org.apache.commons.io.IOUtils: java.io.BufferedReader buffer(java.io.Reader)>(r2);
+
+        staticinvoke <org.junit.Assert: void assertSame(java.lang.Object,java.lang.Object)>(r2, $r4);
+
+        $r5 = staticinvoke <org.apache.commons.io.IOUtils: java.io.BufferedReader buffer(java.io.Reader,int)>(r2, 1024);
+
+        staticinvoke <org.junit.Assert: void assertSame(java.lang.Object,java.lang.Object)>(r2, $r5);
+
+        return;
+    }
+
+    public void testAsBufferedWriter()
+    {
+        org.apache.commons.io.IOUtilsTestCase r0;
+        java.io.BufferedWriter r2, $r4;
+        org.apache.commons.io.IOUtilsTestCase$12 $r3;
+
+        r0 := @this: org.apache.commons.io.IOUtilsTestCase;
+
+        $r3 = new org.apache.commons.io.IOUtilsTestCase$12;
+
+        specialinvoke $r3.<org.apache.commons.io.IOUtilsTestCase$12: void <init>(org.apache.commons.io.IOUtilsTestCase)>(r0);
+
+        r2 = staticinvoke <org.apache.commons.io.IOUtils: java.io.BufferedWriter buffer(java.io.Writer)>($r3);
+
+        staticinvoke <org.junit.Assert: void assertNotSame(java.lang.Object,java.lang.Object)>($r3, r2);
+
+        $r4 = staticinvoke <org.apache.commons.io.IOUtils: java.io.BufferedWriter buffer(java.io.Writer)>(r2);
+
+        staticinvoke <org.junit.Assert: void assertSame(java.lang.Object,java.lang.Object)>(r2, $r4);
+
+        return;
+    }
+
+    public void testAsBufferedWriterWithBufferSize()
+    {
+        org.apache.commons.io.IOUtilsTestCase r0;
+        java.io.BufferedWriter r2, $r4, $r5;
+        org.apache.commons.io.IOUtilsTestCase$13 $r3;
+
+        r0 := @this: org.apache.commons.io.IOUtilsTestCase;
+
+        $r3 = new org.apache.commons.io.IOUtilsTestCase$13;
+
+        specialinvoke $r3.<org.apache.commons.io.IOUtilsTestCase$13: void <init>(org.apache.commons.io.IOUtilsTestCase)>(r0);
+
+        r2 = staticinvoke <org.apache.commons.io.IOUtils: java.io.BufferedWriter buffer(java.io.Writer,int)>($r3, 2024);
+
+        staticinvoke <org.junit.Assert: void assertNotSame(java.lang.Object,java.lang.Object)>($r3, r2);
+
+        $r4 = staticinvoke <org.apache.commons.io.IOUtils: java.io.BufferedWriter buffer(java.io.Writer)>(r2);
+
+        staticinvoke <org.junit.Assert: void assertSame(java.lang.Object,java.lang.Object)>(r2, $r4);
+
+        $r5 = staticinvoke <org.apache.commons.io.IOUtils: java.io.BufferedWriter buffer(java.io.Writer,int)>(r2, 1024);
+
+        staticinvoke <org.junit.Assert: void assertSame(java.lang.Object,java.lang.Object)>(r2, $r5);
+
+        return;
+    }
+}

@@ -1,0 +1,482 @@
+class org.apache.commons.io.Java7Support extends java.lang.Object
+{
+    private static final boolean IS_JAVA7;
+    private static java.lang.reflect.Method isSymbolicLink;
+    private static java.lang.reflect.Method delete;
+    private static java.lang.reflect.Method toPath;
+    private static java.lang.reflect.Method exists;
+    private static java.lang.reflect.Method toFile;
+    private static java.lang.reflect.Method readSymlink;
+    private static java.lang.reflect.Method createSymlink;
+    private static java.lang.Object emptyLinkOpts;
+    private static java.lang.Object emptyFileAttributes;
+
+    static void <clinit>()
+    {
+        java.lang.Class r0, r1, r2, r3, $r14, $r19, $r22;
+        java.lang.Thread $r4;
+        java.lang.Class[] $r5, $r7, $r9, $r12, $r17, $r21, $r24;
+        java.lang.reflect.Method $r6, $r8, $r10, $r15, $r20, $r23, $r25;
+        java.lang.Object $r11, $r13, $r16, $r18;
+        java.lang.ClassNotFoundException $r26;
+        java.lang.NoSuchMethodException $r27;
+        boolean z0;
+        java.lang.ClassLoader r28;
+
+        z0 = 1;
+
+     label1:
+        $r4 = staticinvoke <java.lang.Thread: java.lang.Thread currentThread()>();
+
+        r28 = virtualinvoke $r4.<java.lang.Thread: java.lang.ClassLoader getContextClassLoader()>();
+
+        r0 = virtualinvoke r28.<java.lang.ClassLoader: java.lang.Class loadClass(java.lang.String)>("java.nio.file.Files");
+
+        r1 = virtualinvoke r28.<java.lang.ClassLoader: java.lang.Class loadClass(java.lang.String)>("java.nio.file.Path");
+
+        r2 = virtualinvoke r28.<java.lang.ClassLoader: java.lang.Class loadClass(java.lang.String)>("java.nio.file.attribute.FileAttribute");
+
+        r3 = virtualinvoke r28.<java.lang.ClassLoader: java.lang.Class loadClass(java.lang.String)>("java.nio.file.LinkOption");
+
+        $r5 = newarray (java.lang.Class)[1];
+
+        $r5[0] = r1;
+
+        $r6 = virtualinvoke r0.<java.lang.Class: java.lang.reflect.Method getMethod(java.lang.String,java.lang.Class[])>("isSymbolicLink", $r5);
+
+        <org.apache.commons.io.Java7Support: java.lang.reflect.Method isSymbolicLink> = $r6;
+
+        $r7 = newarray (java.lang.Class)[1];
+
+        $r7[0] = r1;
+
+        $r8 = virtualinvoke r0.<java.lang.Class: java.lang.reflect.Method getMethod(java.lang.String,java.lang.Class[])>("delete", $r7);
+
+        <org.apache.commons.io.Java7Support: java.lang.reflect.Method delete> = $r8;
+
+        $r9 = newarray (java.lang.Class)[1];
+
+        $r9[0] = r1;
+
+        $r10 = virtualinvoke r0.<java.lang.Class: java.lang.reflect.Method getMethod(java.lang.String,java.lang.Class[])>("readSymbolicLink", $r9);
+
+        <org.apache.commons.io.Java7Support: java.lang.reflect.Method readSymlink> = $r10;
+
+        $r11 = staticinvoke <java.lang.reflect.Array: java.lang.Object newInstance(java.lang.Class,int)>(r2, 0);
+
+        <org.apache.commons.io.Java7Support: java.lang.Object emptyFileAttributes> = $r11;
+
+        $r12 = newarray (java.lang.Class)[3];
+
+        $r12[0] = r1;
+
+        $r12[1] = r1;
+
+        $r13 = <org.apache.commons.io.Java7Support: java.lang.Object emptyFileAttributes>;
+
+        $r14 = virtualinvoke $r13.<java.lang.Object: java.lang.Class getClass()>();
+
+        $r12[2] = $r14;
+
+        $r15 = virtualinvoke r0.<java.lang.Class: java.lang.reflect.Method getMethod(java.lang.String,java.lang.Class[])>("createSymbolicLink", $r12);
+
+        <org.apache.commons.io.Java7Support: java.lang.reflect.Method createSymlink> = $r15;
+
+        $r16 = staticinvoke <java.lang.reflect.Array: java.lang.Object newInstance(java.lang.Class,int)>(r3, 0);
+
+        <org.apache.commons.io.Java7Support: java.lang.Object emptyLinkOpts> = $r16;
+
+        $r17 = newarray (java.lang.Class)[2];
+
+        $r17[0] = r1;
+
+        $r18 = <org.apache.commons.io.Java7Support: java.lang.Object emptyLinkOpts>;
+
+        $r19 = virtualinvoke $r18.<java.lang.Object: java.lang.Class getClass()>();
+
+        $r17[1] = $r19;
+
+        $r20 = virtualinvoke r0.<java.lang.Class: java.lang.reflect.Method getMethod(java.lang.String,java.lang.Class[])>("exists", $r17);
+
+        <org.apache.commons.io.Java7Support: java.lang.reflect.Method exists> = $r20;
+
+        $r22 = class "java/io/File";
+
+        $r21 = newarray (java.lang.Class)[0];
+
+        $r23 = virtualinvoke $r22.<java.lang.Class: java.lang.reflect.Method getMethod(java.lang.String,java.lang.Class[])>("toPath", $r21);
+
+        <org.apache.commons.io.Java7Support: java.lang.reflect.Method toPath> = $r23;
+
+        $r24 = newarray (java.lang.Class)[0];
+
+        $r25 = virtualinvoke r1.<java.lang.Class: java.lang.reflect.Method getMethod(java.lang.String,java.lang.Class[])>("toFile", $r24);
+
+        <org.apache.commons.io.Java7Support: java.lang.reflect.Method toFile> = $r25;
+
+     label2:
+        goto label5;
+
+     label3:
+        $r26 := @caughtexception;
+
+        z0 = 0;
+
+        goto label5;
+
+     label4:
+        $r27 := @caughtexception;
+
+        z0 = 0;
+
+     label5:
+        <org.apache.commons.io.Java7Support: boolean IS_JAVA7> = z0;
+
+        return;
+
+        catch java.lang.ClassNotFoundException from label1 to label2 with label3;
+        catch java.lang.NoSuchMethodException from label1 to label2 with label4;
+    }
+
+    void <init>()
+    {
+        org.apache.commons.io.Java7Support r0;
+
+        r0 := @this: org.apache.commons.io.Java7Support;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static boolean isSymLink(java.io.File)
+    {
+        java.io.File r0;
+        java.lang.Boolean r1;
+        java.lang.Object[] $r2, $r4;
+        java.lang.reflect.Method $r3, $r5;
+        java.lang.Object $r6, r11;
+        boolean $z0;
+        java.lang.IllegalAccessException $r7;
+        java.lang.RuntimeException $r8, $r10;
+        java.lang.reflect.InvocationTargetException $r9;
+
+        r0 := @parameter0: java.io.File;
+
+     label1:
+        $r3 = <org.apache.commons.io.Java7Support: java.lang.reflect.Method toPath>;
+
+        $r2 = newarray (java.lang.Object)[0];
+
+        r11 = virtualinvoke $r3.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>(r0, $r2);
+
+        $r5 = <org.apache.commons.io.Java7Support: java.lang.reflect.Method isSymbolicLink>;
+
+        $r4 = newarray (java.lang.Object)[1];
+
+        $r4[0] = r11;
+
+        $r6 = virtualinvoke $r5.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>(null, $r4);
+
+        r1 = (java.lang.Boolean) $r6;
+
+        $z0 = virtualinvoke r1.<java.lang.Boolean: boolean booleanValue()>();
+
+     label2:
+        return $z0;
+
+     label3:
+        $r7 := @caughtexception;
+
+        $r8 = new java.lang.RuntimeException;
+
+        specialinvoke $r8.<java.lang.RuntimeException: void <init>(java.lang.Throwable)>($r7);
+
+        throw $r8;
+
+     label4:
+        $r9 := @caughtexception;
+
+        $r10 = new java.lang.RuntimeException;
+
+        specialinvoke $r10.<java.lang.RuntimeException: void <init>(java.lang.Throwable)>($r9);
+
+        throw $r10;
+
+        catch java.lang.IllegalAccessException from label1 to label2 with label3;
+        catch java.lang.reflect.InvocationTargetException from label1 to label2 with label4;
+    }
+
+    public static java.io.File readSymbolicLink(java.io.File) throws java.io.IOException
+    {
+        java.io.File r0, $r9;
+        java.lang.Object r1, $r8, r14;
+        java.lang.Object[] $r2, $r4, $r6;
+        java.lang.reflect.Method $r3, $r5, $r7;
+        java.lang.reflect.InvocationTargetException $r10;
+        java.lang.RuntimeException $r11, $r13;
+        java.lang.IllegalAccessException $r12;
+
+        r0 := @parameter0: java.io.File;
+
+     label1:
+        $r3 = <org.apache.commons.io.Java7Support: java.lang.reflect.Method toPath>;
+
+        $r2 = newarray (java.lang.Object)[0];
+
+        r14 = virtualinvoke $r3.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>(r0, $r2);
+
+        $r5 = <org.apache.commons.io.Java7Support: java.lang.reflect.Method readSymlink>;
+
+        $r4 = newarray (java.lang.Object)[1];
+
+        $r4[0] = r14;
+
+        r1 = virtualinvoke $r5.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>(null, $r4);
+
+        $r7 = <org.apache.commons.io.Java7Support: java.lang.reflect.Method toFile>;
+
+        $r6 = newarray (java.lang.Object)[0];
+
+        $r8 = virtualinvoke $r7.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>(r1, $r6);
+
+        $r9 = (java.io.File) $r8;
+
+     label2:
+        return $r9;
+
+     label3:
+        $r12 := @caughtexception;
+
+        $r13 = new java.lang.RuntimeException;
+
+        specialinvoke $r13.<java.lang.RuntimeException: void <init>(java.lang.Throwable)>($r12);
+
+        throw $r13;
+
+     label4:
+        $r10 := @caughtexception;
+
+        $r11 = new java.lang.RuntimeException;
+
+        specialinvoke $r11.<java.lang.RuntimeException: void <init>(java.lang.Throwable)>($r10);
+
+        throw $r11;
+
+        catch java.lang.IllegalAccessException from label1 to label2 with label3;
+        catch java.lang.reflect.InvocationTargetException from label1 to label2 with label4;
+    }
+
+    private static boolean exists(java.io.File) throws java.io.IOException
+    {
+        java.io.File r0;
+        java.lang.Boolean r1;
+        java.lang.Object[] $r2, $r4;
+        java.lang.reflect.Method $r3, $r6;
+        java.lang.Object $r5, $r7, r13;
+        boolean $z0;
+        java.lang.reflect.InvocationTargetException $r8;
+        java.lang.Throwable $r9;
+        java.lang.RuntimeException $r10, $r12;
+        java.lang.IllegalAccessException $r11;
+
+        r0 := @parameter0: java.io.File;
+
+     label1:
+        $r3 = <org.apache.commons.io.Java7Support: java.lang.reflect.Method toPath>;
+
+        $r2 = newarray (java.lang.Object)[0];
+
+        r13 = virtualinvoke $r3.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>(r0, $r2);
+
+        $r6 = <org.apache.commons.io.Java7Support: java.lang.reflect.Method exists>;
+
+        $r4 = newarray (java.lang.Object)[2];
+
+        $r4[0] = r13;
+
+        $r5 = <org.apache.commons.io.Java7Support: java.lang.Object emptyLinkOpts>;
+
+        $r4[1] = $r5;
+
+        $r7 = virtualinvoke $r6.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>(null, $r4);
+
+        r1 = (java.lang.Boolean) $r7;
+
+        $z0 = virtualinvoke r1.<java.lang.Boolean: boolean booleanValue()>();
+
+     label2:
+        return $z0;
+
+     label3:
+        $r11 := @caughtexception;
+
+        $r12 = new java.lang.RuntimeException;
+
+        specialinvoke $r12.<java.lang.RuntimeException: void <init>(java.lang.Throwable)>($r11);
+
+        throw $r12;
+
+     label4:
+        $r8 := @caughtexception;
+
+        $r9 = virtualinvoke $r8.<java.lang.reflect.InvocationTargetException: java.lang.Throwable getTargetException()>();
+
+        $r10 = (java.lang.RuntimeException) $r9;
+
+        throw $r10;
+
+        catch java.lang.IllegalAccessException from label1 to label2 with label3;
+        catch java.lang.reflect.InvocationTargetException from label1 to label2 with label4;
+    }
+
+    public static java.io.File createSymbolicLink(java.io.File, java.io.File) throws java.io.IOException
+    {
+        java.io.File r0, r1, $r13;
+        boolean $z0;
+        java.lang.Object[] $r2, $r4, $r5, $r10;
+        java.lang.reflect.Method $r3, $r6, $r7, $r11;
+        java.lang.Object $r8, $r9, $r12, r18, r19;
+        java.lang.reflect.InvocationTargetException $r14;
+        java.io.IOException $r15;
+        java.lang.IllegalAccessException $r16;
+        java.lang.RuntimeException $r17;
+        java.lang.Throwable r22;
+
+        r0 := @parameter0: java.io.File;
+
+        r1 := @parameter1: java.io.File;
+
+     label1:
+        $z0 = staticinvoke <org.apache.commons.io.Java7Support: boolean exists(java.io.File)>(r0);
+
+        if $z0 != 0 goto label3;
+
+        $r3 = <org.apache.commons.io.Java7Support: java.lang.reflect.Method toPath>;
+
+        $r2 = newarray (java.lang.Object)[0];
+
+        r18 = virtualinvoke $r3.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>(r0, $r2);
+
+        $r7 = <org.apache.commons.io.Java7Support: java.lang.reflect.Method createSymlink>;
+
+        $r4 = newarray (java.lang.Object)[3];
+
+        $r4[0] = r18;
+
+        $r6 = <org.apache.commons.io.Java7Support: java.lang.reflect.Method toPath>;
+
+        $r5 = newarray (java.lang.Object)[0];
+
+        $r8 = virtualinvoke $r6.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>(r1, $r5);
+
+        $r4[1] = $r8;
+
+        $r9 = <org.apache.commons.io.Java7Support: java.lang.Object emptyFileAttributes>;
+
+        $r4[2] = $r9;
+
+        r19 = virtualinvoke $r7.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>(null, $r4);
+
+        $r11 = <org.apache.commons.io.Java7Support: java.lang.reflect.Method toFile>;
+
+        $r10 = newarray (java.lang.Object)[0];
+
+        $r12 = virtualinvoke $r11.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>(r19, $r10);
+
+        $r13 = (java.io.File) $r12;
+
+     label2:
+        return $r13;
+
+     label3:
+        return r0;
+
+     label4:
+        $r16 := @caughtexception;
+
+        $r17 = new java.lang.RuntimeException;
+
+        specialinvoke $r17.<java.lang.RuntimeException: void <init>(java.lang.Throwable)>($r16);
+
+        throw $r17;
+
+     label5:
+        $r14 := @caughtexception;
+
+        r22 = virtualinvoke $r14.<java.lang.reflect.InvocationTargetException: java.lang.Throwable getTargetException()>();
+
+        $r15 = (java.io.IOException) r22;
+
+        throw $r15;
+
+        catch java.lang.IllegalAccessException from label1 to label2 with label4;
+        catch java.lang.reflect.InvocationTargetException from label1 to label2 with label5;
+    }
+
+    public static void delete(java.io.File) throws java.io.IOException
+    {
+        java.io.File r0;
+        java.lang.Object[] $r1, $r3;
+        java.lang.reflect.Method $r2, $r4;
+        java.lang.IllegalAccessException $r6;
+        java.lang.RuntimeException $r7;
+        java.lang.reflect.InvocationTargetException $r8;
+        java.lang.Throwable $r9;
+        java.io.IOException $r10;
+        java.lang.Object r11;
+
+        r0 := @parameter0: java.io.File;
+
+     label1:
+        $r2 = <org.apache.commons.io.Java7Support: java.lang.reflect.Method toPath>;
+
+        $r1 = newarray (java.lang.Object)[0];
+
+        r11 = virtualinvoke $r2.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>(r0, $r1);
+
+        $r4 = <org.apache.commons.io.Java7Support: java.lang.reflect.Method delete>;
+
+        $r3 = newarray (java.lang.Object)[1];
+
+        $r3[0] = r11;
+
+        virtualinvoke $r4.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>(null, $r3);
+
+     label2:
+        goto label5;
+
+     label3:
+        $r6 := @caughtexception;
+
+        $r7 = new java.lang.RuntimeException;
+
+        specialinvoke $r7.<java.lang.RuntimeException: void <init>(java.lang.Throwable)>($r6);
+
+        throw $r7;
+
+     label4:
+        $r8 := @caughtexception;
+
+        $r9 = virtualinvoke $r8.<java.lang.reflect.InvocationTargetException: java.lang.Throwable getTargetException()>();
+
+        $r10 = (java.io.IOException) $r9;
+
+        throw $r10;
+
+     label5:
+        return;
+
+        catch java.lang.IllegalAccessException from label1 to label2 with label3;
+        catch java.lang.reflect.InvocationTargetException from label1 to label2 with label4;
+    }
+
+    public static boolean isAtLeastJava7()
+    {
+        boolean $z0;
+
+        $z0 = <org.apache.commons.io.Java7Support: boolean IS_JAVA7>;
+
+        return $z0;
+    }
+}

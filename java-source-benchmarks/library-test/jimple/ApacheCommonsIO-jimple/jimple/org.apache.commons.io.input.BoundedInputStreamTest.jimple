@@ -1,0 +1,369 @@
+public class org.apache.commons.io.input.BoundedInputStreamTest extends java.lang.Object
+{
+
+    public void <init>()
+    {
+        org.apache.commons.io.input.BoundedInputStreamTest r0;
+
+        r0 := @this: org.apache.commons.io.input.BoundedInputStreamTest;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void testReadSingle() throws java.lang.Exception
+    {
+        org.apache.commons.io.input.BoundedInputStreamTest r0;
+        byte[] r1, r2;
+        java.lang.String $r3, $r4, $r10, $r16, $r22;
+        org.apache.commons.io.input.BoundedInputStream $r5, $r11, $r17;
+        java.io.ByteArrayInputStream $r6, $r12, $r18;
+        int $i0, $i2, $i5, $i7, $i9, $i10, $i12, $i15, $i17, $i19, $i21, $i24, $i26, i28, i29, i30;
+        long $l1, $l4, $l6, $l8, $l11, $l14, $l16, $l18, $l20, $l23, $l25, $l27;
+        java.lang.StringBuilder $r7, $r8, $r9, $r13, $r14, $r15, $r19, $r20, $r21;
+        byte $b3, $b13, $b22;
+
+        r0 := @this: org.apache.commons.io.input.BoundedInputStreamTest;
+
+        $r3 = "Hello World";
+
+        r1 = virtualinvoke $r3.<java.lang.String: byte[] getBytes()>();
+
+        $r4 = "Hello";
+
+        r2 = virtualinvoke $r4.<java.lang.String: byte[] getBytes()>();
+
+        $r5 = new org.apache.commons.io.input.BoundedInputStream;
+
+        $r6 = new java.io.ByteArrayInputStream;
+
+        specialinvoke $r6.<java.io.ByteArrayInputStream: void <init>(byte[])>(r1);
+
+        $i0 = lengthof r1;
+
+        $l1 = (long) $i0;
+
+        specialinvoke $r5.<org.apache.commons.io.input.BoundedInputStream: void <init>(java.io.InputStream,long)>($r6, $l1);
+
+        i28 = 0;
+
+        goto label2;
+
+     label1:
+        $r7 = new java.lang.StringBuilder;
+
+        specialinvoke $r7.<java.lang.StringBuilder: void <init>(java.lang.String)>("limit = length byte[");
+
+        $r8 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i28);
+
+        $r9 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("]");
+
+        $r10 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $b3 = r1[i28];
+
+        $l4 = (long) $b3;
+
+        $i5 = virtualinvoke $r5.<org.apache.commons.io.input.BoundedInputStream: int read()>();
+
+        $l6 = (long) $i5;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>($r10, $l4, $l6);
+
+        i28 = i28 + 1;
+
+     label2:
+        $i2 = lengthof r1;
+
+        if i28 < $i2 goto label1;
+
+        $i7 = virtualinvoke $r5.<org.apache.commons.io.input.BoundedInputStream: int read()>();
+
+        $l8 = (long) $i7;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("limit = length end", -1L, $l8);
+
+        $r11 = new org.apache.commons.io.input.BoundedInputStream;
+
+        $r12 = new java.io.ByteArrayInputStream;
+
+        specialinvoke $r12.<java.io.ByteArrayInputStream: void <init>(byte[])>(r1);
+
+        $i9 = lengthof r1;
+
+        $i10 = $i9 + 1;
+
+        $l11 = (long) $i10;
+
+        specialinvoke $r11.<org.apache.commons.io.input.BoundedInputStream: void <init>(java.io.InputStream,long)>($r12, $l11);
+
+        i29 = 0;
+
+        goto label4;
+
+     label3:
+        $r13 = new java.lang.StringBuilder;
+
+        specialinvoke $r13.<java.lang.StringBuilder: void <init>(java.lang.String)>("limit > length byte[");
+
+        $r14 = virtualinvoke $r13.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i29);
+
+        $r15 = virtualinvoke $r14.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("]");
+
+        $r16 = virtualinvoke $r15.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $b13 = r1[i29];
+
+        $l14 = (long) $b13;
+
+        $i15 = virtualinvoke $r11.<org.apache.commons.io.input.BoundedInputStream: int read()>();
+
+        $l16 = (long) $i15;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>($r16, $l14, $l16);
+
+        i29 = i29 + 1;
+
+     label4:
+        $i12 = lengthof r1;
+
+        if i29 < $i12 goto label3;
+
+        $i17 = virtualinvoke $r11.<org.apache.commons.io.input.BoundedInputStream: int read()>();
+
+        $l18 = (long) $i17;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("limit > length end", -1L, $l18);
+
+        $r17 = new org.apache.commons.io.input.BoundedInputStream;
+
+        $r18 = new java.io.ByteArrayInputStream;
+
+        specialinvoke $r18.<java.io.ByteArrayInputStream: void <init>(byte[])>(r1);
+
+        $i19 = lengthof r2;
+
+        $l20 = (long) $i19;
+
+        specialinvoke $r17.<org.apache.commons.io.input.BoundedInputStream: void <init>(java.io.InputStream,long)>($r18, $l20);
+
+        i30 = 0;
+
+        goto label6;
+
+     label5:
+        $r19 = new java.lang.StringBuilder;
+
+        specialinvoke $r19.<java.lang.StringBuilder: void <init>(java.lang.String)>("limit < length byte[");
+
+        $r20 = virtualinvoke $r19.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i30);
+
+        $r21 = virtualinvoke $r20.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("]");
+
+        $r22 = virtualinvoke $r21.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $b22 = r2[i30];
+
+        $l23 = (long) $b22;
+
+        $i24 = virtualinvoke $r17.<org.apache.commons.io.input.BoundedInputStream: int read()>();
+
+        $l25 = (long) $i24;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>($r22, $l23, $l25);
+
+        i30 = i30 + 1;
+
+     label6:
+        $i21 = lengthof r2;
+
+        if i30 < $i21 goto label5;
+
+        $i26 = virtualinvoke $r17.<org.apache.commons.io.input.BoundedInputStream: int read()>();
+
+        $l27 = (long) $i26;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("limit < length end", -1L, $l27);
+
+        return;
+    }
+
+    public void testReadArray() throws java.lang.Exception
+    {
+        org.apache.commons.io.input.BoundedInputStreamTest r0;
+        byte[] r1, r2, $r7, $r10, $r11, $r14, $r17, $r20;
+        java.lang.String $r3, $r4;
+        org.apache.commons.io.input.BoundedInputStream $r5, $r8, $r12, $r15, $r18;
+        java.io.ByteArrayInputStream $r6, $r9, $r13, $r16, $r19;
+        int $i0, $i2, $i3, $i5, $i6;
+        long $l1, $l4, $l7;
+
+        r0 := @this: org.apache.commons.io.input.BoundedInputStreamTest;
+
+        $r3 = "Hello World";
+
+        r1 = virtualinvoke $r3.<java.lang.String: byte[] getBytes()>();
+
+        $r4 = "Hello";
+
+        r2 = virtualinvoke $r4.<java.lang.String: byte[] getBytes()>();
+
+        $r5 = new org.apache.commons.io.input.BoundedInputStream;
+
+        $r6 = new java.io.ByteArrayInputStream;
+
+        specialinvoke $r6.<java.io.ByteArrayInputStream: void <init>(byte[])>(r1);
+
+        specialinvoke $r5.<org.apache.commons.io.input.BoundedInputStream: void <init>(java.io.InputStream)>($r6);
+
+        $r7 = staticinvoke <org.apache.commons.io.IOUtils: byte[] toByteArray(java.io.InputStream)>($r5);
+
+        specialinvoke r0.<org.apache.commons.io.input.BoundedInputStreamTest: void compare(java.lang.String,byte[],byte[])>("limit = -1", r1, $r7);
+
+        $r8 = new org.apache.commons.io.input.BoundedInputStream;
+
+        $r9 = new java.io.ByteArrayInputStream;
+
+        specialinvoke $r9.<java.io.ByteArrayInputStream: void <init>(byte[])>(r1);
+
+        specialinvoke $r8.<org.apache.commons.io.input.BoundedInputStream: void <init>(java.io.InputStream,long)>($r9, 0L);
+
+        $r10 = newarray (byte)[0];
+
+        $r11 = staticinvoke <org.apache.commons.io.IOUtils: byte[] toByteArray(java.io.InputStream)>($r8);
+
+        specialinvoke r0.<org.apache.commons.io.input.BoundedInputStreamTest: void compare(java.lang.String,byte[],byte[])>("limit = 0", $r10, $r11);
+
+        $r12 = new org.apache.commons.io.input.BoundedInputStream;
+
+        $r13 = new java.io.ByteArrayInputStream;
+
+        specialinvoke $r13.<java.io.ByteArrayInputStream: void <init>(byte[])>(r1);
+
+        $i0 = lengthof r1;
+
+        $l1 = (long) $i0;
+
+        specialinvoke $r12.<org.apache.commons.io.input.BoundedInputStream: void <init>(java.io.InputStream,long)>($r13, $l1);
+
+        $r14 = staticinvoke <org.apache.commons.io.IOUtils: byte[] toByteArray(java.io.InputStream)>($r12);
+
+        specialinvoke r0.<org.apache.commons.io.input.BoundedInputStreamTest: void compare(java.lang.String,byte[],byte[])>("limit = length", r1, $r14);
+
+        $r15 = new org.apache.commons.io.input.BoundedInputStream;
+
+        $r16 = new java.io.ByteArrayInputStream;
+
+        specialinvoke $r16.<java.io.ByteArrayInputStream: void <init>(byte[])>(r1);
+
+        $i2 = lengthof r1;
+
+        $i3 = $i2 + 1;
+
+        $l4 = (long) $i3;
+
+        specialinvoke $r15.<org.apache.commons.io.input.BoundedInputStream: void <init>(java.io.InputStream,long)>($r16, $l4);
+
+        $r17 = staticinvoke <org.apache.commons.io.IOUtils: byte[] toByteArray(java.io.InputStream)>($r15);
+
+        specialinvoke r0.<org.apache.commons.io.input.BoundedInputStreamTest: void compare(java.lang.String,byte[],byte[])>("limit > length", r1, $r17);
+
+        $r18 = new org.apache.commons.io.input.BoundedInputStream;
+
+        $r19 = new java.io.ByteArrayInputStream;
+
+        specialinvoke $r19.<java.io.ByteArrayInputStream: void <init>(byte[])>(r1);
+
+        $i5 = lengthof r1;
+
+        $i6 = $i5 - 6;
+
+        $l7 = (long) $i6;
+
+        specialinvoke $r18.<org.apache.commons.io.input.BoundedInputStream: void <init>(java.io.InputStream,long)>($r19, $l7);
+
+        $r20 = staticinvoke <org.apache.commons.io.IOUtils: byte[] toByteArray(java.io.InputStream)>($r18);
+
+        specialinvoke r0.<org.apache.commons.io.input.BoundedInputStreamTest: void compare(java.lang.String,byte[],byte[])>("limit < length", r2, $r20);
+
+        return;
+    }
+
+    private void compare(java.lang.String, byte[], byte[])
+    {
+        org.apache.commons.io.input.BoundedInputStreamTest r0;
+        java.lang.String r1, $r5, $r7, $r9, $r13;
+        byte[] r2, r3;
+        java.lang.StringBuilder $r4, $r6, $r8, $r10, $r11, $r12;
+        int $i0, $i1, $i4, i9;
+        long $l2, $l3, $l7, $l8;
+        byte $b5, $b6;
+
+        r0 := @this: org.apache.commons.io.input.BoundedInputStreamTest;
+
+        r1 := @parameter0: java.lang.String;
+
+        r2 := @parameter1: byte[];
+
+        r3 := @parameter2: byte[];
+
+        $r4 = new java.lang.StringBuilder;
+
+        $r5 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>(r1);
+
+        specialinvoke $r4.<java.lang.StringBuilder: void <init>(java.lang.String)>($r5);
+
+        $r6 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" length");
+
+        $r7 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $i0 = lengthof r2;
+
+        $l3 = (long) $i0;
+
+        $i1 = lengthof r3;
+
+        $l2 = (long) $i1;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>($r7, $l3, $l2);
+
+        i9 = 0;
+
+        goto label2;
+
+     label1:
+        $r8 = new java.lang.StringBuilder;
+
+        $r9 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>(r1);
+
+        specialinvoke $r8.<java.lang.StringBuilder: void <init>(java.lang.String)>($r9);
+
+        $r10 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" byte[");
+
+        $r11 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i9);
+
+        $r12 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("]");
+
+        $r13 = virtualinvoke $r12.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $b5 = r2[i9];
+
+        $l8 = (long) $b5;
+
+        $b6 = r3[i9];
+
+        $l7 = (long) $b6;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>($r13, $l8, $l7);
+
+        i9 = i9 + 1;
+
+     label2:
+        $i4 = lengthof r2;
+
+        if i9 < $i4 goto label1;
+
+        return;
+    }
+}

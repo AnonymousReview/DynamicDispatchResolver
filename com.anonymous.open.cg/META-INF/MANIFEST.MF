@@ -1,0 +1,20 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Call Graph Toolbox
+Bundle-SymbolicName: com.anonymous.open.cg;singleton:=true
+Bundle-Version: 3.1.0.qualifier
+Bundle-Vendor: EnSoft Corp.
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Require-Bundle: 
+ org.eclipse.debug.ui,
+ com.anonymous.open.commons;bundle-version="3.1.0";visibility:=reexport,
+ com.anonymous.open.pointsto;bundle-version="3.1.0";visibility:=reexport,
+ com.ensoftcorp.atlas.core;bundle-version="3.1.4",
+ com.anonymous.open.java.commons;bundle-version="3.1.0",
+ org.objectweb.asm;bundle-version="5.2.0"
+Bundle-ActivationPolicy: lazy
+Bundle-ClassPath: .
+Bundle-Activator: com.anonymous.open.cg.Activator
+Export-Package: com.anonymous.open.cg.analysis;uses:="com.ensoftcorp.atlas.core.query",
+ com.anonymous.open.cg.common,
+ com.anonymous.open.cg.preferences

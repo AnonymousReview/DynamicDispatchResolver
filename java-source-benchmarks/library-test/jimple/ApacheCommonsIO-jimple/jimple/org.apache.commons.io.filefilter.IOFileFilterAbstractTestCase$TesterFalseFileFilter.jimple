@@ -1,0 +1,103 @@
+class org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterFalseFileFilter extends org.apache.commons.io.filefilter.FalseFileFilter
+{
+    private static final long serialVersionUID;
+    private boolean invoked;
+    final org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase this$0;
+
+    void <init>(org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase)
+    {
+        org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterFalseFileFilter r0;
+        org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase r1;
+
+        r0 := @this: org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterFalseFileFilter;
+
+        r1 := @parameter0: org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase;
+
+        r0.<org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterFalseFileFilter: org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase this$0> = r1;
+
+        specialinvoke r0.<org.apache.commons.io.filefilter.FalseFileFilter: void <init>()>();
+
+        return;
+    }
+
+    public boolean accept(java.io.File)
+    {
+        org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterFalseFileFilter r0;
+        java.io.File r1;
+        boolean $z0;
+
+        r0 := @this: org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterFalseFileFilter;
+
+        r1 := @parameter0: java.io.File;
+
+        virtualinvoke r0.<org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterFalseFileFilter: void setInvoked(boolean)>(1);
+
+        $z0 = specialinvoke r0.<org.apache.commons.io.filefilter.FalseFileFilter: boolean accept(java.io.File)>(r1);
+
+        return $z0;
+    }
+
+    public boolean accept(java.io.File, java.lang.String)
+    {
+        org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterFalseFileFilter r0;
+        java.io.File r1;
+        java.lang.String r2;
+        boolean $z0;
+
+        r0 := @this: org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterFalseFileFilter;
+
+        r1 := @parameter0: java.io.File;
+
+        r2 := @parameter1: java.lang.String;
+
+        virtualinvoke r0.<org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterFalseFileFilter: void setInvoked(boolean)>(1);
+
+        $z0 = specialinvoke r0.<org.apache.commons.io.filefilter.FalseFileFilter: boolean accept(java.io.File,java.lang.String)>(r1, r2);
+
+        return $z0;
+    }
+
+    public boolean isInvoked()
+    {
+        org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterFalseFileFilter r0;
+        boolean $z0;
+
+        r0 := @this: org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterFalseFileFilter;
+
+        $z0 = r0.<org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterFalseFileFilter: boolean invoked>;
+
+        return $z0;
+    }
+
+    public void setInvoked(boolean)
+    {
+        org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterFalseFileFilter r0;
+        boolean z0;
+
+        r0 := @this: org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterFalseFileFilter;
+
+        z0 := @parameter0: boolean;
+
+        r0.<org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterFalseFileFilter: boolean invoked> = z0;
+
+        return;
+    }
+
+    public void reset()
+    {
+        org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterFalseFileFilter r0;
+
+        r0 := @this: org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterFalseFileFilter;
+
+        virtualinvoke r0.<org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterFalseFileFilter: void setInvoked(boolean)>(0);
+
+        return;
+    }
+
+    public static void <clinit>()
+    {
+        <org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterFalseFileFilter: long serialVersionUID> = -3603047664010401872L;
+
+        return;
+    }
+}

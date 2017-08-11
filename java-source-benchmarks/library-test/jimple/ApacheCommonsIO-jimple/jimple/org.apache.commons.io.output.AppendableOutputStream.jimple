@@ -1,0 +1,52 @@
+public class org.apache.commons.io.output.AppendableOutputStream extends java.io.OutputStream
+{
+    private final java.lang.Appendable appendable;
+
+    public void <init>(java.lang.Appendable)
+    {
+        org.apache.commons.io.output.AppendableOutputStream r0;
+        java.lang.Appendable r1;
+
+        r0 := @this: org.apache.commons.io.output.AppendableOutputStream;
+
+        r1 := @parameter0: java.lang.Appendable;
+
+        specialinvoke r0.<java.io.OutputStream: void <init>()>();
+
+        r0.<org.apache.commons.io.output.AppendableOutputStream: java.lang.Appendable appendable> = r1;
+
+        return;
+    }
+
+    public void write(int) throws java.io.IOException
+    {
+        org.apache.commons.io.output.AppendableOutputStream r0;
+        int i0;
+        char $c1;
+        java.lang.Appendable $r1;
+
+        r0 := @this: org.apache.commons.io.output.AppendableOutputStream;
+
+        i0 := @parameter0: int;
+
+        $r1 = r0.<org.apache.commons.io.output.AppendableOutputStream: java.lang.Appendable appendable>;
+
+        $c1 = (char) i0;
+
+        interfaceinvoke $r1.<java.lang.Appendable: java.lang.Appendable append(char)>($c1);
+
+        return;
+    }
+
+    public java.lang.Appendable getAppendable()
+    {
+        org.apache.commons.io.output.AppendableOutputStream r0;
+        java.lang.Appendable $r1;
+
+        r0 := @this: org.apache.commons.io.output.AppendableOutputStream;
+
+        $r1 = r0.<org.apache.commons.io.output.AppendableOutputStream: java.lang.Appendable appendable>;
+
+        return $r1;
+    }
+}

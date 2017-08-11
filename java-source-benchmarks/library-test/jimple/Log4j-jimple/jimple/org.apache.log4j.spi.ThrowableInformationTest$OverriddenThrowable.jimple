@@ -1,0 +1,70 @@
+final class org.apache.log4j.spi.ThrowableInformationTest$OverriddenThrowable extends java.lang.Throwable
+{
+    private static final long serialVersionUID;
+
+    public void <init>()
+    {
+        org.apache.log4j.spi.ThrowableInformationTest$OverriddenThrowable r0;
+
+        r0 := @this: org.apache.log4j.spi.ThrowableInformationTest$OverriddenThrowable;
+
+        specialinvoke r0.<java.lang.Throwable: void <init>()>();
+
+        return;
+    }
+
+    public void printStackTrace(java.io.PrintWriter)
+    {
+        org.apache.log4j.spi.ThrowableInformationTest$OverriddenThrowable r0;
+        java.io.PrintWriter r1;
+        java.lang.String $r2, $r4, $r6, $r8;
+        char[] $r3, $r5, $r7, $r9;
+
+        r0 := @this: org.apache.log4j.spi.ThrowableInformationTest$OverriddenThrowable;
+
+        r1 := @parameter0: java.io.PrintWriter;
+
+        virtualinvoke r1.<java.io.PrintWriter: void print(java.lang.Object)>("print(Object)");
+
+        $r2 = "print(char[])";
+
+        $r3 = virtualinvoke $r2.<java.lang.String: char[] toCharArray()>();
+
+        virtualinvoke r1.<java.io.PrintWriter: void print(char[])>($r3);
+
+        virtualinvoke r1.<java.io.PrintWriter: void print(java.lang.String)>("print(String)");
+
+        virtualinvoke r1.<java.io.PrintWriter: void println(java.lang.Object)>("println(Object)");
+
+        $r4 = "println(char[])";
+
+        $r5 = virtualinvoke $r4.<java.lang.String: char[] toCharArray()>();
+
+        virtualinvoke r1.<java.io.PrintWriter: void println(char[])>($r5);
+
+        virtualinvoke r1.<java.io.PrintWriter: void println(java.lang.String)>("println(String)");
+
+        $r6 = "write(char[])";
+
+        $r7 = virtualinvoke $r6.<java.lang.String: char[] toCharArray()>();
+
+        virtualinvoke r1.<java.io.PrintWriter: void write(char[])>($r7);
+
+        $r8 = "write(char[], int, int)";
+
+        $r9 = virtualinvoke $r8.<java.lang.String: char[] toCharArray()>();
+
+        virtualinvoke r1.<java.io.PrintWriter: void write(char[],int,int)>($r9, 2, 8);
+
+        virtualinvoke r1.<java.io.PrintWriter: void write(java.lang.String,int,int)>("write(String, int, int)", 2, 8);
+
+        return;
+    }
+
+    public static void <clinit>()
+    {
+        <org.apache.log4j.spi.ThrowableInformationTest$OverriddenThrowable: long serialVersionUID> = 1L;
+
+        return;
+    }
+}

@@ -1,0 +1,923 @@
+public class org.apache.commons.io.FilenameUtilsWildcardTestCase extends java.lang.Object
+{
+    private static final boolean WINDOWS;
+
+    static void <clinit>()
+    {
+        char $c0;
+        boolean $z0;
+
+        $c0 = <java.io.File: char separatorChar>;
+
+        if $c0 != 92 goto label1;
+
+        $z0 = 1;
+
+        goto label2;
+
+     label1:
+        $z0 = 0;
+
+     label2:
+        <org.apache.commons.io.FilenameUtilsWildcardTestCase: boolean WINDOWS> = $z0;
+
+        return;
+    }
+
+    public void <init>()
+    {
+        org.apache.commons.io.FilenameUtilsWildcardTestCase r0;
+
+        r0 := @this: org.apache.commons.io.FilenameUtilsWildcardTestCase;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void testMatch()
+    {
+        org.apache.commons.io.FilenameUtilsWildcardTestCase r0;
+        boolean $z0, $z1, $z2, $z3, $z4, $z5, $z6, $z7, $z8, $z9, $z10, $z11, $z12, $z13, $z14, $z15, $z16, $z17, $z18, $z19, $z20, $z21;
+
+        r0 := @this: org.apache.commons.io.FilenameUtilsWildcardTestCase;
+
+        $z0 = staticinvoke <org.apache.commons.io.FilenameUtils: boolean wildcardMatch(java.lang.String,java.lang.String)>(null, "Foo");
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z0);
+
+        $z1 = staticinvoke <org.apache.commons.io.FilenameUtils: boolean wildcardMatch(java.lang.String,java.lang.String)>("Foo", null);
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z1);
+
+        $z2 = staticinvoke <org.apache.commons.io.FilenameUtils: boolean wildcardMatch(java.lang.String,java.lang.String)>(null, null);
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z2);
+
+        $z3 = staticinvoke <org.apache.commons.io.FilenameUtils: boolean wildcardMatch(java.lang.String,java.lang.String)>("Foo", "Foo");
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z3);
+
+        $z4 = staticinvoke <org.apache.commons.io.FilenameUtils: boolean wildcardMatch(java.lang.String,java.lang.String)>("", "");
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z4);
+
+        $z5 = staticinvoke <org.apache.commons.io.FilenameUtils: boolean wildcardMatch(java.lang.String,java.lang.String)>("", "*");
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z5);
+
+        $z6 = staticinvoke <org.apache.commons.io.FilenameUtils: boolean wildcardMatch(java.lang.String,java.lang.String)>("", "?");
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z6);
+
+        $z7 = staticinvoke <org.apache.commons.io.FilenameUtils: boolean wildcardMatch(java.lang.String,java.lang.String)>("Foo", "Fo*");
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z7);
+
+        $z8 = staticinvoke <org.apache.commons.io.FilenameUtils: boolean wildcardMatch(java.lang.String,java.lang.String)>("Foo", "Fo?");
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z8);
+
+        $z9 = staticinvoke <org.apache.commons.io.FilenameUtils: boolean wildcardMatch(java.lang.String,java.lang.String)>("Foo Bar and Catflap", "Fo*");
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z9);
+
+        $z10 = staticinvoke <org.apache.commons.io.FilenameUtils: boolean wildcardMatch(java.lang.String,java.lang.String)>("New Bookmarks", "N?w ?o?k??r?s");
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z10);
+
+        $z11 = staticinvoke <org.apache.commons.io.FilenameUtils: boolean wildcardMatch(java.lang.String,java.lang.String)>("Foo", "Bar");
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z11);
+
+        $z12 = staticinvoke <org.apache.commons.io.FilenameUtils: boolean wildcardMatch(java.lang.String,java.lang.String)>("Foo Bar Foo", "F*o Bar*");
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z12);
+
+        $z13 = staticinvoke <org.apache.commons.io.FilenameUtils: boolean wildcardMatch(java.lang.String,java.lang.String)>("Adobe Acrobat Installer", "Ad*er");
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z13);
+
+        $z14 = staticinvoke <org.apache.commons.io.FilenameUtils: boolean wildcardMatch(java.lang.String,java.lang.String)>("Foo", "*Foo");
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z14);
+
+        $z15 = staticinvoke <org.apache.commons.io.FilenameUtils: boolean wildcardMatch(java.lang.String,java.lang.String)>("BarFoo", "*Foo");
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z15);
+
+        $z16 = staticinvoke <org.apache.commons.io.FilenameUtils: boolean wildcardMatch(java.lang.String,java.lang.String)>("Foo", "Foo*");
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z16);
+
+        $z17 = staticinvoke <org.apache.commons.io.FilenameUtils: boolean wildcardMatch(java.lang.String,java.lang.String)>("FooBar", "Foo*");
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z17);
+
+        $z18 = staticinvoke <org.apache.commons.io.FilenameUtils: boolean wildcardMatch(java.lang.String,java.lang.String)>("FOO", "*Foo");
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z18);
+
+        $z19 = staticinvoke <org.apache.commons.io.FilenameUtils: boolean wildcardMatch(java.lang.String,java.lang.String)>("BARFOO", "*Foo");
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z19);
+
+        $z20 = staticinvoke <org.apache.commons.io.FilenameUtils: boolean wildcardMatch(java.lang.String,java.lang.String)>("FOO", "Foo*");
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z20);
+
+        $z21 = staticinvoke <org.apache.commons.io.FilenameUtils: boolean wildcardMatch(java.lang.String,java.lang.String)>("FOOBAR", "Foo*");
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z21);
+
+        return;
+    }
+
+    public void testMatchOnSystem()
+    {
+        org.apache.commons.io.FilenameUtilsWildcardTestCase r0;
+        boolean $z0, $z1, $z2, $z3, $z4, $z5, $z6, $z7, $z8, $z9, $z10, $z11, $z12, $z13, $z14, $z15, $z16, $z17, $z18, $z19, $z20, $z21, $z22, $z23;
+        java.lang.Boolean $r1, $r2, $r3, $r4, $r5, $r6, $r7, $r8;
+
+        r0 := @this: org.apache.commons.io.FilenameUtilsWildcardTestCase;
+
+        $z0 = staticinvoke <org.apache.commons.io.FilenameUtils: boolean wildcardMatchOnSystem(java.lang.String,java.lang.String)>(null, "Foo");
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z0);
+
+        $z1 = staticinvoke <org.apache.commons.io.FilenameUtils: boolean wildcardMatchOnSystem(java.lang.String,java.lang.String)>("Foo", null);
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z1);
+
+        $z2 = staticinvoke <org.apache.commons.io.FilenameUtils: boolean wildcardMatchOnSystem(java.lang.String,java.lang.String)>(null, null);
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z2);
+
+        $z3 = staticinvoke <org.apache.commons.io.FilenameUtils: boolean wildcardMatchOnSystem(java.lang.String,java.lang.String)>("Foo", "Foo");
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z3);
+
+        $z4 = staticinvoke <org.apache.commons.io.FilenameUtils: boolean wildcardMatchOnSystem(java.lang.String,java.lang.String)>("", "");
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z4);
+
+        $z5 = staticinvoke <org.apache.commons.io.FilenameUtils: boolean wildcardMatchOnSystem(java.lang.String,java.lang.String)>("Foo", "Fo*");
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z5);
+
+        $z6 = staticinvoke <org.apache.commons.io.FilenameUtils: boolean wildcardMatchOnSystem(java.lang.String,java.lang.String)>("Foo", "Fo?");
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z6);
+
+        $z7 = staticinvoke <org.apache.commons.io.FilenameUtils: boolean wildcardMatchOnSystem(java.lang.String,java.lang.String)>("Foo Bar and Catflap", "Fo*");
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z7);
+
+        $z8 = staticinvoke <org.apache.commons.io.FilenameUtils: boolean wildcardMatchOnSystem(java.lang.String,java.lang.String)>("New Bookmarks", "N?w ?o?k??r?s");
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z8);
+
+        $z9 = staticinvoke <org.apache.commons.io.FilenameUtils: boolean wildcardMatchOnSystem(java.lang.String,java.lang.String)>("Foo", "Bar");
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z9);
+
+        $z10 = staticinvoke <org.apache.commons.io.FilenameUtils: boolean wildcardMatchOnSystem(java.lang.String,java.lang.String)>("Foo Bar Foo", "F*o Bar*");
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z10);
+
+        $z11 = staticinvoke <org.apache.commons.io.FilenameUtils: boolean wildcardMatchOnSystem(java.lang.String,java.lang.String)>("Adobe Acrobat Installer", "Ad*er");
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z11);
+
+        $z12 = staticinvoke <org.apache.commons.io.FilenameUtils: boolean wildcardMatchOnSystem(java.lang.String,java.lang.String)>("Foo", "*Foo");
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z12);
+
+        $z13 = staticinvoke <org.apache.commons.io.FilenameUtils: boolean wildcardMatchOnSystem(java.lang.String,java.lang.String)>("BarFoo", "*Foo");
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z13);
+
+        $z14 = staticinvoke <org.apache.commons.io.FilenameUtils: boolean wildcardMatchOnSystem(java.lang.String,java.lang.String)>("Foo", "Foo*");
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z14);
+
+        $z15 = staticinvoke <org.apache.commons.io.FilenameUtils: boolean wildcardMatchOnSystem(java.lang.String,java.lang.String)>("FooBar", "Foo*");
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z15);
+
+        $z16 = <org.apache.commons.io.FilenameUtilsWildcardTestCase: boolean WINDOWS>;
+
+        $r1 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($z16);
+
+        $z17 = staticinvoke <org.apache.commons.io.FilenameUtils: boolean wildcardMatchOnSystem(java.lang.String,java.lang.String)>("FOO", "*Foo");
+
+        $r2 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($z17);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r1, $r2);
+
+        $z18 = <org.apache.commons.io.FilenameUtilsWildcardTestCase: boolean WINDOWS>;
+
+        $r3 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($z18);
+
+        $z19 = staticinvoke <org.apache.commons.io.FilenameUtils: boolean wildcardMatchOnSystem(java.lang.String,java.lang.String)>("BARFOO", "*Foo");
+
+        $r4 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($z19);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r3, $r4);
+
+        $z20 = <org.apache.commons.io.FilenameUtilsWildcardTestCase: boolean WINDOWS>;
+
+        $r5 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($z20);
+
+        $z21 = staticinvoke <org.apache.commons.io.FilenameUtils: boolean wildcardMatchOnSystem(java.lang.String,java.lang.String)>("FOO", "Foo*");
+
+        $r6 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($z21);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r5, $r6);
+
+        $z22 = <org.apache.commons.io.FilenameUtilsWildcardTestCase: boolean WINDOWS>;
+
+        $r7 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($z22);
+
+        $z23 = staticinvoke <org.apache.commons.io.FilenameUtils: boolean wildcardMatchOnSystem(java.lang.String,java.lang.String)>("FOOBAR", "Foo*");
+
+        $r8 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($z23);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r7, $r8);
+
+        return;
+    }
+
+    public void testMatchCaseSpecified()
+    {
+        org.apache.commons.io.FilenameUtilsWildcardTestCase r0;
+        org.apache.commons.io.IOCase $r1, $r2, $r3, $r4, $r5, $r6, $r7, $r8, $r9, $r10, $r11, $r12, $r13, $r14, $r15, $r16, $r17, $r18, $r19, $r20, $r21, $r22, $r23, $r24, $r25, $r26, $r28, $r31, $r34, $r37;
+        boolean $z0, $z1, $z2, $z3, $z4, $z5, $z6, $z7, $z8, $z9, $z10, $z11, $z12, $z13, $z14, $z15, $z16, $z17, $z18, $z19, $z20, $z21, $z22, $z23, $z24, $z25, $z26, $z27, $z28, $z29, $z30, $z31, $z32, $z33;
+        java.lang.Boolean $r27, $r29, $r30, $r32, $r33, $r35, $r36, $r38;
+
+        r0 := @this: org.apache.commons.io.FilenameUtilsWildcardTestCase;
+
+        $r1 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $z0 = staticinvoke <org.apache.commons.io.FilenameUtils: boolean wildcardMatch(java.lang.String,java.lang.String,org.apache.commons.io.IOCase)>(null, "Foo", $r1);
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z0);
+
+        $r2 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $z1 = staticinvoke <org.apache.commons.io.FilenameUtils: boolean wildcardMatch(java.lang.String,java.lang.String,org.apache.commons.io.IOCase)>("Foo", null, $r2);
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z1);
+
+        $r3 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $z2 = staticinvoke <org.apache.commons.io.FilenameUtils: boolean wildcardMatch(java.lang.String,java.lang.String,org.apache.commons.io.IOCase)>(null, null, $r3);
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z2);
+
+        $r4 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $z3 = staticinvoke <org.apache.commons.io.FilenameUtils: boolean wildcardMatch(java.lang.String,java.lang.String,org.apache.commons.io.IOCase)>("Foo", "Foo", $r4);
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z3);
+
+        $r5 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $z4 = staticinvoke <org.apache.commons.io.FilenameUtils: boolean wildcardMatch(java.lang.String,java.lang.String,org.apache.commons.io.IOCase)>("", "", $r5);
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z4);
+
+        $r6 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $z5 = staticinvoke <org.apache.commons.io.FilenameUtils: boolean wildcardMatch(java.lang.String,java.lang.String,org.apache.commons.io.IOCase)>("Foo", "Fo*", $r6);
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z5);
+
+        $r7 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $z6 = staticinvoke <org.apache.commons.io.FilenameUtils: boolean wildcardMatch(java.lang.String,java.lang.String,org.apache.commons.io.IOCase)>("Foo", "Fo?", $r7);
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z6);
+
+        $r8 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $z7 = staticinvoke <org.apache.commons.io.FilenameUtils: boolean wildcardMatch(java.lang.String,java.lang.String,org.apache.commons.io.IOCase)>("Foo Bar and Catflap", "Fo*", $r8);
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z7);
+
+        $r9 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $z8 = staticinvoke <org.apache.commons.io.FilenameUtils: boolean wildcardMatch(java.lang.String,java.lang.String,org.apache.commons.io.IOCase)>("New Bookmarks", "N?w ?o?k??r?s", $r9);
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z8);
+
+        $r10 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $z9 = staticinvoke <org.apache.commons.io.FilenameUtils: boolean wildcardMatch(java.lang.String,java.lang.String,org.apache.commons.io.IOCase)>("Foo", "Bar", $r10);
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z9);
+
+        $r11 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $z10 = staticinvoke <org.apache.commons.io.FilenameUtils: boolean wildcardMatch(java.lang.String,java.lang.String,org.apache.commons.io.IOCase)>("Foo Bar Foo", "F*o Bar*", $r11);
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z10);
+
+        $r12 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $z11 = staticinvoke <org.apache.commons.io.FilenameUtils: boolean wildcardMatch(java.lang.String,java.lang.String,org.apache.commons.io.IOCase)>("Adobe Acrobat Installer", "Ad*er", $r12);
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z11);
+
+        $r13 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $z12 = staticinvoke <org.apache.commons.io.FilenameUtils: boolean wildcardMatch(java.lang.String,java.lang.String,org.apache.commons.io.IOCase)>("Foo", "*Foo", $r13);
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z12);
+
+        $r14 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $z13 = staticinvoke <org.apache.commons.io.FilenameUtils: boolean wildcardMatch(java.lang.String,java.lang.String,org.apache.commons.io.IOCase)>("Foo", "Foo*", $r14);
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z13);
+
+        $r15 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $z14 = staticinvoke <org.apache.commons.io.FilenameUtils: boolean wildcardMatch(java.lang.String,java.lang.String,org.apache.commons.io.IOCase)>("Foo", "*Foo", $r15);
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z14);
+
+        $r16 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $z15 = staticinvoke <org.apache.commons.io.FilenameUtils: boolean wildcardMatch(java.lang.String,java.lang.String,org.apache.commons.io.IOCase)>("BarFoo", "*Foo", $r16);
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z15);
+
+        $r17 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $z16 = staticinvoke <org.apache.commons.io.FilenameUtils: boolean wildcardMatch(java.lang.String,java.lang.String,org.apache.commons.io.IOCase)>("Foo", "Foo*", $r17);
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z16);
+
+        $r18 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $z17 = staticinvoke <org.apache.commons.io.FilenameUtils: boolean wildcardMatch(java.lang.String,java.lang.String,org.apache.commons.io.IOCase)>("FooBar", "Foo*", $r18);
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z17);
+
+        $r19 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $z18 = staticinvoke <org.apache.commons.io.FilenameUtils: boolean wildcardMatch(java.lang.String,java.lang.String,org.apache.commons.io.IOCase)>("FOO", "*Foo", $r19);
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z18);
+
+        $r20 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $z19 = staticinvoke <org.apache.commons.io.FilenameUtils: boolean wildcardMatch(java.lang.String,java.lang.String,org.apache.commons.io.IOCase)>("BARFOO", "*Foo", $r20);
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z19);
+
+        $r21 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $z20 = staticinvoke <org.apache.commons.io.FilenameUtils: boolean wildcardMatch(java.lang.String,java.lang.String,org.apache.commons.io.IOCase)>("FOO", "Foo*", $r21);
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z20);
+
+        $r22 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $z21 = staticinvoke <org.apache.commons.io.FilenameUtils: boolean wildcardMatch(java.lang.String,java.lang.String,org.apache.commons.io.IOCase)>("FOOBAR", "Foo*", $r22);
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z21);
+
+        $r23 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase INSENSITIVE>;
+
+        $z22 = staticinvoke <org.apache.commons.io.FilenameUtils: boolean wildcardMatch(java.lang.String,java.lang.String,org.apache.commons.io.IOCase)>("FOO", "*Foo", $r23);
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z22);
+
+        $r24 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase INSENSITIVE>;
+
+        $z23 = staticinvoke <org.apache.commons.io.FilenameUtils: boolean wildcardMatch(java.lang.String,java.lang.String,org.apache.commons.io.IOCase)>("BARFOO", "*Foo", $r24);
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z23);
+
+        $r25 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase INSENSITIVE>;
+
+        $z24 = staticinvoke <org.apache.commons.io.FilenameUtils: boolean wildcardMatch(java.lang.String,java.lang.String,org.apache.commons.io.IOCase)>("FOO", "Foo*", $r25);
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z24);
+
+        $r26 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase INSENSITIVE>;
+
+        $z25 = staticinvoke <org.apache.commons.io.FilenameUtils: boolean wildcardMatch(java.lang.String,java.lang.String,org.apache.commons.io.IOCase)>("FOOBAR", "Foo*", $r26);
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z25);
+
+        $z26 = <org.apache.commons.io.FilenameUtilsWildcardTestCase: boolean WINDOWS>;
+
+        $r27 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($z26);
+
+        $r28 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SYSTEM>;
+
+        $z27 = staticinvoke <org.apache.commons.io.FilenameUtils: boolean wildcardMatch(java.lang.String,java.lang.String,org.apache.commons.io.IOCase)>("FOO", "*Foo", $r28);
+
+        $r29 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($z27);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r27, $r29);
+
+        $z28 = <org.apache.commons.io.FilenameUtilsWildcardTestCase: boolean WINDOWS>;
+
+        $r30 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($z28);
+
+        $r31 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SYSTEM>;
+
+        $z29 = staticinvoke <org.apache.commons.io.FilenameUtils: boolean wildcardMatch(java.lang.String,java.lang.String,org.apache.commons.io.IOCase)>("BARFOO", "*Foo", $r31);
+
+        $r32 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($z29);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r30, $r32);
+
+        $z30 = <org.apache.commons.io.FilenameUtilsWildcardTestCase: boolean WINDOWS>;
+
+        $r33 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($z30);
+
+        $r34 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SYSTEM>;
+
+        $z31 = staticinvoke <org.apache.commons.io.FilenameUtils: boolean wildcardMatch(java.lang.String,java.lang.String,org.apache.commons.io.IOCase)>("FOO", "Foo*", $r34);
+
+        $r35 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($z31);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r33, $r35);
+
+        $z32 = <org.apache.commons.io.FilenameUtilsWildcardTestCase: boolean WINDOWS>;
+
+        $r36 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($z32);
+
+        $r37 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SYSTEM>;
+
+        $z33 = staticinvoke <org.apache.commons.io.FilenameUtils: boolean wildcardMatch(java.lang.String,java.lang.String,org.apache.commons.io.IOCase)>("FOOBAR", "Foo*", $r37);
+
+        $r38 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($z33);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r36, $r38);
+
+        return;
+    }
+
+    public void testSplitOnTokens()
+    {
+        org.apache.commons.io.FilenameUtilsWildcardTestCase r0;
+        java.lang.String[] $r1, $r2, $r3, $r4, $r5, $r6, $r7, $r8, $r9, $r10, $r11, $r12, $r13, $r14, $r15, $r16, $r17, $r18, $r19, $r20;
+
+        r0 := @this: org.apache.commons.io.FilenameUtilsWildcardTestCase;
+
+        $r1 = newarray (java.lang.String)[3];
+
+        $r1[0] = "Ad";
+
+        $r1[1] = "*";
+
+        $r1[2] = "er";
+
+        $r2 = staticinvoke <org.apache.commons.io.FilenameUtils: java.lang.String[] splitOnTokens(java.lang.String)>("Ad*er");
+
+        staticinvoke <org.junit.Assert: void assertArrayEquals(java.lang.Object[],java.lang.Object[])>($r1, $r2);
+
+        $r3 = newarray (java.lang.String)[3];
+
+        $r3[0] = "Ad";
+
+        $r3[1] = "?";
+
+        $r3[2] = "er";
+
+        $r4 = staticinvoke <org.apache.commons.io.FilenameUtils: java.lang.String[] splitOnTokens(java.lang.String)>("Ad?er");
+
+        staticinvoke <org.junit.Assert: void assertArrayEquals(java.lang.Object[],java.lang.Object[])>($r3, $r4);
+
+        $r5 = newarray (java.lang.String)[4];
+
+        $r5[0] = "Test";
+
+        $r5[1] = "*";
+
+        $r5[2] = "?";
+
+        $r5[3] = "One";
+
+        $r6 = staticinvoke <org.apache.commons.io.FilenameUtils: java.lang.String[] splitOnTokens(java.lang.String)>("Test*?One");
+
+        staticinvoke <org.junit.Assert: void assertArrayEquals(java.lang.Object[],java.lang.Object[])>($r5, $r6);
+
+        $r7 = newarray (java.lang.String)[4];
+
+        $r7[0] = "Test";
+
+        $r7[1] = "?";
+
+        $r7[2] = "*";
+
+        $r7[3] = "One";
+
+        $r8 = staticinvoke <org.apache.commons.io.FilenameUtils: java.lang.String[] splitOnTokens(java.lang.String)>("Test?*One");
+
+        staticinvoke <org.junit.Assert: void assertArrayEquals(java.lang.Object[],java.lang.Object[])>($r7, $r8);
+
+        $r9 = newarray (java.lang.String)[1];
+
+        $r9[0] = "*";
+
+        $r10 = staticinvoke <org.apache.commons.io.FilenameUtils: java.lang.String[] splitOnTokens(java.lang.String)>("****");
+
+        staticinvoke <org.junit.Assert: void assertArrayEquals(java.lang.Object[],java.lang.Object[])>($r9, $r10);
+
+        $r11 = newarray (java.lang.String)[4];
+
+        $r11[0] = "*";
+
+        $r11[1] = "?";
+
+        $r11[2] = "?";
+
+        $r11[3] = "*";
+
+        $r12 = staticinvoke <org.apache.commons.io.FilenameUtils: java.lang.String[] splitOnTokens(java.lang.String)>("*??*");
+
+        staticinvoke <org.junit.Assert: void assertArrayEquals(java.lang.Object[],java.lang.Object[])>($r11, $r12);
+
+        $r13 = newarray (java.lang.String)[5];
+
+        $r13[0] = "*";
+
+        $r13[1] = "?";
+
+        $r13[2] = "*";
+
+        $r13[3] = "?";
+
+        $r13[4] = "*";
+
+        $r14 = staticinvoke <org.apache.commons.io.FilenameUtils: java.lang.String[] splitOnTokens(java.lang.String)>("*?**?*");
+
+        staticinvoke <org.junit.Assert: void assertArrayEquals(java.lang.Object[],java.lang.Object[])>($r13, $r14);
+
+        $r15 = newarray (java.lang.String)[5];
+
+        $r15[0] = "*";
+
+        $r15[1] = "?";
+
+        $r15[2] = "*";
+
+        $r15[3] = "?";
+
+        $r15[4] = "*";
+
+        $r16 = staticinvoke <org.apache.commons.io.FilenameUtils: java.lang.String[] splitOnTokens(java.lang.String)>("*?***?*");
+
+        staticinvoke <org.junit.Assert: void assertArrayEquals(java.lang.Object[],java.lang.Object[])>($r15, $r16);
+
+        $r17 = newarray (java.lang.String)[4];
+
+        $r17[0] = "h";
+
+        $r17[1] = "?";
+
+        $r17[2] = "?";
+
+        $r17[3] = "*";
+
+        $r18 = staticinvoke <org.apache.commons.io.FilenameUtils: java.lang.String[] splitOnTokens(java.lang.String)>("h??*");
+
+        staticinvoke <org.junit.Assert: void assertArrayEquals(java.lang.Object[],java.lang.Object[])>($r17, $r18);
+
+        $r19 = newarray (java.lang.String)[1];
+
+        $r19[0] = "";
+
+        $r20 = staticinvoke <org.apache.commons.io.FilenameUtils: java.lang.String[] splitOnTokens(java.lang.String)>("");
+
+        staticinvoke <org.junit.Assert: void assertArrayEquals(java.lang.Object[],java.lang.Object[])>($r19, $r20);
+
+        return;
+    }
+
+    private void assertMatch(java.lang.String, java.lang.String, boolean)
+    {
+        org.apache.commons.io.FilenameUtilsWildcardTestCase r0;
+        java.lang.String r1, r2, $r4, $r7;
+        boolean z0, $z1;
+        java.lang.StringBuilder $r3, $r5, $r6;
+        java.lang.Boolean $r8, $r9;
+
+        r0 := @this: org.apache.commons.io.FilenameUtilsWildcardTestCase;
+
+        r1 := @parameter0: java.lang.String;
+
+        r2 := @parameter1: java.lang.String;
+
+        z0 := @parameter2: boolean;
+
+        $r3 = new java.lang.StringBuilder;
+
+        $r4 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>(r1);
+
+        specialinvoke $r3.<java.lang.StringBuilder: void <init>(java.lang.String)>($r4);
+
+        $r5 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" ");
+
+        $r6 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r2);
+
+        $r7 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r8 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>(z0);
+
+        $z1 = staticinvoke <org.apache.commons.io.FilenameUtils: boolean wildcardMatch(java.lang.String,java.lang.String)>(r1, r2);
+
+        $r9 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($z1);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,java.lang.Object,java.lang.Object)>($r7, $r8, $r9);
+
+        return;
+    }
+
+    public void testMatch2()
+    {
+        org.apache.commons.io.FilenameUtilsWildcardTestCase r0;
+
+        r0 := @this: org.apache.commons.io.FilenameUtilsWildcardTestCase;
+
+        specialinvoke r0.<org.apache.commons.io.FilenameUtilsWildcardTestCase: void assertMatch(java.lang.String,java.lang.String,boolean)>("log.txt", "log.txt", 1);
+
+        specialinvoke r0.<org.apache.commons.io.FilenameUtilsWildcardTestCase: void assertMatch(java.lang.String,java.lang.String,boolean)>("log.txt1", "log.txt", 0);
+
+        specialinvoke r0.<org.apache.commons.io.FilenameUtilsWildcardTestCase: void assertMatch(java.lang.String,java.lang.String,boolean)>("log.txt", "log.txt*", 1);
+
+        specialinvoke r0.<org.apache.commons.io.FilenameUtilsWildcardTestCase: void assertMatch(java.lang.String,java.lang.String,boolean)>("log.txt", "log.txt*1", 0);
+
+        specialinvoke r0.<org.apache.commons.io.FilenameUtilsWildcardTestCase: void assertMatch(java.lang.String,java.lang.String,boolean)>("log.txt", "*log.txt*", 1);
+
+        specialinvoke r0.<org.apache.commons.io.FilenameUtilsWildcardTestCase: void assertMatch(java.lang.String,java.lang.String,boolean)>("log.txt", "*.txt", 1);
+
+        specialinvoke r0.<org.apache.commons.io.FilenameUtilsWildcardTestCase: void assertMatch(java.lang.String,java.lang.String,boolean)>("txt.log", "*.txt", 0);
+
+        specialinvoke r0.<org.apache.commons.io.FilenameUtilsWildcardTestCase: void assertMatch(java.lang.String,java.lang.String,boolean)>("config.ini", "*.ini", 1);
+
+        specialinvoke r0.<org.apache.commons.io.FilenameUtilsWildcardTestCase: void assertMatch(java.lang.String,java.lang.String,boolean)>("config.txt.bak", "con*.txt", 0);
+
+        specialinvoke r0.<org.apache.commons.io.FilenameUtilsWildcardTestCase: void assertMatch(java.lang.String,java.lang.String,boolean)>("log.txt9", "*.txt?", 1);
+
+        specialinvoke r0.<org.apache.commons.io.FilenameUtilsWildcardTestCase: void assertMatch(java.lang.String,java.lang.String,boolean)>("log.txt", "*.txt?", 0);
+
+        specialinvoke r0.<org.apache.commons.io.FilenameUtilsWildcardTestCase: void assertMatch(java.lang.String,java.lang.String,boolean)>("progtestcase.java~5~", "*test*.java~*~", 1);
+
+        specialinvoke r0.<org.apache.commons.io.FilenameUtilsWildcardTestCase: void assertMatch(java.lang.String,java.lang.String,boolean)>("progtestcase.java;5~", "*test*.java~*~", 0);
+
+        specialinvoke r0.<org.apache.commons.io.FilenameUtilsWildcardTestCase: void assertMatch(java.lang.String,java.lang.String,boolean)>("progtestcase.java~5", "*test*.java~*~", 0);
+
+        specialinvoke r0.<org.apache.commons.io.FilenameUtilsWildcardTestCase: void assertMatch(java.lang.String,java.lang.String,boolean)>("log.txt", "log.*", 1);
+
+        specialinvoke r0.<org.apache.commons.io.FilenameUtilsWildcardTestCase: void assertMatch(java.lang.String,java.lang.String,boolean)>("log.txt", "log?*", 1);
+
+        specialinvoke r0.<org.apache.commons.io.FilenameUtilsWildcardTestCase: void assertMatch(java.lang.String,java.lang.String,boolean)>("log.txt12", "log.txt??", 1);
+
+        specialinvoke r0.<org.apache.commons.io.FilenameUtilsWildcardTestCase: void assertMatch(java.lang.String,java.lang.String,boolean)>("log.log", "log**log", 1);
+
+        specialinvoke r0.<org.apache.commons.io.FilenameUtilsWildcardTestCase: void assertMatch(java.lang.String,java.lang.String,boolean)>("log.log", "log**", 1);
+
+        specialinvoke r0.<org.apache.commons.io.FilenameUtilsWildcardTestCase: void assertMatch(java.lang.String,java.lang.String,boolean)>("log.log", "log.**", 1);
+
+        specialinvoke r0.<org.apache.commons.io.FilenameUtilsWildcardTestCase: void assertMatch(java.lang.String,java.lang.String,boolean)>("log.log", "**.log", 1);
+
+        specialinvoke r0.<org.apache.commons.io.FilenameUtilsWildcardTestCase: void assertMatch(java.lang.String,java.lang.String,boolean)>("log.log", "**log", 1);
+
+        specialinvoke r0.<org.apache.commons.io.FilenameUtilsWildcardTestCase: void assertMatch(java.lang.String,java.lang.String,boolean)>("log.log", "log*log", 1);
+
+        specialinvoke r0.<org.apache.commons.io.FilenameUtilsWildcardTestCase: void assertMatch(java.lang.String,java.lang.String,boolean)>("log.log", "log*", 1);
+
+        specialinvoke r0.<org.apache.commons.io.FilenameUtilsWildcardTestCase: void assertMatch(java.lang.String,java.lang.String,boolean)>("log.log", "log.*", 1);
+
+        specialinvoke r0.<org.apache.commons.io.FilenameUtilsWildcardTestCase: void assertMatch(java.lang.String,java.lang.String,boolean)>("log.log", "*.log", 1);
+
+        specialinvoke r0.<org.apache.commons.io.FilenameUtilsWildcardTestCase: void assertMatch(java.lang.String,java.lang.String,boolean)>("log.log", "*log", 1);
+
+        specialinvoke r0.<org.apache.commons.io.FilenameUtilsWildcardTestCase: void assertMatch(java.lang.String,java.lang.String,boolean)>("log.log", "*log?", 0);
+
+        specialinvoke r0.<org.apache.commons.io.FilenameUtilsWildcardTestCase: void assertMatch(java.lang.String,java.lang.String,boolean)>("log.log", "*log?*", 1);
+
+        specialinvoke r0.<org.apache.commons.io.FilenameUtilsWildcardTestCase: void assertMatch(java.lang.String,java.lang.String,boolean)>("log.log.abc", "*log?abc", 1);
+
+        specialinvoke r0.<org.apache.commons.io.FilenameUtilsWildcardTestCase: void assertMatch(java.lang.String,java.lang.String,boolean)>("log.log.abc.log.abc", "*log?abc", 1);
+
+        specialinvoke r0.<org.apache.commons.io.FilenameUtilsWildcardTestCase: void assertMatch(java.lang.String,java.lang.String,boolean)>("log.log.abc.log.abc.d", "*log?abc?d", 1);
+
+        return;
+    }
+
+    public void test_IO_246()
+    {
+        org.apache.commons.io.FilenameUtilsWildcardTestCase r0;
+
+        r0 := @this: org.apache.commons.io.FilenameUtilsWildcardTestCase;
+
+        specialinvoke r0.<org.apache.commons.io.FilenameUtilsWildcardTestCase: void assertMatch(java.lang.String,java.lang.String,boolean)>("aaa", "aa*?", 1);
+
+        specialinvoke r0.<org.apache.commons.io.FilenameUtilsWildcardTestCase: void assertMatch(java.lang.String,java.lang.String,boolean)>("", "?*", 0);
+
+        specialinvoke r0.<org.apache.commons.io.FilenameUtilsWildcardTestCase: void assertMatch(java.lang.String,java.lang.String,boolean)>("a", "a?*", 0);
+
+        specialinvoke r0.<org.apache.commons.io.FilenameUtilsWildcardTestCase: void assertMatch(java.lang.String,java.lang.String,boolean)>("aa", "aa?*", 0);
+
+        specialinvoke r0.<org.apache.commons.io.FilenameUtilsWildcardTestCase: void assertMatch(java.lang.String,java.lang.String,boolean)>("a", "?*", 1);
+
+        specialinvoke r0.<org.apache.commons.io.FilenameUtilsWildcardTestCase: void assertMatch(java.lang.String,java.lang.String,boolean)>("aa", "?*", 1);
+
+        specialinvoke r0.<org.apache.commons.io.FilenameUtilsWildcardTestCase: void assertMatch(java.lang.String,java.lang.String,boolean)>("aaa", "?*", 1);
+
+        specialinvoke r0.<org.apache.commons.io.FilenameUtilsWildcardTestCase: void assertMatch(java.lang.String,java.lang.String,boolean)>("", "?", 0);
+
+        specialinvoke r0.<org.apache.commons.io.FilenameUtilsWildcardTestCase: void assertMatch(java.lang.String,java.lang.String,boolean)>("a", "a?", 0);
+
+        specialinvoke r0.<org.apache.commons.io.FilenameUtilsWildcardTestCase: void assertMatch(java.lang.String,java.lang.String,boolean)>("aa", "aa?", 0);
+
+        specialinvoke r0.<org.apache.commons.io.FilenameUtilsWildcardTestCase: void assertMatch(java.lang.String,java.lang.String,boolean)>("aab", "aa?", 1);
+
+        specialinvoke r0.<org.apache.commons.io.FilenameUtilsWildcardTestCase: void assertMatch(java.lang.String,java.lang.String,boolean)>("aaa", "*a", 1);
+
+        return;
+    }
+
+    public void testLocaleIndependence()
+    {
+        org.apache.commons.io.FilenameUtilsWildcardTestCase r0;
+        java.util.Locale r1, r4, $r28;
+        java.util.Locale[] r2;
+        int i0, $i1, i2, i3;
+        boolean z0, $z1;
+        java.lang.String[][] $r7;
+        java.lang.String[] $r8, $r9, $r10, $r11, $r12, $r13, $r14, $r18, $r19, $r22, $r23;
+        java.lang.StringBuilder $r15, $r16, $r27, $r31, $r32;
+        java.lang.String $r17, $r20, $r21, $r25, $r26, $r29, $r30, $r33;
+        org.apache.commons.io.IOCase $r24;
+        java.lang.Throwable $r34;
+
+        r0 := @this: org.apache.commons.io.FilenameUtilsWildcardTestCase;
+
+        r1 = staticinvoke <java.util.Locale: java.util.Locale getDefault()>();
+
+        r2 = staticinvoke <java.util.Locale: java.util.Locale[] getAvailableLocales()>();
+
+        $r7 = newarray (java.lang.String[])[7];
+
+        $r8 = newarray (java.lang.String)[2];
+
+        $r8[0] = "I";
+
+        $r8[1] = "i";
+
+        $r7[0] = $r8;
+
+        $r9 = newarray (java.lang.String)[2];
+
+        $r9[0] = "i";
+
+        $r9[1] = "I";
+
+        $r7[1] = $r9;
+
+        $r10 = newarray (java.lang.String)[2];
+
+        $r10[0] = "i";
+
+        $r10[1] = "\u0130";
+
+        $r7[2] = $r10;
+
+        $r11 = newarray (java.lang.String)[2];
+
+        $r11[0] = "i";
+
+        $r11[1] = "\u0131";
+
+        $r7[3] = $r11;
+
+        $r12 = newarray (java.lang.String)[2];
+
+        $r12[0] = "\u03a3";
+
+        $r12[1] = "\u03c2";
+
+        $r7[4] = $r12;
+
+        $r13 = newarray (java.lang.String)[2];
+
+        $r13[0] = "\u03a3";
+
+        $r13[1] = "\u03c3";
+
+        $r7[5] = $r13;
+
+        $r14 = newarray (java.lang.String)[2];
+
+        $r14[0] = "\u03c2";
+
+        $r14[1] = "\u03c3";
+
+        $r7[6] = $r14;
+
+     label1:
+        i2 = 0;
+
+        goto label5;
+
+     label2:
+        i0 = lengthof r2;
+
+        i3 = 0;
+
+        goto label4;
+
+     label3:
+        r4 = r2[i3];
+
+        staticinvoke <java.util.Locale: void setDefault(java.util.Locale)>(r4);
+
+        $r15 = new java.lang.StringBuilder;
+
+        specialinvoke $r15.<java.lang.StringBuilder: void <init>(java.lang.String)>("Test data corrupt: ");
+
+        $r16 = virtualinvoke $r15.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i2);
+
+        $r17 = virtualinvoke $r16.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r18 = $r7[i2];
+
+        $r21 = $r18[0];
+
+        $r19 = $r7[i2];
+
+        $r20 = $r19[1];
+
+        $z1 = virtualinvoke $r21.<java.lang.String: boolean equalsIgnoreCase(java.lang.String)>($r20);
+
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>($r17, $z1);
+
+        $r22 = $r7[i2];
+
+        $r26 = $r22[0];
+
+        $r23 = $r7[i2];
+
+        $r25 = $r23[1];
+
+        $r24 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase INSENSITIVE>;
+
+        z0 = staticinvoke <org.apache.commons.io.FilenameUtils: boolean wildcardMatch(java.lang.String,java.lang.String,org.apache.commons.io.IOCase)>($r26, $r25, $r24);
+
+        $r27 = new java.lang.StringBuilder;
+
+        $r28 = staticinvoke <java.util.Locale: java.util.Locale getDefault()>();
+
+        $r29 = virtualinvoke $r28.<java.util.Locale: java.lang.String toString()>();
+
+        $r30 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r29);
+
+        specialinvoke $r27.<java.lang.StringBuilder: void <init>(java.lang.String)>($r30);
+
+        $r31 = virtualinvoke $r27.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(": ");
+
+        $r32 = virtualinvoke $r31.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i2);
+
+        $r33 = virtualinvoke $r32.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>($r33, z0);
+
+        i3 = i3 + 1;
+
+     label4:
+        if i3 < i0 goto label3;
+
+        i2 = i2 + 1;
+
+     label5:
+        $i1 = lengthof $r7;
+
+        if i2 < $i1 goto label2;
+
+        goto label7;
+
+     label6:
+        $r34 := @caughtexception;
+
+        staticinvoke <java.util.Locale: void setDefault(java.util.Locale)>(r1);
+
+        throw $r34;
+
+     label7:
+        staticinvoke <java.util.Locale: void setDefault(java.util.Locale)>(r1);
+
+        return;
+
+        catch java.lang.Throwable from label1 to label6 with label6;
+    }
+}

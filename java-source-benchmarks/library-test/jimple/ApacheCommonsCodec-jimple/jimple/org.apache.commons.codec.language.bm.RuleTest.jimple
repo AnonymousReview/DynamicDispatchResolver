@@ -1,0 +1,690 @@
+public class org.apache.commons.codec.language.bm.RuleTest extends java.lang.Object
+{
+
+    public void <init>()
+    {
+        org.apache.commons.codec.language.bm.RuleTest r0;
+
+        r0 := @this: org.apache.commons.codec.language.bm.RuleTest;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    private org.apache.commons.codec.language.bm.Rule$Phoneme[][] makePhonemes()
+    {
+        org.apache.commons.codec.language.bm.RuleTest r0;
+        org.apache.commons.codec.language.bm.Rule$Phoneme[][] r2;
+        java.lang.String[] r3, $r6, $r7;
+        java.lang.String[][] $r5;
+        int $i0, $i1, $i2, $i3, i4, i5;
+        org.apache.commons.codec.language.bm.Rule$Phoneme[] $r8;
+        org.apache.commons.codec.language.bm.Rule$Phoneme $r9;
+        org.apache.commons.codec.language.bm.Languages$LanguageSet $r10;
+        java.lang.String $r11;
+
+        r0 := @this: org.apache.commons.codec.language.bm.RuleTest;
+
+        $r5 = newarray (java.lang.String[])[2];
+
+        $r6 = newarray (java.lang.String)[8];
+
+        $r6[0] = "rinD";
+
+        $r6[1] = "rinDlt";
+
+        $r6[2] = "rina";
+
+        $r6[3] = "rinalt";
+
+        $r6[4] = "rino";
+
+        $r6[5] = "rinolt";
+
+        $r6[6] = "rinu";
+
+        $r6[7] = "rinult";
+
+        $r5[0] = $r6;
+
+        $r7 = newarray (java.lang.String)[5];
+
+        $r7[0] = "dortlaj";
+
+        $r7[1] = "dortlej";
+
+        $r7[2] = "ortlaj";
+
+        $r7[3] = "ortlej";
+
+        $r7[4] = "ortlej-dortlaj";
+
+        $r5[1] = $r7;
+
+        $i0 = lengthof $r5;
+
+        r2 = newarray (org.apache.commons.codec.language.bm.Rule$Phoneme[])[$i0];
+
+        i4 = 0;
+
+        goto label4;
+
+     label1:
+        r3 = $r5[i4];
+
+        $i2 = lengthof r3;
+
+        $r8 = newarray (org.apache.commons.codec.language.bm.Rule$Phoneme)[$i2];
+
+        r2[i4] = $r8;
+
+        i5 = 0;
+
+        goto label3;
+
+     label2:
+        $r9 = new org.apache.commons.codec.language.bm.Rule$Phoneme;
+
+        $r11 = r3[i5];
+
+        $r10 = <org.apache.commons.codec.language.bm.Languages: org.apache.commons.codec.language.bm.Languages$LanguageSet NO_LANGUAGES>;
+
+        specialinvoke $r9.<org.apache.commons.codec.language.bm.Rule$Phoneme: void <init>(java.lang.CharSequence,org.apache.commons.codec.language.bm.Languages$LanguageSet)>($r11, $r10);
+
+        $r8[i5] = $r9;
+
+        i5 = i5 + 1;
+
+     label3:
+        $i3 = lengthof r3;
+
+        if i5 < $i3 goto label2;
+
+        i4 = i4 + 1;
+
+     label4:
+        $i1 = lengthof $r5;
+
+        if i4 < $i1 goto label1;
+
+        return r2;
+    }
+
+    public void testPhonemeComparedToLaterIsNegative()
+    {
+        org.apache.commons.codec.language.bm.RuleTest r0;
+        org.apache.commons.codec.language.bm.Rule$Phoneme[] r1;
+        int i0, i1, $i2, $i3, i4, i5, i6;
+        org.apache.commons.codec.language.bm.Rule$Phoneme[][] $r3;
+        org.apache.commons.codec.language.bm.Rule$Phoneme $r4, $r5, $r8, $r12;
+        java.util.Comparator $r6;
+        java.lang.StringBuilder $r7, $r10, $r11, $r14, $r15;
+        java.lang.CharSequence $r9, $r13;
+        java.lang.String $r16;
+        java.lang.Integer $r17;
+        org.apache.commons.codec.language.bm.RuleTest$NegativeIntegerBaseMatcher $r18;
+
+        r0 := @this: org.apache.commons.codec.language.bm.RuleTest;
+
+        $r3 = specialinvoke r0.<org.apache.commons.codec.language.bm.RuleTest: org.apache.commons.codec.language.bm.Rule$Phoneme[][] makePhonemes()>();
+
+        i0 = lengthof $r3;
+
+        i4 = 0;
+
+        goto label6;
+
+     label1:
+        r1 = $r3[i4];
+
+        i5 = 0;
+
+        goto label5;
+
+     label2:
+        i6 = i5 + 1;
+
+        goto label4;
+
+     label3:
+        $r6 = <org.apache.commons.codec.language.bm.Rule$Phoneme: java.util.Comparator COMPARATOR>;
+
+        $r5 = r1[i5];
+
+        $r4 = r1[i6];
+
+        i1 = interfaceinvoke $r6.<java.util.Comparator: int compare(java.lang.Object,java.lang.Object)>($r5, $r4);
+
+        $r7 = new java.lang.StringBuilder;
+
+        specialinvoke $r7.<java.lang.StringBuilder: void <init>(java.lang.String)>("Comparing ");
+
+        $r8 = r1[i5];
+
+        $r9 = virtualinvoke $r8.<org.apache.commons.codec.language.bm.Rule$Phoneme: java.lang.CharSequence getPhonemeText()>();
+
+        $r10 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r9);
+
+        $r11 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" to ");
+
+        $r12 = r1[i6];
+
+        $r13 = virtualinvoke $r12.<org.apache.commons.codec.language.bm.Rule$Phoneme: java.lang.CharSequence getPhonemeText()>();
+
+        $r14 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r13);
+
+        $r15 = virtualinvoke $r14.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" should be negative");
+
+        $r16 = virtualinvoke $r15.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r17 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(i1);
+
+        $r18 = new org.apache.commons.codec.language.bm.RuleTest$NegativeIntegerBaseMatcher;
+
+        specialinvoke $r18.<org.apache.commons.codec.language.bm.RuleTest$NegativeIntegerBaseMatcher: void <init>(org.apache.commons.codec.language.bm.RuleTest$NegativeIntegerBaseMatcher)>(null);
+
+        staticinvoke <org.junit.Assert: void assertThat(java.lang.String,java.lang.Object,org.hamcrest.Matcher)>($r16, $r17, $r18);
+
+        i6 = i6 + 1;
+
+     label4:
+        $i3 = lengthof r1;
+
+        if i6 < $i3 goto label3;
+
+        i5 = i5 + 1;
+
+     label5:
+        $i2 = lengthof r1;
+
+        if i5 < $i2 goto label2;
+
+        i4 = i4 + 1;
+
+     label6:
+        if i4 < i0 goto label1;
+
+        return;
+    }
+
+    public void testPhonemeComparedToSelfIsZero()
+    {
+        org.apache.commons.codec.language.bm.RuleTest r0;
+        org.apache.commons.codec.language.bm.Rule$Phoneme[] r1;
+        int i0, i1, $i2, i4, i5;
+        org.apache.commons.codec.language.bm.Rule$Phoneme r3;
+        org.apache.commons.codec.language.bm.Rule$Phoneme[][] $r5;
+        java.lang.StringBuilder $r6, $r8;
+        java.lang.CharSequence $r7;
+        java.lang.String $r9;
+        java.util.Comparator $r10;
+        long $l3;
+
+        r0 := @this: org.apache.commons.codec.language.bm.RuleTest;
+
+        $r5 = specialinvoke r0.<org.apache.commons.codec.language.bm.RuleTest: org.apache.commons.codec.language.bm.Rule$Phoneme[][] makePhonemes()>();
+
+        i0 = lengthof $r5;
+
+        i4 = 0;
+
+        goto label4;
+
+     label1:
+        r1 = $r5[i4];
+
+        i1 = lengthof r1;
+
+        i5 = 0;
+
+        goto label3;
+
+     label2:
+        r3 = r1[i5];
+
+        $r6 = new java.lang.StringBuilder;
+
+        specialinvoke $r6.<java.lang.StringBuilder: void <init>(java.lang.String)>("Phoneme compared to itself should be zero: ");
+
+        $r7 = virtualinvoke r3.<org.apache.commons.codec.language.bm.Rule$Phoneme: java.lang.CharSequence getPhonemeText()>();
+
+        $r8 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r7);
+
+        $r9 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r10 = <org.apache.commons.codec.language.bm.Rule$Phoneme: java.util.Comparator COMPARATOR>;
+
+        $i2 = interfaceinvoke $r10.<java.util.Comparator: int compare(java.lang.Object,java.lang.Object)>(r3, r3);
+
+        $l3 = (long) $i2;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>($r9, 0L, $l3);
+
+        i5 = i5 + 1;
+
+     label3:
+        if i5 < i1 goto label2;
+
+        i4 = i4 + 1;
+
+     label4:
+        if i4 < i0 goto label1;
+
+        return;
+    }
+
+    public void testSubSequenceWorks()
+    {
+        org.apache.commons.codec.language.bm.RuleTest r0;
+        org.apache.commons.codec.language.bm.Rule$Phoneme $r10, $r11, $r12, $r13, $r14, $r15, $r28, $r40, $r75, $r76;
+        java.lang.CharSequence $r16, $r17, $r18, $r19, $r20, $r21, $r22, $r23, $r24, $r25, $r26, $r27, $r29, $r30, $r31, $r32, $r34, $r35, $r37, $r38, $r41, $r42, $r43, $r44, $r45, $r46, $r48, $r49, $r51, $r52, $r54, $r55, $r57, $r58, $r60, $r61, $r63, $r64, $r66, $r67, $r69, $r70, $r72, $r73, $r77, $r78, $r79, $r80, $r81, $r82, $r84, $r85, $r87, $r88, $r90, $r91, $r93, $r94, $r96, $r97, $r99, $r100, $r102, $r103, $r105, $r106, $r108, $r109;
+        char $c0, $c2, $c4, $c6, $c8, $c10, $c12, $c14, $c16, $c18, $c20, $c22, $c24, $c26, $c28, $c30, $c32, $c34, $c36, $c38, $c40, $c42;
+        long $l1, $l3, $l5, $l7, $l9, $l11, $l13, $l15, $l17, $l19, $l21, $l23, $l25, $l27, $l29, $l31, $l33, $l35, $l37, $l39, $l41, $l43;
+        java.lang.String $r33, $r36, $r39, $r47, $r50, $r53, $r56, $r59, $r62, $r65, $r68, $r71, $r74, $r83, $r86, $r89, $r92, $r95, $r98, $r101, $r104, $r107, $r110;
+
+        r0 := @this: org.apache.commons.codec.language.bm.RuleTest;
+
+        $r10 = new org.apache.commons.codec.language.bm.Rule$Phoneme;
+
+        specialinvoke $r10.<org.apache.commons.codec.language.bm.Rule$Phoneme: void <init>(java.lang.CharSequence,org.apache.commons.codec.language.bm.Languages$LanguageSet)>("a", null);
+
+        $r11 = new org.apache.commons.codec.language.bm.Rule$Phoneme;
+
+        specialinvoke $r11.<org.apache.commons.codec.language.bm.Rule$Phoneme: void <init>(java.lang.CharSequence,org.apache.commons.codec.language.bm.Languages$LanguageSet)>("b", null);
+
+        $r12 = new org.apache.commons.codec.language.bm.Rule$Phoneme;
+
+        specialinvoke $r12.<org.apache.commons.codec.language.bm.Rule$Phoneme: void <init>(java.lang.CharSequence,org.apache.commons.codec.language.bm.Languages$LanguageSet)>("cd", null);
+
+        $r13 = new org.apache.commons.codec.language.bm.Rule$Phoneme;
+
+        specialinvoke $r13.<org.apache.commons.codec.language.bm.Rule$Phoneme: void <init>(java.lang.CharSequence,org.apache.commons.codec.language.bm.Languages$LanguageSet)>("ef", null);
+
+        $r14 = new org.apache.commons.codec.language.bm.Rule$Phoneme;
+
+        specialinvoke $r14.<org.apache.commons.codec.language.bm.Rule$Phoneme: void <init>(java.lang.CharSequence,org.apache.commons.codec.language.bm.Languages$LanguageSet)>("ghi", null);
+
+        $r15 = new org.apache.commons.codec.language.bm.Rule$Phoneme;
+
+        specialinvoke $r15.<org.apache.commons.codec.language.bm.Rule$Phoneme: void <init>(java.lang.CharSequence,org.apache.commons.codec.language.bm.Languages$LanguageSet)>("jkl", null);
+
+        $r16 = virtualinvoke $r10.<org.apache.commons.codec.language.bm.Rule$Phoneme: java.lang.CharSequence getPhonemeText()>();
+
+        $c0 = interfaceinvoke $r16.<java.lang.CharSequence: char charAt(int)>(0);
+
+        $l1 = (long) $c0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(97L, $l1);
+
+        $r17 = virtualinvoke $r11.<org.apache.commons.codec.language.bm.Rule$Phoneme: java.lang.CharSequence getPhonemeText()>();
+
+        $c2 = interfaceinvoke $r17.<java.lang.CharSequence: char charAt(int)>(0);
+
+        $l3 = (long) $c2;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(98L, $l3);
+
+        $r18 = virtualinvoke $r12.<org.apache.commons.codec.language.bm.Rule$Phoneme: java.lang.CharSequence getPhonemeText()>();
+
+        $c4 = interfaceinvoke $r18.<java.lang.CharSequence: char charAt(int)>(0);
+
+        $l5 = (long) $c4;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(99L, $l5);
+
+        $r19 = virtualinvoke $r12.<org.apache.commons.codec.language.bm.Rule$Phoneme: java.lang.CharSequence getPhonemeText()>();
+
+        $c6 = interfaceinvoke $r19.<java.lang.CharSequence: char charAt(int)>(1);
+
+        $l7 = (long) $c6;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(100L, $l7);
+
+        $r20 = virtualinvoke $r13.<org.apache.commons.codec.language.bm.Rule$Phoneme: java.lang.CharSequence getPhonemeText()>();
+
+        $c8 = interfaceinvoke $r20.<java.lang.CharSequence: char charAt(int)>(0);
+
+        $l9 = (long) $c8;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(101L, $l9);
+
+        $r21 = virtualinvoke $r13.<org.apache.commons.codec.language.bm.Rule$Phoneme: java.lang.CharSequence getPhonemeText()>();
+
+        $c10 = interfaceinvoke $r21.<java.lang.CharSequence: char charAt(int)>(1);
+
+        $l11 = (long) $c10;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(102L, $l11);
+
+        $r22 = virtualinvoke $r14.<org.apache.commons.codec.language.bm.Rule$Phoneme: java.lang.CharSequence getPhonemeText()>();
+
+        $c12 = interfaceinvoke $r22.<java.lang.CharSequence: char charAt(int)>(0);
+
+        $l13 = (long) $c12;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(103L, $l13);
+
+        $r23 = virtualinvoke $r14.<org.apache.commons.codec.language.bm.Rule$Phoneme: java.lang.CharSequence getPhonemeText()>();
+
+        $c14 = interfaceinvoke $r23.<java.lang.CharSequence: char charAt(int)>(1);
+
+        $l15 = (long) $c14;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(104L, $l15);
+
+        $r24 = virtualinvoke $r14.<org.apache.commons.codec.language.bm.Rule$Phoneme: java.lang.CharSequence getPhonemeText()>();
+
+        $c16 = interfaceinvoke $r24.<java.lang.CharSequence: char charAt(int)>(2);
+
+        $l17 = (long) $c16;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(105L, $l17);
+
+        $r25 = virtualinvoke $r15.<org.apache.commons.codec.language.bm.Rule$Phoneme: java.lang.CharSequence getPhonemeText()>();
+
+        $c18 = interfaceinvoke $r25.<java.lang.CharSequence: char charAt(int)>(0);
+
+        $l19 = (long) $c18;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(106L, $l19);
+
+        $r26 = virtualinvoke $r15.<org.apache.commons.codec.language.bm.Rule$Phoneme: java.lang.CharSequence getPhonemeText()>();
+
+        $c20 = interfaceinvoke $r26.<java.lang.CharSequence: char charAt(int)>(1);
+
+        $l21 = (long) $c20;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(107L, $l21);
+
+        $r27 = virtualinvoke $r15.<org.apache.commons.codec.language.bm.Rule$Phoneme: java.lang.CharSequence getPhonemeText()>();
+
+        $c22 = interfaceinvoke $r27.<java.lang.CharSequence: char charAt(int)>(2);
+
+        $l23 = (long) $c22;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(108L, $l23);
+
+        $r28 = new org.apache.commons.codec.language.bm.Rule$Phoneme;
+
+        specialinvoke $r28.<org.apache.commons.codec.language.bm.Rule$Phoneme: void <init>(org.apache.commons.codec.language.bm.Rule$Phoneme,org.apache.commons.codec.language.bm.Rule$Phoneme)>($r10, $r11);
+
+        $r29 = virtualinvoke $r28.<org.apache.commons.codec.language.bm.Rule$Phoneme: java.lang.CharSequence getPhonemeText()>();
+
+        $c24 = interfaceinvoke $r29.<java.lang.CharSequence: char charAt(int)>(0);
+
+        $l25 = (long) $c24;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(97L, $l25);
+
+        $r30 = virtualinvoke $r28.<org.apache.commons.codec.language.bm.Rule$Phoneme: java.lang.CharSequence getPhonemeText()>();
+
+        $c26 = interfaceinvoke $r30.<java.lang.CharSequence: char charAt(int)>(1);
+
+        $l27 = (long) $c26;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(98L, $l27);
+
+        $r31 = virtualinvoke $r28.<org.apache.commons.codec.language.bm.Rule$Phoneme: java.lang.CharSequence getPhonemeText()>();
+
+        $r32 = interfaceinvoke $r31.<java.lang.CharSequence: java.lang.CharSequence subSequence(int,int)>(0, 2);
+
+        $r33 = interfaceinvoke $r32.<java.lang.CharSequence: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("ab", $r33);
+
+        $r34 = virtualinvoke $r28.<org.apache.commons.codec.language.bm.Rule$Phoneme: java.lang.CharSequence getPhonemeText()>();
+
+        $r35 = interfaceinvoke $r34.<java.lang.CharSequence: java.lang.CharSequence subSequence(int,int)>(0, 1);
+
+        $r36 = interfaceinvoke $r35.<java.lang.CharSequence: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("a", $r36);
+
+        $r37 = virtualinvoke $r28.<org.apache.commons.codec.language.bm.Rule$Phoneme: java.lang.CharSequence getPhonemeText()>();
+
+        $r38 = interfaceinvoke $r37.<java.lang.CharSequence: java.lang.CharSequence subSequence(int,int)>(1, 2);
+
+        $r39 = interfaceinvoke $r38.<java.lang.CharSequence: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("b", $r39);
+
+        $r40 = new org.apache.commons.codec.language.bm.Rule$Phoneme;
+
+        specialinvoke $r40.<org.apache.commons.codec.language.bm.Rule$Phoneme: void <init>(org.apache.commons.codec.language.bm.Rule$Phoneme,org.apache.commons.codec.language.bm.Rule$Phoneme)>($r12, $r13);
+
+        $r41 = virtualinvoke $r40.<org.apache.commons.codec.language.bm.Rule$Phoneme: java.lang.CharSequence getPhonemeText()>();
+
+        $c28 = interfaceinvoke $r41.<java.lang.CharSequence: char charAt(int)>(0);
+
+        $l29 = (long) $c28;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(99L, $l29);
+
+        $r42 = virtualinvoke $r40.<org.apache.commons.codec.language.bm.Rule$Phoneme: java.lang.CharSequence getPhonemeText()>();
+
+        $c30 = interfaceinvoke $r42.<java.lang.CharSequence: char charAt(int)>(1);
+
+        $l31 = (long) $c30;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(100L, $l31);
+
+        $r43 = virtualinvoke $r40.<org.apache.commons.codec.language.bm.Rule$Phoneme: java.lang.CharSequence getPhonemeText()>();
+
+        $c32 = interfaceinvoke $r43.<java.lang.CharSequence: char charAt(int)>(2);
+
+        $l33 = (long) $c32;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(101L, $l33);
+
+        $r44 = virtualinvoke $r40.<org.apache.commons.codec.language.bm.Rule$Phoneme: java.lang.CharSequence getPhonemeText()>();
+
+        $c34 = interfaceinvoke $r44.<java.lang.CharSequence: char charAt(int)>(3);
+
+        $l35 = (long) $c34;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(102L, $l35);
+
+        $r45 = virtualinvoke $r40.<org.apache.commons.codec.language.bm.Rule$Phoneme: java.lang.CharSequence getPhonemeText()>();
+
+        $r46 = interfaceinvoke $r45.<java.lang.CharSequence: java.lang.CharSequence subSequence(int,int)>(0, 1);
+
+        $r47 = interfaceinvoke $r46.<java.lang.CharSequence: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("c", $r47);
+
+        $r48 = virtualinvoke $r40.<org.apache.commons.codec.language.bm.Rule$Phoneme: java.lang.CharSequence getPhonemeText()>();
+
+        $r49 = interfaceinvoke $r48.<java.lang.CharSequence: java.lang.CharSequence subSequence(int,int)>(1, 2);
+
+        $r50 = interfaceinvoke $r49.<java.lang.CharSequence: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("d", $r50);
+
+        $r51 = virtualinvoke $r40.<org.apache.commons.codec.language.bm.Rule$Phoneme: java.lang.CharSequence getPhonemeText()>();
+
+        $r52 = interfaceinvoke $r51.<java.lang.CharSequence: java.lang.CharSequence subSequence(int,int)>(2, 3);
+
+        $r53 = interfaceinvoke $r52.<java.lang.CharSequence: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("e", $r53);
+
+        $r54 = virtualinvoke $r40.<org.apache.commons.codec.language.bm.Rule$Phoneme: java.lang.CharSequence getPhonemeText()>();
+
+        $r55 = interfaceinvoke $r54.<java.lang.CharSequence: java.lang.CharSequence subSequence(int,int)>(3, 4);
+
+        $r56 = interfaceinvoke $r55.<java.lang.CharSequence: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("f", $r56);
+
+        $r57 = virtualinvoke $r40.<org.apache.commons.codec.language.bm.Rule$Phoneme: java.lang.CharSequence getPhonemeText()>();
+
+        $r58 = interfaceinvoke $r57.<java.lang.CharSequence: java.lang.CharSequence subSequence(int,int)>(0, 2);
+
+        $r59 = interfaceinvoke $r58.<java.lang.CharSequence: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("cd", $r59);
+
+        $r60 = virtualinvoke $r40.<org.apache.commons.codec.language.bm.Rule$Phoneme: java.lang.CharSequence getPhonemeText()>();
+
+        $r61 = interfaceinvoke $r60.<java.lang.CharSequence: java.lang.CharSequence subSequence(int,int)>(1, 3);
+
+        $r62 = interfaceinvoke $r61.<java.lang.CharSequence: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("de", $r62);
+
+        $r63 = virtualinvoke $r40.<org.apache.commons.codec.language.bm.Rule$Phoneme: java.lang.CharSequence getPhonemeText()>();
+
+        $r64 = interfaceinvoke $r63.<java.lang.CharSequence: java.lang.CharSequence subSequence(int,int)>(2, 4);
+
+        $r65 = interfaceinvoke $r64.<java.lang.CharSequence: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("ef", $r65);
+
+        $r66 = virtualinvoke $r40.<org.apache.commons.codec.language.bm.Rule$Phoneme: java.lang.CharSequence getPhonemeText()>();
+
+        $r67 = interfaceinvoke $r66.<java.lang.CharSequence: java.lang.CharSequence subSequence(int,int)>(0, 3);
+
+        $r68 = interfaceinvoke $r67.<java.lang.CharSequence: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("cde", $r68);
+
+        $r69 = virtualinvoke $r40.<org.apache.commons.codec.language.bm.Rule$Phoneme: java.lang.CharSequence getPhonemeText()>();
+
+        $r70 = interfaceinvoke $r69.<java.lang.CharSequence: java.lang.CharSequence subSequence(int,int)>(1, 4);
+
+        $r71 = interfaceinvoke $r70.<java.lang.CharSequence: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("def", $r71);
+
+        $r72 = virtualinvoke $r40.<org.apache.commons.codec.language.bm.Rule$Phoneme: java.lang.CharSequence getPhonemeText()>();
+
+        $r73 = interfaceinvoke $r72.<java.lang.CharSequence: java.lang.CharSequence subSequence(int,int)>(0, 4);
+
+        $r74 = interfaceinvoke $r73.<java.lang.CharSequence: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("cdef", $r74);
+
+        $r75 = new org.apache.commons.codec.language.bm.Rule$Phoneme;
+
+        $r76 = new org.apache.commons.codec.language.bm.Rule$Phoneme;
+
+        specialinvoke $r76.<org.apache.commons.codec.language.bm.Rule$Phoneme: void <init>(org.apache.commons.codec.language.bm.Rule$Phoneme,org.apache.commons.codec.language.bm.Rule$Phoneme)>($r10, $r11);
+
+        specialinvoke $r75.<org.apache.commons.codec.language.bm.Rule$Phoneme: void <init>(org.apache.commons.codec.language.bm.Rule$Phoneme,org.apache.commons.codec.language.bm.Rule$Phoneme)>($r76, $r12);
+
+        $r77 = virtualinvoke $r75.<org.apache.commons.codec.language.bm.Rule$Phoneme: java.lang.CharSequence getPhonemeText()>();
+
+        $c36 = interfaceinvoke $r77.<java.lang.CharSequence: char charAt(int)>(0);
+
+        $l37 = (long) $c36;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(97L, $l37);
+
+        $r78 = virtualinvoke $r75.<org.apache.commons.codec.language.bm.Rule$Phoneme: java.lang.CharSequence getPhonemeText()>();
+
+        $c38 = interfaceinvoke $r78.<java.lang.CharSequence: char charAt(int)>(1);
+
+        $l39 = (long) $c38;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(98L, $l39);
+
+        $r79 = virtualinvoke $r75.<org.apache.commons.codec.language.bm.Rule$Phoneme: java.lang.CharSequence getPhonemeText()>();
+
+        $c40 = interfaceinvoke $r79.<java.lang.CharSequence: char charAt(int)>(2);
+
+        $l41 = (long) $c40;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(99L, $l41);
+
+        $r80 = virtualinvoke $r75.<org.apache.commons.codec.language.bm.Rule$Phoneme: java.lang.CharSequence getPhonemeText()>();
+
+        $c42 = interfaceinvoke $r80.<java.lang.CharSequence: char charAt(int)>(3);
+
+        $l43 = (long) $c42;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(100L, $l43);
+
+        $r81 = virtualinvoke $r75.<org.apache.commons.codec.language.bm.Rule$Phoneme: java.lang.CharSequence getPhonemeText()>();
+
+        $r82 = interfaceinvoke $r81.<java.lang.CharSequence: java.lang.CharSequence subSequence(int,int)>(0, 1);
+
+        $r83 = interfaceinvoke $r82.<java.lang.CharSequence: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("a", $r83);
+
+        $r84 = virtualinvoke $r75.<org.apache.commons.codec.language.bm.Rule$Phoneme: java.lang.CharSequence getPhonemeText()>();
+
+        $r85 = interfaceinvoke $r84.<java.lang.CharSequence: java.lang.CharSequence subSequence(int,int)>(1, 2);
+
+        $r86 = interfaceinvoke $r85.<java.lang.CharSequence: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("b", $r86);
+
+        $r87 = virtualinvoke $r75.<org.apache.commons.codec.language.bm.Rule$Phoneme: java.lang.CharSequence getPhonemeText()>();
+
+        $r88 = interfaceinvoke $r87.<java.lang.CharSequence: java.lang.CharSequence subSequence(int,int)>(2, 3);
+
+        $r89 = interfaceinvoke $r88.<java.lang.CharSequence: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("c", $r89);
+
+        $r90 = virtualinvoke $r75.<org.apache.commons.codec.language.bm.Rule$Phoneme: java.lang.CharSequence getPhonemeText()>();
+
+        $r91 = interfaceinvoke $r90.<java.lang.CharSequence: java.lang.CharSequence subSequence(int,int)>(3, 4);
+
+        $r92 = interfaceinvoke $r91.<java.lang.CharSequence: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("d", $r92);
+
+        $r93 = virtualinvoke $r75.<org.apache.commons.codec.language.bm.Rule$Phoneme: java.lang.CharSequence getPhonemeText()>();
+
+        $r94 = interfaceinvoke $r93.<java.lang.CharSequence: java.lang.CharSequence subSequence(int,int)>(0, 2);
+
+        $r95 = interfaceinvoke $r94.<java.lang.CharSequence: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("ab", $r95);
+
+        $r96 = virtualinvoke $r75.<org.apache.commons.codec.language.bm.Rule$Phoneme: java.lang.CharSequence getPhonemeText()>();
+
+        $r97 = interfaceinvoke $r96.<java.lang.CharSequence: java.lang.CharSequence subSequence(int,int)>(1, 3);
+
+        $r98 = interfaceinvoke $r97.<java.lang.CharSequence: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("bc", $r98);
+
+        $r99 = virtualinvoke $r75.<org.apache.commons.codec.language.bm.Rule$Phoneme: java.lang.CharSequence getPhonemeText()>();
+
+        $r100 = interfaceinvoke $r99.<java.lang.CharSequence: java.lang.CharSequence subSequence(int,int)>(2, 4);
+
+        $r101 = interfaceinvoke $r100.<java.lang.CharSequence: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("cd", $r101);
+
+        $r102 = virtualinvoke $r75.<org.apache.commons.codec.language.bm.Rule$Phoneme: java.lang.CharSequence getPhonemeText()>();
+
+        $r103 = interfaceinvoke $r102.<java.lang.CharSequence: java.lang.CharSequence subSequence(int,int)>(0, 3);
+
+        $r104 = interfaceinvoke $r103.<java.lang.CharSequence: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("abc", $r104);
+
+        $r105 = virtualinvoke $r75.<org.apache.commons.codec.language.bm.Rule$Phoneme: java.lang.CharSequence getPhonemeText()>();
+
+        $r106 = interfaceinvoke $r105.<java.lang.CharSequence: java.lang.CharSequence subSequence(int,int)>(1, 4);
+
+        $r107 = interfaceinvoke $r106.<java.lang.CharSequence: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("bcd", $r107);
+
+        $r108 = virtualinvoke $r75.<org.apache.commons.codec.language.bm.Rule$Phoneme: java.lang.CharSequence getPhonemeText()>();
+
+        $r109 = interfaceinvoke $r108.<java.lang.CharSequence: java.lang.CharSequence subSequence(int,int)>(0, 4);
+
+        $r110 = interfaceinvoke $r109.<java.lang.CharSequence: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("abcd", $r110);
+
+        return;
+    }
+}

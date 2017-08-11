@@ -1,0 +1,1853 @@
+public class org.apache.commons.io.FilenameUtils extends java.lang.Object
+{
+    private static final int NOT_FOUND;
+    public static final char EXTENSION_SEPARATOR;
+    public static final java.lang.String EXTENSION_SEPARATOR_STR;
+    private static final char UNIX_SEPARATOR;
+    private static final char WINDOWS_SEPARATOR;
+    private static final char SYSTEM_SEPARATOR;
+    private static final char OTHER_SEPARATOR;
+
+    static void <clinit>()
+    {
+        java.lang.String $r0;
+        char $c0;
+        boolean $z0;
+
+        <org.apache.commons.io.FilenameUtils: char WINDOWS_SEPARATOR> = 92;
+
+        <org.apache.commons.io.FilenameUtils: char UNIX_SEPARATOR> = 47;
+
+        <org.apache.commons.io.FilenameUtils: char EXTENSION_SEPARATOR> = 46;
+
+        <org.apache.commons.io.FilenameUtils: int NOT_FOUND> = -1;
+
+        $r0 = staticinvoke <java.lang.Character: java.lang.String toString(char)>(46);
+
+        <org.apache.commons.io.FilenameUtils: java.lang.String EXTENSION_SEPARATOR_STR> = $r0;
+
+        $c0 = <java.io.File: char separatorChar>;
+
+        <org.apache.commons.io.FilenameUtils: char SYSTEM_SEPARATOR> = $c0;
+
+        $z0 = staticinvoke <org.apache.commons.io.FilenameUtils: boolean isSystemWindows()>();
+
+        if $z0 == 0 goto label1;
+
+        <org.apache.commons.io.FilenameUtils: char OTHER_SEPARATOR> = 47;
+
+        goto label2;
+
+     label1:
+        <org.apache.commons.io.FilenameUtils: char OTHER_SEPARATOR> = 92;
+
+     label2:
+        return;
+    }
+
+    public void <init>()
+    {
+        org.apache.commons.io.FilenameUtils r0;
+
+        r0 := @this: org.apache.commons.io.FilenameUtils;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    static boolean isSystemWindows()
+    {
+        char $c0;
+
+        $c0 = <org.apache.commons.io.FilenameUtils: char SYSTEM_SEPARATOR>;
+
+        if $c0 != 92 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    private static boolean isSeparator(char)
+    {
+        char c0;
+
+        c0 := @parameter0: char;
+
+        if c0 == 47 goto label1;
+
+        if c0 == 92 goto label1;
+
+        return 0;
+
+     label1:
+        return 1;
+    }
+
+    public static java.lang.String normalize(java.lang.String)
+    {
+        java.lang.String r0, $r1;
+        char $c0;
+
+        r0 := @parameter0: java.lang.String;
+
+        $c0 = <org.apache.commons.io.FilenameUtils: char SYSTEM_SEPARATOR>;
+
+        $r1 = staticinvoke <org.apache.commons.io.FilenameUtils: java.lang.String doNormalize(java.lang.String,char,boolean)>(r0, $c0, 1);
+
+        return $r1;
+    }
+
+    public static java.lang.String normalize(java.lang.String, boolean)
+    {
+        java.lang.String r0, $r1;
+        boolean z0;
+        char $c1;
+
+        r0 := @parameter0: java.lang.String;
+
+        z0 := @parameter1: boolean;
+
+        if z0 == 0 goto label1;
+
+        $c1 = 47;
+
+        goto label2;
+
+     label1:
+        $c1 = 92;
+
+     label2:
+        $r1 = staticinvoke <org.apache.commons.io.FilenameUtils: java.lang.String doNormalize(java.lang.String,char,boolean)>(r0, $c1, 1);
+
+        return $r1;
+    }
+
+    public static java.lang.String normalizeNoEndSeparator(java.lang.String)
+    {
+        java.lang.String r0, $r1;
+        char $c0;
+
+        r0 := @parameter0: java.lang.String;
+
+        $c0 = <org.apache.commons.io.FilenameUtils: char SYSTEM_SEPARATOR>;
+
+        $r1 = staticinvoke <org.apache.commons.io.FilenameUtils: java.lang.String doNormalize(java.lang.String,char,boolean)>(r0, $c0, 0);
+
+        return $r1;
+    }
+
+    public static java.lang.String normalizeNoEndSeparator(java.lang.String, boolean)
+    {
+        java.lang.String r0, $r1;
+        boolean z0;
+        char $c1;
+
+        r0 := @parameter0: java.lang.String;
+
+        z0 := @parameter1: boolean;
+
+        if z0 == 0 goto label1;
+
+        $c1 = 47;
+
+        goto label2;
+
+     label1:
+        $c1 = 92;
+
+     label2:
+        $r1 = staticinvoke <org.apache.commons.io.FilenameUtils: java.lang.String doNormalize(java.lang.String,char,boolean)>(r0, $c1, 0);
+
+        return $r1;
+    }
+
+    private static java.lang.String doNormalize(java.lang.String, char, boolean)
+    {
+        java.lang.String r0, $r2, $r3, $r4;
+        char c0, c2, $c5, $c6, $c8, $c9, $c11, $c14, $c16, $c23, $c24, $c26, $c28, $c32, $c42, $c46;
+        boolean z0, z1;
+        int i1, $i3, $i4, $i7, $i10, $i12, $i13, $i15, $i17, $i18, $i19, $i20, $i21, $i22, $i25, $i27, $i29, $i30, $i31, $i33, $i34, $i35, $i36, $i37, $i38, $i39, $i40, $i41, $i43, $i44, i45, i47, $i48, i49, i50, i51, i52;
+        char[] r1;
+
+        r0 := @parameter0: java.lang.String;
+
+        c0 := @parameter1: char;
+
+        z0 := @parameter2: boolean;
+
+        if r0 != null goto label01;
+
+        return null;
+
+     label01:
+        staticinvoke <org.apache.commons.io.FilenameUtils: void failIfNullBytePresent(java.lang.String)>(r0);
+
+        i45 = virtualinvoke r0.<java.lang.String: int length()>();
+
+        if i45 != 0 goto label02;
+
+        return r0;
+
+     label02:
+        i1 = staticinvoke <org.apache.commons.io.FilenameUtils: int getPrefixLength(java.lang.String)>(r0);
+
+        if i1 >= 0 goto label03;
+
+        return null;
+
+     label03:
+        $i3 = i45 + 2;
+
+        r1 = newarray (char)[$i3];
+
+        $i4 = virtualinvoke r0.<java.lang.String: int length()>();
+
+        virtualinvoke r0.<java.lang.String: void getChars(int,int,char[],int)>(0, $i4, r1, 0);
+
+        $c5 = <org.apache.commons.io.FilenameUtils: char SYSTEM_SEPARATOR>;
+
+        if c0 != $c5 goto label04;
+
+        $c46 = <org.apache.commons.io.FilenameUtils: char OTHER_SEPARATOR>;
+
+        goto label05;
+
+     label04:
+        $c46 = <org.apache.commons.io.FilenameUtils: char SYSTEM_SEPARATOR>;
+
+     label05:
+        c2 = $c46;
+
+        i47 = 0;
+
+        goto label08;
+
+     label06:
+        $c6 = r1[i47];
+
+        if $c6 != c2 goto label07;
+
+        r1[i47] = c0;
+
+     label07:
+        i47 = i47 + 1;
+
+     label08:
+        $i48 = lengthof r1;
+
+        if i47 < $i48 goto label06;
+
+        z1 = 1;
+
+        $i7 = i45 - 1;
+
+        $c8 = r1[$i7];
+
+        if $c8 == c0 goto label09;
+
+        $i44 = i45;
+
+        i45 = i45 + 1;
+
+        r1[$i44] = c0;
+
+        z1 = 0;
+
+     label09:
+        i49 = i1 + 1;
+
+        goto label12;
+
+     label10:
+        $c9 = r1[i49];
+
+        if $c9 != c0 goto label11;
+
+        $i10 = i49 - 1;
+
+        $c11 = r1[$i10];
+
+        if $c11 != c0 goto label11;
+
+        $i13 = i49 - 1;
+
+        $i12 = i45 - i49;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>(r1, i49, r1, $i13, $i12);
+
+        i45 = i45 + -1;
+
+        i49 = i49 + -1;
+
+     label11:
+        i49 = i49 + 1;
+
+     label12:
+        if i49 < i45 goto label10;
+
+        i50 = i1 + 1;
+
+        goto label17;
+
+     label13:
+        $c14 = r1[i50];
+
+        if $c14 != c0 goto label16;
+
+        $i15 = i50 - 1;
+
+        $c16 = r1[$i15];
+
+        if $c16 != 46 goto label16;
+
+        $i17 = i1 + 1;
+
+        if i50 == $i17 goto label14;
+
+        $i22 = i50 - 2;
+
+        $c23 = r1[$i22];
+
+        if $c23 != c0 goto label16;
+
+     label14:
+        $i18 = i45 - 1;
+
+        if i50 != $i18 goto label15;
+
+        z1 = 1;
+
+     label15:
+        $i21 = i50 + 1;
+
+        $i20 = i50 - 1;
+
+        $i19 = i45 - i50;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>(r1, $i21, r1, $i20, $i19);
+
+        i45 = i45 + -2;
+
+        i50 = i50 + -1;
+
+     label16:
+        i50 = i50 + 1;
+
+     label17:
+        if i50 < i45 goto label13;
+
+        i51 = i1 + 2;
+
+        goto label26;
+
+     label18:
+        $c24 = r1[i51];
+
+        if $c24 != c0 goto label25;
+
+        $i25 = i51 - 1;
+
+        $c26 = r1[$i25];
+
+        if $c26 != 46 goto label25;
+
+        $i27 = i51 - 2;
+
+        $c28 = r1[$i27];
+
+        if $c28 != 46 goto label25;
+
+        $i29 = i1 + 2;
+
+        if i51 == $i29 goto label19;
+
+        $i41 = i51 - 3;
+
+        $c42 = r1[$i41];
+
+        if $c42 != c0 goto label25;
+
+     label19:
+        $i30 = i1 + 2;
+
+        if i51 != $i30 goto label20;
+
+        return null;
+
+     label20:
+        $i31 = i45 - 1;
+
+        if i51 != $i31 goto label21;
+
+        z1 = 1;
+
+     label21:
+        i52 = i51 - 4;
+
+        goto label24;
+
+     label22:
+        $c32 = r1[i52];
+
+        if $c32 != c0 goto label23;
+
+        $i35 = i51 + 1;
+
+        $i34 = i52 + 1;
+
+        $i33 = i45 - i51;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>(r1, $i35, r1, $i34, $i33);
+
+        $i36 = i51 - i52;
+
+        i45 = i45 - $i36;
+
+        i51 = i52 + 1;
+
+        goto label25;
+
+     label23:
+        i52 = i52 + -1;
+
+     label24:
+        if i52 >= i1 goto label22;
+
+        $i38 = i51 + 1;
+
+        $i37 = i45 - i51;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>(r1, $i38, r1, i1, $i37);
+
+        $i39 = i51 + 1;
+
+        $i40 = $i39 - i1;
+
+        i45 = i45 - $i40;
+
+        i51 = i1 + 1;
+
+     label25:
+        i51 = i51 + 1;
+
+     label26:
+        if i51 < i45 goto label18;
+
+        if i45 > 0 goto label27;
+
+        return "";
+
+     label27:
+        if i45 > i1 goto label28;
+
+        $r4 = new java.lang.String;
+
+        specialinvoke $r4.<java.lang.String: void <init>(char[],int,int)>(r1, 0, i45);
+
+        return $r4;
+
+     label28:
+        if z1 == 0 goto label29;
+
+        if z0 == 0 goto label29;
+
+        $r3 = new java.lang.String;
+
+        specialinvoke $r3.<java.lang.String: void <init>(char[],int,int)>(r1, 0, i45);
+
+        return $r3;
+
+     label29:
+        $r2 = new java.lang.String;
+
+        $i43 = i45 - 1;
+
+        specialinvoke $r2.<java.lang.String: void <init>(char[],int,int)>(r1, 0, $i43);
+
+        return $r2;
+    }
+
+    public static java.lang.String concat(java.lang.String, java.lang.String)
+    {
+        java.lang.String r0, r1, $r3, $r6, $r7, $r9, $r11, $r12, $r13, $r14;
+        int i0, i1, $i3;
+        char c2;
+        boolean $z0;
+        java.lang.StringBuilder $r2, $r4, $r5, $r8, $r10;
+
+        r0 := @parameter0: java.lang.String;
+
+        r1 := @parameter1: java.lang.String;
+
+        i0 = staticinvoke <org.apache.commons.io.FilenameUtils: int getPrefixLength(java.lang.String)>(r1);
+
+        if i0 >= 0 goto label1;
+
+        return null;
+
+     label1:
+        if i0 <= 0 goto label2;
+
+        $r14 = staticinvoke <org.apache.commons.io.FilenameUtils: java.lang.String normalize(java.lang.String)>(r1);
+
+        return $r14;
+
+     label2:
+        if r0 != null goto label3;
+
+        return null;
+
+     label3:
+        i1 = virtualinvoke r0.<java.lang.String: int length()>();
+
+        if i1 != 0 goto label4;
+
+        $r13 = staticinvoke <org.apache.commons.io.FilenameUtils: java.lang.String normalize(java.lang.String)>(r1);
+
+        return $r13;
+
+     label4:
+        $i3 = i1 - 1;
+
+        c2 = virtualinvoke r0.<java.lang.String: char charAt(int)>($i3);
+
+        $z0 = staticinvoke <org.apache.commons.io.FilenameUtils: boolean isSeparator(char)>(c2);
+
+        if $z0 == 0 goto label5;
+
+        $r8 = new java.lang.StringBuilder;
+
+        $r9 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>(r0);
+
+        specialinvoke $r8.<java.lang.StringBuilder: void <init>(java.lang.String)>($r9);
+
+        $r10 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r1);
+
+        $r11 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r12 = staticinvoke <org.apache.commons.io.FilenameUtils: java.lang.String normalize(java.lang.String)>($r11);
+
+        return $r12;
+
+     label5:
+        $r2 = new java.lang.StringBuilder;
+
+        $r3 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>(r0);
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>(java.lang.String)>($r3);
+
+        $r4 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(47);
+
+        $r5 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r1);
+
+        $r6 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r7 = staticinvoke <org.apache.commons.io.FilenameUtils: java.lang.String normalize(java.lang.String)>($r6);
+
+        return $r7;
+    }
+
+    public static boolean directoryContains(java.lang.String, java.lang.String) throws java.io.IOException
+    {
+        java.lang.String r0, r1;
+        org.apache.commons.io.IOCase $r2, $r3;
+        boolean $z0, $z1;
+        java.lang.IllegalArgumentException $r4;
+
+        r0 := @parameter0: java.lang.String;
+
+        r1 := @parameter1: java.lang.String;
+
+        if r0 != null goto label1;
+
+        $r4 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r4.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Directory must not be null");
+
+        throw $r4;
+
+     label1:
+        if r1 != null goto label2;
+
+        return 0;
+
+     label2:
+        $r2 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SYSTEM>;
+
+        $z0 = virtualinvoke $r2.<org.apache.commons.io.IOCase: boolean checkEquals(java.lang.String,java.lang.String)>(r0, r1);
+
+        if $z0 == 0 goto label3;
+
+        return 0;
+
+     label3:
+        $r3 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SYSTEM>;
+
+        $z1 = virtualinvoke $r3.<org.apache.commons.io.IOCase: boolean checkStartsWith(java.lang.String,java.lang.String)>(r1, r0);
+
+        return $z1;
+    }
+
+    public static java.lang.String separatorsToUnix(java.lang.String)
+    {
+        java.lang.String r0, $r1;
+        int $i0;
+
+        r0 := @parameter0: java.lang.String;
+
+        if r0 == null goto label1;
+
+        $i0 = virtualinvoke r0.<java.lang.String: int indexOf(int)>(92);
+
+        if $i0 != -1 goto label2;
+
+     label1:
+        return r0;
+
+     label2:
+        $r1 = virtualinvoke r0.<java.lang.String: java.lang.String replace(char,char)>(92, 47);
+
+        return $r1;
+    }
+
+    public static java.lang.String separatorsToWindows(java.lang.String)
+    {
+        java.lang.String r0, $r1;
+        int $i0;
+
+        r0 := @parameter0: java.lang.String;
+
+        if r0 == null goto label1;
+
+        $i0 = virtualinvoke r0.<java.lang.String: int indexOf(int)>(47);
+
+        if $i0 != -1 goto label2;
+
+     label1:
+        return r0;
+
+     label2:
+        $r1 = virtualinvoke r0.<java.lang.String: java.lang.String replace(char,char)>(47, 92);
+
+        return $r1;
+    }
+
+    public static java.lang.String separatorsToSystem(java.lang.String)
+    {
+        java.lang.String r0, $r1, $r2;
+        boolean $z0;
+
+        r0 := @parameter0: java.lang.String;
+
+        if r0 != null goto label1;
+
+        return null;
+
+     label1:
+        $z0 = staticinvoke <org.apache.commons.io.FilenameUtils: boolean isSystemWindows()>();
+
+        if $z0 == 0 goto label2;
+
+        $r2 = staticinvoke <org.apache.commons.io.FilenameUtils: java.lang.String separatorsToWindows(java.lang.String)>(r0);
+
+        return $r2;
+
+     label2:
+        $r1 = staticinvoke <org.apache.commons.io.FilenameUtils: java.lang.String separatorsToUnix(java.lang.String)>(r0);
+
+        return $r1;
+    }
+
+    public static int getPrefixLength(java.lang.String)
+    {
+        java.lang.String r0;
+        int i0, $i1, $i2, $i4, $i5, $i6, i9, i10, $i11, i12, $i13, i17, i18, $i19, i20, $i21;
+        boolean $z0, $z1, $z2, $z3, $z4;
+        char $c3, c7, c15, c16;
+        byte $b8, $b23;
+
+        r0 := @parameter0: java.lang.String;
+
+        if r0 != null goto label01;
+
+        return -1;
+
+     label01:
+        i0 = virtualinvoke r0.<java.lang.String: int length()>();
+
+        if i0 != 0 goto label02;
+
+        return 0;
+
+     label02:
+        c7 = virtualinvoke r0.<java.lang.String: char charAt(int)>(0);
+
+        if c7 != 58 goto label03;
+
+        return -1;
+
+     label03:
+        if i0 != 1 goto label07;
+
+        if c7 != 126 goto label04;
+
+        return 2;
+
+     label04:
+        $z4 = staticinvoke <org.apache.commons.io.FilenameUtils: boolean isSeparator(char)>(c7);
+
+        if $z4 == 0 goto label05;
+
+        $b8 = 1;
+
+        goto label06;
+
+     label05:
+        $b8 = 0;
+
+     label06:
+        return $b8;
+
+     label07:
+        if c7 != 126 goto label13;
+
+        i9 = virtualinvoke r0.<java.lang.String: int indexOf(int,int)>(47, 1);
+
+        i10 = virtualinvoke r0.<java.lang.String: int indexOf(int,int)>(92, 1);
+
+        if i9 != -1 goto label08;
+
+        if i10 != -1 goto label08;
+
+        $i6 = i0 + 1;
+
+        return $i6;
+
+     label08:
+        if i9 != -1 goto label09;
+
+        $i11 = i10;
+
+        goto label10;
+
+     label09:
+        $i11 = i9;
+
+     label10:
+        i12 = $i11;
+
+        if i10 != -1 goto label11;
+
+        $i13 = $i11;
+
+        goto label12;
+
+     label11:
+        $i13 = i10;
+
+     label12:
+        $i4 = staticinvoke <java.lang.Math: int min(int,int)>(i12, $i13);
+
+        $i5 = $i4 + 1;
+
+        return $i5;
+
+     label13:
+        c15 = virtualinvoke r0.<java.lang.String: char charAt(int)>(1);
+
+        if c15 != 58 goto label17;
+
+        c16 = staticinvoke <java.lang.Character: char toUpperCase(char)>(c7);
+
+        if c16 < 65 goto label16;
+
+        if c16 > 90 goto label16;
+
+        if i0 == 2 goto label14;
+
+        $c3 = virtualinvoke r0.<java.lang.String: char charAt(int)>(2);
+
+        $z3 = staticinvoke <org.apache.commons.io.FilenameUtils: boolean isSeparator(char)>($c3);
+
+        if $z3 != 0 goto label15;
+
+     label14:
+        return 2;
+
+     label15:
+        return 3;
+
+     label16:
+        return -1;
+
+     label17:
+        $z0 = staticinvoke <org.apache.commons.io.FilenameUtils: boolean isSeparator(char)>(c7);
+
+        if $z0 == 0 goto label25;
+
+        $z2 = staticinvoke <org.apache.commons.io.FilenameUtils: boolean isSeparator(char)>(c15);
+
+        if $z2 == 0 goto label25;
+
+        i17 = virtualinvoke r0.<java.lang.String: int indexOf(int,int)>(47, 2);
+
+        i18 = virtualinvoke r0.<java.lang.String: int indexOf(int,int)>(92, 2);
+
+        if i17 != -1 goto label18;
+
+        if i18 == -1 goto label19;
+
+     label18:
+        if i17 == 2 goto label19;
+
+        if i18 != 2 goto label20;
+
+     label19:
+        return -1;
+
+     label20:
+        if i17 != -1 goto label21;
+
+        $i19 = i18;
+
+        goto label22;
+
+     label21:
+        $i19 = i17;
+
+     label22:
+        i20 = $i19;
+
+        if i18 != -1 goto label23;
+
+        $i21 = $i19;
+
+        goto label24;
+
+     label23:
+        $i21 = i18;
+
+     label24:
+        $i1 = staticinvoke <java.lang.Math: int min(int,int)>(i20, $i21);
+
+        $i2 = $i1 + 1;
+
+        return $i2;
+
+     label25:
+        $z1 = staticinvoke <org.apache.commons.io.FilenameUtils: boolean isSeparator(char)>(c7);
+
+        if $z1 == 0 goto label26;
+
+        $b23 = 1;
+
+        goto label27;
+
+     label26:
+        $b23 = 0;
+
+     label27:
+        return $b23;
+    }
+
+    public static int indexOfLastSeparator(java.lang.String)
+    {
+        java.lang.String r0;
+        int i0, i1, $i2;
+
+        r0 := @parameter0: java.lang.String;
+
+        if r0 != null goto label1;
+
+        return -1;
+
+     label1:
+        i0 = virtualinvoke r0.<java.lang.String: int lastIndexOf(int)>(47);
+
+        i1 = virtualinvoke r0.<java.lang.String: int lastIndexOf(int)>(92);
+
+        $i2 = staticinvoke <java.lang.Math: int max(int,int)>(i0, i1);
+
+        return $i2;
+    }
+
+    public static int indexOfExtension(java.lang.String)
+    {
+        java.lang.String r0;
+        int i0, i1, $i2;
+
+        r0 := @parameter0: java.lang.String;
+
+        if r0 != null goto label1;
+
+        return -1;
+
+     label1:
+        i0 = virtualinvoke r0.<java.lang.String: int lastIndexOf(int)>(46);
+
+        i1 = staticinvoke <org.apache.commons.io.FilenameUtils: int indexOfLastSeparator(java.lang.String)>(r0);
+
+        if i1 <= i0 goto label2;
+
+        $i2 = -1;
+
+        goto label3;
+
+     label2:
+        $i2 = i0;
+
+     label3:
+        return $i2;
+    }
+
+    public static java.lang.String getPrefix(java.lang.String)
+    {
+        java.lang.String r0, r1, $r3, $r5, $r7, $r9;
+        int i0, $i1;
+        java.lang.StringBuilder $r2, $r4, $r6, $r8;
+
+        r0 := @parameter0: java.lang.String;
+
+        if r0 != null goto label1;
+
+        return null;
+
+     label1:
+        i0 = staticinvoke <org.apache.commons.io.FilenameUtils: int getPrefixLength(java.lang.String)>(r0);
+
+        if i0 >= 0 goto label2;
+
+        return null;
+
+     label2:
+        $i1 = virtualinvoke r0.<java.lang.String: int length()>();
+
+        if i0 <= $i1 goto label3;
+
+        $r2 = new java.lang.StringBuilder;
+
+        $r3 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>(r0);
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>(java.lang.String)>($r3);
+
+        $r4 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(47);
+
+        $r5 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.apache.commons.io.FilenameUtils: void failIfNullBytePresent(java.lang.String)>($r5);
+
+        $r6 = new java.lang.StringBuilder;
+
+        $r7 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>(r0);
+
+        specialinvoke $r6.<java.lang.StringBuilder: void <init>(java.lang.String)>($r7);
+
+        $r8 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(47);
+
+        $r9 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $r9;
+
+     label3:
+        r1 = virtualinvoke r0.<java.lang.String: java.lang.String substring(int,int)>(0, i0);
+
+        staticinvoke <org.apache.commons.io.FilenameUtils: void failIfNullBytePresent(java.lang.String)>(r1);
+
+        return r1;
+    }
+
+    public static java.lang.String getPath(java.lang.String)
+    {
+        java.lang.String r0, $r1;
+
+        r0 := @parameter0: java.lang.String;
+
+        $r1 = staticinvoke <org.apache.commons.io.FilenameUtils: java.lang.String doGetPath(java.lang.String,int)>(r0, 1);
+
+        return $r1;
+    }
+
+    public static java.lang.String getPathNoEndSeparator(java.lang.String)
+    {
+        java.lang.String r0, $r1;
+
+        r0 := @parameter0: java.lang.String;
+
+        $r1 = staticinvoke <org.apache.commons.io.FilenameUtils: java.lang.String doGetPath(java.lang.String,int)>(r0, 0);
+
+        return $r1;
+    }
+
+    private static java.lang.String doGetPath(java.lang.String, int)
+    {
+        java.lang.String r0, r1;
+        int i0, i1, i2, i3, $i4;
+
+        r0 := @parameter0: java.lang.String;
+
+        i0 := @parameter1: int;
+
+        if r0 != null goto label1;
+
+        return null;
+
+     label1:
+        i1 = staticinvoke <org.apache.commons.io.FilenameUtils: int getPrefixLength(java.lang.String)>(r0);
+
+        if i1 >= 0 goto label2;
+
+        return null;
+
+     label2:
+        i2 = staticinvoke <org.apache.commons.io.FilenameUtils: int indexOfLastSeparator(java.lang.String)>(r0);
+
+        i3 = i2 + i0;
+
+        $i4 = virtualinvoke r0.<java.lang.String: int length()>();
+
+        if i1 >= $i4 goto label3;
+
+        if i2 < 0 goto label3;
+
+        if i1 < i3 goto label4;
+
+     label3:
+        return "";
+
+     label4:
+        r1 = virtualinvoke r0.<java.lang.String: java.lang.String substring(int,int)>(i1, i3);
+
+        staticinvoke <org.apache.commons.io.FilenameUtils: void failIfNullBytePresent(java.lang.String)>(r1);
+
+        return r1;
+    }
+
+    public static java.lang.String getFullPath(java.lang.String)
+    {
+        java.lang.String r0, $r1;
+
+        r0 := @parameter0: java.lang.String;
+
+        $r1 = staticinvoke <org.apache.commons.io.FilenameUtils: java.lang.String doGetFullPath(java.lang.String,boolean)>(r0, 1);
+
+        return $r1;
+    }
+
+    public static java.lang.String getFullPathNoEndSeparator(java.lang.String)
+    {
+        java.lang.String r0, $r1;
+
+        r0 := @parameter0: java.lang.String;
+
+        $r1 = staticinvoke <org.apache.commons.io.FilenameUtils: java.lang.String doGetFullPath(java.lang.String,boolean)>(r0, 0);
+
+        return $r1;
+    }
+
+    private static java.lang.String doGetFullPath(java.lang.String, boolean)
+    {
+        java.lang.String r0, $r1, $r2, $r3;
+        boolean z0;
+        int i0, i1, $i2, i5;
+        byte $b4;
+
+        r0 := @parameter0: java.lang.String;
+
+        z0 := @parameter1: boolean;
+
+        if r0 != null goto label1;
+
+        return null;
+
+     label1:
+        i0 = staticinvoke <org.apache.commons.io.FilenameUtils: int getPrefixLength(java.lang.String)>(r0);
+
+        if i0 >= 0 goto label2;
+
+        return null;
+
+     label2:
+        $i2 = virtualinvoke r0.<java.lang.String: int length()>();
+
+        if i0 < $i2 goto label4;
+
+        if z0 == 0 goto label3;
+
+        $r3 = staticinvoke <org.apache.commons.io.FilenameUtils: java.lang.String getPrefix(java.lang.String)>(r0);
+
+        return $r3;
+
+     label3:
+        return r0;
+
+     label4:
+        i1 = staticinvoke <org.apache.commons.io.FilenameUtils: int indexOfLastSeparator(java.lang.String)>(r0);
+
+        if i1 >= 0 goto label5;
+
+        $r2 = virtualinvoke r0.<java.lang.String: java.lang.String substring(int,int)>(0, i0);
+
+        return $r2;
+
+     label5:
+        if z0 == 0 goto label6;
+
+        $b4 = 1;
+
+        goto label7;
+
+     label6:
+        $b4 = 0;
+
+     label7:
+        i5 = i1 + $b4;
+
+        if i5 != 0 goto label8;
+
+        i5 = i5 + 1;
+
+     label8:
+        $r1 = virtualinvoke r0.<java.lang.String: java.lang.String substring(int,int)>(0, i5);
+
+        return $r1;
+    }
+
+    public static java.lang.String getName(java.lang.String)
+    {
+        java.lang.String r0, $r1;
+        int i0, $i1;
+
+        r0 := @parameter0: java.lang.String;
+
+        if r0 != null goto label1;
+
+        return null;
+
+     label1:
+        staticinvoke <org.apache.commons.io.FilenameUtils: void failIfNullBytePresent(java.lang.String)>(r0);
+
+        i0 = staticinvoke <org.apache.commons.io.FilenameUtils: int indexOfLastSeparator(java.lang.String)>(r0);
+
+        $i1 = i0 + 1;
+
+        $r1 = virtualinvoke r0.<java.lang.String: java.lang.String substring(int)>($i1);
+
+        return $r1;
+    }
+
+    private static void failIfNullBytePresent(java.lang.String)
+    {
+        java.lang.String r0;
+        int i0, i2;
+        char $c1;
+        java.lang.IllegalArgumentException $r1;
+
+        r0 := @parameter0: java.lang.String;
+
+        i0 = virtualinvoke r0.<java.lang.String: int length()>();
+
+        i2 = 0;
+
+        goto label3;
+
+     label1:
+        $c1 = virtualinvoke r0.<java.lang.String: char charAt(int)>(i2);
+
+        if $c1 != 0 goto label2;
+
+        $r1 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r1.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Null byte present in file/path name. There are no known legitimate use cases for such data, but several injection attacks may use it");
+
+        throw $r1;
+
+     label2:
+        i2 = i2 + 1;
+
+     label3:
+        if i2 < i0 goto label1;
+
+        return;
+    }
+
+    public static java.lang.String getBaseName(java.lang.String)
+    {
+        java.lang.String r0, $r1, $r2;
+
+        r0 := @parameter0: java.lang.String;
+
+        $r1 = staticinvoke <org.apache.commons.io.FilenameUtils: java.lang.String getName(java.lang.String)>(r0);
+
+        $r2 = staticinvoke <org.apache.commons.io.FilenameUtils: java.lang.String removeExtension(java.lang.String)>($r1);
+
+        return $r2;
+    }
+
+    public static java.lang.String getExtension(java.lang.String)
+    {
+        java.lang.String r0, $r1;
+        int i0, $i1;
+
+        r0 := @parameter0: java.lang.String;
+
+        if r0 != null goto label1;
+
+        return null;
+
+     label1:
+        i0 = staticinvoke <org.apache.commons.io.FilenameUtils: int indexOfExtension(java.lang.String)>(r0);
+
+        if i0 != -1 goto label2;
+
+        return "";
+
+     label2:
+        $i1 = i0 + 1;
+
+        $r1 = virtualinvoke r0.<java.lang.String: java.lang.String substring(int)>($i1);
+
+        return $r1;
+    }
+
+    public static java.lang.String removeExtension(java.lang.String)
+    {
+        java.lang.String r0, $r1;
+        int i0;
+
+        r0 := @parameter0: java.lang.String;
+
+        if r0 != null goto label1;
+
+        return null;
+
+     label1:
+        staticinvoke <org.apache.commons.io.FilenameUtils: void failIfNullBytePresent(java.lang.String)>(r0);
+
+        i0 = staticinvoke <org.apache.commons.io.FilenameUtils: int indexOfExtension(java.lang.String)>(r0);
+
+        if i0 != -1 goto label2;
+
+        return r0;
+
+     label2:
+        $r1 = virtualinvoke r0.<java.lang.String: java.lang.String substring(int,int)>(0, i0);
+
+        return $r1;
+    }
+
+    public static boolean equals(java.lang.String, java.lang.String)
+    {
+        java.lang.String r0, r1;
+        org.apache.commons.io.IOCase $r2;
+        boolean $z0;
+
+        r0 := @parameter0: java.lang.String;
+
+        r1 := @parameter1: java.lang.String;
+
+        $r2 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $z0 = staticinvoke <org.apache.commons.io.FilenameUtils: boolean equals(java.lang.String,java.lang.String,boolean,org.apache.commons.io.IOCase)>(r0, r1, 0, $r2);
+
+        return $z0;
+    }
+
+    public static boolean equalsOnSystem(java.lang.String, java.lang.String)
+    {
+        java.lang.String r0, r1;
+        org.apache.commons.io.IOCase $r2;
+        boolean $z0;
+
+        r0 := @parameter0: java.lang.String;
+
+        r1 := @parameter1: java.lang.String;
+
+        $r2 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SYSTEM>;
+
+        $z0 = staticinvoke <org.apache.commons.io.FilenameUtils: boolean equals(java.lang.String,java.lang.String,boolean,org.apache.commons.io.IOCase)>(r0, r1, 0, $r2);
+
+        return $z0;
+    }
+
+    public static boolean equalsNormalized(java.lang.String, java.lang.String)
+    {
+        java.lang.String r0, r1;
+        org.apache.commons.io.IOCase $r2;
+        boolean $z0;
+
+        r0 := @parameter0: java.lang.String;
+
+        r1 := @parameter1: java.lang.String;
+
+        $r2 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $z0 = staticinvoke <org.apache.commons.io.FilenameUtils: boolean equals(java.lang.String,java.lang.String,boolean,org.apache.commons.io.IOCase)>(r0, r1, 1, $r2);
+
+        return $z0;
+    }
+
+    public static boolean equalsNormalizedOnSystem(java.lang.String, java.lang.String)
+    {
+        java.lang.String r0, r1;
+        org.apache.commons.io.IOCase $r2;
+        boolean $z0;
+
+        r0 := @parameter0: java.lang.String;
+
+        r1 := @parameter1: java.lang.String;
+
+        $r2 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SYSTEM>;
+
+        $z0 = staticinvoke <org.apache.commons.io.FilenameUtils: boolean equals(java.lang.String,java.lang.String,boolean,org.apache.commons.io.IOCase)>(r0, r1, 1, $r2);
+
+        return $z0;
+    }
+
+    public static boolean equals(java.lang.String, java.lang.String, boolean, org.apache.commons.io.IOCase)
+    {
+        boolean z0, $z1;
+        java.lang.NullPointerException $r0;
+        java.lang.String r1, r2;
+        org.apache.commons.io.IOCase r3;
+
+        r1 := @parameter0: java.lang.String;
+
+        r2 := @parameter1: java.lang.String;
+
+        z0 := @parameter2: boolean;
+
+        r3 := @parameter3: org.apache.commons.io.IOCase;
+
+        if r1 == null goto label1;
+
+        if r2 != null goto label3;
+
+     label1:
+        if r1 != null goto label2;
+
+        if r2 != null goto label2;
+
+        return 1;
+
+     label2:
+        return 0;
+
+     label3:
+        if z0 == 0 goto label5;
+
+        r1 = staticinvoke <org.apache.commons.io.FilenameUtils: java.lang.String normalize(java.lang.String)>(r1);
+
+        r2 = staticinvoke <org.apache.commons.io.FilenameUtils: java.lang.String normalize(java.lang.String)>(r2);
+
+        if r1 == null goto label4;
+
+        if r2 != null goto label5;
+
+     label4:
+        $r0 = new java.lang.NullPointerException;
+
+        specialinvoke $r0.<java.lang.NullPointerException: void <init>(java.lang.String)>("Error normalizing one or both of the file names");
+
+        throw $r0;
+
+     label5:
+        if r3 != null goto label6;
+
+        r3 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+     label6:
+        $z1 = virtualinvoke r3.<org.apache.commons.io.IOCase: boolean checkEquals(java.lang.String,java.lang.String)>(r1, r2);
+
+        return $z1;
+    }
+
+    public static boolean isExtension(java.lang.String, java.lang.String)
+    {
+        java.lang.String r0, r1, r2;
+        int $i0;
+        boolean $z0, $z1;
+
+        r0 := @parameter0: java.lang.String;
+
+        r1 := @parameter1: java.lang.String;
+
+        if r0 != null goto label1;
+
+        return 0;
+
+     label1:
+        staticinvoke <org.apache.commons.io.FilenameUtils: void failIfNullBytePresent(java.lang.String)>(r0);
+
+        if r1 == null goto label2;
+
+        $z0 = virtualinvoke r1.<java.lang.String: boolean isEmpty()>();
+
+        if $z0 == 0 goto label4;
+
+     label2:
+        $i0 = staticinvoke <org.apache.commons.io.FilenameUtils: int indexOfExtension(java.lang.String)>(r0);
+
+        if $i0 != -1 goto label3;
+
+        return 1;
+
+     label3:
+        return 0;
+
+     label4:
+        r2 = staticinvoke <org.apache.commons.io.FilenameUtils: java.lang.String getExtension(java.lang.String)>(r0);
+
+        $z1 = virtualinvoke r2.<java.lang.String: boolean equals(java.lang.Object)>(r1);
+
+        return $z1;
+    }
+
+    public static boolean isExtension(java.lang.String, java.lang.String[])
+    {
+        java.lang.String r0, r2, r3;
+        java.lang.String[] r1;
+        int i0, $i1, $i2, i3;
+        boolean $z0;
+
+        r0 := @parameter0: java.lang.String;
+
+        r1 := @parameter1: java.lang.String[];
+
+        if r0 != null goto label1;
+
+        return 0;
+
+     label1:
+        staticinvoke <org.apache.commons.io.FilenameUtils: void failIfNullBytePresent(java.lang.String)>(r0);
+
+        if r1 == null goto label2;
+
+        $i2 = lengthof r1;
+
+        if $i2 != 0 goto label4;
+
+     label2:
+        $i1 = staticinvoke <org.apache.commons.io.FilenameUtils: int indexOfExtension(java.lang.String)>(r0);
+
+        if $i1 != -1 goto label3;
+
+        return 1;
+
+     label3:
+        return 0;
+
+     label4:
+        r2 = staticinvoke <org.apache.commons.io.FilenameUtils: java.lang.String getExtension(java.lang.String)>(r0);
+
+        i0 = lengthof r1;
+
+        i3 = 0;
+
+        goto label7;
+
+     label5:
+        r3 = r1[i3];
+
+        $z0 = virtualinvoke r2.<java.lang.String: boolean equals(java.lang.Object)>(r3);
+
+        if $z0 == 0 goto label6;
+
+        return 1;
+
+     label6:
+        i3 = i3 + 1;
+
+     label7:
+        if i3 < i0 goto label5;
+
+        return 0;
+    }
+
+    public static boolean isExtension(java.lang.String, java.util.Collection)
+    {
+        java.lang.String r0, r2, r3;
+        java.util.Collection r1;
+        java.util.Iterator r4;
+        int $i0;
+        boolean $z0, $z1, $z2;
+        java.lang.Object $r5;
+
+        r0 := @parameter0: java.lang.String;
+
+        r1 := @parameter1: java.util.Collection;
+
+        if r0 != null goto label1;
+
+        return 0;
+
+     label1:
+        staticinvoke <org.apache.commons.io.FilenameUtils: void failIfNullBytePresent(java.lang.String)>(r0);
+
+        if r1 == null goto label2;
+
+        $z0 = interfaceinvoke r1.<java.util.Collection: boolean isEmpty()>();
+
+        if $z0 == 0 goto label4;
+
+     label2:
+        $i0 = staticinvoke <org.apache.commons.io.FilenameUtils: int indexOfExtension(java.lang.String)>(r0);
+
+        if $i0 != -1 goto label3;
+
+        return 1;
+
+     label3:
+        return 0;
+
+     label4:
+        r2 = staticinvoke <org.apache.commons.io.FilenameUtils: java.lang.String getExtension(java.lang.String)>(r0);
+
+        r4 = interfaceinvoke r1.<java.util.Collection: java.util.Iterator iterator()>();
+
+        goto label6;
+
+     label5:
+        $r5 = interfaceinvoke r4.<java.util.Iterator: java.lang.Object next()>();
+
+        r3 = (java.lang.String) $r5;
+
+        $z2 = virtualinvoke r2.<java.lang.String: boolean equals(java.lang.Object)>(r3);
+
+        if $z2 == 0 goto label6;
+
+        return 1;
+
+     label6:
+        $z1 = interfaceinvoke r4.<java.util.Iterator: boolean hasNext()>();
+
+        if $z1 != 0 goto label5;
+
+        return 0;
+    }
+
+    public static boolean wildcardMatch(java.lang.String, java.lang.String)
+    {
+        java.lang.String r0, r1;
+        org.apache.commons.io.IOCase $r2;
+        boolean $z0;
+
+        r0 := @parameter0: java.lang.String;
+
+        r1 := @parameter1: java.lang.String;
+
+        $r2 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+        $z0 = staticinvoke <org.apache.commons.io.FilenameUtils: boolean wildcardMatch(java.lang.String,java.lang.String,org.apache.commons.io.IOCase)>(r0, r1, $r2);
+
+        return $z0;
+    }
+
+    public static boolean wildcardMatchOnSystem(java.lang.String, java.lang.String)
+    {
+        java.lang.String r0, r1;
+        org.apache.commons.io.IOCase $r2;
+        boolean $z0;
+
+        r0 := @parameter0: java.lang.String;
+
+        r1 := @parameter1: java.lang.String;
+
+        $r2 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SYSTEM>;
+
+        $z0 = staticinvoke <org.apache.commons.io.FilenameUtils: boolean wildcardMatch(java.lang.String,java.lang.String,org.apache.commons.io.IOCase)>(r0, r1, $r2);
+
+        return $z0;
+    }
+
+    public static boolean wildcardMatch(java.lang.String, java.lang.String, org.apache.commons.io.IOCase)
+    {
+        java.lang.String r0, r1, $r5, $r6, $r7, $r8, $r9, $r15;
+        java.lang.String[] r2;
+        java.util.Stack $r4;
+        boolean $z0, $z1, $z2, z3;
+        int $i0, $i1, $i2, $i3, $i4, $i5, i6, i7, $i8, i9, $i10, $i11, $i12;
+        int[] $r10, r14;
+        java.lang.Object $r12;
+        org.apache.commons.io.IOCase r13;
+
+        r0 := @parameter0: java.lang.String;
+
+        r1 := @parameter1: java.lang.String;
+
+        r13 := @parameter2: org.apache.commons.io.IOCase;
+
+        if r0 != null goto label01;
+
+        if r1 != null goto label01;
+
+        return 1;
+
+     label01:
+        if r0 == null goto label02;
+
+        if r1 != null goto label03;
+
+     label02:
+        return 0;
+
+     label03:
+        if r13 != null goto label04;
+
+        r13 = <org.apache.commons.io.IOCase: org.apache.commons.io.IOCase SENSITIVE>;
+
+     label04:
+        r2 = staticinvoke <org.apache.commons.io.FilenameUtils: java.lang.String[] splitOnTokens(java.lang.String)>(r1);
+
+        z3 = 0;
+
+        i6 = 0;
+
+        i7 = 0;
+
+        $r4 = new java.util.Stack;
+
+        specialinvoke $r4.<java.util.Stack: void <init>()>();
+
+     label05:
+        $i8 = virtualinvoke $r4.<java.util.Stack: int size()>();
+
+        if $i8 <= 0 goto label14;
+
+        $r12 = virtualinvoke $r4.<java.util.Stack: java.lang.Object pop()>();
+
+        r14 = (int[]) $r12;
+
+        i7 = r14[0];
+
+        i6 = r14[1];
+
+        z3 = 1;
+
+        goto label14;
+
+     label06:
+        $r5 = r2[i7];
+
+        $z0 = virtualinvoke $r5.<java.lang.String: boolean equals(java.lang.Object)>("?");
+
+        if $z0 == 0 goto label08;
+
+        i6 = i6 + 1;
+
+        $i5 = virtualinvoke r0.<java.lang.String: int length()>();
+
+        if i6 <= $i5 goto label07;
+
+        goto label15;
+
+     label07:
+        z3 = 0;
+
+        goto label13;
+
+     label08:
+        $r6 = r2[i7];
+
+        $z1 = virtualinvoke $r6.<java.lang.String: boolean equals(java.lang.Object)>("*");
+
+        if $z1 == 0 goto label09;
+
+        z3 = 1;
+
+        $i3 = lengthof r2;
+
+        $i4 = $i3 - 1;
+
+        if i7 != $i4 goto label13;
+
+        i6 = virtualinvoke r0.<java.lang.String: int length()>();
+
+        goto label13;
+
+     label09:
+        if z3 == 0 goto label11;
+
+        $r8 = r2[i7];
+
+        i6 = virtualinvoke r13.<org.apache.commons.io.IOCase: int checkIndexOf(java.lang.String,int,java.lang.String)>(r0, i6, $r8);
+
+        if i6 != -1 goto label10;
+
+        goto label15;
+
+     label10:
+        $i2 = i6 + 1;
+
+        $r9 = r2[i7];
+
+        i9 = virtualinvoke r13.<org.apache.commons.io.IOCase: int checkIndexOf(java.lang.String,int,java.lang.String)>(r0, $i2, $r9);
+
+        if i9 < 0 goto label12;
+
+        $r10 = newarray (int)[2];
+
+        $r10[0] = i7;
+
+        $r10[1] = i9;
+
+        virtualinvoke $r4.<java.util.Stack: java.lang.Object push(java.lang.Object)>($r10);
+
+        goto label12;
+
+     label11:
+        $r7 = r2[i7];
+
+        $z2 = virtualinvoke r13.<org.apache.commons.io.IOCase: boolean checkRegionMatches(java.lang.String,int,java.lang.String)>(r0, i6, $r7);
+
+        if $z2 != 0 goto label12;
+
+        goto label15;
+
+     label12:
+        $r15 = r2[i7];
+
+        $i10 = virtualinvoke $r15.<java.lang.String: int length()>();
+
+        i6 = i6 + $i10;
+
+        z3 = 0;
+
+     label13:
+        i7 = i7 + 1;
+
+     label14:
+        $i11 = lengthof r2;
+
+        if i7 < $i11 goto label06;
+
+     label15:
+        $i12 = lengthof r2;
+
+        if i7 != $i12 goto label16;
+
+        $i1 = virtualinvoke r0.<java.lang.String: int length()>();
+
+        if i6 != $i1 goto label16;
+
+        return 1;
+
+     label16:
+        $i0 = virtualinvoke $r4.<java.util.Stack: int size()>();
+
+        if $i0 > 0 goto label05;
+
+        return 0;
+    }
+
+    static java.lang.String[] splitOnTokens(java.lang.String)
+    {
+        java.lang.String r0, $r7, $r12;
+        char[] r1;
+        char c0, c7;
+        int i1, $i2, $i3, $i4, $i5, $i6, i8;
+        java.util.ArrayList $r5;
+        java.lang.StringBuilder $r6;
+        java.lang.String[] $r9, $r11, $r14;
+        java.lang.Object[] $r10;
+
+        r0 := @parameter0: java.lang.String;
+
+        $i2 = virtualinvoke r0.<java.lang.String: int indexOf(int)>(63);
+
+        if $i2 != -1 goto label1;
+
+        $i6 = virtualinvoke r0.<java.lang.String: int indexOf(int)>(42);
+
+        if $i6 != -1 goto label1;
+
+        $r14 = newarray (java.lang.String)[1];
+
+        $r14[0] = r0;
+
+        return $r14;
+
+     label1:
+        r1 = virtualinvoke r0.<java.lang.String: char[] toCharArray()>();
+
+        $r5 = new java.util.ArrayList;
+
+        specialinvoke $r5.<java.util.ArrayList: void <init>()>();
+
+        $r6 = new java.lang.StringBuilder;
+
+        specialinvoke $r6.<java.lang.StringBuilder: void <init>()>();
+
+        c7 = 0;
+
+        i1 = lengthof r1;
+
+        i8 = 0;
+
+        goto label8;
+
+     label2:
+        c0 = r1[i8];
+
+        if c0 == 63 goto label3;
+
+        if c0 != 42 goto label6;
+
+     label3:
+        $i3 = virtualinvoke $r6.<java.lang.StringBuilder: int length()>();
+
+        if $i3 == 0 goto label4;
+
+        $r7 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r5.<java.util.ArrayList: boolean add(java.lang.Object)>($r7);
+
+        virtualinvoke $r6.<java.lang.StringBuilder: void setLength(int)>(0);
+
+     label4:
+        if c0 != 63 goto label5;
+
+        virtualinvoke $r5.<java.util.ArrayList: boolean add(java.lang.Object)>("?");
+
+        goto label7;
+
+     label5:
+        if c7 == 42 goto label7;
+
+        virtualinvoke $r5.<java.util.ArrayList: boolean add(java.lang.Object)>("*");
+
+        goto label7;
+
+     label6:
+        virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(c0);
+
+     label7:
+        c7 = c0;
+
+        i8 = i8 + 1;
+
+     label8:
+        if i8 < i1 goto label2;
+
+        $i4 = virtualinvoke $r6.<java.lang.StringBuilder: int length()>();
+
+        if $i4 == 0 goto label9;
+
+        $r12 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r5.<java.util.ArrayList: boolean add(java.lang.Object)>($r12);
+
+     label9:
+        $i5 = virtualinvoke $r5.<java.util.ArrayList: int size()>();
+
+        $r9 = newarray (java.lang.String)[$i5];
+
+        $r10 = virtualinvoke $r5.<java.util.ArrayList: java.lang.Object[] toArray(java.lang.Object[])>($r9);
+
+        $r11 = (java.lang.String[]) $r10;
+
+        return $r11;
+    }
+}

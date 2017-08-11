@@ -1,0 +1,83 @@
+public class org.apache.log4j.MyPatternLayout extends org.apache.log4j.PatternLayout
+{
+
+    public void <init>()
+    {
+        org.apache.log4j.MyPatternLayout r0;
+
+        r0 := @this: org.apache.log4j.MyPatternLayout;
+
+        specialinvoke r0.<org.apache.log4j.MyPatternLayout: void <init>(java.lang.String)>("%m%n");
+
+        return;
+    }
+
+    public void <init>(java.lang.String)
+    {
+        org.apache.log4j.MyPatternLayout r0;
+        java.lang.String r1;
+
+        r0 := @this: org.apache.log4j.MyPatternLayout;
+
+        r1 := @parameter0: java.lang.String;
+
+        specialinvoke r0.<org.apache.log4j.PatternLayout: void <init>(java.lang.String)>(r1);
+
+        return;
+    }
+
+    public org.apache.log4j.helpers.PatternParser createPatternParser(java.lang.String)
+    {
+        org.apache.log4j.MyPatternLayout r0;
+        java.lang.String r1, $r3;
+        org.apache.log4j.MyPatternParser $r2;
+
+        r0 := @this: org.apache.log4j.MyPatternLayout;
+
+        r1 := @parameter0: java.lang.String;
+
+        $r2 = new org.apache.log4j.MyPatternParser;
+
+        if r1 != null goto label1;
+
+        $r3 = "%m%n";
+
+        goto label2;
+
+     label1:
+        $r3 = r1;
+
+     label2:
+        specialinvoke $r2.<org.apache.log4j.MyPatternParser: void <init>(java.lang.String)>($r3);
+
+        return $r2;
+    }
+
+    public static void main(java.lang.String[])
+    {
+        java.lang.String[] r0;
+        org.apache.log4j.Logger r2;
+        org.apache.log4j.MyPatternLayout $r3;
+        org.apache.log4j.ConsoleAppender $r4;
+
+        r0 := @parameter0: java.lang.String[];
+
+        $r3 = new org.apache.log4j.MyPatternLayout;
+
+        specialinvoke $r3.<org.apache.log4j.MyPatternLayout: void <init>(java.lang.String)>("[counter=%.10#] - %m%n");
+
+        r2 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getLogger(java.lang.String)>("some.cat");
+
+        $r4 = new org.apache.log4j.ConsoleAppender;
+
+        specialinvoke $r4.<org.apache.log4j.ConsoleAppender: void <init>(org.apache.log4j.Layout,java.lang.String)>($r3, "System.out");
+
+        virtualinvoke r2.<org.apache.log4j.Logger: void addAppender(org.apache.log4j.Appender)>($r4);
+
+        virtualinvoke r2.<org.apache.log4j.Logger: void debug(java.lang.Object)>("Hello, log");
+
+        virtualinvoke r2.<org.apache.log4j.Logger: void info(java.lang.Object)>("Hello again...");
+
+        return;
+    }
+}

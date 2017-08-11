@@ -1,0 +1,78 @@
+public class org.apache.commons.io.FileUtilsWaitForTestCase extends java.lang.Object
+{
+
+    public void <init>()
+    {
+        org.apache.commons.io.FileUtilsWaitForTestCase r0;
+
+        r0 := @this: org.apache.commons.io.FileUtilsWaitForTestCase;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void testWaitFor()
+    {
+        org.apache.commons.io.FileUtilsWaitForTestCase r0;
+        java.io.File $r1, $r2;
+
+        r0 := @this: org.apache.commons.io.FileUtilsWaitForTestCase;
+
+        $r1 = new java.io.File;
+
+        specialinvoke $r1.<java.io.File: void <init>(java.lang.String)>("");
+
+        staticinvoke <org.apache.commons.io.FileUtils: boolean waitFor(java.io.File,int)>($r1, -1);
+
+        $r2 = new java.io.File;
+
+        specialinvoke $r2.<java.io.File: void <init>(java.lang.String)>("");
+
+        staticinvoke <org.apache.commons.io.FileUtils: boolean waitFor(java.io.File,int)>($r2, 2);
+
+        return;
+    }
+
+    public void testWaitForInterrupted() throws java.lang.InterruptedException
+    {
+        org.apache.commons.io.FileUtilsWaitForTestCase r0;
+        java.util.concurrent.atomic.AtomicBoolean $r5;
+        java.util.concurrent.CountDownLatch $r6;
+        org.apache.commons.io.FileUtilsWaitForTestCase$1 $r7;
+        java.lang.Thread $r8;
+        boolean $z0;
+
+        r0 := @this: org.apache.commons.io.FileUtilsWaitForTestCase;
+
+        $r5 = new java.util.concurrent.atomic.AtomicBoolean;
+
+        specialinvoke $r5.<java.util.concurrent.atomic.AtomicBoolean: void <init>(boolean)>(0);
+
+        $r6 = new java.util.concurrent.CountDownLatch;
+
+        specialinvoke $r6.<java.util.concurrent.CountDownLatch: void <init>(int)>(1);
+
+        $r7 = new org.apache.commons.io.FileUtilsWaitForTestCase$1;
+
+        specialinvoke $r7.<org.apache.commons.io.FileUtilsWaitForTestCase$1: void <init>(org.apache.commons.io.FileUtilsWaitForTestCase,java.util.concurrent.CountDownLatch,java.util.concurrent.atomic.AtomicBoolean)>(r0, $r6, $r5);
+
+        $r8 = new java.lang.Thread;
+
+        specialinvoke $r8.<java.lang.Thread: void <init>(java.lang.Runnable)>($r7);
+
+        virtualinvoke $r8.<java.lang.Thread: void start()>();
+
+        virtualinvoke $r6.<java.util.concurrent.CountDownLatch: void await()>();
+
+        virtualinvoke $r8.<java.lang.Thread: void interrupt()>();
+
+        virtualinvoke $r8.<java.lang.Thread: void join()>();
+
+        $z0 = virtualinvoke $r5.<java.util.concurrent.atomic.AtomicBoolean: boolean get()>();
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z0);
+
+        return;
+    }
+}

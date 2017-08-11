@@ -1,0 +1,309 @@
+public final class org.apache.log4j.VectorErrorHandler extends java.lang.Object implements org.apache.log4j.spi.ErrorHandler
+{
+    private org.apache.log4j.Logger logger;
+    private org.apache.log4j.Appender appender;
+    private org.apache.log4j.Appender backupAppender;
+    private final java.util.Vector errors;
+
+    public void <init>()
+    {
+        org.apache.log4j.VectorErrorHandler r0;
+        java.util.Vector $r1;
+
+        r0 := @this: org.apache.log4j.VectorErrorHandler;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r1 = new java.util.Vector;
+
+        specialinvoke $r1.<java.util.Vector: void <init>()>();
+
+        r0.<org.apache.log4j.VectorErrorHandler: java.util.Vector errors> = $r1;
+
+        return;
+    }
+
+    public void setLogger(org.apache.log4j.Logger)
+    {
+        org.apache.log4j.VectorErrorHandler r0;
+        org.apache.log4j.Logger r1;
+
+        r0 := @this: org.apache.log4j.VectorErrorHandler;
+
+        r1 := @parameter0: org.apache.log4j.Logger;
+
+        r0.<org.apache.log4j.VectorErrorHandler: org.apache.log4j.Logger logger> = r1;
+
+        return;
+    }
+
+    public org.apache.log4j.Logger getLogger()
+    {
+        org.apache.log4j.VectorErrorHandler r0;
+        org.apache.log4j.Logger $r1;
+
+        r0 := @this: org.apache.log4j.VectorErrorHandler;
+
+        $r1 = r0.<org.apache.log4j.VectorErrorHandler: org.apache.log4j.Logger logger>;
+
+        return $r1;
+    }
+
+    public void activateOptions()
+    {
+        org.apache.log4j.VectorErrorHandler r0;
+
+        r0 := @this: org.apache.log4j.VectorErrorHandler;
+
+        return;
+    }
+
+    public void error(java.lang.String, java.lang.Exception, int)
+    {
+        org.apache.log4j.VectorErrorHandler r0;
+        java.lang.String r1;
+        java.lang.Exception r2;
+        int i0;
+
+        r0 := @this: org.apache.log4j.VectorErrorHandler;
+
+        r1 := @parameter0: java.lang.String;
+
+        r2 := @parameter1: java.lang.Exception;
+
+        i0 := @parameter2: int;
+
+        virtualinvoke r0.<org.apache.log4j.VectorErrorHandler: void error(java.lang.String,java.lang.Exception,int,org.apache.log4j.spi.LoggingEvent)>(r1, r2, i0, null);
+
+        return;
+    }
+
+    public void error(java.lang.String)
+    {
+        org.apache.log4j.VectorErrorHandler r0;
+        java.lang.String r1;
+
+        r0 := @this: org.apache.log4j.VectorErrorHandler;
+
+        r1 := @parameter0: java.lang.String;
+
+        virtualinvoke r0.<org.apache.log4j.VectorErrorHandler: void error(java.lang.String,java.lang.Exception,int,org.apache.log4j.spi.LoggingEvent)>(r1, null, -1, null);
+
+        return;
+    }
+
+    public void error(java.lang.String, java.lang.Exception, int, org.apache.log4j.spi.LoggingEvent)
+    {
+        org.apache.log4j.VectorErrorHandler r0;
+        java.lang.String r1;
+        java.lang.Exception r2;
+        int i0;
+        org.apache.log4j.spi.LoggingEvent r3;
+        java.lang.Object[] $r4;
+        java.lang.Integer $r5;
+        java.util.Vector $r6;
+
+        r0 := @this: org.apache.log4j.VectorErrorHandler;
+
+        r1 := @parameter0: java.lang.String;
+
+        r2 := @parameter1: java.lang.Exception;
+
+        i0 := @parameter2: int;
+
+        r3 := @parameter3: org.apache.log4j.spi.LoggingEvent;
+
+        $r6 = r0.<org.apache.log4j.VectorErrorHandler: java.util.Vector errors>;
+
+        $r4 = newarray (java.lang.Object)[4];
+
+        $r4[0] = r1;
+
+        $r4[1] = r2;
+
+        $r5 = new java.lang.Integer;
+
+        specialinvoke $r5.<java.lang.Integer: void <init>(int)>(i0);
+
+        $r4[2] = $r5;
+
+        $r4[3] = r3;
+
+        virtualinvoke $r6.<java.util.Vector: void addElement(java.lang.Object)>($r4);
+
+        return;
+    }
+
+    public java.lang.String getMessage(int)
+    {
+        org.apache.log4j.VectorErrorHandler r0;
+        int i0;
+        java.util.Vector $r1;
+        java.lang.Object $r2, $r4;
+        java.lang.Object[] $r3;
+        java.lang.String $r5;
+
+        r0 := @this: org.apache.log4j.VectorErrorHandler;
+
+        i0 := @parameter0: int;
+
+        $r1 = r0.<org.apache.log4j.VectorErrorHandler: java.util.Vector errors>;
+
+        $r2 = virtualinvoke $r1.<java.util.Vector: java.lang.Object elementAt(int)>(i0);
+
+        $r3 = (java.lang.Object[]) $r2;
+
+        $r4 = $r3[0];
+
+        $r5 = (java.lang.String) $r4;
+
+        return $r5;
+    }
+
+    public java.lang.Exception getException(int)
+    {
+        org.apache.log4j.VectorErrorHandler r0;
+        int i0;
+        java.util.Vector $r1;
+        java.lang.Object $r2, $r4;
+        java.lang.Object[] $r3;
+        java.lang.Exception $r5;
+
+        r0 := @this: org.apache.log4j.VectorErrorHandler;
+
+        i0 := @parameter0: int;
+
+        $r1 = r0.<org.apache.log4j.VectorErrorHandler: java.util.Vector errors>;
+
+        $r2 = virtualinvoke $r1.<java.util.Vector: java.lang.Object elementAt(int)>(i0);
+
+        $r3 = (java.lang.Object[]) $r2;
+
+        $r4 = $r3[1];
+
+        $r5 = (java.lang.Exception) $r4;
+
+        return $r5;
+    }
+
+    public int getErrorCode(int)
+    {
+        org.apache.log4j.VectorErrorHandler r0;
+        int i0, $i1;
+        java.util.Vector $r1;
+        java.lang.Object $r2, $r4;
+        java.lang.Object[] $r3;
+        java.lang.Integer $r5;
+
+        r0 := @this: org.apache.log4j.VectorErrorHandler;
+
+        i0 := @parameter0: int;
+
+        $r1 = r0.<org.apache.log4j.VectorErrorHandler: java.util.Vector errors>;
+
+        $r2 = virtualinvoke $r1.<java.util.Vector: java.lang.Object elementAt(int)>(i0);
+
+        $r3 = (java.lang.Object[]) $r2;
+
+        $r4 = $r3[2];
+
+        $r5 = (java.lang.Integer) $r4;
+
+        $i1 = virtualinvoke $r5.<java.lang.Integer: int intValue()>();
+
+        return $i1;
+    }
+
+    public org.apache.log4j.spi.LoggingEvent getEvent(int)
+    {
+        org.apache.log4j.VectorErrorHandler r0;
+        int i0;
+        java.util.Vector $r1;
+        java.lang.Object $r2, $r4;
+        java.lang.Object[] $r3;
+        org.apache.log4j.spi.LoggingEvent $r5;
+
+        r0 := @this: org.apache.log4j.VectorErrorHandler;
+
+        i0 := @parameter0: int;
+
+        $r1 = r0.<org.apache.log4j.VectorErrorHandler: java.util.Vector errors>;
+
+        $r2 = virtualinvoke $r1.<java.util.Vector: java.lang.Object elementAt(int)>(i0);
+
+        $r3 = (java.lang.Object[]) $r2;
+
+        $r4 = $r3[3];
+
+        $r5 = (org.apache.log4j.spi.LoggingEvent) $r4;
+
+        return $r5;
+    }
+
+    public int size()
+    {
+        org.apache.log4j.VectorErrorHandler r0;
+        java.util.Vector $r1;
+        int $i0;
+
+        r0 := @this: org.apache.log4j.VectorErrorHandler;
+
+        $r1 = r0.<org.apache.log4j.VectorErrorHandler: java.util.Vector errors>;
+
+        $i0 = virtualinvoke $r1.<java.util.Vector: int size()>();
+
+        return $i0;
+    }
+
+    public void setAppender(org.apache.log4j.Appender)
+    {
+        org.apache.log4j.VectorErrorHandler r0;
+        org.apache.log4j.Appender r1;
+
+        r0 := @this: org.apache.log4j.VectorErrorHandler;
+
+        r1 := @parameter0: org.apache.log4j.Appender;
+
+        r0.<org.apache.log4j.VectorErrorHandler: org.apache.log4j.Appender appender> = r1;
+
+        return;
+    }
+
+    public org.apache.log4j.Appender getAppender()
+    {
+        org.apache.log4j.VectorErrorHandler r0;
+        org.apache.log4j.Appender $r1;
+
+        r0 := @this: org.apache.log4j.VectorErrorHandler;
+
+        $r1 = r0.<org.apache.log4j.VectorErrorHandler: org.apache.log4j.Appender appender>;
+
+        return $r1;
+    }
+
+    public void setBackupAppender(org.apache.log4j.Appender)
+    {
+        org.apache.log4j.VectorErrorHandler r0;
+        org.apache.log4j.Appender r1;
+
+        r0 := @this: org.apache.log4j.VectorErrorHandler;
+
+        r1 := @parameter0: org.apache.log4j.Appender;
+
+        r0.<org.apache.log4j.VectorErrorHandler: org.apache.log4j.Appender backupAppender> = r1;
+
+        return;
+    }
+
+    public org.apache.log4j.Appender getBackupAppender()
+    {
+        org.apache.log4j.VectorErrorHandler r0;
+        org.apache.log4j.Appender $r1;
+
+        r0 := @this: org.apache.log4j.VectorErrorHandler;
+
+        $r1 = r0.<org.apache.log4j.VectorErrorHandler: org.apache.log4j.Appender backupAppender>;
+
+        return $r1;
+    }
+}

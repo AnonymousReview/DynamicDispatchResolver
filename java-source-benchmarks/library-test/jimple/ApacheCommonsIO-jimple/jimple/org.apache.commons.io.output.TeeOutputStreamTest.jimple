@@ -1,0 +1,307 @@
+public class org.apache.commons.io.output.TeeOutputStreamTest extends java.lang.Object
+{
+
+    public void <init>()
+    {
+        org.apache.commons.io.output.TeeOutputStreamTest r0;
+
+        r0 := @this: org.apache.commons.io.output.TeeOutputStreamTest;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void testCloseBranchIOException()
+    {
+        org.apache.commons.io.output.TeeOutputStreamTest r0;
+        org.apache.commons.io.output.TeeOutputStreamTest$ExceptionOnCloseByteArrayOutputStream $r5;
+        org.apache.commons.io.output.TeeOutputStreamTest$RecordCloseByteArrayOutputStream $r6;
+        org.apache.commons.io.output.TeeOutputStream $r7;
+        java.lang.StringBuilder $r8, $r11;
+        java.lang.Class $r9;
+        java.lang.String $r10, $r12;
+        java.io.IOException $r13;
+        boolean $z0;
+
+        r0 := @this: org.apache.commons.io.output.TeeOutputStreamTest;
+
+        $r5 = new org.apache.commons.io.output.TeeOutputStreamTest$ExceptionOnCloseByteArrayOutputStream;
+
+        specialinvoke $r5.<org.apache.commons.io.output.TeeOutputStreamTest$ExceptionOnCloseByteArrayOutputStream: void <init>(org.apache.commons.io.output.TeeOutputStreamTest$ExceptionOnCloseByteArrayOutputStream)>(null);
+
+        $r6 = new org.apache.commons.io.output.TeeOutputStreamTest$RecordCloseByteArrayOutputStream;
+
+        specialinvoke $r6.<org.apache.commons.io.output.TeeOutputStreamTest$RecordCloseByteArrayOutputStream: void <init>(org.apache.commons.io.output.TeeOutputStreamTest$RecordCloseByteArrayOutputStream)>(null);
+
+        $r7 = new org.apache.commons.io.output.TeeOutputStream;
+
+        specialinvoke $r7.<org.apache.commons.io.output.TeeOutputStream: void <init>(java.io.OutputStream,java.io.OutputStream)>($r6, $r5);
+
+     label1:
+        virtualinvoke $r7.<org.apache.commons.io.output.TeeOutputStream: void close()>();
+
+        $r8 = new java.lang.StringBuilder;
+
+        specialinvoke $r8.<java.lang.StringBuilder: void <init>(java.lang.String)>("Expected ");
+
+        $r9 = class "java/io/IOException";
+
+        $r10 = virtualinvoke $r9.<java.lang.Class: java.lang.String getName()>();
+
+        $r11 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r10);
+
+        $r12 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>($r12);
+
+     label2:
+        goto label4;
+
+     label3:
+        $r13 := @caughtexception;
+
+        $z0 = $r6.<org.apache.commons.io.output.TeeOutputStreamTest$RecordCloseByteArrayOutputStream: boolean closed>;
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z0);
+
+     label4:
+        return;
+
+        catch java.io.IOException from label1 to label2 with label3;
+    }
+
+    public void testCloseMainIOException()
+    {
+        org.apache.commons.io.output.TeeOutputStreamTest r0;
+        org.apache.commons.io.output.TeeOutputStreamTest$ExceptionOnCloseByteArrayOutputStream $r5;
+        org.apache.commons.io.output.TeeOutputStreamTest$RecordCloseByteArrayOutputStream $r6;
+        org.apache.commons.io.output.TeeOutputStream $r7;
+        java.lang.StringBuilder $r8, $r11;
+        java.lang.Class $r9;
+        java.lang.String $r10, $r12;
+        java.io.IOException $r13;
+        boolean $z0;
+
+        r0 := @this: org.apache.commons.io.output.TeeOutputStreamTest;
+
+        $r5 = new org.apache.commons.io.output.TeeOutputStreamTest$ExceptionOnCloseByteArrayOutputStream;
+
+        specialinvoke $r5.<org.apache.commons.io.output.TeeOutputStreamTest$ExceptionOnCloseByteArrayOutputStream: void <init>(org.apache.commons.io.output.TeeOutputStreamTest$ExceptionOnCloseByteArrayOutputStream)>(null);
+
+        $r6 = new org.apache.commons.io.output.TeeOutputStreamTest$RecordCloseByteArrayOutputStream;
+
+        specialinvoke $r6.<org.apache.commons.io.output.TeeOutputStreamTest$RecordCloseByteArrayOutputStream: void <init>(org.apache.commons.io.output.TeeOutputStreamTest$RecordCloseByteArrayOutputStream)>(null);
+
+        $r7 = new org.apache.commons.io.output.TeeOutputStream;
+
+        specialinvoke $r7.<org.apache.commons.io.output.TeeOutputStream: void <init>(java.io.OutputStream,java.io.OutputStream)>($r5, $r6);
+
+     label1:
+        virtualinvoke $r7.<org.apache.commons.io.output.TeeOutputStream: void close()>();
+
+        $r8 = new java.lang.StringBuilder;
+
+        specialinvoke $r8.<java.lang.StringBuilder: void <init>(java.lang.String)>("Expected ");
+
+        $r9 = class "java/io/IOException";
+
+        $r10 = virtualinvoke $r9.<java.lang.Class: java.lang.String getName()>();
+
+        $r11 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r10);
+
+        $r12 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>($r12);
+
+     label2:
+        goto label4;
+
+     label3:
+        $r13 := @caughtexception;
+
+        $z0 = $r6.<org.apache.commons.io.output.TeeOutputStreamTest$RecordCloseByteArrayOutputStream: boolean closed>;
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z0);
+
+     label4:
+        return;
+
+        catch java.io.IOException from label1 to label2 with label3;
+    }
+
+    public void testTee() throws java.io.IOException
+    {
+        org.apache.commons.io.output.TeeOutputStreamTest r0;
+        java.io.ByteArrayOutputStream $r4, $r5;
+        org.apache.commons.io.output.TeeOutputStream $r6;
+        byte[] $r7, $r8, $r9, $r10, $r11, $r12, r13;
+        byte $b0, $b2;
+        int $i1, $i3, i4, i5, i6;
+
+        r0 := @this: org.apache.commons.io.output.TeeOutputStreamTest;
+
+        $r4 = new java.io.ByteArrayOutputStream;
+
+        specialinvoke $r4.<java.io.ByteArrayOutputStream: void <init>()>();
+
+        $r5 = new java.io.ByteArrayOutputStream;
+
+        specialinvoke $r5.<java.io.ByteArrayOutputStream: void <init>()>();
+
+        $r6 = new org.apache.commons.io.output.TeeOutputStream;
+
+        specialinvoke $r6.<org.apache.commons.io.output.TeeOutputStream: void <init>(java.io.OutputStream,java.io.OutputStream)>($r4, $r5);
+
+        i4 = 0;
+
+        goto label2;
+
+     label1:
+        virtualinvoke $r6.<org.apache.commons.io.output.TeeOutputStream: void write(int)>(i4);
+
+        i4 = i4 + 1;
+
+     label2:
+        if i4 < 20 goto label1;
+
+        $r7 = virtualinvoke $r4.<java.io.ByteArrayOutputStream: byte[] toByteArray()>();
+
+        $r8 = virtualinvoke $r5.<java.io.ByteArrayOutputStream: byte[] toByteArray()>();
+
+        specialinvoke r0.<org.apache.commons.io.output.TeeOutputStreamTest: void assertByteArrayEquals(java.lang.String,byte[],byte[])>("TeeOutputStream.write(int)", $r7, $r8);
+
+        r13 = newarray (byte)[10];
+
+        i5 = 20;
+
+        goto label4;
+
+     label3:
+        $i1 = i5 - 20;
+
+        $b0 = (byte) i5;
+
+        r13[$i1] = $b0;
+
+        i5 = i5 + 1;
+
+     label4:
+        if i5 < 30 goto label3;
+
+        virtualinvoke $r6.<org.apache.commons.io.output.TeeOutputStream: void write(byte[])>(r13);
+
+        $r9 = virtualinvoke $r4.<java.io.ByteArrayOutputStream: byte[] toByteArray()>();
+
+        $r10 = virtualinvoke $r5.<java.io.ByteArrayOutputStream: byte[] toByteArray()>();
+
+        specialinvoke r0.<org.apache.commons.io.output.TeeOutputStreamTest: void assertByteArrayEquals(java.lang.String,byte[],byte[])>("TeeOutputStream.write(byte[])", $r9, $r10);
+
+        i6 = 25;
+
+        goto label6;
+
+     label5:
+        $i3 = i6 - 25;
+
+        $b2 = (byte) i6;
+
+        r13[$i3] = $b2;
+
+        i6 = i6 + 1;
+
+     label6:
+        if i6 < 35 goto label5;
+
+        virtualinvoke $r6.<org.apache.commons.io.output.TeeOutputStream: void write(byte[],int,int)>(r13, 5, 5);
+
+        $r11 = virtualinvoke $r4.<java.io.ByteArrayOutputStream: byte[] toByteArray()>();
+
+        $r12 = virtualinvoke $r5.<java.io.ByteArrayOutputStream: byte[] toByteArray()>();
+
+        specialinvoke r0.<org.apache.commons.io.output.TeeOutputStreamTest: void assertByteArrayEquals(java.lang.String,byte[],byte[])>("TeeOutputStream.write(byte[], int, int)", $r11, $r12);
+
+        virtualinvoke $r6.<org.apache.commons.io.output.TeeOutputStream: void flush()>();
+
+        virtualinvoke $r6.<org.apache.commons.io.output.TeeOutputStream: void close()>();
+
+        return;
+    }
+
+    private void assertByteArrayEquals(java.lang.String, byte[], byte[])
+    {
+        org.apache.commons.io.output.TeeOutputStreamTest r0;
+        java.lang.String r1, $r5, $r7, $r9, $r13;
+        byte[] r2, r3;
+        java.lang.StringBuilder $r4, $r6, $r8, $r10, $r11, $r12;
+        int $i0, $i1, $i4, i9;
+        long $l2, $l3, $l7, $l8;
+        byte $b5, $b6;
+
+        r0 := @this: org.apache.commons.io.output.TeeOutputStreamTest;
+
+        r1 := @parameter0: java.lang.String;
+
+        r2 := @parameter1: byte[];
+
+        r3 := @parameter2: byte[];
+
+        $r4 = new java.lang.StringBuilder;
+
+        $r5 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>(r1);
+
+        specialinvoke $r4.<java.lang.StringBuilder: void <init>(java.lang.String)>($r5);
+
+        $r6 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(": array size mismatch");
+
+        $r7 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $i0 = lengthof r2;
+
+        $l3 = (long) $i0;
+
+        $i1 = lengthof r3;
+
+        $l2 = (long) $i1;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>($r7, $l3, $l2);
+
+        i9 = 0;
+
+        goto label2;
+
+     label1:
+        $r8 = new java.lang.StringBuilder;
+
+        $r9 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>(r1);
+
+        specialinvoke $r8.<java.lang.StringBuilder: void <init>(java.lang.String)>($r9);
+
+        $r10 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(": array[ ");
+
+        $r11 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i9);
+
+        $r12 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("] mismatch");
+
+        $r13 = virtualinvoke $r12.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $b5 = r2[i9];
+
+        $l8 = (long) $b5;
+
+        $b6 = r3[i9];
+
+        $l7 = (long) $b6;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>($r13, $l8, $l7);
+
+        i9 = i9 + 1;
+
+     label2:
+        $i4 = lengthof r2;
+
+        if i9 < $i4 goto label1;
+
+        return;
+    }
+}

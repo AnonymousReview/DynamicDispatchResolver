@@ -1,0 +1,257 @@
+public class org.apache.log4j.customLogger.XLoggerTestCase extends junit.framework.TestCase
+{
+    static java.lang.String FILTERED;
+    static org.apache.log4j.customLogger.XLogger logger;
+
+    static void <clinit>()
+    {
+        org.apache.log4j.Logger $r0;
+        org.apache.log4j.customLogger.XLogger $r1;
+
+        <org.apache.log4j.customLogger.XLoggerTestCase: java.lang.String FILTERED> = "output/filtered";
+
+        $r0 = staticinvoke <org.apache.log4j.customLogger.XLogger: org.apache.log4j.Logger getLogger(java.lang.Class)>(class "org/apache/log4j/customLogger/XLoggerTestCase");
+
+        $r1 = (org.apache.log4j.customLogger.XLogger) $r0;
+
+        <org.apache.log4j.customLogger.XLoggerTestCase: org.apache.log4j.customLogger.XLogger logger> = $r1;
+
+        return;
+    }
+
+    public void <init>(java.lang.String)
+    {
+        org.apache.log4j.customLogger.XLoggerTestCase r0;
+        java.lang.String r1;
+
+        r0 := @this: org.apache.log4j.customLogger.XLoggerTestCase;
+
+        r1 := @parameter0: java.lang.String;
+
+        specialinvoke r0.<junit.framework.TestCase: void <init>(java.lang.String)>(r1);
+
+        return;
+    }
+
+    public void tearDown()
+    {
+        org.apache.log4j.customLogger.XLoggerTestCase r0;
+        org.apache.log4j.customLogger.XLogger $r1;
+        org.apache.log4j.spi.LoggerRepository $r2;
+
+        r0 := @this: org.apache.log4j.customLogger.XLoggerTestCase;
+
+        $r1 = <org.apache.log4j.customLogger.XLoggerTestCase: org.apache.log4j.customLogger.XLogger logger>;
+
+        $r2 = virtualinvoke $r1.<org.apache.log4j.customLogger.XLogger: org.apache.log4j.spi.LoggerRepository getLoggerRepository()>();
+
+        interfaceinvoke $r2.<org.apache.log4j.spi.LoggerRepository: void resetConfiguration()>();
+
+        return;
+    }
+
+    public void test1() throws java.lang.Exception
+    {
+        org.apache.log4j.customLogger.XLoggerTestCase r0;
+
+        r0 := @this: org.apache.log4j.customLogger.XLoggerTestCase;
+
+        virtualinvoke r0.<org.apache.log4j.customLogger.XLoggerTestCase: void common(int)>(1);
+
+        return;
+    }
+
+    public void test2() throws java.lang.Exception
+    {
+        org.apache.log4j.customLogger.XLoggerTestCase r0;
+
+        r0 := @this: org.apache.log4j.customLogger.XLoggerTestCase;
+
+        virtualinvoke r0.<org.apache.log4j.customLogger.XLoggerTestCase: void common(int)>(2);
+
+        return;
+    }
+
+    void common(int) throws java.lang.Exception
+    {
+        org.apache.log4j.customLogger.XLoggerTestCase r0;
+        int i0, i2, i3, i4, i5, i6, i7;
+        java.lang.StringBuilder $r2, $r3, $r4, $r6, $r8, $r10, $r12, $r14, $r16, $r18, $r20, $r22, $r24, $r27, $r29, $r36, $r38;
+        java.lang.String $r5, $r9, $r13, $r17, $r21, $r25, $r30, $r33, $r37, $r39;
+        org.apache.log4j.customLogger.XLogger $r7, $r11, $r15, $r19, $r23, $r28;
+        java.lang.Exception $r26;
+        org.apache.log4j.util.Filter[] $r31;
+        org.apache.log4j.util.LineNumberFilter $r32;
+        org.apache.log4j.util.SunReflectFilter $r34;
+        org.apache.log4j.util.JunitTestRunnerFilter $r35;
+        boolean $z0;
+
+        r0 := @this: org.apache.log4j.customLogger.XLoggerTestCase;
+
+        i0 := @parameter0: int;
+
+        $r2 = new java.lang.StringBuilder;
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>(java.lang.String)>("input/xml/customLogger");
+
+        $r3 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i0);
+
+        $r4 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(".xml");
+
+        $r5 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.apache.log4j.xml.DOMConfigurator: void configure(java.lang.String)>($r5);
+
+        $r7 = <org.apache.log4j.customLogger.XLoggerTestCase: org.apache.log4j.customLogger.XLogger logger>;
+
+        $r6 = new java.lang.StringBuilder;
+
+        specialinvoke $r6.<java.lang.StringBuilder: void <init>(java.lang.String)>("Message ");
+
+        i2 = -1 + 1;
+
+        $r8 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i2);
+
+        $r9 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r7.<org.apache.log4j.customLogger.XLogger: void trace(java.lang.String)>($r9);
+
+        $r11 = <org.apache.log4j.customLogger.XLoggerTestCase: org.apache.log4j.customLogger.XLogger logger>;
+
+        $r10 = new java.lang.StringBuilder;
+
+        specialinvoke $r10.<java.lang.StringBuilder: void <init>(java.lang.String)>("Message ");
+
+        i3 = i2 + 1;
+
+        $r12 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i3);
+
+        $r13 = virtualinvoke $r12.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r11.<org.apache.log4j.customLogger.XLogger: void debug(java.lang.String)>($r13);
+
+        $r15 = <org.apache.log4j.customLogger.XLoggerTestCase: org.apache.log4j.customLogger.XLogger logger>;
+
+        $r14 = new java.lang.StringBuilder;
+
+        specialinvoke $r14.<java.lang.StringBuilder: void <init>(java.lang.String)>("Message ");
+
+        i4 = i3 + 1;
+
+        $r16 = virtualinvoke $r14.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i4);
+
+        $r17 = virtualinvoke $r16.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r15.<org.apache.log4j.customLogger.XLogger: void warn(java.lang.Object)>($r17);
+
+        $r19 = <org.apache.log4j.customLogger.XLoggerTestCase: org.apache.log4j.customLogger.XLogger logger>;
+
+        $r18 = new java.lang.StringBuilder;
+
+        specialinvoke $r18.<java.lang.StringBuilder: void <init>(java.lang.String)>("Message ");
+
+        i5 = i4 + 1;
+
+        $r20 = virtualinvoke $r18.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i5);
+
+        $r21 = virtualinvoke $r20.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r19.<org.apache.log4j.customLogger.XLogger: void error(java.lang.Object)>($r21);
+
+        $r23 = <org.apache.log4j.customLogger.XLoggerTestCase: org.apache.log4j.customLogger.XLogger logger>;
+
+        $r22 = new java.lang.StringBuilder;
+
+        specialinvoke $r22.<java.lang.StringBuilder: void <init>(java.lang.String)>("Message ");
+
+        i6 = i5 + 1;
+
+        $r24 = virtualinvoke $r22.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i6);
+
+        $r25 = virtualinvoke $r24.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r23.<org.apache.log4j.customLogger.XLogger: void fatal(java.lang.Object)>($r25);
+
+        $r26 = new java.lang.Exception;
+
+        specialinvoke $r26.<java.lang.Exception: void <init>(java.lang.String)>("Just testing");
+
+        $r28 = <org.apache.log4j.customLogger.XLoggerTestCase: org.apache.log4j.customLogger.XLogger logger>;
+
+        $r27 = new java.lang.StringBuilder;
+
+        specialinvoke $r27.<java.lang.StringBuilder: void <init>(java.lang.String)>("Message ");
+
+        i7 = i6 + 1;
+
+        $r29 = virtualinvoke $r27.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i7);
+
+        $r30 = virtualinvoke $r29.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r28.<org.apache.log4j.customLogger.XLogger: void debug(java.lang.Object,java.lang.Throwable)>($r30, $r26);
+
+        $r33 = <org.apache.log4j.customLogger.XLoggerTestCase: java.lang.String FILTERED>;
+
+        $r31 = newarray (org.apache.log4j.util.Filter)[3];
+
+        $r32 = new org.apache.log4j.util.LineNumberFilter;
+
+        specialinvoke $r32.<org.apache.log4j.util.LineNumberFilter: void <init>()>();
+
+        $r31[0] = $r32;
+
+        $r34 = new org.apache.log4j.util.SunReflectFilter;
+
+        specialinvoke $r34.<org.apache.log4j.util.SunReflectFilter: void <init>()>();
+
+        $r31[1] = $r34;
+
+        $r35 = new org.apache.log4j.util.JunitTestRunnerFilter;
+
+        specialinvoke $r35.<org.apache.log4j.util.JunitTestRunnerFilter: void <init>()>();
+
+        $r31[2] = $r35;
+
+        staticinvoke <org.apache.log4j.util.Transformer: void transform(java.lang.String,java.lang.String,org.apache.log4j.util.Filter[])>("output/temp", $r33, $r31);
+
+        $r37 = <org.apache.log4j.customLogger.XLoggerTestCase: java.lang.String FILTERED>;
+
+        $r36 = new java.lang.StringBuilder;
+
+        specialinvoke $r36.<java.lang.StringBuilder: void <init>(java.lang.String)>("witness/customLogger.");
+
+        $r38 = virtualinvoke $r36.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i0);
+
+        $r39 = virtualinvoke $r38.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $z0 = staticinvoke <org.apache.log4j.util.Compare: boolean compare(java.lang.String,java.lang.String)>($r37, $r39);
+
+        staticinvoke <org.apache.log4j.customLogger.XLoggerTestCase: void assertTrue(boolean)>($z0);
+
+        return;
+    }
+
+    public static junit.framework.Test suite()
+    {
+        junit.framework.TestSuite $r1;
+        org.apache.log4j.customLogger.XLoggerTestCase $r2, $r3;
+
+        $r1 = new junit.framework.TestSuite;
+
+        specialinvoke $r1.<junit.framework.TestSuite: void <init>()>();
+
+        $r2 = new org.apache.log4j.customLogger.XLoggerTestCase;
+
+        specialinvoke $r2.<org.apache.log4j.customLogger.XLoggerTestCase: void <init>(java.lang.String)>("test1");
+
+        virtualinvoke $r1.<junit.framework.TestSuite: void addTest(junit.framework.Test)>($r2);
+
+        $r3 = new org.apache.log4j.customLogger.XLoggerTestCase;
+
+        specialinvoke $r3.<org.apache.log4j.customLogger.XLoggerTestCase: void <init>(java.lang.String)>("test2");
+
+        virtualinvoke $r1.<junit.framework.TestSuite: void addTest(junit.framework.Test)>($r3);
+
+        return $r1;
+    }
+}

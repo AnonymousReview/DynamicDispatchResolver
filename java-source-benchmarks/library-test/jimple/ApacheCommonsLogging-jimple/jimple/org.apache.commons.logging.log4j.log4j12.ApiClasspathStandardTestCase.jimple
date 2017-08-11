@@ -1,0 +1,52 @@
+public class org.apache.commons.logging.log4j.log4j12.ApiClasspathStandardTestCase extends junit.framework.TestCase
+{
+
+    public void <init>()
+    {
+        org.apache.commons.logging.log4j.log4j12.ApiClasspathStandardTestCase r0;
+
+        r0 := @this: org.apache.commons.logging.log4j.log4j12.ApiClasspathStandardTestCase;
+
+        specialinvoke r0.<junit.framework.TestCase: void <init>()>();
+
+        return;
+    }
+
+    public static junit.framework.Test suite() throws java.lang.Exception
+    {
+        java.lang.Class r2, $r4;
+        org.apache.commons.logging.PathableClassLoader $r3, $r6;
+        java.lang.ClassLoader $r5;
+        org.apache.commons.logging.PathableTestSuite $r7;
+
+        $r3 = new org.apache.commons.logging.PathableClassLoader;
+
+        specialinvoke $r3.<org.apache.commons.logging.PathableClassLoader: void <init>(java.lang.ClassLoader)>(null);
+
+        $r4 = class "junit/framework/Test";
+
+        $r5 = virtualinvoke $r4.<java.lang.Class: java.lang.ClassLoader getClassLoader()>();
+
+        virtualinvoke $r3.<org.apache.commons.logging.PathableClassLoader: void useExplicitLoader(java.lang.String,java.lang.ClassLoader)>("junit.", $r5);
+
+        virtualinvoke $r3.<org.apache.commons.logging.PathableClassLoader: void addLogicalLib(java.lang.String)>("commons-logging-api");
+
+        $r6 = new org.apache.commons.logging.PathableClassLoader;
+
+        specialinvoke $r6.<org.apache.commons.logging.PathableClassLoader: void <init>(java.lang.ClassLoader)>($r3);
+
+        virtualinvoke $r6.<org.apache.commons.logging.PathableClassLoader: void addLogicalLib(java.lang.String)>("log4j12");
+
+        virtualinvoke $r6.<org.apache.commons.logging.PathableClassLoader: void addLogicalLib(java.lang.String)>("commons-logging");
+
+        virtualinvoke $r6.<org.apache.commons.logging.PathableClassLoader: void addLogicalLib(java.lang.String)>("testclasses");
+
+        r2 = virtualinvoke $r6.<org.apache.commons.logging.PathableClassLoader: java.lang.Class loadClass(java.lang.String)>("org.apache.commons.logging.log4j.log4j12.Log4j12StandardTests");
+
+        $r7 = new org.apache.commons.logging.PathableTestSuite;
+
+        specialinvoke $r7.<org.apache.commons.logging.PathableTestSuite: void <init>(java.lang.Class,java.lang.ClassLoader)>(r2, $r6);
+
+        return $r7;
+    }
+}

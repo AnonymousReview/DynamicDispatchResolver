@@ -1,0 +1,116 @@
+public class org.apache.commons.io.input.ReversedLinesFileReaderTestSimple extends java.lang.Object
+{
+    private org.apache.commons.io.input.ReversedLinesFileReader reversedLinesFileReader;
+
+    public void <init>()
+    {
+        org.apache.commons.io.input.ReversedLinesFileReaderTestSimple r0;
+
+        r0 := @this: org.apache.commons.io.input.ReversedLinesFileReaderTestSimple;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void closeReader()
+    {
+        org.apache.commons.io.input.ReversedLinesFileReaderTestSimple r0;
+        org.apache.commons.io.input.ReversedLinesFileReader $r2;
+        java.lang.Exception $r3;
+
+        r0 := @this: org.apache.commons.io.input.ReversedLinesFileReaderTestSimple;
+
+     label1:
+        $r2 = r0.<org.apache.commons.io.input.ReversedLinesFileReaderTestSimple: org.apache.commons.io.input.ReversedLinesFileReader reversedLinesFileReader>;
+
+        virtualinvoke $r2.<org.apache.commons.io.input.ReversedLinesFileReader: void close()>();
+
+     label2:
+        goto label4;
+
+     label3:
+        $r3 := @caughtexception;
+
+     label4:
+        return;
+
+        catch java.lang.Exception from label1 to label2 with label3;
+    }
+
+    public void testFileSizeIsExactMultipleOfBlockSize() throws java.net.URISyntaxException, java.io.IOException
+    {
+        org.apache.commons.io.input.ReversedLinesFileReaderTestSimple r0;
+        java.io.File $r3;
+        org.apache.commons.io.input.ReversedLinesFileReader $r4, $r5, $r7;
+        java.lang.String $r6, $r8;
+
+        r0 := @this: org.apache.commons.io.input.ReversedLinesFileReaderTestSimple;
+
+        $r3 = new java.io.File;
+
+        specialinvoke $r3.<java.io.File: void <init>(java.lang.String)>("resources/test-file-20byteslength.bin");
+
+        $r4 = new org.apache.commons.io.input.ReversedLinesFileReader;
+
+        specialinvoke $r4.<org.apache.commons.io.input.ReversedLinesFileReader: void <init>(java.io.File,int,java.lang.String)>($r3, 10, "ISO-8859-1");
+
+        r0.<org.apache.commons.io.input.ReversedLinesFileReaderTestSimple: org.apache.commons.io.input.ReversedLinesFileReader reversedLinesFileReader> = $r4;
+
+        $r5 = r0.<org.apache.commons.io.input.ReversedLinesFileReaderTestSimple: org.apache.commons.io.input.ReversedLinesFileReader reversedLinesFileReader>;
+
+        $r6 = virtualinvoke $r5.<org.apache.commons.io.input.ReversedLinesFileReader: java.lang.String readLine()>();
+
+        staticinvoke <org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize: void assertEqualsAndNoLineBreaks(java.lang.String,java.lang.String)>("123456789", $r6);
+
+        $r7 = r0.<org.apache.commons.io.input.ReversedLinesFileReaderTestSimple: org.apache.commons.io.input.ReversedLinesFileReader reversedLinesFileReader>;
+
+        $r8 = virtualinvoke $r7.<org.apache.commons.io.input.ReversedLinesFileReader: java.lang.String readLine()>();
+
+        staticinvoke <org.apache.commons.io.input.ReversedLinesFileReaderTestParamBlockSize: void assertEqualsAndNoLineBreaks(java.lang.String,java.lang.String)>("123456789", $r8);
+
+        return;
+    }
+
+    public void testUnsupportedEncodingUTF16() throws java.net.URISyntaxException, java.io.IOException
+    {
+        org.apache.commons.io.input.ReversedLinesFileReaderTestSimple r0;
+        java.io.File $r2;
+        org.apache.commons.io.input.ReversedLinesFileReader $r3;
+
+        r0 := @this: org.apache.commons.io.input.ReversedLinesFileReaderTestSimple;
+
+        $r2 = new java.io.File;
+
+        specialinvoke $r2.<java.io.File: void <init>(java.lang.String)>("resources/test-file-empty.bin");
+
+        $r3 = new org.apache.commons.io.input.ReversedLinesFileReader;
+
+        specialinvoke $r3.<org.apache.commons.io.input.ReversedLinesFileReader: void <init>(java.io.File,int,java.lang.String)>($r2, 4096, "UTF-16");
+
+        virtualinvoke $r3.<org.apache.commons.io.input.ReversedLinesFileReader: void close()>();
+
+        return;
+    }
+
+    public void testUnsupportedEncodingBig5() throws java.net.URISyntaxException, java.io.IOException
+    {
+        org.apache.commons.io.input.ReversedLinesFileReaderTestSimple r0;
+        java.io.File $r2;
+        org.apache.commons.io.input.ReversedLinesFileReader $r3;
+
+        r0 := @this: org.apache.commons.io.input.ReversedLinesFileReaderTestSimple;
+
+        $r2 = new java.io.File;
+
+        specialinvoke $r2.<java.io.File: void <init>(java.lang.String)>("resources/test-file-empty.bin");
+
+        $r3 = new org.apache.commons.io.input.ReversedLinesFileReader;
+
+        specialinvoke $r3.<org.apache.commons.io.input.ReversedLinesFileReader: void <init>(java.io.File,int,java.lang.String)>($r2, 4096, "Big5");
+
+        virtualinvoke $r3.<org.apache.commons.io.input.ReversedLinesFileReader: void close()>();
+
+        return;
+    }
+}

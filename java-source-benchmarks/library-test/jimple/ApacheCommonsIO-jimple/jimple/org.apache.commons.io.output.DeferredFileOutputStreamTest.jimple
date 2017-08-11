@@ -1,0 +1,892 @@
+public class org.apache.commons.io.output.DeferredFileOutputStreamTest extends java.lang.Object
+{
+    private final java.lang.String testString;
+    private final byte[] testBytes;
+
+    public void <init>()
+    {
+        org.apache.commons.io.output.DeferredFileOutputStreamTest r0;
+        java.lang.String $r1;
+        byte[] $r2;
+
+        r0 := @this: org.apache.commons.io.output.DeferredFileOutputStreamTest;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<org.apache.commons.io.output.DeferredFileOutputStreamTest: java.lang.String testString> = "0123456789";
+
+        $r1 = "0123456789";
+
+        $r2 = virtualinvoke $r1.<java.lang.String: byte[] getBytes()>();
+
+        r0.<org.apache.commons.io.output.DeferredFileOutputStreamTest: byte[] testBytes> = $r2;
+
+        return;
+    }
+
+    public void testBelowThreshold()
+    {
+        org.apache.commons.io.output.DeferredFileOutputStreamTest r0;
+        org.apache.commons.io.output.DeferredFileOutputStream $r2;
+        byte[] $r3, $r4, $r5, $r6, $r7, r10;
+        int $i0, $i1, $i2, $i3, $i4;
+        boolean $z0, $z1;
+        long $l5, $l6;
+        java.io.IOException $r8;
+
+        r0 := @this: org.apache.commons.io.output.DeferredFileOutputStreamTest;
+
+        $r2 = new org.apache.commons.io.output.DeferredFileOutputStream;
+
+        $r3 = r0.<org.apache.commons.io.output.DeferredFileOutputStreamTest: byte[] testBytes>;
+
+        $i0 = lengthof $r3;
+
+        $i1 = $i0 + 42;
+
+        specialinvoke $r2.<org.apache.commons.io.output.DeferredFileOutputStream: void <init>(int,java.io.File)>($i1, null);
+
+     label1:
+        $r5 = r0.<org.apache.commons.io.output.DeferredFileOutputStreamTest: byte[] testBytes>;
+
+        $r4 = r0.<org.apache.commons.io.output.DeferredFileOutputStreamTest: byte[] testBytes>;
+
+        $i2 = lengthof $r4;
+
+        virtualinvoke $r2.<org.apache.commons.io.output.DeferredFileOutputStream: void write(byte[],int,int)>($r5, 0, $i2);
+
+        virtualinvoke $r2.<org.apache.commons.io.output.DeferredFileOutputStream: void close()>();
+
+     label2:
+        goto label4;
+
+     label3:
+        $r8 := @caughtexception;
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("Unexpected IOException");
+
+     label4:
+        $z0 = virtualinvoke $r2.<org.apache.commons.io.output.DeferredFileOutputStream: boolean isInMemory()>();
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z0);
+
+        r10 = virtualinvoke $r2.<org.apache.commons.io.output.DeferredFileOutputStream: byte[] getData()>();
+
+        $r6 = r0.<org.apache.commons.io.output.DeferredFileOutputStreamTest: byte[] testBytes>;
+
+        $i3 = lengthof $r6;
+
+        $l6 = (long) $i3;
+
+        $i4 = lengthof r10;
+
+        $l5 = (long) $i4;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>($l6, $l5);
+
+        $r7 = r0.<org.apache.commons.io.output.DeferredFileOutputStreamTest: byte[] testBytes>;
+
+        $z1 = staticinvoke <java.util.Arrays: boolean equals(byte[],byte[])>(r10, $r7);
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z1);
+
+        return;
+
+        catch java.io.IOException from label1 to label2 with label3;
+    }
+
+    public void testAtThreshold()
+    {
+        org.apache.commons.io.output.DeferredFileOutputStreamTest r0;
+        org.apache.commons.io.output.DeferredFileOutputStream $r2;
+        byte[] $r3, $r4, $r5, $r6, $r7, r10;
+        int $i0, $i1, $i2, $i3;
+        boolean $z0, $z1;
+        long $l4, $l5;
+        java.io.IOException $r8;
+
+        r0 := @this: org.apache.commons.io.output.DeferredFileOutputStreamTest;
+
+        $r2 = new org.apache.commons.io.output.DeferredFileOutputStream;
+
+        $r3 = r0.<org.apache.commons.io.output.DeferredFileOutputStreamTest: byte[] testBytes>;
+
+        $i0 = lengthof $r3;
+
+        specialinvoke $r2.<org.apache.commons.io.output.DeferredFileOutputStream: void <init>(int,java.io.File)>($i0, null);
+
+     label1:
+        $r5 = r0.<org.apache.commons.io.output.DeferredFileOutputStreamTest: byte[] testBytes>;
+
+        $r4 = r0.<org.apache.commons.io.output.DeferredFileOutputStreamTest: byte[] testBytes>;
+
+        $i1 = lengthof $r4;
+
+        virtualinvoke $r2.<org.apache.commons.io.output.DeferredFileOutputStream: void write(byte[],int,int)>($r5, 0, $i1);
+
+        virtualinvoke $r2.<org.apache.commons.io.output.DeferredFileOutputStream: void close()>();
+
+     label2:
+        goto label4;
+
+     label3:
+        $r8 := @caughtexception;
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("Unexpected IOException");
+
+     label4:
+        $z0 = virtualinvoke $r2.<org.apache.commons.io.output.DeferredFileOutputStream: boolean isInMemory()>();
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z0);
+
+        r10 = virtualinvoke $r2.<org.apache.commons.io.output.DeferredFileOutputStream: byte[] getData()>();
+
+        $r6 = r0.<org.apache.commons.io.output.DeferredFileOutputStreamTest: byte[] testBytes>;
+
+        $i2 = lengthof $r6;
+
+        $l5 = (long) $i2;
+
+        $i3 = lengthof r10;
+
+        $l4 = (long) $i3;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>($l5, $l4);
+
+        $r7 = r0.<org.apache.commons.io.output.DeferredFileOutputStreamTest: byte[] testBytes>;
+
+        $z1 = staticinvoke <java.util.Arrays: boolean equals(byte[],byte[])>(r10, $r7);
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z1);
+
+        return;
+
+        catch java.io.IOException from label1 to label2 with label3;
+    }
+
+    public void testAboveThreshold()
+    {
+        org.apache.commons.io.output.DeferredFileOutputStreamTest r0;
+        java.io.File $r4;
+        org.apache.commons.io.output.DeferredFileOutputStream $r5;
+        byte[] $r6, $r7, $r8, $r9;
+        int $i0, $i1, $i2;
+        boolean $z1;
+        java.io.IOException $r10;
+
+        r0 := @this: org.apache.commons.io.output.DeferredFileOutputStreamTest;
+
+        $r4 = new java.io.File;
+
+        specialinvoke $r4.<java.io.File: void <init>(java.lang.String)>("testAboveThreshold.dat");
+
+        virtualinvoke $r4.<java.io.File: boolean delete()>();
+
+        $r5 = new org.apache.commons.io.output.DeferredFileOutputStream;
+
+        $r6 = r0.<org.apache.commons.io.output.DeferredFileOutputStreamTest: byte[] testBytes>;
+
+        $i0 = lengthof $r6;
+
+        $i1 = $i0 - 5;
+
+        specialinvoke $r5.<org.apache.commons.io.output.DeferredFileOutputStream: void <init>(int,java.io.File)>($i1, $r4);
+
+     label1:
+        $r8 = r0.<org.apache.commons.io.output.DeferredFileOutputStreamTest: byte[] testBytes>;
+
+        $r7 = r0.<org.apache.commons.io.output.DeferredFileOutputStreamTest: byte[] testBytes>;
+
+        $i2 = lengthof $r7;
+
+        virtualinvoke $r5.<org.apache.commons.io.output.DeferredFileOutputStream: void write(byte[],int,int)>($r8, 0, $i2);
+
+        virtualinvoke $r5.<org.apache.commons.io.output.DeferredFileOutputStream: void close()>();
+
+     label2:
+        goto label4;
+
+     label3:
+        $r10 := @caughtexception;
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("Unexpected IOException");
+
+     label4:
+        $z1 = virtualinvoke $r5.<org.apache.commons.io.output.DeferredFileOutputStream: boolean isInMemory()>();
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z1);
+
+        $r9 = virtualinvoke $r5.<org.apache.commons.io.output.DeferredFileOutputStream: byte[] getData()>();
+
+        staticinvoke <org.junit.Assert: void assertNull(java.lang.Object)>($r9);
+
+        specialinvoke r0.<org.apache.commons.io.output.DeferredFileOutputStreamTest: void verifyResultFile(java.io.File)>($r4);
+
+        virtualinvoke $r4.<java.io.File: boolean delete()>();
+
+        return;
+
+        catch java.io.IOException from label1 to label2 with label3;
+    }
+
+    public void testThresholdReached()
+    {
+        org.apache.commons.io.output.DeferredFileOutputStreamTest r0;
+        int i0, $i1, $i2, $i3, $i4, $i5, $i6, $i7;
+        java.io.File $r4;
+        org.apache.commons.io.output.DeferredFileOutputStream $r5;
+        byte[] $r6, $r7, $r8, $r9, $r10, $r11, $r12;
+        boolean $z1;
+        java.io.IOException $r13;
+
+        r0 := @this: org.apache.commons.io.output.DeferredFileOutputStreamTest;
+
+        $r4 = new java.io.File;
+
+        specialinvoke $r4.<java.io.File: void <init>(java.lang.String)>("testThresholdReached.dat");
+
+        virtualinvoke $r4.<java.io.File: boolean delete()>();
+
+        $r5 = new org.apache.commons.io.output.DeferredFileOutputStream;
+
+        $r6 = r0.<org.apache.commons.io.output.DeferredFileOutputStreamTest: byte[] testBytes>;
+
+        $i1 = lengthof $r6;
+
+        $i2 = $i1 / 2;
+
+        specialinvoke $r5.<org.apache.commons.io.output.DeferredFileOutputStream: void <init>(int,java.io.File)>($i2, $r4);
+
+        $r7 = r0.<org.apache.commons.io.output.DeferredFileOutputStreamTest: byte[] testBytes>;
+
+        $i3 = lengthof $r7;
+
+        i0 = $i3 / 3;
+
+     label1:
+        $r8 = r0.<org.apache.commons.io.output.DeferredFileOutputStreamTest: byte[] testBytes>;
+
+        virtualinvoke $r5.<org.apache.commons.io.output.DeferredFileOutputStream: void write(byte[],int,int)>($r8, 0, i0);
+
+        $r9 = r0.<org.apache.commons.io.output.DeferredFileOutputStreamTest: byte[] testBytes>;
+
+        virtualinvoke $r5.<org.apache.commons.io.output.DeferredFileOutputStream: void write(byte[],int,int)>($r9, i0, i0);
+
+        $r11 = r0.<org.apache.commons.io.output.DeferredFileOutputStreamTest: byte[] testBytes>;
+
+        $i7 = i0 * 2;
+
+        $r10 = r0.<org.apache.commons.io.output.DeferredFileOutputStreamTest: byte[] testBytes>;
+
+        $i5 = lengthof $r10;
+
+        $i4 = i0 * 2;
+
+        $i6 = $i5 - $i4;
+
+        virtualinvoke $r5.<org.apache.commons.io.output.DeferredFileOutputStream: void write(byte[],int,int)>($r11, $i7, $i6);
+
+        virtualinvoke $r5.<org.apache.commons.io.output.DeferredFileOutputStream: void close()>();
+
+     label2:
+        goto label4;
+
+     label3:
+        $r13 := @caughtexception;
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("Unexpected IOException");
+
+     label4:
+        $z1 = virtualinvoke $r5.<org.apache.commons.io.output.DeferredFileOutputStream: boolean isInMemory()>();
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z1);
+
+        $r12 = virtualinvoke $r5.<org.apache.commons.io.output.DeferredFileOutputStream: byte[] getData()>();
+
+        staticinvoke <org.junit.Assert: void assertNull(java.lang.Object)>($r12);
+
+        specialinvoke r0.<org.apache.commons.io.output.DeferredFileOutputStreamTest: void verifyResultFile(java.io.File)>($r4);
+
+        virtualinvoke $r4.<java.io.File: boolean delete()>();
+
+        return;
+
+        catch java.io.IOException from label1 to label2 with label3;
+    }
+
+    public void testWriteToSmall()
+    {
+        org.apache.commons.io.output.DeferredFileOutputStreamTest r0;
+        java.io.File $r4;
+        org.apache.commons.io.output.ByteArrayOutputStream $r5;
+        org.apache.commons.io.output.DeferredFileOutputStream $r6;
+        byte[] $r7, $r8, $r9, r14;
+        int $i0, $i1;
+        boolean $z1, $z2, $z3;
+        java.io.IOException $r10, $r11;
+
+        r0 := @this: org.apache.commons.io.output.DeferredFileOutputStreamTest;
+
+        $r4 = new java.io.File;
+
+        specialinvoke $r4.<java.io.File: void <init>(java.lang.String)>("testWriteToMem.dat");
+
+        $r5 = new org.apache.commons.io.output.ByteArrayOutputStream;
+
+        specialinvoke $r5.<org.apache.commons.io.output.ByteArrayOutputStream: void <init>()>();
+
+        virtualinvoke $r4.<java.io.File: boolean delete()>();
+
+        $r6 = new org.apache.commons.io.output.DeferredFileOutputStream;
+
+        $r7 = r0.<org.apache.commons.io.output.DeferredFileOutputStreamTest: byte[] testBytes>;
+
+        $i0 = lengthof $r7;
+
+        $i1 = $i0 * 2;
+
+        specialinvoke $r6.<org.apache.commons.io.output.DeferredFileOutputStream: void <init>(int,java.io.File)>($i1, $r4);
+
+     label1:
+        $r8 = r0.<org.apache.commons.io.output.DeferredFileOutputStreamTest: byte[] testBytes>;
+
+        virtualinvoke $r6.<org.apache.commons.io.output.DeferredFileOutputStream: void write(byte[])>($r8);
+
+        $z1 = virtualinvoke $r4.<java.io.File: boolean exists()>();
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z1);
+
+        $z2 = virtualinvoke $r6.<org.apache.commons.io.output.DeferredFileOutputStream: boolean isInMemory()>();
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z2);
+
+     label2:
+        virtualinvoke $r6.<org.apache.commons.io.output.DeferredFileOutputStream: void writeTo(java.io.OutputStream)>($r5);
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("Should not have been able to write before closing");
+
+     label3:
+        goto label5;
+
+     label4:
+        $r10 := @caughtexception;
+
+     label5:
+        virtualinvoke $r6.<org.apache.commons.io.output.DeferredFileOutputStream: void close()>();
+
+        virtualinvoke $r6.<org.apache.commons.io.output.DeferredFileOutputStream: void writeTo(java.io.OutputStream)>($r5);
+
+     label6:
+        goto label8;
+
+     label7:
+        $r11 := @caughtexception;
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("Unexpected IOException");
+
+     label8:
+        r14 = virtualinvoke $r5.<org.apache.commons.io.output.ByteArrayOutputStream: byte[] toByteArray()>();
+
+        $r9 = r0.<org.apache.commons.io.output.DeferredFileOutputStreamTest: byte[] testBytes>;
+
+        $z3 = staticinvoke <java.util.Arrays: boolean equals(byte[],byte[])>($r9, r14);
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z3);
+
+        virtualinvoke $r4.<java.io.File: boolean delete()>();
+
+        return;
+
+        catch java.io.IOException from label2 to label3 with label4;
+        catch java.io.IOException from label1 to label6 with label7;
+    }
+
+    public void testWriteToLarge()
+    {
+        org.apache.commons.io.output.DeferredFileOutputStreamTest r0;
+        java.io.File $r4;
+        org.apache.commons.io.output.ByteArrayOutputStream $r5;
+        org.apache.commons.io.output.DeferredFileOutputStream $r6;
+        byte[] $r7, $r8, $r9, r14;
+        int $i0, $i1;
+        boolean $z1, $z2, $z3;
+        java.io.IOException $r10, $r11;
+
+        r0 := @this: org.apache.commons.io.output.DeferredFileOutputStreamTest;
+
+        $r4 = new java.io.File;
+
+        specialinvoke $r4.<java.io.File: void <init>(java.lang.String)>("testWriteToFile.dat");
+
+        $r5 = new org.apache.commons.io.output.ByteArrayOutputStream;
+
+        specialinvoke $r5.<org.apache.commons.io.output.ByteArrayOutputStream: void <init>()>();
+
+        virtualinvoke $r4.<java.io.File: boolean delete()>();
+
+        $r6 = new org.apache.commons.io.output.DeferredFileOutputStream;
+
+        $r7 = r0.<org.apache.commons.io.output.DeferredFileOutputStreamTest: byte[] testBytes>;
+
+        $i0 = lengthof $r7;
+
+        $i1 = $i0 / 2;
+
+        specialinvoke $r6.<org.apache.commons.io.output.DeferredFileOutputStream: void <init>(int,java.io.File)>($i1, $r4);
+
+     label1:
+        $r8 = r0.<org.apache.commons.io.output.DeferredFileOutputStreamTest: byte[] testBytes>;
+
+        virtualinvoke $r6.<org.apache.commons.io.output.DeferredFileOutputStream: void write(byte[])>($r8);
+
+        $z1 = virtualinvoke $r4.<java.io.File: boolean exists()>();
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z1);
+
+        $z2 = virtualinvoke $r6.<org.apache.commons.io.output.DeferredFileOutputStream: boolean isInMemory()>();
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z2);
+
+     label2:
+        virtualinvoke $r6.<org.apache.commons.io.output.DeferredFileOutputStream: void writeTo(java.io.OutputStream)>($r5);
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("Should not have been able to write before closeing");
+
+     label3:
+        goto label5;
+
+     label4:
+        $r10 := @caughtexception;
+
+     label5:
+        virtualinvoke $r6.<org.apache.commons.io.output.DeferredFileOutputStream: void close()>();
+
+        virtualinvoke $r6.<org.apache.commons.io.output.DeferredFileOutputStream: void writeTo(java.io.OutputStream)>($r5);
+
+     label6:
+        goto label8;
+
+     label7:
+        $r11 := @caughtexception;
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("Unexpected IOException");
+
+     label8:
+        r14 = virtualinvoke $r5.<org.apache.commons.io.output.ByteArrayOutputStream: byte[] toByteArray()>();
+
+        $r9 = r0.<org.apache.commons.io.output.DeferredFileOutputStreamTest: byte[] testBytes>;
+
+        $z3 = staticinvoke <java.util.Arrays: boolean equals(byte[],byte[])>($r9, r14);
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z3);
+
+        specialinvoke r0.<org.apache.commons.io.output.DeferredFileOutputStreamTest: void verifyResultFile(java.io.File)>($r4);
+
+        virtualinvoke $r4.<java.io.File: boolean delete()>();
+
+        return;
+
+        catch java.io.IOException from label2 to label3 with label4;
+        catch java.io.IOException from label1 to label6 with label7;
+    }
+
+    public void testTempFileBelowThreshold()
+    {
+        org.apache.commons.io.output.DeferredFileOutputStreamTest r0;
+        java.io.File $r6, $r9, $r12;
+        org.apache.commons.io.output.DeferredFileOutputStream $r7;
+        byte[] $r8, $r10, $r11;
+        int $i0, $i1, $i2;
+        boolean $z0;
+        java.io.IOException $r13;
+
+        r0 := @this: org.apache.commons.io.output.DeferredFileOutputStreamTest;
+
+        $r6 = new java.io.File;
+
+        specialinvoke $r6.<java.io.File: void <init>(java.lang.String)>(".");
+
+        $r7 = new org.apache.commons.io.output.DeferredFileOutputStream;
+
+        $r8 = r0.<org.apache.commons.io.output.DeferredFileOutputStreamTest: byte[] testBytes>;
+
+        $i0 = lengthof $r8;
+
+        $i1 = $i0 + 42;
+
+        specialinvoke $r7.<org.apache.commons.io.output.DeferredFileOutputStream: void <init>(int,java.lang.String,java.lang.String,java.io.File)>($i1, "commons-io-test", ".out", $r6);
+
+        $r9 = virtualinvoke $r7.<org.apache.commons.io.output.DeferredFileOutputStream: java.io.File getFile()>();
+
+        staticinvoke <org.junit.Assert: void assertNull(java.lang.String,java.lang.Object)>("Check file is null-A", $r9);
+
+     label1:
+        $r11 = r0.<org.apache.commons.io.output.DeferredFileOutputStreamTest: byte[] testBytes>;
+
+        $r10 = r0.<org.apache.commons.io.output.DeferredFileOutputStreamTest: byte[] testBytes>;
+
+        $i2 = lengthof $r10;
+
+        virtualinvoke $r7.<org.apache.commons.io.output.DeferredFileOutputStream: void write(byte[],int,int)>($r11, 0, $i2);
+
+        virtualinvoke $r7.<org.apache.commons.io.output.DeferredFileOutputStream: void close()>();
+
+     label2:
+        goto label4;
+
+     label3:
+        $r13 := @caughtexception;
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("Unexpected IOException");
+
+     label4:
+        $z0 = virtualinvoke $r7.<org.apache.commons.io.output.DeferredFileOutputStream: boolean isInMemory()>();
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z0);
+
+        $r12 = virtualinvoke $r7.<org.apache.commons.io.output.DeferredFileOutputStream: java.io.File getFile()>();
+
+        staticinvoke <org.junit.Assert: void assertNull(java.lang.String,java.lang.Object)>("Check file is null-B", $r12);
+
+        return;
+
+        catch java.io.IOException from label1 to label2 with label3;
+    }
+
+    public void testTempFileAboveThreshold()
+    {
+        org.apache.commons.io.output.DeferredFileOutputStreamTest r0;
+        java.io.File $r6, $r9, $r13, $r14, $r15, $r17, $r20, $r22, $r23;
+        org.apache.commons.io.output.DeferredFileOutputStream $r7;
+        byte[] $r8, $r10, $r11, $r12;
+        int $i0, $i1, $i2;
+        boolean $z0, $z1, $z2, $z3;
+        java.lang.String $r16, $r18, $r19, $r21;
+        java.io.IOException $r24;
+
+        r0 := @this: org.apache.commons.io.output.DeferredFileOutputStreamTest;
+
+        $r6 = new java.io.File;
+
+        specialinvoke $r6.<java.io.File: void <init>(java.lang.String)>(".");
+
+        $r7 = new org.apache.commons.io.output.DeferredFileOutputStream;
+
+        $r8 = r0.<org.apache.commons.io.output.DeferredFileOutputStreamTest: byte[] testBytes>;
+
+        $i0 = lengthof $r8;
+
+        $i1 = $i0 - 5;
+
+        specialinvoke $r7.<org.apache.commons.io.output.DeferredFileOutputStream: void <init>(int,java.lang.String,java.lang.String,java.io.File)>($i1, "commons-io-test", ".out", $r6);
+
+        $r9 = virtualinvoke $r7.<org.apache.commons.io.output.DeferredFileOutputStream: java.io.File getFile()>();
+
+        staticinvoke <org.junit.Assert: void assertNull(java.lang.String,java.lang.Object)>("Check file is null-A", $r9);
+
+     label1:
+        $r11 = r0.<org.apache.commons.io.output.DeferredFileOutputStreamTest: byte[] testBytes>;
+
+        $r10 = r0.<org.apache.commons.io.output.DeferredFileOutputStreamTest: byte[] testBytes>;
+
+        $i2 = lengthof $r10;
+
+        virtualinvoke $r7.<org.apache.commons.io.output.DeferredFileOutputStream: void write(byte[],int,int)>($r11, 0, $i2);
+
+        virtualinvoke $r7.<org.apache.commons.io.output.DeferredFileOutputStream: void close()>();
+
+     label2:
+        goto label4;
+
+     label3:
+        $r24 := @caughtexception;
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("Unexpected IOException");
+
+     label4:
+        $z0 = virtualinvoke $r7.<org.apache.commons.io.output.DeferredFileOutputStream: boolean isInMemory()>();
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z0);
+
+        $r12 = virtualinvoke $r7.<org.apache.commons.io.output.DeferredFileOutputStream: byte[] getData()>();
+
+        staticinvoke <org.junit.Assert: void assertNull(java.lang.Object)>($r12);
+
+        $r13 = virtualinvoke $r7.<org.apache.commons.io.output.DeferredFileOutputStream: java.io.File getFile()>();
+
+        staticinvoke <org.junit.Assert: void assertNotNull(java.lang.String,java.lang.Object)>("Check file not null", $r13);
+
+        $r14 = virtualinvoke $r7.<org.apache.commons.io.output.DeferredFileOutputStream: java.io.File getFile()>();
+
+        $z1 = virtualinvoke $r14.<java.io.File: boolean exists()>();
+
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>("Check file exists", $z1);
+
+        $r15 = virtualinvoke $r7.<org.apache.commons.io.output.DeferredFileOutputStream: java.io.File getFile()>();
+
+        $r16 = virtualinvoke $r15.<java.io.File: java.lang.String getName()>();
+
+        $z2 = virtualinvoke $r16.<java.lang.String: boolean startsWith(java.lang.String)>("commons-io-test");
+
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>("Check prefix", $z2);
+
+        $r17 = virtualinvoke $r7.<org.apache.commons.io.output.DeferredFileOutputStream: java.io.File getFile()>();
+
+        $r18 = virtualinvoke $r17.<java.io.File: java.lang.String getName()>();
+
+        $z3 = virtualinvoke $r18.<java.lang.String: boolean endsWith(java.lang.String)>(".out");
+
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>("Check suffix", $z3);
+
+        $r19 = virtualinvoke $r6.<java.io.File: java.lang.String getPath()>();
+
+        $r20 = virtualinvoke $r7.<org.apache.commons.io.output.DeferredFileOutputStream: java.io.File getFile()>();
+
+        $r21 = virtualinvoke $r20.<java.io.File: java.lang.String getParent()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,java.lang.Object,java.lang.Object)>("Check dir", $r19, $r21);
+
+        $r22 = virtualinvoke $r7.<org.apache.commons.io.output.DeferredFileOutputStream: java.io.File getFile()>();
+
+        specialinvoke r0.<org.apache.commons.io.output.DeferredFileOutputStreamTest: void verifyResultFile(java.io.File)>($r22);
+
+        $r23 = virtualinvoke $r7.<org.apache.commons.io.output.DeferredFileOutputStream: java.io.File getFile()>();
+
+        virtualinvoke $r23.<java.io.File: boolean delete()>();
+
+        return;
+
+        catch java.io.IOException from label1 to label2 with label3;
+    }
+
+    public void testTempFileAboveThresholdPrefixOnly()
+    {
+        org.apache.commons.io.output.DeferredFileOutputStreamTest r0;
+        org.apache.commons.io.output.DeferredFileOutputStream $r2;
+        byte[] $r3, $r5, $r6, $r7;
+        int $i0, $i1, $i2;
+        java.io.File $r4, $r8, $r9, $r10, $r12, $r14, $r15;
+        boolean $z0, $z1, $z2, $z3;
+        java.lang.String $r11, $r13;
+        java.io.IOException $r16;
+
+        r0 := @this: org.apache.commons.io.output.DeferredFileOutputStreamTest;
+
+        $r2 = new org.apache.commons.io.output.DeferredFileOutputStream;
+
+        $r3 = r0.<org.apache.commons.io.output.DeferredFileOutputStreamTest: byte[] testBytes>;
+
+        $i0 = lengthof $r3;
+
+        $i1 = $i0 - 5;
+
+        specialinvoke $r2.<org.apache.commons.io.output.DeferredFileOutputStream: void <init>(int,java.lang.String,java.lang.String,java.io.File)>($i1, "commons-io-test", null, null);
+
+        $r4 = virtualinvoke $r2.<org.apache.commons.io.output.DeferredFileOutputStream: java.io.File getFile()>();
+
+        staticinvoke <org.junit.Assert: void assertNull(java.lang.String,java.lang.Object)>("Check file is null-A", $r4);
+
+     label1:
+        $r6 = r0.<org.apache.commons.io.output.DeferredFileOutputStreamTest: byte[] testBytes>;
+
+        $r5 = r0.<org.apache.commons.io.output.DeferredFileOutputStreamTest: byte[] testBytes>;
+
+        $i2 = lengthof $r5;
+
+        virtualinvoke $r2.<org.apache.commons.io.output.DeferredFileOutputStream: void write(byte[],int,int)>($r6, 0, $i2);
+
+        virtualinvoke $r2.<org.apache.commons.io.output.DeferredFileOutputStream: void close()>();
+
+     label2:
+        goto label4;
+
+     label3:
+        $r16 := @caughtexception;
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("Unexpected IOException");
+
+     label4:
+        $z0 = virtualinvoke $r2.<org.apache.commons.io.output.DeferredFileOutputStream: boolean isInMemory()>();
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z0);
+
+        $r7 = virtualinvoke $r2.<org.apache.commons.io.output.DeferredFileOutputStream: byte[] getData()>();
+
+        staticinvoke <org.junit.Assert: void assertNull(java.lang.Object)>($r7);
+
+        $r8 = virtualinvoke $r2.<org.apache.commons.io.output.DeferredFileOutputStream: java.io.File getFile()>();
+
+        staticinvoke <org.junit.Assert: void assertNotNull(java.lang.String,java.lang.Object)>("Check file not null", $r8);
+
+        $r9 = virtualinvoke $r2.<org.apache.commons.io.output.DeferredFileOutputStream: java.io.File getFile()>();
+
+        $z1 = virtualinvoke $r9.<java.io.File: boolean exists()>();
+
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>("Check file exists", $z1);
+
+        $r10 = virtualinvoke $r2.<org.apache.commons.io.output.DeferredFileOutputStream: java.io.File getFile()>();
+
+        $r11 = virtualinvoke $r10.<java.io.File: java.lang.String getName()>();
+
+        $z2 = virtualinvoke $r11.<java.lang.String: boolean startsWith(java.lang.String)>("commons-io-test");
+
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>("Check prefix", $z2);
+
+        $r12 = virtualinvoke $r2.<org.apache.commons.io.output.DeferredFileOutputStream: java.io.File getFile()>();
+
+        $r13 = virtualinvoke $r12.<java.io.File: java.lang.String getName()>();
+
+        $z3 = virtualinvoke $r13.<java.lang.String: boolean endsWith(java.lang.String)>(".tmp");
+
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>("Check suffix", $z3);
+
+        $r14 = virtualinvoke $r2.<org.apache.commons.io.output.DeferredFileOutputStream: java.io.File getFile()>();
+
+        specialinvoke r0.<org.apache.commons.io.output.DeferredFileOutputStreamTest: void verifyResultFile(java.io.File)>($r14);
+
+        $r15 = virtualinvoke $r2.<org.apache.commons.io.output.DeferredFileOutputStream: java.io.File getFile()>();
+
+        virtualinvoke $r15.<java.io.File: boolean delete()>();
+
+        return;
+
+        catch java.io.IOException from label1 to label2 with label3;
+    }
+
+    public void testTempFileError() throws java.lang.Exception
+    {
+        org.apache.commons.io.output.DeferredFileOutputStreamTest r0;
+        java.io.File $r2;
+        org.apache.commons.io.output.DeferredFileOutputStream $r3;
+        byte[] $r4;
+        int $i0, $i1;
+        java.lang.IllegalArgumentException $r5;
+
+        r0 := @this: org.apache.commons.io.output.DeferredFileOutputStreamTest;
+
+        $r2 = new java.io.File;
+
+        specialinvoke $r2.<java.io.File: void <init>(java.lang.String)>(".");
+
+     label1:
+        $r3 = new org.apache.commons.io.output.DeferredFileOutputStream;
+
+        $r4 = r0.<org.apache.commons.io.output.DeferredFileOutputStreamTest: byte[] testBytes>;
+
+        $i0 = lengthof $r4;
+
+        $i1 = $i0 - 5;
+
+        specialinvoke $r3.<org.apache.commons.io.output.DeferredFileOutputStream: void <init>(int,java.lang.String,java.lang.String,java.io.File)>($i1, null, ".out", $r2);
+
+        virtualinvoke $r3.<org.apache.commons.io.output.DeferredFileOutputStream: void close()>();
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("Expected IllegalArgumentException ");
+
+     label2:
+        goto label4;
+
+     label3:
+        $r5 := @caughtexception;
+
+     label4:
+        return;
+
+        catch java.lang.IllegalArgumentException from label1 to label2 with label3;
+    }
+
+    private void verifyResultFile(java.io.File)
+    {
+        org.apache.commons.io.output.DeferredFileOutputStreamTest r0;
+        java.io.File r1;
+        byte[] r2, $r5, $r6, $r7, $r8;
+        java.io.FileInputStream $r4;
+        int $i0, $i2, $i4, $i5, $i7, $i9;
+        long $l1, $l3, $l6, $l8, $l10;
+        boolean $z0;
+        java.io.IOException $r9, $r11;
+        java.io.FileNotFoundException $r10;
+
+        r0 := @this: org.apache.commons.io.output.DeferredFileOutputStreamTest;
+
+        r1 := @parameter0: java.io.File;
+
+     label1:
+        $r4 = new java.io.FileInputStream;
+
+        specialinvoke $r4.<java.io.FileInputStream: void <init>(java.io.File)>(r1);
+
+        $r5 = r0.<org.apache.commons.io.output.DeferredFileOutputStreamTest: byte[] testBytes>;
+
+        $i0 = lengthof $r5;
+
+        $l1 = (long) $i0;
+
+        $i2 = virtualinvoke $r4.<java.io.FileInputStream: int available()>();
+
+        $l3 = (long) $i2;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>($l1, $l3);
+
+        $r6 = r0.<org.apache.commons.io.output.DeferredFileOutputStreamTest: byte[] testBytes>;
+
+        $i4 = lengthof $r6;
+
+        r2 = newarray (byte)[$i4];
+
+        $r7 = r0.<org.apache.commons.io.output.DeferredFileOutputStreamTest: byte[] testBytes>;
+
+        $i5 = lengthof $r7;
+
+        $l6 = (long) $i5;
+
+        $i7 = virtualinvoke $r4.<java.io.FileInputStream: int read(byte[])>(r2);
+
+        $l8 = (long) $i7;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>($l6, $l8);
+
+        $r8 = r0.<org.apache.commons.io.output.DeferredFileOutputStreamTest: byte[] testBytes>;
+
+        $z0 = staticinvoke <java.util.Arrays: boolean equals(byte[],byte[])>(r2, $r8);
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z0);
+
+        $i9 = virtualinvoke $r4.<java.io.FileInputStream: int read(byte[])>(r2);
+
+        $l10 = (long) $i9;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(-1L, $l10);
+
+     label2:
+        virtualinvoke $r4.<java.io.FileInputStream: void close()>();
+
+     label3:
+        goto label8;
+
+     label4:
+        $r11 := @caughtexception;
+
+     label5:
+        goto label8;
+
+     label6:
+        $r10 := @caughtexception;
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("Unexpected FileNotFoundException");
+
+        goto label8;
+
+     label7:
+        $r9 := @caughtexception;
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("Unexpected IOException");
+
+     label8:
+        return;
+
+        catch java.io.IOException from label2 to label3 with label4;
+        catch java.io.FileNotFoundException from label1 to label5 with label6;
+        catch java.io.IOException from label1 to label5 with label7;
+    }
+}

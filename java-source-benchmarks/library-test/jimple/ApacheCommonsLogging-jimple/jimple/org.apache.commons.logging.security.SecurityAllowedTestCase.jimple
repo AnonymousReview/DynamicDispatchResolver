@@ -1,0 +1,209 @@
+public class org.apache.commons.logging.security.SecurityAllowedTestCase extends junit.framework.TestCase
+{
+    private java.lang.SecurityManager oldSecMgr;
+
+    public void <init>()
+    {
+        org.apache.commons.logging.security.SecurityAllowedTestCase r0;
+
+        r0 := @this: org.apache.commons.logging.security.SecurityAllowedTestCase;
+
+        specialinvoke r0.<junit.framework.TestCase: void <init>()>();
+
+        return;
+    }
+
+    public static junit.framework.Test suite() throws java.lang.Exception
+    {
+        java.lang.Class r1, $r3;
+        org.apache.commons.logging.PathableClassLoader $r2;
+        java.lang.ClassLoader $r4;
+        org.apache.commons.logging.PathableTestSuite $r5;
+
+        $r2 = new org.apache.commons.logging.PathableClassLoader;
+
+        specialinvoke $r2.<org.apache.commons.logging.PathableClassLoader: void <init>(java.lang.ClassLoader)>(null);
+
+        $r3 = class "junit/framework/Test";
+
+        $r4 = virtualinvoke $r3.<java.lang.Class: java.lang.ClassLoader getClassLoader()>();
+
+        virtualinvoke $r2.<org.apache.commons.logging.PathableClassLoader: void useExplicitLoader(java.lang.String,java.lang.ClassLoader)>("junit.", $r4);
+
+        virtualinvoke $r2.<org.apache.commons.logging.PathableClassLoader: void addLogicalLib(java.lang.String)>("commons-logging");
+
+        virtualinvoke $r2.<org.apache.commons.logging.PathableClassLoader: void addLogicalLib(java.lang.String)>("testclasses");
+
+        r1 = virtualinvoke $r2.<org.apache.commons.logging.PathableClassLoader: java.lang.Class loadClass(java.lang.String)>("org.apache.commons.logging.security.SecurityAllowedTestCase");
+
+        $r5 = new org.apache.commons.logging.PathableTestSuite;
+
+        specialinvoke $r5.<org.apache.commons.logging.PathableTestSuite: void <init>(java.lang.Class,java.lang.ClassLoader)>(r1, $r2);
+
+        return $r5;
+    }
+
+    public void setUp()
+    {
+        org.apache.commons.logging.security.SecurityAllowedTestCase r0;
+        java.lang.SecurityManager $r1;
+
+        r0 := @this: org.apache.commons.logging.security.SecurityAllowedTestCase;
+
+        $r1 = staticinvoke <java.lang.System: java.lang.SecurityManager getSecurityManager()>();
+
+        r0.<org.apache.commons.logging.security.SecurityAllowedTestCase: java.lang.SecurityManager oldSecMgr> = $r1;
+
+        return;
+    }
+
+    public void tearDown()
+    {
+        org.apache.commons.logging.security.SecurityAllowedTestCase r0;
+        java.lang.SecurityManager $r1;
+
+        r0 := @this: org.apache.commons.logging.security.SecurityAllowedTestCase;
+
+        $r1 = r0.<org.apache.commons.logging.security.SecurityAllowedTestCase: java.lang.SecurityManager oldSecMgr>;
+
+        staticinvoke <java.lang.System: void setSecurityManager(java.lang.SecurityManager)>($r1);
+
+        return;
+    }
+
+    public void testAllAllowed()
+    {
+        org.apache.commons.logging.security.SecurityAllowedTestCase r0;
+        int i0, $i1;
+        java.lang.reflect.Field r2;
+        java.lang.Object r3, $r14;
+        java.lang.Class $r4, $r9, $r13, $r15, $r17, r30;
+        java.lang.String $r5, $r16, $r18, $r24, $r27, $r29;
+        org.apache.commons.logging.security.MockSecurityManager $r7;
+        java.security.AllPermission $r8;
+        java.lang.ClassLoader $r10;
+        java.lang.Class[] $r11;
+        java.lang.Object[] $r12;
+        java.lang.Throwable $r19;
+        java.lang.SecurityManager $r20;
+        java.io.StringWriter $r21;
+        java.io.PrintWriter $r22;
+        java.lang.StringBuilder $r23, $r25, $r26, $r28;
+        java.lang.reflect.Method r31;
+        org.apache.commons.logging.Log r32;
+
+        r0 := @this: org.apache.commons.logging.security.SecurityAllowedTestCase;
+
+        $r4 = class "org/apache/commons/logging/security/SecurityAllowedTestCase$CustomHashtable";
+
+        $r5 = virtualinvoke $r4.<java.lang.Class: java.lang.String getName()>();
+
+        staticinvoke <java.lang.System: java.lang.String setProperty(java.lang.String,java.lang.String)>("org.apache.commons.logging.LogFactory.HashtableImpl", $r5);
+
+        $r7 = new org.apache.commons.logging.security.MockSecurityManager;
+
+        specialinvoke $r7.<org.apache.commons.logging.security.MockSecurityManager: void <init>()>();
+
+        $r8 = new java.security.AllPermission;
+
+        specialinvoke $r8.<java.security.AllPermission: void <init>()>();
+
+        virtualinvoke $r7.<org.apache.commons.logging.security.MockSecurityManager: void addPermission(java.security.Permission)>($r8);
+
+        staticinvoke <java.lang.System: void setSecurityManager(java.lang.SecurityManager)>($r7);
+
+     label1:
+        $r9 = virtualinvoke r0.<java.lang.Object: java.lang.Class getClass()>();
+
+        $r10 = virtualinvoke $r9.<java.lang.Class: java.lang.ClassLoader getClassLoader()>();
+
+        r30 = virtualinvoke $r10.<java.lang.ClassLoader: java.lang.Class loadClass(java.lang.String)>("org.apache.commons.logging.LogFactory");
+
+        $r11 = newarray (java.lang.Class)[1];
+
+        $r11[0] = class "java/lang/Class";
+
+        r31 = virtualinvoke r30.<java.lang.Class: java.lang.reflect.Method getMethod(java.lang.String,java.lang.Class[])>("getLog", $r11);
+
+        $r12 = newarray (java.lang.Object)[1];
+
+        $r13 = virtualinvoke r0.<java.lang.Object: java.lang.Class getClass()>();
+
+        $r12[0] = $r13;
+
+        $r14 = virtualinvoke r31.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>(null, $r12);
+
+        r32 = (org.apache.commons.logging.Log) $r14;
+
+        i0 = virtualinvoke $r7.<org.apache.commons.logging.security.MockSecurityManager: int getUntrustedCodeCount()>();
+
+        interfaceinvoke r32.<org.apache.commons.logging.Log: void info(java.lang.Object)>("testing");
+
+        staticinvoke <java.lang.System: void setSecurityManager(java.lang.SecurityManager)>(null);
+
+        r2 = virtualinvoke r30.<java.lang.Class: java.lang.reflect.Field getDeclaredField(java.lang.String)>("factories");
+
+        virtualinvoke r2.<java.lang.reflect.Field: void setAccessible(boolean)>(1);
+
+        r3 = virtualinvoke r2.<java.lang.reflect.Field: java.lang.Object get(java.lang.Object)>(null);
+
+        staticinvoke <org.apache.commons.logging.security.SecurityAllowedTestCase: void assertNotNull(java.lang.Object)>(r3);
+
+        $r15 = class "org/apache/commons/logging/security/SecurityAllowedTestCase$CustomHashtable";
+
+        $r16 = virtualinvoke $r15.<java.lang.Class: java.lang.String getName()>();
+
+        $r17 = virtualinvoke r3.<java.lang.Object: java.lang.Class getClass()>();
+
+        $r18 = virtualinvoke $r17.<java.lang.Class: java.lang.String getName()>();
+
+        staticinvoke <org.apache.commons.logging.security.SecurityAllowedTestCase: void assertEquals(java.lang.String,java.lang.String)>($r16, $r18);
+
+        $i1 = virtualinvoke $r7.<org.apache.commons.logging.security.MockSecurityManager: int getUntrustedCodeCount()>();
+
+        staticinvoke <org.apache.commons.logging.security.SecurityAllowedTestCase: void assertEquals(java.lang.String,int,int)>("Untrusted code count", i0, $i1);
+
+     label2:
+        goto label4;
+
+     label3:
+        $r19 := @caughtexception;
+
+        $r20 = r0.<org.apache.commons.logging.security.SecurityAllowedTestCase: java.lang.SecurityManager oldSecMgr>;
+
+        staticinvoke <java.lang.System: void setSecurityManager(java.lang.SecurityManager)>($r20);
+
+        $r21 = new java.io.StringWriter;
+
+        specialinvoke $r21.<java.io.StringWriter: void <init>()>();
+
+        $r22 = new java.io.PrintWriter;
+
+        specialinvoke $r22.<java.io.PrintWriter: void <init>(java.io.Writer)>($r21);
+
+        virtualinvoke $r19.<java.lang.Throwable: void printStackTrace(java.io.PrintWriter)>($r22);
+
+        $r23 = new java.lang.StringBuilder;
+
+        specialinvoke $r23.<java.lang.StringBuilder: void <init>(java.lang.String)>("Unexpected exception:");
+
+        $r24 = virtualinvoke $r19.<java.lang.Throwable: java.lang.String getMessage()>();
+
+        $r25 = virtualinvoke $r23.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r24);
+
+        $r26 = virtualinvoke $r25.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(":");
+
+        $r27 = virtualinvoke $r21.<java.io.StringWriter: java.lang.String toString()>();
+
+        $r28 = virtualinvoke $r26.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r27);
+
+        $r29 = virtualinvoke $r28.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.apache.commons.logging.security.SecurityAllowedTestCase: void fail(java.lang.String)>($r29);
+
+     label4:
+        return;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+    }
+}

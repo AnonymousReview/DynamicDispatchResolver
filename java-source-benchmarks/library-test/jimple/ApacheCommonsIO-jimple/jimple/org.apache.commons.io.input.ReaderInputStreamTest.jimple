@@ -1,0 +1,475 @@
+public class org.apache.commons.io.input.ReaderInputStreamTest extends java.lang.Object
+{
+    private static final java.lang.String TEST_STRING;
+    private static final java.lang.String LARGE_TEST_STRING;
+    private final java.util.Random random;
+
+    static void <clinit>()
+    {
+        java.lang.StringBuilder $r1;
+        java.lang.String $r3;
+        int i0;
+
+        <org.apache.commons.io.input.ReaderInputStreamTest: java.lang.String TEST_STRING> = "\u00e0 peine arriv\u00e9s nous entr\u00e2mes dans sa chambre";
+
+        $r1 = new java.lang.StringBuilder;
+
+        specialinvoke $r1.<java.lang.StringBuilder: void <init>()>();
+
+        i0 = 0;
+
+        goto label2;
+
+     label1:
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\u00e0 peine arriv\u00e9s nous entr\u00e2mes dans sa chambre");
+
+        i0 = i0 + 1;
+
+     label2:
+        if i0 < 100 goto label1;
+
+        $r3 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        <org.apache.commons.io.input.ReaderInputStreamTest: java.lang.String LARGE_TEST_STRING> = $r3;
+
+        return;
+    }
+
+    public void <init>()
+    {
+        org.apache.commons.io.input.ReaderInputStreamTest r0;
+        java.util.Random $r1;
+
+        r0 := @this: org.apache.commons.io.input.ReaderInputStreamTest;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r1 = new java.util.Random;
+
+        specialinvoke $r1.<java.util.Random: void <init>()>();
+
+        r0.<org.apache.commons.io.input.ReaderInputStreamTest: java.util.Random random> = $r1;
+
+        return;
+    }
+
+    private void testWithSingleByteRead(java.lang.String, java.lang.String) throws java.io.IOException
+    {
+        org.apache.commons.io.input.ReaderInputStreamTest r0;
+        java.lang.String r1, r2;
+        byte[] r3;
+        byte b0, $b3;
+        int i1, i2, $i6, i8;
+        org.apache.commons.io.input.ReaderInputStream $r6;
+        java.io.StringReader $r7;
+        long $l4, $l5, $l7;
+        boolean $z0, $z1;
+
+        r0 := @this: org.apache.commons.io.input.ReaderInputStreamTest;
+
+        r1 := @parameter0: java.lang.String;
+
+        r2 := @parameter1: java.lang.String;
+
+        r3 = virtualinvoke r1.<java.lang.String: byte[] getBytes(java.lang.String)>(r2);
+
+        $r6 = new org.apache.commons.io.input.ReaderInputStream;
+
+        $r7 = new java.io.StringReader;
+
+        specialinvoke $r7.<java.io.StringReader: void <init>(java.lang.String)>(r1);
+
+        specialinvoke $r6.<org.apache.commons.io.input.ReaderInputStream: void <init>(java.io.Reader,java.lang.String)>($r7, r2);
+
+        i1 = lengthof r3;
+
+        i8 = 0;
+
+        goto label6;
+
+     label1:
+        b0 = r3[i8];
+
+        i2 = virtualinvoke $r6.<org.apache.commons.io.input.ReaderInputStream: int read()>();
+
+        if i2 < 0 goto label2;
+
+        $z0 = 1;
+
+        goto label3;
+
+     label2:
+        $z0 = 0;
+
+     label3:
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z0);
+
+        if i2 > 255 goto label4;
+
+        $z1 = 1;
+
+        goto label5;
+
+     label4:
+        $z1 = 0;
+
+     label5:
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z1);
+
+        $l5 = (long) b0;
+
+        $b3 = (byte) i2;
+
+        $l4 = (long) $b3;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>($l5, $l4);
+
+        i8 = i8 + 1;
+
+     label6:
+        if i8 < i1 goto label1;
+
+        $i6 = virtualinvoke $r6.<org.apache.commons.io.input.ReaderInputStream: int read()>();
+
+        $l7 = (long) $i6;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(-1L, $l7);
+
+        virtualinvoke $r6.<org.apache.commons.io.input.ReaderInputStream: void close()>();
+
+        return;
+    }
+
+    private void testWithBufferedRead(java.lang.String, java.lang.String) throws java.io.IOException
+    {
+        org.apache.commons.io.input.ReaderInputStreamTest r0;
+        java.lang.String r1, r2;
+        byte[] r3, r5;
+        int i0, $i1, $i6, i9, i10, i11;
+        org.apache.commons.io.input.ReaderInputStream $r6;
+        java.io.StringReader $r7;
+        java.util.Random $r8, $r9;
+        byte $b2, $b3;
+        long $l4, $l5, $l7, $l8;
+        boolean $z0, $z1;
+
+        r0 := @this: org.apache.commons.io.input.ReaderInputStreamTest;
+
+        r1 := @parameter0: java.lang.String;
+
+        r2 := @parameter1: java.lang.String;
+
+        r3 = virtualinvoke r1.<java.lang.String: byte[] getBytes(java.lang.String)>(r2);
+
+        $r6 = new org.apache.commons.io.input.ReaderInputStream;
+
+        $r7 = new java.io.StringReader;
+
+        specialinvoke $r7.<java.io.StringReader: void <init>(java.lang.String)>(r1);
+
+        specialinvoke $r6.<org.apache.commons.io.input.ReaderInputStream: void <init>(java.io.Reader,java.lang.String)>($r7, r2);
+
+        r5 = newarray (byte)[128];
+
+        i9 = 0;
+
+     label1:
+        $r8 = r0.<org.apache.commons.io.input.ReaderInputStreamTest: java.util.Random random>;
+
+        i10 = virtualinvoke $r8.<java.util.Random: int nextInt(int)>(64);
+
+        $r9 = r0.<org.apache.commons.io.input.ReaderInputStreamTest: java.util.Random random>;
+
+        i0 = virtualinvoke $r9.<java.util.Random: int nextInt(int)>(64);
+
+        i11 = virtualinvoke $r6.<org.apache.commons.io.input.ReaderInputStream: int read(byte[],int,int)>(r5, i10, i0);
+
+        if i11 != -1 goto label2;
+
+        $l8 = (long) i9;
+
+        $i6 = lengthof r3;
+
+        $l7 = (long) $i6;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>($l8, $l7);
+
+        goto label9;
+
+     label2:
+        if i11 > i0 goto label3;
+
+        $z0 = 1;
+
+        goto label4;
+
+     label3:
+        $z0 = 0;
+
+     label4:
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z0);
+
+        goto label8;
+
+     label5:
+        $i1 = lengthof r3;
+
+        if i9 >= $i1 goto label6;
+
+        $z1 = 1;
+
+        goto label7;
+
+     label6:
+        $z1 = 0;
+
+     label7:
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z1);
+
+        $b2 = r3[i9];
+
+        $l5 = (long) $b2;
+
+        $b3 = r5[i10];
+
+        $l4 = (long) $b3;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>($l5, $l4);
+
+        i9 = i9 + 1;
+
+        i10 = i10 + 1;
+
+        i11 = i11 + -1;
+
+     label8:
+        if i11 > 0 goto label5;
+
+        goto label1;
+
+     label9:
+        virtualinvoke $r6.<org.apache.commons.io.input.ReaderInputStream: void close()>();
+
+        return;
+    }
+
+    public void testUTF8WithSingleByteRead() throws java.io.IOException
+    {
+        org.apache.commons.io.input.ReaderInputStreamTest r0;
+
+        r0 := @this: org.apache.commons.io.input.ReaderInputStreamTest;
+
+        specialinvoke r0.<org.apache.commons.io.input.ReaderInputStreamTest: void testWithSingleByteRead(java.lang.String,java.lang.String)>("\u00e0 peine arriv\u00e9s nous entr\u00e2mes dans sa chambre", "UTF-8");
+
+        return;
+    }
+
+    public void testLargeUTF8WithSingleByteRead() throws java.io.IOException
+    {
+        org.apache.commons.io.input.ReaderInputStreamTest r0;
+        java.lang.String $r1;
+
+        r0 := @this: org.apache.commons.io.input.ReaderInputStreamTest;
+
+        $r1 = <org.apache.commons.io.input.ReaderInputStreamTest: java.lang.String LARGE_TEST_STRING>;
+
+        specialinvoke r0.<org.apache.commons.io.input.ReaderInputStreamTest: void testWithSingleByteRead(java.lang.String,java.lang.String)>($r1, "UTF-8");
+
+        return;
+    }
+
+    public void testUTF8WithBufferedRead() throws java.io.IOException
+    {
+        org.apache.commons.io.input.ReaderInputStreamTest r0;
+
+        r0 := @this: org.apache.commons.io.input.ReaderInputStreamTest;
+
+        specialinvoke r0.<org.apache.commons.io.input.ReaderInputStreamTest: void testWithBufferedRead(java.lang.String,java.lang.String)>("\u00e0 peine arriv\u00e9s nous entr\u00e2mes dans sa chambre", "UTF-8");
+
+        return;
+    }
+
+    public void testLargeUTF8WithBufferedRead() throws java.io.IOException
+    {
+        org.apache.commons.io.input.ReaderInputStreamTest r0;
+        java.lang.String $r1;
+
+        r0 := @this: org.apache.commons.io.input.ReaderInputStreamTest;
+
+        $r1 = <org.apache.commons.io.input.ReaderInputStreamTest: java.lang.String LARGE_TEST_STRING>;
+
+        specialinvoke r0.<org.apache.commons.io.input.ReaderInputStreamTest: void testWithBufferedRead(java.lang.String,java.lang.String)>($r1, "UTF-8");
+
+        return;
+    }
+
+    public void testUTF16WithSingleByteRead() throws java.io.IOException
+    {
+        org.apache.commons.io.input.ReaderInputStreamTest r0;
+
+        r0 := @this: org.apache.commons.io.input.ReaderInputStreamTest;
+
+        specialinvoke r0.<org.apache.commons.io.input.ReaderInputStreamTest: void testWithSingleByteRead(java.lang.String,java.lang.String)>("\u00e0 peine arriv\u00e9s nous entr\u00e2mes dans sa chambre", "UTF-16");
+
+        return;
+    }
+
+    public void testReadZero() throws java.lang.Exception
+    {
+        org.apache.commons.io.input.ReaderInputStreamTest r0;
+        byte[] r3;
+        org.apache.commons.io.input.ReaderInputStream $r4;
+        java.io.StringReader $r5;
+        int $i0, $i2, $i4, $i5, $i6, $i8;
+        long $l1, $l3, $l7, $l9;
+        java.lang.String $r6, $r7;
+
+        r0 := @this: org.apache.commons.io.input.ReaderInputStreamTest;
+
+        $r4 = new org.apache.commons.io.input.ReaderInputStream;
+
+        $r5 = new java.io.StringReader;
+
+        specialinvoke $r5.<java.io.StringReader: void <init>(java.lang.String)>("test");
+
+        specialinvoke $r4.<org.apache.commons.io.input.ReaderInputStream: void <init>(java.io.Reader)>($r5);
+
+        r3 = newarray (byte)[30];
+
+        $i0 = virtualinvoke $r4.<org.apache.commons.io.input.ReaderInputStream: int read(byte[],int,int)>(r3, 0, 0);
+
+        $l1 = (long) $i0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(0L, $l1);
+
+        $r6 = "test";
+
+        $i2 = virtualinvoke $r6.<java.lang.String: int length()>();
+
+        $l3 = (long) $i2;
+
+        $r7 = "test";
+
+        $i4 = virtualinvoke $r7.<java.lang.String: int length()>();
+
+        $i5 = $i4 + 1;
+
+        $i6 = virtualinvoke $r4.<org.apache.commons.io.input.ReaderInputStream: int read(byte[],int,int)>(r3, 0, $i5);
+
+        $l7 = (long) $i6;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>($l3, $l7);
+
+        $i8 = virtualinvoke $r4.<org.apache.commons.io.input.ReaderInputStream: int read(byte[],int,int)>(r3, 0, 0);
+
+        $l9 = (long) $i8;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(0L, $l9);
+
+        virtualinvoke $r4.<org.apache.commons.io.input.ReaderInputStream: void close()>();
+
+        return;
+    }
+
+    public void testReadZeroEmptyString() throws java.lang.Exception
+    {
+        org.apache.commons.io.input.ReaderInputStreamTest r0;
+        byte[] r2;
+        org.apache.commons.io.input.ReaderInputStream $r3;
+        java.io.StringReader $r4;
+        int $i0, $i2, $i4, $i6;
+        long $l1, $l3, $l5, $l7;
+
+        r0 := @this: org.apache.commons.io.input.ReaderInputStreamTest;
+
+        $r3 = new org.apache.commons.io.input.ReaderInputStream;
+
+        $r4 = new java.io.StringReader;
+
+        specialinvoke $r4.<java.io.StringReader: void <init>(java.lang.String)>("");
+
+        specialinvoke $r3.<org.apache.commons.io.input.ReaderInputStream: void <init>(java.io.Reader)>($r4);
+
+        r2 = newarray (byte)[30];
+
+        $i0 = virtualinvoke $r3.<org.apache.commons.io.input.ReaderInputStream: int read(byte[],int,int)>(r2, 0, 0);
+
+        $l1 = (long) $i0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(0L, $l1);
+
+        $i2 = virtualinvoke $r3.<org.apache.commons.io.input.ReaderInputStream: int read(byte[],int,int)>(r2, 0, 1);
+
+        $l3 = (long) $i2;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(-1L, $l3);
+
+        $i4 = virtualinvoke $r3.<org.apache.commons.io.input.ReaderInputStream: int read(byte[],int,int)>(r2, 0, 0);
+
+        $l5 = (long) $i4;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(0L, $l5);
+
+        $i6 = virtualinvoke $r3.<org.apache.commons.io.input.ReaderInputStream: int read(byte[],int,int)>(r2, 0, 1);
+
+        $l7 = (long) $i6;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(-1L, $l7);
+
+        virtualinvoke $r3.<org.apache.commons.io.input.ReaderInputStream: void close()>();
+
+        return;
+    }
+
+    public void testCharsetMismatchInfiniteLoop() throws java.io.IOException
+    {
+        org.apache.commons.io.input.ReaderInputStreamTest r0;
+        java.nio.charset.Charset r2;
+        char[] $r5;
+        org.apache.commons.io.input.ReaderInputStream $r6;
+        java.io.CharArrayReader $r7;
+        int $i0;
+        java.lang.Throwable $r8;
+
+        r0 := @this: org.apache.commons.io.input.ReaderInputStreamTest;
+
+        $r5 = newarray (char)[3];
+
+        $r5[0] = 224;
+
+        $r5[1] = 178;
+
+        $r5[2] = 160;
+
+        r2 = staticinvoke <java.nio.charset.Charset: java.nio.charset.Charset forName(java.lang.String)>("ASCII");
+
+        $r6 = new org.apache.commons.io.input.ReaderInputStream;
+
+        $r7 = new java.io.CharArrayReader;
+
+        specialinvoke $r7.<java.io.CharArrayReader: void <init>(char[])>($r5);
+
+        specialinvoke $r6.<org.apache.commons.io.input.ReaderInputStream: void <init>(java.io.Reader,java.nio.charset.Charset)>($r7, r2);
+
+     label1:
+        $i0 = virtualinvoke $r6.<org.apache.commons.io.input.ReaderInputStream: int read()>();
+
+        if $i0 != -1 goto label1;
+
+        goto label3;
+
+     label2:
+        $r8 := @caughtexception;
+
+        virtualinvoke $r6.<org.apache.commons.io.input.ReaderInputStream: void close()>();
+
+        throw $r8;
+
+     label3:
+        virtualinvoke $r6.<org.apache.commons.io.input.ReaderInputStream: void close()>();
+
+        return;
+
+        catch java.lang.Throwable from label1 to label2 with label2;
+    }
+}

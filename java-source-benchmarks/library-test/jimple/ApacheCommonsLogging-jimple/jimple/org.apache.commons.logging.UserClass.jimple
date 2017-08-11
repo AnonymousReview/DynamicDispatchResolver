@@ -1,0 +1,30 @@
+public class org.apache.commons.logging.UserClass extends java.lang.Object
+{
+
+    public static void setAllowFlawedContext(java.lang.String)
+    {
+        java.lang.String r0;
+        org.apache.commons.logging.LogFactory r1;
+
+        r0 := @parameter0: java.lang.String;
+
+        r1 = staticinvoke <org.apache.commons.logging.LogFactory: org.apache.commons.logging.LogFactory getFactory()>();
+
+        virtualinvoke r1.<org.apache.commons.logging.LogFactory: void setAttribute(java.lang.String,java.lang.Object)>("org.apache.commons.logging.Log.allowFlawedContext", r0);
+
+        return;
+    }
+
+    public void <init>()
+    {
+        org.apache.commons.logging.UserClass r0;
+
+        r0 := @this: org.apache.commons.logging.UserClass;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        staticinvoke <org.apache.commons.logging.LogFactory: org.apache.commons.logging.Log getLog(java.lang.Class)>(class "org/apache/commons/logging/LoadTestCase");
+
+        return;
+    }
+}

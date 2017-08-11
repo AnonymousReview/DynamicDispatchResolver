@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<attributes>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="0" eline="0" spos="0" epos="0"/>
+<text info="[inner=org/apache/commons/codec/language/bm/Languages$LanguageSet, outer=org/apache/commons/codec/language/bm/Languages, name=LanguageSet,flags=1033]" aType="InnerClassTag"/>
+<text info="[inner=org/apache/commons/codec/language/bm/Rule$1, outer=null, name=null,flags=0]" aType="InnerClassTag"/>
+<text info="[inner=org/apache/commons/codec/language/bm/Rule$10, outer=null, name=null,flags=0]" aType="InnerClassTag"/>
+<text info="[inner=org/apache/commons/codec/language/bm/Rule$2, outer=null, name=null,flags=0]" aType="InnerClassTag"/>
+<text info="[inner=org/apache/commons/codec/language/bm/Rule$3, outer=null, name=null,flags=0]" aType="InnerClassTag"/>
+<text info="[inner=org/apache/commons/codec/language/bm/Rule$4, outer=null, name=null,flags=0]" aType="InnerClassTag"/>
+<text info="[inner=org/apache/commons/codec/language/bm/Rule$5, outer=null, name=null,flags=0]" aType="InnerClassTag"/>
+<text info="[inner=org/apache/commons/codec/language/bm/Rule$6, outer=null, name=null,flags=0]" aType="InnerClassTag"/>
+<text info="[inner=org/apache/commons/codec/language/bm/Rule$7, outer=null, name=null,flags=0]" aType="InnerClassTag"/>
+<text info="[inner=org/apache/commons/codec/language/bm/Rule$8, outer=null, name=null,flags=0]" aType="InnerClassTag"/>
+<text info="[inner=org/apache/commons/codec/language/bm/Rule$9, outer=null, name=null,flags=0]" aType="InnerClassTag"/>
+<text info="[inner=org/apache/commons/codec/language/bm/Rule$Phoneme, outer=org/apache/commons/codec/language/bm/Rule, name=Phoneme,flags=25]" aType="InnerClassTag"/>
+<text info="[inner=org/apache/commons/codec/language/bm/Rule$PhonemeExpr, outer=org/apache/commons/codec/language/bm/Rule, name=PhonemeExpr,flags=1545]" aType="InnerClassTag"/>
+<text info="[inner=org/apache/commons/codec/language/bm/Rule$PhonemeList, outer=org/apache/commons/codec/language/bm/Rule, name=PhonemeList,flags=25]" aType="InnerClassTag"/>
+<text info="[inner=org/apache/commons/codec/language/bm/Rule$RPattern, outer=org/apache/commons/codec/language/bm/Rule, name=RPattern,flags=1545]" aType="InnerClassTag"/>
+<text info="soot.tagkit.InnerClassAttribute@4bf3ffb2" aType="InnerClassAttribute"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="4" eline="4" spos="0" epos="0"/>
+<text info="ConstantValue: ALL" aType="StringConstantValueTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="5" eline="5" spos="0" epos="0"/>
+<text info="ConstantValue: &quot;" aType="StringConstantValueTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="6" eline="6" spos="0" epos="0"/>
+<text info="ConstantValue: #include" aType="StringConstantValueTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="7" eline="7" spos="0" epos="0"/>
+<text info="Signature: Ljava/util/Map&lt;Lorg/apache/commons/codec/language/bm/NameType;Ljava/util/Map&lt;Lorg/apache/commons/codec/language/bm/RuleType;Ljava/util/Map&lt;Ljava/lang/String;Ljava/util/Map&lt;Ljava/lang/String;Ljava/util/List&lt;Lorg/apache/commons/codec/language/bm/Rule;&gt;;&gt;;&gt;;&gt;;&gt;;" aType="SignatureTag"/>
+</attribute>
+<attribute>
+<srcPos sline="299" eline="299" spos="0" epos="0"/>
+<jmpPos sline="381" eline="381" spos="0" epos="0"/>
+<text info="Signature: (Lorg/apache/commons/codec/language/bm/NameType;Lorg/apache/commons/codec/language/bm/RuleType;Lorg/apache/commons/codec/language/bm/Languages$LanguageSet;)Ljava/util/List&lt;Lorg/apache/commons/codec/language/bm/Rule;&gt;;" aType="SignatureTag"/>
+</attribute>
+<attribute>
+<srcPos sline="319" eline="319" spos="0" epos="0"/>
+<jmpPos sline="427" eline="427" spos="0" epos="0"/>
+<text info="Signature: (Lorg/apache/commons/codec/language/bm/NameType;Lorg/apache/commons/codec/language/bm/RuleType;Ljava/lang/String;)Ljava/util/List&lt;Lorg/apache/commons/codec/language/bm/Rule;&gt;;" aType="SignatureTag"/>
+</attribute>
+<attribute>
+<srcPos sline="336" eline="336" spos="0" epos="0"/>
+<jmpPos sline="460" eline="460" spos="0" epos="0"/>
+<text info="Signature: (Lorg/apache/commons/codec/language/bm/NameType;Lorg/apache/commons/codec/language/bm/RuleType;Lorg/apache/commons/codec/language/bm/Languages$LanguageSet;)Ljava/util/Map&lt;Ljava/lang/String;Ljava/util/List&lt;Lorg/apache/commons/codec/language/bm/Rule;&gt;;&gt;;" aType="SignatureTag"/>
+</attribute>
+<attribute>
+<srcPos sline="354" eline="354" spos="0" epos="0"/>
+<jmpPos sline="492" eline="492" spos="0" epos="0"/>
+<text info="Signature: (Lorg/apache/commons/codec/language/bm/NameType;Lorg/apache/commons/codec/language/bm/RuleType;Ljava/lang/String;)Ljava/util/Map&lt;Ljava/lang/String;Ljava/util/List&lt;Lorg/apache/commons/codec/language/bm/Rule;&gt;;&gt;;" aType="SignatureTag"/>
+</attribute>
+<attribute>
+<srcPos sline="402" eline="402" spos="0" epos="0"/>
+<jmpPos sline="702" eline="702" spos="0" epos="0"/>
+<text info="Signature: (Ljava/util/Scanner;Ljava/lang/String;)Ljava/util/Map&lt;Ljava/lang/String;Ljava/util/List&lt;Lorg/apache/commons/codec/language/bm/Rule;&gt;;&gt;;" aType="SignatureTag"/>
+</attribute>
+</attributes>

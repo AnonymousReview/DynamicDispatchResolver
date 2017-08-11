@@ -1,0 +1,587 @@
+public abstract class org.apache.commons.io.filefilter.ConditionalFileFilterAbstractTestCase extends org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase
+{
+    private static final java.lang.String TEST_FILE_NAME_PREFIX;
+    private static final java.lang.String TEST_FILE_TYPE;
+    protected org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterTrueFileFilter[] trueFilters;
+    protected org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterFalseFileFilter[] falseFilters;
+    private java.io.File file;
+    private java.io.File workingPath;
+
+    public void <init>()
+    {
+        org.apache.commons.io.filefilter.ConditionalFileFilterAbstractTestCase r0;
+
+        r0 := @this: org.apache.commons.io.filefilter.ConditionalFileFilterAbstractTestCase;
+
+        specialinvoke r0.<org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase: void <init>()>();
+
+        return;
+    }
+
+    public void setUp() throws java.lang.Exception
+    {
+        org.apache.commons.io.filefilter.ConditionalFileFilterAbstractTestCase r0;
+        java.lang.String $r1, $r2;
+        java.io.File $r3, $r4, $r5;
+        org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterTrueFileFilter[] $r6, $r9, $r11, $r13;
+        org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterFalseFileFilter[] $r7, $r15, $r17, $r19;
+        org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterTrueFileFilter $r8, $r10, $r12;
+        org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterFalseFileFilter $r14, $r16, $r18;
+
+        r0 := @this: org.apache.commons.io.filefilter.ConditionalFileFilterAbstractTestCase;
+
+        $r1 = virtualinvoke r0.<org.apache.commons.io.filefilter.ConditionalFileFilterAbstractTestCase: java.lang.String getWorkingPathNamePropertyKey()>();
+
+        $r2 = virtualinvoke r0.<org.apache.commons.io.filefilter.ConditionalFileFilterAbstractTestCase: java.lang.String getDefaultWorkingPath()>();
+
+        $r3 = staticinvoke <org.apache.commons.io.filefilter.ConditionalFileFilterAbstractTestCase: java.io.File determineWorkingDirectoryPath(java.lang.String,java.lang.String)>($r1, $r2);
+
+        r0.<org.apache.commons.io.filefilter.ConditionalFileFilterAbstractTestCase: java.io.File workingPath> = $r3;
+
+        $r4 = new java.io.File;
+
+        $r5 = r0.<org.apache.commons.io.filefilter.ConditionalFileFilterAbstractTestCase: java.io.File workingPath>;
+
+        specialinvoke $r4.<java.io.File: void <init>(java.io.File,java.lang.String)>($r5, "TestFile1.tst");
+
+        r0.<org.apache.commons.io.filefilter.ConditionalFileFilterAbstractTestCase: java.io.File file> = $r4;
+
+        $r6 = newarray (org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterTrueFileFilter)[4];
+
+        r0.<org.apache.commons.io.filefilter.ConditionalFileFilterAbstractTestCase: org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterTrueFileFilter[] trueFilters> = $r6;
+
+        $r7 = newarray (org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterFalseFileFilter)[4];
+
+        r0.<org.apache.commons.io.filefilter.ConditionalFileFilterAbstractTestCase: org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterFalseFileFilter[] falseFilters> = $r7;
+
+        $r9 = r0.<org.apache.commons.io.filefilter.ConditionalFileFilterAbstractTestCase: org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterTrueFileFilter[] trueFilters>;
+
+        $r8 = new org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterTrueFileFilter;
+
+        specialinvoke $r8.<org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterTrueFileFilter: void <init>(org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase)>(r0);
+
+        $r9[1] = $r8;
+
+        $r11 = r0.<org.apache.commons.io.filefilter.ConditionalFileFilterAbstractTestCase: org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterTrueFileFilter[] trueFilters>;
+
+        $r10 = new org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterTrueFileFilter;
+
+        specialinvoke $r10.<org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterTrueFileFilter: void <init>(org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase)>(r0);
+
+        $r11[2] = $r10;
+
+        $r13 = r0.<org.apache.commons.io.filefilter.ConditionalFileFilterAbstractTestCase: org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterTrueFileFilter[] trueFilters>;
+
+        $r12 = new org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterTrueFileFilter;
+
+        specialinvoke $r12.<org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterTrueFileFilter: void <init>(org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase)>(r0);
+
+        $r13[3] = $r12;
+
+        $r15 = r0.<org.apache.commons.io.filefilter.ConditionalFileFilterAbstractTestCase: org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterFalseFileFilter[] falseFilters>;
+
+        $r14 = new org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterFalseFileFilter;
+
+        specialinvoke $r14.<org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterFalseFileFilter: void <init>(org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase)>(r0);
+
+        $r15[1] = $r14;
+
+        $r17 = r0.<org.apache.commons.io.filefilter.ConditionalFileFilterAbstractTestCase: org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterFalseFileFilter[] falseFilters>;
+
+        $r16 = new org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterFalseFileFilter;
+
+        specialinvoke $r16.<org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterFalseFileFilter: void <init>(org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase)>(r0);
+
+        $r17[2] = $r16;
+
+        $r19 = r0.<org.apache.commons.io.filefilter.ConditionalFileFilterAbstractTestCase: org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterFalseFileFilter[] falseFilters>;
+
+        $r18 = new org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterFalseFileFilter;
+
+        specialinvoke $r18.<org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterFalseFileFilter: void <init>(org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase)>(r0);
+
+        $r19[3] = $r18;
+
+        return;
+    }
+
+    public void testAdd()
+    {
+        org.apache.commons.io.filefilter.ConditionalFileFilterAbstractTestCase r0;
+        org.apache.commons.io.filefilter.ConditionalFileFilter r2;
+        java.util.Iterator r3;
+        java.util.ArrayList $r4;
+        org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterTrueFileFilter $r5, $r6, $r7, $r8;
+        int $i0, $i2, $i4, $i6, $i8, $i10, i12;
+        long $l1, $l3, $l5, $l7, $l9, $l11;
+        java.util.List $r9, $r12, $r13, $r15;
+        java.lang.Object $r10, $r14;
+        org.apache.commons.io.filefilter.IOFileFilter $r11, r16;
+        boolean $z4, $z5;
+
+        r0 := @this: org.apache.commons.io.filefilter.ConditionalFileFilterAbstractTestCase;
+
+        $r4 = new java.util.ArrayList;
+
+        specialinvoke $r4.<java.util.ArrayList: void <init>()>();
+
+        r2 = virtualinvoke r0.<org.apache.commons.io.filefilter.ConditionalFileFilterAbstractTestCase: org.apache.commons.io.filefilter.ConditionalFileFilter getConditionalFileFilter()>();
+
+        $r5 = new org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterTrueFileFilter;
+
+        specialinvoke $r5.<org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterTrueFileFilter: void <init>(org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase)>(r0);
+
+        interfaceinvoke $r4.<java.util.List: boolean add(java.lang.Object)>($r5);
+
+        $r6 = new org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterTrueFileFilter;
+
+        specialinvoke $r6.<org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterTrueFileFilter: void <init>(org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase)>(r0);
+
+        interfaceinvoke $r4.<java.util.List: boolean add(java.lang.Object)>($r6);
+
+        $r7 = new org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterTrueFileFilter;
+
+        specialinvoke $r7.<org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterTrueFileFilter: void <init>(org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase)>(r0);
+
+        interfaceinvoke $r4.<java.util.List: boolean add(java.lang.Object)>($r7);
+
+        $r8 = new org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterTrueFileFilter;
+
+        specialinvoke $r8.<org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterTrueFileFilter: void <init>(org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase)>(r0);
+
+        interfaceinvoke $r4.<java.util.List: boolean add(java.lang.Object)>($r8);
+
+        i12 = 0;
+
+        goto label2;
+
+     label1:
+        $l1 = (long) i12;
+
+        $r9 = interfaceinvoke r2.<org.apache.commons.io.filefilter.ConditionalFileFilter: java.util.List getFileFilters()>();
+
+        $i2 = interfaceinvoke $r9.<java.util.List: int size()>();
+
+        $l3 = (long) $i2;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("file filters count: ", $l1, $l3);
+
+        $r10 = interfaceinvoke $r4.<java.util.List: java.lang.Object get(int)>(i12);
+
+        $r11 = (org.apache.commons.io.filefilter.IOFileFilter) $r10;
+
+        interfaceinvoke r2.<org.apache.commons.io.filefilter.ConditionalFileFilter: void addFileFilter(org.apache.commons.io.filefilter.IOFileFilter)>($r11);
+
+        $i4 = i12 + 1;
+
+        $l5 = (long) $i4;
+
+        $r12 = interfaceinvoke r2.<org.apache.commons.io.filefilter.ConditionalFileFilter: java.util.List getFileFilters()>();
+
+        $i6 = interfaceinvoke $r12.<java.util.List: int size()>();
+
+        $l7 = (long) $i6;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("file filters count: ", $l5, $l7);
+
+        i12 = i12 + 1;
+
+     label2:
+        $i0 = interfaceinvoke $r4.<java.util.List: int size()>();
+
+        if i12 < $i0 goto label1;
+
+        $r13 = interfaceinvoke r2.<org.apache.commons.io.filefilter.ConditionalFileFilter: java.util.List getFileFilters()>();
+
+        r3 = interfaceinvoke $r13.<java.util.List: java.util.Iterator iterator()>();
+
+        goto label4;
+
+     label3:
+        $r14 = interfaceinvoke r3.<java.util.Iterator: java.lang.Object next()>();
+
+        r16 = (org.apache.commons.io.filefilter.IOFileFilter) $r14;
+
+        $z5 = interfaceinvoke $r4.<java.util.List: boolean contains(java.lang.Object)>(r16);
+
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>("found file filter", $z5);
+
+     label4:
+        $z4 = interfaceinvoke r3.<java.util.Iterator: boolean hasNext()>();
+
+        if $z4 != 0 goto label3;
+
+        $i8 = interfaceinvoke $r4.<java.util.List: int size()>();
+
+        $l9 = (long) $i8;
+
+        $r15 = interfaceinvoke r2.<org.apache.commons.io.filefilter.ConditionalFileFilter: java.util.List getFileFilters()>();
+
+        $i10 = interfaceinvoke $r15.<java.util.List: int size()>();
+
+        $l11 = (long) $i10;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("file filters count", $l9, $l11);
+
+        return;
+    }
+
+    public void testRemove()
+    {
+        org.apache.commons.io.filefilter.ConditionalFileFilterAbstractTestCase r0;
+        org.apache.commons.io.filefilter.ConditionalFileFilter r2;
+        org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterTrueFileFilter r3, $r6, $r7, $r8, $r9;
+        java.util.Iterator r4;
+        java.util.ArrayList $r5;
+        java.lang.Object $r10;
+        java.util.List $r12, $r13;
+        boolean $z5, $z6, $z7;
+        int $i0;
+        long $l1;
+
+        r0 := @this: org.apache.commons.io.filefilter.ConditionalFileFilterAbstractTestCase;
+
+        $r5 = new java.util.ArrayList;
+
+        specialinvoke $r5.<java.util.ArrayList: void <init>()>();
+
+        r2 = virtualinvoke r0.<org.apache.commons.io.filefilter.ConditionalFileFilterAbstractTestCase: org.apache.commons.io.filefilter.ConditionalFileFilter getConditionalFileFilter()>();
+
+        $r6 = new org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterTrueFileFilter;
+
+        specialinvoke $r6.<org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterTrueFileFilter: void <init>(org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase)>(r0);
+
+        interfaceinvoke $r5.<java.util.List: boolean add(java.lang.Object)>($r6);
+
+        $r7 = new org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterTrueFileFilter;
+
+        specialinvoke $r7.<org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterTrueFileFilter: void <init>(org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase)>(r0);
+
+        interfaceinvoke $r5.<java.util.List: boolean add(java.lang.Object)>($r7);
+
+        $r8 = new org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterTrueFileFilter;
+
+        specialinvoke $r8.<org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterTrueFileFilter: void <init>(org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase)>(r0);
+
+        interfaceinvoke $r5.<java.util.List: boolean add(java.lang.Object)>($r8);
+
+        $r9 = new org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterTrueFileFilter;
+
+        specialinvoke $r9.<org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterTrueFileFilter: void <init>(org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase)>(r0);
+
+        interfaceinvoke $r5.<java.util.List: boolean add(java.lang.Object)>($r9);
+
+        r4 = interfaceinvoke $r5.<java.util.List: java.util.Iterator iterator()>();
+
+        goto label4;
+
+     label1:
+        $r10 = interfaceinvoke r4.<java.util.Iterator: java.lang.Object next()>();
+
+        r3 = (org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterTrueFileFilter) $r10;
+
+        interfaceinvoke r2.<org.apache.commons.io.filefilter.ConditionalFileFilter: boolean removeFileFilter(org.apache.commons.io.filefilter.IOFileFilter)>(r3);
+
+        $r12 = interfaceinvoke r2.<org.apache.commons.io.filefilter.ConditionalFileFilter: java.util.List getFileFilters()>();
+
+        $z5 = interfaceinvoke $r12.<java.util.List: boolean contains(java.lang.Object)>(r3);
+
+        if $z5 == 0 goto label2;
+
+        $z6 = 0;
+
+        goto label3;
+
+     label2:
+        $z6 = 1;
+
+     label3:
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>("file filter removed", $z6);
+
+     label4:
+        $z7 = interfaceinvoke r4.<java.util.Iterator: boolean hasNext()>();
+
+        if $z7 != 0 goto label1;
+
+        $r13 = interfaceinvoke r2.<org.apache.commons.io.filefilter.ConditionalFileFilter: java.util.List getFileFilters()>();
+
+        $i0 = interfaceinvoke $r13.<java.util.List: int size()>();
+
+        $l1 = (long) $i0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("file filters count", 0L, $l1);
+
+        return;
+    }
+
+    public void testNoFilters() throws java.lang.Exception
+    {
+        org.apache.commons.io.filefilter.ConditionalFileFilterAbstractTestCase r0;
+        org.apache.commons.io.filefilter.ConditionalFileFilter r1;
+        java.io.File $r3, $r4;
+        org.apache.commons.io.filefilter.IOFileFilter $r5, $r6;
+
+        r0 := @this: org.apache.commons.io.filefilter.ConditionalFileFilterAbstractTestCase;
+
+        r1 = virtualinvoke r0.<org.apache.commons.io.filefilter.ConditionalFileFilterAbstractTestCase: org.apache.commons.io.filefilter.ConditionalFileFilter getConditionalFileFilter()>();
+
+        $r3 = new java.io.File;
+
+        $r4 = r0.<org.apache.commons.io.filefilter.ConditionalFileFilterAbstractTestCase: java.io.File workingPath>;
+
+        specialinvoke $r3.<java.io.File: void <init>(java.io.File,java.lang.String)>($r4, "TestFile1.tst");
+
+        $r5 = (org.apache.commons.io.filefilter.IOFileFilter) r1;
+
+        staticinvoke <org.apache.commons.io.filefilter.ConditionalFileFilterAbstractTestCase: void assertFileFiltering(int,org.apache.commons.io.filefilter.IOFileFilter,java.io.File,boolean)>(1, $r5, $r3, 0);
+
+        $r6 = (org.apache.commons.io.filefilter.IOFileFilter) r1;
+
+        staticinvoke <org.apache.commons.io.filefilter.ConditionalFileFilterAbstractTestCase: void assertFilenameFiltering(int,org.apache.commons.io.filefilter.IOFileFilter,java.io.File,boolean)>(1, $r6, $r3, 0);
+
+        return;
+    }
+
+    public void testFilterBuiltUsingConstructor() throws java.lang.Exception
+    {
+        org.apache.commons.io.filefilter.ConditionalFileFilterAbstractTestCase r0;
+        java.util.List r1, r2, r3, r4, r5, r6;
+        boolean[] r7, r8;
+        boolean z0, z1;
+        org.apache.commons.io.filefilter.IOFileFilter r9;
+        int $i0, i1;
+        java.lang.Object $r10, $r11, $r12, $r13, $r15;
+        java.lang.Boolean $r14, $r16;
+        org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterTrueFileFilter[] $r17, $r20, $r22, $r25;
+        org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterFalseFileFilter[] $r18, $r21, $r23, $r26;
+        java.io.File $r19, $r24;
+
+        r0 := @this: org.apache.commons.io.filefilter.ConditionalFileFilterAbstractTestCase;
+
+        r1 = virtualinvoke r0.<org.apache.commons.io.filefilter.ConditionalFileFilterAbstractTestCase: java.util.List getTestFilters()>();
+
+        r2 = virtualinvoke r0.<org.apache.commons.io.filefilter.ConditionalFileFilterAbstractTestCase: java.util.List getTrueResults()>();
+
+        r3 = virtualinvoke r0.<org.apache.commons.io.filefilter.ConditionalFileFilterAbstractTestCase: java.util.List getFalseResults()>();
+
+        r4 = virtualinvoke r0.<org.apache.commons.io.filefilter.ConditionalFileFilterAbstractTestCase: java.util.List getFileResults()>();
+
+        r5 = virtualinvoke r0.<org.apache.commons.io.filefilter.ConditionalFileFilterAbstractTestCase: java.util.List getFilenameResults()>();
+
+        i1 = 1;
+
+        goto label2;
+
+     label1:
+        $r10 = interfaceinvoke r1.<java.util.List: java.lang.Object get(int)>(i1);
+
+        r6 = (java.util.List) $r10;
+
+        $r11 = interfaceinvoke r2.<java.util.List: java.lang.Object get(int)>(i1);
+
+        r7 = (boolean[]) $r11;
+
+        $r12 = interfaceinvoke r3.<java.util.List: java.lang.Object get(int)>(i1);
+
+        r8 = (boolean[]) $r12;
+
+        $r13 = interfaceinvoke r4.<java.util.List: java.lang.Object get(int)>(i1);
+
+        $r14 = (java.lang.Boolean) $r13;
+
+        z0 = virtualinvoke $r14.<java.lang.Boolean: boolean booleanValue()>();
+
+        $r15 = interfaceinvoke r5.<java.util.List: java.lang.Object get(int)>(i1);
+
+        $r16 = (java.lang.Boolean) $r15;
+
+        z1 = virtualinvoke $r16.<java.lang.Boolean: boolean booleanValue()>();
+
+        r9 = virtualinvoke r0.<org.apache.commons.io.filefilter.ConditionalFileFilterAbstractTestCase: org.apache.commons.io.filefilter.IOFileFilter buildFilterUsingConstructor(java.util.List)>(r6);
+
+        $r17 = r0.<org.apache.commons.io.filefilter.ConditionalFileFilterAbstractTestCase: org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterTrueFileFilter[] trueFilters>;
+
+        staticinvoke <org.apache.commons.io.filefilter.ConditionalFileFilterAbstractTestCase: void resetTrueFilters(org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterTrueFileFilter[])>($r17);
+
+        $r18 = r0.<org.apache.commons.io.filefilter.ConditionalFileFilterAbstractTestCase: org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterFalseFileFilter[] falseFilters>;
+
+        staticinvoke <org.apache.commons.io.filefilter.ConditionalFileFilterAbstractTestCase: void resetFalseFilters(org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterFalseFileFilter[])>($r18);
+
+        $r19 = r0.<org.apache.commons.io.filefilter.ConditionalFileFilterAbstractTestCase: java.io.File file>;
+
+        staticinvoke <org.apache.commons.io.filefilter.ConditionalFileFilterAbstractTestCase: void assertFileFiltering(int,org.apache.commons.io.filefilter.IOFileFilter,java.io.File,boolean)>(i1, r9, $r19, z0);
+
+        $r20 = r0.<org.apache.commons.io.filefilter.ConditionalFileFilterAbstractTestCase: org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterTrueFileFilter[] trueFilters>;
+
+        staticinvoke <org.apache.commons.io.filefilter.ConditionalFileFilterAbstractTestCase: void assertTrueFiltersInvoked(int,org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterTrueFileFilter[],boolean[])>(i1, $r20, r7);
+
+        $r21 = r0.<org.apache.commons.io.filefilter.ConditionalFileFilterAbstractTestCase: org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterFalseFileFilter[] falseFilters>;
+
+        staticinvoke <org.apache.commons.io.filefilter.ConditionalFileFilterAbstractTestCase: void assertFalseFiltersInvoked(int,org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterFalseFileFilter[],boolean[])>(i1, $r21, r8);
+
+        $r22 = r0.<org.apache.commons.io.filefilter.ConditionalFileFilterAbstractTestCase: org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterTrueFileFilter[] trueFilters>;
+
+        staticinvoke <org.apache.commons.io.filefilter.ConditionalFileFilterAbstractTestCase: void resetTrueFilters(org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterTrueFileFilter[])>($r22);
+
+        $r23 = r0.<org.apache.commons.io.filefilter.ConditionalFileFilterAbstractTestCase: org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterFalseFileFilter[] falseFilters>;
+
+        staticinvoke <org.apache.commons.io.filefilter.ConditionalFileFilterAbstractTestCase: void resetFalseFilters(org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterFalseFileFilter[])>($r23);
+
+        $r24 = r0.<org.apache.commons.io.filefilter.ConditionalFileFilterAbstractTestCase: java.io.File file>;
+
+        staticinvoke <org.apache.commons.io.filefilter.ConditionalFileFilterAbstractTestCase: void assertFilenameFiltering(int,org.apache.commons.io.filefilter.IOFileFilter,java.io.File,boolean)>(i1, r9, $r24, z1);
+
+        $r25 = r0.<org.apache.commons.io.filefilter.ConditionalFileFilterAbstractTestCase: org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterTrueFileFilter[] trueFilters>;
+
+        staticinvoke <org.apache.commons.io.filefilter.ConditionalFileFilterAbstractTestCase: void assertTrueFiltersInvoked(int,org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterTrueFileFilter[],boolean[])>(i1, $r25, r7);
+
+        $r26 = r0.<org.apache.commons.io.filefilter.ConditionalFileFilterAbstractTestCase: org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterFalseFileFilter[] falseFilters>;
+
+        staticinvoke <org.apache.commons.io.filefilter.ConditionalFileFilterAbstractTestCase: void assertFalseFiltersInvoked(int,org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterFalseFileFilter[],boolean[])>(i1, $r26, r8);
+
+        i1 = i1 + 1;
+
+     label2:
+        $i0 = interfaceinvoke r1.<java.util.List: int size()>();
+
+        if i1 < $i0 goto label1;
+
+        return;
+    }
+
+    public void testFilterBuiltUsingAdd() throws java.lang.Exception
+    {
+        org.apache.commons.io.filefilter.ConditionalFileFilterAbstractTestCase r0;
+        java.util.List r1, r2, r3, r4, r5, r6;
+        boolean[] r7, r8;
+        boolean z0, z1;
+        org.apache.commons.io.filefilter.IOFileFilter r9;
+        int $i0, i1;
+        java.lang.Object $r10, $r11, $r12, $r13, $r15;
+        java.lang.Boolean $r14, $r16;
+        org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterTrueFileFilter[] $r17, $r20, $r22, $r25;
+        org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterFalseFileFilter[] $r18, $r21, $r23, $r26;
+        java.io.File $r19, $r24;
+
+        r0 := @this: org.apache.commons.io.filefilter.ConditionalFileFilterAbstractTestCase;
+
+        r1 = virtualinvoke r0.<org.apache.commons.io.filefilter.ConditionalFileFilterAbstractTestCase: java.util.List getTestFilters()>();
+
+        r2 = virtualinvoke r0.<org.apache.commons.io.filefilter.ConditionalFileFilterAbstractTestCase: java.util.List getTrueResults()>();
+
+        r3 = virtualinvoke r0.<org.apache.commons.io.filefilter.ConditionalFileFilterAbstractTestCase: java.util.List getFalseResults()>();
+
+        r4 = virtualinvoke r0.<org.apache.commons.io.filefilter.ConditionalFileFilterAbstractTestCase: java.util.List getFileResults()>();
+
+        r5 = virtualinvoke r0.<org.apache.commons.io.filefilter.ConditionalFileFilterAbstractTestCase: java.util.List getFilenameResults()>();
+
+        i1 = 1;
+
+        goto label2;
+
+     label1:
+        $r10 = interfaceinvoke r1.<java.util.List: java.lang.Object get(int)>(i1);
+
+        r6 = (java.util.List) $r10;
+
+        $r11 = interfaceinvoke r2.<java.util.List: java.lang.Object get(int)>(i1);
+
+        r7 = (boolean[]) $r11;
+
+        $r12 = interfaceinvoke r3.<java.util.List: java.lang.Object get(int)>(i1);
+
+        r8 = (boolean[]) $r12;
+
+        $r13 = interfaceinvoke r4.<java.util.List: java.lang.Object get(int)>(i1);
+
+        $r14 = (java.lang.Boolean) $r13;
+
+        z0 = virtualinvoke $r14.<java.lang.Boolean: boolean booleanValue()>();
+
+        $r15 = interfaceinvoke r5.<java.util.List: java.lang.Object get(int)>(i1);
+
+        $r16 = (java.lang.Boolean) $r15;
+
+        z1 = virtualinvoke $r16.<java.lang.Boolean: boolean booleanValue()>();
+
+        r9 = virtualinvoke r0.<org.apache.commons.io.filefilter.ConditionalFileFilterAbstractTestCase: org.apache.commons.io.filefilter.IOFileFilter buildFilterUsingAdd(java.util.List)>(r6);
+
+        $r17 = r0.<org.apache.commons.io.filefilter.ConditionalFileFilterAbstractTestCase: org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterTrueFileFilter[] trueFilters>;
+
+        staticinvoke <org.apache.commons.io.filefilter.ConditionalFileFilterAbstractTestCase: void resetTrueFilters(org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterTrueFileFilter[])>($r17);
+
+        $r18 = r0.<org.apache.commons.io.filefilter.ConditionalFileFilterAbstractTestCase: org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterFalseFileFilter[] falseFilters>;
+
+        staticinvoke <org.apache.commons.io.filefilter.ConditionalFileFilterAbstractTestCase: void resetFalseFilters(org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterFalseFileFilter[])>($r18);
+
+        $r19 = r0.<org.apache.commons.io.filefilter.ConditionalFileFilterAbstractTestCase: java.io.File file>;
+
+        staticinvoke <org.apache.commons.io.filefilter.ConditionalFileFilterAbstractTestCase: void assertFileFiltering(int,org.apache.commons.io.filefilter.IOFileFilter,java.io.File,boolean)>(i1, r9, $r19, z0);
+
+        $r20 = r0.<org.apache.commons.io.filefilter.ConditionalFileFilterAbstractTestCase: org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterTrueFileFilter[] trueFilters>;
+
+        staticinvoke <org.apache.commons.io.filefilter.ConditionalFileFilterAbstractTestCase: void assertTrueFiltersInvoked(int,org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterTrueFileFilter[],boolean[])>(i1, $r20, r7);
+
+        $r21 = r0.<org.apache.commons.io.filefilter.ConditionalFileFilterAbstractTestCase: org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterFalseFileFilter[] falseFilters>;
+
+        staticinvoke <org.apache.commons.io.filefilter.ConditionalFileFilterAbstractTestCase: void assertFalseFiltersInvoked(int,org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterFalseFileFilter[],boolean[])>(i1, $r21, r8);
+
+        $r22 = r0.<org.apache.commons.io.filefilter.ConditionalFileFilterAbstractTestCase: org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterTrueFileFilter[] trueFilters>;
+
+        staticinvoke <org.apache.commons.io.filefilter.ConditionalFileFilterAbstractTestCase: void resetTrueFilters(org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterTrueFileFilter[])>($r22);
+
+        $r23 = r0.<org.apache.commons.io.filefilter.ConditionalFileFilterAbstractTestCase: org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterFalseFileFilter[] falseFilters>;
+
+        staticinvoke <org.apache.commons.io.filefilter.ConditionalFileFilterAbstractTestCase: void resetFalseFilters(org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterFalseFileFilter[])>($r23);
+
+        $r24 = r0.<org.apache.commons.io.filefilter.ConditionalFileFilterAbstractTestCase: java.io.File file>;
+
+        staticinvoke <org.apache.commons.io.filefilter.ConditionalFileFilterAbstractTestCase: void assertFilenameFiltering(int,org.apache.commons.io.filefilter.IOFileFilter,java.io.File,boolean)>(i1, r9, $r24, z1);
+
+        $r25 = r0.<org.apache.commons.io.filefilter.ConditionalFileFilterAbstractTestCase: org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterTrueFileFilter[] trueFilters>;
+
+        staticinvoke <org.apache.commons.io.filefilter.ConditionalFileFilterAbstractTestCase: void assertTrueFiltersInvoked(int,org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterTrueFileFilter[],boolean[])>(i1, $r25, r7);
+
+        $r26 = r0.<org.apache.commons.io.filefilter.ConditionalFileFilterAbstractTestCase: org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterFalseFileFilter[] falseFilters>;
+
+        staticinvoke <org.apache.commons.io.filefilter.ConditionalFileFilterAbstractTestCase: void assertFalseFiltersInvoked(int,org.apache.commons.io.filefilter.IOFileFilterAbstractTestCase$TesterFalseFileFilter[],boolean[])>(i1, $r26, r8);
+
+        i1 = i1 + 1;
+
+     label2:
+        $i0 = interfaceinvoke r1.<java.util.List: int size()>();
+
+        if i1 < $i0 goto label1;
+
+        return;
+    }
+
+    protected abstract org.apache.commons.io.filefilter.ConditionalFileFilter getConditionalFileFilter();
+
+    protected abstract org.apache.commons.io.filefilter.IOFileFilter buildFilterUsingAdd(java.util.List);
+
+    protected abstract org.apache.commons.io.filefilter.IOFileFilter buildFilterUsingConstructor(java.util.List);
+
+    protected abstract java.util.List getTestFilters();
+
+    protected abstract java.util.List getTrueResults();
+
+    protected abstract java.util.List getFalseResults();
+
+    protected abstract java.util.List getFileResults();
+
+    protected abstract java.util.List getFilenameResults();
+
+    protected abstract java.lang.String getWorkingPathNamePropertyKey();
+
+    protected abstract java.lang.String getDefaultWorkingPath();
+
+    public static void <clinit>()
+    {
+        <org.apache.commons.io.filefilter.ConditionalFileFilterAbstractTestCase: java.lang.String TEST_FILE_TYPE> = ".tst";
+
+        <org.apache.commons.io.filefilter.ConditionalFileFilterAbstractTestCase: java.lang.String TEST_FILE_NAME_PREFIX> = "TestFile";
+
+        return;
+    }
+}

@@ -1,0 +1,77 @@
+class org.apache.log4j.xml.DOMConfigurator$4 extends java.lang.Object implements org.apache.log4j.xml.DOMConfigurator$ParseAction
+{
+    final org.apache.log4j.xml.DOMConfigurator this$0;
+    private final java.io.Reader val$reader;
+
+    void <init>(org.apache.log4j.xml.DOMConfigurator, java.io.Reader)
+    {
+        org.apache.log4j.xml.DOMConfigurator$4 r0;
+        org.apache.log4j.xml.DOMConfigurator r1;
+        java.io.Reader r2;
+
+        r0 := @this: org.apache.log4j.xml.DOMConfigurator$4;
+
+        r1 := @parameter0: org.apache.log4j.xml.DOMConfigurator;
+
+        r2 := @parameter1: java.io.Reader;
+
+        r0.<org.apache.log4j.xml.DOMConfigurator$4: org.apache.log4j.xml.DOMConfigurator this$0> = r1;
+
+        r0.<org.apache.log4j.xml.DOMConfigurator$4: java.io.Reader val$reader> = r2;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public org.w3c.dom.Document parse(javax.xml.parsers.DocumentBuilder) throws org.xml.sax.SAXException, java.io.IOException
+    {
+        org.apache.log4j.xml.DOMConfigurator$4 r0;
+        javax.xml.parsers.DocumentBuilder r1;
+        org.xml.sax.InputSource $r3;
+        java.io.Reader $r4;
+        org.w3c.dom.Document $r5;
+
+        r0 := @this: org.apache.log4j.xml.DOMConfigurator$4;
+
+        r1 := @parameter0: javax.xml.parsers.DocumentBuilder;
+
+        $r3 = new org.xml.sax.InputSource;
+
+        $r4 = r0.<org.apache.log4j.xml.DOMConfigurator$4: java.io.Reader val$reader>;
+
+        specialinvoke $r3.<org.xml.sax.InputSource: void <init>(java.io.Reader)>($r4);
+
+        virtualinvoke $r3.<org.xml.sax.InputSource: void setSystemId(java.lang.String)>("dummy://log4j.dtd");
+
+        $r5 = virtualinvoke r1.<javax.xml.parsers.DocumentBuilder: org.w3c.dom.Document parse(org.xml.sax.InputSource)>($r3);
+
+        return $r5;
+    }
+
+    public java.lang.String toString()
+    {
+        org.apache.log4j.xml.DOMConfigurator$4 r0;
+        java.lang.StringBuilder $r1, $r4, $r5;
+        java.io.Reader $r2;
+        java.lang.String $r3, $r6;
+
+        r0 := @this: org.apache.log4j.xml.DOMConfigurator$4;
+
+        $r1 = new java.lang.StringBuilder;
+
+        specialinvoke $r1.<java.lang.StringBuilder: void <init>(java.lang.String)>("reader [");
+
+        $r2 = r0.<org.apache.log4j.xml.DOMConfigurator$4: java.io.Reader val$reader>;
+
+        $r3 = virtualinvoke $r2.<java.lang.Object: java.lang.String toString()>();
+
+        $r4 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r3);
+
+        $r5 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("]");
+
+        $r6 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $r6;
+    }
+}

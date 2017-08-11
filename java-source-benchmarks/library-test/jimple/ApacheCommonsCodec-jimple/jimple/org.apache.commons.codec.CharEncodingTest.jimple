@@ -1,0 +1,94 @@
+public class org.apache.commons.codec.CharEncodingTest extends java.lang.Object
+{
+
+    public void <init>()
+    {
+        org.apache.commons.codec.CharEncodingTest r0;
+
+        r0 := @this: org.apache.commons.codec.CharEncodingTest;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void testConstructor()
+    {
+        org.apache.commons.codec.CharEncodingTest r0;
+        org.apache.commons.codec.CharEncoding $r1;
+
+        r0 := @this: org.apache.commons.codec.CharEncodingTest;
+
+        $r1 = new org.apache.commons.codec.CharEncoding;
+
+        specialinvoke $r1.<org.apache.commons.codec.CharEncoding: void <init>()>();
+
+        return;
+    }
+
+    public void testIso8859_1()
+    {
+        org.apache.commons.codec.CharEncodingTest r0;
+
+        r0 := @this: org.apache.commons.codec.CharEncodingTest;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("ISO-8859-1", "ISO-8859-1");
+
+        return;
+    }
+
+    public void testUsAscii()
+    {
+        org.apache.commons.codec.CharEncodingTest r0;
+
+        r0 := @this: org.apache.commons.codec.CharEncodingTest;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("US-ASCII", "US-ASCII");
+
+        return;
+    }
+
+    public void testUtf16()
+    {
+        org.apache.commons.codec.CharEncodingTest r0;
+
+        r0 := @this: org.apache.commons.codec.CharEncodingTest;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("UTF-16", "UTF-16");
+
+        return;
+    }
+
+    public void testUtf16Be()
+    {
+        org.apache.commons.codec.CharEncodingTest r0;
+
+        r0 := @this: org.apache.commons.codec.CharEncodingTest;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("UTF-16BE", "UTF-16BE");
+
+        return;
+    }
+
+    public void testUtf16Le()
+    {
+        org.apache.commons.codec.CharEncodingTest r0;
+
+        r0 := @this: org.apache.commons.codec.CharEncodingTest;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("UTF-16LE", "UTF-16LE");
+
+        return;
+    }
+
+    public void testUtf8()
+    {
+        org.apache.commons.codec.CharEncodingTest r0;
+
+        r0 := @this: org.apache.commons.codec.CharEncodingTest;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("UTF-8", "UTF-8");
+
+        return;
+    }
+}

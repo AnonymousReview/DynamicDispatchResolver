@@ -1,0 +1,39 @@
+public class org.apache.log4j.helpers.LogLogTest extends junit.framework.TestCase
+{
+
+    public void <init>(java.lang.String)
+    {
+        org.apache.log4j.helpers.LogLogTest r0;
+        java.lang.String r1;
+
+        r0 := @this: org.apache.log4j.helpers.LogLogTest;
+
+        r1 := @parameter0: java.lang.String;
+
+        specialinvoke r0.<junit.framework.TestCase: void <init>(java.lang.String)>(r1);
+
+        return;
+    }
+
+    public void testDebugKey()
+    {
+        org.apache.log4j.helpers.LogLogTest r0;
+
+        r0 := @this: org.apache.log4j.helpers.LogLogTest;
+
+        staticinvoke <org.apache.log4j.helpers.LogLogTest: void assertEquals(java.lang.String,java.lang.String)>("log4j.debug", "log4j.debug");
+
+        return;
+    }
+
+    public void testConfigDebugKey()
+    {
+        org.apache.log4j.helpers.LogLogTest r0;
+
+        r0 := @this: org.apache.log4j.helpers.LogLogTest;
+
+        staticinvoke <org.apache.log4j.helpers.LogLogTest: void assertEquals(java.lang.String,java.lang.String)>("log4j.configDebug", "log4j.configDebug");
+
+        return;
+    }
+}

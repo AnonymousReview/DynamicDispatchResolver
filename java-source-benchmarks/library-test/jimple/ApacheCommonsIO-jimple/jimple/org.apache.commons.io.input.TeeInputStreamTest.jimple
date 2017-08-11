@@ -1,0 +1,414 @@
+public class org.apache.commons.io.input.TeeInputStreamTest extends java.lang.Object
+{
+    private final java.lang.String ASCII;
+    private java.io.InputStream tee;
+    private java.io.ByteArrayOutputStream output;
+
+    public void <init>()
+    {
+        org.apache.commons.io.input.TeeInputStreamTest r0;
+
+        r0 := @this: org.apache.commons.io.input.TeeInputStreamTest;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<org.apache.commons.io.input.TeeInputStreamTest: java.lang.String ASCII> = "US-ASCII";
+
+        return;
+    }
+
+    public void setUp() throws java.lang.Exception
+    {
+        org.apache.commons.io.input.TeeInputStreamTest r0;
+        java.io.ByteArrayInputStream $r2;
+        java.lang.String $r3;
+        byte[] $r4;
+        java.io.ByteArrayOutputStream $r5, $r7;
+        org.apache.commons.io.input.TeeInputStream $r6;
+
+        r0 := @this: org.apache.commons.io.input.TeeInputStreamTest;
+
+        $r2 = new java.io.ByteArrayInputStream;
+
+        $r3 = "abc";
+
+        $r4 = virtualinvoke $r3.<java.lang.String: byte[] getBytes(java.lang.String)>("US-ASCII");
+
+        specialinvoke $r2.<java.io.ByteArrayInputStream: void <init>(byte[])>($r4);
+
+        $r5 = new java.io.ByteArrayOutputStream;
+
+        specialinvoke $r5.<java.io.ByteArrayOutputStream: void <init>()>();
+
+        r0.<org.apache.commons.io.input.TeeInputStreamTest: java.io.ByteArrayOutputStream output> = $r5;
+
+        $r6 = new org.apache.commons.io.input.TeeInputStream;
+
+        $r7 = r0.<org.apache.commons.io.input.TeeInputStreamTest: java.io.ByteArrayOutputStream output>;
+
+        specialinvoke $r6.<org.apache.commons.io.input.TeeInputStream: void <init>(java.io.InputStream,java.io.OutputStream)>($r2, $r7);
+
+        r0.<org.apache.commons.io.input.TeeInputStreamTest: java.io.InputStream tee> = $r6;
+
+        return;
+    }
+
+    public void testReadNothing() throws java.lang.Exception
+    {
+        org.apache.commons.io.input.TeeInputStreamTest r0;
+        java.lang.String $r1, $r3;
+        java.io.ByteArrayOutputStream $r2;
+
+        r0 := @this: org.apache.commons.io.input.TeeInputStreamTest;
+
+        $r1 = new java.lang.String;
+
+        $r2 = r0.<org.apache.commons.io.input.TeeInputStreamTest: java.io.ByteArrayOutputStream output>;
+
+        $r3 = virtualinvoke $r2.<java.io.ByteArrayOutputStream: java.lang.String toString(java.lang.String)>("US-ASCII");
+
+        specialinvoke $r1.<java.lang.String: void <init>(java.lang.String)>($r3);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("", $r1);
+
+        return;
+    }
+
+    public void testReadOneByte() throws java.lang.Exception
+    {
+        org.apache.commons.io.input.TeeInputStreamTest r0;
+        java.io.InputStream $r1;
+        int $i0;
+        long $l1;
+        java.lang.String $r2, $r4;
+        java.io.ByteArrayOutputStream $r3;
+
+        r0 := @this: org.apache.commons.io.input.TeeInputStreamTest;
+
+        $r1 = r0.<org.apache.commons.io.input.TeeInputStreamTest: java.io.InputStream tee>;
+
+        $i0 = virtualinvoke $r1.<java.io.InputStream: int read()>();
+
+        $l1 = (long) $i0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(97L, $l1);
+
+        $r2 = new java.lang.String;
+
+        $r3 = r0.<org.apache.commons.io.input.TeeInputStreamTest: java.io.ByteArrayOutputStream output>;
+
+        $r4 = virtualinvoke $r3.<java.io.ByteArrayOutputStream: java.lang.String toString(java.lang.String)>("US-ASCII");
+
+        specialinvoke $r2.<java.lang.String: void <init>(java.lang.String)>($r4);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("a", $r2);
+
+        return;
+    }
+
+    public void testReadEverything() throws java.lang.Exception
+    {
+        org.apache.commons.io.input.TeeInputStreamTest r0;
+        java.io.InputStream $r1, $r2, $r3, $r4;
+        int $i0, $i2, $i4, $i6;
+        long $l1, $l3, $l5, $l7;
+        java.lang.String $r5, $r7;
+        java.io.ByteArrayOutputStream $r6;
+
+        r0 := @this: org.apache.commons.io.input.TeeInputStreamTest;
+
+        $r1 = r0.<org.apache.commons.io.input.TeeInputStreamTest: java.io.InputStream tee>;
+
+        $i0 = virtualinvoke $r1.<java.io.InputStream: int read()>();
+
+        $l1 = (long) $i0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(97L, $l1);
+
+        $r2 = r0.<org.apache.commons.io.input.TeeInputStreamTest: java.io.InputStream tee>;
+
+        $i2 = virtualinvoke $r2.<java.io.InputStream: int read()>();
+
+        $l3 = (long) $i2;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(98L, $l3);
+
+        $r3 = r0.<org.apache.commons.io.input.TeeInputStreamTest: java.io.InputStream tee>;
+
+        $i4 = virtualinvoke $r3.<java.io.InputStream: int read()>();
+
+        $l5 = (long) $i4;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(99L, $l5);
+
+        $r4 = r0.<org.apache.commons.io.input.TeeInputStreamTest: java.io.InputStream tee>;
+
+        $i6 = virtualinvoke $r4.<java.io.InputStream: int read()>();
+
+        $l7 = (long) $i6;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(-1L, $l7);
+
+        $r5 = new java.lang.String;
+
+        $r6 = r0.<org.apache.commons.io.input.TeeInputStreamTest: java.io.ByteArrayOutputStream output>;
+
+        $r7 = virtualinvoke $r6.<java.io.ByteArrayOutputStream: java.lang.String toString(java.lang.String)>("US-ASCII");
+
+        specialinvoke $r5.<java.lang.String: void <init>(java.lang.String)>($r7);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("abc", $r5);
+
+        return;
+    }
+
+    public void testReadToArray() throws java.lang.Exception
+    {
+        org.apache.commons.io.input.TeeInputStreamTest r0;
+        byte[] r1;
+        java.io.InputStream $r2, $r3;
+        int $i0, $i8;
+        long $l1, $l3, $l5, $l7, $l9;
+        byte $b2, $b4, $b6;
+        java.lang.String $r4, $r6;
+        java.io.ByteArrayOutputStream $r5;
+
+        r0 := @this: org.apache.commons.io.input.TeeInputStreamTest;
+
+        r1 = newarray (byte)[8];
+
+        $r2 = r0.<org.apache.commons.io.input.TeeInputStreamTest: java.io.InputStream tee>;
+
+        $i0 = virtualinvoke $r2.<java.io.InputStream: int read(byte[])>(r1);
+
+        $l1 = (long) $i0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(3L, $l1);
+
+        $b2 = r1[0];
+
+        $l3 = (long) $b2;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(97L, $l3);
+
+        $b4 = r1[1];
+
+        $l5 = (long) $b4;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(98L, $l5);
+
+        $b6 = r1[2];
+
+        $l7 = (long) $b6;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(99L, $l7);
+
+        $r3 = r0.<org.apache.commons.io.input.TeeInputStreamTest: java.io.InputStream tee>;
+
+        $i8 = virtualinvoke $r3.<java.io.InputStream: int read(byte[])>(r1);
+
+        $l9 = (long) $i8;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(-1L, $l9);
+
+        $r4 = new java.lang.String;
+
+        $r5 = r0.<org.apache.commons.io.input.TeeInputStreamTest: java.io.ByteArrayOutputStream output>;
+
+        $r6 = virtualinvoke $r5.<java.io.ByteArrayOutputStream: java.lang.String toString(java.lang.String)>("US-ASCII");
+
+        specialinvoke $r4.<java.lang.String: void <init>(java.lang.String)>($r6);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("abc", $r4);
+
+        return;
+    }
+
+    public void testReadToArrayWithOffset() throws java.lang.Exception
+    {
+        org.apache.commons.io.input.TeeInputStreamTest r0;
+        byte[] r1;
+        java.io.InputStream $r2, $r3;
+        int $i0, $i8;
+        long $l1, $l3, $l5, $l7, $l9;
+        byte $b2, $b4, $b6;
+        java.lang.String $r4, $r6;
+        java.io.ByteArrayOutputStream $r5;
+
+        r0 := @this: org.apache.commons.io.input.TeeInputStreamTest;
+
+        r1 = newarray (byte)[8];
+
+        $r2 = r0.<org.apache.commons.io.input.TeeInputStreamTest: java.io.InputStream tee>;
+
+        $i0 = virtualinvoke $r2.<java.io.InputStream: int read(byte[],int,int)>(r1, 4, 4);
+
+        $l1 = (long) $i0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(3L, $l1);
+
+        $b2 = r1[4];
+
+        $l3 = (long) $b2;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(97L, $l3);
+
+        $b4 = r1[5];
+
+        $l5 = (long) $b4;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(98L, $l5);
+
+        $b6 = r1[6];
+
+        $l7 = (long) $b6;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(99L, $l7);
+
+        $r3 = r0.<org.apache.commons.io.input.TeeInputStreamTest: java.io.InputStream tee>;
+
+        $i8 = virtualinvoke $r3.<java.io.InputStream: int read(byte[],int,int)>(r1, 4, 4);
+
+        $l9 = (long) $i8;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(-1L, $l9);
+
+        $r4 = new java.lang.String;
+
+        $r5 = r0.<org.apache.commons.io.input.TeeInputStreamTest: java.io.ByteArrayOutputStream output>;
+
+        $r6 = virtualinvoke $r5.<java.io.ByteArrayOutputStream: java.lang.String toString(java.lang.String)>("US-ASCII");
+
+        specialinvoke $r4.<java.lang.String: void <init>(java.lang.String)>($r6);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("abc", $r4);
+
+        return;
+    }
+
+    public void testSkip() throws java.lang.Exception
+    {
+        org.apache.commons.io.input.TeeInputStreamTest r0;
+        java.io.InputStream $r1, $r2, $r3, $r4;
+        int $i0, $i3, $i5;
+        long $l1, $l2, $l4, $l6;
+        java.lang.String $r5, $r7;
+        java.io.ByteArrayOutputStream $r6;
+
+        r0 := @this: org.apache.commons.io.input.TeeInputStreamTest;
+
+        $r1 = r0.<org.apache.commons.io.input.TeeInputStreamTest: java.io.InputStream tee>;
+
+        $i0 = virtualinvoke $r1.<java.io.InputStream: int read()>();
+
+        $l1 = (long) $i0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(97L, $l1);
+
+        $r2 = r0.<org.apache.commons.io.input.TeeInputStreamTest: java.io.InputStream tee>;
+
+        $l2 = virtualinvoke $r2.<java.io.InputStream: long skip(long)>(1L);
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(1L, $l2);
+
+        $r3 = r0.<org.apache.commons.io.input.TeeInputStreamTest: java.io.InputStream tee>;
+
+        $i3 = virtualinvoke $r3.<java.io.InputStream: int read()>();
+
+        $l4 = (long) $i3;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(99L, $l4);
+
+        $r4 = r0.<org.apache.commons.io.input.TeeInputStreamTest: java.io.InputStream tee>;
+
+        $i5 = virtualinvoke $r4.<java.io.InputStream: int read()>();
+
+        $l6 = (long) $i5;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(-1L, $l6);
+
+        $r5 = new java.lang.String;
+
+        $r6 = r0.<org.apache.commons.io.input.TeeInputStreamTest: java.io.ByteArrayOutputStream output>;
+
+        $r7 = virtualinvoke $r6.<java.io.ByteArrayOutputStream: java.lang.String toString(java.lang.String)>("US-ASCII");
+
+        specialinvoke $r5.<java.lang.String: void <init>(java.lang.String)>($r7);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("ac", $r5);
+
+        return;
+    }
+
+    public void testMarkReset() throws java.lang.Exception
+    {
+        org.apache.commons.io.input.TeeInputStreamTest r0;
+        java.io.InputStream $r1, $r2, $r3, $r4, $r5, $r6, $r7;
+        int $i0, $i2, $i4, $i6, $i8;
+        long $l1, $l3, $l5, $l7, $l9;
+        java.lang.String $r8, $r10;
+        java.io.ByteArrayOutputStream $r9;
+
+        r0 := @this: org.apache.commons.io.input.TeeInputStreamTest;
+
+        $r1 = r0.<org.apache.commons.io.input.TeeInputStreamTest: java.io.InputStream tee>;
+
+        $i0 = virtualinvoke $r1.<java.io.InputStream: int read()>();
+
+        $l1 = (long) $i0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(97L, $l1);
+
+        $r2 = r0.<org.apache.commons.io.input.TeeInputStreamTest: java.io.InputStream tee>;
+
+        virtualinvoke $r2.<java.io.InputStream: void mark(int)>(1);
+
+        $r3 = r0.<org.apache.commons.io.input.TeeInputStreamTest: java.io.InputStream tee>;
+
+        $i2 = virtualinvoke $r3.<java.io.InputStream: int read()>();
+
+        $l3 = (long) $i2;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(98L, $l3);
+
+        $r4 = r0.<org.apache.commons.io.input.TeeInputStreamTest: java.io.InputStream tee>;
+
+        virtualinvoke $r4.<java.io.InputStream: void reset()>();
+
+        $r5 = r0.<org.apache.commons.io.input.TeeInputStreamTest: java.io.InputStream tee>;
+
+        $i4 = virtualinvoke $r5.<java.io.InputStream: int read()>();
+
+        $l5 = (long) $i4;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(98L, $l5);
+
+        $r6 = r0.<org.apache.commons.io.input.TeeInputStreamTest: java.io.InputStream tee>;
+
+        $i6 = virtualinvoke $r6.<java.io.InputStream: int read()>();
+
+        $l7 = (long) $i6;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(99L, $l7);
+
+        $r7 = r0.<org.apache.commons.io.input.TeeInputStreamTest: java.io.InputStream tee>;
+
+        $i8 = virtualinvoke $r7.<java.io.InputStream: int read()>();
+
+        $l9 = (long) $i8;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(-1L, $l9);
+
+        $r8 = new java.lang.String;
+
+        $r9 = r0.<org.apache.commons.io.input.TeeInputStreamTest: java.io.ByteArrayOutputStream output>;
+
+        $r10 = virtualinvoke $r9.<java.io.ByteArrayOutputStream: java.lang.String toString(java.lang.String)>("US-ASCII");
+
+        specialinvoke $r8.<java.lang.String: void <init>(java.lang.String)>($r10);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("abbc", $r8);
+
+        return;
+    }
+}

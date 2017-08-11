@@ -1,0 +1,59 @@
+class org.apache.commons.io.output.ThresholdingOutputStreamTest$1 extends org.apache.commons.io.output.ThresholdingOutputStream
+{
+    final org.apache.commons.io.output.ThresholdingOutputStreamTest this$0;
+    private final java.util.concurrent.atomic.AtomicBoolean val$reached;
+
+    void <init>(org.apache.commons.io.output.ThresholdingOutputStreamTest, int, java.util.concurrent.atomic.AtomicBoolean)
+    {
+        org.apache.commons.io.output.ThresholdingOutputStreamTest$1 r0;
+        org.apache.commons.io.output.ThresholdingOutputStreamTest r1;
+        int $i0;
+        java.util.concurrent.atomic.AtomicBoolean r2;
+
+        r0 := @this: org.apache.commons.io.output.ThresholdingOutputStreamTest$1;
+
+        r1 := @parameter0: org.apache.commons.io.output.ThresholdingOutputStreamTest;
+
+        $i0 := @parameter1: int;
+
+        r2 := @parameter2: java.util.concurrent.atomic.AtomicBoolean;
+
+        r0.<org.apache.commons.io.output.ThresholdingOutputStreamTest$1: org.apache.commons.io.output.ThresholdingOutputStreamTest this$0> = r1;
+
+        r0.<org.apache.commons.io.output.ThresholdingOutputStreamTest$1: java.util.concurrent.atomic.AtomicBoolean val$reached> = r2;
+
+        specialinvoke r0.<org.apache.commons.io.output.ThresholdingOutputStream: void <init>(int)>($i0);
+
+        virtualinvoke r0.<org.apache.commons.io.output.ThresholdingOutputStreamTest$1: void setByteCount(long)>(2L);
+
+        return;
+    }
+
+    protected java.io.OutputStream getStream() throws java.io.IOException
+    {
+        org.apache.commons.io.output.ThresholdingOutputStreamTest$1 r0;
+        org.apache.commons.io.output.ByteArrayOutputStream $r1;
+
+        r0 := @this: org.apache.commons.io.output.ThresholdingOutputStreamTest$1;
+
+        $r1 = new org.apache.commons.io.output.ByteArrayOutputStream;
+
+        specialinvoke $r1.<org.apache.commons.io.output.ByteArrayOutputStream: void <init>(int)>(4);
+
+        return $r1;
+    }
+
+    protected void thresholdReached() throws java.io.IOException
+    {
+        org.apache.commons.io.output.ThresholdingOutputStreamTest$1 r0;
+        java.util.concurrent.atomic.AtomicBoolean $r1;
+
+        r0 := @this: org.apache.commons.io.output.ThresholdingOutputStreamTest$1;
+
+        $r1 = r0.<org.apache.commons.io.output.ThresholdingOutputStreamTest$1: java.util.concurrent.atomic.AtomicBoolean val$reached>;
+
+        virtualinvoke $r1.<java.util.concurrent.atomic.AtomicBoolean: void set(boolean)>(1);
+
+        return;
+    }
+}

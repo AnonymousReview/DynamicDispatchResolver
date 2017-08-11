@@ -1,0 +1,227 @@
+public class org.apache.commons.io.serialization.MoreComplexObjectTest extends org.apache.commons.io.serialization.ClosingBase
+{
+    private java.io.InputStream inputStream;
+    private org.apache.commons.io.serialization.MoreComplexObject original;
+
+    public void <init>()
+    {
+        org.apache.commons.io.serialization.MoreComplexObjectTest r0;
+
+        r0 := @this: org.apache.commons.io.serialization.MoreComplexObjectTest;
+
+        specialinvoke r0.<org.apache.commons.io.serialization.ClosingBase: void <init>()>();
+
+        return;
+    }
+
+    public void setup() throws java.io.IOException
+    {
+        org.apache.commons.io.serialization.MoreComplexObjectTest r0;
+        java.io.ByteArrayOutputStream r1, $r4;
+        java.io.ObjectOutputStream r2, $r6;
+        org.apache.commons.io.serialization.MoreComplexObject $r3, $r8;
+        java.io.Closeable $r5, $r7, $r11;
+        java.io.ByteArrayInputStream $r9;
+        byte[] $r10;
+        java.io.InputStream $r12;
+
+        r0 := @this: org.apache.commons.io.serialization.MoreComplexObjectTest;
+
+        $r3 = new org.apache.commons.io.serialization.MoreComplexObject;
+
+        specialinvoke $r3.<org.apache.commons.io.serialization.MoreComplexObject: void <init>()>();
+
+        r0.<org.apache.commons.io.serialization.MoreComplexObjectTest: org.apache.commons.io.serialization.MoreComplexObject original> = $r3;
+
+        $r4 = new java.io.ByteArrayOutputStream;
+
+        specialinvoke $r4.<java.io.ByteArrayOutputStream: void <init>()>();
+
+        $r5 = virtualinvoke r0.<org.apache.commons.io.serialization.MoreComplexObjectTest: java.io.Closeable willClose(java.io.Closeable)>($r4);
+
+        r1 = (java.io.ByteArrayOutputStream) $r5;
+
+        $r6 = new java.io.ObjectOutputStream;
+
+        specialinvoke $r6.<java.io.ObjectOutputStream: void <init>(java.io.OutputStream)>(r1);
+
+        $r7 = virtualinvoke r0.<org.apache.commons.io.serialization.MoreComplexObjectTest: java.io.Closeable willClose(java.io.Closeable)>($r6);
+
+        r2 = (java.io.ObjectOutputStream) $r7;
+
+        $r8 = r0.<org.apache.commons.io.serialization.MoreComplexObjectTest: org.apache.commons.io.serialization.MoreComplexObject original>;
+
+        virtualinvoke r2.<java.io.ObjectOutputStream: void writeObject(java.lang.Object)>($r8);
+
+        $r9 = new java.io.ByteArrayInputStream;
+
+        $r10 = virtualinvoke r1.<java.io.ByteArrayOutputStream: byte[] toByteArray()>();
+
+        specialinvoke $r9.<java.io.ByteArrayInputStream: void <init>(byte[])>($r10);
+
+        $r11 = virtualinvoke r0.<org.apache.commons.io.serialization.MoreComplexObjectTest: java.io.Closeable willClose(java.io.Closeable)>($r9);
+
+        $r12 = (java.io.InputStream) $r11;
+
+        r0.<org.apache.commons.io.serialization.MoreComplexObjectTest: java.io.InputStream inputStream> = $r12;
+
+        return;
+    }
+
+    private void assertSerialization(java.io.ObjectInputStream) throws java.lang.ClassNotFoundException, java.io.IOException
+    {
+        org.apache.commons.io.serialization.MoreComplexObjectTest r0;
+        java.io.ObjectInputStream r1;
+        org.apache.commons.io.serialization.MoreComplexObject r2, $r4;
+        java.lang.Object $r3;
+        java.lang.String $r5, $r6;
+
+        r0 := @this: org.apache.commons.io.serialization.MoreComplexObjectTest;
+
+        r1 := @parameter0: java.io.ObjectInputStream;
+
+        $r3 = virtualinvoke r1.<java.io.ObjectInputStream: java.lang.Object readObject()>();
+
+        r2 = (org.apache.commons.io.serialization.MoreComplexObject) $r3;
+
+        $r4 = r0.<org.apache.commons.io.serialization.MoreComplexObjectTest: org.apache.commons.io.serialization.MoreComplexObject original>;
+
+        $r5 = virtualinvoke $r4.<org.apache.commons.io.serialization.MoreComplexObject: java.lang.String toString()>();
+
+        $r6 = virtualinvoke r2.<org.apache.commons.io.serialization.MoreComplexObject: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,java.lang.Object,java.lang.Object)>("Expecting same data after deserializing", $r5, $r6);
+
+        return;
+    }
+
+    public void trustJavaLang() throws java.io.IOException, java.lang.ClassNotFoundException
+    {
+        org.apache.commons.io.serialization.MoreComplexObjectTest r0;
+        org.apache.commons.io.serialization.ValidatingObjectInputStream $r1, $r4, $r6;
+        java.io.InputStream $r2;
+        java.lang.Class[] $r3;
+        java.lang.String[] $r5;
+        java.io.Closeable $r7;
+        java.io.ObjectInputStream $r8;
+
+        r0 := @this: org.apache.commons.io.serialization.MoreComplexObjectTest;
+
+        $r1 = new org.apache.commons.io.serialization.ValidatingObjectInputStream;
+
+        $r2 = r0.<org.apache.commons.io.serialization.MoreComplexObjectTest: java.io.InputStream inputStream>;
+
+        specialinvoke $r1.<org.apache.commons.io.serialization.ValidatingObjectInputStream: void <init>(java.io.InputStream)>($r2);
+
+        $r3 = newarray (java.lang.Class)[3];
+
+        $r3[0] = class "org/apache/commons/io/serialization/MoreComplexObject";
+
+        $r3[1] = class "java/util/ArrayList";
+
+        $r3[2] = class "java/util/Random";
+
+        $r4 = virtualinvoke $r1.<org.apache.commons.io.serialization.ValidatingObjectInputStream: org.apache.commons.io.serialization.ValidatingObjectInputStream accept(java.lang.Class[])>($r3);
+
+        $r5 = newarray (java.lang.String)[2];
+
+        $r5[0] = "java.lang.*";
+
+        $r5[1] = "[Ljava.lang.*";
+
+        $r6 = virtualinvoke $r4.<org.apache.commons.io.serialization.ValidatingObjectInputStream: org.apache.commons.io.serialization.ValidatingObjectInputStream accept(java.lang.String[])>($r5);
+
+        $r7 = virtualinvoke r0.<org.apache.commons.io.serialization.MoreComplexObjectTest: java.io.Closeable willClose(java.io.Closeable)>($r6);
+
+        $r8 = (java.io.ObjectInputStream) $r7;
+
+        specialinvoke r0.<org.apache.commons.io.serialization.MoreComplexObjectTest: void assertSerialization(java.io.ObjectInputStream)>($r8);
+
+        return;
+    }
+
+    public void trustJavaIncludingArrays() throws java.io.IOException, java.lang.ClassNotFoundException
+    {
+        org.apache.commons.io.serialization.MoreComplexObjectTest r0;
+        org.apache.commons.io.serialization.ValidatingObjectInputStream $r1, $r4, $r6;
+        java.io.InputStream $r2;
+        java.lang.Class[] $r3;
+        java.lang.String[] $r5;
+        java.io.Closeable $r7;
+        java.io.ObjectInputStream $r8;
+
+        r0 := @this: org.apache.commons.io.serialization.MoreComplexObjectTest;
+
+        $r1 = new org.apache.commons.io.serialization.ValidatingObjectInputStream;
+
+        $r2 = r0.<org.apache.commons.io.serialization.MoreComplexObjectTest: java.io.InputStream inputStream>;
+
+        specialinvoke $r1.<org.apache.commons.io.serialization.ValidatingObjectInputStream: void <init>(java.io.InputStream)>($r2);
+
+        $r3 = newarray (java.lang.Class)[1];
+
+        $r3[0] = class "org/apache/commons/io/serialization/MoreComplexObject";
+
+        $r4 = virtualinvoke $r1.<org.apache.commons.io.serialization.ValidatingObjectInputStream: org.apache.commons.io.serialization.ValidatingObjectInputStream accept(java.lang.Class[])>($r3);
+
+        $r5 = newarray (java.lang.String)[2];
+
+        $r5[0] = "java.*";
+
+        $r5[1] = "[Ljava.*";
+
+        $r6 = virtualinvoke $r4.<org.apache.commons.io.serialization.ValidatingObjectInputStream: org.apache.commons.io.serialization.ValidatingObjectInputStream accept(java.lang.String[])>($r5);
+
+        $r7 = virtualinvoke r0.<org.apache.commons.io.serialization.MoreComplexObjectTest: java.io.Closeable willClose(java.io.Closeable)>($r6);
+
+        $r8 = (java.io.ObjectInputStream) $r7;
+
+        specialinvoke r0.<org.apache.commons.io.serialization.MoreComplexObjectTest: void assertSerialization(java.io.ObjectInputStream)>($r8);
+
+        return;
+    }
+
+    public void useBlacklist() throws java.io.IOException, java.lang.ClassNotFoundException
+    {
+        org.apache.commons.io.serialization.MoreComplexObjectTest r0;
+        java.lang.String[] $r2, $r5;
+        org.apache.commons.io.serialization.ValidatingObjectInputStream $r3, $r6, $r7;
+        java.io.InputStream $r4;
+        java.io.Closeable $r8;
+        java.io.ObjectInputStream $r9;
+
+        r0 := @this: org.apache.commons.io.serialization.MoreComplexObjectTest;
+
+        $r2 = newarray (java.lang.String)[4];
+
+        $r2[0] = "org.apache.commons.collections.functors.InvokerTransformer";
+
+        $r2[1] = "org.codehaus.groovy.runtime.ConvertedClosure";
+
+        $r2[2] = "org.codehaus.groovy.runtime.MethodClosure";
+
+        $r2[3] = "org.springframework.beans.factory.ObjectFactory";
+
+        $r3 = new org.apache.commons.io.serialization.ValidatingObjectInputStream;
+
+        $r4 = r0.<org.apache.commons.io.serialization.MoreComplexObjectTest: java.io.InputStream inputStream>;
+
+        specialinvoke $r3.<org.apache.commons.io.serialization.ValidatingObjectInputStream: void <init>(java.io.InputStream)>($r4);
+
+        $r5 = newarray (java.lang.String)[1];
+
+        $r5[0] = "*";
+
+        $r6 = virtualinvoke $r3.<org.apache.commons.io.serialization.ValidatingObjectInputStream: org.apache.commons.io.serialization.ValidatingObjectInputStream accept(java.lang.String[])>($r5);
+
+        $r7 = virtualinvoke $r6.<org.apache.commons.io.serialization.ValidatingObjectInputStream: org.apache.commons.io.serialization.ValidatingObjectInputStream reject(java.lang.String[])>($r2);
+
+        $r8 = virtualinvoke r0.<org.apache.commons.io.serialization.MoreComplexObjectTest: java.io.Closeable willClose(java.io.Closeable)>($r7);
+
+        $r9 = (java.io.ObjectInputStream) $r8;
+
+        specialinvoke r0.<org.apache.commons.io.serialization.MoreComplexObjectTest: void assertSerialization(java.io.ObjectInputStream)>($r9);
+
+        return;
+    }
+}

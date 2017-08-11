@@ -1,0 +1,64 @@
+public class org.apache.commons.codec.digest.B64Test extends java.lang.Object
+{
+
+    public void <init>()
+    {
+        org.apache.commons.codec.digest.B64Test r0;
+
+        r0 := @this: org.apache.commons.codec.digest.B64Test;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void testB64T()
+    {
+        org.apache.commons.codec.digest.B64Test r0;
+        org.apache.commons.codec.digest.B64 $r1;
+        java.lang.String $r2;
+        int $i0;
+        long $l1;
+
+        r0 := @this: org.apache.commons.codec.digest.B64Test;
+
+        $r1 = new org.apache.commons.codec.digest.B64;
+
+        specialinvoke $r1.<org.apache.commons.codec.digest.B64: void <init>()>();
+
+        staticinvoke <org.junit.Assert: void assertNotNull(java.lang.Object)>($r1);
+
+        $r2 = "./0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+
+        $i0 = virtualinvoke $r2.<java.lang.String: int length()>();
+
+        $l1 = (long) $i0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(64L, $l1);
+
+        return;
+    }
+
+    public void testB64from24bit()
+    {
+        org.apache.commons.codec.digest.B64Test r0;
+        java.lang.StringBuilder $r2;
+        java.lang.String $r3;
+
+        r0 := @this: org.apache.commons.codec.digest.B64Test;
+
+        $r2 = new java.lang.StringBuilder;
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>(java.lang.String)>("");
+
+        staticinvoke <org.apache.commons.codec.digest.B64: void b64from24bit(byte,byte,byte,int,java.lang.StringBuilder)>(8, 16, 64, 2, $r2);
+
+        staticinvoke <org.apache.commons.codec.digest.B64: void b64from24bit(byte,byte,byte,int,java.lang.StringBuilder)>(7, 77, 120, 4, $r2);
+
+        $r3 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("./spo/", $r3);
+
+        return;
+    }
+}

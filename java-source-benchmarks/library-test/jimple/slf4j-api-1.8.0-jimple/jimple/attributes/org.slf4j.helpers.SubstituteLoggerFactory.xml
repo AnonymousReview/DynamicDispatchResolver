@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<attributes>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="4" eline="4" spos="0" epos="0"/>
+<text info="Signature: Ljava/util/Map&lt;Ljava/lang/String;Lorg/slf4j/helpers/SubstituteLogger;&gt;;" aType="SignatureTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="5" eline="5" spos="0" epos="0"/>
+<text info="Signature: Ljava/util/concurrent/LinkedBlockingQueue&lt;Lorg/slf4j/event/SubstituteLoggingEvent;&gt;;" aType="SignatureTag"/>
+</attribute>
+<attribute>
+<srcPos sline="60" eline="60" spos="0" epos="0"/>
+<jmpPos sline="74" eline="74" spos="0" epos="0"/>
+<text info="Signature: ()Ljava/util/List&lt;Ljava/lang/String;&gt;;" aType="SignatureTag"/>
+</attribute>
+<attribute>
+<srcPos sline="64" eline="64" spos="0" epos="0"/>
+<jmpPos sline="94" eline="94" spos="0" epos="0"/>
+<text info="Signature: ()Ljava/util/List&lt;Lorg/slf4j/helpers/SubstituteLogger;&gt;;" aType="SignatureTag"/>
+</attribute>
+<attribute>
+<srcPos sline="68" eline="68" spos="0" epos="0"/>
+<jmpPos sline="114" eline="114" spos="0" epos="0"/>
+<text info="Signature: ()Ljava/util/concurrent/LinkedBlockingQueue&lt;Lorg/slf4j/event/SubstituteLoggingEvent;&gt;;" aType="SignatureTag"/>
+</attribute>
+</attributes>

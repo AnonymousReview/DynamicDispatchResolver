@@ -1,0 +1,274 @@
+public abstract class org.apache.commons.logging.AbstractLogTest extends junit.framework.TestCase
+{
+
+    public void <init>()
+    {
+        org.apache.commons.logging.AbstractLogTest r0;
+
+        r0 := @this: org.apache.commons.logging.AbstractLogTest;
+
+        specialinvoke r0.<junit.framework.TestCase: void <init>()>();
+
+        return;
+    }
+
+    public abstract org.apache.commons.logging.Log getLogObject();
+
+    public void testLoggingWithNullParameters()
+    {
+        org.apache.commons.logging.AbstractLogTest r0;
+        org.apache.commons.logging.Log r1;
+        java.lang.StringBuilder $r2, $r6, $r8, $r12, $r15, $r19, $r21, $r25, $r28, $r32, $r34, $r38, $r41, $r45, $r47, $r51, $r54, $r58, $r60, $r64, $r67, $r71, $r73, $r77;
+        java.lang.Class $r3, $r9, $r16, $r22, $r29, $r35, $r42, $r48, $r55, $r61, $r68, $r74;
+        java.lang.String $r4, $r5, $r7, $r10, $r11, $r13, $r17, $r18, $r20, $r23, $r24, $r26, $r30, $r31, $r33, $r36, $r37, $r39, $r43, $r44, $r46, $r49, $r50, $r52, $r56, $r57, $r59, $r62, $r63, $r65, $r69, $r70, $r72, $r75, $r76, $r78;
+        java.lang.RuntimeException $r14, $r27, $r40, $r53, $r66, $r79;
+
+        r0 := @this: org.apache.commons.logging.AbstractLogTest;
+
+        r1 = virtualinvoke r0.<org.apache.commons.logging.AbstractLogTest: org.apache.commons.logging.Log getLogObject()>();
+
+        staticinvoke <org.apache.commons.logging.AbstractLogTest: void assertNotNull(java.lang.Object)>(r1);
+
+        interfaceinvoke r1.<org.apache.commons.logging.Log: void debug(java.lang.Object)>(null);
+
+        interfaceinvoke r1.<org.apache.commons.logging.Log: void debug(java.lang.Object,java.lang.Throwable)>(null, null);
+
+        $r2 = new java.lang.StringBuilder;
+
+        $r3 = virtualinvoke r1.<java.lang.Object: java.lang.Class getClass()>();
+
+        $r4 = virtualinvoke $r3.<java.lang.Class: java.lang.String getName()>();
+
+        $r5 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r4);
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>(java.lang.String)>($r5);
+
+        $r6 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(": debug statement");
+
+        $r7 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        interfaceinvoke r1.<org.apache.commons.logging.Log: void debug(java.lang.Object)>($r7);
+
+        $r8 = new java.lang.StringBuilder;
+
+        $r9 = virtualinvoke r1.<java.lang.Object: java.lang.Class getClass()>();
+
+        $r10 = virtualinvoke $r9.<java.lang.Class: java.lang.String getName()>();
+
+        $r11 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r10);
+
+        specialinvoke $r8.<java.lang.StringBuilder: void <init>(java.lang.String)>($r11);
+
+        $r12 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(": debug statement w/ null exception");
+
+        $r13 = virtualinvoke $r12.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r14 = new java.lang.RuntimeException;
+
+        specialinvoke $r14.<java.lang.RuntimeException: void <init>()>();
+
+        interfaceinvoke r1.<org.apache.commons.logging.Log: void debug(java.lang.Object,java.lang.Throwable)>($r13, $r14);
+
+        interfaceinvoke r1.<org.apache.commons.logging.Log: void error(java.lang.Object)>(null);
+
+        interfaceinvoke r1.<org.apache.commons.logging.Log: void error(java.lang.Object,java.lang.Throwable)>(null, null);
+
+        $r15 = new java.lang.StringBuilder;
+
+        $r16 = virtualinvoke r1.<java.lang.Object: java.lang.Class getClass()>();
+
+        $r17 = virtualinvoke $r16.<java.lang.Class: java.lang.String getName()>();
+
+        $r18 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r17);
+
+        specialinvoke $r15.<java.lang.StringBuilder: void <init>(java.lang.String)>($r18);
+
+        $r19 = virtualinvoke $r15.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(": error statement");
+
+        $r20 = virtualinvoke $r19.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        interfaceinvoke r1.<org.apache.commons.logging.Log: void error(java.lang.Object)>($r20);
+
+        $r21 = new java.lang.StringBuilder;
+
+        $r22 = virtualinvoke r1.<java.lang.Object: java.lang.Class getClass()>();
+
+        $r23 = virtualinvoke $r22.<java.lang.Class: java.lang.String getName()>();
+
+        $r24 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r23);
+
+        specialinvoke $r21.<java.lang.StringBuilder: void <init>(java.lang.String)>($r24);
+
+        $r25 = virtualinvoke $r21.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(": error statement w/ null exception");
+
+        $r26 = virtualinvoke $r25.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r27 = new java.lang.RuntimeException;
+
+        specialinvoke $r27.<java.lang.RuntimeException: void <init>()>();
+
+        interfaceinvoke r1.<org.apache.commons.logging.Log: void error(java.lang.Object,java.lang.Throwable)>($r26, $r27);
+
+        interfaceinvoke r1.<org.apache.commons.logging.Log: void fatal(java.lang.Object)>(null);
+
+        interfaceinvoke r1.<org.apache.commons.logging.Log: void fatal(java.lang.Object,java.lang.Throwable)>(null, null);
+
+        $r28 = new java.lang.StringBuilder;
+
+        $r29 = virtualinvoke r1.<java.lang.Object: java.lang.Class getClass()>();
+
+        $r30 = virtualinvoke $r29.<java.lang.Class: java.lang.String getName()>();
+
+        $r31 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r30);
+
+        specialinvoke $r28.<java.lang.StringBuilder: void <init>(java.lang.String)>($r31);
+
+        $r32 = virtualinvoke $r28.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(": fatal statement");
+
+        $r33 = virtualinvoke $r32.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        interfaceinvoke r1.<org.apache.commons.logging.Log: void fatal(java.lang.Object)>($r33);
+
+        $r34 = new java.lang.StringBuilder;
+
+        $r35 = virtualinvoke r1.<java.lang.Object: java.lang.Class getClass()>();
+
+        $r36 = virtualinvoke $r35.<java.lang.Class: java.lang.String getName()>();
+
+        $r37 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r36);
+
+        specialinvoke $r34.<java.lang.StringBuilder: void <init>(java.lang.String)>($r37);
+
+        $r38 = virtualinvoke $r34.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(": fatal statement w/ null exception");
+
+        $r39 = virtualinvoke $r38.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r40 = new java.lang.RuntimeException;
+
+        specialinvoke $r40.<java.lang.RuntimeException: void <init>()>();
+
+        interfaceinvoke r1.<org.apache.commons.logging.Log: void fatal(java.lang.Object,java.lang.Throwable)>($r39, $r40);
+
+        interfaceinvoke r1.<org.apache.commons.logging.Log: void info(java.lang.Object)>(null);
+
+        interfaceinvoke r1.<org.apache.commons.logging.Log: void info(java.lang.Object,java.lang.Throwable)>(null, null);
+
+        $r41 = new java.lang.StringBuilder;
+
+        $r42 = virtualinvoke r1.<java.lang.Object: java.lang.Class getClass()>();
+
+        $r43 = virtualinvoke $r42.<java.lang.Class: java.lang.String getName()>();
+
+        $r44 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r43);
+
+        specialinvoke $r41.<java.lang.StringBuilder: void <init>(java.lang.String)>($r44);
+
+        $r45 = virtualinvoke $r41.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(": info statement");
+
+        $r46 = virtualinvoke $r45.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        interfaceinvoke r1.<org.apache.commons.logging.Log: void info(java.lang.Object)>($r46);
+
+        $r47 = new java.lang.StringBuilder;
+
+        $r48 = virtualinvoke r1.<java.lang.Object: java.lang.Class getClass()>();
+
+        $r49 = virtualinvoke $r48.<java.lang.Class: java.lang.String getName()>();
+
+        $r50 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r49);
+
+        specialinvoke $r47.<java.lang.StringBuilder: void <init>(java.lang.String)>($r50);
+
+        $r51 = virtualinvoke $r47.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(": info statement w/ null exception");
+
+        $r52 = virtualinvoke $r51.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r53 = new java.lang.RuntimeException;
+
+        specialinvoke $r53.<java.lang.RuntimeException: void <init>()>();
+
+        interfaceinvoke r1.<org.apache.commons.logging.Log: void info(java.lang.Object,java.lang.Throwable)>($r52, $r53);
+
+        interfaceinvoke r1.<org.apache.commons.logging.Log: void trace(java.lang.Object)>(null);
+
+        interfaceinvoke r1.<org.apache.commons.logging.Log: void trace(java.lang.Object,java.lang.Throwable)>(null, null);
+
+        $r54 = new java.lang.StringBuilder;
+
+        $r55 = virtualinvoke r1.<java.lang.Object: java.lang.Class getClass()>();
+
+        $r56 = virtualinvoke $r55.<java.lang.Class: java.lang.String getName()>();
+
+        $r57 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r56);
+
+        specialinvoke $r54.<java.lang.StringBuilder: void <init>(java.lang.String)>($r57);
+
+        $r58 = virtualinvoke $r54.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(": trace statement");
+
+        $r59 = virtualinvoke $r58.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        interfaceinvoke r1.<org.apache.commons.logging.Log: void trace(java.lang.Object)>($r59);
+
+        $r60 = new java.lang.StringBuilder;
+
+        $r61 = virtualinvoke r1.<java.lang.Object: java.lang.Class getClass()>();
+
+        $r62 = virtualinvoke $r61.<java.lang.Class: java.lang.String getName()>();
+
+        $r63 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r62);
+
+        specialinvoke $r60.<java.lang.StringBuilder: void <init>(java.lang.String)>($r63);
+
+        $r64 = virtualinvoke $r60.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(": trace statement w/ null exception");
+
+        $r65 = virtualinvoke $r64.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r66 = new java.lang.RuntimeException;
+
+        specialinvoke $r66.<java.lang.RuntimeException: void <init>()>();
+
+        interfaceinvoke r1.<org.apache.commons.logging.Log: void trace(java.lang.Object,java.lang.Throwable)>($r65, $r66);
+
+        interfaceinvoke r1.<org.apache.commons.logging.Log: void warn(java.lang.Object)>(null);
+
+        interfaceinvoke r1.<org.apache.commons.logging.Log: void warn(java.lang.Object,java.lang.Throwable)>(null, null);
+
+        $r67 = new java.lang.StringBuilder;
+
+        $r68 = virtualinvoke r1.<java.lang.Object: java.lang.Class getClass()>();
+
+        $r69 = virtualinvoke $r68.<java.lang.Class: java.lang.String getName()>();
+
+        $r70 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r69);
+
+        specialinvoke $r67.<java.lang.StringBuilder: void <init>(java.lang.String)>($r70);
+
+        $r71 = virtualinvoke $r67.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(": warn statement");
+
+        $r72 = virtualinvoke $r71.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        interfaceinvoke r1.<org.apache.commons.logging.Log: void warn(java.lang.Object)>($r72);
+
+        $r73 = new java.lang.StringBuilder;
+
+        $r74 = virtualinvoke r1.<java.lang.Object: java.lang.Class getClass()>();
+
+        $r75 = virtualinvoke $r74.<java.lang.Class: java.lang.String getName()>();
+
+        $r76 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r75);
+
+        specialinvoke $r73.<java.lang.StringBuilder: void <init>(java.lang.String)>($r76);
+
+        $r77 = virtualinvoke $r73.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(": warn statement w/ null exception");
+
+        $r78 = virtualinvoke $r77.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r79 = new java.lang.RuntimeException;
+
+        specialinvoke $r79.<java.lang.RuntimeException: void <init>()>();
+
+        interfaceinvoke r1.<org.apache.commons.logging.Log: void warn(java.lang.Object,java.lang.Throwable)>($r78, $r79);
+
+        return;
+    }
+}

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<attributes>
+<attribute>
+<srcPos sline="43" eline="43" spos="0" epos="0"/>
+<jmpPos sline="33" eline="33" spos="0" epos="0"/>
+<text info="Signature: ()Ljava/util/Set&lt;Ljava/nio/channels/SelectionKey;&gt;;" aType="SignatureTag"/>
+</attribute>
+<attribute>
+<srcPos sline="48" eline="48" spos="0" epos="0"/>
+<jmpPos sline="42" eline="42" spos="0" epos="0"/>
+<text info="Signature: ()Ljava/util/Set&lt;Ljava/nio/channels/SelectionKey;&gt;;" aType="SignatureTag"/>
+</attribute>
+</attributes>

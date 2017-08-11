@@ -1,0 +1,64 @@
+class org.apache.commons.io.FileUtilsWaitForTestCase$1 extends java.lang.Object implements java.lang.Runnable
+{
+    final org.apache.commons.io.FileUtilsWaitForTestCase this$0;
+    private final java.util.concurrent.CountDownLatch val$started;
+    private final java.util.concurrent.atomic.AtomicBoolean val$wasInterrupted;
+
+    void <init>(org.apache.commons.io.FileUtilsWaitForTestCase, java.util.concurrent.CountDownLatch, java.util.concurrent.atomic.AtomicBoolean)
+    {
+        org.apache.commons.io.FileUtilsWaitForTestCase$1 r0;
+        org.apache.commons.io.FileUtilsWaitForTestCase r1;
+        java.util.concurrent.CountDownLatch r2;
+        java.util.concurrent.atomic.AtomicBoolean r3;
+
+        r0 := @this: org.apache.commons.io.FileUtilsWaitForTestCase$1;
+
+        r1 := @parameter0: org.apache.commons.io.FileUtilsWaitForTestCase;
+
+        r2 := @parameter1: java.util.concurrent.CountDownLatch;
+
+        r3 := @parameter2: java.util.concurrent.atomic.AtomicBoolean;
+
+        r0.<org.apache.commons.io.FileUtilsWaitForTestCase$1: org.apache.commons.io.FileUtilsWaitForTestCase this$0> = r1;
+
+        r0.<org.apache.commons.io.FileUtilsWaitForTestCase$1: java.util.concurrent.CountDownLatch val$started> = r2;
+
+        r0.<org.apache.commons.io.FileUtilsWaitForTestCase$1: java.util.concurrent.atomic.AtomicBoolean val$wasInterrupted> = r3;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void run()
+    {
+        org.apache.commons.io.FileUtilsWaitForTestCase$1 r0;
+        java.util.concurrent.CountDownLatch $r1;
+        java.io.File $r2;
+        java.util.concurrent.atomic.AtomicBoolean $r3;
+        java.lang.Thread $r4;
+        boolean $z1;
+
+        r0 := @this: org.apache.commons.io.FileUtilsWaitForTestCase$1;
+
+        $r1 = r0.<org.apache.commons.io.FileUtilsWaitForTestCase$1: java.util.concurrent.CountDownLatch val$started>;
+
+        virtualinvoke $r1.<java.util.concurrent.CountDownLatch: void countDown()>();
+
+        $r2 = new java.io.File;
+
+        specialinvoke $r2.<java.io.File: void <init>(java.lang.String)>("");
+
+        staticinvoke <org.apache.commons.io.FileUtils: boolean waitFor(java.io.File,int)>($r2, 2);
+
+        $r3 = r0.<org.apache.commons.io.FileUtilsWaitForTestCase$1: java.util.concurrent.atomic.AtomicBoolean val$wasInterrupted>;
+
+        $r4 = staticinvoke <java.lang.Thread: java.lang.Thread currentThread()>();
+
+        $z1 = virtualinvoke $r4.<java.lang.Thread: boolean isInterrupted()>();
+
+        virtualinvoke $r3.<java.util.concurrent.atomic.AtomicBoolean: void set(boolean)>($z1);
+
+        return;
+    }
+}

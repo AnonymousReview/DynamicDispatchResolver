@@ -1,0 +1,701 @@
+public class org.apache.commons.codec.binary.Base32Test extends java.lang.Object
+{
+    private static final java.lang.String[][] BASE32_TEST_CASES;
+    private static final java.lang.String[][] BASE32HEX_TEST_CASES;
+    private static final java.lang.String[][] BASE32_TEST_CASES_CHUNKED;
+    private static final java.lang.String[][] BASE32_PAD_TEST_CASES;
+
+    static void <clinit>()
+    {
+        java.lang.String[][] $r0, $r8, $r16, $r24;
+        java.lang.String[] $r1, $r2, $r3, $r4, $r5, $r6, $r7, $r9, $r10, $r11, $r12, $r13, $r14, $r15, $r17, $r18, $r19, $r20, $r21, $r22, $r23, $r25, $r26, $r27, $r28, $r29, $r30, $r31;
+
+        $r0 = newarray (java.lang.String[])[7];
+
+        $r1 = newarray (java.lang.String)[2];
+
+        $r1[0] = "";
+
+        $r1[1] = "";
+
+        $r0[0] = $r1;
+
+        $r2 = newarray (java.lang.String)[2];
+
+        $r2[0] = "f";
+
+        $r2[1] = "MY======";
+
+        $r0[1] = $r2;
+
+        $r3 = newarray (java.lang.String)[2];
+
+        $r3[0] = "fo";
+
+        $r3[1] = "MZXQ====";
+
+        $r0[2] = $r3;
+
+        $r4 = newarray (java.lang.String)[2];
+
+        $r4[0] = "foo";
+
+        $r4[1] = "MZXW6===";
+
+        $r0[3] = $r4;
+
+        $r5 = newarray (java.lang.String)[2];
+
+        $r5[0] = "foob";
+
+        $r5[1] = "MZXW6YQ=";
+
+        $r0[4] = $r5;
+
+        $r6 = newarray (java.lang.String)[2];
+
+        $r6[0] = "fooba";
+
+        $r6[1] = "MZXW6YTB";
+
+        $r0[5] = $r6;
+
+        $r7 = newarray (java.lang.String)[2];
+
+        $r7[0] = "foobar";
+
+        $r7[1] = "MZXW6YTBOI======";
+
+        $r0[6] = $r7;
+
+        <org.apache.commons.codec.binary.Base32Test: java.lang.String[][] BASE32_TEST_CASES> = $r0;
+
+        $r8 = newarray (java.lang.String[])[7];
+
+        $r9 = newarray (java.lang.String)[2];
+
+        $r9[0] = "";
+
+        $r9[1] = "";
+
+        $r8[0] = $r9;
+
+        $r10 = newarray (java.lang.String)[2];
+
+        $r10[0] = "f";
+
+        $r10[1] = "CO======";
+
+        $r8[1] = $r10;
+
+        $r11 = newarray (java.lang.String)[2];
+
+        $r11[0] = "fo";
+
+        $r11[1] = "CPNG====";
+
+        $r8[2] = $r11;
+
+        $r12 = newarray (java.lang.String)[2];
+
+        $r12[0] = "foo";
+
+        $r12[1] = "CPNMU===";
+
+        $r8[3] = $r12;
+
+        $r13 = newarray (java.lang.String)[2];
+
+        $r13[0] = "foob";
+
+        $r13[1] = "CPNMUOG=";
+
+        $r8[4] = $r13;
+
+        $r14 = newarray (java.lang.String)[2];
+
+        $r14[0] = "fooba";
+
+        $r14[1] = "CPNMUOJ1";
+
+        $r8[5] = $r14;
+
+        $r15 = newarray (java.lang.String)[2];
+
+        $r15[0] = "foobar";
+
+        $r15[1] = "CPNMUOJ1E8======";
+
+        $r8[6] = $r15;
+
+        <org.apache.commons.codec.binary.Base32Test: java.lang.String[][] BASE32HEX_TEST_CASES> = $r8;
+
+        $r16 = newarray (java.lang.String[])[7];
+
+        $r17 = newarray (java.lang.String)[2];
+
+        $r17[0] = "";
+
+        $r17[1] = "";
+
+        $r16[0] = $r17;
+
+        $r18 = newarray (java.lang.String)[2];
+
+        $r18[0] = "f";
+
+        $r18[1] = "MY======\r\n";
+
+        $r16[1] = $r18;
+
+        $r19 = newarray (java.lang.String)[2];
+
+        $r19[0] = "fo";
+
+        $r19[1] = "MZXQ====\r\n";
+
+        $r16[2] = $r19;
+
+        $r20 = newarray (java.lang.String)[2];
+
+        $r20[0] = "foo";
+
+        $r20[1] = "MZXW6===\r\n";
+
+        $r16[3] = $r20;
+
+        $r21 = newarray (java.lang.String)[2];
+
+        $r21[0] = "foob";
+
+        $r21[1] = "MZXW6YQ=\r\n";
+
+        $r16[4] = $r21;
+
+        $r22 = newarray (java.lang.String)[2];
+
+        $r22[0] = "fooba";
+
+        $r22[1] = "MZXW6YTB\r\n";
+
+        $r16[5] = $r22;
+
+        $r23 = newarray (java.lang.String)[2];
+
+        $r23[0] = "foobar";
+
+        $r23[1] = "MZXW6YTBOI======\r\n";
+
+        $r16[6] = $r23;
+
+        <org.apache.commons.codec.binary.Base32Test: java.lang.String[][] BASE32_TEST_CASES_CHUNKED> = $r16;
+
+        $r24 = newarray (java.lang.String[])[7];
+
+        $r25 = newarray (java.lang.String)[2];
+
+        $r25[0] = "";
+
+        $r25[1] = "";
+
+        $r24[0] = $r25;
+
+        $r26 = newarray (java.lang.String)[2];
+
+        $r26[0] = "f";
+
+        $r26[1] = "MY%%%%%%";
+
+        $r24[1] = $r26;
+
+        $r27 = newarray (java.lang.String)[2];
+
+        $r27[0] = "fo";
+
+        $r27[1] = "MZXQ%%%%";
+
+        $r24[2] = $r27;
+
+        $r28 = newarray (java.lang.String)[2];
+
+        $r28[0] = "foo";
+
+        $r28[1] = "MZXW6%%%";
+
+        $r24[3] = $r28;
+
+        $r29 = newarray (java.lang.String)[2];
+
+        $r29[0] = "foob";
+
+        $r29[1] = "MZXW6YQ%";
+
+        $r24[4] = $r29;
+
+        $r30 = newarray (java.lang.String)[2];
+
+        $r30[0] = "fooba";
+
+        $r30[1] = "MZXW6YTB";
+
+        $r24[5] = $r30;
+
+        $r31 = newarray (java.lang.String)[2];
+
+        $r31[0] = "foobar";
+
+        $r31[1] = "MZXW6YTBOI%%%%%%";
+
+        $r24[6] = $r31;
+
+        <org.apache.commons.codec.binary.Base32Test: java.lang.String[][] BASE32_PAD_TEST_CASES> = $r24;
+
+        return;
+    }
+
+    public void <init>()
+    {
+        org.apache.commons.codec.binary.Base32Test r0;
+
+        r0 := @this: org.apache.commons.codec.binary.Base32Test;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void testBase32Samples() throws java.lang.Exception
+    {
+        org.apache.commons.codec.binary.Base32Test r0;
+        java.lang.String[] r2;
+        int i0, i1;
+        org.apache.commons.codec.binary.Base32 $r4;
+        java.lang.String[][] $r5;
+        java.nio.charset.Charset $r6;
+        java.lang.String $r7, $r8, $r10;
+        byte[] $r9;
+
+        r0 := @this: org.apache.commons.codec.binary.Base32Test;
+
+        $r4 = new org.apache.commons.codec.binary.Base32;
+
+        specialinvoke $r4.<org.apache.commons.codec.binary.Base32: void <init>()>();
+
+        $r5 = <org.apache.commons.codec.binary.Base32Test: java.lang.String[][] BASE32_TEST_CASES>;
+
+        i0 = lengthof $r5;
+
+        i1 = 0;
+
+        goto label2;
+
+     label1:
+        r2 = $r5[i1];
+
+        $r8 = r2[1];
+
+        $r7 = r2[0];
+
+        $r6 = <org.apache.commons.codec.Charsets: java.nio.charset.Charset UTF_8>;
+
+        $r9 = virtualinvoke $r7.<java.lang.String: byte[] getBytes(java.nio.charset.Charset)>($r6);
+
+        $r10 = virtualinvoke $r4.<org.apache.commons.codec.binary.Base32: java.lang.String encodeAsString(byte[])>($r9);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r8, $r10);
+
+        i1 = i1 + 1;
+
+     label2:
+        if i1 < i0 goto label1;
+
+        return;
+    }
+
+    public void testBase32HexSamples() throws java.lang.Exception
+    {
+        org.apache.commons.codec.binary.Base32Test r0;
+        java.lang.String[] r2;
+        int i0, i1;
+        org.apache.commons.codec.binary.Base32 $r4;
+        java.lang.String[][] $r5;
+        java.nio.charset.Charset $r6;
+        java.lang.String $r7, $r8, $r10;
+        byte[] $r9;
+
+        r0 := @this: org.apache.commons.codec.binary.Base32Test;
+
+        $r4 = new org.apache.commons.codec.binary.Base32;
+
+        specialinvoke $r4.<org.apache.commons.codec.binary.Base32: void <init>(boolean)>(1);
+
+        $r5 = <org.apache.commons.codec.binary.Base32Test: java.lang.String[][] BASE32HEX_TEST_CASES>;
+
+        i0 = lengthof $r5;
+
+        i1 = 0;
+
+        goto label2;
+
+     label1:
+        r2 = $r5[i1];
+
+        $r8 = r2[1];
+
+        $r7 = r2[0];
+
+        $r6 = <org.apache.commons.codec.Charsets: java.nio.charset.Charset UTF_8>;
+
+        $r9 = virtualinvoke $r7.<java.lang.String: byte[] getBytes(java.nio.charset.Charset)>($r6);
+
+        $r10 = virtualinvoke $r4.<org.apache.commons.codec.binary.Base32: java.lang.String encodeAsString(byte[])>($r9);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r8, $r10);
+
+        i1 = i1 + 1;
+
+     label2:
+        if i1 < i0 goto label1;
+
+        return;
+    }
+
+    public void testBase32Chunked() throws java.lang.Exception
+    {
+        org.apache.commons.codec.binary.Base32Test r0;
+        java.lang.String[] r2;
+        int i0, i1;
+        org.apache.commons.codec.binary.Base32 $r4;
+        java.lang.String[][] $r5;
+        java.nio.charset.Charset $r6;
+        java.lang.String $r7, $r8, $r10;
+        byte[] $r9;
+
+        r0 := @this: org.apache.commons.codec.binary.Base32Test;
+
+        $r4 = new org.apache.commons.codec.binary.Base32;
+
+        specialinvoke $r4.<org.apache.commons.codec.binary.Base32: void <init>(int)>(20);
+
+        $r5 = <org.apache.commons.codec.binary.Base32Test: java.lang.String[][] BASE32_TEST_CASES_CHUNKED>;
+
+        i0 = lengthof $r5;
+
+        i1 = 0;
+
+        goto label2;
+
+     label1:
+        r2 = $r5[i1];
+
+        $r8 = r2[1];
+
+        $r7 = r2[0];
+
+        $r6 = <org.apache.commons.codec.Charsets: java.nio.charset.Charset UTF_8>;
+
+        $r9 = virtualinvoke $r7.<java.lang.String: byte[] getBytes(java.nio.charset.Charset)>($r6);
+
+        $r10 = virtualinvoke $r4.<org.apache.commons.codec.binary.Base32: java.lang.String encodeAsString(byte[])>($r9);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r8, $r10);
+
+        i1 = i1 + 1;
+
+     label2:
+        if i1 < i0 goto label1;
+
+        return;
+    }
+
+    public void testSingleCharEncoding()
+    {
+        org.apache.commons.codec.binary.Base32Test r0;
+        byte[] r2, r3, r9;
+        org.apache.commons.codec.binary.Base32 $r4, $r6;
+        org.apache.commons.codec.binary.BaseNCodec$Context $r5;
+        int $i0, $i1, i3, i4;
+        boolean $z0;
+
+        r0 := @this: org.apache.commons.codec.binary.Base32Test;
+
+        i3 = 0;
+
+        goto label5;
+
+     label1:
+        $r4 = new org.apache.commons.codec.binary.Base32;
+
+        specialinvoke $r4.<org.apache.commons.codec.binary.Base32: void <init>()>();
+
+        $r5 = new org.apache.commons.codec.binary.BaseNCodec$Context;
+
+        specialinvoke $r5.<org.apache.commons.codec.binary.BaseNCodec$Context: void <init>()>();
+
+        r2 = newarray (byte)[i3];
+
+        r3 = virtualinvoke $r4.<org.apache.commons.codec.binary.Base32: byte[] encode(byte[])>(r2);
+
+        $r6 = new org.apache.commons.codec.binary.Base32;
+
+        specialinvoke $r6.<org.apache.commons.codec.binary.Base32: void <init>()>();
+
+        i4 = 0;
+
+        goto label3;
+
+     label2:
+        virtualinvoke $r6.<org.apache.commons.codec.binary.Base32: void encode(byte[],int,int,org.apache.commons.codec.binary.BaseNCodec$Context)>(r2, i4, 1, $r5);
+
+        i4 = i4 + 1;
+
+     label3:
+        $i0 = lengthof r2;
+
+        if i4 < $i0 goto label2;
+
+        virtualinvoke $r6.<org.apache.commons.codec.binary.Base32: void encode(byte[],int,int,org.apache.commons.codec.binary.BaseNCodec$Context)>(r2, 0, -1, $r5);
+
+        $i1 = lengthof r3;
+
+        r9 = newarray (byte)[$i1];
+
+        virtualinvoke $r6.<org.apache.commons.codec.binary.Base32: int readResults(byte[],int,int,org.apache.commons.codec.binary.BaseNCodec$Context)>(r9, 0, 100, $r5);
+
+        $z0 = staticinvoke <java.util.Arrays: boolean equals(byte[],byte[])>(r3, r9);
+
+        if $z0 != 0 goto label4;
+
+        staticinvoke <org.junit.Assert: void fail()>();
+
+     label4:
+        i3 = i3 + 1;
+
+     label5:
+        if i3 < 20 goto label1;
+
+        return;
+    }
+
+    public void testRandomBytes()
+    {
+        org.apache.commons.codec.binary.Base32Test r0;
+        byte[][] r2;
+        org.apache.commons.codec.binary.Base32 $r3;
+        java.lang.StringBuilder $r4, $r5, $r6, $r7;
+        int $i0, $i1, i4;
+        java.lang.String $r8;
+        byte[] $r9, $r10;
+        long $l2, $l3;
+
+        r0 := @this: org.apache.commons.codec.binary.Base32Test;
+
+        i4 = 0;
+
+        goto label2;
+
+     label1:
+        $r3 = new org.apache.commons.codec.binary.Base32;
+
+        specialinvoke $r3.<org.apache.commons.codec.binary.Base32: void <init>()>();
+
+        r2 = staticinvoke <org.apache.commons.codec.binary.Base32TestData: byte[][] randomData(org.apache.commons.codec.binary.BaseNCodec,int)>($r3, i4);
+
+        $r4 = new java.lang.StringBuilder;
+
+        specialinvoke $r4.<java.lang.StringBuilder: void <init>()>();
+
+        $r5 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i4);
+
+        $r6 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" ");
+
+        $i0 = $r3.<org.apache.commons.codec.binary.Base32: int lineLength>;
+
+        $r7 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        $r8 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r9 = r2[1];
+
+        $i1 = lengthof $r9;
+
+        $l2 = (long) $i1;
+
+        $r10 = r2[0];
+
+        $l3 = virtualinvoke $r3.<org.apache.commons.codec.binary.Base32: long getEncodedLength(byte[])>($r10);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>($r8, $l2, $l3);
+
+        i4 = i4 + 1;
+
+     label2:
+        if i4 < 20 goto label1;
+
+        return;
+    }
+
+    public void testRandomBytesChunked()
+    {
+        org.apache.commons.codec.binary.Base32Test r0;
+        byte[][] r2;
+        org.apache.commons.codec.binary.Base32 $r3;
+        java.lang.StringBuilder $r4, $r5, $r6, $r7;
+        int $i0, $i1, i4;
+        java.lang.String $r8;
+        byte[] $r9, $r10;
+        long $l2, $l3;
+
+        r0 := @this: org.apache.commons.codec.binary.Base32Test;
+
+        i4 = 0;
+
+        goto label2;
+
+     label1:
+        $r3 = new org.apache.commons.codec.binary.Base32;
+
+        specialinvoke $r3.<org.apache.commons.codec.binary.Base32: void <init>(int)>(10);
+
+        r2 = staticinvoke <org.apache.commons.codec.binary.Base32TestData: byte[][] randomData(org.apache.commons.codec.binary.BaseNCodec,int)>($r3, i4);
+
+        $r4 = new java.lang.StringBuilder;
+
+        specialinvoke $r4.<java.lang.StringBuilder: void <init>()>();
+
+        $r5 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i4);
+
+        $r6 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" ");
+
+        $i0 = $r3.<org.apache.commons.codec.binary.Base32: int lineLength>;
+
+        $r7 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        $r8 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r9 = r2[1];
+
+        $i1 = lengthof $r9;
+
+        $l2 = (long) $i1;
+
+        $r10 = r2[0];
+
+        $l3 = virtualinvoke $r3.<org.apache.commons.codec.binary.Base32: long getEncodedLength(byte[])>($r10);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>($r8, $l2, $l3);
+
+        i4 = i4 + 1;
+
+     label2:
+        if i4 < 20 goto label1;
+
+        return;
+    }
+
+    public void testRandomBytesHex()
+    {
+        org.apache.commons.codec.binary.Base32Test r0;
+        byte[][] r2;
+        org.apache.commons.codec.binary.Base32 $r3;
+        java.lang.StringBuilder $r4, $r5, $r6, $r7;
+        int $i0, $i1, i4;
+        java.lang.String $r8;
+        byte[] $r9, $r10;
+        long $l2, $l3;
+
+        r0 := @this: org.apache.commons.codec.binary.Base32Test;
+
+        i4 = 0;
+
+        goto label2;
+
+     label1:
+        $r3 = new org.apache.commons.codec.binary.Base32;
+
+        specialinvoke $r3.<org.apache.commons.codec.binary.Base32: void <init>(boolean)>(1);
+
+        r2 = staticinvoke <org.apache.commons.codec.binary.Base32TestData: byte[][] randomData(org.apache.commons.codec.binary.BaseNCodec,int)>($r3, i4);
+
+        $r4 = new java.lang.StringBuilder;
+
+        specialinvoke $r4.<java.lang.StringBuilder: void <init>()>();
+
+        $r5 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i4);
+
+        $r6 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" ");
+
+        $i0 = $r3.<org.apache.commons.codec.binary.Base32: int lineLength>;
+
+        $r7 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        $r8 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r9 = r2[1];
+
+        $i1 = lengthof $r9;
+
+        $l2 = (long) $i1;
+
+        $r10 = r2[0];
+
+        $l3 = virtualinvoke $r3.<org.apache.commons.codec.binary.Base32: long getEncodedLength(byte[])>($r10);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>($r8, $l2, $l3);
+
+        i4 = i4 + 1;
+
+     label2:
+        if i4 < 20 goto label1;
+
+        return;
+    }
+
+    public void testBase32SamplesNonDefaultPadding() throws java.lang.Exception
+    {
+        org.apache.commons.codec.binary.Base32Test r0;
+        java.lang.String[] r2;
+        int i0, i1;
+        org.apache.commons.codec.binary.Base32 $r4;
+        java.lang.String[][] $r5;
+        java.nio.charset.Charset $r6;
+        java.lang.String $r7, $r8, $r10;
+        byte[] $r9;
+
+        r0 := @this: org.apache.commons.codec.binary.Base32Test;
+
+        $r4 = new org.apache.commons.codec.binary.Base32;
+
+        specialinvoke $r4.<org.apache.commons.codec.binary.Base32: void <init>(byte)>(37);
+
+        $r5 = <org.apache.commons.codec.binary.Base32Test: java.lang.String[][] BASE32_PAD_TEST_CASES>;
+
+        i0 = lengthof $r5;
+
+        i1 = 0;
+
+        goto label2;
+
+     label1:
+        r2 = $r5[i1];
+
+        $r8 = r2[1];
+
+        $r7 = r2[0];
+
+        $r6 = <org.apache.commons.codec.Charsets: java.nio.charset.Charset UTF_8>;
+
+        $r9 = virtualinvoke $r7.<java.lang.String: byte[] getBytes(java.nio.charset.Charset)>($r6);
+
+        $r10 = virtualinvoke $r4.<org.apache.commons.codec.binary.Base32: java.lang.String encodeAsString(byte[])>($r9);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r8, $r10);
+
+        i1 = i1 + 1;
+
+     label2:
+        if i1 < i0 goto label1;
+
+        return;
+    }
+}

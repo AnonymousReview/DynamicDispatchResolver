@@ -1,0 +1,87 @@
+public class org.apache.log4j.SimpleLayout extends org.apache.log4j.Layout
+{
+    java.lang.StringBuffer sbuf;
+
+    public void <init>()
+    {
+        org.apache.log4j.SimpleLayout r0;
+        java.lang.StringBuffer $r1;
+
+        r0 := @this: org.apache.log4j.SimpleLayout;
+
+        specialinvoke r0.<org.apache.log4j.Layout: void <init>()>();
+
+        $r1 = new java.lang.StringBuffer;
+
+        specialinvoke $r1.<java.lang.StringBuffer: void <init>(int)>(128);
+
+        r0.<org.apache.log4j.SimpleLayout: java.lang.StringBuffer sbuf> = $r1;
+
+        return;
+    }
+
+    public void activateOptions()
+    {
+        org.apache.log4j.SimpleLayout r0;
+
+        r0 := @this: org.apache.log4j.SimpleLayout;
+
+        return;
+    }
+
+    public java.lang.String format(org.apache.log4j.spi.LoggingEvent)
+    {
+        org.apache.log4j.SimpleLayout r0;
+        org.apache.log4j.spi.LoggingEvent r1;
+        java.lang.StringBuffer $r2, $r3, $r7, $r9, $r13, $r15;
+        org.apache.log4j.Level $r4;
+        java.lang.String $r5, $r10, $r12, $r16;
+
+        r0 := @this: org.apache.log4j.SimpleLayout;
+
+        r1 := @parameter0: org.apache.log4j.spi.LoggingEvent;
+
+        $r2 = r0.<org.apache.log4j.SimpleLayout: java.lang.StringBuffer sbuf>;
+
+        virtualinvoke $r2.<java.lang.StringBuffer: void setLength(int)>(0);
+
+        $r3 = r0.<org.apache.log4j.SimpleLayout: java.lang.StringBuffer sbuf>;
+
+        $r4 = virtualinvoke r1.<org.apache.log4j.spi.LoggingEvent: org.apache.log4j.Level getLevel()>();
+
+        $r5 = virtualinvoke $r4.<org.apache.log4j.Level: java.lang.String toString()>();
+
+        virtualinvoke $r3.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>($r5);
+
+        $r7 = r0.<org.apache.log4j.SimpleLayout: java.lang.StringBuffer sbuf>;
+
+        virtualinvoke $r7.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>(" - ");
+
+        $r9 = r0.<org.apache.log4j.SimpleLayout: java.lang.StringBuffer sbuf>;
+
+        $r10 = virtualinvoke r1.<org.apache.log4j.spi.LoggingEvent: java.lang.String getRenderedMessage()>();
+
+        virtualinvoke $r9.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>($r10);
+
+        $r13 = r0.<org.apache.log4j.SimpleLayout: java.lang.StringBuffer sbuf>;
+
+        $r12 = <org.apache.log4j.SimpleLayout: java.lang.String LINE_SEP>;
+
+        virtualinvoke $r13.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>($r12);
+
+        $r15 = r0.<org.apache.log4j.SimpleLayout: java.lang.StringBuffer sbuf>;
+
+        $r16 = virtualinvoke $r15.<java.lang.StringBuffer: java.lang.String toString()>();
+
+        return $r16;
+    }
+
+    public boolean ignoresThrowable()
+    {
+        org.apache.log4j.SimpleLayout r0;
+
+        r0 := @this: org.apache.log4j.SimpleLayout;
+
+        return 1;
+    }
+}

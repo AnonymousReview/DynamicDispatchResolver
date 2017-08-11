@@ -1,0 +1,32 @@
+public class org.slf4j.LoggerFactoryFriend extends java.lang.Object
+{
+
+    public void <init>()
+    {
+        org.slf4j.LoggerFactoryFriend r0;
+
+        r0 := @this: org.slf4j.LoggerFactoryFriend;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static void reset()
+    {
+        staticinvoke <org.slf4j.LoggerFactory: void reset()>();
+
+        return;
+    }
+
+    public static void setDetectLoggerNameMismatch(boolean)
+    {
+        boolean z0;
+
+        z0 := @parameter0: boolean;
+
+        <org.slf4j.LoggerFactory: boolean DETECT_LOGGER_NAME_MISMATCH> = z0;
+
+        return;
+    }
+}

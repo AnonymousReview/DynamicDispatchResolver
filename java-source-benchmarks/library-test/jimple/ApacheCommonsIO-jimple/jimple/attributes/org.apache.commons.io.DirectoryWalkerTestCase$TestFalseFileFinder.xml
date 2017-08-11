@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<attributes>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="0" eline="0" spos="0" epos="0"/>
+<text info="[inner=org/apache/commons/io/DirectoryWalkerTestCase$TestFalseFileFinder, outer=org/apache/commons/io/DirectoryWalkerTestCase, name=TestFalseFileFinder,flags=10]" aType="InnerClassTag"/>
+<text info="[inner=org/apache/commons/io/DirectoryWalkerTestCase$TestFileFinder, outer=org/apache/commons/io/DirectoryWalkerTestCase, name=TestFileFinder,flags=10]" aType="InnerClassTag"/>
+<text info="soot.tagkit.InnerClassAttribute@664d41a2" aType="InnerClassAttribute"/>
+</attribute>
+<attribute>
+<srcPos sline="428" eline="428" spos="0" epos="0"/>
+<jmpPos sline="21" eline="21" spos="0" epos="0"/>
+<text info="Signature: (Ljava/io/File;ILjava/util/Collection&lt;Ljava/io/File;&gt;;)Z" aType="SignatureTag"/>
+</attribute>
+</attributes>

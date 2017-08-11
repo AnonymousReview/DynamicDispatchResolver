@@ -1,0 +1,37 @@
+class org.apache.log4j.LevelTest$CustomLevel extends org.apache.log4j.Level
+{
+    private static final long serialVersionUID;
+
+    public void <init>()
+    {
+        org.apache.log4j.LevelTest$CustomLevel r0;
+        org.apache.log4j.Level $r1, $r2, $r3;
+        int $i0, $i1;
+        java.lang.String $r4;
+
+        r0 := @this: org.apache.log4j.LevelTest$CustomLevel;
+
+        $r1 = <org.apache.log4j.Level: org.apache.log4j.Level INFO>;
+
+        $i1 = $r1.<org.apache.log4j.Level: int level>;
+
+        $r2 = <org.apache.log4j.Level: org.apache.log4j.Level INFO>;
+
+        $r4 = $r2.<org.apache.log4j.Level: java.lang.String levelStr>;
+
+        $r3 = <org.apache.log4j.Level: org.apache.log4j.Level INFO>;
+
+        $i0 = $r3.<org.apache.log4j.Level: int syslogEquivalent>;
+
+        specialinvoke r0.<org.apache.log4j.Level: void <init>(int,java.lang.String,int)>($i1, $r4, $i0);
+
+        return;
+    }
+
+    public static void <clinit>()
+    {
+        <org.apache.log4j.LevelTest$CustomLevel: long serialVersionUID> = 1L;
+
+        return;
+    }
+}

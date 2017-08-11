@@ -1,0 +1,364 @@
+public class org.apache.commons.codec.language.RefinedSoundexTest extends org.apache.commons.codec.StringEncoderAbstractTest
+{
+
+    public void <init>()
+    {
+        org.apache.commons.codec.language.RefinedSoundexTest r0;
+
+        r0 := @this: org.apache.commons.codec.language.RefinedSoundexTest;
+
+        specialinvoke r0.<org.apache.commons.codec.StringEncoderAbstractTest: void <init>()>();
+
+        return;
+    }
+
+    protected org.apache.commons.codec.language.RefinedSoundex createStringEncoder()
+    {
+        org.apache.commons.codec.language.RefinedSoundexTest r0;
+        org.apache.commons.codec.language.RefinedSoundex $r1;
+
+        r0 := @this: org.apache.commons.codec.language.RefinedSoundexTest;
+
+        $r1 = new org.apache.commons.codec.language.RefinedSoundex;
+
+        specialinvoke $r1.<org.apache.commons.codec.language.RefinedSoundex: void <init>()>();
+
+        return $r1;
+    }
+
+    public void testDifference() throws org.apache.commons.codec.EncoderException
+    {
+        org.apache.commons.codec.language.RefinedSoundexTest r0;
+        org.apache.commons.codec.StringEncoder $r1, $r3, $r5, $r7, $r9, $r11, $r13, $r15, $r17, $r19, $r21, $r23;
+        org.apache.commons.codec.language.RefinedSoundex $r2, $r4, $r6, $r8, $r10, $r12, $r14, $r16, $r18, $r20, $r22, $r24;
+        int $i0, $i2, $i4, $i6, $i8, $i10, $i12, $i14, $i16, $i18, $i20, $i22;
+        long $l1, $l3, $l5, $l7, $l9, $l11, $l13, $l15, $l17, $l19, $l21, $l23;
+
+        r0 := @this: org.apache.commons.codec.language.RefinedSoundexTest;
+
+        $r1 = virtualinvoke r0.<org.apache.commons.codec.language.RefinedSoundexTest: org.apache.commons.codec.StringEncoder getStringEncoder()>();
+
+        $r2 = (org.apache.commons.codec.language.RefinedSoundex) $r1;
+
+        $i0 = virtualinvoke $r2.<org.apache.commons.codec.language.RefinedSoundex: int difference(java.lang.String,java.lang.String)>(null, null);
+
+        $l1 = (long) $i0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(0L, $l1);
+
+        $r3 = virtualinvoke r0.<org.apache.commons.codec.language.RefinedSoundexTest: org.apache.commons.codec.StringEncoder getStringEncoder()>();
+
+        $r4 = (org.apache.commons.codec.language.RefinedSoundex) $r3;
+
+        $i2 = virtualinvoke $r4.<org.apache.commons.codec.language.RefinedSoundex: int difference(java.lang.String,java.lang.String)>("", "");
+
+        $l3 = (long) $i2;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(0L, $l3);
+
+        $r5 = virtualinvoke r0.<org.apache.commons.codec.language.RefinedSoundexTest: org.apache.commons.codec.StringEncoder getStringEncoder()>();
+
+        $r6 = (org.apache.commons.codec.language.RefinedSoundex) $r5;
+
+        $i4 = virtualinvoke $r6.<org.apache.commons.codec.language.RefinedSoundex: int difference(java.lang.String,java.lang.String)>(" ", " ");
+
+        $l5 = (long) $i4;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(0L, $l5);
+
+        $r7 = virtualinvoke r0.<org.apache.commons.codec.language.RefinedSoundexTest: org.apache.commons.codec.StringEncoder getStringEncoder()>();
+
+        $r8 = (org.apache.commons.codec.language.RefinedSoundex) $r7;
+
+        $i6 = virtualinvoke $r8.<org.apache.commons.codec.language.RefinedSoundex: int difference(java.lang.String,java.lang.String)>("Smith", "Smythe");
+
+        $l7 = (long) $i6;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(6L, $l7);
+
+        $r9 = virtualinvoke r0.<org.apache.commons.codec.language.RefinedSoundexTest: org.apache.commons.codec.StringEncoder getStringEncoder()>();
+
+        $r10 = (org.apache.commons.codec.language.RefinedSoundex) $r9;
+
+        $i8 = virtualinvoke $r10.<org.apache.commons.codec.language.RefinedSoundex: int difference(java.lang.String,java.lang.String)>("Ann", "Andrew");
+
+        $l9 = (long) $i8;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(3L, $l9);
+
+        $r11 = virtualinvoke r0.<org.apache.commons.codec.language.RefinedSoundexTest: org.apache.commons.codec.StringEncoder getStringEncoder()>();
+
+        $r12 = (org.apache.commons.codec.language.RefinedSoundex) $r11;
+
+        $i10 = virtualinvoke $r12.<org.apache.commons.codec.language.RefinedSoundex: int difference(java.lang.String,java.lang.String)>("Margaret", "Andrew");
+
+        $l11 = (long) $i10;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(1L, $l11);
+
+        $r13 = virtualinvoke r0.<org.apache.commons.codec.language.RefinedSoundexTest: org.apache.commons.codec.StringEncoder getStringEncoder()>();
+
+        $r14 = (org.apache.commons.codec.language.RefinedSoundex) $r13;
+
+        $i12 = virtualinvoke $r14.<org.apache.commons.codec.language.RefinedSoundex: int difference(java.lang.String,java.lang.String)>("Janet", "Margaret");
+
+        $l13 = (long) $i12;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(1L, $l13);
+
+        $r15 = virtualinvoke r0.<org.apache.commons.codec.language.RefinedSoundexTest: org.apache.commons.codec.StringEncoder getStringEncoder()>();
+
+        $r16 = (org.apache.commons.codec.language.RefinedSoundex) $r15;
+
+        $i14 = virtualinvoke $r16.<org.apache.commons.codec.language.RefinedSoundex: int difference(java.lang.String,java.lang.String)>("Green", "Greene");
+
+        $l15 = (long) $i14;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(5L, $l15);
+
+        $r17 = virtualinvoke r0.<org.apache.commons.codec.language.RefinedSoundexTest: org.apache.commons.codec.StringEncoder getStringEncoder()>();
+
+        $r18 = (org.apache.commons.codec.language.RefinedSoundex) $r17;
+
+        $i16 = virtualinvoke $r18.<org.apache.commons.codec.language.RefinedSoundex: int difference(java.lang.String,java.lang.String)>("Blotchet-Halls", "Greene");
+
+        $l17 = (long) $i16;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(1L, $l17);
+
+        $r19 = virtualinvoke r0.<org.apache.commons.codec.language.RefinedSoundexTest: org.apache.commons.codec.StringEncoder getStringEncoder()>();
+
+        $r20 = (org.apache.commons.codec.language.RefinedSoundex) $r19;
+
+        $i18 = virtualinvoke $r20.<org.apache.commons.codec.language.RefinedSoundex: int difference(java.lang.String,java.lang.String)>("Smith", "Smythe");
+
+        $l19 = (long) $i18;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(6L, $l19);
+
+        $r21 = virtualinvoke r0.<org.apache.commons.codec.language.RefinedSoundexTest: org.apache.commons.codec.StringEncoder getStringEncoder()>();
+
+        $r22 = (org.apache.commons.codec.language.RefinedSoundex) $r21;
+
+        $i20 = virtualinvoke $r22.<org.apache.commons.codec.language.RefinedSoundex: int difference(java.lang.String,java.lang.String)>("Smithers", "Smythers");
+
+        $l21 = (long) $i20;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(8L, $l21);
+
+        $r23 = virtualinvoke r0.<org.apache.commons.codec.language.RefinedSoundexTest: org.apache.commons.codec.StringEncoder getStringEncoder()>();
+
+        $r24 = (org.apache.commons.codec.language.RefinedSoundex) $r23;
+
+        $i22 = virtualinvoke $r24.<org.apache.commons.codec.language.RefinedSoundex: int difference(java.lang.String,java.lang.String)>("Anothers", "Brothers");
+
+        $l23 = (long) $i22;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(5L, $l23);
+
+        return;
+    }
+
+    public void testEncode()
+    {
+        org.apache.commons.codec.language.RefinedSoundexTest r0;
+        org.apache.commons.codec.StringEncoder $r1, $r4, $r7, $r10, $r13, $r16, $r19, $r22, $r25, $r28, $r31;
+        org.apache.commons.codec.language.RefinedSoundex $r2, $r5, $r8, $r11, $r14, $r17, $r20, $r23, $r26, $r29, $r32, $r34;
+        java.lang.String $r3, $r6, $r9, $r12, $r15, $r18, $r21, $r24, $r27, $r30, $r33, $r35;
+
+        r0 := @this: org.apache.commons.codec.language.RefinedSoundexTest;
+
+        $r1 = virtualinvoke r0.<org.apache.commons.codec.language.RefinedSoundexTest: org.apache.commons.codec.StringEncoder getStringEncoder()>();
+
+        $r2 = (org.apache.commons.codec.language.RefinedSoundex) $r1;
+
+        $r3 = virtualinvoke $r2.<org.apache.commons.codec.language.RefinedSoundex: java.lang.String encode(java.lang.String)>("testing");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("T6036084", $r3);
+
+        $r4 = virtualinvoke r0.<org.apache.commons.codec.language.RefinedSoundexTest: org.apache.commons.codec.StringEncoder getStringEncoder()>();
+
+        $r5 = (org.apache.commons.codec.language.RefinedSoundex) $r4;
+
+        $r6 = virtualinvoke $r5.<org.apache.commons.codec.language.RefinedSoundex: java.lang.String encode(java.lang.String)>("TESTING");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("T6036084", $r6);
+
+        $r7 = virtualinvoke r0.<org.apache.commons.codec.language.RefinedSoundexTest: org.apache.commons.codec.StringEncoder getStringEncoder()>();
+
+        $r8 = (org.apache.commons.codec.language.RefinedSoundex) $r7;
+
+        $r9 = virtualinvoke $r8.<org.apache.commons.codec.language.RefinedSoundex: java.lang.String encode(java.lang.String)>("The");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("T60", $r9);
+
+        $r10 = virtualinvoke r0.<org.apache.commons.codec.language.RefinedSoundexTest: org.apache.commons.codec.StringEncoder getStringEncoder()>();
+
+        $r11 = (org.apache.commons.codec.language.RefinedSoundex) $r10;
+
+        $r12 = virtualinvoke $r11.<org.apache.commons.codec.language.RefinedSoundex: java.lang.String encode(java.lang.String)>("quick");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("Q503", $r12);
+
+        $r13 = virtualinvoke r0.<org.apache.commons.codec.language.RefinedSoundexTest: org.apache.commons.codec.StringEncoder getStringEncoder()>();
+
+        $r14 = (org.apache.commons.codec.language.RefinedSoundex) $r13;
+
+        $r15 = virtualinvoke $r14.<org.apache.commons.codec.language.RefinedSoundex: java.lang.String encode(java.lang.String)>("brown");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("B1908", $r15);
+
+        $r16 = virtualinvoke r0.<org.apache.commons.codec.language.RefinedSoundexTest: org.apache.commons.codec.StringEncoder getStringEncoder()>();
+
+        $r17 = (org.apache.commons.codec.language.RefinedSoundex) $r16;
+
+        $r18 = virtualinvoke $r17.<org.apache.commons.codec.language.RefinedSoundex: java.lang.String encode(java.lang.String)>("fox");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("F205", $r18);
+
+        $r19 = virtualinvoke r0.<org.apache.commons.codec.language.RefinedSoundexTest: org.apache.commons.codec.StringEncoder getStringEncoder()>();
+
+        $r20 = (org.apache.commons.codec.language.RefinedSoundex) $r19;
+
+        $r21 = virtualinvoke $r20.<org.apache.commons.codec.language.RefinedSoundex: java.lang.String encode(java.lang.String)>("jumped");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("J408106", $r21);
+
+        $r22 = virtualinvoke r0.<org.apache.commons.codec.language.RefinedSoundexTest: org.apache.commons.codec.StringEncoder getStringEncoder()>();
+
+        $r23 = (org.apache.commons.codec.language.RefinedSoundex) $r22;
+
+        $r24 = virtualinvoke $r23.<org.apache.commons.codec.language.RefinedSoundex: java.lang.String encode(java.lang.String)>("over");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("O0209", $r24);
+
+        $r25 = virtualinvoke r0.<org.apache.commons.codec.language.RefinedSoundexTest: org.apache.commons.codec.StringEncoder getStringEncoder()>();
+
+        $r26 = (org.apache.commons.codec.language.RefinedSoundex) $r25;
+
+        $r27 = virtualinvoke $r26.<org.apache.commons.codec.language.RefinedSoundex: java.lang.String encode(java.lang.String)>("the");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("T60", $r27);
+
+        $r28 = virtualinvoke r0.<org.apache.commons.codec.language.RefinedSoundexTest: org.apache.commons.codec.StringEncoder getStringEncoder()>();
+
+        $r29 = (org.apache.commons.codec.language.RefinedSoundex) $r28;
+
+        $r30 = virtualinvoke $r29.<org.apache.commons.codec.language.RefinedSoundex: java.lang.String encode(java.lang.String)>("lazy");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("L7050", $r30);
+
+        $r31 = virtualinvoke r0.<org.apache.commons.codec.language.RefinedSoundexTest: org.apache.commons.codec.StringEncoder getStringEncoder()>();
+
+        $r32 = (org.apache.commons.codec.language.RefinedSoundex) $r31;
+
+        $r33 = virtualinvoke $r32.<org.apache.commons.codec.language.RefinedSoundex: java.lang.String encode(java.lang.String)>("dogs");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("D6043", $r33);
+
+        $r34 = <org.apache.commons.codec.language.RefinedSoundex: org.apache.commons.codec.language.RefinedSoundex US_ENGLISH>;
+
+        $r35 = virtualinvoke $r34.<org.apache.commons.codec.language.RefinedSoundex: java.lang.String encode(java.lang.String)>("dogs");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("D6043", $r35);
+
+        return;
+    }
+
+    public void testGetMappingCodeNonLetter()
+    {
+        org.apache.commons.codec.language.RefinedSoundexTest r0;
+        char c0;
+        org.apache.commons.codec.StringEncoder $r1;
+        org.apache.commons.codec.language.RefinedSoundex $r2;
+        long $l1;
+
+        r0 := @this: org.apache.commons.codec.language.RefinedSoundexTest;
+
+        $r1 = virtualinvoke r0.<org.apache.commons.codec.language.RefinedSoundexTest: org.apache.commons.codec.StringEncoder getStringEncoder()>();
+
+        $r2 = (org.apache.commons.codec.language.RefinedSoundex) $r1;
+
+        c0 = virtualinvoke $r2.<org.apache.commons.codec.language.RefinedSoundex: char getMappingCode(char)>(35);
+
+        $l1 = (long) c0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("Code does not equals zero", 0L, $l1);
+
+        return;
+    }
+
+    public void testNewInstance()
+    {
+        org.apache.commons.codec.language.RefinedSoundexTest r0;
+        org.apache.commons.codec.language.RefinedSoundex $r1;
+        java.lang.String $r2;
+
+        r0 := @this: org.apache.commons.codec.language.RefinedSoundexTest;
+
+        $r1 = new org.apache.commons.codec.language.RefinedSoundex;
+
+        specialinvoke $r1.<org.apache.commons.codec.language.RefinedSoundex: void <init>()>();
+
+        $r2 = virtualinvoke $r1.<org.apache.commons.codec.language.RefinedSoundex: java.lang.String soundex(java.lang.String)>("dogs");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("D6043", $r2);
+
+        return;
+    }
+
+    public void testNewInstance2()
+    {
+        org.apache.commons.codec.language.RefinedSoundexTest r0;
+        org.apache.commons.codec.language.RefinedSoundex $r1;
+        java.lang.String $r2, $r4;
+        char[] $r3;
+
+        r0 := @this: org.apache.commons.codec.language.RefinedSoundexTest;
+
+        $r1 = new org.apache.commons.codec.language.RefinedSoundex;
+
+        $r2 = "01360240043788015936020505";
+
+        $r3 = virtualinvoke $r2.<java.lang.String: char[] toCharArray()>();
+
+        specialinvoke $r1.<org.apache.commons.codec.language.RefinedSoundex: void <init>(char[])>($r3);
+
+        $r4 = virtualinvoke $r1.<org.apache.commons.codec.language.RefinedSoundex: java.lang.String soundex(java.lang.String)>("dogs");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("D6043", $r4);
+
+        return;
+    }
+
+    public void testNewInstance3()
+    {
+        org.apache.commons.codec.language.RefinedSoundexTest r0;
+        org.apache.commons.codec.language.RefinedSoundex $r1;
+        java.lang.String $r2;
+
+        r0 := @this: org.apache.commons.codec.language.RefinedSoundexTest;
+
+        $r1 = new org.apache.commons.codec.language.RefinedSoundex;
+
+        specialinvoke $r1.<org.apache.commons.codec.language.RefinedSoundex: void <init>(java.lang.String)>("01360240043788015936020505");
+
+        $r2 = virtualinvoke $r1.<org.apache.commons.codec.language.RefinedSoundex: java.lang.String soundex(java.lang.String)>("dogs");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("D6043", $r2);
+
+        return;
+    }
+
+    protected volatile org.apache.commons.codec.StringEncoder createStringEncoder()
+    {
+        org.apache.commons.codec.language.RefinedSoundexTest r0;
+        org.apache.commons.codec.language.RefinedSoundex $r1;
+
+        r0 := @this: org.apache.commons.codec.language.RefinedSoundexTest;
+
+        $r1 = virtualinvoke r0.<org.apache.commons.codec.language.RefinedSoundexTest: org.apache.commons.codec.language.RefinedSoundex createStringEncoder()>();
+
+        return $r1;
+    }
+}

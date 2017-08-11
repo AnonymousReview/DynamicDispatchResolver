@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Points-to Toolbox
+Bundle-SymbolicName: com.anonymous.open.pointsto;singleton:=true
+Bundle-Version: 3.1.0.qualifier
+Bundle-Vendor: EnSoft Corp.
+Require-Bundle: net.ontopia.utils;bundle-version="5.2.2",
+ com.anonymous.open.commons;bundle-version="3.1.0",
+ com.anonymous.open.java.commons;bundle-version="3.1.0",
+ com.anonymous.open.jimple.commons;bundle-version="3.1.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ActivationPolicy: lazy
+Bundle-ClassPath: .
+Bundle-Activator: com.anonymous.open.pointsto.Activator
+Export-Package: com.anonymous.open.pointsto.codemap,
+ com.anonymous.open.pointsto.common,
+ com.anonymous.open.pointsto.preferences

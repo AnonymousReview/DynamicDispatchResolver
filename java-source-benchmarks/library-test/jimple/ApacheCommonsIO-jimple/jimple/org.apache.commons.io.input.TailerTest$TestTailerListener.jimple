@@ -1,0 +1,177 @@
+class org.apache.commons.io.input.TailerTest$TestTailerListener extends org.apache.commons.io.input.TailerListenerAdapter
+{
+    private final java.util.List lines;
+    volatile java.lang.Exception exception;
+    volatile int notFound;
+    volatile int rotated;
+    volatile int initialised;
+    volatile int reachedEndOfFile;
+
+    private void <init>()
+    {
+        org.apache.commons.io.input.TailerTest$TestTailerListener r0;
+        java.util.ArrayList $r1;
+        java.util.List $r2;
+
+        r0 := @this: org.apache.commons.io.input.TailerTest$TestTailerListener;
+
+        specialinvoke r0.<org.apache.commons.io.input.TailerListenerAdapter: void <init>()>();
+
+        $r1 = new java.util.ArrayList;
+
+        specialinvoke $r1.<java.util.ArrayList: void <init>()>();
+
+        $r2 = staticinvoke <java.util.Collections: java.util.List synchronizedList(java.util.List)>($r1);
+
+        r0.<org.apache.commons.io.input.TailerTest$TestTailerListener: java.util.List lines> = $r2;
+
+        r0.<org.apache.commons.io.input.TailerTest$TestTailerListener: java.lang.Exception exception> = null;
+
+        r0.<org.apache.commons.io.input.TailerTest$TestTailerListener: int notFound> = 0;
+
+        r0.<org.apache.commons.io.input.TailerTest$TestTailerListener: int rotated> = 0;
+
+        r0.<org.apache.commons.io.input.TailerTest$TestTailerListener: int initialised> = 0;
+
+        r0.<org.apache.commons.io.input.TailerTest$TestTailerListener: int reachedEndOfFile> = 0;
+
+        return;
+    }
+
+    public void handle(java.lang.String)
+    {
+        org.apache.commons.io.input.TailerTest$TestTailerListener r0;
+        java.lang.String r1;
+        java.util.List $r2;
+
+        r0 := @this: org.apache.commons.io.input.TailerTest$TestTailerListener;
+
+        r1 := @parameter0: java.lang.String;
+
+        $r2 = r0.<org.apache.commons.io.input.TailerTest$TestTailerListener: java.util.List lines>;
+
+        interfaceinvoke $r2.<java.util.List: boolean add(java.lang.Object)>(r1);
+
+        return;
+    }
+
+    public java.util.List getLines()
+    {
+        org.apache.commons.io.input.TailerTest$TestTailerListener r0;
+        java.util.List $r1;
+
+        r0 := @this: org.apache.commons.io.input.TailerTest$TestTailerListener;
+
+        $r1 = r0.<org.apache.commons.io.input.TailerTest$TestTailerListener: java.util.List lines>;
+
+        return $r1;
+    }
+
+    public void clear()
+    {
+        org.apache.commons.io.input.TailerTest$TestTailerListener r0;
+        java.util.List $r1;
+
+        r0 := @this: org.apache.commons.io.input.TailerTest$TestTailerListener;
+
+        $r1 = r0.<org.apache.commons.io.input.TailerTest$TestTailerListener: java.util.List lines>;
+
+        interfaceinvoke $r1.<java.util.List: void clear()>();
+
+        return;
+    }
+
+    public void handle(java.lang.Exception)
+    {
+        org.apache.commons.io.input.TailerTest$TestTailerListener r0;
+        java.lang.Exception r1;
+
+        r0 := @this: org.apache.commons.io.input.TailerTest$TestTailerListener;
+
+        r1 := @parameter0: java.lang.Exception;
+
+        r0.<org.apache.commons.io.input.TailerTest$TestTailerListener: java.lang.Exception exception> = r1;
+
+        return;
+    }
+
+    public void init(org.apache.commons.io.input.Tailer)
+    {
+        org.apache.commons.io.input.TailerTest$TestTailerListener r0;
+        org.apache.commons.io.input.Tailer r1;
+        int $i0, $i1;
+
+        r0 := @this: org.apache.commons.io.input.TailerTest$TestTailerListener;
+
+        r1 := @parameter0: org.apache.commons.io.input.Tailer;
+
+        $i0 = r0.<org.apache.commons.io.input.TailerTest$TestTailerListener: int initialised>;
+
+        $i1 = $i0 + 1;
+
+        r0.<org.apache.commons.io.input.TailerTest$TestTailerListener: int initialised> = $i1;
+
+        return;
+    }
+
+    public void fileNotFound()
+    {
+        org.apache.commons.io.input.TailerTest$TestTailerListener r0;
+        int $i0, $i1;
+
+        r0 := @this: org.apache.commons.io.input.TailerTest$TestTailerListener;
+
+        $i0 = r0.<org.apache.commons.io.input.TailerTest$TestTailerListener: int notFound>;
+
+        $i1 = $i0 + 1;
+
+        r0.<org.apache.commons.io.input.TailerTest$TestTailerListener: int notFound> = $i1;
+
+        return;
+    }
+
+    public void fileRotated()
+    {
+        org.apache.commons.io.input.TailerTest$TestTailerListener r0;
+        int $i0, $i1;
+
+        r0 := @this: org.apache.commons.io.input.TailerTest$TestTailerListener;
+
+        $i0 = r0.<org.apache.commons.io.input.TailerTest$TestTailerListener: int rotated>;
+
+        $i1 = $i0 + 1;
+
+        r0.<org.apache.commons.io.input.TailerTest$TestTailerListener: int rotated> = $i1;
+
+        return;
+    }
+
+    public void endOfFileReached()
+    {
+        org.apache.commons.io.input.TailerTest$TestTailerListener r0;
+        int $i0, $i1;
+
+        r0 := @this: org.apache.commons.io.input.TailerTest$TestTailerListener;
+
+        $i0 = r0.<org.apache.commons.io.input.TailerTest$TestTailerListener: int reachedEndOfFile>;
+
+        $i1 = $i0 + 1;
+
+        r0.<org.apache.commons.io.input.TailerTest$TestTailerListener: int reachedEndOfFile> = $i1;
+
+        return;
+    }
+
+    void <init>(org.apache.commons.io.input.TailerTest$TestTailerListener)
+    {
+        org.apache.commons.io.input.TailerTest$TestTailerListener r0, r1;
+
+        r0 := @this: org.apache.commons.io.input.TailerTest$TestTailerListener;
+
+        r1 := @parameter0: org.apache.commons.io.input.TailerTest$TestTailerListener;
+
+        specialinvoke r0.<org.apache.commons.io.input.TailerTest$TestTailerListener: void <init>()>();
+
+        return;
+    }
+}

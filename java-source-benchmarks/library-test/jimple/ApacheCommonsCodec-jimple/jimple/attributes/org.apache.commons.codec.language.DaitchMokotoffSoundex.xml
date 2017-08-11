@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<attributes>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="0" eline="0" spos="0" epos="0"/>
+<text info="[inner=java/util/Map$Entry, outer=java/util/Map, name=Entry,flags=1545]" aType="InnerClassTag"/>
+<text info="[inner=org/apache/commons/codec/language/DaitchMokotoffSoundex$1, outer=null, name=null,flags=0]" aType="InnerClassTag"/>
+<text info="[inner=org/apache/commons/codec/language/DaitchMokotoffSoundex$Branch, outer=org/apache/commons/codec/language/DaitchMokotoffSoundex, name=Branch,flags=26]" aType="InnerClassTag"/>
+<text info="[inner=org/apache/commons/codec/language/DaitchMokotoffSoundex$Rule, outer=org/apache/commons/codec/language/DaitchMokotoffSoundex, name=Rule,flags=26]" aType="InnerClassTag"/>
+<text info="soot.tagkit.InnerClassAttribute@42d60e1f" aType="InnerClassAttribute"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="3" eline="3" spos="0" epos="0"/>
+<text info="ConstantValue: //" aType="StringConstantValueTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="4" eline="4" spos="0" epos="0"/>
+<text info="ConstantValue: &quot;" aType="StringConstantValueTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="5" eline="5" spos="0" epos="0"/>
+<text info="ConstantValue: */" aType="StringConstantValueTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="6" eline="6" spos="0" epos="0"/>
+<text info="ConstantValue: /*" aType="StringConstantValueTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="7" eline="7" spos="0" epos="0"/>
+<text info="ConstantValue: org/apache/commons/codec/language/dmrules.txt" aType="StringConstantValueTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="8" eline="8" spos="0" epos="0"/>
+<text info="ConstantValue: 6" aType="IntegerConstantValueTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="9" eline="9" spos="0" epos="0"/>
+<text info="Signature: Ljava/util/Map&lt;Ljava/lang/Character;Ljava/util/List&lt;Lorg/apache/commons/codec/language/DaitchMokotoffSoundex$Rule;&gt;;&gt;;" aType="SignatureTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="10" eline="10" spos="0" epos="0"/>
+<text info="Signature: Ljava/util/Map&lt;Ljava/lang/Character;Ljava/lang/Character;&gt;;" aType="SignatureTag"/>
+</attribute>
+<attribute>
+<srcPos sline="251" eline="251" spos="0" epos="0"/>
+<jmpPos sline="112" eline="112" spos="0" epos="0"/>
+<text info="Signature: (Ljava/util/Scanner;Ljava/lang/String;Ljava/util/Map&lt;Ljava/lang/Character;Ljava/util/List&lt;Lorg/apache/commons/codec/language/DaitchMokotoffSoundex$Rule;&gt;;&gt;;Ljava/util/Map&lt;Ljava/lang/Character;Ljava/lang/Character;&gt;;)V" aType="SignatureTag"/>
+</attribute>
+</attributes>

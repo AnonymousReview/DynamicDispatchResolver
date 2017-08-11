@@ -1,0 +1,2340 @@
+public class org.apache.commons.io.IOUtilsWriteTestCase extends org.apache.commons.io.testtools.FileBasedTestCase
+{
+    private static final int FILE_SIZE;
+    private final byte[] inData;
+
+    public void <init>()
+    {
+        org.apache.commons.io.IOUtilsWriteTestCase r0;
+        byte[] $r1;
+
+        r0 := @this: org.apache.commons.io.IOUtilsWriteTestCase;
+
+        specialinvoke r0.<org.apache.commons.io.testtools.FileBasedTestCase: void <init>()>();
+
+        $r1 = staticinvoke <org.apache.commons.io.testtools.TestUtils: byte[] generateTestData(long)>(4097L);
+
+        r0.<org.apache.commons.io.IOUtilsWriteTestCase: byte[] inData> = $r1;
+
+        return;
+    }
+
+    public void testWrite_byteArrayToOutputStream() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsWriteTestCase r0;
+        org.apache.commons.io.output.ByteArrayOutputStream $r3;
+        org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream $r4;
+        byte[] $r5, $r6, $r7, $r8;
+        int $i0, $i2;
+        long $l1, $l3;
+        boolean $z0;
+
+        r0 := @this: org.apache.commons.io.IOUtilsWriteTestCase;
+
+        $r3 = new org.apache.commons.io.output.ByteArrayOutputStream;
+
+        specialinvoke $r3.<org.apache.commons.io.output.ByteArrayOutputStream: void <init>()>();
+
+        $r4 = new org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream;
+
+        specialinvoke $r4.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void <init>(java.io.OutputStream,boolean,boolean)>($r3, 1, 1);
+
+        $r5 = r0.<org.apache.commons.io.IOUtilsWriteTestCase: byte[] inData>;
+
+        staticinvoke <org.apache.commons.io.IOUtils: void write(byte[],java.io.OutputStream)>($r5, $r4);
+
+        virtualinvoke $r4.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void off()>();
+
+        virtualinvoke $r4.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void flush()>();
+
+        $r6 = r0.<org.apache.commons.io.IOUtilsWriteTestCase: byte[] inData>;
+
+        $i0 = lengthof $r6;
+
+        $l1 = (long) $i0;
+
+        $i2 = virtualinvoke $r3.<org.apache.commons.io.output.ByteArrayOutputStream: int size()>();
+
+        $l3 = (long) $i2;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("Sizes differ", $l1, $l3);
+
+        $r7 = r0.<org.apache.commons.io.IOUtilsWriteTestCase: byte[] inData>;
+
+        $r8 = virtualinvoke $r3.<org.apache.commons.io.output.ByteArrayOutputStream: byte[] toByteArray()>();
+
+        $z0 = staticinvoke <java.util.Arrays: boolean equals(byte[],byte[])>($r7, $r8);
+
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>("Content differs", $z0);
+
+        return;
+    }
+
+    public void testWrite_byteArrayToOutputStream_nullData() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsWriteTestCase r0;
+        org.apache.commons.io.output.ByteArrayOutputStream $r3;
+        org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream $r4;
+        int $i0;
+        long $l1;
+
+        r0 := @this: org.apache.commons.io.IOUtilsWriteTestCase;
+
+        $r3 = new org.apache.commons.io.output.ByteArrayOutputStream;
+
+        specialinvoke $r3.<org.apache.commons.io.output.ByteArrayOutputStream: void <init>()>();
+
+        $r4 = new org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream;
+
+        specialinvoke $r4.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void <init>(java.io.OutputStream,boolean,boolean)>($r3, 1, 1);
+
+        staticinvoke <org.apache.commons.io.IOUtils: void write(byte[],java.io.OutputStream)>(null, $r4);
+
+        virtualinvoke $r4.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void off()>();
+
+        virtualinvoke $r4.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void flush()>();
+
+        $i0 = virtualinvoke $r3.<org.apache.commons.io.output.ByteArrayOutputStream: int size()>();
+
+        $l1 = (long) $i0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("Sizes differ", 0L, $l1);
+
+        return;
+    }
+
+    public void testWrite_byteArrayToOutputStream_nullStream() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsWriteTestCase r0;
+        byte[] $r2;
+        java.lang.NullPointerException $r3;
+
+        r0 := @this: org.apache.commons.io.IOUtilsWriteTestCase;
+
+     label1:
+        $r2 = r0.<org.apache.commons.io.IOUtilsWriteTestCase: byte[] inData>;
+
+        staticinvoke <org.apache.commons.io.IOUtils: void write(byte[],java.io.OutputStream)>($r2, null);
+
+        staticinvoke <org.junit.Assert: void fail()>();
+
+     label2:
+        goto label4;
+
+     label3:
+        $r3 := @caughtexception;
+
+     label4:
+        return;
+
+        catch java.lang.NullPointerException from label1 to label2 with label3;
+    }
+
+    public void testWrite_byteArrayToWriter() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsWriteTestCase r0;
+        org.apache.commons.io.output.ByteArrayOutputStream $r4;
+        org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream $r5;
+        java.io.OutputStreamWriter $r6;
+        byte[] $r7, $r8, $r9, $r10;
+        int $i0, $i2;
+        long $l1, $l3;
+        boolean $z0;
+
+        r0 := @this: org.apache.commons.io.IOUtilsWriteTestCase;
+
+        $r4 = new org.apache.commons.io.output.ByteArrayOutputStream;
+
+        specialinvoke $r4.<org.apache.commons.io.output.ByteArrayOutputStream: void <init>()>();
+
+        $r5 = new org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream;
+
+        specialinvoke $r5.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void <init>(java.io.OutputStream,boolean,boolean)>($r4, 1, 1);
+
+        $r6 = new java.io.OutputStreamWriter;
+
+        specialinvoke $r6.<java.io.OutputStreamWriter: void <init>(java.io.OutputStream,java.lang.String)>($r4, "US-ASCII");
+
+        $r7 = r0.<org.apache.commons.io.IOUtilsWriteTestCase: byte[] inData>;
+
+        staticinvoke <org.apache.commons.io.IOUtils: void write(byte[],java.io.Writer)>($r7, $r6);
+
+        virtualinvoke $r5.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void off()>();
+
+        virtualinvoke $r6.<java.io.Writer: void flush()>();
+
+        $r8 = r0.<org.apache.commons.io.IOUtilsWriteTestCase: byte[] inData>;
+
+        $i0 = lengthof $r8;
+
+        $l1 = (long) $i0;
+
+        $i2 = virtualinvoke $r4.<org.apache.commons.io.output.ByteArrayOutputStream: int size()>();
+
+        $l3 = (long) $i2;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("Sizes differ", $l1, $l3);
+
+        $r9 = r0.<org.apache.commons.io.IOUtilsWriteTestCase: byte[] inData>;
+
+        $r10 = virtualinvoke $r4.<org.apache.commons.io.output.ByteArrayOutputStream: byte[] toByteArray()>();
+
+        $z0 = staticinvoke <java.util.Arrays: boolean equals(byte[],byte[])>($r9, $r10);
+
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>("Content differs", $z0);
+
+        return;
+    }
+
+    public void testWrite_byteArrayToWriter_nullData() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsWriteTestCase r0;
+        org.apache.commons.io.output.ByteArrayOutputStream $r4;
+        org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream $r5;
+        java.io.OutputStreamWriter $r6;
+        int $i0;
+        long $l1;
+
+        r0 := @this: org.apache.commons.io.IOUtilsWriteTestCase;
+
+        $r4 = new org.apache.commons.io.output.ByteArrayOutputStream;
+
+        specialinvoke $r4.<org.apache.commons.io.output.ByteArrayOutputStream: void <init>()>();
+
+        $r5 = new org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream;
+
+        specialinvoke $r5.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void <init>(java.io.OutputStream,boolean,boolean)>($r4, 1, 1);
+
+        $r6 = new java.io.OutputStreamWriter;
+
+        specialinvoke $r6.<java.io.OutputStreamWriter: void <init>(java.io.OutputStream,java.lang.String)>($r4, "US-ASCII");
+
+        staticinvoke <org.apache.commons.io.IOUtils: void write(byte[],java.io.Writer)>(null, $r6);
+
+        virtualinvoke $r5.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void off()>();
+
+        virtualinvoke $r6.<java.io.Writer: void flush()>();
+
+        $i0 = virtualinvoke $r4.<org.apache.commons.io.output.ByteArrayOutputStream: int size()>();
+
+        $l1 = (long) $i0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("Sizes differ", 0L, $l1);
+
+        return;
+    }
+
+    public void testWrite_byteArrayToWriter_nullWriter() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsWriteTestCase r0;
+        byte[] $r2;
+        java.lang.NullPointerException $r3;
+
+        r0 := @this: org.apache.commons.io.IOUtilsWriteTestCase;
+
+     label1:
+        $r2 = r0.<org.apache.commons.io.IOUtilsWriteTestCase: byte[] inData>;
+
+        staticinvoke <org.apache.commons.io.IOUtils: void write(byte[],java.io.Writer)>($r2, null);
+
+        staticinvoke <org.junit.Assert: void fail()>();
+
+     label2:
+        goto label4;
+
+     label3:
+        $r3 := @caughtexception;
+
+     label4:
+        return;
+
+        catch java.lang.NullPointerException from label1 to label2 with label3;
+    }
+
+    public void testWrite_byteArrayToWriter_Encoding() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsWriteTestCase r0;
+        org.apache.commons.io.output.ByteArrayOutputStream $r4;
+        org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream $r5;
+        java.io.OutputStreamWriter $r6;
+        byte[] $r7, $r9, r10, r11;
+        java.lang.String $r8;
+        boolean $z0;
+
+        r0 := @this: org.apache.commons.io.IOUtilsWriteTestCase;
+
+        $r4 = new org.apache.commons.io.output.ByteArrayOutputStream;
+
+        specialinvoke $r4.<org.apache.commons.io.output.ByteArrayOutputStream: void <init>()>();
+
+        $r5 = new org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream;
+
+        specialinvoke $r5.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void <init>(java.io.OutputStream,boolean,boolean)>($r4, 1, 1);
+
+        $r6 = new java.io.OutputStreamWriter;
+
+        specialinvoke $r6.<java.io.OutputStreamWriter: void <init>(java.io.OutputStream,java.lang.String)>($r4, "US-ASCII");
+
+        $r7 = r0.<org.apache.commons.io.IOUtilsWriteTestCase: byte[] inData>;
+
+        staticinvoke <org.apache.commons.io.IOUtils: void write(byte[],java.io.Writer,java.lang.String)>($r7, $r6, "UTF8");
+
+        virtualinvoke $r5.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void off()>();
+
+        virtualinvoke $r6.<java.io.Writer: void flush()>();
+
+        r10 = virtualinvoke $r4.<org.apache.commons.io.output.ByteArrayOutputStream: byte[] toByteArray()>();
+
+        $r8 = new java.lang.String;
+
+        specialinvoke $r8.<java.lang.String: void <init>(byte[],java.lang.String)>(r10, "UTF8");
+
+        r11 = virtualinvoke $r8.<java.lang.String: byte[] getBytes(java.lang.String)>("US-ASCII");
+
+        $r9 = r0.<org.apache.commons.io.IOUtilsWriteTestCase: byte[] inData>;
+
+        $z0 = staticinvoke <java.util.Arrays: boolean equals(byte[],byte[])>($r9, r11);
+
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>("Content differs", $z0);
+
+        return;
+    }
+
+    public void testWrite_byteArrayToWriter_Encoding_nullData() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsWriteTestCase r0;
+        org.apache.commons.io.output.ByteArrayOutputStream $r4;
+        org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream $r5;
+        java.io.OutputStreamWriter $r6;
+        int $i0;
+        long $l1;
+
+        r0 := @this: org.apache.commons.io.IOUtilsWriteTestCase;
+
+        $r4 = new org.apache.commons.io.output.ByteArrayOutputStream;
+
+        specialinvoke $r4.<org.apache.commons.io.output.ByteArrayOutputStream: void <init>()>();
+
+        $r5 = new org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream;
+
+        specialinvoke $r5.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void <init>(java.io.OutputStream,boolean,boolean)>($r4, 1, 1);
+
+        $r6 = new java.io.OutputStreamWriter;
+
+        specialinvoke $r6.<java.io.OutputStreamWriter: void <init>(java.io.OutputStream,java.lang.String)>($r4, "US-ASCII");
+
+        staticinvoke <org.apache.commons.io.IOUtils: void write(byte[],java.io.Writer,java.lang.String)>(null, $r6, "UTF8");
+
+        virtualinvoke $r5.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void off()>();
+
+        virtualinvoke $r6.<java.io.Writer: void flush()>();
+
+        $i0 = virtualinvoke $r4.<org.apache.commons.io.output.ByteArrayOutputStream: int size()>();
+
+        $l1 = (long) $i0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("Sizes differ", 0L, $l1);
+
+        return;
+    }
+
+    public void testWrite_byteArrayToWriter_Encoding_nullWriter() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsWriteTestCase r0;
+        byte[] $r2;
+        java.lang.NullPointerException $r3;
+
+        r0 := @this: org.apache.commons.io.IOUtilsWriteTestCase;
+
+     label1:
+        $r2 = r0.<org.apache.commons.io.IOUtilsWriteTestCase: byte[] inData>;
+
+        staticinvoke <org.apache.commons.io.IOUtils: void write(byte[],java.io.Writer,java.lang.String)>($r2, null, "UTF8");
+
+        staticinvoke <org.junit.Assert: void fail()>();
+
+     label2:
+        goto label4;
+
+     label3:
+        $r3 := @caughtexception;
+
+     label4:
+        return;
+
+        catch java.lang.NullPointerException from label1 to label2 with label3;
+    }
+
+    public void testWrite_byteArrayToWriter_Encoding_nullEncoding() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsWriteTestCase r0;
+        org.apache.commons.io.output.ByteArrayOutputStream $r4;
+        org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream $r5;
+        java.io.OutputStreamWriter $r6;
+        byte[] $r7, $r8, $r9, $r10;
+        int $i0, $i2;
+        long $l1, $l3;
+        boolean $z0;
+
+        r0 := @this: org.apache.commons.io.IOUtilsWriteTestCase;
+
+        $r4 = new org.apache.commons.io.output.ByteArrayOutputStream;
+
+        specialinvoke $r4.<org.apache.commons.io.output.ByteArrayOutputStream: void <init>()>();
+
+        $r5 = new org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream;
+
+        specialinvoke $r5.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void <init>(java.io.OutputStream,boolean,boolean)>($r4, 1, 1);
+
+        $r6 = new java.io.OutputStreamWriter;
+
+        specialinvoke $r6.<java.io.OutputStreamWriter: void <init>(java.io.OutputStream,java.lang.String)>($r4, "US-ASCII");
+
+        $r7 = r0.<org.apache.commons.io.IOUtilsWriteTestCase: byte[] inData>;
+
+        staticinvoke <org.apache.commons.io.IOUtils: void write(byte[],java.io.Writer,java.lang.String)>($r7, $r6, null);
+
+        virtualinvoke $r5.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void off()>();
+
+        virtualinvoke $r6.<java.io.Writer: void flush()>();
+
+        $r8 = r0.<org.apache.commons.io.IOUtilsWriteTestCase: byte[] inData>;
+
+        $i0 = lengthof $r8;
+
+        $l1 = (long) $i0;
+
+        $i2 = virtualinvoke $r4.<org.apache.commons.io.output.ByteArrayOutputStream: int size()>();
+
+        $l3 = (long) $i2;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("Sizes differ", $l1, $l3);
+
+        $r9 = r0.<org.apache.commons.io.IOUtilsWriteTestCase: byte[] inData>;
+
+        $r10 = virtualinvoke $r4.<org.apache.commons.io.output.ByteArrayOutputStream: byte[] toByteArray()>();
+
+        $z0 = staticinvoke <java.util.Arrays: boolean equals(byte[],byte[])>($r9, $r10);
+
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>("Content differs", $z0);
+
+        return;
+    }
+
+    public void testWrite_charSequenceToOutputStream() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsWriteTestCase r0;
+        java.lang.StringBuilder $r4;
+        java.lang.String $r5;
+        byte[] $r6, $r9, $r10, $r11;
+        org.apache.commons.io.output.ByteArrayOutputStream $r7;
+        org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream $r8;
+        int $i0, $i2;
+        long $l1, $l3;
+        boolean $z0;
+
+        r0 := @this: org.apache.commons.io.IOUtilsWriteTestCase;
+
+        $r4 = new java.lang.StringBuilder;
+
+        $r5 = new java.lang.String;
+
+        $r6 = r0.<org.apache.commons.io.IOUtilsWriteTestCase: byte[] inData>;
+
+        specialinvoke $r5.<java.lang.String: void <init>(byte[],java.lang.String)>($r6, "US-ASCII");
+
+        specialinvoke $r4.<java.lang.StringBuilder: void <init>(java.lang.String)>($r5);
+
+        $r7 = new org.apache.commons.io.output.ByteArrayOutputStream;
+
+        specialinvoke $r7.<org.apache.commons.io.output.ByteArrayOutputStream: void <init>()>();
+
+        $r8 = new org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream;
+
+        specialinvoke $r8.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void <init>(java.io.OutputStream,boolean,boolean)>($r7, 1, 1);
+
+        staticinvoke <org.apache.commons.io.IOUtils: void write(java.lang.CharSequence,java.io.OutputStream)>($r4, $r8);
+
+        virtualinvoke $r8.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void off()>();
+
+        virtualinvoke $r8.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void flush()>();
+
+        $r9 = r0.<org.apache.commons.io.IOUtilsWriteTestCase: byte[] inData>;
+
+        $i0 = lengthof $r9;
+
+        $l1 = (long) $i0;
+
+        $i2 = virtualinvoke $r7.<org.apache.commons.io.output.ByteArrayOutputStream: int size()>();
+
+        $l3 = (long) $i2;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("Sizes differ", $l1, $l3);
+
+        $r10 = r0.<org.apache.commons.io.IOUtilsWriteTestCase: byte[] inData>;
+
+        $r11 = virtualinvoke $r7.<org.apache.commons.io.output.ByteArrayOutputStream: byte[] toByteArray()>();
+
+        $z0 = staticinvoke <java.util.Arrays: boolean equals(byte[],byte[])>($r10, $r11);
+
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>("Content differs", $z0);
+
+        return;
+    }
+
+    public void testWrite_charSequenceToOutputStream_nullData() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsWriteTestCase r0;
+        org.apache.commons.io.output.ByteArrayOutputStream $r3;
+        org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream $r4;
+        int $i0;
+        long $l1;
+
+        r0 := @this: org.apache.commons.io.IOUtilsWriteTestCase;
+
+        $r3 = new org.apache.commons.io.output.ByteArrayOutputStream;
+
+        specialinvoke $r3.<org.apache.commons.io.output.ByteArrayOutputStream: void <init>()>();
+
+        $r4 = new org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream;
+
+        specialinvoke $r4.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void <init>(java.io.OutputStream,boolean,boolean)>($r3, 1, 1);
+
+        staticinvoke <org.apache.commons.io.IOUtils: void write(java.lang.CharSequence,java.io.OutputStream)>(null, $r4);
+
+        virtualinvoke $r4.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void off()>();
+
+        virtualinvoke $r4.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void flush()>();
+
+        $i0 = virtualinvoke $r3.<org.apache.commons.io.output.ByteArrayOutputStream: int size()>();
+
+        $l1 = (long) $i0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("Sizes differ", 0L, $l1);
+
+        return;
+    }
+
+    public void testWrite_charSequenceToOutputStream_nullStream() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsWriteTestCase r0;
+        java.lang.StringBuilder $r3;
+        java.lang.String $r4;
+        byte[] $r5;
+        java.lang.NullPointerException $r6;
+
+        r0 := @this: org.apache.commons.io.IOUtilsWriteTestCase;
+
+        $r3 = new java.lang.StringBuilder;
+
+        $r4 = new java.lang.String;
+
+        $r5 = r0.<org.apache.commons.io.IOUtilsWriteTestCase: byte[] inData>;
+
+        specialinvoke $r4.<java.lang.String: void <init>(byte[],java.lang.String)>($r5, "US-ASCII");
+
+        specialinvoke $r3.<java.lang.StringBuilder: void <init>(java.lang.String)>($r4);
+
+     label1:
+        staticinvoke <org.apache.commons.io.IOUtils: void write(java.lang.CharSequence,java.io.OutputStream)>($r3, null);
+
+        staticinvoke <org.junit.Assert: void fail()>();
+
+     label2:
+        goto label4;
+
+     label3:
+        $r6 := @caughtexception;
+
+     label4:
+        return;
+
+        catch java.lang.NullPointerException from label1 to label2 with label3;
+    }
+
+    public void testWrite_charSequenceToOutputStream_Encoding() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsWriteTestCase r0;
+        java.lang.StringBuilder $r4;
+        java.lang.String $r5, $r9;
+        byte[] $r6, $r10, r11, r12;
+        org.apache.commons.io.output.ByteArrayOutputStream $r7;
+        org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream $r8;
+        boolean $z0;
+
+        r0 := @this: org.apache.commons.io.IOUtilsWriteTestCase;
+
+        $r4 = new java.lang.StringBuilder;
+
+        $r5 = new java.lang.String;
+
+        $r6 = r0.<org.apache.commons.io.IOUtilsWriteTestCase: byte[] inData>;
+
+        specialinvoke $r5.<java.lang.String: void <init>(byte[],java.lang.String)>($r6, "US-ASCII");
+
+        specialinvoke $r4.<java.lang.StringBuilder: void <init>(java.lang.String)>($r5);
+
+        $r7 = new org.apache.commons.io.output.ByteArrayOutputStream;
+
+        specialinvoke $r7.<org.apache.commons.io.output.ByteArrayOutputStream: void <init>()>();
+
+        $r8 = new org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream;
+
+        specialinvoke $r8.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void <init>(java.io.OutputStream,boolean,boolean)>($r7, 1, 1);
+
+        staticinvoke <org.apache.commons.io.IOUtils: void write(java.lang.CharSequence,java.io.OutputStream,java.lang.String)>($r4, $r8, "UTF16");
+
+        virtualinvoke $r8.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void off()>();
+
+        virtualinvoke $r8.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void flush()>();
+
+        r11 = virtualinvoke $r7.<org.apache.commons.io.output.ByteArrayOutputStream: byte[] toByteArray()>();
+
+        $r9 = new java.lang.String;
+
+        specialinvoke $r9.<java.lang.String: void <init>(byte[],java.lang.String)>(r11, "UTF16");
+
+        r12 = virtualinvoke $r9.<java.lang.String: byte[] getBytes(java.lang.String)>("US-ASCII");
+
+        $r10 = r0.<org.apache.commons.io.IOUtilsWriteTestCase: byte[] inData>;
+
+        $z0 = staticinvoke <java.util.Arrays: boolean equals(byte[],byte[])>($r10, r12);
+
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>("Content differs", $z0);
+
+        return;
+    }
+
+    public void testWrite_charSequenceToOutputStream_Encoding_nullData() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsWriteTestCase r0;
+        org.apache.commons.io.output.ByteArrayOutputStream $r3;
+        org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream $r4;
+        int $i0;
+        long $l1;
+
+        r0 := @this: org.apache.commons.io.IOUtilsWriteTestCase;
+
+        $r3 = new org.apache.commons.io.output.ByteArrayOutputStream;
+
+        specialinvoke $r3.<org.apache.commons.io.output.ByteArrayOutputStream: void <init>()>();
+
+        $r4 = new org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream;
+
+        specialinvoke $r4.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void <init>(java.io.OutputStream,boolean,boolean)>($r3, 1, 1);
+
+        staticinvoke <org.apache.commons.io.IOUtils: void write(java.lang.CharSequence,java.io.OutputStream)>(null, $r4);
+
+        virtualinvoke $r4.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void off()>();
+
+        virtualinvoke $r4.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void flush()>();
+
+        $i0 = virtualinvoke $r3.<org.apache.commons.io.output.ByteArrayOutputStream: int size()>();
+
+        $l1 = (long) $i0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("Sizes differ", 0L, $l1);
+
+        return;
+    }
+
+    public void testWrite_charSequenceToOutputStream_Encoding_nullStream() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsWriteTestCase r0;
+        java.lang.StringBuilder $r3;
+        java.lang.String $r4;
+        byte[] $r5;
+        java.lang.NullPointerException $r6;
+
+        r0 := @this: org.apache.commons.io.IOUtilsWriteTestCase;
+
+        $r3 = new java.lang.StringBuilder;
+
+        $r4 = new java.lang.String;
+
+        $r5 = r0.<org.apache.commons.io.IOUtilsWriteTestCase: byte[] inData>;
+
+        specialinvoke $r4.<java.lang.String: void <init>(byte[],java.lang.String)>($r5, "US-ASCII");
+
+        specialinvoke $r3.<java.lang.StringBuilder: void <init>(java.lang.String)>($r4);
+
+     label1:
+        staticinvoke <org.apache.commons.io.IOUtils: void write(java.lang.CharSequence,java.io.OutputStream)>($r3, null);
+
+        staticinvoke <org.junit.Assert: void fail()>();
+
+     label2:
+        goto label4;
+
+     label3:
+        $r6 := @caughtexception;
+
+     label4:
+        return;
+
+        catch java.lang.NullPointerException from label1 to label2 with label3;
+    }
+
+    public void testWrite_charSequenceToOutputStream_nullEncoding() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsWriteTestCase r0;
+        java.lang.StringBuilder $r4;
+        java.lang.String $r5;
+        byte[] $r6, $r9, $r10, $r11;
+        org.apache.commons.io.output.ByteArrayOutputStream $r7;
+        org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream $r8;
+        int $i0, $i2;
+        long $l1, $l3;
+        boolean $z0;
+
+        r0 := @this: org.apache.commons.io.IOUtilsWriteTestCase;
+
+        $r4 = new java.lang.StringBuilder;
+
+        $r5 = new java.lang.String;
+
+        $r6 = r0.<org.apache.commons.io.IOUtilsWriteTestCase: byte[] inData>;
+
+        specialinvoke $r5.<java.lang.String: void <init>(byte[],java.lang.String)>($r6, "US-ASCII");
+
+        specialinvoke $r4.<java.lang.StringBuilder: void <init>(java.lang.String)>($r5);
+
+        $r7 = new org.apache.commons.io.output.ByteArrayOutputStream;
+
+        specialinvoke $r7.<org.apache.commons.io.output.ByteArrayOutputStream: void <init>()>();
+
+        $r8 = new org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream;
+
+        specialinvoke $r8.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void <init>(java.io.OutputStream,boolean,boolean)>($r7, 1, 1);
+
+        staticinvoke <org.apache.commons.io.IOUtils: void write(java.lang.CharSequence,java.io.OutputStream,java.lang.String)>($r4, $r8, null);
+
+        virtualinvoke $r8.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void off()>();
+
+        virtualinvoke $r8.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void flush()>();
+
+        $r9 = r0.<org.apache.commons.io.IOUtilsWriteTestCase: byte[] inData>;
+
+        $i0 = lengthof $r9;
+
+        $l1 = (long) $i0;
+
+        $i2 = virtualinvoke $r7.<org.apache.commons.io.output.ByteArrayOutputStream: int size()>();
+
+        $l3 = (long) $i2;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("Sizes differ", $l1, $l3);
+
+        $r10 = r0.<org.apache.commons.io.IOUtilsWriteTestCase: byte[] inData>;
+
+        $r11 = virtualinvoke $r7.<org.apache.commons.io.output.ByteArrayOutputStream: byte[] toByteArray()>();
+
+        $z0 = staticinvoke <java.util.Arrays: boolean equals(byte[],byte[])>($r10, $r11);
+
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>("Content differs", $z0);
+
+        return;
+    }
+
+    public void testWrite_charSequenceToWriter() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsWriteTestCase r0;
+        java.lang.StringBuilder $r5;
+        java.lang.String $r6;
+        byte[] $r7, $r11, $r12, $r13;
+        org.apache.commons.io.output.ByteArrayOutputStream $r8;
+        org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream $r9;
+        java.io.OutputStreamWriter $r10;
+        int $i0, $i2;
+        long $l1, $l3;
+        boolean $z0;
+
+        r0 := @this: org.apache.commons.io.IOUtilsWriteTestCase;
+
+        $r5 = new java.lang.StringBuilder;
+
+        $r6 = new java.lang.String;
+
+        $r7 = r0.<org.apache.commons.io.IOUtilsWriteTestCase: byte[] inData>;
+
+        specialinvoke $r6.<java.lang.String: void <init>(byte[],java.lang.String)>($r7, "US-ASCII");
+
+        specialinvoke $r5.<java.lang.StringBuilder: void <init>(java.lang.String)>($r6);
+
+        $r8 = new org.apache.commons.io.output.ByteArrayOutputStream;
+
+        specialinvoke $r8.<org.apache.commons.io.output.ByteArrayOutputStream: void <init>()>();
+
+        $r9 = new org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream;
+
+        specialinvoke $r9.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void <init>(java.io.OutputStream,boolean,boolean)>($r8, 1, 1);
+
+        $r10 = new java.io.OutputStreamWriter;
+
+        specialinvoke $r10.<java.io.OutputStreamWriter: void <init>(java.io.OutputStream,java.lang.String)>($r8, "US-ASCII");
+
+        staticinvoke <org.apache.commons.io.IOUtils: void write(java.lang.CharSequence,java.io.Writer)>($r5, $r10);
+
+        virtualinvoke $r9.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void off()>();
+
+        virtualinvoke $r10.<java.io.Writer: void flush()>();
+
+        $r11 = r0.<org.apache.commons.io.IOUtilsWriteTestCase: byte[] inData>;
+
+        $i0 = lengthof $r11;
+
+        $l1 = (long) $i0;
+
+        $i2 = virtualinvoke $r8.<org.apache.commons.io.output.ByteArrayOutputStream: int size()>();
+
+        $l3 = (long) $i2;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("Sizes differ", $l1, $l3);
+
+        $r12 = r0.<org.apache.commons.io.IOUtilsWriteTestCase: byte[] inData>;
+
+        $r13 = virtualinvoke $r8.<org.apache.commons.io.output.ByteArrayOutputStream: byte[] toByteArray()>();
+
+        $z0 = staticinvoke <java.util.Arrays: boolean equals(byte[],byte[])>($r12, $r13);
+
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>("Content differs", $z0);
+
+        return;
+    }
+
+    public void testWrite_charSequenceToWriter_Encoding_nullData() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsWriteTestCase r0;
+        org.apache.commons.io.output.ByteArrayOutputStream $r4;
+        org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream $r5;
+        java.io.OutputStreamWriter $r6;
+        int $i0;
+        long $l1;
+
+        r0 := @this: org.apache.commons.io.IOUtilsWriteTestCase;
+
+        $r4 = new org.apache.commons.io.output.ByteArrayOutputStream;
+
+        specialinvoke $r4.<org.apache.commons.io.output.ByteArrayOutputStream: void <init>()>();
+
+        $r5 = new org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream;
+
+        specialinvoke $r5.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void <init>(java.io.OutputStream,boolean,boolean)>($r4, 1, 1);
+
+        $r6 = new java.io.OutputStreamWriter;
+
+        specialinvoke $r6.<java.io.OutputStreamWriter: void <init>(java.io.OutputStream,java.lang.String)>($r4, "US-ASCII");
+
+        staticinvoke <org.apache.commons.io.IOUtils: void write(java.lang.CharSequence,java.io.Writer)>(null, $r6);
+
+        virtualinvoke $r5.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void off()>();
+
+        virtualinvoke $r6.<java.io.Writer: void flush()>();
+
+        $i0 = virtualinvoke $r4.<org.apache.commons.io.output.ByteArrayOutputStream: int size()>();
+
+        $l1 = (long) $i0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("Sizes differ", 0L, $l1);
+
+        return;
+    }
+
+    public void testWrite_charSequenceToWriter_Encoding_nullStream() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsWriteTestCase r0;
+        java.lang.StringBuilder $r3;
+        java.lang.String $r4;
+        byte[] $r5;
+        java.lang.NullPointerException $r6;
+
+        r0 := @this: org.apache.commons.io.IOUtilsWriteTestCase;
+
+        $r3 = new java.lang.StringBuilder;
+
+        $r4 = new java.lang.String;
+
+        $r5 = r0.<org.apache.commons.io.IOUtilsWriteTestCase: byte[] inData>;
+
+        specialinvoke $r4.<java.lang.String: void <init>(byte[],java.lang.String)>($r5, "US-ASCII");
+
+        specialinvoke $r3.<java.lang.StringBuilder: void <init>(java.lang.String)>($r4);
+
+     label1:
+        staticinvoke <org.apache.commons.io.IOUtils: void write(java.lang.CharSequence,java.io.Writer)>($r3, null);
+
+        staticinvoke <org.junit.Assert: void fail()>();
+
+     label2:
+        goto label4;
+
+     label3:
+        $r6 := @caughtexception;
+
+     label4:
+        return;
+
+        catch java.lang.NullPointerException from label1 to label2 with label3;
+    }
+
+    public void testWrite_stringToOutputStream() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsWriteTestCase r0;
+        java.lang.String $r4;
+        byte[] $r5, $r8, $r9, $r10;
+        org.apache.commons.io.output.ByteArrayOutputStream $r6;
+        org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream $r7;
+        int $i0, $i2;
+        long $l1, $l3;
+        boolean $z0;
+
+        r0 := @this: org.apache.commons.io.IOUtilsWriteTestCase;
+
+        $r4 = new java.lang.String;
+
+        $r5 = r0.<org.apache.commons.io.IOUtilsWriteTestCase: byte[] inData>;
+
+        specialinvoke $r4.<java.lang.String: void <init>(byte[],java.lang.String)>($r5, "US-ASCII");
+
+        $r6 = new org.apache.commons.io.output.ByteArrayOutputStream;
+
+        specialinvoke $r6.<org.apache.commons.io.output.ByteArrayOutputStream: void <init>()>();
+
+        $r7 = new org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream;
+
+        specialinvoke $r7.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void <init>(java.io.OutputStream,boolean,boolean)>($r6, 1, 1);
+
+        staticinvoke <org.apache.commons.io.IOUtils: void write(java.lang.String,java.io.OutputStream)>($r4, $r7);
+
+        virtualinvoke $r7.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void off()>();
+
+        virtualinvoke $r7.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void flush()>();
+
+        $r8 = r0.<org.apache.commons.io.IOUtilsWriteTestCase: byte[] inData>;
+
+        $i0 = lengthof $r8;
+
+        $l1 = (long) $i0;
+
+        $i2 = virtualinvoke $r6.<org.apache.commons.io.output.ByteArrayOutputStream: int size()>();
+
+        $l3 = (long) $i2;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("Sizes differ", $l1, $l3);
+
+        $r9 = r0.<org.apache.commons.io.IOUtilsWriteTestCase: byte[] inData>;
+
+        $r10 = virtualinvoke $r6.<org.apache.commons.io.output.ByteArrayOutputStream: byte[] toByteArray()>();
+
+        $z0 = staticinvoke <java.util.Arrays: boolean equals(byte[],byte[])>($r9, $r10);
+
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>("Content differs", $z0);
+
+        return;
+    }
+
+    public void testWrite_stringToOutputStream_nullData() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsWriteTestCase r0;
+        org.apache.commons.io.output.ByteArrayOutputStream $r3;
+        org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream $r4;
+        int $i0;
+        long $l1;
+
+        r0 := @this: org.apache.commons.io.IOUtilsWriteTestCase;
+
+        $r3 = new org.apache.commons.io.output.ByteArrayOutputStream;
+
+        specialinvoke $r3.<org.apache.commons.io.output.ByteArrayOutputStream: void <init>()>();
+
+        $r4 = new org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream;
+
+        specialinvoke $r4.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void <init>(java.io.OutputStream,boolean,boolean)>($r3, 1, 1);
+
+        staticinvoke <org.apache.commons.io.IOUtils: void write(java.lang.String,java.io.OutputStream)>(null, $r4);
+
+        virtualinvoke $r4.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void off()>();
+
+        virtualinvoke $r4.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void flush()>();
+
+        $i0 = virtualinvoke $r3.<org.apache.commons.io.output.ByteArrayOutputStream: int size()>();
+
+        $l1 = (long) $i0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("Sizes differ", 0L, $l1);
+
+        return;
+    }
+
+    public void testWrite_stringToOutputStream_nullStream() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsWriteTestCase r0;
+        java.lang.String $r3;
+        byte[] $r4;
+        java.lang.NullPointerException $r5;
+
+        r0 := @this: org.apache.commons.io.IOUtilsWriteTestCase;
+
+        $r3 = new java.lang.String;
+
+        $r4 = r0.<org.apache.commons.io.IOUtilsWriteTestCase: byte[] inData>;
+
+        specialinvoke $r3.<java.lang.String: void <init>(byte[],java.lang.String)>($r4, "US-ASCII");
+
+     label1:
+        staticinvoke <org.apache.commons.io.IOUtils: void write(java.lang.String,java.io.OutputStream)>($r3, null);
+
+        staticinvoke <org.junit.Assert: void fail()>();
+
+     label2:
+        goto label4;
+
+     label3:
+        $r5 := @caughtexception;
+
+     label4:
+        return;
+
+        catch java.lang.NullPointerException from label1 to label2 with label3;
+    }
+
+    public void testWrite_stringToOutputStream_Encoding() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsWriteTestCase r0;
+        java.lang.String $r4, $r8;
+        byte[] $r5, $r9, r10, r11;
+        org.apache.commons.io.output.ByteArrayOutputStream $r6;
+        org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream $r7;
+        boolean $z0;
+
+        r0 := @this: org.apache.commons.io.IOUtilsWriteTestCase;
+
+        $r4 = new java.lang.String;
+
+        $r5 = r0.<org.apache.commons.io.IOUtilsWriteTestCase: byte[] inData>;
+
+        specialinvoke $r4.<java.lang.String: void <init>(byte[],java.lang.String)>($r5, "US-ASCII");
+
+        $r6 = new org.apache.commons.io.output.ByteArrayOutputStream;
+
+        specialinvoke $r6.<org.apache.commons.io.output.ByteArrayOutputStream: void <init>()>();
+
+        $r7 = new org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream;
+
+        specialinvoke $r7.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void <init>(java.io.OutputStream,boolean,boolean)>($r6, 1, 1);
+
+        staticinvoke <org.apache.commons.io.IOUtils: void write(java.lang.String,java.io.OutputStream,java.lang.String)>($r4, $r7, "UTF16");
+
+        virtualinvoke $r7.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void off()>();
+
+        virtualinvoke $r7.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void flush()>();
+
+        r10 = virtualinvoke $r6.<org.apache.commons.io.output.ByteArrayOutputStream: byte[] toByteArray()>();
+
+        $r8 = new java.lang.String;
+
+        specialinvoke $r8.<java.lang.String: void <init>(byte[],java.lang.String)>(r10, "UTF16");
+
+        r11 = virtualinvoke $r8.<java.lang.String: byte[] getBytes(java.lang.String)>("US-ASCII");
+
+        $r9 = r0.<org.apache.commons.io.IOUtilsWriteTestCase: byte[] inData>;
+
+        $z0 = staticinvoke <java.util.Arrays: boolean equals(byte[],byte[])>($r9, r11);
+
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>("Content differs", $z0);
+
+        return;
+    }
+
+    public void testWrite_stringToOutputStream_Encoding_nullData() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsWriteTestCase r0;
+        org.apache.commons.io.output.ByteArrayOutputStream $r3;
+        org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream $r4;
+        int $i0;
+        long $l1;
+
+        r0 := @this: org.apache.commons.io.IOUtilsWriteTestCase;
+
+        $r3 = new org.apache.commons.io.output.ByteArrayOutputStream;
+
+        specialinvoke $r3.<org.apache.commons.io.output.ByteArrayOutputStream: void <init>()>();
+
+        $r4 = new org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream;
+
+        specialinvoke $r4.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void <init>(java.io.OutputStream,boolean,boolean)>($r3, 1, 1);
+
+        staticinvoke <org.apache.commons.io.IOUtils: void write(java.lang.String,java.io.OutputStream)>(null, $r4);
+
+        virtualinvoke $r4.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void off()>();
+
+        virtualinvoke $r4.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void flush()>();
+
+        $i0 = virtualinvoke $r3.<org.apache.commons.io.output.ByteArrayOutputStream: int size()>();
+
+        $l1 = (long) $i0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("Sizes differ", 0L, $l1);
+
+        return;
+    }
+
+    public void testWrite_stringToOutputStream_Encoding_nullStream() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsWriteTestCase r0;
+        java.lang.String $r3;
+        byte[] $r4;
+        java.lang.NullPointerException $r5;
+
+        r0 := @this: org.apache.commons.io.IOUtilsWriteTestCase;
+
+        $r3 = new java.lang.String;
+
+        $r4 = r0.<org.apache.commons.io.IOUtilsWriteTestCase: byte[] inData>;
+
+        specialinvoke $r3.<java.lang.String: void <init>(byte[],java.lang.String)>($r4, "US-ASCII");
+
+     label1:
+        staticinvoke <org.apache.commons.io.IOUtils: void write(java.lang.String,java.io.OutputStream)>($r3, null);
+
+        staticinvoke <org.junit.Assert: void fail()>();
+
+     label2:
+        goto label4;
+
+     label3:
+        $r5 := @caughtexception;
+
+     label4:
+        return;
+
+        catch java.lang.NullPointerException from label1 to label2 with label3;
+    }
+
+    public void testWrite_stringToOutputStream_nullEncoding() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsWriteTestCase r0;
+        java.lang.String $r4;
+        byte[] $r5, $r8, $r9, $r10;
+        org.apache.commons.io.output.ByteArrayOutputStream $r6;
+        org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream $r7;
+        int $i0, $i2;
+        long $l1, $l3;
+        boolean $z0;
+
+        r0 := @this: org.apache.commons.io.IOUtilsWriteTestCase;
+
+        $r4 = new java.lang.String;
+
+        $r5 = r0.<org.apache.commons.io.IOUtilsWriteTestCase: byte[] inData>;
+
+        specialinvoke $r4.<java.lang.String: void <init>(byte[],java.lang.String)>($r5, "US-ASCII");
+
+        $r6 = new org.apache.commons.io.output.ByteArrayOutputStream;
+
+        specialinvoke $r6.<org.apache.commons.io.output.ByteArrayOutputStream: void <init>()>();
+
+        $r7 = new org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream;
+
+        specialinvoke $r7.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void <init>(java.io.OutputStream,boolean,boolean)>($r6, 1, 1);
+
+        staticinvoke <org.apache.commons.io.IOUtils: void write(java.lang.String,java.io.OutputStream,java.lang.String)>($r4, $r7, null);
+
+        virtualinvoke $r7.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void off()>();
+
+        virtualinvoke $r7.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void flush()>();
+
+        $r8 = r0.<org.apache.commons.io.IOUtilsWriteTestCase: byte[] inData>;
+
+        $i0 = lengthof $r8;
+
+        $l1 = (long) $i0;
+
+        $i2 = virtualinvoke $r6.<org.apache.commons.io.output.ByteArrayOutputStream: int size()>();
+
+        $l3 = (long) $i2;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("Sizes differ", $l1, $l3);
+
+        $r9 = r0.<org.apache.commons.io.IOUtilsWriteTestCase: byte[] inData>;
+
+        $r10 = virtualinvoke $r6.<org.apache.commons.io.output.ByteArrayOutputStream: byte[] toByteArray()>();
+
+        $z0 = staticinvoke <java.util.Arrays: boolean equals(byte[],byte[])>($r9, $r10);
+
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>("Content differs", $z0);
+
+        return;
+    }
+
+    public void testWrite_stringToWriter() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsWriteTestCase r0;
+        java.lang.String $r5;
+        byte[] $r6, $r10, $r11, $r12;
+        org.apache.commons.io.output.ByteArrayOutputStream $r7;
+        org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream $r8;
+        java.io.OutputStreamWriter $r9;
+        int $i0, $i2;
+        long $l1, $l3;
+        boolean $z0;
+
+        r0 := @this: org.apache.commons.io.IOUtilsWriteTestCase;
+
+        $r5 = new java.lang.String;
+
+        $r6 = r0.<org.apache.commons.io.IOUtilsWriteTestCase: byte[] inData>;
+
+        specialinvoke $r5.<java.lang.String: void <init>(byte[],java.lang.String)>($r6, "US-ASCII");
+
+        $r7 = new org.apache.commons.io.output.ByteArrayOutputStream;
+
+        specialinvoke $r7.<org.apache.commons.io.output.ByteArrayOutputStream: void <init>()>();
+
+        $r8 = new org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream;
+
+        specialinvoke $r8.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void <init>(java.io.OutputStream,boolean,boolean)>($r7, 1, 1);
+
+        $r9 = new java.io.OutputStreamWriter;
+
+        specialinvoke $r9.<java.io.OutputStreamWriter: void <init>(java.io.OutputStream,java.lang.String)>($r7, "US-ASCII");
+
+        staticinvoke <org.apache.commons.io.IOUtils: void write(java.lang.String,java.io.Writer)>($r5, $r9);
+
+        virtualinvoke $r8.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void off()>();
+
+        virtualinvoke $r9.<java.io.Writer: void flush()>();
+
+        $r10 = r0.<org.apache.commons.io.IOUtilsWriteTestCase: byte[] inData>;
+
+        $i0 = lengthof $r10;
+
+        $l1 = (long) $i0;
+
+        $i2 = virtualinvoke $r7.<org.apache.commons.io.output.ByteArrayOutputStream: int size()>();
+
+        $l3 = (long) $i2;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("Sizes differ", $l1, $l3);
+
+        $r11 = r0.<org.apache.commons.io.IOUtilsWriteTestCase: byte[] inData>;
+
+        $r12 = virtualinvoke $r7.<org.apache.commons.io.output.ByteArrayOutputStream: byte[] toByteArray()>();
+
+        $z0 = staticinvoke <java.util.Arrays: boolean equals(byte[],byte[])>($r11, $r12);
+
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>("Content differs", $z0);
+
+        return;
+    }
+
+    public void testWrite_stringToWriter_Encoding_nullData() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsWriteTestCase r0;
+        org.apache.commons.io.output.ByteArrayOutputStream $r4;
+        org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream $r5;
+        java.io.OutputStreamWriter $r6;
+        int $i0;
+        long $l1;
+
+        r0 := @this: org.apache.commons.io.IOUtilsWriteTestCase;
+
+        $r4 = new org.apache.commons.io.output.ByteArrayOutputStream;
+
+        specialinvoke $r4.<org.apache.commons.io.output.ByteArrayOutputStream: void <init>()>();
+
+        $r5 = new org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream;
+
+        specialinvoke $r5.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void <init>(java.io.OutputStream,boolean,boolean)>($r4, 1, 1);
+
+        $r6 = new java.io.OutputStreamWriter;
+
+        specialinvoke $r6.<java.io.OutputStreamWriter: void <init>(java.io.OutputStream,java.lang.String)>($r4, "US-ASCII");
+
+        staticinvoke <org.apache.commons.io.IOUtils: void write(java.lang.String,java.io.Writer)>(null, $r6);
+
+        virtualinvoke $r5.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void off()>();
+
+        virtualinvoke $r6.<java.io.Writer: void flush()>();
+
+        $i0 = virtualinvoke $r4.<org.apache.commons.io.output.ByteArrayOutputStream: int size()>();
+
+        $l1 = (long) $i0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("Sizes differ", 0L, $l1);
+
+        return;
+    }
+
+    public void testWrite_stringToWriter_Encoding_nullStream() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsWriteTestCase r0;
+        java.lang.String $r3;
+        byte[] $r4;
+        java.lang.NullPointerException $r5;
+
+        r0 := @this: org.apache.commons.io.IOUtilsWriteTestCase;
+
+        $r3 = new java.lang.String;
+
+        $r4 = r0.<org.apache.commons.io.IOUtilsWriteTestCase: byte[] inData>;
+
+        specialinvoke $r3.<java.lang.String: void <init>(byte[],java.lang.String)>($r4, "US-ASCII");
+
+     label1:
+        staticinvoke <org.apache.commons.io.IOUtils: void write(java.lang.String,java.io.Writer)>($r3, null);
+
+        staticinvoke <org.junit.Assert: void fail()>();
+
+     label2:
+        goto label4;
+
+     label3:
+        $r5 := @caughtexception;
+
+     label4:
+        return;
+
+        catch java.lang.NullPointerException from label1 to label2 with label3;
+    }
+
+    public void testWrite_charArrayToOutputStream() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsWriteTestCase r0;
+        java.lang.String $r4;
+        byte[] $r5, $r9, $r10, $r11;
+        org.apache.commons.io.output.ByteArrayOutputStream $r6;
+        org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream $r7;
+        char[] $r8;
+        int $i0, $i2;
+        long $l1, $l3;
+        boolean $z0;
+
+        r0 := @this: org.apache.commons.io.IOUtilsWriteTestCase;
+
+        $r4 = new java.lang.String;
+
+        $r5 = r0.<org.apache.commons.io.IOUtilsWriteTestCase: byte[] inData>;
+
+        specialinvoke $r4.<java.lang.String: void <init>(byte[],java.lang.String)>($r5, "US-ASCII");
+
+        $r6 = new org.apache.commons.io.output.ByteArrayOutputStream;
+
+        specialinvoke $r6.<org.apache.commons.io.output.ByteArrayOutputStream: void <init>()>();
+
+        $r7 = new org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream;
+
+        specialinvoke $r7.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void <init>(java.io.OutputStream,boolean,boolean)>($r6, 1, 1);
+
+        $r8 = virtualinvoke $r4.<java.lang.String: char[] toCharArray()>();
+
+        staticinvoke <org.apache.commons.io.IOUtils: void write(char[],java.io.OutputStream)>($r8, $r7);
+
+        virtualinvoke $r7.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void off()>();
+
+        virtualinvoke $r7.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void flush()>();
+
+        $r9 = r0.<org.apache.commons.io.IOUtilsWriteTestCase: byte[] inData>;
+
+        $i0 = lengthof $r9;
+
+        $l1 = (long) $i0;
+
+        $i2 = virtualinvoke $r6.<org.apache.commons.io.output.ByteArrayOutputStream: int size()>();
+
+        $l3 = (long) $i2;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("Sizes differ", $l1, $l3);
+
+        $r10 = r0.<org.apache.commons.io.IOUtilsWriteTestCase: byte[] inData>;
+
+        $r11 = virtualinvoke $r6.<org.apache.commons.io.output.ByteArrayOutputStream: byte[] toByteArray()>();
+
+        $z0 = staticinvoke <java.util.Arrays: boolean equals(byte[],byte[])>($r10, $r11);
+
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>("Content differs", $z0);
+
+        return;
+    }
+
+    public void testWrite_charArrayToOutputStream_nullData() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsWriteTestCase r0;
+        org.apache.commons.io.output.ByteArrayOutputStream $r3;
+        org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream $r4;
+        int $i0;
+        long $l1;
+
+        r0 := @this: org.apache.commons.io.IOUtilsWriteTestCase;
+
+        $r3 = new org.apache.commons.io.output.ByteArrayOutputStream;
+
+        specialinvoke $r3.<org.apache.commons.io.output.ByteArrayOutputStream: void <init>()>();
+
+        $r4 = new org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream;
+
+        specialinvoke $r4.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void <init>(java.io.OutputStream,boolean,boolean)>($r3, 1, 1);
+
+        staticinvoke <org.apache.commons.io.IOUtils: void write(char[],java.io.OutputStream)>(null, $r4);
+
+        virtualinvoke $r4.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void off()>();
+
+        virtualinvoke $r4.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void flush()>();
+
+        $i0 = virtualinvoke $r3.<org.apache.commons.io.output.ByteArrayOutputStream: int size()>();
+
+        $l1 = (long) $i0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("Sizes differ", 0L, $l1);
+
+        return;
+    }
+
+    public void testWrite_charArrayToOutputStream_nullStream() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsWriteTestCase r0;
+        java.lang.String $r3;
+        byte[] $r4;
+        char[] $r5;
+        java.lang.NullPointerException $r6;
+
+        r0 := @this: org.apache.commons.io.IOUtilsWriteTestCase;
+
+        $r3 = new java.lang.String;
+
+        $r4 = r0.<org.apache.commons.io.IOUtilsWriteTestCase: byte[] inData>;
+
+        specialinvoke $r3.<java.lang.String: void <init>(byte[],java.lang.String)>($r4, "US-ASCII");
+
+     label1:
+        $r5 = virtualinvoke $r3.<java.lang.String: char[] toCharArray()>();
+
+        staticinvoke <org.apache.commons.io.IOUtils: void write(char[],java.io.OutputStream)>($r5, null);
+
+        staticinvoke <org.junit.Assert: void fail()>();
+
+     label2:
+        goto label4;
+
+     label3:
+        $r6 := @caughtexception;
+
+     label4:
+        return;
+
+        catch java.lang.NullPointerException from label1 to label2 with label3;
+    }
+
+    public void testWrite_charArrayToOutputStream_Encoding() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsWriteTestCase r0;
+        java.lang.String $r4, $r9;
+        byte[] $r5, $r10, r11, r12;
+        org.apache.commons.io.output.ByteArrayOutputStream $r6;
+        org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream $r7;
+        char[] $r8;
+        boolean $z0;
+
+        r0 := @this: org.apache.commons.io.IOUtilsWriteTestCase;
+
+        $r4 = new java.lang.String;
+
+        $r5 = r0.<org.apache.commons.io.IOUtilsWriteTestCase: byte[] inData>;
+
+        specialinvoke $r4.<java.lang.String: void <init>(byte[],java.lang.String)>($r5, "US-ASCII");
+
+        $r6 = new org.apache.commons.io.output.ByteArrayOutputStream;
+
+        specialinvoke $r6.<org.apache.commons.io.output.ByteArrayOutputStream: void <init>()>();
+
+        $r7 = new org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream;
+
+        specialinvoke $r7.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void <init>(java.io.OutputStream,boolean,boolean)>($r6, 1, 1);
+
+        $r8 = virtualinvoke $r4.<java.lang.String: char[] toCharArray()>();
+
+        staticinvoke <org.apache.commons.io.IOUtils: void write(char[],java.io.OutputStream,java.lang.String)>($r8, $r7, "UTF16");
+
+        virtualinvoke $r7.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void off()>();
+
+        virtualinvoke $r7.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void flush()>();
+
+        r11 = virtualinvoke $r6.<org.apache.commons.io.output.ByteArrayOutputStream: byte[] toByteArray()>();
+
+        $r9 = new java.lang.String;
+
+        specialinvoke $r9.<java.lang.String: void <init>(byte[],java.lang.String)>(r11, "UTF16");
+
+        r12 = virtualinvoke $r9.<java.lang.String: byte[] getBytes(java.lang.String)>("US-ASCII");
+
+        $r10 = r0.<org.apache.commons.io.IOUtilsWriteTestCase: byte[] inData>;
+
+        $z0 = staticinvoke <java.util.Arrays: boolean equals(byte[],byte[])>($r10, r12);
+
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>("Content differs", $z0);
+
+        return;
+    }
+
+    public void testWrite_charArrayToOutputStream_Encoding_nullData() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsWriteTestCase r0;
+        org.apache.commons.io.output.ByteArrayOutputStream $r3;
+        org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream $r4;
+        int $i0;
+        long $l1;
+
+        r0 := @this: org.apache.commons.io.IOUtilsWriteTestCase;
+
+        $r3 = new org.apache.commons.io.output.ByteArrayOutputStream;
+
+        specialinvoke $r3.<org.apache.commons.io.output.ByteArrayOutputStream: void <init>()>();
+
+        $r4 = new org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream;
+
+        specialinvoke $r4.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void <init>(java.io.OutputStream,boolean,boolean)>($r3, 1, 1);
+
+        staticinvoke <org.apache.commons.io.IOUtils: void write(char[],java.io.OutputStream)>(null, $r4);
+
+        virtualinvoke $r4.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void off()>();
+
+        virtualinvoke $r4.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void flush()>();
+
+        $i0 = virtualinvoke $r3.<org.apache.commons.io.output.ByteArrayOutputStream: int size()>();
+
+        $l1 = (long) $i0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("Sizes differ", 0L, $l1);
+
+        return;
+    }
+
+    public void testWrite_charArrayToOutputStream_Encoding_nullStream() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsWriteTestCase r0;
+        java.lang.String $r3;
+        byte[] $r4;
+        char[] $r5;
+        java.lang.NullPointerException $r6;
+
+        r0 := @this: org.apache.commons.io.IOUtilsWriteTestCase;
+
+        $r3 = new java.lang.String;
+
+        $r4 = r0.<org.apache.commons.io.IOUtilsWriteTestCase: byte[] inData>;
+
+        specialinvoke $r3.<java.lang.String: void <init>(byte[],java.lang.String)>($r4, "US-ASCII");
+
+     label1:
+        $r5 = virtualinvoke $r3.<java.lang.String: char[] toCharArray()>();
+
+        staticinvoke <org.apache.commons.io.IOUtils: void write(char[],java.io.OutputStream)>($r5, null);
+
+        staticinvoke <org.junit.Assert: void fail()>();
+
+     label2:
+        goto label4;
+
+     label3:
+        $r6 := @caughtexception;
+
+     label4:
+        return;
+
+        catch java.lang.NullPointerException from label1 to label2 with label3;
+    }
+
+    public void testWrite_charArrayToOutputStream_nullEncoding() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsWriteTestCase r0;
+        java.lang.String $r4;
+        byte[] $r5, $r9, $r10, $r11;
+        org.apache.commons.io.output.ByteArrayOutputStream $r6;
+        org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream $r7;
+        char[] $r8;
+        int $i0, $i2;
+        long $l1, $l3;
+        boolean $z0;
+
+        r0 := @this: org.apache.commons.io.IOUtilsWriteTestCase;
+
+        $r4 = new java.lang.String;
+
+        $r5 = r0.<org.apache.commons.io.IOUtilsWriteTestCase: byte[] inData>;
+
+        specialinvoke $r4.<java.lang.String: void <init>(byte[],java.lang.String)>($r5, "US-ASCII");
+
+        $r6 = new org.apache.commons.io.output.ByteArrayOutputStream;
+
+        specialinvoke $r6.<org.apache.commons.io.output.ByteArrayOutputStream: void <init>()>();
+
+        $r7 = new org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream;
+
+        specialinvoke $r7.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void <init>(java.io.OutputStream,boolean,boolean)>($r6, 1, 1);
+
+        $r8 = virtualinvoke $r4.<java.lang.String: char[] toCharArray()>();
+
+        staticinvoke <org.apache.commons.io.IOUtils: void write(char[],java.io.OutputStream,java.lang.String)>($r8, $r7, null);
+
+        virtualinvoke $r7.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void off()>();
+
+        virtualinvoke $r7.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void flush()>();
+
+        $r9 = r0.<org.apache.commons.io.IOUtilsWriteTestCase: byte[] inData>;
+
+        $i0 = lengthof $r9;
+
+        $l1 = (long) $i0;
+
+        $i2 = virtualinvoke $r6.<org.apache.commons.io.output.ByteArrayOutputStream: int size()>();
+
+        $l3 = (long) $i2;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("Sizes differ", $l1, $l3);
+
+        $r10 = r0.<org.apache.commons.io.IOUtilsWriteTestCase: byte[] inData>;
+
+        $r11 = virtualinvoke $r6.<org.apache.commons.io.output.ByteArrayOutputStream: byte[] toByteArray()>();
+
+        $z0 = staticinvoke <java.util.Arrays: boolean equals(byte[],byte[])>($r10, $r11);
+
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>("Content differs", $z0);
+
+        return;
+    }
+
+    public void testWrite_charArrayToWriter() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsWriteTestCase r0;
+        java.lang.String $r5;
+        byte[] $r6, $r11, $r12, $r13;
+        org.apache.commons.io.output.ByteArrayOutputStream $r7;
+        org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream $r8;
+        java.io.OutputStreamWriter $r9;
+        char[] $r10;
+        int $i0, $i2;
+        long $l1, $l3;
+        boolean $z0;
+
+        r0 := @this: org.apache.commons.io.IOUtilsWriteTestCase;
+
+        $r5 = new java.lang.String;
+
+        $r6 = r0.<org.apache.commons.io.IOUtilsWriteTestCase: byte[] inData>;
+
+        specialinvoke $r5.<java.lang.String: void <init>(byte[],java.lang.String)>($r6, "US-ASCII");
+
+        $r7 = new org.apache.commons.io.output.ByteArrayOutputStream;
+
+        specialinvoke $r7.<org.apache.commons.io.output.ByteArrayOutputStream: void <init>()>();
+
+        $r8 = new org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream;
+
+        specialinvoke $r8.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void <init>(java.io.OutputStream,boolean,boolean)>($r7, 1, 1);
+
+        $r9 = new java.io.OutputStreamWriter;
+
+        specialinvoke $r9.<java.io.OutputStreamWriter: void <init>(java.io.OutputStream,java.lang.String)>($r7, "US-ASCII");
+
+        $r10 = virtualinvoke $r5.<java.lang.String: char[] toCharArray()>();
+
+        staticinvoke <org.apache.commons.io.IOUtils: void write(char[],java.io.Writer)>($r10, $r9);
+
+        virtualinvoke $r8.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void off()>();
+
+        virtualinvoke $r9.<java.io.Writer: void flush()>();
+
+        $r11 = r0.<org.apache.commons.io.IOUtilsWriteTestCase: byte[] inData>;
+
+        $i0 = lengthof $r11;
+
+        $l1 = (long) $i0;
+
+        $i2 = virtualinvoke $r7.<org.apache.commons.io.output.ByteArrayOutputStream: int size()>();
+
+        $l3 = (long) $i2;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("Sizes differ", $l1, $l3);
+
+        $r12 = r0.<org.apache.commons.io.IOUtilsWriteTestCase: byte[] inData>;
+
+        $r13 = virtualinvoke $r7.<org.apache.commons.io.output.ByteArrayOutputStream: byte[] toByteArray()>();
+
+        $z0 = staticinvoke <java.util.Arrays: boolean equals(byte[],byte[])>($r12, $r13);
+
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>("Content differs", $z0);
+
+        return;
+    }
+
+    public void testWrite_charArrayToWriter_Encoding_nullData() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsWriteTestCase r0;
+        org.apache.commons.io.output.ByteArrayOutputStream $r4;
+        org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream $r5;
+        java.io.OutputStreamWriter $r6;
+        int $i0;
+        long $l1;
+
+        r0 := @this: org.apache.commons.io.IOUtilsWriteTestCase;
+
+        $r4 = new org.apache.commons.io.output.ByteArrayOutputStream;
+
+        specialinvoke $r4.<org.apache.commons.io.output.ByteArrayOutputStream: void <init>()>();
+
+        $r5 = new org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream;
+
+        specialinvoke $r5.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void <init>(java.io.OutputStream,boolean,boolean)>($r4, 1, 1);
+
+        $r6 = new java.io.OutputStreamWriter;
+
+        specialinvoke $r6.<java.io.OutputStreamWriter: void <init>(java.io.OutputStream,java.lang.String)>($r4, "US-ASCII");
+
+        staticinvoke <org.apache.commons.io.IOUtils: void write(char[],java.io.Writer)>(null, $r6);
+
+        virtualinvoke $r5.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void off()>();
+
+        virtualinvoke $r6.<java.io.Writer: void flush()>();
+
+        $i0 = virtualinvoke $r4.<org.apache.commons.io.output.ByteArrayOutputStream: int size()>();
+
+        $l1 = (long) $i0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("Sizes differ", 0L, $l1);
+
+        return;
+    }
+
+    public void testWrite_charArrayToWriter_Encoding_nullStream() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsWriteTestCase r0;
+        java.lang.String $r3;
+        byte[] $r4;
+        char[] $r5;
+        java.lang.NullPointerException $r6;
+
+        r0 := @this: org.apache.commons.io.IOUtilsWriteTestCase;
+
+        $r3 = new java.lang.String;
+
+        $r4 = r0.<org.apache.commons.io.IOUtilsWriteTestCase: byte[] inData>;
+
+        specialinvoke $r3.<java.lang.String: void <init>(byte[],java.lang.String)>($r4, "US-ASCII");
+
+     label1:
+        $r5 = virtualinvoke $r3.<java.lang.String: char[] toCharArray()>();
+
+        staticinvoke <org.apache.commons.io.IOUtils: void write(char[],java.io.Writer)>($r5, null);
+
+        staticinvoke <org.junit.Assert: void fail()>();
+
+     label2:
+        goto label4;
+
+     label3:
+        $r6 := @caughtexception;
+
+     label4:
+        return;
+
+        catch java.lang.NullPointerException from label1 to label2 with label3;
+    }
+
+    public void testWriteLines_OutputStream() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsWriteTestCase r0;
+        java.util.List r2;
+        java.lang.String r6;
+        java.lang.Object[] $r7;
+        java.lang.StringBuffer $r8;
+        org.apache.commons.io.output.ByteArrayOutputStream $r9;
+        org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream $r10;
+
+        r0 := @this: org.apache.commons.io.IOUtilsWriteTestCase;
+
+        $r7 = newarray (java.lang.Object)[6];
+
+        $r7[0] = "hello";
+
+        $r8 = new java.lang.StringBuffer;
+
+        specialinvoke $r8.<java.lang.StringBuffer: void <init>(java.lang.String)>("world");
+
+        $r7[1] = $r8;
+
+        $r7[2] = "";
+
+        $r7[3] = "this is";
+
+        $r7[5] = "some text";
+
+        r2 = staticinvoke <java.util.Arrays: java.util.List asList(java.lang.Object[])>($r7);
+
+        $r9 = new org.apache.commons.io.output.ByteArrayOutputStream;
+
+        specialinvoke $r9.<org.apache.commons.io.output.ByteArrayOutputStream: void <init>()>();
+
+        $r10 = new org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream;
+
+        specialinvoke $r10.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void <init>(java.io.OutputStream,boolean,boolean)>($r9, 0, 1);
+
+        staticinvoke <org.apache.commons.io.IOUtils: void writeLines(java.util.Collection,java.lang.String,java.io.OutputStream)>(r2, "*", $r10);
+
+        virtualinvoke $r10.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void off()>();
+
+        virtualinvoke $r10.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void flush()>();
+
+        r6 = virtualinvoke $r9.<org.apache.commons.io.output.ByteArrayOutputStream: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("hello*world**this is**some text*", r6);
+
+        return;
+    }
+
+    public void testWriteLines_OutputStream_nullData() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsWriteTestCase r0;
+        org.apache.commons.io.output.ByteArrayOutputStream $r3;
+        org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream $r4;
+        int $i0;
+        long $l1;
+
+        r0 := @this: org.apache.commons.io.IOUtilsWriteTestCase;
+
+        $r3 = new org.apache.commons.io.output.ByteArrayOutputStream;
+
+        specialinvoke $r3.<org.apache.commons.io.output.ByteArrayOutputStream: void <init>()>();
+
+        $r4 = new org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream;
+
+        specialinvoke $r4.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void <init>(java.io.OutputStream,boolean,boolean)>($r3, 0, 1);
+
+        staticinvoke <org.apache.commons.io.IOUtils: void writeLines(java.util.Collection,java.lang.String,java.io.OutputStream)>(null, "*", $r4);
+
+        virtualinvoke $r4.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void off()>();
+
+        virtualinvoke $r4.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void flush()>();
+
+        $i0 = virtualinvoke $r3.<org.apache.commons.io.output.ByteArrayOutputStream: int size()>();
+
+        $l1 = (long) $i0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("Sizes differ", 0L, $l1);
+
+        return;
+    }
+
+    public void testWriteLines_OutputStream_nullSeparator() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsWriteTestCase r0;
+        java.util.List r2;
+        java.lang.String r5, r6, $r11, $r14;
+        java.lang.Object[] $r7;
+        org.apache.commons.io.output.ByteArrayOutputStream $r8;
+        org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream $r9;
+        java.lang.StringBuilder $r10, $r12, $r13, $r15;
+
+        r0 := @this: org.apache.commons.io.IOUtilsWriteTestCase;
+
+        $r7 = newarray (java.lang.Object)[2];
+
+        $r7[0] = "hello";
+
+        $r7[1] = "world";
+
+        r2 = staticinvoke <java.util.Arrays: java.util.List asList(java.lang.Object[])>($r7);
+
+        $r8 = new org.apache.commons.io.output.ByteArrayOutputStream;
+
+        specialinvoke $r8.<org.apache.commons.io.output.ByteArrayOutputStream: void <init>()>();
+
+        $r9 = new org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream;
+
+        specialinvoke $r9.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void <init>(java.io.OutputStream,boolean,boolean)>($r8, 0, 1);
+
+        staticinvoke <org.apache.commons.io.IOUtils: void writeLines(java.util.Collection,java.lang.String,java.io.OutputStream)>(r2, null, $r9);
+
+        virtualinvoke $r9.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void off()>();
+
+        virtualinvoke $r9.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void flush()>();
+
+        $r10 = new java.lang.StringBuilder;
+
+        specialinvoke $r10.<java.lang.StringBuilder: void <init>(java.lang.String)>("hello");
+
+        $r11 = <org.apache.commons.io.IOUtils: java.lang.String LINE_SEPARATOR>;
+
+        $r12 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r11);
+
+        $r13 = virtualinvoke $r12.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("world");
+
+        $r14 = <org.apache.commons.io.IOUtils: java.lang.String LINE_SEPARATOR>;
+
+        $r15 = virtualinvoke $r13.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r14);
+
+        r5 = virtualinvoke $r15.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        r6 = virtualinvoke $r8.<org.apache.commons.io.output.ByteArrayOutputStream: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>(r5, r6);
+
+        return;
+    }
+
+    public void testWriteLines_OutputStream_nullStream() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsWriteTestCase r0;
+        java.util.List r2;
+        java.lang.Object[] $r4;
+        java.lang.NullPointerException $r5;
+
+        r0 := @this: org.apache.commons.io.IOUtilsWriteTestCase;
+
+        $r4 = newarray (java.lang.Object)[2];
+
+        $r4[0] = "hello";
+
+        $r4[1] = "world";
+
+        r2 = staticinvoke <java.util.Arrays: java.util.List asList(java.lang.Object[])>($r4);
+
+     label1:
+        staticinvoke <org.apache.commons.io.IOUtils: void writeLines(java.util.Collection,java.lang.String,java.io.OutputStream)>(r2, "*", null);
+
+        staticinvoke <org.junit.Assert: void fail()>();
+
+     label2:
+        goto label4;
+
+     label3:
+        $r5 := @caughtexception;
+
+     label4:
+        return;
+
+        catch java.lang.NullPointerException from label1 to label2 with label3;
+    }
+
+    public void testWriteLines_OutputStream_Encoding() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsWriteTestCase r0;
+        java.util.List r2;
+        java.lang.String r6;
+        java.lang.Object[] $r7;
+        java.lang.StringBuffer $r8;
+        org.apache.commons.io.output.ByteArrayOutputStream $r9;
+        org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream $r10;
+
+        r0 := @this: org.apache.commons.io.IOUtilsWriteTestCase;
+
+        $r7 = newarray (java.lang.Object)[6];
+
+        $r7[0] = "hello\u8364";
+
+        $r8 = new java.lang.StringBuffer;
+
+        specialinvoke $r8.<java.lang.StringBuffer: void <init>(java.lang.String)>("world");
+
+        $r7[1] = $r8;
+
+        $r7[2] = "";
+
+        $r7[3] = "this is";
+
+        $r7[5] = "some text";
+
+        r2 = staticinvoke <java.util.Arrays: java.util.List asList(java.lang.Object[])>($r7);
+
+        $r9 = new org.apache.commons.io.output.ByteArrayOutputStream;
+
+        specialinvoke $r9.<org.apache.commons.io.output.ByteArrayOutputStream: void <init>()>();
+
+        $r10 = new org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream;
+
+        specialinvoke $r10.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void <init>(java.io.OutputStream,boolean,boolean)>($r9, 0, 1);
+
+        staticinvoke <org.apache.commons.io.IOUtils: void writeLines(java.util.Collection,java.lang.String,java.io.OutputStream,java.lang.String)>(r2, "*", $r10, "UTF-8");
+
+        virtualinvoke $r10.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void off()>();
+
+        virtualinvoke $r10.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void flush()>();
+
+        r6 = virtualinvoke $r9.<org.apache.commons.io.output.ByteArrayOutputStream: java.lang.String toString(java.lang.String)>("UTF-8");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("hello\u8364*world**this is**some text*", r6);
+
+        return;
+    }
+
+    public void testWriteLines_OutputStream_Encoding_nullData() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsWriteTestCase r0;
+        org.apache.commons.io.output.ByteArrayOutputStream $r3;
+        org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream $r4;
+        int $i0;
+        long $l1;
+
+        r0 := @this: org.apache.commons.io.IOUtilsWriteTestCase;
+
+        $r3 = new org.apache.commons.io.output.ByteArrayOutputStream;
+
+        specialinvoke $r3.<org.apache.commons.io.output.ByteArrayOutputStream: void <init>()>();
+
+        $r4 = new org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream;
+
+        specialinvoke $r4.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void <init>(java.io.OutputStream,boolean,boolean)>($r3, 0, 1);
+
+        staticinvoke <org.apache.commons.io.IOUtils: void writeLines(java.util.Collection,java.lang.String,java.io.OutputStream,java.lang.String)>(null, "*", $r4, "US-ASCII");
+
+        virtualinvoke $r4.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void off()>();
+
+        virtualinvoke $r4.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void flush()>();
+
+        $i0 = virtualinvoke $r3.<org.apache.commons.io.output.ByteArrayOutputStream: int size()>();
+
+        $l1 = (long) $i0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("Sizes differ", 0L, $l1);
+
+        return;
+    }
+
+    public void testWriteLines_OutputStream_Encoding_nullSeparator() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsWriteTestCase r0;
+        java.util.List r2;
+        java.lang.String r5, r6, $r11, $r14;
+        java.lang.Object[] $r7;
+        org.apache.commons.io.output.ByteArrayOutputStream $r8;
+        org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream $r9;
+        java.lang.StringBuilder $r10, $r12, $r13, $r15;
+
+        r0 := @this: org.apache.commons.io.IOUtilsWriteTestCase;
+
+        $r7 = newarray (java.lang.Object)[2];
+
+        $r7[0] = "hello";
+
+        $r7[1] = "world";
+
+        r2 = staticinvoke <java.util.Arrays: java.util.List asList(java.lang.Object[])>($r7);
+
+        $r8 = new org.apache.commons.io.output.ByteArrayOutputStream;
+
+        specialinvoke $r8.<org.apache.commons.io.output.ByteArrayOutputStream: void <init>()>();
+
+        $r9 = new org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream;
+
+        specialinvoke $r9.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void <init>(java.io.OutputStream,boolean,boolean)>($r8, 0, 1);
+
+        staticinvoke <org.apache.commons.io.IOUtils: void writeLines(java.util.Collection,java.lang.String,java.io.OutputStream,java.lang.String)>(r2, null, $r9, "US-ASCII");
+
+        virtualinvoke $r9.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void off()>();
+
+        virtualinvoke $r9.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void flush()>();
+
+        $r10 = new java.lang.StringBuilder;
+
+        specialinvoke $r10.<java.lang.StringBuilder: void <init>(java.lang.String)>("hello");
+
+        $r11 = <org.apache.commons.io.IOUtils: java.lang.String LINE_SEPARATOR>;
+
+        $r12 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r11);
+
+        $r13 = virtualinvoke $r12.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("world");
+
+        $r14 = <org.apache.commons.io.IOUtils: java.lang.String LINE_SEPARATOR>;
+
+        $r15 = virtualinvoke $r13.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r14);
+
+        r5 = virtualinvoke $r15.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        r6 = virtualinvoke $r8.<org.apache.commons.io.output.ByteArrayOutputStream: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>(r5, r6);
+
+        return;
+    }
+
+    public void testWriteLines_OutputStream_Encoding_nullStream() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsWriteTestCase r0;
+        java.util.List r2;
+        java.lang.Object[] $r4;
+        java.lang.NullPointerException $r5;
+
+        r0 := @this: org.apache.commons.io.IOUtilsWriteTestCase;
+
+        $r4 = newarray (java.lang.Object)[2];
+
+        $r4[0] = "hello";
+
+        $r4[1] = "world";
+
+        r2 = staticinvoke <java.util.Arrays: java.util.List asList(java.lang.Object[])>($r4);
+
+     label1:
+        staticinvoke <org.apache.commons.io.IOUtils: void writeLines(java.util.Collection,java.lang.String,java.io.OutputStream,java.lang.String)>(r2, "*", null, "US-ASCII");
+
+        staticinvoke <org.junit.Assert: void fail()>();
+
+     label2:
+        goto label4;
+
+     label3:
+        $r5 := @caughtexception;
+
+     label4:
+        return;
+
+        catch java.lang.NullPointerException from label1 to label2 with label3;
+    }
+
+    public void testWriteLines_OutputStream_Encoding_nullEncoding() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsWriteTestCase r0;
+        java.util.List r2;
+        java.lang.String r6;
+        java.lang.Object[] $r7;
+        java.lang.StringBuffer $r8;
+        org.apache.commons.io.output.ByteArrayOutputStream $r9;
+        org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream $r10;
+
+        r0 := @this: org.apache.commons.io.IOUtilsWriteTestCase;
+
+        $r7 = newarray (java.lang.Object)[6];
+
+        $r7[0] = "hello";
+
+        $r8 = new java.lang.StringBuffer;
+
+        specialinvoke $r8.<java.lang.StringBuffer: void <init>(java.lang.String)>("world");
+
+        $r7[1] = $r8;
+
+        $r7[2] = "";
+
+        $r7[3] = "this is";
+
+        $r7[5] = "some text";
+
+        r2 = staticinvoke <java.util.Arrays: java.util.List asList(java.lang.Object[])>($r7);
+
+        $r9 = new org.apache.commons.io.output.ByteArrayOutputStream;
+
+        specialinvoke $r9.<org.apache.commons.io.output.ByteArrayOutputStream: void <init>()>();
+
+        $r10 = new org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream;
+
+        specialinvoke $r10.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void <init>(java.io.OutputStream,boolean,boolean)>($r9, 0, 1);
+
+        staticinvoke <org.apache.commons.io.IOUtils: void writeLines(java.util.Collection,java.lang.String,java.io.OutputStream,java.lang.String)>(r2, "*", $r10, null);
+
+        virtualinvoke $r10.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void off()>();
+
+        virtualinvoke $r10.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void flush()>();
+
+        r6 = virtualinvoke $r9.<org.apache.commons.io.output.ByteArrayOutputStream: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("hello*world**this is**some text*", r6);
+
+        return;
+    }
+
+    public void testWriteLines_Writer() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsWriteTestCase r0;
+        java.util.List r2;
+        java.lang.String r7;
+        java.lang.Object[] $r8;
+        java.lang.StringBuffer $r9;
+        org.apache.commons.io.output.ByteArrayOutputStream $r10;
+        org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream $r11;
+        java.io.OutputStreamWriter $r12;
+
+        r0 := @this: org.apache.commons.io.IOUtilsWriteTestCase;
+
+        $r8 = newarray (java.lang.Object)[6];
+
+        $r8[0] = "hello";
+
+        $r9 = new java.lang.StringBuffer;
+
+        specialinvoke $r9.<java.lang.StringBuffer: void <init>(java.lang.String)>("world");
+
+        $r8[1] = $r9;
+
+        $r8[2] = "";
+
+        $r8[3] = "this is";
+
+        $r8[5] = "some text";
+
+        r2 = staticinvoke <java.util.Arrays: java.util.List asList(java.lang.Object[])>($r8);
+
+        $r10 = new org.apache.commons.io.output.ByteArrayOutputStream;
+
+        specialinvoke $r10.<org.apache.commons.io.output.ByteArrayOutputStream: void <init>()>();
+
+        $r11 = new org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream;
+
+        specialinvoke $r11.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void <init>(java.io.OutputStream,boolean,boolean)>($r10, 1, 1);
+
+        $r12 = new java.io.OutputStreamWriter;
+
+        specialinvoke $r12.<java.io.OutputStreamWriter: void <init>(java.io.OutputStream,java.lang.String)>($r10, "US-ASCII");
+
+        staticinvoke <org.apache.commons.io.IOUtils: void writeLines(java.util.Collection,java.lang.String,java.io.Writer)>(r2, "*", $r12);
+
+        virtualinvoke $r11.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void off()>();
+
+        virtualinvoke $r12.<java.io.Writer: void flush()>();
+
+        r7 = virtualinvoke $r10.<org.apache.commons.io.output.ByteArrayOutputStream: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("hello*world**this is**some text*", r7);
+
+        return;
+    }
+
+    public void testWriteLines_Writer_nullData() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsWriteTestCase r0;
+        org.apache.commons.io.output.ByteArrayOutputStream $r4;
+        org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream $r5;
+        java.io.OutputStreamWriter $r6;
+        int $i0;
+        long $l1;
+
+        r0 := @this: org.apache.commons.io.IOUtilsWriteTestCase;
+
+        $r4 = new org.apache.commons.io.output.ByteArrayOutputStream;
+
+        specialinvoke $r4.<org.apache.commons.io.output.ByteArrayOutputStream: void <init>()>();
+
+        $r5 = new org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream;
+
+        specialinvoke $r5.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void <init>(java.io.OutputStream,boolean,boolean)>($r4, 1, 1);
+
+        $r6 = new java.io.OutputStreamWriter;
+
+        specialinvoke $r6.<java.io.OutputStreamWriter: void <init>(java.io.OutputStream,java.lang.String)>($r4, "US-ASCII");
+
+        staticinvoke <org.apache.commons.io.IOUtils: void writeLines(java.util.Collection,java.lang.String,java.io.Writer)>(null, "*", $r6);
+
+        virtualinvoke $r5.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void off()>();
+
+        virtualinvoke $r6.<java.io.Writer: void flush()>();
+
+        $i0 = virtualinvoke $r4.<org.apache.commons.io.output.ByteArrayOutputStream: int size()>();
+
+        $l1 = (long) $i0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,long,long)>("Sizes differ", 0L, $l1);
+
+        return;
+    }
+
+    public void testWriteLines_Writer_nullSeparator() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsWriteTestCase r0;
+        java.util.List r2;
+        java.lang.String r6, r7, $r13, $r16;
+        java.lang.Object[] $r8;
+        org.apache.commons.io.output.ByteArrayOutputStream $r9;
+        org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream $r10;
+        java.io.OutputStreamWriter $r11;
+        java.lang.StringBuilder $r12, $r14, $r15, $r17;
+
+        r0 := @this: org.apache.commons.io.IOUtilsWriteTestCase;
+
+        $r8 = newarray (java.lang.Object)[2];
+
+        $r8[0] = "hello";
+
+        $r8[1] = "world";
+
+        r2 = staticinvoke <java.util.Arrays: java.util.List asList(java.lang.Object[])>($r8);
+
+        $r9 = new org.apache.commons.io.output.ByteArrayOutputStream;
+
+        specialinvoke $r9.<org.apache.commons.io.output.ByteArrayOutputStream: void <init>()>();
+
+        $r10 = new org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream;
+
+        specialinvoke $r10.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void <init>(java.io.OutputStream,boolean,boolean)>($r9, 1, 1);
+
+        $r11 = new java.io.OutputStreamWriter;
+
+        specialinvoke $r11.<java.io.OutputStreamWriter: void <init>(java.io.OutputStream,java.lang.String)>($r9, "US-ASCII");
+
+        staticinvoke <org.apache.commons.io.IOUtils: void writeLines(java.util.Collection,java.lang.String,java.io.Writer)>(r2, null, $r11);
+
+        virtualinvoke $r10.<org.apache.commons.io.testtools.YellOnFlushAndCloseOutputStream: void off()>();
+
+        virtualinvoke $r11.<java.io.Writer: void flush()>();
+
+        $r12 = new java.lang.StringBuilder;
+
+        specialinvoke $r12.<java.lang.StringBuilder: void <init>(java.lang.String)>("hello");
+
+        $r13 = <org.apache.commons.io.IOUtils: java.lang.String LINE_SEPARATOR>;
+
+        $r14 = virtualinvoke $r12.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r13);
+
+        $r15 = virtualinvoke $r14.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("world");
+
+        $r16 = <org.apache.commons.io.IOUtils: java.lang.String LINE_SEPARATOR>;
+
+        $r17 = virtualinvoke $r15.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r16);
+
+        r6 = virtualinvoke $r17.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        r7 = virtualinvoke $r9.<org.apache.commons.io.output.ByteArrayOutputStream: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>(r6, r7);
+
+        return;
+    }
+
+    public void testWriteLines_Writer_nullStream() throws java.lang.Exception
+    {
+        org.apache.commons.io.IOUtilsWriteTestCase r0;
+        java.util.List r2;
+        java.lang.Object[] $r4;
+        java.lang.NullPointerException $r5;
+
+        r0 := @this: org.apache.commons.io.IOUtilsWriteTestCase;
+
+        $r4 = newarray (java.lang.Object)[2];
+
+        $r4[0] = "hello";
+
+        $r4[1] = "world";
+
+        r2 = staticinvoke <java.util.Arrays: java.util.List asList(java.lang.Object[])>($r4);
+
+     label1:
+        staticinvoke <org.apache.commons.io.IOUtils: void writeLines(java.util.Collection,java.lang.String,java.io.Writer)>(r2, "*", null);
+
+        staticinvoke <org.junit.Assert: void fail()>();
+
+     label2:
+        goto label4;
+
+     label3:
+        $r5 := @caughtexception;
+
+     label4:
+        return;
+
+        catch java.lang.NullPointerException from label1 to label2 with label3;
+    }
+
+    public static void <clinit>()
+    {
+        <org.apache.commons.io.IOUtilsWriteTestCase: int FILE_SIZE> = 4097;
+
+        return;
+    }
+}

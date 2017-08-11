@@ -1,0 +1,1280 @@
+public class org.apache.commons.io.input.XmlStreamReaderTest extends java.lang.Object
+{
+    private static final java.lang.String XML5;
+    private static final java.lang.String XML4;
+    private static final java.lang.String XML3;
+    private static final java.lang.String XML2;
+    private static final java.lang.String XML1;
+    private static final java.lang.String ENCODING_ATTRIBUTE_XML;
+    private static final int[] NO_BOM_BYTES;
+    private static final int[] UTF_16BE_BOM_BYTES;
+    private static final int[] UTF_16LE_BOM_BYTES;
+    private static final int[] UTF_32BE_BOM_BYTES;
+    private static final int[] UTF_32LE_BOM_BYTES;
+    private static final int[] UTF_8_BOM_BYTES;
+    private static final java.util.Map BOMs;
+    private static final java.text.MessageFormat XML;
+    private static final java.text.MessageFormat XML_WITH_PROLOG;
+    private static final java.text.MessageFormat XML_WITH_PROLOG_AND_ENCODING_DOUBLE_QUOTES;
+    private static final java.text.MessageFormat XML_WITH_PROLOG_AND_ENCODING_SINGLE_QUOTES;
+    private static final java.text.MessageFormat XML_WITH_PROLOG_AND_ENCODING_SPACED_SINGLE_QUOTES;
+    private static final java.text.MessageFormat INFO;
+    private static final java.util.Map XMLs;
+
+    static void <clinit>()
+    {
+        int[] $r0, $r1, $r2, $r3, $r4, $r5, $r7, $r10, $r13, $r16, $r19, $r22, $r25;
+        java.util.HashMap $r6, $r34;
+        java.util.Map $r8, $r11, $r14, $r17, $r20, $r23, $r26, $r36, $r39, $r42, $r45, $r48;
+        java.text.MessageFormat $r28, $r29, $r30, $r31, $r32, $r33, $r35, $r38, $r41, $r44, $r47;
+
+        <org.apache.commons.io.input.XmlStreamReaderTest: java.lang.String ENCODING_ATTRIBUTE_XML> = "<?xml version=\"1.0\" ?> \n<atom:feed xmlns:atom=\"http://www.w3.org/2005/Atom\">\n\n  <atom:entry>\n    <atom:title encoding=\'base64\'><![CDATA\naW5nTGluZSIgLz4";
+
+        <org.apache.commons.io.input.XmlStreamReaderTest: java.lang.String XML1> = "xml";
+
+        <org.apache.commons.io.input.XmlStreamReaderTest: java.lang.String XML2> = "xml-prolog";
+
+        <org.apache.commons.io.input.XmlStreamReaderTest: java.lang.String XML3> = "xml-prolog-encoding-double-quotes";
+
+        <org.apache.commons.io.input.XmlStreamReaderTest: java.lang.String XML4> = "xml-prolog-encoding-single-quotes";
+
+        <org.apache.commons.io.input.XmlStreamReaderTest: java.lang.String XML5> = "xml-prolog-encoding-spaced-single-quotes";
+
+        $r0 = newarray (int)[0];
+
+        <org.apache.commons.io.input.XmlStreamReaderTest: int[] NO_BOM_BYTES> = $r0;
+
+        $r1 = newarray (int)[2];
+
+        $r1[0] = 254;
+
+        $r1[1] = 255;
+
+        <org.apache.commons.io.input.XmlStreamReaderTest: int[] UTF_16BE_BOM_BYTES> = $r1;
+
+        $r2 = newarray (int)[2];
+
+        $r2[0] = 255;
+
+        $r2[1] = 254;
+
+        <org.apache.commons.io.input.XmlStreamReaderTest: int[] UTF_16LE_BOM_BYTES> = $r2;
+
+        $r3 = newarray (int)[4];
+
+        $r3[2] = 254;
+
+        $r3[3] = 255;
+
+        <org.apache.commons.io.input.XmlStreamReaderTest: int[] UTF_32BE_BOM_BYTES> = $r3;
+
+        $r4 = newarray (int)[4];
+
+        $r4[0] = 255;
+
+        $r4[1] = 254;
+
+        <org.apache.commons.io.input.XmlStreamReaderTest: int[] UTF_32LE_BOM_BYTES> = $r4;
+
+        $r5 = newarray (int)[3];
+
+        $r5[0] = 239;
+
+        $r5[1] = 187;
+
+        $r5[2] = 191;
+
+        <org.apache.commons.io.input.XmlStreamReaderTest: int[] UTF_8_BOM_BYTES> = $r5;
+
+        $r6 = new java.util.HashMap;
+
+        specialinvoke $r6.<java.util.HashMap: void <init>()>();
+
+        <org.apache.commons.io.input.XmlStreamReaderTest: java.util.Map BOMs> = $r6;
+
+        $r8 = <org.apache.commons.io.input.XmlStreamReaderTest: java.util.Map BOMs>;
+
+        $r7 = <org.apache.commons.io.input.XmlStreamReaderTest: int[] NO_BOM_BYTES>;
+
+        interfaceinvoke $r8.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("no-bom", $r7);
+
+        $r11 = <org.apache.commons.io.input.XmlStreamReaderTest: java.util.Map BOMs>;
+
+        $r10 = <org.apache.commons.io.input.XmlStreamReaderTest: int[] UTF_16BE_BOM_BYTES>;
+
+        interfaceinvoke $r11.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("UTF-16BE-bom", $r10);
+
+        $r14 = <org.apache.commons.io.input.XmlStreamReaderTest: java.util.Map BOMs>;
+
+        $r13 = <org.apache.commons.io.input.XmlStreamReaderTest: int[] UTF_16LE_BOM_BYTES>;
+
+        interfaceinvoke $r14.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("UTF-16LE-bom", $r13);
+
+        $r17 = <org.apache.commons.io.input.XmlStreamReaderTest: java.util.Map BOMs>;
+
+        $r16 = <org.apache.commons.io.input.XmlStreamReaderTest: int[] UTF_32BE_BOM_BYTES>;
+
+        interfaceinvoke $r17.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("UTF-32BE-bom", $r16);
+
+        $r20 = <org.apache.commons.io.input.XmlStreamReaderTest: java.util.Map BOMs>;
+
+        $r19 = <org.apache.commons.io.input.XmlStreamReaderTest: int[] UTF_32LE_BOM_BYTES>;
+
+        interfaceinvoke $r20.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("UTF-32LE-bom", $r19);
+
+        $r23 = <org.apache.commons.io.input.XmlStreamReaderTest: java.util.Map BOMs>;
+
+        $r22 = <org.apache.commons.io.input.XmlStreamReaderTest: int[] NO_BOM_BYTES>;
+
+        interfaceinvoke $r23.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("UTF-16-bom", $r22);
+
+        $r26 = <org.apache.commons.io.input.XmlStreamReaderTest: java.util.Map BOMs>;
+
+        $r25 = <org.apache.commons.io.input.XmlStreamReaderTest: int[] UTF_8_BOM_BYTES>;
+
+        interfaceinvoke $r26.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("UTF-8-bom", $r25);
+
+        $r28 = new java.text.MessageFormat;
+
+        specialinvoke $r28.<java.text.MessageFormat: void <init>(java.lang.String)>("<root>{2}</root>");
+
+        <org.apache.commons.io.input.XmlStreamReaderTest: java.text.MessageFormat XML> = $r28;
+
+        $r29 = new java.text.MessageFormat;
+
+        specialinvoke $r29.<java.text.MessageFormat: void <init>(java.lang.String)>("<?xml version=\"1.0\"?>\n<root>{2}</root>");
+
+        <org.apache.commons.io.input.XmlStreamReaderTest: java.text.MessageFormat XML_WITH_PROLOG> = $r29;
+
+        $r30 = new java.text.MessageFormat;
+
+        specialinvoke $r30.<java.text.MessageFormat: void <init>(java.lang.String)>("<?xml version=\"1.0\" encoding=\"{1}\"?>\n<root>{2}</root>");
+
+        <org.apache.commons.io.input.XmlStreamReaderTest: java.text.MessageFormat XML_WITH_PROLOG_AND_ENCODING_DOUBLE_QUOTES> = $r30;
+
+        $r31 = new java.text.MessageFormat;
+
+        specialinvoke $r31.<java.text.MessageFormat: void <init>(java.lang.String)>("<?xml version=\"1.0\" encoding=\'\'{1}\'\'?>\n<root>{2}</root>");
+
+        <org.apache.commons.io.input.XmlStreamReaderTest: java.text.MessageFormat XML_WITH_PROLOG_AND_ENCODING_SINGLE_QUOTES> = $r31;
+
+        $r32 = new java.text.MessageFormat;
+
+        specialinvoke $r32.<java.text.MessageFormat: void <init>(java.lang.String)>("<?xml version=\"1.0\" encoding =  \t \n \r\'\'{1}\'\'?>\n<root>{2}</root>");
+
+        <org.apache.commons.io.input.XmlStreamReaderTest: java.text.MessageFormat XML_WITH_PROLOG_AND_ENCODING_SPACED_SINGLE_QUOTES> = $r32;
+
+        $r33 = new java.text.MessageFormat;
+
+        specialinvoke $r33.<java.text.MessageFormat: void <init>(java.lang.String)>("\nBOM : {0}\nDoc : {1}\nStream Enc : {2}\nProlog Enc : {3}\n");
+
+        <org.apache.commons.io.input.XmlStreamReaderTest: java.text.MessageFormat INFO> = $r33;
+
+        $r34 = new java.util.HashMap;
+
+        specialinvoke $r34.<java.util.HashMap: void <init>()>();
+
+        <org.apache.commons.io.input.XmlStreamReaderTest: java.util.Map XMLs> = $r34;
+
+        $r36 = <org.apache.commons.io.input.XmlStreamReaderTest: java.util.Map XMLs>;
+
+        $r35 = <org.apache.commons.io.input.XmlStreamReaderTest: java.text.MessageFormat XML>;
+
+        interfaceinvoke $r36.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("xml", $r35);
+
+        $r39 = <org.apache.commons.io.input.XmlStreamReaderTest: java.util.Map XMLs>;
+
+        $r38 = <org.apache.commons.io.input.XmlStreamReaderTest: java.text.MessageFormat XML_WITH_PROLOG>;
+
+        interfaceinvoke $r39.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("xml-prolog", $r38);
+
+        $r42 = <org.apache.commons.io.input.XmlStreamReaderTest: java.util.Map XMLs>;
+
+        $r41 = <org.apache.commons.io.input.XmlStreamReaderTest: java.text.MessageFormat XML_WITH_PROLOG_AND_ENCODING_DOUBLE_QUOTES>;
+
+        interfaceinvoke $r42.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("xml-prolog-encoding-double-quotes", $r41);
+
+        $r45 = <org.apache.commons.io.input.XmlStreamReaderTest: java.util.Map XMLs>;
+
+        $r44 = <org.apache.commons.io.input.XmlStreamReaderTest: java.text.MessageFormat XML_WITH_PROLOG_AND_ENCODING_SINGLE_QUOTES>;
+
+        interfaceinvoke $r45.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("xml-prolog-encoding-single-quotes", $r44);
+
+        $r48 = <org.apache.commons.io.input.XmlStreamReaderTest: java.util.Map XMLs>;
+
+        $r47 = <org.apache.commons.io.input.XmlStreamReaderTest: java.text.MessageFormat XML_WITH_PROLOG_AND_ENCODING_SPACED_SINGLE_QUOTES>;
+
+        interfaceinvoke $r48.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("xml-prolog-encoding-spaced-single-quotes", $r47);
+
+        return;
+    }
+
+    public void <init>()
+    {
+        org.apache.commons.io.input.XmlStreamReaderTest r0;
+
+        r0 := @this: org.apache.commons.io.input.XmlStreamReaderTest;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    protected void _testRawNoBomValid(java.lang.String) throws java.lang.Exception
+    {
+        org.apache.commons.io.input.XmlStreamReaderTest r0;
+        java.lang.String r1, $r3, $r5, $r7, $r9, $r11;
+        org.apache.commons.io.input.XmlStreamReader $r2, $r4, $r6, $r8, $r10;
+        java.io.InputStream r12, r14, r16, r18, r20;
+
+        r0 := @this: org.apache.commons.io.input.XmlStreamReaderTest;
+
+        r1 := @parameter0: java.lang.String;
+
+        r12 = virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: java.io.InputStream getXmlStream(java.lang.String,java.lang.String,java.lang.String,java.lang.String)>("no-bom", "xml", r1, r1);
+
+        $r2 = new org.apache.commons.io.input.XmlStreamReader;
+
+        specialinvoke $r2.<org.apache.commons.io.input.XmlStreamReader: void <init>(java.io.InputStream,boolean)>(r12, 0);
+
+        $r3 = virtualinvoke $r2.<org.apache.commons.io.input.XmlStreamReader: java.lang.String getEncoding()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r3, "UTF-8");
+
+        virtualinvoke $r2.<org.apache.commons.io.input.XmlStreamReader: void close()>();
+
+        r14 = virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: java.io.InputStream getXmlStream(java.lang.String,java.lang.String,java.lang.String,java.lang.String)>("no-bom", "xml-prolog", r1, r1);
+
+        $r4 = new org.apache.commons.io.input.XmlStreamReader;
+
+        specialinvoke $r4.<org.apache.commons.io.input.XmlStreamReader: void <init>(java.io.InputStream)>(r14);
+
+        $r5 = virtualinvoke $r4.<org.apache.commons.io.input.XmlStreamReader: java.lang.String getEncoding()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r5, "UTF-8");
+
+        virtualinvoke $r4.<org.apache.commons.io.input.XmlStreamReader: void close()>();
+
+        r16 = virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: java.io.InputStream getXmlStream(java.lang.String,java.lang.String,java.lang.String,java.lang.String)>("no-bom", "xml-prolog-encoding-double-quotes", r1, r1);
+
+        $r6 = new org.apache.commons.io.input.XmlStreamReader;
+
+        specialinvoke $r6.<org.apache.commons.io.input.XmlStreamReader: void <init>(java.io.InputStream)>(r16);
+
+        $r7 = virtualinvoke $r6.<org.apache.commons.io.input.XmlStreamReader: java.lang.String getEncoding()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r7, r1);
+
+        virtualinvoke $r6.<org.apache.commons.io.input.XmlStreamReader: void close()>();
+
+        r18 = virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: java.io.InputStream getXmlStream(java.lang.String,java.lang.String,java.lang.String,java.lang.String)>("no-bom", "xml-prolog-encoding-single-quotes", r1, r1);
+
+        $r8 = new org.apache.commons.io.input.XmlStreamReader;
+
+        specialinvoke $r8.<org.apache.commons.io.input.XmlStreamReader: void <init>(java.io.InputStream)>(r18);
+
+        $r9 = virtualinvoke $r8.<org.apache.commons.io.input.XmlStreamReader: java.lang.String getEncoding()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r9, r1);
+
+        virtualinvoke $r8.<org.apache.commons.io.input.XmlStreamReader: void close()>();
+
+        r20 = virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: java.io.InputStream getXmlStream(java.lang.String,java.lang.String,java.lang.String,java.lang.String)>("no-bom", "xml-prolog-encoding-spaced-single-quotes", r1, r1);
+
+        $r10 = new org.apache.commons.io.input.XmlStreamReader;
+
+        specialinvoke $r10.<org.apache.commons.io.input.XmlStreamReader: void <init>(java.io.InputStream)>(r20);
+
+        $r11 = virtualinvoke $r10.<org.apache.commons.io.input.XmlStreamReader: java.lang.String getEncoding()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r11, r1);
+
+        virtualinvoke $r10.<org.apache.commons.io.input.XmlStreamReader: void close()>();
+
+        return;
+    }
+
+    protected void _testRawNoBomInvalid(java.lang.String) throws java.lang.Exception
+    {
+        org.apache.commons.io.input.XmlStreamReaderTest r0;
+        java.lang.String r1, $r6;
+        java.io.InputStream r2;
+        org.apache.commons.io.input.XmlStreamReader $r4;
+        java.io.IOException $r5;
+        boolean $z0;
+
+        r0 := @this: org.apache.commons.io.input.XmlStreamReaderTest;
+
+        r1 := @parameter0: java.lang.String;
+
+        r2 = virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: java.io.InputStream getXmlStream(java.lang.String,java.lang.String,java.lang.String,java.lang.String)>("no-bom", "xml-prolog-encoding-double-quotes", r1, r1);
+
+     label1:
+        $r4 = new org.apache.commons.io.input.XmlStreamReader;
+
+        specialinvoke $r4.<org.apache.commons.io.input.XmlStreamReader: void <init>(java.io.InputStream,boolean)>(r2, 0);
+
+        virtualinvoke $r4.<org.apache.commons.io.input.XmlStreamReader: void close()>();
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("It should have failed");
+
+     label2:
+        goto label4;
+
+     label3:
+        $r5 := @caughtexception;
+
+        $r6 = virtualinvoke $r5.<java.io.IOException: java.lang.String getMessage()>();
+
+        $z0 = virtualinvoke $r6.<java.lang.String: boolean contains(java.lang.CharSequence)>("Invalid encoding,");
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z0);
+
+     label4:
+        return;
+
+        catch java.io.IOException from label1 to label2 with label3;
+    }
+
+    public void testRawNoBomUsAscii() throws java.lang.Exception
+    {
+        org.apache.commons.io.input.XmlStreamReaderTest r0;
+
+        r0 := @this: org.apache.commons.io.input.XmlStreamReaderTest;
+
+        virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: void _testRawNoBomValid(java.lang.String)>("US-ASCII");
+
+        return;
+    }
+
+    public void testRawNoBomUtf8() throws java.lang.Exception
+    {
+        org.apache.commons.io.input.XmlStreamReaderTest r0;
+
+        r0 := @this: org.apache.commons.io.input.XmlStreamReaderTest;
+
+        virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: void _testRawNoBomValid(java.lang.String)>("UTF-8");
+
+        return;
+    }
+
+    public void testRawNoBomUtf16BE() throws java.lang.Exception
+    {
+        org.apache.commons.io.input.XmlStreamReaderTest r0;
+
+        r0 := @this: org.apache.commons.io.input.XmlStreamReaderTest;
+
+        virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: void _testRawNoBomValid(java.lang.String)>("UTF-16BE");
+
+        return;
+    }
+
+    public void testRawNoBomUtf16LE() throws java.lang.Exception
+    {
+        org.apache.commons.io.input.XmlStreamReaderTest r0;
+
+        r0 := @this: org.apache.commons.io.input.XmlStreamReaderTest;
+
+        virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: void _testRawNoBomValid(java.lang.String)>("UTF-16LE");
+
+        return;
+    }
+
+    public void testRawNoBomUtf32BE() throws java.lang.Exception
+    {
+        org.apache.commons.io.input.XmlStreamReaderTest r0;
+
+        r0 := @this: org.apache.commons.io.input.XmlStreamReaderTest;
+
+        virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: void _testRawNoBomValid(java.lang.String)>("UTF-32BE");
+
+        return;
+    }
+
+    public void testRawNoBomUtf32LE() throws java.lang.Exception
+    {
+        org.apache.commons.io.input.XmlStreamReaderTest r0;
+
+        r0 := @this: org.apache.commons.io.input.XmlStreamReaderTest;
+
+        virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: void _testRawNoBomValid(java.lang.String)>("UTF-32LE");
+
+        return;
+    }
+
+    public void testRawNoBomIso8859_1() throws java.lang.Exception
+    {
+        org.apache.commons.io.input.XmlStreamReaderTest r0;
+
+        r0 := @this: org.apache.commons.io.input.XmlStreamReaderTest;
+
+        virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: void _testRawNoBomValid(java.lang.String)>("ISO-8859-1");
+
+        return;
+    }
+
+    public void testRawNoBomCp1047() throws java.lang.Exception
+    {
+        org.apache.commons.io.input.XmlStreamReaderTest r0;
+
+        r0 := @this: org.apache.commons.io.input.XmlStreamReaderTest;
+
+        virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: void _testRawNoBomValid(java.lang.String)>("CP1047");
+
+        return;
+    }
+
+    protected void _testRawBomValid(java.lang.String) throws java.lang.Exception
+    {
+        org.apache.commons.io.input.XmlStreamReaderTest r0;
+        java.lang.String r1, $r5, $r7, $r9, $r10, $r11;
+        java.io.InputStream r2;
+        java.lang.StringBuilder $r4, $r6;
+        org.apache.commons.io.input.XmlStreamReader $r8;
+        boolean $z0, $z1;
+        int $i0;
+
+        r0 := @this: org.apache.commons.io.input.XmlStreamReaderTest;
+
+        r1 := @parameter0: java.lang.String;
+
+        $r4 = new java.lang.StringBuilder;
+
+        $r5 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>(r1);
+
+        specialinvoke $r4.<java.lang.StringBuilder: void <init>(java.lang.String)>($r5);
+
+        $r6 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("-bom");
+
+        $r7 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        r2 = virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: java.io.InputStream getXmlStream(java.lang.String,java.lang.String,java.lang.String,java.lang.String)>($r7, "xml-prolog-encoding-double-quotes", r1, r1);
+
+        $r8 = new org.apache.commons.io.input.XmlStreamReader;
+
+        specialinvoke $r8.<org.apache.commons.io.input.XmlStreamReader: void <init>(java.io.InputStream,boolean)>(r2, 0);
+
+        $z0 = virtualinvoke r1.<java.lang.String: boolean equals(java.lang.Object)>("UTF-16");
+
+        if $z0 != 0 goto label1;
+
+        $z1 = virtualinvoke r1.<java.lang.String: boolean equals(java.lang.Object)>("UTF-32");
+
+        if $z1 != 0 goto label1;
+
+        $r11 = virtualinvoke $r8.<org.apache.commons.io.input.XmlStreamReader: java.lang.String getEncoding()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r11, r1);
+
+        goto label2;
+
+     label1:
+        $r9 = virtualinvoke $r8.<org.apache.commons.io.input.XmlStreamReader: java.lang.String getEncoding()>();
+
+        $i0 = virtualinvoke r1.<java.lang.String: int length()>();
+
+        $r10 = virtualinvoke $r9.<java.lang.String: java.lang.String substring(int,int)>(0, $i0);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r10, r1);
+
+     label2:
+        virtualinvoke $r8.<org.apache.commons.io.input.XmlStreamReader: void close()>();
+
+        return;
+    }
+
+    protected void _testRawBomInvalid(java.lang.String, java.lang.String, java.lang.String) throws java.lang.Exception
+    {
+        org.apache.commons.io.input.XmlStreamReaderTest r0;
+        java.lang.String r1, r2, r3, $r14, $r16, r18;
+        java.io.InputStream r4;
+        org.apache.commons.io.input.XmlStreamReader $r5, r17;
+        java.lang.StringBuilder $r6, $r7, $r8, $r9, $r10, $r11, $r12, $r13;
+        java.io.IOException $r15;
+        boolean $z0;
+
+        r0 := @this: org.apache.commons.io.input.XmlStreamReaderTest;
+
+        r1 := @parameter0: java.lang.String;
+
+        r2 := @parameter1: java.lang.String;
+
+        r3 := @parameter2: java.lang.String;
+
+        r4 = virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: java.io.InputStream getXmlStream(java.lang.String,java.lang.String,java.lang.String,java.lang.String)>(r1, "xml-prolog-encoding-double-quotes", r2, r3);
+
+        r17 = null;
+
+     label1:
+        $r5 = new org.apache.commons.io.input.XmlStreamReader;
+
+        specialinvoke $r5.<org.apache.commons.io.input.XmlStreamReader: void <init>(java.io.InputStream,boolean)>(r4, 0);
+
+        r17 = $r5;
+
+        r18 = virtualinvoke $r5.<org.apache.commons.io.input.XmlStreamReader: java.lang.String getEncoding()>();
+
+        $r6 = new java.lang.StringBuilder;
+
+        specialinvoke $r6.<java.lang.StringBuilder: void <init>(java.lang.String)>("Expected IOException for BOM ");
+
+        $r7 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r1);
+
+        $r8 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", streamEnc ");
+
+        $r9 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r2);
+
+        $r10 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" and prologEnc ");
+
+        $r11 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r3);
+
+        $r12 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(": found ");
+
+        $r13 = virtualinvoke $r12.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r18);
+
+        $r14 = virtualinvoke $r13.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>($r14);
+
+     label2:
+        goto label4;
+
+     label3:
+        $r15 := @caughtexception;
+
+        $r16 = virtualinvoke $r15.<java.io.IOException: java.lang.String getMessage()>();
+
+        $z0 = virtualinvoke $r16.<java.lang.String: boolean contains(java.lang.CharSequence)>("Invalid encoding,");
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z0);
+
+     label4:
+        if r17 == null goto label5;
+
+        virtualinvoke r17.<org.apache.commons.io.input.XmlStreamReader: void close()>();
+
+     label5:
+        return;
+
+        catch java.io.IOException from label1 to label2 with label3;
+    }
+
+    public void testRawBomUtf8() throws java.lang.Exception
+    {
+        org.apache.commons.io.input.XmlStreamReaderTest r0;
+
+        r0 := @this: org.apache.commons.io.input.XmlStreamReaderTest;
+
+        virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: void _testRawBomValid(java.lang.String)>("UTF-8");
+
+        virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: void _testRawBomInvalid(java.lang.String,java.lang.String,java.lang.String)>("UTF-8-bom", "US-ASCII", "US-ASCII");
+
+        virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: void _testRawBomInvalid(java.lang.String,java.lang.String,java.lang.String)>("UTF-8-bom", "ISO-8859-1", "ISO-8859-1");
+
+        virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: void _testRawBomInvalid(java.lang.String,java.lang.String,java.lang.String)>("UTF-8-bom", "UTF-8", "UTF-16");
+
+        virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: void _testRawBomInvalid(java.lang.String,java.lang.String,java.lang.String)>("UTF-8-bom", "UTF-8", "UTF-16BE");
+
+        virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: void _testRawBomInvalid(java.lang.String,java.lang.String,java.lang.String)>("UTF-8-bom", "UTF-8", "UTF-16LE");
+
+        virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: void _testRawBomInvalid(java.lang.String,java.lang.String,java.lang.String)>("UTF-16BE-bom", "UTF-16BE", "UTF-16LE");
+
+        virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: void _testRawBomInvalid(java.lang.String,java.lang.String,java.lang.String)>("UTF-16LE-bom", "UTF-16LE", "UTF-16BE");
+
+        virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: void _testRawBomInvalid(java.lang.String,java.lang.String,java.lang.String)>("UTF-16LE-bom", "UTF-16LE", "UTF-8");
+
+        virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: void _testRawBomInvalid(java.lang.String,java.lang.String,java.lang.String)>("UTF-32BE-bom", "UTF-32BE", "UTF-32LE");
+
+        virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: void _testRawBomInvalid(java.lang.String,java.lang.String,java.lang.String)>("UTF-32LE-bom", "UTF-32LE", "UTF-32BE");
+
+        virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: void _testRawBomInvalid(java.lang.String,java.lang.String,java.lang.String)>("UTF-32LE-bom", "UTF-32LE", "UTF-8");
+
+        return;
+    }
+
+    public void testRawBomUtf16() throws java.lang.Exception
+    {
+        org.apache.commons.io.input.XmlStreamReaderTest r0;
+
+        r0 := @this: org.apache.commons.io.input.XmlStreamReaderTest;
+
+        virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: void _testRawBomValid(java.lang.String)>("UTF-16BE");
+
+        virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: void _testRawBomValid(java.lang.String)>("UTF-16LE");
+
+        virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: void _testRawBomValid(java.lang.String)>("UTF-16");
+
+        virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: void _testRawBomInvalid(java.lang.String,java.lang.String,java.lang.String)>("UTF-16BE-bom", "UTF-16BE", "UTF-16LE");
+
+        virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: void _testRawBomInvalid(java.lang.String,java.lang.String,java.lang.String)>("UTF-16LE-bom", "UTF-16LE", "UTF-16BE");
+
+        virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: void _testRawBomInvalid(java.lang.String,java.lang.String,java.lang.String)>("UTF-16LE-bom", "UTF-16LE", "UTF-8");
+
+        return;
+    }
+
+    public void testRawBomUtf32() throws java.lang.Exception
+    {
+        org.apache.commons.io.input.XmlStreamReaderTest r0;
+
+        r0 := @this: org.apache.commons.io.input.XmlStreamReaderTest;
+
+        virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: void _testRawBomValid(java.lang.String)>("UTF-32BE");
+
+        virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: void _testRawBomValid(java.lang.String)>("UTF-32LE");
+
+        virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: void _testRawBomValid(java.lang.String)>("UTF-32");
+
+        virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: void _testRawBomInvalid(java.lang.String,java.lang.String,java.lang.String)>("UTF-32BE-bom", "UTF-32BE", "UTF-32LE");
+
+        virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: void _testRawBomInvalid(java.lang.String,java.lang.String,java.lang.String)>("UTF-32LE-bom", "UTF-32LE", "UTF-32BE");
+
+        virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: void _testRawBomInvalid(java.lang.String,java.lang.String,java.lang.String)>("UTF-32LE-bom", "UTF-32LE", "UTF-8");
+
+        return;
+    }
+
+    public void testHttp() throws java.lang.Exception
+    {
+        org.apache.commons.io.input.XmlStreamReaderTest r0;
+
+        r0 := @this: org.apache.commons.io.input.XmlStreamReaderTest;
+
+        virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: void _testHttpValid(java.lang.String,java.lang.String,java.lang.String,java.lang.String)>("application/xml", "UTF-8-bom", "UTF-8", null);
+
+        virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: void _testHttpValid(java.lang.String,java.lang.String,java.lang.String,java.lang.String)>("application/xml", "UTF-8-bom", "UTF-8", "UTF-8");
+
+        virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: void _testHttpValid(java.lang.String,java.lang.String,java.lang.String,java.lang.String)>("application/xml;charset=UTF-8", "UTF-8-bom", "UTF-8", null);
+
+        virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: void _testHttpValid(java.lang.String,java.lang.String,java.lang.String,java.lang.String)>("application/xml;charset=\"UTF-8\"", "UTF-8-bom", "UTF-8", null);
+
+        virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: void _testHttpValid(java.lang.String,java.lang.String,java.lang.String,java.lang.String)>("application/xml;charset=\'UTF-8\'", "UTF-8-bom", "UTF-8", null);
+
+        virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: void _testHttpValid(java.lang.String,java.lang.String,java.lang.String,java.lang.String)>("application/xml;charset=UTF-8", "UTF-8-bom", "UTF-8", "UTF-8");
+
+        virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: void _testHttpValid(java.lang.String,java.lang.String,java.lang.String,java.lang.String)>("application/xml;charset=UTF-16", "UTF-16BE-bom", "UTF-16BE", null);
+
+        virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: void _testHttpValid(java.lang.String,java.lang.String,java.lang.String,java.lang.String)>("application/xml;charset=UTF-16", "UTF-16BE-bom", "UTF-16BE", "UTF-16");
+
+        virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: void _testHttpValid(java.lang.String,java.lang.String,java.lang.String,java.lang.String)>("application/xml;charset=UTF-16", "UTF-16BE-bom", "UTF-16BE", "UTF-16BE");
+
+        virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: void _testHttpInvalid(java.lang.String,java.lang.String,java.lang.String,java.lang.String)>("application/xml;charset=UTF-16BE", "UTF-16BE-bom", "UTF-16BE", null);
+
+        virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: void _testHttpInvalid(java.lang.String,java.lang.String,java.lang.String,java.lang.String)>("application/xml;charset=UTF-16BE", "UTF-16BE-bom", "UTF-16BE", "UTF-16");
+
+        virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: void _testHttpInvalid(java.lang.String,java.lang.String,java.lang.String,java.lang.String)>("application/xml;charset=UTF-16BE", "UTF-16BE-bom", "UTF-16BE", "UTF-16BE");
+
+        virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: void _testHttpInvalid(java.lang.String,java.lang.String,java.lang.String,java.lang.String)>("application/xml;charset=UTF-32BE", "UTF-32BE-bom", "UTF-32BE", null);
+
+        virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: void _testHttpInvalid(java.lang.String,java.lang.String,java.lang.String,java.lang.String)>("application/xml;charset=UTF-32BE", "UTF-32BE-bom", "UTF-32BE", "UTF-32");
+
+        virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: void _testHttpInvalid(java.lang.String,java.lang.String,java.lang.String,java.lang.String)>("application/xml;charset=UTF-32BE", "UTF-32BE-bom", "UTF-32BE", "UTF-32BE");
+
+        virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: void _testHttpInvalid(java.lang.String,java.lang.String,java.lang.String,java.lang.String)>("application/xml", "UTF-8-bom", "US-ASCII", "US-ASCII");
+
+        virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: void _testHttpInvalid(java.lang.String,java.lang.String,java.lang.String,java.lang.String)>("application/xml;charset=UTF-16", "UTF-16LE", "UTF-8", "UTF-8");
+
+        virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: void _testHttpInvalid(java.lang.String,java.lang.String,java.lang.String,java.lang.String)>("application/xml;charset=UTF-16", "no-bom", "UTF-16BE", "UTF-16BE");
+
+        virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: void _testHttpInvalid(java.lang.String,java.lang.String,java.lang.String,java.lang.String)>("application/xml;charset=UTF-32", "UTF-32LE", "UTF-8", "UTF-8");
+
+        virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: void _testHttpInvalid(java.lang.String,java.lang.String,java.lang.String,java.lang.String)>("application/xml;charset=UTF-32", "no-bom", "UTF-32BE", "UTF-32BE");
+
+        virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: void _testHttpValid(java.lang.String,java.lang.String,java.lang.String,java.lang.String)>("text/xml", "no-bom", "US-ASCII", null);
+
+        virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: void _testHttpValid(java.lang.String,java.lang.String,java.lang.String,java.lang.String)>("text/xml;charset=UTF-8", "UTF-8-bom", "UTF-8", "UTF-8");
+
+        virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: void _testHttpValid(java.lang.String,java.lang.String,java.lang.String,java.lang.String)>("text/xml;charset=UTF-8", "UTF-8-bom", "UTF-8", null);
+
+        virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: void _testHttpValid(java.lang.String,java.lang.String,java.lang.String,java.lang.String)>("text/xml;charset=UTF-16", "UTF-16BE-bom", "UTF-16BE", null);
+
+        virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: void _testHttpValid(java.lang.String,java.lang.String,java.lang.String,java.lang.String)>("text/xml;charset=UTF-16", "UTF-16BE-bom", "UTF-16BE", "UTF-16");
+
+        virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: void _testHttpValid(java.lang.String,java.lang.String,java.lang.String,java.lang.String)>("text/xml;charset=UTF-16", "UTF-16BE-bom", "UTF-16BE", "UTF-16BE");
+
+        virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: void _testHttpValid(java.lang.String,java.lang.String,java.lang.String,java.lang.String)>("text/xml;charset=UTF-32", "UTF-32BE-bom", "UTF-32BE", null);
+
+        virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: void _testHttpValid(java.lang.String,java.lang.String,java.lang.String,java.lang.String)>("text/xml;charset=UTF-32", "UTF-32BE-bom", "UTF-32BE", "UTF-32");
+
+        virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: void _testHttpValid(java.lang.String,java.lang.String,java.lang.String,java.lang.String)>("text/xml;charset=UTF-32", "UTF-32BE-bom", "UTF-32BE", "UTF-32BE");
+
+        virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: void _testHttpValid(java.lang.String,java.lang.String,java.lang.String,java.lang.String)>("text/xml", "UTF-8-bom", "US-ASCII", null);
+
+        virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: void _testAlternateDefaultEncoding(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)>("application/xml", "UTF-8-bom", "UTF-8", null, null);
+
+        virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: void _testAlternateDefaultEncoding(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)>("application/xml", "no-bom", "US-ASCII", null, "US-ASCII");
+
+        virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: void _testAlternateDefaultEncoding(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)>("application/xml", "UTF-8-bom", "UTF-8", null, "UTF-8");
+
+        virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: void _testAlternateDefaultEncoding(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)>("text/xml", "no-bom", "US-ASCII", null, null);
+
+        virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: void _testAlternateDefaultEncoding(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)>("text/xml", "no-bom", "US-ASCII", null, "US-ASCII");
+
+        virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: void _testAlternateDefaultEncoding(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)>("text/xml", "no-bom", "US-ASCII", null, "UTF-8");
+
+        virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: void _testHttpInvalid(java.lang.String,java.lang.String,java.lang.String,java.lang.String)>("text/xml;charset=UTF-16BE", "UTF-16BE-bom", "UTF-16BE", null);
+
+        virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: void _testHttpInvalid(java.lang.String,java.lang.String,java.lang.String,java.lang.String)>("text/xml;charset=UTF-16BE", "UTF-16BE-bom", "UTF-16BE", "UTF-16");
+
+        virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: void _testHttpInvalid(java.lang.String,java.lang.String,java.lang.String,java.lang.String)>("text/xml;charset=UTF-16BE", "UTF-16BE-bom", "UTF-16BE", "UTF-16BE");
+
+        virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: void _testHttpInvalid(java.lang.String,java.lang.String,java.lang.String,java.lang.String)>("text/xml;charset=UTF-16", "no-bom", "UTF-16BE", "UTF-16BE");
+
+        virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: void _testHttpInvalid(java.lang.String,java.lang.String,java.lang.String,java.lang.String)>("text/xml;charset=UTF-16", "no-bom", "UTF-16BE", null);
+
+        virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: void _testHttpInvalid(java.lang.String,java.lang.String,java.lang.String,java.lang.String)>("text/xml;charset=UTF-32BE", "UTF-32BE-bom", "UTF-32BE", null);
+
+        virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: void _testHttpInvalid(java.lang.String,java.lang.String,java.lang.String,java.lang.String)>("text/xml;charset=UTF-32BE", "UTF-32BE-bom", "UTF-32BE", "UTF-32");
+
+        virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: void _testHttpInvalid(java.lang.String,java.lang.String,java.lang.String,java.lang.String)>("text/xml;charset=UTF-32BE", "UTF-32BE-bom", "UTF-32BE", "UTF-32BE");
+
+        virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: void _testHttpInvalid(java.lang.String,java.lang.String,java.lang.String,java.lang.String)>("text/xml;charset=UTF-32", "no-bom", "UTF-32BE", "UTF-32BE");
+
+        virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: void _testHttpInvalid(java.lang.String,java.lang.String,java.lang.String,java.lang.String)>("text/xml;charset=UTF-32", "no-bom", "UTF-32BE", null);
+
+        virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: void _testHttpLenient(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)>("text/xml", "no-bom", "US-ASCII", null, "US-ASCII");
+
+        virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: void _testHttpLenient(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)>("text/xml;charset=UTF-8", "UTF-8-bom", "UTF-8", "UTF-8", "UTF-8");
+
+        virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: void _testHttpLenient(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)>("text/xml;charset=UTF-8", "UTF-8-bom", "UTF-8", null, "UTF-8");
+
+        virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: void _testHttpLenient(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)>("text/xml;charset=UTF-16", "UTF-16BE-bom", "UTF-16BE", null, "UTF-16BE");
+
+        virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: void _testHttpLenient(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)>("text/xml;charset=UTF-16", "UTF-16BE-bom", "UTF-16BE", "UTF-16", "UTF-16");
+
+        virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: void _testHttpLenient(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)>("text/xml;charset=UTF-16", "UTF-16BE-bom", "UTF-16BE", "UTF-16BE", "UTF-16BE");
+
+        virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: void _testHttpLenient(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)>("text/xml;charset=UTF-32", "UTF-32BE-bom", "UTF-32BE", null, "UTF-32BE");
+
+        virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: void _testHttpLenient(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)>("text/xml;charset=UTF-32", "UTF-32BE-bom", "UTF-32BE", "UTF-32", "UTF-32");
+
+        virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: void _testHttpLenient(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)>("text/xml;charset=UTF-32", "UTF-32BE-bom", "UTF-32BE", "UTF-32BE", "UTF-32BE");
+
+        virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: void _testHttpLenient(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)>("text/xml", "UTF-8-bom", "US-ASCII", null, "US-ASCII");
+
+        virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: void _testHttpLenient(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)>("text/xml;charset=UTF-16BE", "UTF-16BE-bom", "UTF-16BE", null, "UTF-16BE");
+
+        virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: void _testHttpLenient(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)>("text/xml;charset=UTF-16BE", "UTF-16BE-bom", "UTF-16BE", "UTF-16", "UTF-16");
+
+        virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: void _testHttpLenient(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)>("text/xml;charset=UTF-16BE", "UTF-16BE-bom", "UTF-16BE", "UTF-16BE", "UTF-16BE");
+
+        virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: void _testHttpLenient(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)>("text/xml;charset=UTF-16", "no-bom", "UTF-16BE", "UTF-16BE", "UTF-16BE");
+
+        virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: void _testHttpLenient(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)>("text/xml;charset=UTF-16", "no-bom", "UTF-16BE", null, "UTF-16");
+
+        virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: void _testHttpLenient(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)>("text/xml;charset=UTF-32BE", "UTF-32BE-bom", "UTF-32BE", null, "UTF-32BE");
+
+        virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: void _testHttpLenient(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)>("text/xml;charset=UTF-32BE", "UTF-32BE-bom", "UTF-32BE", "UTF-32", "UTF-32");
+
+        virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: void _testHttpLenient(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)>("text/xml;charset=UTF-32BE", "UTF-32BE-bom", "UTF-32BE", "UTF-32BE", "UTF-32BE");
+
+        virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: void _testHttpLenient(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)>("text/xml;charset=UTF-32", "no-bom", "UTF-32BE", "UTF-32BE", "UTF-32BE");
+
+        virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: void _testHttpLenient(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)>("text/xml;charset=UTF-32", "no-bom", "UTF-32BE", null, "UTF-32");
+
+        virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: void _testHttpLenient(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)>("text/html", "no-bom", "US-ASCII", "US-ASCII", "US-ASCII");
+
+        virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: void _testHttpLenient(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)>("text/html", "no-bom", "US-ASCII", null, "US-ASCII");
+
+        virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: void _testHttpLenient(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)>("text/html;charset=UTF-8", "no-bom", "US-ASCII", "UTF-8", "UTF-8");
+
+        virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: void _testHttpLenient(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)>("text/html;charset=UTF-16BE", "no-bom", "US-ASCII", "UTF-8", "UTF-8");
+
+        virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: void _testHttpLenient(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)>("text/html;charset=UTF-32BE", "no-bom", "US-ASCII", "UTF-8", "UTF-8");
+
+        return;
+    }
+
+    public void testRawContent() throws java.lang.Exception
+    {
+        org.apache.commons.io.input.XmlStreamReaderTest r0;
+        java.lang.String r2, $r8, $r9;
+        java.io.ByteArrayInputStream $r5;
+        byte[] $r6;
+        org.apache.commons.io.input.XmlStreamReader $r7;
+
+        r0 := @this: org.apache.commons.io.input.XmlStreamReaderTest;
+
+        r2 = specialinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: java.lang.String getXML(java.lang.String,java.lang.String,java.lang.String,java.lang.String)>("no-bom", "xml-prolog-encoding-double-quotes", "UTF-8", "UTF-8");
+
+        $r5 = new java.io.ByteArrayInputStream;
+
+        $r6 = virtualinvoke r2.<java.lang.String: byte[] getBytes(java.lang.String)>("UTF-8");
+
+        specialinvoke $r5.<java.io.ByteArrayInputStream: void <init>(byte[])>($r6);
+
+        $r7 = new org.apache.commons.io.input.XmlStreamReader;
+
+        specialinvoke $r7.<org.apache.commons.io.input.XmlStreamReader: void <init>(java.io.InputStream)>($r5);
+
+        $r8 = virtualinvoke $r7.<org.apache.commons.io.input.XmlStreamReader: java.lang.String getEncoding()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,java.lang.Object,java.lang.Object)>("Check encoding", $r8, "UTF-8");
+
+        $r9 = staticinvoke <org.apache.commons.io.IOUtils: java.lang.String toString(java.io.Reader)>($r7);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,java.lang.Object,java.lang.Object)>("Check content", r2, $r9);
+
+        return;
+    }
+
+    public void testHttpContent() throws java.lang.Exception
+    {
+        org.apache.commons.io.input.XmlStreamReaderTest r0;
+        java.lang.String r2, $r8, $r9;
+        java.io.ByteArrayInputStream $r5;
+        byte[] $r6;
+        org.apache.commons.io.input.XmlStreamReader $r7;
+
+        r0 := @this: org.apache.commons.io.input.XmlStreamReaderTest;
+
+        r2 = specialinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: java.lang.String getXML(java.lang.String,java.lang.String,java.lang.String,java.lang.String)>("no-bom", "xml-prolog-encoding-double-quotes", "UTF-8", "UTF-8");
+
+        $r5 = new java.io.ByteArrayInputStream;
+
+        $r6 = virtualinvoke r2.<java.lang.String: byte[] getBytes(java.lang.String)>("UTF-8");
+
+        specialinvoke $r5.<java.io.ByteArrayInputStream: void <init>(byte[])>($r6);
+
+        $r7 = new org.apache.commons.io.input.XmlStreamReader;
+
+        specialinvoke $r7.<org.apache.commons.io.input.XmlStreamReader: void <init>(java.io.InputStream,java.lang.String)>($r5, "UTF-8");
+
+        $r8 = virtualinvoke $r7.<org.apache.commons.io.input.XmlStreamReader: java.lang.String getEncoding()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,java.lang.Object,java.lang.Object)>("Check encoding", $r8, "UTF-8");
+
+        $r9 = staticinvoke <org.apache.commons.io.IOUtils: java.lang.String toString(java.io.Reader)>($r7);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,java.lang.Object,java.lang.Object)>("Check content", r2, $r9);
+
+        return;
+    }
+
+    public void _testAlternateDefaultEncoding(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String) throws java.lang.Exception
+    {
+        org.apache.commons.io.input.XmlStreamReaderTest r0;
+        java.lang.String r1, r2, r3, r4, r5, $r10, $r11, $r12, $r15, $r16;
+        java.io.InputStream r6;
+        org.apache.commons.io.input.XmlStreamReader $r9;
+        boolean $z0;
+        int $i0;
+
+        r0 := @this: org.apache.commons.io.input.XmlStreamReaderTest;
+
+        r1 := @parameter0: java.lang.String;
+
+        r2 := @parameter1: java.lang.String;
+
+        r3 := @parameter2: java.lang.String;
+
+        r4 := @parameter3: java.lang.String;
+
+        r5 := @parameter4: java.lang.String;
+
+        if r4 != null goto label1;
+
+        $r15 = "xml";
+
+        goto label2;
+
+     label1:
+        $r15 = "xml-prolog-encoding-double-quotes";
+
+     label2:
+        r6 = virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: java.io.InputStream getXmlStream(java.lang.String,java.lang.String,java.lang.String,java.lang.String)>(r2, $r15, r3, r4);
+
+        $r9 = new org.apache.commons.io.input.XmlStreamReader;
+
+        specialinvoke $r9.<org.apache.commons.io.input.XmlStreamReader: void <init>(java.io.InputStream,java.lang.String,boolean,java.lang.String)>(r6, r1, 0, r5);
+
+        $z0 = virtualinvoke r3.<java.lang.String: boolean equals(java.lang.Object)>("UTF-16");
+
+        if $z0 != 0 goto label5;
+
+        if r5 == null goto label3;
+
+        $r16 = r5;
+
+        goto label4;
+
+     label3:
+        $r16 = r3;
+
+     label4:
+        $r12 = virtualinvoke $r9.<org.apache.commons.io.input.XmlStreamReader: java.lang.String getEncoding()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r12, $r16);
+
+        goto label6;
+
+     label5:
+        $r10 = virtualinvoke $r9.<org.apache.commons.io.input.XmlStreamReader: java.lang.String getEncoding()>();
+
+        $i0 = virtualinvoke r3.<java.lang.String: int length()>();
+
+        $r11 = virtualinvoke $r10.<java.lang.String: java.lang.String substring(int,int)>(0, $i0);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r11, r3);
+
+     label6:
+        virtualinvoke $r9.<org.apache.commons.io.input.XmlStreamReader: void close()>();
+
+        return;
+    }
+
+    public void _testHttpValid(java.lang.String, java.lang.String, java.lang.String, java.lang.String) throws java.lang.Exception
+    {
+        org.apache.commons.io.input.XmlStreamReaderTest r0;
+        java.lang.String r1, r2, r3, r4, $r8, $r9, $r10, $r13;
+        java.io.InputStream r5;
+        org.apache.commons.io.input.XmlStreamReader $r7;
+        boolean $z0;
+        int $i0;
+
+        r0 := @this: org.apache.commons.io.input.XmlStreamReaderTest;
+
+        r1 := @parameter0: java.lang.String;
+
+        r2 := @parameter1: java.lang.String;
+
+        r3 := @parameter2: java.lang.String;
+
+        r4 := @parameter3: java.lang.String;
+
+        if r4 != null goto label1;
+
+        $r13 = "xml";
+
+        goto label2;
+
+     label1:
+        $r13 = "xml-prolog-encoding-double-quotes";
+
+     label2:
+        r5 = virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: java.io.InputStream getXmlStream(java.lang.String,java.lang.String,java.lang.String,java.lang.String)>(r2, $r13, r3, r4);
+
+        $r7 = new org.apache.commons.io.input.XmlStreamReader;
+
+        specialinvoke $r7.<org.apache.commons.io.input.XmlStreamReader: void <init>(java.io.InputStream,java.lang.String,boolean)>(r5, r1, 0);
+
+        $z0 = virtualinvoke r3.<java.lang.String: boolean equals(java.lang.Object)>("UTF-16");
+
+        if $z0 != 0 goto label3;
+
+        $r10 = virtualinvoke $r7.<org.apache.commons.io.input.XmlStreamReader: java.lang.String getEncoding()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r10, r3);
+
+        goto label4;
+
+     label3:
+        $r8 = virtualinvoke $r7.<org.apache.commons.io.input.XmlStreamReader: java.lang.String getEncoding()>();
+
+        $i0 = virtualinvoke r3.<java.lang.String: int length()>();
+
+        $r9 = virtualinvoke $r8.<java.lang.String: java.lang.String substring(int,int)>(0, $i0);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r9, r3);
+
+     label4:
+        virtualinvoke $r7.<org.apache.commons.io.input.XmlStreamReader: void close()>();
+
+        return;
+    }
+
+    protected void _testHttpInvalid(java.lang.String, java.lang.String, java.lang.String, java.lang.String) throws java.lang.Exception
+    {
+        org.apache.commons.io.input.XmlStreamReaderTest r0;
+        java.lang.String r1, r2, r3, r4, $r16, $r20, $r21;
+        java.io.InputStream r5;
+        org.apache.commons.io.input.XmlStreamReader $r7;
+        java.lang.StringBuilder $r8, $r9, $r10, $r11, $r12, $r13, $r14, $r15;
+        java.io.IOException $r19;
+        boolean $z0;
+
+        r0 := @this: org.apache.commons.io.input.XmlStreamReaderTest;
+
+        r1 := @parameter0: java.lang.String;
+
+        r2 := @parameter1: java.lang.String;
+
+        r3 := @parameter2: java.lang.String;
+
+        r4 := @parameter3: java.lang.String;
+
+        if r4 != null goto label1;
+
+        $r21 = "xml-prolog";
+
+        goto label2;
+
+     label1:
+        $r21 = "xml-prolog-encoding-double-quotes";
+
+     label2:
+        r5 = virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: java.io.InputStream getXmlStream(java.lang.String,java.lang.String,java.lang.String,java.lang.String)>(r2, $r21, r3, r4);
+
+     label3:
+        $r7 = new org.apache.commons.io.input.XmlStreamReader;
+
+        specialinvoke $r7.<org.apache.commons.io.input.XmlStreamReader: void <init>(java.io.InputStream,java.lang.String,boolean)>(r5, r1, 0);
+
+        virtualinvoke $r7.<org.apache.commons.io.input.XmlStreamReader: void close()>();
+
+        $r8 = new java.lang.StringBuilder;
+
+        specialinvoke $r8.<java.lang.StringBuilder: void <init>(java.lang.String)>("It should have failed for HTTP Content-type ");
+
+        $r9 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r1);
+
+        $r10 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", BOM ");
+
+        $r11 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r2);
+
+        $r12 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", streamEnc ");
+
+        $r13 = virtualinvoke $r12.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r3);
+
+        $r14 = virtualinvoke $r13.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" and prologEnc ");
+
+        $r15 = virtualinvoke $r14.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r4);
+
+        $r16 = virtualinvoke $r15.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>($r16);
+
+     label4:
+        goto label6;
+
+     label5:
+        $r19 := @caughtexception;
+
+        $r20 = virtualinvoke $r19.<java.io.IOException: java.lang.String getMessage()>();
+
+        $z0 = virtualinvoke $r20.<java.lang.String: boolean contains(java.lang.CharSequence)>("Invalid encoding,");
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z0);
+
+     label6:
+        return;
+
+        catch java.io.IOException from label3 to label4 with label5;
+    }
+
+    protected void _testHttpLenient(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String) throws java.lang.Exception
+    {
+        org.apache.commons.io.input.XmlStreamReaderTest r0;
+        java.lang.String r1, r2, r3, r4, r5, $r9, $r12;
+        java.io.InputStream r6;
+        org.apache.commons.io.input.XmlStreamReader $r8;
+
+        r0 := @this: org.apache.commons.io.input.XmlStreamReaderTest;
+
+        r1 := @parameter0: java.lang.String;
+
+        r2 := @parameter1: java.lang.String;
+
+        r3 := @parameter2: java.lang.String;
+
+        r4 := @parameter3: java.lang.String;
+
+        r5 := @parameter4: java.lang.String;
+
+        if r4 != null goto label1;
+
+        $r12 = "xml-prolog";
+
+        goto label2;
+
+     label1:
+        $r12 = "xml-prolog-encoding-double-quotes";
+
+     label2:
+        r6 = virtualinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: java.io.InputStream getXmlStream(java.lang.String,java.lang.String,java.lang.String,java.lang.String)>(r2, $r12, r3, r4);
+
+        $r8 = new org.apache.commons.io.input.XmlStreamReader;
+
+        specialinvoke $r8.<org.apache.commons.io.input.XmlStreamReader: void <init>(java.io.InputStream,java.lang.String,boolean)>(r6, r1, 1);
+
+        $r9 = virtualinvoke $r8.<org.apache.commons.io.input.XmlStreamReader: java.lang.String getEncoding()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r9, r5);
+
+        virtualinvoke $r8.<org.apache.commons.io.input.XmlStreamReader: void close()>();
+
+        return;
+    }
+
+    public void testEncodingAttributeXML() throws java.lang.Exception
+    {
+        org.apache.commons.io.input.XmlStreamReaderTest r0;
+        java.io.ByteArrayInputStream $r3;
+        java.lang.String $r4, $r7;
+        byte[] $r5;
+        org.apache.commons.io.input.XmlStreamReader $r6;
+
+        r0 := @this: org.apache.commons.io.input.XmlStreamReaderTest;
+
+        $r3 = new java.io.ByteArrayInputStream;
+
+        $r4 = "<?xml version=\"1.0\" ?> \n<atom:feed xmlns:atom=\"http://www.w3.org/2005/Atom\">\n\n  <atom:entry>\n    <atom:title encoding=\'base64\'><![CDATA\naW5nTGluZSIgLz4";
+
+        $r5 = virtualinvoke $r4.<java.lang.String: byte[] getBytes(java.lang.String)>("UTF-8");
+
+        specialinvoke $r3.<java.io.ByteArrayInputStream: void <init>(byte[])>($r5);
+
+        $r6 = new org.apache.commons.io.input.XmlStreamReader;
+
+        specialinvoke $r6.<org.apache.commons.io.input.XmlStreamReader: void <init>(java.io.InputStream,java.lang.String,boolean)>($r3, "", 1);
+
+        $r7 = virtualinvoke $r6.<org.apache.commons.io.input.XmlStreamReader: java.lang.String getEncoding()>();
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>($r7, "UTF-8");
+
+        virtualinvoke $r6.<org.apache.commons.io.input.XmlStreamReader: void close()>();
+
+        return;
+    }
+
+    protected java.io.InputStream getXmlStream(java.lang.String, java.lang.String, java.lang.String, java.lang.String) throws java.io.IOException
+    {
+        org.apache.commons.io.input.XmlStreamReaderTest r0;
+        java.lang.String r1, r2, r3, r4, r16;
+        int[] r6, r14;
+        java.io.ByteArrayOutputStream $r7;
+        java.util.Map $r8;
+        java.lang.Object $r9;
+        java.io.OutputStreamWriter $r10;
+        java.io.ByteArrayInputStream $r11;
+        byte[] $r12;
+        int i0, i1, i2, i3;
+
+        r0 := @this: org.apache.commons.io.input.XmlStreamReaderTest;
+
+        r1 := @parameter0: java.lang.String;
+
+        r2 := @parameter1: java.lang.String;
+
+        r3 := @parameter2: java.lang.String;
+
+        r4 := @parameter3: java.lang.String;
+
+        $r7 = new java.io.ByteArrayOutputStream;
+
+        specialinvoke $r7.<java.io.ByteArrayOutputStream: void <init>(int)>(1024);
+
+        $r8 = <org.apache.commons.io.input.XmlStreamReaderTest: java.util.Map BOMs>;
+
+        $r9 = interfaceinvoke $r8.<java.util.Map: java.lang.Object get(java.lang.Object)>(r1);
+
+        r14 = (int[]) $r9;
+
+        if r14 != null goto label1;
+
+        r14 = newarray (int)[0];
+
+     label1:
+        r6 = r14;
+
+        i0 = lengthof r14;
+
+        i1 = 0;
+
+        goto label3;
+
+     label2:
+        i2 = r6[i1];
+
+        virtualinvoke $r7.<java.io.ByteArrayOutputStream: void write(int)>(i2);
+
+        i1 = i1 + 1;
+
+     label3:
+        if i1 < i0 goto label2;
+
+        $r10 = new java.io.OutputStreamWriter;
+
+        specialinvoke $r10.<java.io.OutputStreamWriter: void <init>(java.io.OutputStream,java.lang.String)>($r7, r3);
+
+        r16 = specialinvoke r0.<org.apache.commons.io.input.XmlStreamReaderTest: java.lang.String getXML(java.lang.String,java.lang.String,java.lang.String,java.lang.String)>(r1, r2, r3, r4);
+
+        virtualinvoke $r10.<java.io.Writer: void write(java.lang.String)>(r16);
+
+        virtualinvoke $r10.<java.io.Writer: void write(java.lang.String)>("<da>\n");
+
+        i3 = 0;
+
+        goto label5;
+
+     label4:
+        virtualinvoke $r10.<java.io.Writer: void write(java.lang.String)>("<do/>\n");
+
+        i3 = i3 + 1;
+
+     label5:
+        if i3 < 10000 goto label4;
+
+        virtualinvoke $r10.<java.io.Writer: void write(java.lang.String)>("</da>\n");
+
+        virtualinvoke $r10.<java.io.Writer: void close()>();
+
+        $r11 = new java.io.ByteArrayInputStream;
+
+        $r12 = virtualinvoke $r7.<java.io.ByteArrayOutputStream: byte[] toByteArray()>();
+
+        specialinvoke $r11.<java.io.ByteArrayInputStream: void <init>(byte[])>($r12);
+
+        return $r11;
+    }
+
+    private java.lang.String getXML(java.lang.String, java.lang.String, java.lang.String, java.lang.String)
+    {
+        org.apache.commons.io.input.XmlStreamReaderTest r0;
+        java.lang.String r1, r2, r3, r4, r6, r7;
+        java.text.MessageFormat r5, $r11;
+        java.util.Map $r8;
+        java.lang.Object $r9;
+        java.lang.Object[] $r10, $r12;
+
+        r0 := @this: org.apache.commons.io.input.XmlStreamReaderTest;
+
+        r1 := @parameter0: java.lang.String;
+
+        r2 := @parameter1: java.lang.String;
+
+        r3 := @parameter2: java.lang.String;
+
+        r4 := @parameter3: java.lang.String;
+
+        $r8 = <org.apache.commons.io.input.XmlStreamReaderTest: java.util.Map XMLs>;
+
+        $r9 = interfaceinvoke $r8.<java.util.Map: java.lang.Object get(java.lang.Object)>(r2);
+
+        r5 = (java.text.MessageFormat) $r9;
+
+        $r11 = <org.apache.commons.io.input.XmlStreamReaderTest: java.text.MessageFormat INFO>;
+
+        $r10 = newarray (java.lang.Object)[3];
+
+        $r10[0] = r1;
+
+        $r10[1] = r2;
+
+        $r10[2] = r4;
+
+        r6 = virtualinvoke $r11.<java.text.MessageFormat: java.lang.String format(java.lang.Object)>($r10);
+
+        $r12 = newarray (java.lang.Object)[3];
+
+        $r12[0] = r3;
+
+        $r12[1] = r4;
+
+        $r12[2] = r6;
+
+        r7 = virtualinvoke r5.<java.text.MessageFormat: java.lang.String format(java.lang.Object)>($r12);
+
+        return r7;
+    }
+}

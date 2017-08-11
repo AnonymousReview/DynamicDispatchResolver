@@ -1,0 +1,575 @@
+public class org.apache.commons.io.FileUtilsDirectoryContainsTestCase extends org.apache.commons.io.testtools.FileBasedTestCase
+{
+    private java.io.File directory1;
+    private java.io.File directory2;
+    private java.io.File directory3;
+    private java.io.File file1;
+    private java.io.File file1ByRelativeDirectory2;
+    private java.io.File file2;
+    private java.io.File file2ByRelativeDirectory1;
+    private java.io.File file3;
+    final java.io.File top;
+
+    public void <init>()
+    {
+        org.apache.commons.io.FileUtilsDirectoryContainsTestCase r0;
+        java.io.File $r1;
+
+        r0 := @this: org.apache.commons.io.FileUtilsDirectoryContainsTestCase;
+
+        specialinvoke r0.<org.apache.commons.io.testtools.FileBasedTestCase: void <init>()>();
+
+        $r1 = staticinvoke <org.apache.commons.io.FileUtilsDirectoryContainsTestCase: java.io.File getTestDirectory()>();
+
+        r0.<org.apache.commons.io.FileUtilsDirectoryContainsTestCase: java.io.File top> = $r1;
+
+        return;
+    }
+
+    public void setUp() throws java.lang.Exception
+    {
+        org.apache.commons.io.FileUtilsDirectoryContainsTestCase r0;
+        java.io.File $r1, $r2, $r3, $r4, $r5, $r6, $r7, $r8, $r9, $r10, $r11, $r12, $r13, $r14, $r15, $r16, $r17, $r18, $r19, $r20, $r21, $r22, $r23;
+
+        r0 := @this: org.apache.commons.io.FileUtilsDirectoryContainsTestCase;
+
+        $r1 = r0.<org.apache.commons.io.FileUtilsDirectoryContainsTestCase: java.io.File top>;
+
+        virtualinvoke $r1.<java.io.File: boolean mkdirs()>();
+
+        $r2 = new java.io.File;
+
+        $r3 = r0.<org.apache.commons.io.FileUtilsDirectoryContainsTestCase: java.io.File top>;
+
+        specialinvoke $r2.<java.io.File: void <init>(java.io.File,java.lang.String)>($r3, "directory1");
+
+        r0.<org.apache.commons.io.FileUtilsDirectoryContainsTestCase: java.io.File directory1> = $r2;
+
+        $r4 = new java.io.File;
+
+        $r5 = r0.<org.apache.commons.io.FileUtilsDirectoryContainsTestCase: java.io.File top>;
+
+        specialinvoke $r4.<java.io.File: void <init>(java.io.File,java.lang.String)>($r5, "directory2");
+
+        r0.<org.apache.commons.io.FileUtilsDirectoryContainsTestCase: java.io.File directory2> = $r4;
+
+        $r6 = new java.io.File;
+
+        $r7 = r0.<org.apache.commons.io.FileUtilsDirectoryContainsTestCase: java.io.File directory2>;
+
+        specialinvoke $r6.<java.io.File: void <init>(java.io.File,java.lang.String)>($r7, "directory3");
+
+        r0.<org.apache.commons.io.FileUtilsDirectoryContainsTestCase: java.io.File directory3> = $r6;
+
+        $r8 = r0.<org.apache.commons.io.FileUtilsDirectoryContainsTestCase: java.io.File directory1>;
+
+        virtualinvoke $r8.<java.io.File: boolean mkdir()>();
+
+        $r9 = r0.<org.apache.commons.io.FileUtilsDirectoryContainsTestCase: java.io.File directory2>;
+
+        virtualinvoke $r9.<java.io.File: boolean mkdir()>();
+
+        $r10 = r0.<org.apache.commons.io.FileUtilsDirectoryContainsTestCase: java.io.File directory3>;
+
+        virtualinvoke $r10.<java.io.File: boolean mkdir()>();
+
+        $r11 = new java.io.File;
+
+        $r12 = r0.<org.apache.commons.io.FileUtilsDirectoryContainsTestCase: java.io.File directory1>;
+
+        specialinvoke $r11.<java.io.File: void <init>(java.io.File,java.lang.String)>($r12, "file1");
+
+        r0.<org.apache.commons.io.FileUtilsDirectoryContainsTestCase: java.io.File file1> = $r11;
+
+        $r13 = new java.io.File;
+
+        $r14 = r0.<org.apache.commons.io.FileUtilsDirectoryContainsTestCase: java.io.File directory2>;
+
+        specialinvoke $r13.<java.io.File: void <init>(java.io.File,java.lang.String)>($r14, "file2");
+
+        r0.<org.apache.commons.io.FileUtilsDirectoryContainsTestCase: java.io.File file2> = $r13;
+
+        $r15 = new java.io.File;
+
+        $r16 = r0.<org.apache.commons.io.FileUtilsDirectoryContainsTestCase: java.io.File top>;
+
+        specialinvoke $r15.<java.io.File: void <init>(java.io.File,java.lang.String)>($r16, "file3");
+
+        r0.<org.apache.commons.io.FileUtilsDirectoryContainsTestCase: java.io.File file3> = $r15;
+
+        $r17 = new java.io.File;
+
+        $r18 = staticinvoke <org.apache.commons.io.FileUtilsDirectoryContainsTestCase: java.io.File getTestDirectory()>();
+
+        specialinvoke $r17.<java.io.File: void <init>(java.io.File,java.lang.String)>($r18, "directory2/../directory1/file1");
+
+        r0.<org.apache.commons.io.FileUtilsDirectoryContainsTestCase: java.io.File file1ByRelativeDirectory2> = $r17;
+
+        $r19 = new java.io.File;
+
+        $r20 = staticinvoke <org.apache.commons.io.FileUtilsDirectoryContainsTestCase: java.io.File getTestDirectory()>();
+
+        specialinvoke $r19.<java.io.File: void <init>(java.io.File,java.lang.String)>($r20, "directory1/../directory2/file2");
+
+        r0.<org.apache.commons.io.FileUtilsDirectoryContainsTestCase: java.io.File file2ByRelativeDirectory1> = $r19;
+
+        $r21 = r0.<org.apache.commons.io.FileUtilsDirectoryContainsTestCase: java.io.File file1>;
+
+        staticinvoke <org.apache.commons.io.FileUtils: void touch(java.io.File)>($r21);
+
+        $r22 = r0.<org.apache.commons.io.FileUtilsDirectoryContainsTestCase: java.io.File file2>;
+
+        staticinvoke <org.apache.commons.io.FileUtils: void touch(java.io.File)>($r22);
+
+        $r23 = r0.<org.apache.commons.io.FileUtilsDirectoryContainsTestCase: java.io.File file3>;
+
+        staticinvoke <org.apache.commons.io.FileUtils: void touch(java.io.File)>($r23);
+
+        return;
+    }
+
+    public void tearDown() throws java.lang.Exception
+    {
+        org.apache.commons.io.FileUtilsDirectoryContainsTestCase r0;
+        java.io.File $r1;
+
+        r0 := @this: org.apache.commons.io.FileUtilsDirectoryContainsTestCase;
+
+        $r1 = r0.<org.apache.commons.io.FileUtilsDirectoryContainsTestCase: java.io.File top>;
+
+        staticinvoke <org.apache.commons.io.FileUtils: void deleteDirectory(java.io.File)>($r1);
+
+        return;
+    }
+
+    public void testCanonicalPath() throws java.io.IOException
+    {
+        org.apache.commons.io.FileUtilsDirectoryContainsTestCase r0;
+        java.io.File $r1, $r2, $r3, $r4, $r5, $r6, $r7, $r8;
+        boolean $z0, $z1, $z2, $z3;
+
+        r0 := @this: org.apache.commons.io.FileUtilsDirectoryContainsTestCase;
+
+        $r2 = r0.<org.apache.commons.io.FileUtilsDirectoryContainsTestCase: java.io.File directory1>;
+
+        $r1 = r0.<org.apache.commons.io.FileUtilsDirectoryContainsTestCase: java.io.File file1ByRelativeDirectory2>;
+
+        $z0 = staticinvoke <org.apache.commons.io.FileUtils: boolean directoryContains(java.io.File,java.io.File)>($r2, $r1);
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z0);
+
+        $r4 = r0.<org.apache.commons.io.FileUtilsDirectoryContainsTestCase: java.io.File directory2>;
+
+        $r3 = r0.<org.apache.commons.io.FileUtilsDirectoryContainsTestCase: java.io.File file2ByRelativeDirectory1>;
+
+        $z1 = staticinvoke <org.apache.commons.io.FileUtils: boolean directoryContains(java.io.File,java.io.File)>($r4, $r3);
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z1);
+
+        $r6 = r0.<org.apache.commons.io.FileUtilsDirectoryContainsTestCase: java.io.File directory1>;
+
+        $r5 = r0.<org.apache.commons.io.FileUtilsDirectoryContainsTestCase: java.io.File file2ByRelativeDirectory1>;
+
+        $z2 = staticinvoke <org.apache.commons.io.FileUtils: boolean directoryContains(java.io.File,java.io.File)>($r6, $r5);
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z2);
+
+        $r8 = r0.<org.apache.commons.io.FileUtilsDirectoryContainsTestCase: java.io.File directory2>;
+
+        $r7 = r0.<org.apache.commons.io.FileUtilsDirectoryContainsTestCase: java.io.File file1ByRelativeDirectory2>;
+
+        $z3 = staticinvoke <org.apache.commons.io.FileUtils: boolean directoryContains(java.io.File,java.io.File)>($r8, $r7);
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z3);
+
+        return;
+    }
+
+    public void testDirectoryContainsDirectory() throws java.io.IOException
+    {
+        org.apache.commons.io.FileUtilsDirectoryContainsTestCase r0;
+        java.io.File $r1, $r2, $r3, $r4, $r5, $r6, $r7, $r8;
+        boolean $z0, $z1, $z2, $z3;
+
+        r0 := @this: org.apache.commons.io.FileUtilsDirectoryContainsTestCase;
+
+        $r2 = r0.<org.apache.commons.io.FileUtilsDirectoryContainsTestCase: java.io.File top>;
+
+        $r1 = r0.<org.apache.commons.io.FileUtilsDirectoryContainsTestCase: java.io.File directory1>;
+
+        $z0 = staticinvoke <org.apache.commons.io.FileUtils: boolean directoryContains(java.io.File,java.io.File)>($r2, $r1);
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z0);
+
+        $r4 = r0.<org.apache.commons.io.FileUtilsDirectoryContainsTestCase: java.io.File top>;
+
+        $r3 = r0.<org.apache.commons.io.FileUtilsDirectoryContainsTestCase: java.io.File directory2>;
+
+        $z1 = staticinvoke <org.apache.commons.io.FileUtils: boolean directoryContains(java.io.File,java.io.File)>($r4, $r3);
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z1);
+
+        $r6 = r0.<org.apache.commons.io.FileUtilsDirectoryContainsTestCase: java.io.File top>;
+
+        $r5 = r0.<org.apache.commons.io.FileUtilsDirectoryContainsTestCase: java.io.File directory3>;
+
+        $z2 = staticinvoke <org.apache.commons.io.FileUtils: boolean directoryContains(java.io.File,java.io.File)>($r6, $r5);
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z2);
+
+        $r8 = r0.<org.apache.commons.io.FileUtilsDirectoryContainsTestCase: java.io.File directory2>;
+
+        $r7 = r0.<org.apache.commons.io.FileUtilsDirectoryContainsTestCase: java.io.File directory3>;
+
+        $z3 = staticinvoke <org.apache.commons.io.FileUtils: boolean directoryContains(java.io.File,java.io.File)>($r8, $r7);
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z3);
+
+        return;
+    }
+
+    public void testDirectoryContainsFile() throws java.io.IOException
+    {
+        org.apache.commons.io.FileUtilsDirectoryContainsTestCase r0;
+        java.io.File $r1, $r2, $r3, $r4;
+        boolean $z0, $z1;
+
+        r0 := @this: org.apache.commons.io.FileUtilsDirectoryContainsTestCase;
+
+        $r2 = r0.<org.apache.commons.io.FileUtilsDirectoryContainsTestCase: java.io.File directory1>;
+
+        $r1 = r0.<org.apache.commons.io.FileUtilsDirectoryContainsTestCase: java.io.File file1>;
+
+        $z0 = staticinvoke <org.apache.commons.io.FileUtils: boolean directoryContains(java.io.File,java.io.File)>($r2, $r1);
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z0);
+
+        $r4 = r0.<org.apache.commons.io.FileUtilsDirectoryContainsTestCase: java.io.File directory2>;
+
+        $r3 = r0.<org.apache.commons.io.FileUtilsDirectoryContainsTestCase: java.io.File file2>;
+
+        $z1 = staticinvoke <org.apache.commons.io.FileUtils: boolean directoryContains(java.io.File,java.io.File)>($r4, $r3);
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z1);
+
+        return;
+    }
+
+    public void testDirectoryDoesNotContainFile() throws java.io.IOException
+    {
+        org.apache.commons.io.FileUtilsDirectoryContainsTestCase r0;
+        java.io.File $r1, $r2, $r3, $r4, $r5, $r6, $r7, $r8;
+        boolean $z0, $z1, $z2, $z3;
+
+        r0 := @this: org.apache.commons.io.FileUtilsDirectoryContainsTestCase;
+
+        $r2 = r0.<org.apache.commons.io.FileUtilsDirectoryContainsTestCase: java.io.File directory1>;
+
+        $r1 = r0.<org.apache.commons.io.FileUtilsDirectoryContainsTestCase: java.io.File file2>;
+
+        $z0 = staticinvoke <org.apache.commons.io.FileUtils: boolean directoryContains(java.io.File,java.io.File)>($r2, $r1);
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z0);
+
+        $r4 = r0.<org.apache.commons.io.FileUtilsDirectoryContainsTestCase: java.io.File directory2>;
+
+        $r3 = r0.<org.apache.commons.io.FileUtilsDirectoryContainsTestCase: java.io.File file1>;
+
+        $z1 = staticinvoke <org.apache.commons.io.FileUtils: boolean directoryContains(java.io.File,java.io.File)>($r4, $r3);
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z1);
+
+        $r6 = r0.<org.apache.commons.io.FileUtilsDirectoryContainsTestCase: java.io.File directory1>;
+
+        $r5 = r0.<org.apache.commons.io.FileUtilsDirectoryContainsTestCase: java.io.File file3>;
+
+        $z2 = staticinvoke <org.apache.commons.io.FileUtils: boolean directoryContains(java.io.File,java.io.File)>($r6, $r5);
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z2);
+
+        $r8 = r0.<org.apache.commons.io.FileUtilsDirectoryContainsTestCase: java.io.File directory2>;
+
+        $r7 = r0.<org.apache.commons.io.FileUtilsDirectoryContainsTestCase: java.io.File file3>;
+
+        $z3 = staticinvoke <org.apache.commons.io.FileUtils: boolean directoryContains(java.io.File,java.io.File)>($r8, $r7);
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z3);
+
+        return;
+    }
+
+    public void testDirectoryDoesNotContainsDirectory() throws java.io.IOException
+    {
+        org.apache.commons.io.FileUtilsDirectoryContainsTestCase r0;
+        java.io.File $r1, $r2, $r3, $r4, $r5, $r6, $r7, $r8;
+        boolean $z0, $z1, $z2, $z3;
+
+        r0 := @this: org.apache.commons.io.FileUtilsDirectoryContainsTestCase;
+
+        $r2 = r0.<org.apache.commons.io.FileUtilsDirectoryContainsTestCase: java.io.File directory1>;
+
+        $r1 = r0.<org.apache.commons.io.FileUtilsDirectoryContainsTestCase: java.io.File top>;
+
+        $z0 = staticinvoke <org.apache.commons.io.FileUtils: boolean directoryContains(java.io.File,java.io.File)>($r2, $r1);
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z0);
+
+        $r4 = r0.<org.apache.commons.io.FileUtilsDirectoryContainsTestCase: java.io.File directory2>;
+
+        $r3 = r0.<org.apache.commons.io.FileUtilsDirectoryContainsTestCase: java.io.File top>;
+
+        $z1 = staticinvoke <org.apache.commons.io.FileUtils: boolean directoryContains(java.io.File,java.io.File)>($r4, $r3);
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z1);
+
+        $r6 = r0.<org.apache.commons.io.FileUtilsDirectoryContainsTestCase: java.io.File directory3>;
+
+        $r5 = r0.<org.apache.commons.io.FileUtilsDirectoryContainsTestCase: java.io.File top>;
+
+        $z2 = staticinvoke <org.apache.commons.io.FileUtils: boolean directoryContains(java.io.File,java.io.File)>($r6, $r5);
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z2);
+
+        $r8 = r0.<org.apache.commons.io.FileUtilsDirectoryContainsTestCase: java.io.File directory3>;
+
+        $r7 = r0.<org.apache.commons.io.FileUtilsDirectoryContainsTestCase: java.io.File directory2>;
+
+        $z3 = staticinvoke <org.apache.commons.io.FileUtils: boolean directoryContains(java.io.File,java.io.File)>($r8, $r7);
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z3);
+
+        return;
+    }
+
+    public void testDirectoryDoesNotExist() throws java.io.IOException
+    {
+        org.apache.commons.io.FileUtilsDirectoryContainsTestCase r0;
+        java.io.File $r3, $r4;
+        boolean $z0, $z1;
+        java.lang.StringBuilder $r5, $r8;
+        java.lang.Class $r6;
+        java.lang.String $r7, $r9;
+        java.lang.IllegalArgumentException $r10;
+
+        r0 := @this: org.apache.commons.io.FileUtilsDirectoryContainsTestCase;
+
+        $r3 = new java.io.File;
+
+        specialinvoke $r3.<java.io.File: void <init>(java.lang.String)>("DOESNOTEXIST");
+
+        $z0 = virtualinvoke $r3.<java.io.File: boolean exists()>();
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z0);
+
+     label1:
+        $r4 = r0.<org.apache.commons.io.FileUtilsDirectoryContainsTestCase: java.io.File file1>;
+
+        $z1 = staticinvoke <org.apache.commons.io.FileUtils: boolean directoryContains(java.io.File,java.io.File)>($r3, $r4);
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z1);
+
+        $r5 = new java.lang.StringBuilder;
+
+        specialinvoke $r5.<java.lang.StringBuilder: void <init>(java.lang.String)>("Expected ");
+
+        $r6 = class "java/lang/IllegalArgumentException";
+
+        $r7 = virtualinvoke $r6.<java.lang.Class: java.lang.String getName()>();
+
+        $r8 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r7);
+
+        $r9 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>($r9);
+
+     label2:
+        goto label4;
+
+     label3:
+        $r10 := @caughtexception;
+
+     label4:
+        return;
+
+        catch java.lang.IllegalArgumentException from label1 to label2 with label3;
+    }
+
+    public void testSameFile() throws java.io.IOException
+    {
+        org.apache.commons.io.FileUtilsDirectoryContainsTestCase r0;
+        java.io.File $r2, $r3;
+        boolean $z0;
+        java.lang.StringBuilder $r4, $r7;
+        java.lang.Class $r5;
+        java.lang.String $r6, $r8;
+        java.lang.IllegalArgumentException $r9;
+
+        r0 := @this: org.apache.commons.io.FileUtilsDirectoryContainsTestCase;
+
+     label1:
+        $r3 = r0.<org.apache.commons.io.FileUtilsDirectoryContainsTestCase: java.io.File file1>;
+
+        $r2 = r0.<org.apache.commons.io.FileUtilsDirectoryContainsTestCase: java.io.File file1>;
+
+        $z0 = staticinvoke <org.apache.commons.io.FileUtils: boolean directoryContains(java.io.File,java.io.File)>($r3, $r2);
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z0);
+
+        $r4 = new java.lang.StringBuilder;
+
+        specialinvoke $r4.<java.lang.StringBuilder: void <init>(java.lang.String)>("Expected ");
+
+        $r5 = class "java/lang/IllegalArgumentException";
+
+        $r6 = virtualinvoke $r5.<java.lang.Class: java.lang.String getName()>();
+
+        $r7 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r6);
+
+        $r8 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>($r8);
+
+     label2:
+        goto label4;
+
+     label3:
+        $r9 := @caughtexception;
+
+     label4:
+        return;
+
+        catch java.lang.IllegalArgumentException from label1 to label2 with label3;
+    }
+
+    public void testIO466() throws java.io.IOException
+    {
+        org.apache.commons.io.FileUtilsDirectoryContainsTestCase r0;
+        java.io.File $r2, $r3, $r5;
+        java.lang.String $r4;
+        boolean $z0;
+
+        r0 := @this: org.apache.commons.io.FileUtilsDirectoryContainsTestCase;
+
+        $r2 = new java.io.File;
+
+        $r3 = r0.<org.apache.commons.io.FileUtilsDirectoryContainsTestCase: java.io.File directory1>;
+
+        $r4 = virtualinvoke $r3.<java.io.File: java.lang.String getParent()>();
+
+        specialinvoke $r2.<java.io.File: void <init>(java.lang.String,java.lang.String)>($r4, "directory1.txt");
+
+        $r5 = r0.<org.apache.commons.io.FileUtilsDirectoryContainsTestCase: java.io.File directory1>;
+
+        $z0 = staticinvoke <org.apache.commons.io.FileUtils: boolean directoryContains(java.io.File,java.io.File)>($r5, $r2);
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z0);
+
+        return;
+    }
+
+    public void testFileDoesNotExist() throws java.io.IOException
+    {
+        org.apache.commons.io.FileUtilsDirectoryContainsTestCase r0;
+        java.io.File $r2, $r3, $r4;
+        boolean $z0, $z1, $z2;
+
+        r0 := @this: org.apache.commons.io.FileUtilsDirectoryContainsTestCase;
+
+        $r2 = r0.<org.apache.commons.io.FileUtilsDirectoryContainsTestCase: java.io.File top>;
+
+        $z0 = staticinvoke <org.apache.commons.io.FileUtils: boolean directoryContains(java.io.File,java.io.File)>($r2, null);
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z0);
+
+        $r3 = new java.io.File;
+
+        specialinvoke $r3.<java.io.File: void <init>(java.lang.String)>("DOESNOTEXIST");
+
+        $z1 = virtualinvoke $r3.<java.io.File: boolean exists()>();
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z1);
+
+        $r4 = r0.<org.apache.commons.io.FileUtilsDirectoryContainsTestCase: java.io.File top>;
+
+        $z2 = staticinvoke <org.apache.commons.io.FileUtils: boolean directoryContains(java.io.File,java.io.File)>($r4, $r3);
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z2);
+
+        return;
+    }
+
+    public void testFileDoesNotExistBug() throws java.io.IOException
+    {
+        org.apache.commons.io.FileUtilsDirectoryContainsTestCase r0;
+        java.io.File $r2, $r3, $r4, $r5;
+        boolean $z0, $z1, $z2;
+
+        r0 := @this: org.apache.commons.io.FileUtilsDirectoryContainsTestCase;
+
+        $r2 = new java.io.File;
+
+        $r3 = r0.<org.apache.commons.io.FileUtilsDirectoryContainsTestCase: java.io.File top>;
+
+        specialinvoke $r2.<java.io.File: void <init>(java.io.File,java.lang.String)>($r3, "DOESNOTEXIST");
+
+        $r4 = r0.<org.apache.commons.io.FileUtilsDirectoryContainsTestCase: java.io.File top>;
+
+        $z0 = virtualinvoke $r4.<java.io.File: boolean exists()>();
+
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>("Check directory exists", $z0);
+
+        $z1 = virtualinvoke $r2.<java.io.File: boolean exists()>();
+
+        staticinvoke <org.junit.Assert: void assertFalse(java.lang.String,boolean)>("Check file does not exist", $z1);
+
+        $r5 = r0.<org.apache.commons.io.FileUtilsDirectoryContainsTestCase: java.io.File top>;
+
+        $z2 = staticinvoke <org.apache.commons.io.FileUtils: boolean directoryContains(java.io.File,java.io.File)>($r5, $r2);
+
+        staticinvoke <org.junit.Assert: void assertFalse(java.lang.String,boolean)>("Direcory does not contain unrealized file", $z2);
+
+        return;
+    }
+
+    public void testUnrealizedContainment() throws java.io.IOException
+    {
+        org.apache.commons.io.FileUtilsDirectoryContainsTestCase r0;
+        java.io.File $r4, $r5;
+        boolean $z0, $z1, $z2;
+        java.lang.IllegalArgumentException $r6;
+
+        r0 := @this: org.apache.commons.io.FileUtilsDirectoryContainsTestCase;
+
+        $r4 = new java.io.File;
+
+        specialinvoke $r4.<java.io.File: void <init>(java.lang.String)>("DOESNOTEXIST");
+
+        $r5 = new java.io.File;
+
+        specialinvoke $r5.<java.io.File: void <init>(java.io.File,java.lang.String)>($r4, "DOESNOTEXIST2");
+
+        $z0 = virtualinvoke $r4.<java.io.File: boolean exists()>();
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z0);
+
+        $z1 = virtualinvoke $r5.<java.io.File: boolean exists()>();
+
+        staticinvoke <org.junit.Assert: void assertFalse(boolean)>($z1);
+
+     label1:
+        $z2 = staticinvoke <org.apache.commons.io.FileUtils: boolean directoryContains(java.io.File,java.io.File)>($r4, $r5);
+
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z2);
+
+     label2:
+        goto label4;
+
+     label3:
+        $r6 := @caughtexception;
+
+     label4:
+        return;
+
+        catch java.lang.IllegalArgumentException from label1 to label2 with label3;
+    }
+}

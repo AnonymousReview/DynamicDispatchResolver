@@ -1,0 +1,561 @@
+public class org.apache.commons.codec.binary.Base32OutputStreamTest extends java.lang.Object
+{
+    private static final byte[] CRLF;
+    private static final byte[] LF;
+
+    static void <clinit>()
+    {
+        byte[] $r0, $r1;
+
+        $r0 = newarray (byte)[2];
+
+        $r0[0] = 13;
+
+        $r0[1] = 10;
+
+        <org.apache.commons.codec.binary.Base32OutputStreamTest: byte[] CRLF> = $r0;
+
+        $r1 = newarray (byte)[1];
+
+        $r1[0] = 10;
+
+        <org.apache.commons.codec.binary.Base32OutputStreamTest: byte[] LF> = $r1;
+
+        return;
+    }
+
+    public void <init>()
+    {
+        org.apache.commons.codec.binary.Base32OutputStreamTest r0;
+
+        r0 := @this: org.apache.commons.codec.binary.Base32OutputStreamTest;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void testBase32EmptyOutputStreamMimeChunkSize() throws java.lang.Exception
+    {
+        org.apache.commons.codec.binary.Base32OutputStreamTest r0;
+
+        r0 := @this: org.apache.commons.codec.binary.Base32OutputStreamTest;
+
+        specialinvoke r0.<org.apache.commons.codec.binary.Base32OutputStreamTest: void testBase32EmptyOutputStream(int)>(76);
+
+        return;
+    }
+
+    public void testBase32EmptyOutputStreamPemChunkSize() throws java.lang.Exception
+    {
+        org.apache.commons.codec.binary.Base32OutputStreamTest r0;
+
+        r0 := @this: org.apache.commons.codec.binary.Base32OutputStreamTest;
+
+        specialinvoke r0.<org.apache.commons.codec.binary.Base32OutputStreamTest: void testBase32EmptyOutputStream(int)>(64);
+
+        return;
+    }
+
+    private void testBase32EmptyOutputStream(int) throws java.lang.Exception
+    {
+        org.apache.commons.codec.binary.Base32OutputStreamTest r0;
+        int i0;
+        byte[] r1, r2, $r3, $r4;
+
+        r0 := @this: org.apache.commons.codec.binary.Base32OutputStreamTest;
+
+        i0 := @parameter0: int;
+
+        r1 = newarray (byte)[0];
+
+        r2 = newarray (byte)[0];
+
+        $r3 = <org.apache.commons.codec.binary.Base32OutputStreamTest: byte[] CRLF>;
+
+        specialinvoke r0.<org.apache.commons.codec.binary.Base32OutputStreamTest: void testByteByByte(byte[],byte[],int,byte[])>(r1, r2, i0, $r3);
+
+        $r4 = <org.apache.commons.codec.binary.Base32OutputStreamTest: byte[] CRLF>;
+
+        specialinvoke r0.<org.apache.commons.codec.binary.Base32OutputStreamTest: void testByChunk(byte[],byte[],int,byte[])>(r1, r2, i0, $r4);
+
+        return;
+    }
+
+    public void testBase32OutputStreamByChunk() throws java.lang.Exception
+    {
+        org.apache.commons.codec.binary.Base32OutputStreamTest r0;
+        byte[][] r2;
+        byte[] $r3, $r5, r6, r7, r8, r9;
+        org.apache.commons.codec.binary.Base32 $r4;
+        int i0;
+
+        r0 := @this: org.apache.commons.codec.binary.Base32OutputStreamTest;
+
+        r6 = staticinvoke <org.apache.commons.codec.binary.StringUtils: byte[] getBytesUtf8(java.lang.String)>("JBSWY3DPEBLW64TMMQ======\r\n");
+
+        r7 = staticinvoke <org.apache.commons.codec.binary.StringUtils: byte[] getBytesUtf8(java.lang.String)>("Hello World");
+
+        $r3 = <org.apache.commons.codec.binary.Base32OutputStreamTest: byte[] CRLF>;
+
+        specialinvoke r0.<org.apache.commons.codec.binary.Base32OutputStreamTest: void testByChunk(byte[],byte[],int,byte[])>(r6, r7, 76, $r3);
+
+        $r4 = new org.apache.commons.codec.binary.Base32;
+
+        specialinvoke $r4.<org.apache.commons.codec.binary.Base32: void <init>()>();
+
+        i0 = 0;
+
+        goto label2;
+
+     label1:
+        r2 = staticinvoke <org.apache.commons.codec.binary.Base32TestData: byte[][] randomData(org.apache.commons.codec.binary.BaseNCodec,int)>($r4, i0);
+
+        r8 = r2[1];
+
+        r9 = r2[0];
+
+        $r5 = <org.apache.commons.codec.binary.Base32OutputStreamTest: byte[] LF>;
+
+        specialinvoke r0.<org.apache.commons.codec.binary.Base32OutputStreamTest: void testByChunk(byte[],byte[],int,byte[])>(r8, r9, 0, $r5);
+
+        i0 = i0 + 1;
+
+     label2:
+        if i0 <= 150 goto label1;
+
+        return;
+    }
+
+    public void testBase32OutputStreamByteByByte() throws java.lang.Exception
+    {
+        org.apache.commons.codec.binary.Base32OutputStreamTest r0;
+        byte[][] r2;
+        byte[] $r3, $r5, r6, r7, r8, r9;
+        org.apache.commons.codec.binary.Base32 $r4;
+        int i0;
+
+        r0 := @this: org.apache.commons.codec.binary.Base32OutputStreamTest;
+
+        r6 = staticinvoke <org.apache.commons.codec.binary.StringUtils: byte[] getBytesUtf8(java.lang.String)>("JBSWY3DPEBLW64TMMQ======\r\n");
+
+        r7 = staticinvoke <org.apache.commons.codec.binary.StringUtils: byte[] getBytesUtf8(java.lang.String)>("Hello World");
+
+        $r3 = <org.apache.commons.codec.binary.Base32OutputStreamTest: byte[] CRLF>;
+
+        specialinvoke r0.<org.apache.commons.codec.binary.Base32OutputStreamTest: void testByteByByte(byte[],byte[],int,byte[])>(r6, r7, 76, $r3);
+
+        $r4 = new org.apache.commons.codec.binary.Base32;
+
+        specialinvoke $r4.<org.apache.commons.codec.binary.Base32: void <init>()>();
+
+        i0 = 0;
+
+        goto label2;
+
+     label1:
+        r2 = staticinvoke <org.apache.commons.codec.binary.Base32TestData: byte[][] randomData(org.apache.commons.codec.binary.BaseNCodec,int)>($r4, i0);
+
+        r8 = r2[1];
+
+        r9 = r2[0];
+
+        $r5 = <org.apache.commons.codec.binary.Base32OutputStreamTest: byte[] LF>;
+
+        specialinvoke r0.<org.apache.commons.codec.binary.Base32OutputStreamTest: void testByteByByte(byte[],byte[],int,byte[])>(r8, r9, 0, $r5);
+
+        i0 = i0 + 1;
+
+     label2:
+        if i0 <= 150 goto label1;
+
+        return;
+    }
+
+    private void testByChunk(byte[], byte[], int, byte[]) throws java.lang.Exception
+    {
+        org.apache.commons.codec.binary.Base32OutputStreamTest r0;
+        byte[] r1, r2, r3, r13, r16, r20;
+        int i0, i1;
+        java.io.ByteArrayOutputStream $r4, $r6, $r8;
+        org.apache.commons.codec.binary.Base32OutputStream $r5, $r7, $r9, $r10;
+        boolean $z0, $z1, $z2;
+        java.io.OutputStream r18;
+
+        r0 := @this: org.apache.commons.codec.binary.Base32OutputStreamTest;
+
+        r1 := @parameter0: byte[];
+
+        r2 := @parameter1: byte[];
+
+        i0 := @parameter2: int;
+
+        r3 := @parameter3: byte[];
+
+        $r4 = new java.io.ByteArrayOutputStream;
+
+        specialinvoke $r4.<java.io.ByteArrayOutputStream: void <init>()>();
+
+        $r5 = new org.apache.commons.codec.binary.Base32OutputStream;
+
+        specialinvoke $r5.<org.apache.commons.codec.binary.Base32OutputStream: void <init>(java.io.OutputStream,boolean,int,byte[])>($r4, 1, i0, r3);
+
+        virtualinvoke $r5.<java.io.OutputStream: void write(byte[])>(r2);
+
+        virtualinvoke $r5.<java.io.OutputStream: void close()>();
+
+        r13 = virtualinvoke $r4.<java.io.ByteArrayOutputStream: byte[] toByteArray()>();
+
+        $z0 = staticinvoke <java.util.Arrays: boolean equals(byte[],byte[])>(r13, r1);
+
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>("Streaming chunked Base32 encode", $z0);
+
+        $r6 = new java.io.ByteArrayOutputStream;
+
+        specialinvoke $r6.<java.io.ByteArrayOutputStream: void <init>()>();
+
+        $r7 = new org.apache.commons.codec.binary.Base32OutputStream;
+
+        specialinvoke $r7.<org.apache.commons.codec.binary.Base32OutputStream: void <init>(java.io.OutputStream,boolean)>($r6, 0);
+
+        virtualinvoke $r7.<java.io.OutputStream: void write(byte[])>(r1);
+
+        virtualinvoke $r7.<java.io.OutputStream: void close()>();
+
+        r16 = virtualinvoke $r6.<java.io.ByteArrayOutputStream: byte[] toByteArray()>();
+
+        $z1 = staticinvoke <java.util.Arrays: boolean equals(byte[],byte[])>(r16, r2);
+
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>("Streaming chunked Base32 decode", $z1);
+
+        $r8 = new java.io.ByteArrayOutputStream;
+
+        specialinvoke $r8.<java.io.ByteArrayOutputStream: void <init>()>();
+
+        r18 = $r8;
+
+        i1 = 0;
+
+        goto label2;
+
+     label1:
+        $r9 = new org.apache.commons.codec.binary.Base32OutputStream;
+
+        specialinvoke $r9.<org.apache.commons.codec.binary.Base32OutputStream: void <init>(java.io.OutputStream,boolean)>(r18, 0);
+
+        $r10 = new org.apache.commons.codec.binary.Base32OutputStream;
+
+        specialinvoke $r10.<org.apache.commons.codec.binary.Base32OutputStream: void <init>(java.io.OutputStream,boolean,int,byte[])>($r9, 1, i0, r3);
+
+        r18 = $r10;
+
+        i1 = i1 + 1;
+
+     label2:
+        if i1 < 10 goto label1;
+
+        virtualinvoke r18.<java.io.OutputStream: void write(byte[])>(r2);
+
+        virtualinvoke r18.<java.io.OutputStream: void close()>();
+
+        r20 = virtualinvoke $r8.<java.io.ByteArrayOutputStream: byte[] toByteArray()>();
+
+        $z2 = staticinvoke <java.util.Arrays: boolean equals(byte[],byte[])>(r20, r2);
+
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>("Streaming chunked Base32 wrap-wrap-wrap!", $z2);
+
+        return;
+    }
+
+    private void testByteByByte(byte[], byte[], int, byte[]) throws java.lang.Exception
+    {
+        org.apache.commons.codec.binary.Base32OutputStreamTest r0;
+        byte[] r1, r2, r3, r16, r20, r24, r29;
+        int i0, i1, i2, i4, i5, i7, i8, i10, i11, i12;
+        java.io.ByteArrayOutputStream $r4, $r6, $r8, $r10;
+        org.apache.commons.codec.binary.Base32OutputStream $r5, $r7, $r9, $r11, $r12;
+        boolean $z0, $z1, $z2, $z3;
+        byte b3, b6, b9, b13;
+        java.io.OutputStream r26;
+
+        r0 := @this: org.apache.commons.codec.binary.Base32OutputStreamTest;
+
+        r1 := @parameter0: byte[];
+
+        r2 := @parameter1: byte[];
+
+        i0 := @parameter2: int;
+
+        r3 := @parameter3: byte[];
+
+        $r4 = new java.io.ByteArrayOutputStream;
+
+        specialinvoke $r4.<java.io.ByteArrayOutputStream: void <init>()>();
+
+        $r5 = new org.apache.commons.codec.binary.Base32OutputStream;
+
+        specialinvoke $r5.<org.apache.commons.codec.binary.Base32OutputStream: void <init>(java.io.OutputStream,boolean,int,byte[])>($r4, 1, i0, r3);
+
+        i1 = lengthof r2;
+
+        i2 = 0;
+
+        goto label02;
+
+     label01:
+        b3 = r2[i2];
+
+        virtualinvoke $r5.<java.io.OutputStream: void write(int)>(b3);
+
+        i2 = i2 + 1;
+
+     label02:
+        if i2 < i1 goto label01;
+
+        virtualinvoke $r5.<java.io.OutputStream: void close()>();
+
+        r16 = virtualinvoke $r4.<java.io.ByteArrayOutputStream: byte[] toByteArray()>();
+
+        $z0 = staticinvoke <java.util.Arrays: boolean equals(byte[],byte[])>(r16, r1);
+
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>("Streaming byte-by-byte Base32 encode", $z0);
+
+        $r6 = new java.io.ByteArrayOutputStream;
+
+        specialinvoke $r6.<java.io.ByteArrayOutputStream: void <init>()>();
+
+        $r7 = new org.apache.commons.codec.binary.Base32OutputStream;
+
+        specialinvoke $r7.<org.apache.commons.codec.binary.Base32OutputStream: void <init>(java.io.OutputStream,boolean)>($r6, 0);
+
+        i4 = lengthof r1;
+
+        i5 = 0;
+
+        goto label04;
+
+     label03:
+        b6 = r1[i5];
+
+        virtualinvoke $r7.<java.io.OutputStream: void write(int)>(b6);
+
+        i5 = i5 + 1;
+
+     label04:
+        if i5 < i4 goto label03;
+
+        virtualinvoke $r7.<java.io.OutputStream: void close()>();
+
+        r20 = virtualinvoke $r6.<java.io.ByteArrayOutputStream: byte[] toByteArray()>();
+
+        $z1 = staticinvoke <java.util.Arrays: boolean equals(byte[],byte[])>(r20, r2);
+
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>("Streaming byte-by-byte Base32 decode", $z1);
+
+        $r8 = new java.io.ByteArrayOutputStream;
+
+        specialinvoke $r8.<java.io.ByteArrayOutputStream: void <init>()>();
+
+        $r9 = new org.apache.commons.codec.binary.Base32OutputStream;
+
+        specialinvoke $r9.<org.apache.commons.codec.binary.Base32OutputStream: void <init>(java.io.OutputStream,boolean)>($r8, 0);
+
+        i7 = lengthof r1;
+
+        i8 = 0;
+
+        goto label06;
+
+     label05:
+        b9 = r1[i8];
+
+        virtualinvoke $r9.<java.io.OutputStream: void write(int)>(b9);
+
+        virtualinvoke $r9.<java.io.OutputStream: void flush()>();
+
+        i8 = i8 + 1;
+
+     label06:
+        if i8 < i7 goto label05;
+
+        virtualinvoke $r9.<java.io.OutputStream: void close()>();
+
+        r24 = virtualinvoke $r8.<java.io.ByteArrayOutputStream: byte[] toByteArray()>();
+
+        $z2 = staticinvoke <java.util.Arrays: boolean equals(byte[],byte[])>(r24, r2);
+
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>("Streaming byte-by-byte flush() Base32 decode", $z2);
+
+        $r10 = new java.io.ByteArrayOutputStream;
+
+        specialinvoke $r10.<java.io.ByteArrayOutputStream: void <init>()>();
+
+        r26 = $r10;
+
+        i10 = 0;
+
+        goto label08;
+
+     label07:
+        $r11 = new org.apache.commons.codec.binary.Base32OutputStream;
+
+        specialinvoke $r11.<org.apache.commons.codec.binary.Base32OutputStream: void <init>(java.io.OutputStream,boolean)>(r26, 0);
+
+        $r12 = new org.apache.commons.codec.binary.Base32OutputStream;
+
+        specialinvoke $r12.<org.apache.commons.codec.binary.Base32OutputStream: void <init>(java.io.OutputStream,boolean,int,byte[])>($r11, 1, i0, r3);
+
+        r26 = $r12;
+
+        i10 = i10 + 1;
+
+     label08:
+        if i10 < 10 goto label07;
+
+        i11 = lengthof r2;
+
+        i12 = 0;
+
+        goto label10;
+
+     label09:
+        b13 = r2[i12];
+
+        virtualinvoke r26.<java.io.OutputStream: void write(int)>(b13);
+
+        i12 = i12 + 1;
+
+     label10:
+        if i12 < i11 goto label09;
+
+        virtualinvoke r26.<java.io.OutputStream: void close()>();
+
+        r29 = virtualinvoke $r10.<java.io.ByteArrayOutputStream: byte[] toByteArray()>();
+
+        $z3 = staticinvoke <java.util.Arrays: boolean equals(byte[],byte[])>(r29, r2);
+
+        staticinvoke <org.junit.Assert: void assertTrue(java.lang.String,boolean)>("Streaming byte-by-byte Base32 wrap-wrap-wrap!", $z3);
+
+        return;
+    }
+
+    public void testWriteOutOfBounds() throws java.lang.Exception
+    {
+        org.apache.commons.codec.binary.Base32OutputStreamTest r0;
+        byte[] r1;
+        java.io.ByteArrayOutputStream $r4;
+        org.apache.commons.codec.binary.Base32OutputStream $r5;
+        int $i0, $i1, $i2, $i3;
+        java.lang.IndexOutOfBoundsException $r6, $r7, $r8, $r9;
+
+        r0 := @this: org.apache.commons.codec.binary.Base32OutputStreamTest;
+
+        r1 = newarray (byte)[1024];
+
+        $r4 = new java.io.ByteArrayOutputStream;
+
+        specialinvoke $r4.<java.io.ByteArrayOutputStream: void <init>()>();
+
+        $r5 = new org.apache.commons.codec.binary.Base32OutputStream;
+
+        specialinvoke $r5.<org.apache.commons.codec.binary.Base32OutputStream: void <init>(java.io.OutputStream)>($r4);
+
+     label01:
+        virtualinvoke $r5.<org.apache.commons.codec.binary.Base32OutputStream: void write(byte[],int,int)>(r1, -1, 1);
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("Expected Base32OutputStream.write(buf, -1, 1) to throw a IndexOutOfBoundsException");
+
+     label02:
+        goto label04;
+
+     label03:
+        $r9 := @caughtexception;
+
+     label04:
+        virtualinvoke $r5.<org.apache.commons.codec.binary.Base32OutputStream: void write(byte[],int,int)>(r1, 1, -1);
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("Expected Base32OutputStream.write(buf, 1, -1) to throw a IndexOutOfBoundsException");
+
+     label05:
+        goto label07;
+
+     label06:
+        $r6 := @caughtexception;
+
+     label07:
+        $i0 = lengthof r1;
+
+        $i1 = $i0 + 1;
+
+        virtualinvoke $r5.<org.apache.commons.codec.binary.Base32OutputStream: void write(byte[],int,int)>(r1, $i1, 0);
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("Expected Base32OutputStream.write(buf, buf.length + 1, 0) to throw a IndexOutOfBoundsException");
+
+     label08:
+        goto label10;
+
+     label09:
+        $r7 := @caughtexception;
+
+     label10:
+        $i2 = lengthof r1;
+
+        $i3 = $i2 - 1;
+
+        virtualinvoke $r5.<org.apache.commons.codec.binary.Base32OutputStream: void write(byte[],int,int)>(r1, $i3, 2);
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("Expected Base32OutputStream.write(buf, buf.length - 1, 2) to throw a IndexOutOfBoundsException");
+
+     label11:
+        goto label13;
+
+     label12:
+        $r8 := @caughtexception;
+
+     label13:
+        virtualinvoke $r5.<org.apache.commons.codec.binary.Base32OutputStream: void close()>();
+
+        return;
+
+        catch java.lang.IndexOutOfBoundsException from label01 to label02 with label03;
+        catch java.lang.IndexOutOfBoundsException from label04 to label05 with label06;
+        catch java.lang.IndexOutOfBoundsException from label07 to label08 with label09;
+        catch java.lang.IndexOutOfBoundsException from label10 to label11 with label12;
+    }
+
+    public void testWriteToNullCoverage() throws java.lang.Exception
+    {
+        org.apache.commons.codec.binary.Base32OutputStreamTest r0;
+        java.io.ByteArrayOutputStream $r4;
+        org.apache.commons.codec.binary.Base32OutputStream $r5;
+        java.lang.NullPointerException $r6;
+
+        r0 := @this: org.apache.commons.codec.binary.Base32OutputStreamTest;
+
+        $r4 = new java.io.ByteArrayOutputStream;
+
+        specialinvoke $r4.<java.io.ByteArrayOutputStream: void <init>()>();
+
+        $r5 = new org.apache.commons.codec.binary.Base32OutputStream;
+
+        specialinvoke $r5.<org.apache.commons.codec.binary.Base32OutputStream: void <init>(java.io.OutputStream)>($r4);
+
+     label1:
+        virtualinvoke $r5.<org.apache.commons.codec.binary.Base32OutputStream: void write(byte[],int,int)>(null, 0, 0);
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("Expcted Base32OutputStream.write(null) to throw a NullPointerException");
+
+     label2:
+        goto label4;
+
+     label3:
+        $r6 := @caughtexception;
+
+     label4:
+        virtualinvoke $r5.<org.apache.commons.codec.binary.Base32OutputStream: void close()>();
+
+        return;
+
+        catch java.lang.NullPointerException from label1 to label2 with label3;
+    }
+}

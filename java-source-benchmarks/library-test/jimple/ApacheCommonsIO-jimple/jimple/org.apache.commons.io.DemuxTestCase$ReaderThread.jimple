@@ -1,0 +1,119 @@
+class org.apache.commons.io.DemuxTestCase$ReaderThread extends java.lang.Thread
+{
+    private final java.lang.StringBuffer m_buffer;
+    private final java.io.InputStream m_input;
+    private final org.apache.commons.io.input.DemuxInputStream m_demux;
+
+    void <init>(java.lang.String, java.io.InputStream, org.apache.commons.io.input.DemuxInputStream)
+    {
+        org.apache.commons.io.DemuxTestCase$ReaderThread r0;
+        java.lang.String r1;
+        java.io.InputStream r2;
+        org.apache.commons.io.input.DemuxInputStream r3;
+        java.lang.StringBuffer $r4;
+
+        r0 := @this: org.apache.commons.io.DemuxTestCase$ReaderThread;
+
+        r1 := @parameter0: java.lang.String;
+
+        r2 := @parameter1: java.io.InputStream;
+
+        r3 := @parameter2: org.apache.commons.io.input.DemuxInputStream;
+
+        specialinvoke r0.<java.lang.Thread: void <init>(java.lang.String)>(r1);
+
+        $r4 = new java.lang.StringBuffer;
+
+        specialinvoke $r4.<java.lang.StringBuffer: void <init>()>();
+
+        r0.<org.apache.commons.io.DemuxTestCase$ReaderThread: java.lang.StringBuffer m_buffer> = $r4;
+
+        r0.<org.apache.commons.io.DemuxTestCase$ReaderThread: java.io.InputStream m_input> = r2;
+
+        r0.<org.apache.commons.io.DemuxTestCase$ReaderThread: org.apache.commons.io.input.DemuxInputStream m_demux> = r3;
+
+        return;
+    }
+
+    public java.lang.String getData()
+    {
+        org.apache.commons.io.DemuxTestCase$ReaderThread r0;
+        java.lang.StringBuffer $r1;
+        java.lang.String $r2;
+
+        r0 := @this: org.apache.commons.io.DemuxTestCase$ReaderThread;
+
+        $r1 = r0.<org.apache.commons.io.DemuxTestCase$ReaderThread: java.lang.StringBuffer m_buffer>;
+
+        $r2 = virtualinvoke $r1.<java.lang.StringBuffer: java.lang.String toString()>();
+
+        return $r2;
+    }
+
+    public void run()
+    {
+        org.apache.commons.io.DemuxTestCase$ReaderThread r0;
+        int i0, $i2, $i3, i5;
+        java.io.InputStream $r1;
+        org.apache.commons.io.input.DemuxInputStream $r2, $r4, $r8;
+        char $c1;
+        java.lang.StringBuffer $r5;
+        java.util.Random $r7;
+        long $l4;
+        java.lang.Exception $r9;
+
+        r0 := @this: org.apache.commons.io.DemuxTestCase$ReaderThread;
+
+        $r2 = r0.<org.apache.commons.io.DemuxTestCase$ReaderThread: org.apache.commons.io.input.DemuxInputStream m_demux>;
+
+        $r1 = r0.<org.apache.commons.io.DemuxTestCase$ReaderThread: java.io.InputStream m_input>;
+
+        virtualinvoke $r2.<org.apache.commons.io.input.DemuxInputStream: java.io.InputStream bindStream(java.io.InputStream)>($r1);
+
+     label1:
+        $r4 = r0.<org.apache.commons.io.DemuxTestCase$ReaderThread: org.apache.commons.io.input.DemuxInputStream m_demux>;
+
+        i5 = virtualinvoke $r4.<org.apache.commons.io.input.DemuxInputStream: int read()>();
+
+        goto label3;
+
+     label2:
+        $r5 = r0.<org.apache.commons.io.DemuxTestCase$ReaderThread: java.lang.StringBuffer m_buffer>;
+
+        $c1 = (char) i5;
+
+        virtualinvoke $r5.<java.lang.StringBuffer: java.lang.StringBuffer append(char)>($c1);
+
+        $r7 = staticinvoke <org.apache.commons.io.DemuxTestCase: java.util.Random access$0()>();
+
+        $i2 = virtualinvoke $r7.<java.util.Random: int nextInt()>();
+
+        $i3 = $i2 % 10;
+
+        i0 = staticinvoke <java.lang.Math: int abs(int)>($i3);
+
+        $l4 = (long) i0;
+
+        staticinvoke <org.apache.commons.io.testtools.TestUtils: void sleep(long)>($l4);
+
+        $r8 = r0.<org.apache.commons.io.DemuxTestCase$ReaderThread: org.apache.commons.io.input.DemuxInputStream m_demux>;
+
+        i5 = virtualinvoke $r8.<org.apache.commons.io.input.DemuxInputStream: int read()>();
+
+     label3:
+        if -1 != i5 goto label2;
+
+     label4:
+        goto label6;
+
+     label5:
+        $r9 := @caughtexception;
+
+        virtualinvoke $r9.<java.lang.Exception: void printStackTrace()>();
+
+     label6:
+        return;
+
+        catch java.lang.Exception from label1 to label4 with label5;
+    }
+}

@@ -1,0 +1,64 @@
+class org.apache.commons.codec.language.bm.RuleTest$NegativeIntegerBaseMatcher extends org.hamcrest.BaseMatcher
+{
+
+    private void <init>()
+    {
+        org.apache.commons.codec.language.bm.RuleTest$NegativeIntegerBaseMatcher r0;
+
+        r0 := @this: org.apache.commons.codec.language.bm.RuleTest$NegativeIntegerBaseMatcher;
+
+        specialinvoke r0.<org.hamcrest.BaseMatcher: void <init>()>();
+
+        return;
+    }
+
+    public void describeTo(org.hamcrest.Description)
+    {
+        org.apache.commons.codec.language.bm.RuleTest$NegativeIntegerBaseMatcher r0;
+        org.hamcrest.Description r1;
+
+        r0 := @this: org.apache.commons.codec.language.bm.RuleTest$NegativeIntegerBaseMatcher;
+
+        r1 := @parameter0: org.hamcrest.Description;
+
+        interfaceinvoke r1.<org.hamcrest.Description: org.hamcrest.Description appendText(java.lang.String)>("value should be negative");
+
+        return;
+    }
+
+    public boolean matches(java.lang.Object)
+    {
+        org.apache.commons.codec.language.bm.RuleTest$NegativeIntegerBaseMatcher r0;
+        java.lang.Object r1;
+        java.lang.Integer $r2;
+        int $i0;
+
+        r0 := @this: org.apache.commons.codec.language.bm.RuleTest$NegativeIntegerBaseMatcher;
+
+        r1 := @parameter0: java.lang.Object;
+
+        $r2 = (java.lang.Integer) r1;
+
+        $i0 = virtualinvoke $r2.<java.lang.Integer: int intValue()>();
+
+        if $i0 >= 0 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    void <init>(org.apache.commons.codec.language.bm.RuleTest$NegativeIntegerBaseMatcher)
+    {
+        org.apache.commons.codec.language.bm.RuleTest$NegativeIntegerBaseMatcher r0, r1;
+
+        r0 := @this: org.apache.commons.codec.language.bm.RuleTest$NegativeIntegerBaseMatcher;
+
+        r1 := @parameter0: org.apache.commons.codec.language.bm.RuleTest$NegativeIntegerBaseMatcher;
+
+        specialinvoke r0.<org.apache.commons.codec.language.bm.RuleTest$NegativeIntegerBaseMatcher: void <init>()>();
+
+        return;
+    }
+}

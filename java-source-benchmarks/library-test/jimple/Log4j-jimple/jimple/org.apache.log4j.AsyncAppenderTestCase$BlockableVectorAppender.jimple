@@ -1,0 +1,110 @@
+final class org.apache.log4j.AsyncAppenderTestCase$BlockableVectorAppender extends org.apache.log4j.VectorAppender
+{
+    private final java.lang.Object monitor;
+
+    public void <init>()
+    {
+        org.apache.log4j.AsyncAppenderTestCase$BlockableVectorAppender r0;
+        java.lang.Object $r1;
+
+        r0 := @this: org.apache.log4j.AsyncAppenderTestCase$BlockableVectorAppender;
+
+        specialinvoke r0.<org.apache.log4j.VectorAppender: void <init>()>();
+
+        $r1 = new java.lang.Object;
+
+        specialinvoke $r1.<java.lang.Object: void <init>()>();
+
+        r0.<org.apache.log4j.AsyncAppenderTestCase$BlockableVectorAppender: java.lang.Object monitor> = $r1;
+
+        return;
+    }
+
+    public void append(org.apache.log4j.spi.LoggingEvent)
+    {
+        org.apache.log4j.AsyncAppenderTestCase$BlockableVectorAppender r0;
+        org.apache.log4j.spi.LoggingEvent r1;
+        org.apache.log4j.Logger r3;
+        java.lang.Object $r4, $r8, $r10, $r12, $r14;
+        org.apache.log4j.Level $r5, $r6;
+        java.lang.String $r7, $r9, $r11, $r13, $r15;
+        java.lang.Throwable $r16;
+
+        r0 := @this: org.apache.log4j.AsyncAppenderTestCase$BlockableVectorAppender;
+
+        r1 := @parameter0: org.apache.log4j.spi.LoggingEvent;
+
+        $r4 = r0.<org.apache.log4j.AsyncAppenderTestCase$BlockableVectorAppender: java.lang.Object monitor>;
+
+        entermonitor $r4;
+
+     label1:
+        specialinvoke r0.<org.apache.log4j.VectorAppender: void append(org.apache.log4j.spi.LoggingEvent)>(r1);
+
+        $r5 = virtualinvoke r1.<org.apache.log4j.spi.LoggingEvent: org.apache.log4j.Level getLevel()>();
+
+        $r6 = <org.apache.log4j.Level: org.apache.log4j.Level FATAL>;
+
+        if $r5 != $r6 goto label2;
+
+        $r7 = virtualinvoke r1.<org.apache.log4j.spi.LoggingEvent: java.lang.String getLoggerName()>();
+
+        r3 = staticinvoke <org.apache.log4j.Logger: org.apache.log4j.Logger getLogger(java.lang.String)>($r7);
+
+        $r8 = virtualinvoke r1.<org.apache.log4j.spi.LoggingEvent: java.lang.Object getMessage()>();
+
+        $r9 = virtualinvoke $r8.<java.lang.Object: java.lang.String toString()>();
+
+        virtualinvoke r3.<org.apache.log4j.Logger: void error(java.lang.Object)>($r9);
+
+        $r10 = virtualinvoke r1.<org.apache.log4j.spi.LoggingEvent: java.lang.Object getMessage()>();
+
+        $r11 = virtualinvoke $r10.<java.lang.Object: java.lang.String toString()>();
+
+        virtualinvoke r3.<org.apache.log4j.Logger: void warn(java.lang.Object)>($r11);
+
+        $r12 = virtualinvoke r1.<org.apache.log4j.spi.LoggingEvent: java.lang.Object getMessage()>();
+
+        $r13 = virtualinvoke $r12.<java.lang.Object: java.lang.String toString()>();
+
+        virtualinvoke r3.<org.apache.log4j.Logger: void info(java.lang.Object)>($r13);
+
+        $r14 = virtualinvoke r1.<org.apache.log4j.spi.LoggingEvent: java.lang.Object getMessage()>();
+
+        $r15 = virtualinvoke $r14.<java.lang.Object: java.lang.String toString()>();
+
+        virtualinvoke r3.<org.apache.log4j.Logger: void debug(java.lang.Object)>($r15);
+
+     label2:
+        exitmonitor $r4;
+
+     label3:
+        goto label6;
+
+     label4:
+        $r16 := @caughtexception;
+
+        exitmonitor $r4;
+
+     label5:
+        throw $r16;
+
+     label6:
+        return;
+
+        catch java.lang.Throwable from label1 to label3 with label4;
+        catch java.lang.Throwable from label4 to label5 with label4;
+    }
+
+    public java.lang.Object getMonitor()
+    {
+        org.apache.log4j.AsyncAppenderTestCase$BlockableVectorAppender r0;
+        java.lang.Object $r1;
+
+        r0 := @this: org.apache.log4j.AsyncAppenderTestCase$BlockableVectorAppender;
+
+        $r1 = r0.<org.apache.log4j.AsyncAppenderTestCase$BlockableVectorAppender: java.lang.Object monitor>;
+
+        return $r1;
+    }
+}

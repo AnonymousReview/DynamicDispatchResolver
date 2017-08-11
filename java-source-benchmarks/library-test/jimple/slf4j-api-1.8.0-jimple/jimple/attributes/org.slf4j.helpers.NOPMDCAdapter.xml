@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<attributes>
+<attribute>
+<srcPos sline="55" eline="55" spos="0" epos="0"/>
+<jmpPos sline="62" eline="62" spos="0" epos="0"/>
+<text info="Signature: ()Ljava/util/Map&lt;Ljava/lang/String;Ljava/lang/String;&gt;;" aType="SignatureTag"/>
+</attribute>
+<attribute>
+<srcPos sline="60" eline="60" spos="0" epos="0"/>
+<jmpPos sline="71" eline="71" spos="0" epos="0"/>
+<text info="Signature: (Ljava/util/Map&lt;Ljava/lang/String;Ljava/lang/String;&gt;;)V" aType="SignatureTag"/>
+</attribute>
+</attributes>

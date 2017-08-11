@@ -1,0 +1,143 @@
+public class org.apache.commons.io.output.ChunkedWriterTest extends java.lang.Object
+{
+
+    public void <init>()
+    {
+        org.apache.commons.io.output.ChunkedWriterTest r0;
+
+        r0 := @this: org.apache.commons.io.output.ChunkedWriterTest;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void write_four_chunks() throws java.lang.Exception
+    {
+        org.apache.commons.io.output.ChunkedWriterTest r0;
+        java.io.OutputStreamWriter r2;
+        java.util.concurrent.atomic.AtomicInteger $r4;
+        org.apache.commons.io.output.ChunkedWriter $r5;
+        java.lang.String $r6;
+        char[] $r7;
+        int $i0;
+        long $l1;
+
+        r0 := @this: org.apache.commons.io.output.ChunkedWriterTest;
+
+        $r4 = new java.util.concurrent.atomic.AtomicInteger;
+
+        specialinvoke $r4.<java.util.concurrent.atomic.AtomicInteger: void <init>()>();
+
+        r2 = specialinvoke r0.<org.apache.commons.io.output.ChunkedWriterTest: java.io.OutputStreamWriter getOutputStreamWriter(java.util.concurrent.atomic.AtomicInteger)>($r4);
+
+        $r5 = new org.apache.commons.io.output.ChunkedWriter;
+
+        specialinvoke $r5.<org.apache.commons.io.output.ChunkedWriter: void <init>(java.io.Writer,int)>(r2, 10);
+
+        $r6 = "0123456789012345678901234567891";
+
+        $r7 = virtualinvoke $r6.<java.lang.String: char[] toCharArray()>();
+
+        virtualinvoke $r5.<org.apache.commons.io.output.ChunkedWriter: void write(char[])>($r7);
+
+        virtualinvoke $r5.<org.apache.commons.io.output.ChunkedWriter: void flush()>();
+
+        $i0 = virtualinvoke $r4.<java.util.concurrent.atomic.AtomicInteger: int get()>();
+
+        $l1 = (long) $i0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(4L, $l1);
+
+        virtualinvoke $r5.<org.apache.commons.io.output.ChunkedWriter: void close()>();
+
+        return;
+    }
+
+    public void write_two_chunks_default_constructor() throws java.lang.Exception
+    {
+        org.apache.commons.io.output.ChunkedWriterTest r0;
+        java.io.OutputStreamWriter r2;
+        java.util.concurrent.atomic.AtomicInteger $r4;
+        org.apache.commons.io.output.ChunkedWriter $r5;
+        char[] $r6;
+        int $i0;
+        long $l1;
+
+        r0 := @this: org.apache.commons.io.output.ChunkedWriterTest;
+
+        $r4 = new java.util.concurrent.atomic.AtomicInteger;
+
+        specialinvoke $r4.<java.util.concurrent.atomic.AtomicInteger: void <init>()>();
+
+        r2 = specialinvoke r0.<org.apache.commons.io.output.ChunkedWriterTest: java.io.OutputStreamWriter getOutputStreamWriter(java.util.concurrent.atomic.AtomicInteger)>($r4);
+
+        $r5 = new org.apache.commons.io.output.ChunkedWriter;
+
+        specialinvoke $r5.<org.apache.commons.io.output.ChunkedWriter: void <init>(java.io.Writer)>(r2);
+
+        $r6 = newarray (char)[4097];
+
+        virtualinvoke $r5.<org.apache.commons.io.output.ChunkedWriter: void write(char[])>($r6);
+
+        virtualinvoke $r5.<org.apache.commons.io.output.ChunkedWriter: void flush()>();
+
+        $i0 = virtualinvoke $r4.<java.util.concurrent.atomic.AtomicInteger: int get()>();
+
+        $l1 = (long) $i0;
+
+        staticinvoke <org.junit.Assert: void assertEquals(long,long)>(2L, $l1);
+
+        virtualinvoke $r5.<org.apache.commons.io.output.ChunkedWriter: void close()>();
+
+        return;
+    }
+
+    private java.io.OutputStreamWriter getOutputStreamWriter(java.util.concurrent.atomic.AtomicInteger)
+    {
+        org.apache.commons.io.output.ChunkedWriterTest r0;
+        java.util.concurrent.atomic.AtomicInteger r1;
+        org.apache.commons.io.output.ByteArrayOutputStream $r3;
+        org.apache.commons.io.output.ChunkedWriterTest$1 $r4;
+
+        r0 := @this: org.apache.commons.io.output.ChunkedWriterTest;
+
+        r1 := @parameter0: java.util.concurrent.atomic.AtomicInteger;
+
+        $r3 = new org.apache.commons.io.output.ByteArrayOutputStream;
+
+        specialinvoke $r3.<org.apache.commons.io.output.ByteArrayOutputStream: void <init>()>();
+
+        $r4 = new org.apache.commons.io.output.ChunkedWriterTest$1;
+
+        specialinvoke $r4.<org.apache.commons.io.output.ChunkedWriterTest$1: void <init>(org.apache.commons.io.output.ChunkedWriterTest,java.io.OutputStream,java.util.concurrent.atomic.AtomicInteger)>(r0, $r3, r1);
+
+        return $r4;
+    }
+
+    public void negative_chunksize_not_permitted() throws java.lang.Exception
+    {
+        org.apache.commons.io.output.ChunkedWriterTest r0;
+        org.apache.commons.io.output.ChunkedWriter $r1;
+        java.io.OutputStreamWriter $r2;
+        org.apache.commons.io.output.ByteArrayOutputStream $r3;
+
+        r0 := @this: org.apache.commons.io.output.ChunkedWriterTest;
+
+        $r1 = new org.apache.commons.io.output.ChunkedWriter;
+
+        $r2 = new java.io.OutputStreamWriter;
+
+        $r3 = new org.apache.commons.io.output.ByteArrayOutputStream;
+
+        specialinvoke $r3.<org.apache.commons.io.output.ByteArrayOutputStream: void <init>()>();
+
+        specialinvoke $r2.<java.io.OutputStreamWriter: void <init>(java.io.OutputStream)>($r3);
+
+        specialinvoke $r1.<org.apache.commons.io.output.ChunkedWriter: void <init>(java.io.Writer,int)>($r2, 0);
+
+        virtualinvoke $r1.<org.apache.commons.io.output.ChunkedWriter: void close()>();
+
+        return;
+    }
+}

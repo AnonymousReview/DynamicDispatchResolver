@@ -1,0 +1,726 @@
+public class org.apache.commons.codec.net.QuotedPrintableCodecTest extends java.lang.Object
+{
+    static final int[] SWISS_GERMAN_STUFF_UNICODE;
+    static final int[] RUSSIAN_STUFF_UNICODE;
+
+    static void <clinit>()
+    {
+        int[] $r0, $r1;
+
+        $r0 = newarray (int)[11];
+
+        $r0[0] = 71;
+
+        $r0[1] = 114;
+
+        $r0[2] = 252;
+
+        $r0[3] = 101;
+
+        $r0[4] = 122;
+
+        $r0[5] = 105;
+
+        $r0[6] = 95;
+
+        $r0[7] = 122;
+
+        $r0[8] = 228;
+
+        $r0[9] = 109;
+
+        $r0[10] = 228;
+
+        <org.apache.commons.codec.net.QuotedPrintableCodecTest: int[] SWISS_GERMAN_STUFF_UNICODE> = $r0;
+
+        $r1 = newarray (int)[11];
+
+        $r1[0] = 1042;
+
+        $r1[1] = 1089;
+
+        $r1[2] = 1077;
+
+        $r1[3] = 1084;
+
+        $r1[4] = 95;
+
+        $r1[5] = 1087;
+
+        $r1[6] = 1088;
+
+        $r1[7] = 1080;
+
+        $r1[8] = 1074;
+
+        $r1[9] = 1077;
+
+        $r1[10] = 1090;
+
+        <org.apache.commons.codec.net.QuotedPrintableCodecTest: int[] RUSSIAN_STUFF_UNICODE> = $r1;
+
+        return;
+    }
+
+    public void <init>()
+    {
+        org.apache.commons.codec.net.QuotedPrintableCodecTest r0;
+
+        r0 := @this: org.apache.commons.codec.net.QuotedPrintableCodecTest;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    private java.lang.String constructString(int[])
+    {
+        org.apache.commons.codec.net.QuotedPrintableCodecTest r0;
+        int[] r1;
+        int i0, i1, i3;
+        java.lang.StringBuilder $r4;
+        java.lang.String $r5;
+        char $c2;
+
+        r0 := @this: org.apache.commons.codec.net.QuotedPrintableCodecTest;
+
+        r1 := @parameter0: int[];
+
+        $r4 = new java.lang.StringBuilder;
+
+        specialinvoke $r4.<java.lang.StringBuilder: void <init>()>();
+
+        if r1 == null goto label3;
+
+        i1 = lengthof r1;
+
+        i3 = 0;
+
+        goto label2;
+
+     label1:
+        i0 = r1[i3];
+
+        $c2 = (char) i0;
+
+        virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>($c2);
+
+        i3 = i3 + 1;
+
+     label2:
+        if i3 < i1 goto label1;
+
+     label3:
+        $r5 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $r5;
+    }
+
+    public void testUTF8RoundTrip() throws java.lang.Exception
+    {
+        org.apache.commons.codec.net.QuotedPrintableCodecTest r0;
+        java.lang.String r1, r2, $r7, $r8, $r9, $r10, $r11, $r12;
+        int[] $r4, $r5;
+        org.apache.commons.codec.net.QuotedPrintableCodec $r6;
+
+        r0 := @this: org.apache.commons.codec.net.QuotedPrintableCodecTest;
+
+        $r4 = <org.apache.commons.codec.net.QuotedPrintableCodecTest: int[] RUSSIAN_STUFF_UNICODE>;
+
+        r1 = specialinvoke r0.<org.apache.commons.codec.net.QuotedPrintableCodecTest: java.lang.String constructString(int[])>($r4);
+
+        $r5 = <org.apache.commons.codec.net.QuotedPrintableCodecTest: int[] SWISS_GERMAN_STUFF_UNICODE>;
+
+        r2 = specialinvoke r0.<org.apache.commons.codec.net.QuotedPrintableCodecTest: java.lang.String constructString(int[])>($r5);
+
+        $r6 = new org.apache.commons.codec.net.QuotedPrintableCodec;
+
+        specialinvoke $r6.<org.apache.commons.codec.net.QuotedPrintableCodec: void <init>()>();
+
+        $r7 = virtualinvoke $r6.<org.apache.commons.codec.net.QuotedPrintableCodec: java.lang.String encode(java.lang.String,java.lang.String)>(r1, "UTF-8");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("=D0=92=D1=81=D0=B5=D0=BC_=D0=BF=D1=80=D0=B8=D0=B2=D0=B5=D1=82", $r7);
+
+        $r8 = virtualinvoke $r6.<org.apache.commons.codec.net.QuotedPrintableCodec: java.lang.String encode(java.lang.String,java.lang.String)>(r2, "UTF-8");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("Gr=C3=BCezi_z=C3=A4m=C3=A4", $r8);
+
+        $r9 = virtualinvoke $r6.<org.apache.commons.codec.net.QuotedPrintableCodec: java.lang.String encode(java.lang.String,java.lang.String)>(r1, "UTF-8");
+
+        $r10 = virtualinvoke $r6.<org.apache.commons.codec.net.QuotedPrintableCodec: java.lang.String decode(java.lang.String,java.lang.String)>($r9, "UTF-8");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>(r1, $r10);
+
+        $r11 = virtualinvoke $r6.<org.apache.commons.codec.net.QuotedPrintableCodec: java.lang.String encode(java.lang.String,java.lang.String)>(r2, "UTF-8");
+
+        $r12 = virtualinvoke $r6.<org.apache.commons.codec.net.QuotedPrintableCodec: java.lang.String decode(java.lang.String,java.lang.String)>($r11, "UTF-8");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>(r2, $r12);
+
+        return;
+    }
+
+    public void testBasicEncodeDecode() throws java.lang.Exception
+    {
+        org.apache.commons.codec.net.QuotedPrintableCodecTest r0;
+        java.lang.String r3, $r5;
+        org.apache.commons.codec.net.QuotedPrintableCodec $r4;
+
+        r0 := @this: org.apache.commons.codec.net.QuotedPrintableCodecTest;
+
+        $r4 = new org.apache.commons.codec.net.QuotedPrintableCodec;
+
+        specialinvoke $r4.<org.apache.commons.codec.net.QuotedPrintableCodec: void <init>()>();
+
+        r3 = virtualinvoke $r4.<org.apache.commons.codec.net.QuotedPrintableCodec: java.lang.String encode(java.lang.String)>("= Hello there =\r\n");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,java.lang.Object,java.lang.Object)>("Basic quoted-printable encoding test", "=3D Hello there =3D=0D=0A", r3);
+
+        $r5 = virtualinvoke $r4.<org.apache.commons.codec.net.QuotedPrintableCodec: java.lang.String decode(java.lang.String)>(r3);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,java.lang.Object,java.lang.Object)>("Basic quoted-printable decoding test", "= Hello there =\r\n", $r5);
+
+        return;
+    }
+
+    public void testSafeCharEncodeDecode() throws java.lang.Exception
+    {
+        org.apache.commons.codec.net.QuotedPrintableCodecTest r0;
+        java.lang.String r3, $r5;
+        org.apache.commons.codec.net.QuotedPrintableCodec $r4;
+
+        r0 := @this: org.apache.commons.codec.net.QuotedPrintableCodecTest;
+
+        $r4 = new org.apache.commons.codec.net.QuotedPrintableCodec;
+
+        specialinvoke $r4.<org.apache.commons.codec.net.QuotedPrintableCodec: void <init>()>();
+
+        r3 = virtualinvoke $r4.<org.apache.commons.codec.net.QuotedPrintableCodec: java.lang.String encode(java.lang.String)>("abc123_-.*~!@#$%^&()+{}\"\\;:`,/[]");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,java.lang.Object,java.lang.Object)>("Safe chars quoted-printable encoding test", "abc123_-.*~!@#$%^&()+{}\"\\;:`,/[]", r3);
+
+        $r5 = virtualinvoke $r4.<org.apache.commons.codec.net.QuotedPrintableCodec: java.lang.String decode(java.lang.String)>(r3);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,java.lang.Object,java.lang.Object)>("Safe chars quoted-printable decoding test", "abc123_-.*~!@#$%^&()+{}\"\\;:`,/[]", $r5);
+
+        return;
+    }
+
+    public void testUnsafeEncodeDecode() throws java.lang.Exception
+    {
+        org.apache.commons.codec.net.QuotedPrintableCodecTest r0;
+        java.lang.String r3, $r5;
+        org.apache.commons.codec.net.QuotedPrintableCodec $r4;
+
+        r0 := @this: org.apache.commons.codec.net.QuotedPrintableCodecTest;
+
+        $r4 = new org.apache.commons.codec.net.QuotedPrintableCodec;
+
+        specialinvoke $r4.<org.apache.commons.codec.net.QuotedPrintableCodec: void <init>()>();
+
+        r3 = virtualinvoke $r4.<org.apache.commons.codec.net.QuotedPrintableCodec: java.lang.String encode(java.lang.String)>("=\r\n");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,java.lang.Object,java.lang.Object)>("Unsafe chars quoted-printable encoding test", "=3D=0D=0A", r3);
+
+        $r5 = virtualinvoke $r4.<org.apache.commons.codec.net.QuotedPrintableCodec: java.lang.String decode(java.lang.String)>(r3);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,java.lang.Object,java.lang.Object)>("Unsafe chars quoted-printable decoding test", "=\r\n", $r5);
+
+        return;
+    }
+
+    public void testEncodeDecodeNull() throws java.lang.Exception
+    {
+        org.apache.commons.codec.net.QuotedPrintableCodecTest r0;
+        org.apache.commons.codec.net.QuotedPrintableCodec $r2;
+        java.lang.String $r3, $r4;
+
+        r0 := @this: org.apache.commons.codec.net.QuotedPrintableCodecTest;
+
+        $r2 = new org.apache.commons.codec.net.QuotedPrintableCodec;
+
+        specialinvoke $r2.<org.apache.commons.codec.net.QuotedPrintableCodec: void <init>()>();
+
+        $r3 = virtualinvoke $r2.<org.apache.commons.codec.net.QuotedPrintableCodec: java.lang.String encode(java.lang.String)>(null);
+
+        staticinvoke <org.junit.Assert: void assertNull(java.lang.String,java.lang.Object)>("Null string quoted-printable encoding test", $r3);
+
+        $r4 = virtualinvoke $r2.<org.apache.commons.codec.net.QuotedPrintableCodec: java.lang.String decode(java.lang.String)>(null);
+
+        staticinvoke <org.junit.Assert: void assertNull(java.lang.String,java.lang.Object)>("Null string quoted-printable decoding test", $r4);
+
+        return;
+    }
+
+    public void testDecodeInvalid() throws java.lang.Exception
+    {
+        org.apache.commons.codec.net.QuotedPrintableCodecTest r0;
+        org.apache.commons.codec.net.QuotedPrintableCodec $r2;
+        org.apache.commons.codec.DecoderException $r6, $r7, $r8;
+
+        r0 := @this: org.apache.commons.codec.net.QuotedPrintableCodecTest;
+
+        $r2 = new org.apache.commons.codec.net.QuotedPrintableCodec;
+
+        specialinvoke $r2.<org.apache.commons.codec.net.QuotedPrintableCodec: void <init>()>();
+
+     label01:
+        virtualinvoke $r2.<org.apache.commons.codec.net.QuotedPrintableCodec: java.lang.String decode(java.lang.String)>("=");
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("DecoderException should have been thrown");
+
+     label02:
+        goto label04;
+
+     label03:
+        $r7 := @caughtexception;
+
+     label04:
+        virtualinvoke $r2.<org.apache.commons.codec.net.QuotedPrintableCodec: java.lang.String decode(java.lang.String)>("=A");
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("DecoderException should have been thrown");
+
+     label05:
+        goto label07;
+
+     label06:
+        $r8 := @caughtexception;
+
+     label07:
+        virtualinvoke $r2.<org.apache.commons.codec.net.QuotedPrintableCodec: java.lang.String decode(java.lang.String)>("=WW");
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("DecoderException should have been thrown");
+
+     label08:
+        goto label10;
+
+     label09:
+        $r6 := @caughtexception;
+
+     label10:
+        return;
+
+        catch org.apache.commons.codec.DecoderException from label01 to label02 with label03;
+        catch org.apache.commons.codec.DecoderException from label04 to label05 with label06;
+        catch org.apache.commons.codec.DecoderException from label07 to label08 with label09;
+    }
+
+    public void testEncodeNull() throws java.lang.Exception
+    {
+        org.apache.commons.codec.net.QuotedPrintableCodecTest r0;
+        byte[] r2;
+        org.apache.commons.codec.net.QuotedPrintableCodec $r3;
+
+        r0 := @this: org.apache.commons.codec.net.QuotedPrintableCodecTest;
+
+        $r3 = new org.apache.commons.codec.net.QuotedPrintableCodec;
+
+        specialinvoke $r3.<org.apache.commons.codec.net.QuotedPrintableCodec: void <init>()>();
+
+        r2 = virtualinvoke $r3.<org.apache.commons.codec.net.QuotedPrintableCodec: byte[] encode(byte[])>(null);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,java.lang.Object,java.lang.Object)>("Encoding a null string should return null", null, r2);
+
+        return;
+    }
+
+    public void testEncodeUrlWithNullBitSet() throws java.lang.Exception
+    {
+        org.apache.commons.codec.net.QuotedPrintableCodecTest r0;
+        org.apache.commons.codec.net.QuotedPrintableCodec $r4;
+        java.lang.String $r5, $r7, $r10;
+        java.nio.charset.Charset $r6;
+        byte[] $r8, $r9;
+
+        r0 := @this: org.apache.commons.codec.net.QuotedPrintableCodecTest;
+
+        $r4 = new org.apache.commons.codec.net.QuotedPrintableCodec;
+
+        specialinvoke $r4.<org.apache.commons.codec.net.QuotedPrintableCodec: void <init>()>();
+
+        $r5 = new java.lang.String;
+
+        $r7 = "1+1 = 2";
+
+        $r6 = <org.apache.commons.codec.Charsets: java.nio.charset.Charset UTF_8>;
+
+        $r8 = virtualinvoke $r7.<java.lang.String: byte[] getBytes(java.nio.charset.Charset)>($r6);
+
+        $r9 = staticinvoke <org.apache.commons.codec.net.QuotedPrintableCodec: byte[] encodeQuotedPrintable(java.util.BitSet,byte[])>(null, $r8);
+
+        specialinvoke $r5.<java.lang.String: void <init>(byte[])>($r9);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,java.lang.Object,java.lang.Object)>("Basic quoted-printable encoding test", "1+1 =3D 2", $r5);
+
+        $r10 = virtualinvoke $r4.<org.apache.commons.codec.net.QuotedPrintableCodec: java.lang.String decode(java.lang.String)>($r5);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,java.lang.Object,java.lang.Object)>("Basic quoted-printable decoding test", "1+1 = 2", $r10);
+
+        return;
+    }
+
+    public void testDecodeWithNullArray() throws java.lang.Exception
+    {
+        org.apache.commons.codec.net.QuotedPrintableCodecTest r0;
+        byte[] r1;
+
+        r0 := @this: org.apache.commons.codec.net.QuotedPrintableCodecTest;
+
+        r1 = staticinvoke <org.apache.commons.codec.net.QuotedPrintableCodec: byte[] decodeQuotedPrintable(byte[])>(null);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,java.lang.Object,java.lang.Object)>("Result should be null", null, r1);
+
+        return;
+    }
+
+    public void testEncodeStringWithNull() throws java.lang.Exception
+    {
+        org.apache.commons.codec.net.QuotedPrintableCodecTest r0;
+        java.lang.String r2;
+        org.apache.commons.codec.net.QuotedPrintableCodec $r3;
+
+        r0 := @this: org.apache.commons.codec.net.QuotedPrintableCodecTest;
+
+        $r3 = new org.apache.commons.codec.net.QuotedPrintableCodec;
+
+        specialinvoke $r3.<org.apache.commons.codec.net.QuotedPrintableCodec: void <init>()>();
+
+        r2 = virtualinvoke $r3.<org.apache.commons.codec.net.QuotedPrintableCodec: java.lang.String encode(java.lang.String,java.lang.String)>(null, "charset");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,java.lang.Object,java.lang.Object)>("Result should be null", null, r2);
+
+        return;
+    }
+
+    public void testDecodeStringWithNull() throws java.lang.Exception
+    {
+        org.apache.commons.codec.net.QuotedPrintableCodecTest r0;
+        java.lang.String r2;
+        org.apache.commons.codec.net.QuotedPrintableCodec $r3;
+
+        r0 := @this: org.apache.commons.codec.net.QuotedPrintableCodecTest;
+
+        $r3 = new org.apache.commons.codec.net.QuotedPrintableCodec;
+
+        specialinvoke $r3.<org.apache.commons.codec.net.QuotedPrintableCodec: void <init>()>();
+
+        r2 = virtualinvoke $r3.<org.apache.commons.codec.net.QuotedPrintableCodec: java.lang.String decode(java.lang.String,java.lang.String)>(null, "charset");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,java.lang.Object,java.lang.Object)>("Result should be null", null, r2);
+
+        return;
+    }
+
+    public void testEncodeObjects() throws java.lang.Exception
+    {
+        org.apache.commons.codec.net.QuotedPrintableCodecTest r0;
+        byte[] r3, r4;
+        java.lang.Object r5, $r7, $r10;
+        org.apache.commons.codec.net.QuotedPrintableCodec $r6;
+        java.nio.charset.Charset $r8;
+        java.lang.String $r9, $r11, r15;
+        java.lang.Double $r12;
+        org.apache.commons.codec.EncoderException $r14;
+
+        r0 := @this: org.apache.commons.codec.net.QuotedPrintableCodecTest;
+
+        $r6 = new org.apache.commons.codec.net.QuotedPrintableCodec;
+
+        specialinvoke $r6.<org.apache.commons.codec.net.QuotedPrintableCodec: void <init>()>();
+
+        $r7 = virtualinvoke $r6.<org.apache.commons.codec.net.QuotedPrintableCodec: java.lang.Object encode(java.lang.Object)>("1+1 = 2");
+
+        r15 = (java.lang.String) $r7;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,java.lang.Object,java.lang.Object)>("Basic quoted-printable encoding test", "1+1 =3D 2", r15);
+
+        $r9 = "1+1 = 2";
+
+        $r8 = <org.apache.commons.codec.Charsets: java.nio.charset.Charset UTF_8>;
+
+        r3 = virtualinvoke $r9.<java.lang.String: byte[] getBytes(java.nio.charset.Charset)>($r8);
+
+        $r10 = virtualinvoke $r6.<org.apache.commons.codec.net.QuotedPrintableCodec: java.lang.Object encode(java.lang.Object)>(r3);
+
+        r4 = (byte[]) $r10;
+
+        $r11 = new java.lang.String;
+
+        specialinvoke $r11.<java.lang.String: void <init>(byte[])>(r4);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,java.lang.Object,java.lang.Object)>("Basic quoted-printable encoding test", "1+1 =3D 2", $r11);
+
+        r5 = virtualinvoke $r6.<org.apache.commons.codec.net.QuotedPrintableCodec: java.lang.Object encode(java.lang.Object)>(null);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,java.lang.Object,java.lang.Object)>("Encoding a null Object should return null", null, r5);
+
+     label1:
+        $r12 = new java.lang.Double;
+
+        specialinvoke $r12.<java.lang.Double: void <init>(double)>(3.0);
+
+        virtualinvoke $r6.<org.apache.commons.codec.net.QuotedPrintableCodec: java.lang.Object encode(java.lang.Object)>($r12);
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("Trying to url encode a Double object should cause an exception.");
+
+     label2:
+        goto label4;
+
+     label3:
+        $r14 := @caughtexception;
+
+     label4:
+        return;
+
+        catch org.apache.commons.codec.EncoderException from label1 to label2 with label3;
+    }
+
+    public void testInvalidEncoding()
+    {
+        org.apache.commons.codec.net.QuotedPrintableCodecTest r0;
+        org.apache.commons.codec.net.QuotedPrintableCodec $r1;
+
+        r0 := @this: org.apache.commons.codec.net.QuotedPrintableCodecTest;
+
+        $r1 = new org.apache.commons.codec.net.QuotedPrintableCodec;
+
+        specialinvoke $r1.<org.apache.commons.codec.net.QuotedPrintableCodec: void <init>(java.lang.String)>("NONSENSE");
+
+        return;
+    }
+
+    public void testDecodeObjects() throws java.lang.Exception
+    {
+        org.apache.commons.codec.net.QuotedPrintableCodecTest r0;
+        byte[] r3, r4;
+        java.lang.Object r5, $r7, $r10;
+        org.apache.commons.codec.net.QuotedPrintableCodec $r6;
+        java.nio.charset.Charset $r8;
+        java.lang.String $r9, $r11, r15;
+        java.lang.Double $r12;
+        org.apache.commons.codec.DecoderException $r14;
+
+        r0 := @this: org.apache.commons.codec.net.QuotedPrintableCodecTest;
+
+        $r6 = new org.apache.commons.codec.net.QuotedPrintableCodec;
+
+        specialinvoke $r6.<org.apache.commons.codec.net.QuotedPrintableCodec: void <init>()>();
+
+        $r7 = virtualinvoke $r6.<org.apache.commons.codec.net.QuotedPrintableCodec: java.lang.Object decode(java.lang.Object)>("1+1 =3D 2");
+
+        r15 = (java.lang.String) $r7;
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,java.lang.Object,java.lang.Object)>("Basic quoted-printable decoding test", "1+1 = 2", r15);
+
+        $r9 = "1+1 =3D 2";
+
+        $r8 = <org.apache.commons.codec.Charsets: java.nio.charset.Charset UTF_8>;
+
+        r3 = virtualinvoke $r9.<java.lang.String: byte[] getBytes(java.nio.charset.Charset)>($r8);
+
+        $r10 = virtualinvoke $r6.<org.apache.commons.codec.net.QuotedPrintableCodec: java.lang.Object decode(java.lang.Object)>(r3);
+
+        r4 = (byte[]) $r10;
+
+        $r11 = new java.lang.String;
+
+        specialinvoke $r11.<java.lang.String: void <init>(byte[])>(r4);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,java.lang.Object,java.lang.Object)>("Basic quoted-printable decoding test", "1+1 = 2", $r11);
+
+        r5 = virtualinvoke $r6.<org.apache.commons.codec.net.QuotedPrintableCodec: java.lang.Object decode(java.lang.Object)>(null);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,java.lang.Object,java.lang.Object)>("Decoding a null Object should return null", null, r5);
+
+     label1:
+        $r12 = new java.lang.Double;
+
+        specialinvoke $r12.<java.lang.Double: void <init>(double)>(3.0);
+
+        virtualinvoke $r6.<org.apache.commons.codec.net.QuotedPrintableCodec: java.lang.Object decode(java.lang.Object)>($r12);
+
+        staticinvoke <org.junit.Assert: void fail(java.lang.String)>("Trying to url encode a Double object should cause an exception.");
+
+     label2:
+        goto label4;
+
+     label3:
+        $r14 := @caughtexception;
+
+     label4:
+        return;
+
+        catch org.apache.commons.codec.DecoderException from label1 to label2 with label3;
+    }
+
+    public void testDefaultEncoding() throws java.lang.Exception
+    {
+        org.apache.commons.codec.net.QuotedPrintableCodecTest r0;
+        java.lang.String r3, r4;
+        org.apache.commons.codec.net.QuotedPrintableCodec $r5;
+
+        r0 := @this: org.apache.commons.codec.net.QuotedPrintableCodecTest;
+
+        $r5 = new org.apache.commons.codec.net.QuotedPrintableCodec;
+
+        specialinvoke $r5.<org.apache.commons.codec.net.QuotedPrintableCodec: void <init>(java.lang.String)>("UnicodeBig");
+
+        virtualinvoke $r5.<org.apache.commons.codec.net.QuotedPrintableCodec: java.lang.String encode(java.lang.String)>("Hello there!");
+
+        r3 = virtualinvoke $r5.<org.apache.commons.codec.net.QuotedPrintableCodec: java.lang.String encode(java.lang.String,java.lang.String)>("Hello there!", "UnicodeBig");
+
+        r4 = virtualinvoke $r5.<org.apache.commons.codec.net.QuotedPrintableCodec: java.lang.String encode(java.lang.String)>("Hello there!");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>(r3, r4);
+
+        return;
+    }
+
+    public void testSoftLineBreakDecode() throws java.lang.Exception
+    {
+        org.apache.commons.codec.net.QuotedPrintableCodecTest r0;
+        java.lang.String r4, $r6, $r7;
+        org.apache.commons.codec.net.QuotedPrintableCodec $r5;
+
+        r0 := @this: org.apache.commons.codec.net.QuotedPrintableCodecTest;
+
+        $r5 = new org.apache.commons.codec.net.QuotedPrintableCodec;
+
+        specialinvoke $r5.<org.apache.commons.codec.net.QuotedPrintableCodec: void <init>()>();
+
+        $r6 = virtualinvoke $r5.<org.apache.commons.codec.net.QuotedPrintableCodec: java.lang.String decode(java.lang.String)>("If you believe that truth=3Dbeauty, then surely=20=\r\nmathematics is the most beautiful branch of philosophy.");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("If you believe that truth=beauty, then surely mathematics is the most beautiful branch of philosophy.", $r6);
+
+        r4 = virtualinvoke $r5.<org.apache.commons.codec.net.QuotedPrintableCodec: java.lang.String encode(java.lang.String)>("If you believe that truth=beauty, then surely mathematics is the most beautiful branch of philosophy.");
+
+        $r7 = virtualinvoke $r5.<org.apache.commons.codec.net.QuotedPrintableCodec: java.lang.String decode(java.lang.String)>(r4);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("If you believe that truth=beauty, then surely mathematics is the most beautiful branch of philosophy.", $r7);
+
+        return;
+    }
+
+    public void testSoftLineBreakEncode() throws java.lang.Exception
+    {
+        org.apache.commons.codec.net.QuotedPrintableCodecTest r0;
+        java.lang.String r4, $r6, $r7;
+        org.apache.commons.codec.net.QuotedPrintableCodec $r5;
+
+        r0 := @this: org.apache.commons.codec.net.QuotedPrintableCodecTest;
+
+        $r5 = new org.apache.commons.codec.net.QuotedPrintableCodec;
+
+        specialinvoke $r5.<org.apache.commons.codec.net.QuotedPrintableCodec: void <init>(boolean)>(1);
+
+        $r6 = virtualinvoke $r5.<org.apache.commons.codec.net.QuotedPrintableCodec: java.lang.String encode(java.lang.String)>("If you believe that truth=beauty, then surely mathematics is the most beautiful branch of philosophy.");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("If you believe that truth=3Dbeauty, then surely mathematics is the most b=\r\neautiful branch of philosophy.", $r6);
+
+        r4 = virtualinvoke $r5.<org.apache.commons.codec.net.QuotedPrintableCodec: java.lang.String decode(java.lang.String)>("If you believe that truth=3Dbeauty, then surely mathematics is the most b=\r\neautiful branch of philosophy.");
+
+        $r7 = virtualinvoke $r5.<org.apache.commons.codec.net.QuotedPrintableCodec: java.lang.String encode(java.lang.String)>(r4);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("If you believe that truth=3Dbeauty, then surely mathematics is the most b=\r\neautiful branch of philosophy.", $r7);
+
+        return;
+    }
+
+    public void testSkipNotEncodedCRLF() throws java.lang.Exception
+    {
+        org.apache.commons.codec.net.QuotedPrintableCodecTest r0;
+        java.lang.String r4, $r6, $r7;
+        org.apache.commons.codec.net.QuotedPrintableCodec $r5;
+
+        r0 := @this: org.apache.commons.codec.net.QuotedPrintableCodecTest;
+
+        $r5 = new org.apache.commons.codec.net.QuotedPrintableCodec;
+
+        specialinvoke $r5.<org.apache.commons.codec.net.QuotedPrintableCodec: void <init>(boolean)>(1);
+
+        $r6 = virtualinvoke $r5.<org.apache.commons.codec.net.QuotedPrintableCodec: java.lang.String decode(java.lang.String)>("CRLF in an\n encoded text should be=20=\r\n\rskipped in the\r decoding.");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("CRLF in an encoded text should be skipped in the decoding.", $r6);
+
+        r4 = virtualinvoke $r5.<org.apache.commons.codec.net.QuotedPrintableCodec: java.lang.String encode(java.lang.String)>("CRLF in an encoded text should be skipped in the decoding.");
+
+        $r7 = virtualinvoke $r5.<org.apache.commons.codec.net.QuotedPrintableCodec: java.lang.String decode(java.lang.String)>(r4);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("CRLF in an encoded text should be skipped in the decoding.", $r7);
+
+        return;
+    }
+
+    public void testTrailingSpecial() throws java.lang.Exception
+    {
+        org.apache.commons.codec.net.QuotedPrintableCodecTest r0;
+        org.apache.commons.codec.net.QuotedPrintableCodec $r2;
+        java.lang.String $r3, $r4;
+
+        r0 := @this: org.apache.commons.codec.net.QuotedPrintableCodecTest;
+
+        $r2 = new org.apache.commons.codec.net.QuotedPrintableCodec;
+
+        specialinvoke $r2.<org.apache.commons.codec.net.QuotedPrintableCodec: void <init>(boolean)>(1);
+
+        $r3 = virtualinvoke $r2.<org.apache.commons.codec.net.QuotedPrintableCodec: java.lang.String encode(java.lang.String)>("This is a example of a quoted-printable text file. This might contain sp=cial chars.");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("This is a example of a quoted-printable text file. This might contain sp=3D=\r\ncial chars.", $r3);
+
+        $r4 = virtualinvoke $r2.<org.apache.commons.codec.net.QuotedPrintableCodec: java.lang.String encode(java.lang.String)>("This is a example of a quoted-printable text file. This might contain ta\tbs as well.");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("This is a example of a quoted-printable text file. This might contain ta=09=\r\nbs as well.", $r4);
+
+        return;
+    }
+
+    public void testUltimateSoftBreak() throws java.lang.Exception
+    {
+        org.apache.commons.codec.net.QuotedPrintableCodecTest r0;
+        org.apache.commons.codec.net.QuotedPrintableCodec $r2;
+        java.lang.String $r3, $r4, $r5, $r6;
+
+        r0 := @this: org.apache.commons.codec.net.QuotedPrintableCodecTest;
+
+        $r2 = new org.apache.commons.codec.net.QuotedPrintableCodec;
+
+        specialinvoke $r2.<org.apache.commons.codec.net.QuotedPrintableCodec: void <init>(boolean)>(1);
+
+        $r3 = virtualinvoke $r2.<org.apache.commons.codec.net.QuotedPrintableCodec: java.lang.String encode(java.lang.String)>("This is a example of a quoted-printable text file. There is no end to it\t");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("This is a example of a quoted-printable text file. There is no end to i=\r\nt=09", $r3);
+
+        $r4 = virtualinvoke $r2.<org.apache.commons.codec.net.QuotedPrintableCodec: java.lang.String encode(java.lang.String)>("This is a example of a quoted-printable text file. There is no end to it ");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("This is a example of a quoted-printable text file. There is no end to i=\r\nt=20", $r4);
+
+        $r5 = virtualinvoke $r2.<org.apache.commons.codec.net.QuotedPrintableCodec: java.lang.String encode(java.lang.String)>("This is a example of a quoted-printable text file. There is no end to   ");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("This is a example of a quoted-printable text file. There is no end to=20=\r\n =20", $r5);
+
+        $r6 = virtualinvoke $r2.<org.apache.commons.codec.net.QuotedPrintableCodec: java.lang.String encode(java.lang.String)>("This is a example of a quoted-printable text file. There is no end to=  ");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("This is a example of a quoted-printable text file. There is no end to=3D=\r\n =20", $r6);
+
+        return;
+    }
+
+    public void testFinalBytes() throws java.lang.Exception
+    {
+        org.apache.commons.codec.net.QuotedPrintableCodecTest r0;
+        org.apache.commons.codec.net.QuotedPrintableCodec $r3;
+        java.lang.String $r4;
+
+        r0 := @this: org.apache.commons.codec.net.QuotedPrintableCodecTest;
+
+        $r3 = new org.apache.commons.codec.net.QuotedPrintableCodec;
+
+        specialinvoke $r3.<org.apache.commons.codec.net.QuotedPrintableCodec: void <init>(boolean)>(1);
+
+        $r4 = virtualinvoke $r3.<org.apache.commons.codec.net.QuotedPrintableCodec: java.lang.String encode(java.lang.String)>("This is a example of a quoted=printable text file. There is no tt");
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("This is a example of a quoted=3Dprintable text file. There is no tt", $r4);
+
+        return;
+    }
+}

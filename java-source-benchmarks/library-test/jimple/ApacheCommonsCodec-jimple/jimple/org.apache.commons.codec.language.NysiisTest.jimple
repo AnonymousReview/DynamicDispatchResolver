@@ -1,0 +1,1004 @@
+public class org.apache.commons.codec.language.NysiisTest extends org.apache.commons.codec.StringEncoderAbstractTest
+{
+    private final org.apache.commons.codec.language.Nysiis fullNysiis;
+
+    public void <init>()
+    {
+        org.apache.commons.codec.language.NysiisTest r0;
+        org.apache.commons.codec.language.Nysiis $r1;
+
+        r0 := @this: org.apache.commons.codec.language.NysiisTest;
+
+        specialinvoke r0.<org.apache.commons.codec.StringEncoderAbstractTest: void <init>()>();
+
+        $r1 = new org.apache.commons.codec.language.Nysiis;
+
+        specialinvoke $r1.<org.apache.commons.codec.language.Nysiis: void <init>(boolean)>(0);
+
+        r0.<org.apache.commons.codec.language.NysiisTest: org.apache.commons.codec.language.Nysiis fullNysiis> = $r1;
+
+        return;
+    }
+
+    private transient void assertEncodings(java.lang.String[][]) throws org.apache.commons.codec.EncoderException
+    {
+        org.apache.commons.codec.language.NysiisTest r0;
+        java.lang.String[][] r1;
+        java.lang.String[] r2;
+        int i0, i1;
+        java.lang.StringBuilder $r4, $r6;
+        java.lang.String $r5, $r7, $r8, $r10, $r11;
+        org.apache.commons.codec.language.Nysiis $r9;
+
+        r0 := @this: org.apache.commons.codec.language.NysiisTest;
+
+        r1 := @parameter0: java.lang.String[][];
+
+        i0 = lengthof r1;
+
+        i1 = 0;
+
+        goto label2;
+
+     label1:
+        r2 = r1[i1];
+
+        $r4 = new java.lang.StringBuilder;
+
+        specialinvoke $r4.<java.lang.StringBuilder: void <init>(java.lang.String)>("Problem with ");
+
+        $r5 = r2[0];
+
+        $r6 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r5);
+
+        $r7 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r10 = r2[1];
+
+        $r9 = r0.<org.apache.commons.codec.language.NysiisTest: org.apache.commons.codec.language.Nysiis fullNysiis>;
+
+        $r8 = r2[0];
+
+        $r11 = virtualinvoke $r9.<org.apache.commons.codec.language.Nysiis: java.lang.String encode(java.lang.String)>($r8);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,java.lang.Object,java.lang.Object)>($r7, $r10, $r11);
+
+        i1 = i1 + 1;
+
+     label2:
+        if i1 < i0 goto label1;
+
+        return;
+    }
+
+    protected org.apache.commons.codec.language.Nysiis createStringEncoder()
+    {
+        org.apache.commons.codec.language.NysiisTest r0;
+        org.apache.commons.codec.language.Nysiis $r1;
+
+        r0 := @this: org.apache.commons.codec.language.NysiisTest;
+
+        $r1 = new org.apache.commons.codec.language.Nysiis;
+
+        specialinvoke $r1.<org.apache.commons.codec.language.Nysiis: void <init>()>();
+
+        return $r1;
+    }
+
+    private void encodeAll(java.lang.String[], java.lang.String)
+    {
+        org.apache.commons.codec.language.NysiisTest r0;
+        java.lang.String[] r1;
+        java.lang.String r2, r3, $r7, $r10;
+        int i0, i1;
+        java.lang.StringBuilder $r5, $r6;
+        org.apache.commons.codec.StringEncoder $r8;
+        org.apache.commons.codec.language.Nysiis $r9;
+
+        r0 := @this: org.apache.commons.codec.language.NysiisTest;
+
+        r1 := @parameter0: java.lang.String[];
+
+        r2 := @parameter1: java.lang.String;
+
+        i0 = lengthof r1;
+
+        i1 = 0;
+
+        goto label2;
+
+     label1:
+        r3 = r1[i1];
+
+        $r5 = new java.lang.StringBuilder;
+
+        specialinvoke $r5.<java.lang.StringBuilder: void <init>(java.lang.String)>("Problem with ");
+
+        $r6 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r3);
+
+        $r7 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r8 = virtualinvoke r0.<org.apache.commons.codec.language.NysiisTest: org.apache.commons.codec.StringEncoder getStringEncoder()>();
+
+        $r9 = (org.apache.commons.codec.language.Nysiis) $r8;
+
+        $r10 = virtualinvoke $r9.<org.apache.commons.codec.language.Nysiis: java.lang.String encode(java.lang.String)>(r3);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.String,java.lang.Object,java.lang.Object)>($r7, r2, $r10);
+
+        i1 = i1 + 1;
+
+     label2:
+        if i1 < i0 goto label1;
+
+        return;
+    }
+
+    public void testBran()
+    {
+        org.apache.commons.codec.language.NysiisTest r0;
+        java.lang.String[] $r1;
+
+        r0 := @this: org.apache.commons.codec.language.NysiisTest;
+
+        $r1 = newarray (java.lang.String)[3];
+
+        $r1[0] = "Brian";
+
+        $r1[1] = "Brown";
+
+        $r1[2] = "Brun";
+
+        specialinvoke r0.<org.apache.commons.codec.language.NysiisTest: void encodeAll(java.lang.String[],java.lang.String)>($r1, "BRAN");
+
+        return;
+    }
+
+    public void testCap()
+    {
+        org.apache.commons.codec.language.NysiisTest r0;
+        java.lang.String[] $r1;
+
+        r0 := @this: org.apache.commons.codec.language.NysiisTest;
+
+        $r1 = newarray (java.lang.String)[4];
+
+        $r1[0] = "Capp";
+
+        $r1[1] = "Cope";
+
+        $r1[2] = "Copp";
+
+        $r1[3] = "Kipp";
+
+        specialinvoke r0.<org.apache.commons.codec.language.NysiisTest: void encodeAll(java.lang.String[],java.lang.String)>($r1, "CAP");
+
+        return;
+    }
+
+    public void testDad()
+    {
+        org.apache.commons.codec.language.NysiisTest r0;
+        java.lang.String[] $r1;
+
+        r0 := @this: org.apache.commons.codec.language.NysiisTest;
+
+        $r1 = newarray (java.lang.String)[1];
+
+        $r1[0] = "Dent";
+
+        specialinvoke r0.<org.apache.commons.codec.language.NysiisTest: void encodeAll(java.lang.String[],java.lang.String)>($r1, "DAD");
+
+        return;
+    }
+
+    public void testDan()
+    {
+        org.apache.commons.codec.language.NysiisTest r0;
+        java.lang.String[] $r1;
+
+        r0 := @this: org.apache.commons.codec.language.NysiisTest;
+
+        $r1 = newarray (java.lang.String)[3];
+
+        $r1[0] = "Dane";
+
+        $r1[1] = "Dean";
+
+        $r1[2] = "Dionne";
+
+        specialinvoke r0.<org.apache.commons.codec.language.NysiisTest: void encodeAll(java.lang.String[],java.lang.String)>($r1, "DAN");
+
+        return;
+    }
+
+    public void testDropBy() throws org.apache.commons.codec.EncoderException
+    {
+        org.apache.commons.codec.language.NysiisTest r0;
+        java.lang.String[][] $r1;
+        java.lang.String[] $r2, $r3, $r4, $r5, $r6, $r7, $r8, $r9, $r10, $r11, $r12, $r13, $r14, $r15, $r16, $r17, $r18, $r19, $r20, $r21, $r22, $r23, $r24, $r25, $r26, $r27, $r28;
+
+        r0 := @this: org.apache.commons.codec.language.NysiisTest;
+
+        $r1 = newarray (java.lang.String[])[27];
+
+        $r2 = newarray (java.lang.String)[2];
+
+        $r2[0] = "MACINTOSH";
+
+        $r2[1] = "MCANT";
+
+        $r1[0] = $r2;
+
+        $r3 = newarray (java.lang.String)[2];
+
+        $r3[0] = "KNUTH";
+
+        $r3[1] = "NAT";
+
+        $r1[1] = $r3;
+
+        $r4 = newarray (java.lang.String)[2];
+
+        $r4[0] = "KOEHN";
+
+        $r4[1] = "CAN";
+
+        $r1[2] = $r4;
+
+        $r5 = newarray (java.lang.String)[2];
+
+        $r5[0] = "PHILLIPSON";
+
+        $r5[1] = "FALAPSAN";
+
+        $r1[3] = $r5;
+
+        $r6 = newarray (java.lang.String)[2];
+
+        $r6[0] = "PFEISTER";
+
+        $r6[1] = "FASTAR";
+
+        $r1[4] = $r6;
+
+        $r7 = newarray (java.lang.String)[2];
+
+        $r7[0] = "SCHOENHOEFT";
+
+        $r7[1] = "SANAFT";
+
+        $r1[5] = $r7;
+
+        $r8 = newarray (java.lang.String)[2];
+
+        $r8[0] = "MCKEE";
+
+        $r8[1] = "MCY";
+
+        $r1[6] = $r8;
+
+        $r9 = newarray (java.lang.String)[2];
+
+        $r9[0] = "MACKIE";
+
+        $r9[1] = "MCY";
+
+        $r1[7] = $r9;
+
+        $r10 = newarray (java.lang.String)[2];
+
+        $r10[0] = "HEITSCHMIDT";
+
+        $r10[1] = "HATSNAD";
+
+        $r1[8] = $r10;
+
+        $r11 = newarray (java.lang.String)[2];
+
+        $r11[0] = "BART";
+
+        $r11[1] = "BAD";
+
+        $r1[9] = $r11;
+
+        $r12 = newarray (java.lang.String)[2];
+
+        $r12[0] = "HURD";
+
+        $r12[1] = "HAD";
+
+        $r1[10] = $r12;
+
+        $r13 = newarray (java.lang.String)[2];
+
+        $r13[0] = "HUNT";
+
+        $r13[1] = "HAD";
+
+        $r1[11] = $r13;
+
+        $r14 = newarray (java.lang.String)[2];
+
+        $r14[0] = "WESTERLUND";
+
+        $r14[1] = "WASTARLAD";
+
+        $r1[12] = $r14;
+
+        $r15 = newarray (java.lang.String)[2];
+
+        $r15[0] = "CASSTEVENS";
+
+        $r15[1] = "CASTAFAN";
+
+        $r1[13] = $r15;
+
+        $r16 = newarray (java.lang.String)[2];
+
+        $r16[0] = "VASQUEZ";
+
+        $r16[1] = "VASG";
+
+        $r1[14] = $r16;
+
+        $r17 = newarray (java.lang.String)[2];
+
+        $r17[0] = "FRAZIER";
+
+        $r17[1] = "FRASAR";
+
+        $r1[15] = $r17;
+
+        $r18 = newarray (java.lang.String)[2];
+
+        $r18[0] = "BOWMAN";
+
+        $r18[1] = "BANAN";
+
+        $r1[16] = $r18;
+
+        $r19 = newarray (java.lang.String)[2];
+
+        $r19[0] = "MCKNIGHT";
+
+        $r19[1] = "MCNAGT";
+
+        $r1[17] = $r19;
+
+        $r20 = newarray (java.lang.String)[2];
+
+        $r20[0] = "RICKERT";
+
+        $r20[1] = "RACAD";
+
+        $r1[18] = $r20;
+
+        $r21 = newarray (java.lang.String)[2];
+
+        $r21[0] = "DEUTSCH";
+
+        $r21[1] = "DAT";
+
+        $r1[19] = $r21;
+
+        $r22 = newarray (java.lang.String)[2];
+
+        $r22[0] = "WESTPHAL";
+
+        $r22[1] = "WASTFAL";
+
+        $r1[20] = $r22;
+
+        $r23 = newarray (java.lang.String)[2];
+
+        $r23[0] = "SHRIVER";
+
+        $r23[1] = "SRAVAR";
+
+        $r1[21] = $r23;
+
+        $r24 = newarray (java.lang.String)[2];
+
+        $r24[0] = "KUHL";
+
+        $r24[1] = "CAL";
+
+        $r1[22] = $r24;
+
+        $r25 = newarray (java.lang.String)[2];
+
+        $r25[0] = "RAWSON";
+
+        $r25[1] = "RASAN";
+
+        $r1[23] = $r25;
+
+        $r26 = newarray (java.lang.String)[2];
+
+        $r26[0] = "JILES";
+
+        $r26[1] = "JAL";
+
+        $r1[24] = $r26;
+
+        $r27 = newarray (java.lang.String)[2];
+
+        $r27[0] = "CARRAWAY";
+
+        $r27[1] = "CARY";
+
+        $r1[25] = $r27;
+
+        $r28 = newarray (java.lang.String)[2];
+
+        $r28[0] = "YAMADA";
+
+        $r28[1] = "YANAD";
+
+        $r1[26] = $r28;
+
+        specialinvoke r0.<org.apache.commons.codec.language.NysiisTest: void assertEncodings(java.lang.String[][])>($r1);
+
+        return;
+    }
+
+    public void testFal()
+    {
+        org.apache.commons.codec.language.NysiisTest r0;
+        java.lang.String[] $r1;
+
+        r0 := @this: org.apache.commons.codec.language.NysiisTest;
+
+        $r1 = newarray (java.lang.String)[1];
+
+        $r1[0] = "Phil";
+
+        specialinvoke r0.<org.apache.commons.codec.language.NysiisTest: void encodeAll(java.lang.String[],java.lang.String)>($r1, "FAL");
+
+        return;
+    }
+
+    public void testOthers() throws org.apache.commons.codec.EncoderException
+    {
+        org.apache.commons.codec.language.NysiisTest r0;
+        java.lang.String[][] $r1;
+        java.lang.String[] $r2, $r3, $r4, $r5, $r6, $r7;
+
+        r0 := @this: org.apache.commons.codec.language.NysiisTest;
+
+        $r1 = newarray (java.lang.String[])[6];
+
+        $r2 = newarray (java.lang.String)[2];
+
+        $r2[0] = "O\'Daniel";
+
+        $r2[1] = "ODANAL";
+
+        $r1[0] = $r2;
+
+        $r3 = newarray (java.lang.String)[2];
+
+        $r3[0] = "O\'Donnel";
+
+        $r3[1] = "ODANAL";
+
+        $r1[1] = $r3;
+
+        $r4 = newarray (java.lang.String)[2];
+
+        $r4[0] = "Cory";
+
+        $r4[1] = "CARY";
+
+        $r1[2] = $r4;
+
+        $r5 = newarray (java.lang.String)[2];
+
+        $r5[0] = "Corey";
+
+        $r5[1] = "CARY";
+
+        $r1[3] = $r5;
+
+        $r6 = newarray (java.lang.String)[2];
+
+        $r6[0] = "Kory";
+
+        $r6[1] = "CARY";
+
+        $r1[4] = $r6;
+
+        $r7 = newarray (java.lang.String)[2];
+
+        $r7[0] = "FUZZY";
+
+        $r7[1] = "FASY";
+
+        $r1[5] = $r7;
+
+        specialinvoke r0.<org.apache.commons.codec.language.NysiisTest: void assertEncodings(java.lang.String[][])>($r1);
+
+        return;
+    }
+
+    public void testRule1() throws org.apache.commons.codec.EncoderException
+    {
+        org.apache.commons.codec.language.NysiisTest r0;
+        java.lang.String[][] $r1;
+        java.lang.String[] $r2, $r3, $r4, $r5, $r6, $r7;
+
+        r0 := @this: org.apache.commons.codec.language.NysiisTest;
+
+        $r1 = newarray (java.lang.String[])[6];
+
+        $r2 = newarray (java.lang.String)[2];
+
+        $r2[0] = "MACX";
+
+        $r2[1] = "MCX";
+
+        $r1[0] = $r2;
+
+        $r3 = newarray (java.lang.String)[2];
+
+        $r3[0] = "KNX";
+
+        $r3[1] = "NX";
+
+        $r1[1] = $r3;
+
+        $r4 = newarray (java.lang.String)[2];
+
+        $r4[0] = "KX";
+
+        $r4[1] = "CX";
+
+        $r1[2] = $r4;
+
+        $r5 = newarray (java.lang.String)[2];
+
+        $r5[0] = "PHX";
+
+        $r5[1] = "FX";
+
+        $r1[3] = $r5;
+
+        $r6 = newarray (java.lang.String)[2];
+
+        $r6[0] = "PFX";
+
+        $r6[1] = "FX";
+
+        $r1[4] = $r6;
+
+        $r7 = newarray (java.lang.String)[2];
+
+        $r7[0] = "SCHX";
+
+        $r7[1] = "SX";
+
+        $r1[5] = $r7;
+
+        specialinvoke r0.<org.apache.commons.codec.language.NysiisTest: void assertEncodings(java.lang.String[][])>($r1);
+
+        return;
+    }
+
+    public void testRule2() throws org.apache.commons.codec.EncoderException
+    {
+        org.apache.commons.codec.language.NysiisTest r0;
+        java.lang.String[][] $r1;
+        java.lang.String[] $r2, $r3, $r4, $r5, $r6, $r7, $r8;
+
+        r0 := @this: org.apache.commons.codec.language.NysiisTest;
+
+        $r1 = newarray (java.lang.String[])[7];
+
+        $r2 = newarray (java.lang.String)[2];
+
+        $r2[0] = "XEE";
+
+        $r2[1] = "XY";
+
+        $r1[0] = $r2;
+
+        $r3 = newarray (java.lang.String)[2];
+
+        $r3[0] = "XIE";
+
+        $r3[1] = "XY";
+
+        $r1[1] = $r3;
+
+        $r4 = newarray (java.lang.String)[2];
+
+        $r4[0] = "XDT";
+
+        $r4[1] = "XD";
+
+        $r1[2] = $r4;
+
+        $r5 = newarray (java.lang.String)[2];
+
+        $r5[0] = "XRT";
+
+        $r5[1] = "XD";
+
+        $r1[3] = $r5;
+
+        $r6 = newarray (java.lang.String)[2];
+
+        $r6[0] = "XRD";
+
+        $r6[1] = "XD";
+
+        $r1[4] = $r6;
+
+        $r7 = newarray (java.lang.String)[2];
+
+        $r7[0] = "XNT";
+
+        $r7[1] = "XD";
+
+        $r1[5] = $r7;
+
+        $r8 = newarray (java.lang.String)[2];
+
+        $r8[0] = "XND";
+
+        $r8[1] = "XD";
+
+        $r1[6] = $r8;
+
+        specialinvoke r0.<org.apache.commons.codec.language.NysiisTest: void assertEncodings(java.lang.String[][])>($r1);
+
+        return;
+    }
+
+    public void testRule4Dot1() throws org.apache.commons.codec.EncoderException
+    {
+        org.apache.commons.codec.language.NysiisTest r0;
+        java.lang.String[][] $r1;
+        java.lang.String[] $r2, $r3, $r4, $r5, $r6, $r7;
+
+        r0 := @this: org.apache.commons.codec.language.NysiisTest;
+
+        $r1 = newarray (java.lang.String[])[6];
+
+        $r2 = newarray (java.lang.String)[2];
+
+        $r2[0] = "XEV";
+
+        $r2[1] = "XAF";
+
+        $r1[0] = $r2;
+
+        $r3 = newarray (java.lang.String)[2];
+
+        $r3[0] = "XAX";
+
+        $r3[1] = "XAX";
+
+        $r1[1] = $r3;
+
+        $r4 = newarray (java.lang.String)[2];
+
+        $r4[0] = "XEX";
+
+        $r4[1] = "XAX";
+
+        $r1[2] = $r4;
+
+        $r5 = newarray (java.lang.String)[2];
+
+        $r5[0] = "XIX";
+
+        $r5[1] = "XAX";
+
+        $r1[3] = $r5;
+
+        $r6 = newarray (java.lang.String)[2];
+
+        $r6[0] = "XOX";
+
+        $r6[1] = "XAX";
+
+        $r1[4] = $r6;
+
+        $r7 = newarray (java.lang.String)[2];
+
+        $r7[0] = "XUX";
+
+        $r7[1] = "XAX";
+
+        $r1[5] = $r7;
+
+        specialinvoke r0.<org.apache.commons.codec.language.NysiisTest: void assertEncodings(java.lang.String[][])>($r1);
+
+        return;
+    }
+
+    public void testRule4Dot2() throws org.apache.commons.codec.EncoderException
+    {
+        org.apache.commons.codec.language.NysiisTest r0;
+        java.lang.String[][] $r1;
+        java.lang.String[] $r2, $r3, $r4;
+
+        r0 := @this: org.apache.commons.codec.language.NysiisTest;
+
+        $r1 = newarray (java.lang.String[])[3];
+
+        $r2 = newarray (java.lang.String)[2];
+
+        $r2[0] = "XQ";
+
+        $r2[1] = "XG";
+
+        $r1[0] = $r2;
+
+        $r3 = newarray (java.lang.String)[2];
+
+        $r3[0] = "XZ";
+
+        $r3[1] = "X";
+
+        $r1[1] = $r3;
+
+        $r4 = newarray (java.lang.String)[2];
+
+        $r4[0] = "XM";
+
+        $r4[1] = "XN";
+
+        $r1[2] = $r4;
+
+        specialinvoke r0.<org.apache.commons.codec.language.NysiisTest: void assertEncodings(java.lang.String[][])>($r1);
+
+        return;
+    }
+
+    public void testRule5() throws org.apache.commons.codec.EncoderException
+    {
+        org.apache.commons.codec.language.NysiisTest r0;
+        java.lang.String[][] $r1;
+        java.lang.String[] $r2, $r3;
+
+        r0 := @this: org.apache.commons.codec.language.NysiisTest;
+
+        $r1 = newarray (java.lang.String[])[2];
+
+        $r2 = newarray (java.lang.String)[2];
+
+        $r2[0] = "XS";
+
+        $r2[1] = "X";
+
+        $r1[0] = $r2;
+
+        $r3 = newarray (java.lang.String)[2];
+
+        $r3[0] = "XSS";
+
+        $r3[1] = "X";
+
+        $r1[1] = $r3;
+
+        specialinvoke r0.<org.apache.commons.codec.language.NysiisTest: void assertEncodings(java.lang.String[][])>($r1);
+
+        return;
+    }
+
+    public void testRule6() throws org.apache.commons.codec.EncoderException
+    {
+        org.apache.commons.codec.language.NysiisTest r0;
+        java.lang.String[][] $r1;
+        java.lang.String[] $r2, $r3;
+
+        r0 := @this: org.apache.commons.codec.language.NysiisTest;
+
+        $r1 = newarray (java.lang.String[])[2];
+
+        $r2 = newarray (java.lang.String)[2];
+
+        $r2[0] = "XAY";
+
+        $r2[1] = "XY";
+
+        $r1[0] = $r2;
+
+        $r3 = newarray (java.lang.String)[2];
+
+        $r3[0] = "XAYS";
+
+        $r3[1] = "XY";
+
+        $r1[1] = $r3;
+
+        specialinvoke r0.<org.apache.commons.codec.language.NysiisTest: void assertEncodings(java.lang.String[][])>($r1);
+
+        return;
+    }
+
+    public void testRule7() throws org.apache.commons.codec.EncoderException
+    {
+        org.apache.commons.codec.language.NysiisTest r0;
+        java.lang.String[][] $r1;
+        java.lang.String[] $r2, $r3;
+
+        r0 := @this: org.apache.commons.codec.language.NysiisTest;
+
+        $r1 = newarray (java.lang.String[])[2];
+
+        $r2 = newarray (java.lang.String)[2];
+
+        $r2[0] = "XA";
+
+        $r2[1] = "X";
+
+        $r1[0] = $r2;
+
+        $r3 = newarray (java.lang.String)[2];
+
+        $r3[0] = "XAS";
+
+        $r3[1] = "X";
+
+        $r1[1] = $r3;
+
+        specialinvoke r0.<org.apache.commons.codec.language.NysiisTest: void assertEncodings(java.lang.String[][])>($r1);
+
+        return;
+    }
+
+    public void testSnad()
+    {
+        org.apache.commons.codec.language.NysiisTest r0;
+        java.lang.String[] $r1;
+
+        r0 := @this: org.apache.commons.codec.language.NysiisTest;
+
+        $r1 = newarray (java.lang.String)[1];
+
+        $r1[0] = "Schmidt";
+
+        specialinvoke r0.<org.apache.commons.codec.language.NysiisTest: void encodeAll(java.lang.String[],java.lang.String)>($r1, "SNAD");
+
+        return;
+    }
+
+    public void testSnat()
+    {
+        org.apache.commons.codec.language.NysiisTest r0;
+        java.lang.String[] $r1;
+
+        r0 := @this: org.apache.commons.codec.language.NysiisTest;
+
+        $r1 = newarray (java.lang.String)[2];
+
+        $r1[0] = "Smith";
+
+        $r1[1] = "Schmit";
+
+        specialinvoke r0.<org.apache.commons.codec.language.NysiisTest: void encodeAll(java.lang.String[],java.lang.String)>($r1, "SNAT");
+
+        return;
+    }
+
+    public void testSpecialBranches()
+    {
+        org.apache.commons.codec.language.NysiisTest r0;
+        java.lang.String[] $r1, $r2, $r3, $r4, $r5, $r6, $r7;
+
+        r0 := @this: org.apache.commons.codec.language.NysiisTest;
+
+        $r1 = newarray (java.lang.String)[1];
+
+        $r1[0] = "Kobwick";
+
+        specialinvoke r0.<org.apache.commons.codec.language.NysiisTest: void encodeAll(java.lang.String[],java.lang.String)>($r1, "CABWAC");
+
+        $r2 = newarray (java.lang.String)[1];
+
+        $r2[0] = "Kocher";
+
+        specialinvoke r0.<org.apache.commons.codec.language.NysiisTest: void encodeAll(java.lang.String[],java.lang.String)>($r2, "CACAR");
+
+        $r3 = newarray (java.lang.String)[1];
+
+        $r3[0] = "Fesca";
+
+        specialinvoke r0.<org.apache.commons.codec.language.NysiisTest: void encodeAll(java.lang.String[],java.lang.String)>($r3, "FASC");
+
+        $r4 = newarray (java.lang.String)[1];
+
+        $r4[0] = "Shom";
+
+        specialinvoke r0.<org.apache.commons.codec.language.NysiisTest: void encodeAll(java.lang.String[],java.lang.String)>($r4, "SAN");
+
+        $r5 = newarray (java.lang.String)[1];
+
+        $r5[0] = "Ohlo";
+
+        specialinvoke r0.<org.apache.commons.codec.language.NysiisTest: void encodeAll(java.lang.String[],java.lang.String)>($r5, "OL");
+
+        $r6 = newarray (java.lang.String)[1];
+
+        $r6[0] = "Uhu";
+
+        specialinvoke r0.<org.apache.commons.codec.language.NysiisTest: void encodeAll(java.lang.String[],java.lang.String)>($r6, "UH");
+
+        $r7 = newarray (java.lang.String)[1];
+
+        $r7[0] = "Um";
+
+        specialinvoke r0.<org.apache.commons.codec.language.NysiisTest: void encodeAll(java.lang.String[],java.lang.String)>($r7, "UN");
+
+        return;
+    }
+
+    public void testTranan()
+    {
+        org.apache.commons.codec.language.NysiisTest r0;
+        java.lang.String[] $r1;
+
+        r0 := @this: org.apache.commons.codec.language.NysiisTest;
+
+        $r1 = newarray (java.lang.String)[2];
+
+        $r1[0] = "Trueman";
+
+        $r1[1] = "Truman";
+
+        specialinvoke r0.<org.apache.commons.codec.language.NysiisTest: void encodeAll(java.lang.String[],java.lang.String)>($r1, "TRANAN");
+
+        return;
+    }
+
+    public void testTrueVariant()
+    {
+        org.apache.commons.codec.language.NysiisTest r0;
+        java.lang.String r2;
+        org.apache.commons.codec.language.Nysiis $r3;
+        int $i0;
+        boolean $z0;
+
+        r0 := @this: org.apache.commons.codec.language.NysiisTest;
+
+        $r3 = new org.apache.commons.codec.language.Nysiis;
+
+        specialinvoke $r3.<org.apache.commons.codec.language.Nysiis: void <init>(boolean)>(1);
+
+        r2 = virtualinvoke $r3.<org.apache.commons.codec.language.Nysiis: java.lang.String encode(java.lang.String)>("WESTERLUND");
+
+        $i0 = virtualinvoke r2.<java.lang.String: int length()>();
+
+        if $i0 > 6 goto label1;
+
+        $z0 = 1;
+
+        goto label2;
+
+     label1:
+        $z0 = 0;
+
+     label2:
+        staticinvoke <org.junit.Assert: void assertTrue(boolean)>($z0);
+
+        staticinvoke <org.junit.Assert: void assertEquals(java.lang.Object,java.lang.Object)>("WASTAR", r2);
+
+        return;
+    }
+
+    protected volatile org.apache.commons.codec.StringEncoder createStringEncoder()
+    {
+        org.apache.commons.codec.language.NysiisTest r0;
+        org.apache.commons.codec.language.Nysiis $r1;
+
+        r0 := @this: org.apache.commons.codec.language.NysiisTest;
+
+        $r1 = virtualinvoke r0.<org.apache.commons.codec.language.NysiisTest: org.apache.commons.codec.language.Nysiis createStringEncoder()>();
+
+        return $r1;
+    }
+}
